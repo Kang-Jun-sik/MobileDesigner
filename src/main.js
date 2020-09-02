@@ -7,6 +7,7 @@ import 'bootstrap-vue/dist/bootstrap-vue.css'
 
 import GlobalComponent from './components/global-component'
 import Wrapper from './components/wrapper'
+import servicetest from "@/service/servicetest";
 
 Vue.config.productionTip = false
 
@@ -21,4 +22,3 @@ new Vue({
     vuetify,
     render: h => h(App)
 }).$mount('#app')
-

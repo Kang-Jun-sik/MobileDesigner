@@ -5,9 +5,14 @@
 </template>
 
 <script>
+import servicetest from "@/service/servicetest";
+
 export default {
   name: 'app',
-  components: {}
+  components: {},
+  mounted() {
+    servicetest.abc.test();
+  }
 }
 </script>
 
