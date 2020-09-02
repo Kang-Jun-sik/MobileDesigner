@@ -1,16 +1,16 @@
-# dfdmobile
+# DEWS 개발도구 Mobile Designer Web APP
 
-## Project setup
+## Project setup (project dependency 설치)
 ```
 npm install
 ```
 
-### Compiles and hot-reloads for development
+### Compiles and hot-reloads for development (Local Server 구동)
 ```
 npm run serve
 ```
 
-### Compiles and minifies for production
+### Compiles and minifies for production (배포버전 빌드)
 ```
 npm run build
 ```
