@@ -37,16 +37,16 @@ export default {
   }
 
   .v-expansion-panel-header {
-    font-size: 1.3rem;
+    font-size: 1rem;
+    padding: 2px 20px;
   }
 
   .controlList-wrapper {
-    min-height: 1000px;
     background-color: #c9c9c9;
     color: #fff;
     border-radius: 5px;
-    padding: 15px;
-    margin: 20px 0;
+    padding: 10px;
+    margin: 10px 0;
   }
 
   .controlName {

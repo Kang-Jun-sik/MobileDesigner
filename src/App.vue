@@ -15,6 +15,8 @@
   @import "src/assets/scss/main";
 
   #app {
+    max-width: 1272px;
     padding: 0;
+    overflow: auto;
   }
 </style>

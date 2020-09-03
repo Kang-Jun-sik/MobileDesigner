@@ -16,12 +16,12 @@
   }
   .main-designer {
     display: inline-flex;
-    width: 1025px;
-    height: 1024px;
+    width: 700px;
+    height: 950px;
     border: 40px solid #121212;
     border-width: 55px 7px;
     border-radius: 40px;
-    margin: 10px 10px 10px 10px;
+    margin: 10px 0 0 10px;
     overflow: auto;
     transition: all 0.5s ease;
     animation: fadein 2s;

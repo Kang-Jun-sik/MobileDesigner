@@ -12,21 +12,21 @@
 
 <style lang="scss" scoped>
   div {
-    padding: 10px;
+    padding: 10px 20px;
   }
 
   .thumbnail-bottom-wrapper {
-    margin: 10px;
+    margin-top: 20px;
     border-style: dashed;
 
     .thumbnail-bottom {
-      width: 310px;
-      height: 490px;
+      width: 240px;
+      height: 420px;
       display: block;
       border: 40px solid #121212;
-      border-width: 55px 7px;
+      border-width: 50px 7px;
       border-radius: 40px;
-      margin: 23px auto;
+      margin: 15px auto;
       overflow: auto;
       transition: all 0.5s ease;
       animation: fadein 2s;
