@@ -1,25 +1,20 @@
 <template>
   <div id="app">
-    <wrapper></wrapper>
+    <mobile-wrapper></mobile-wrapper>
   </div>
 </template>
 
 <script>
-import servicetest from "@/service/servicetest";
-
-export default {
-  name: 'app',
-  components: {},
-  mounted() {
-    servicetest.abc.test();
+  export default {
+    name: 'app',
+    components: {}
   }
-}
 </script>
 
 <style lang="scss">
-@import "src/assets/scss/main";
+  @import "src/assets/scss/main";
 
-#app {
-  padding: 0;
-}
+  #app {
+    padding: 0;
+  }
 </style>

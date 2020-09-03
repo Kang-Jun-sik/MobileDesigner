@@ -6,7 +6,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 
 import GlobalComponent from './components/global-component'
-import Wrapper from './components/wrapper'
+import Wrapper from "@/components/Wrapper";
 import servicetest from "@/service/servicetest";
 
 Vue.config.productionTip = false
