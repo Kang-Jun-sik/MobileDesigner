@@ -1,12 +1,7 @@
 export default {
-    abc: {
-        test(){
-            console.log("beforeCreate");
-        }
-    },
-    test : {
-        test(){
-            alert('IDE CONNECTED');
+    OPEN: {
+        open() {
+            alert('OPEN');
         }
     }
 }

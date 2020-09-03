@@ -13,7 +13,9 @@
 </body>
 <script src="sendToMobileDesigner.js" charset="UTF-8"></script>
 <script>
-
-
+    function SendMessageFromIDE(args) {
+        var wdtd = window.wdtd || {};
+        wdtd.sendToDesigner = new wdtd.SendToDesigner(args);
+    }
 </script>
 </html>
