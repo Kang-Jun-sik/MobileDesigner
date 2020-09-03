@@ -14,7 +14,7 @@
   div {
     padding: 10px;
   }
-  .main-designer[data-v-1efb09f4] {
+  .main-designer {
     display: inline-flex;
     width: 1025px;
     height: 1024px;
