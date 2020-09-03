@@ -13,7 +13,16 @@ Vue.config.productionTip = false
 //글로벌 컴포넌트 등록
 Vue.component(GlobalComponent.name, GlobalComponent)
 Vue.component(Wrapper.name, Wrapper)
+
 Vue.use(BootstrapVue)
+
+export const eventBus = new Vue({
+    methods: {
+        controlClick(control) {
+            this.$emit('control', control);
+        }
+    }
+})
 
 registerService.init();
 
@@ -22,4 +31,3 @@ new Vue({
     vuetify,
     render: h => h(App)
 }).$mount('#app')
-

@@ -7,7 +7,7 @@
       >
         <v-expansion-panel-header>{{ key }}</v-expansion-panel-header>
         <v-expansion-panel-content>
-          <div v-for="(component, idx) in value" :key="idx" class="controlName">
+          <div v-for="(component, idx) in value" :key="idx" class="controlName" @click="sendToMain(component)">
             {{ component }}
           </div>
         </v-expansion-panel-content>
@@ -17,6 +17,8 @@
 </template>
 
 <script>
+import { eventBus } from "@/main";
+
 export default {
   name: 'controlList-wrapper',
   data () {
@@ -26,6 +28,12 @@ export default {
         'Component': ['Button', 'TextBox'],
         'ETC': ['Message']
       }
+    }
+  },
+  methods: {
+    sendToMain(control) {
+      this.$emit('control', control);
+      eventBus.controlClick(control);
     }
   }
 }
