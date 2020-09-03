@@ -3,5 +3,10 @@ export default {
         test(){
             console.log("beforeCreate");
         }
+    },
+    test : {
+        test(){
+            alert('IDE CONNECTED');
+        }
     }
 }
