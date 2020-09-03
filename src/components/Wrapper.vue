@@ -28,7 +28,6 @@
 
   .mobile-wrapper {
     padding: 0;
-    min-width: 1272px;
     margin: 10px;
     display: grid;
     grid-gap: 10px;
