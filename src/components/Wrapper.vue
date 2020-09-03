@@ -21,11 +21,15 @@
   }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
+  div {
+    padding: 0;
+  }
+
   .mobile-wrapper {
     padding: 0;
-    min-width: 1500px;
-    margin: 20px;
+    min-width: 1272px;
+    margin: 10px;
     display: grid;
     grid-gap: 10px;
     grid-template-columns: 2fr 1fr 1fr;
