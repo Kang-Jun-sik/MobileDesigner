@@ -5,8 +5,25 @@
 </template>
 
 <script>
+  import { eventBus } from "@/main";
+
   export default {
-    name: 'mainDesigner-wrapper'
+    name: 'mainDesigner-wrapper',
+    data() {
+      return {
+        designer: ''
+      }
+    },
+    created() {
+      eventBus.$on('control', (control) => {
+        let newControl = document.createElement('div');
+        newControl.innerText = control;
+        this.designer.appendChild(newControl);
+      })
+    },
+    mounted() {
+      this.designer = document.querySelector('.main-designer');
+    },
   }
 </script>
 

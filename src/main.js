@@ -16,6 +16,14 @@ Vue.component(Wrapper.name, Wrapper)
 
 Vue.use(BootstrapVue)
 
+export const eventBus = new Vue({
+    methods: {
+        controlClick(control) {
+            this.$emit('control', control);
+        }
+    }
+})
+
 //앱 진입
 new Vue({
     vuetify,
