@@ -1,7 +1,7 @@
 export default {
     OPEN: {
-        open() {
-            alert('OPEN');
+        openservice(args) {
+            alert(args+"test");
         }
     }
 }

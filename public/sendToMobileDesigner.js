@@ -1,17 +1,16 @@
-// import * as findNode from './findNode';
-
 /**
- * 디자이너와 IDE 간의 데이터 통신
- * IDE에서 디자이너로 메타데이터 전송(xml형태)
+ * IDE --> MOBILE DESIGNER 데이터 수신 처리부
+ *
  */
-(function () {
-    let wdtd = window.wdtd || {};
 
-    function SendToDesigner(args) {
+(function () {
+    let messageHandler = window.messageHandler || {};
+
+    function MessageFromIDE(args) {
         console.log(args);
-        window.openService();
+        window.services.get("openservice").call(this, args); //this(MessageFromIDE)가 메서드를 등록한 것처럼 호출해준다.
     }
 
-    wdtd.SendToDesigner = SendToDesigner;
-    window.wdtd = wdtd;
+    messageHandler.MessageFromIDE = MessageFromIDE;
+    window.messageHandler = messageHandler;
 }());
