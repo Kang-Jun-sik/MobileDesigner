@@ -6,6 +6,7 @@
 
 <script>
   import { eventBus } from "@/main";
+  import {sendToIDECmd} from "@/service/mobileDesignerToIDE";
 
   export default {
     name: 'mainDesigner-wrapper',
@@ -19,6 +20,7 @@
         let newControl = document.createElement('div');
         newControl.innerText = control;
         this.designer.appendChild(newControl);
+        sendToIDECmd("create","button create test");
       })
     },
     mounted() {
