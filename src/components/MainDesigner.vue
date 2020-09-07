@@ -6,7 +6,7 @@
 
 <script>
   import { eventBus } from "@/main";
-  import {sendToIDECmd} from "@/service/mobileDesignerToIDE";
+  import {sendToIDECmd} from "../utils/mobileDesignerToIDE";
 
   export default {
     name: 'mainDesigner-wrapper',
