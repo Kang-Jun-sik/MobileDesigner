@@ -17,8 +17,6 @@
 </template>
 
 <script>
-import { eventBus } from "@/main";
-
 export default {
   name: 'controlList-wrapper',
   data () {
@@ -31,10 +29,7 @@ export default {
     }
   },
   methods: {
-    sendToMain(control) {
-      this.$emit('control', control);
-      eventBus.controlClick(control);
-    }
+
   }
 }
 </script>

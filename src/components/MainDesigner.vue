@@ -1,12 +1,13 @@
 <template>
   <div class="main-designer-wrapper">
-    <div class="main-designer"></div>
+    <div class="main-designer">
+      <slot></slot>
+    </div>
   </div>
 </template>
 
 <script>
-  import { eventBus } from "@/main";
-  import {sendToIDECmd} from "../utils/mobileDesignerToIDE";
+  import { sendToIDECmd } from "../utils/mobileDesignerToIDE";
 
   export default {
     name: 'mainDesigner-wrapper',
@@ -16,12 +17,7 @@
       }
     },
     created() {
-      eventBus.$on('control', (control) => {
-        let newControl = document.createElement('div');
-        newControl.innerText = control;
-        this.designer.appendChild(newControl);
-        sendToIDECmd("create","button create test");
-      })
+      sendToIDECmd("create","button create test");
     },
     mounted() {
       this.designer = document.querySelector('.main-designer');
