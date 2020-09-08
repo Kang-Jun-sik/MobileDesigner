@@ -14,7 +14,7 @@
  *   change: 컨트롤 변경
  */
 
-let sendToIDECmd = (commandType, args) => {
+let mobileDesignerToIDE = (commandType, args) => {
     let obj = {};
     if (commandType === 'create') {
         obj = {
@@ -252,6 +252,6 @@ let sendToIDECmd = (commandType, args) => {
     */
     console.log(obj);
     // eslint-disable-next-line no-undef
-    chromiumObject.sendToIDECmd(obj); //실제 IDE 데이터 전송 로직
+    chromiumObject.mobileDesignerToIDE(obj); //실제 IDE 데이터 전송 로직
 };
-export {sendToIDECmd};
+export {mobileDesignerToIDE};
