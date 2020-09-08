@@ -1,7 +1,7 @@
 export default {
     OPEN: {
         openservice(args) {
-            alert(args+"test");
+            console.log(args);
         }
     }
 }

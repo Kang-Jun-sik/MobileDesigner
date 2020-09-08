@@ -7,7 +7,8 @@
 </template>
 
 <script>
-  import { sendToIDECmd } from "../utils/mobileDesignerToIDE";
+  import { eventBus } from "@/main";
+  import {mobileDesignerToIDE} from "../utils/mobileDesignerToIDE";
 
   export default {
     name: 'mainDesigner-wrapper',
@@ -17,7 +18,12 @@
       }
     },
     created() {
-      sendToIDECmd("create","button create test");
+      eventBus.$on('control', (control) => {
+        let newControl = document.createElement('div');
+        newControl.innerText = control;
+        this.designer.appendChild(newControl);
+        mobileDesignerToIDE("create","button create test");
+      })
     },
     mounted() {
       this.designer = document.querySelector('.main-designer');

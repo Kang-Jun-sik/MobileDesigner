@@ -2,7 +2,6 @@
  * 컨트롤 생성후 반환
  */
 
-
 /*
 let createControl = (type, parent, option, obj) => {
     let control;
