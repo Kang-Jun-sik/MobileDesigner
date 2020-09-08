@@ -5,10 +5,12 @@
           v-for="(value, key, idx) in control"
           :key="idx"
       >
-        <v-expansion-panel-header>{{ key }}</v-expansion-panel-header>
+        <v-expansion-panel-header @click="open">{{ key }}</v-expansion-panel-header>
         <v-expansion-panel-content>
-          <div v-for="(component, idx) in value" :key="idx" class="controlName" @click="sendToMain(component)">
-            {{ component }}
+          <div ref="element">
+            <div v-for="(component, idx) in value" :key="idx" class="controlName">
+              {{ component }}
+            </div>
           </div>
         </v-expansion-panel-content>
       </v-expansion-panel>
@@ -17,21 +19,28 @@
 </template>
 
 <script>
-export default {
-  name: 'controlList-wrapper',
-  data () {
-    return {
-      control: {
-        'Container': ['Container', 'Form'],
-        'Component': ['Button', 'TextBox'],
-        'ETC': ['Message']
+  import dragula from 'dragula';
+
+  export default {
+    name: 'controlList-wrapper',
+    data () {
+      return {
+        control: {
+          'Container': ['Container', 'Form'],
+          'Component': ['Button', 'TextBox'],
+          'ETC': ['Message']
+        }
+      }
+    },
+    mounted() {
+      console.log(this)
+    },
+    methods: {
+      open() {
+        console.log('open', this)
       }
     }
-  },
-  methods: {
-
   }
-}
 </script>
 
 <style lang="scss" scoped>

@@ -251,7 +251,9 @@ let sendToIDECmd = (commandType, args) => {
     }
     */
     console.log(obj);
+
     // eslint-disable-next-line no-undef
     chromiumObject.sendToIDECmd(obj); //실제 IDE 데이터 전송 로직
 };
 export {sendToIDECmd};
+

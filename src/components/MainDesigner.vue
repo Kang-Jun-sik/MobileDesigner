@@ -1,6 +1,6 @@
 <template>
   <div class="main-designer-wrapper">
-    <div class="main-designer">
+    <div class="main-designer" ref="designerElement">
       <slot></slot>
     </div>
   </div>
@@ -21,7 +21,12 @@
     },
     mounted() {
       this.designer = document.querySelector('.main-designer');
+      console.log(this.$refs)
+      console.log(this.$store.state.designer)
     },
+    computed: {
+
+    }
   }
 </script>
 
