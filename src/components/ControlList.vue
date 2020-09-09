@@ -1,44 +1,71 @@
 <template>
   <div class="controlList-wrapper">
-    <v-expansion-panels multiple focusable>
-      <v-expansion-panel
-          v-for="(value, key, idx) in control"
-          :key="idx"
-      >
-        <v-expansion-panel-header @click="open">{{ key }}</v-expansion-panel-header>
-        <v-expansion-panel-content>
-          <div ref="element">
-            <div v-for="(component, idx) in value" :key="idx" class="controlName">
-              {{ component }}
-            </div>
-          </div>
-        </v-expansion-panel-content>
-      </v-expansion-panel>
-    </v-expansion-panels>
+    <b-card no-body>
+      <b-card-header header-tag="header" role="tab">
+        <b-button block v-b-toggle.mobileContainer variant="secondary">Container</b-button>
+      </b-card-header>
+      <b-collapse id="mobileContainer" visible accordion="my-accordion" role="tabpanel">
+        <b-card-body class="controlName" v-for="(element, idx) in mobileContainer" :key="idx">
+          <b-button variant="dark">{{ element }}</b-button>
+        </b-card-body>
+      </b-collapse>
+    </b-card>
+
+    <b-card no-body>
+      <b-card-header header-tag="header" role="tab">
+        <b-button block v-b-toggle.mobileComponent variant="secondary">Component</b-button>
+      </b-card-header>
+      <b-collapse id="mobileComponent" visible accordion="my-accordion" role="tabpanel">
+        <b-card-body class="controlName" v-for="(element, idx) in mobileComponent" :key="idx">
+          <b-button variant="dark">{{ element }}</b-button>
+        </b-card-body>
+      </b-collapse>
+    </b-card>
+
+    <b-card no-body>
+      <b-card-header header-tag="header" role="tab">
+        <b-button block v-b-toggle.mobileEtc variant="secondary">Etc</b-button>
+      </b-card-header>
+      <b-collapse id="mobileEtc" visible accordion="my-accordion" role="tabpanel">
+        <b-card-body class="controlName" v-for="(element, idx) in mobileEtc" :key="idx">
+          <b-button variant="dark">{{ element }}</b-button>
+        </b-card-body>
+      </b-collapse>
+    </b-card>
   </div>
 </template>
 
 <script>
-  import dragula from 'dragula';
-
   export default {
     name: 'controlList-wrapper',
     data () {
       return {
-        control: {
-          'Container': ['Container', 'Form'],
-          'Component': ['Button', 'TextBox'],
-          'ETC': ['Message']
-        }
+        mobileContainer: ['Container', 'Form'],
+        mobileComponent: ['Button', 'TextBox'],
+        mobileEtc: ['Message'],
       }
     },
     mounted() {
-      console.log(this)
+      const mobileControl = [
+        {
+          name: 'containerElement',
+          control: document.querySelector('#mobileContainer')
+        },
+        {
+          name: 'componentElement',
+          control: document.querySelector('#mobileComponent')
+        },
+        {
+          name: 'etcElement',
+          control: document.querySelector('#mobileEtc')
+        }
+      ]
+      mobileControl.forEach(control => {
+        this.$store.commit('findElement', control)
+      })
     },
     methods: {
-      open() {
-        console.log('open', this)
-      }
+
     }
   }
 </script>
@@ -46,11 +73,6 @@
 <style lang="scss" scoped>
   div {
     padding: 0;
-  }
-
-  .v-expansion-panel-header {
-    font-size: 1rem;
-    padding: 2px 20px;
   }
 
   .controlList-wrapper {
@@ -63,11 +85,9 @@
 
   .controlName {
     height: 45px;
-    background-color: rgba(0, 0, 0, 0.6);
-    margin: 20px 0;
     text-align: center;
     padding: 10px;
-    border-radius: 20px;
-    color: white;
+    margin: 10px 0;
+    color: black;
   }
 </style>

@@ -2,18 +2,23 @@ import Vue from 'vue';
 import App from './App.vue';
 import vuetify from './plugins/vuetify';
 
+import { BootstrapVue } from "bootstrap-vue";
+import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap-vue/dist/bootstrap-vue.css'
+
 import GlobalComponent from './components/global-component'
 import Wrapper from "@/components/Wrapper";
 import registerService from "@/service/registerService";
 import { store } from './store';
-import draggable from "vuedraggable";
 
 Vue.config.productionTip = false
+
+// Vue use
+Vue.use(BootstrapVue)
 
 //글로벌 컴포넌트 등록
 Vue.component(GlobalComponent.name, GlobalComponent)
 Vue.component(Wrapper.name, Wrapper)
-Vue.component('Draggable', draggable)
 
 registerService.init();
 
