@@ -7,56 +7,55 @@
 </template>
 
 <script>
-  import MainDesignerWrapper from "@/components/MainDesigner";
-  import ThumbnailDesignerWrapper from "@/components/ThumbnailDesigner";
-  import ControlListWrapper from "@/components/ControlList";
+import MainDesignerWrapper from "@/components/MainDesigner";
+import ThumbnailDesignerWrapper from "@/components/ThumbnailDesigner";
+import ControlListWrapper from "@/components/ControlList";
+import dragula from "dragula";
 
-  import dragula from "dragula";
-
-  export default {
-    name: 'mobile-wrapper',
-    components: {
-      MainDesignerWrapper,
-      ThumbnailDesignerWrapper,
-      ControlListWrapper,
-    },
-    mounted() {
-      let drake = dragula({
-        revertOnSpill: true,
-        copy: function(el, source) {
-          return source.id === 'mobileContainer' || source.id === 'mobileComponent' || source.id === 'mobileEtc'
-        },
-        accepts: function (el, target){
-          if (target.closest('#main-designer')) {
-            return true
-          }
-          return false
+export default {
+  name: 'mobile-wrapper',
+  components: {
+    MainDesignerWrapper,
+    ThumbnailDesignerWrapper,
+    ControlListWrapper,
+  },
+  mounted() {
+    window.drake = dragula({
+      revertOnSpill: true,
+      copy: function (el, source) {
+        return source.id === 'mobileContainer' || source.id === 'mobileComponent' || source.id === 'mobileEtc';
+      },
+      accepts: function (el, target) {
+        if (target.closest('#main-designer')) {
+          return true;
         }
-      })
-      .on('drop', function(el, target) {
-        console.log(el, target)
-      })
-      drake.containers.push(this.$store.state.mainDesigner, this.$store.state.containerElement,
-          this.$store.state.componentElement, this.$store.state.etcElement);
-
-      window.drake = drake;
-      console.log(drake)
-    }
+        return false;
+      }
+    })
+        .on('drop', function (el, target) {
+          console.log(el, target);
+        })
+    window.drake.containers.push(this.$store.state.mainDesigner);
+    window.drake.containers.push(this.$store.state.containerElement);
+    window.drake.containers.push(this.$store.state.componentElement);
+    window.drake.containers.push(this.$store.state.etcElement);
+    console.log(window.drake);
   }
+}
 </script>
 
 <style lang="scss" scoped>
-  div {
-    padding: 0;
-  }
+div {
+  padding: 0;
+}
 
-  .mobile-wrapper {
-    padding: 0;
-    margin: 10px;
-    display: grid;
-    grid-gap: 10px;
-    grid-template-columns: 2fr 1fr 1fr;
-    background-color: #fff;
-    color: #444;
-  }
+.mobile-wrapper {
+  padding: 0;
+  margin: 10px;
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: 2fr 1fr 1fr;
+  background-color: #fff;
+  color: #444;
+}
 </style>

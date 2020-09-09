@@ -10,6 +10,7 @@ import GlobalComponent from './components/global-component'
 import Wrapper from "@/components/Wrapper";
 import registerService from "@/service/registerService";
 import { store } from './store';
+import GlobalService from "@/service/GlobalService";
 
 Vue.config.productionTip = false
 

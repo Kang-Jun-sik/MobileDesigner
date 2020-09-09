@@ -1,3 +1,4 @@
+import dragula from "dragula";
 import $ from 'jquery';
 import 'jquery-ui-bundle';
 import 'jquery-ui-bundle/jquery-ui.css';
@@ -27,5 +28,8 @@ export default {
                 }
             });
         }
+    },
+    DRAG: {
+
     }
 }
