@@ -1,37 +1,31 @@
 <template>
   <div class="main-designer-wrapper">
-    <div class="main-designer"></div>
+    <div id="main-designer" ref="designerElement">
+      <slot></slot>
+    </div>
   </div>
 </template>
 
 <script>
-  import { eventBus } from "@/main";
-  import {mobileDesignerToIDE} from "../utils/mobileDesignerToIDE";
-  import globalservice from "@/service/globalservice";
+  import { mobileDesignerToIDE } from "@/utils/mobileDesignerToIDE";
 
   export default {
     name: 'mainDesigner-wrapper',
     data() {
       return {
-        designer: ''
+        mainDesigner: ''
       }
     },
     created() {
-      eventBus.$on('control', (control) => {
-        let newControl = document.createElement('div');
-        newControl.className = 'kjstest';
-        newControl.innerText = control;
-        newControl.style.width = 300 + 'px';
-        newControl.style.height = 300 + 'px';
-        newControl.style.background = 'red'
-        this.designer.appendChild(newControl);
-        mobileDesignerToIDE("create","button create test");
-        globalservice.RESIZE.canresizeable(newControl.className);
-      })
+      // mobileDesignerToIDE("create","button create test");
     },
     mounted() {
-      this.designer = document.querySelector('.main-designer');
+      this.mainDesigner = this.$refs.designerElement;
+      this.$store.commit('findDesigner', this.mainDesigner);
     },
+    computed: {
+
+    }
   }
 </script>
 
@@ -39,7 +33,7 @@
   div {
     padding: 10px;
   }
-  .main-designer {
+  #main-designer {
     display: inline-flex;
     width: 700px;
     height: 950px;

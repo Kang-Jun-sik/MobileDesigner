@@ -11,12 +11,36 @@
   import ThumbnailDesignerWrapper from "@/components/ThumbnailDesigner";
   import ControlListWrapper from "@/components/ControlList";
 
+  import dragula from "dragula";
+
   export default {
     name: 'mobile-wrapper',
     components: {
       MainDesignerWrapper,
       ThumbnailDesignerWrapper,
       ControlListWrapper,
+    },
+    mounted() {
+      let drake = dragula({
+        revertOnSpill: true,
+        copy: function(el, source) {
+          return source.id === 'mobileContainer' || source.id === 'mobileComponent' || source.id === 'mobileEtc'
+        },
+        accepts: function (el, target){
+          if (target.closest('#main-designer')) {
+            return true
+          }
+          return false
+        }
+      })
+      .on('drop', function(el, target) {
+        console.log(el, target)
+      })
+      drake.containers.push(this.$store.state.mainDesigner, this.$store.state.containerElement,
+          this.$store.state.componentElement, this.$store.state.etcElement);
+
+      window.drake = drake;
+      console.log(drake)
     }
   }
 </script>
