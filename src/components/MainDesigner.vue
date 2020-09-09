@@ -7,6 +7,7 @@
 <script>
   import { eventBus } from "@/main";
   import {mobileDesignerToIDE} from "../utils/mobileDesignerToIDE";
+  import globalservice from "@/service/globalservice";
 
   export default {
     name: 'mainDesigner-wrapper',
@@ -18,9 +19,14 @@
     created() {
       eventBus.$on('control', (control) => {
         let newControl = document.createElement('div');
+        newControl.className = 'kjstest';
         newControl.innerText = control;
+        newControl.style.width = 300 + 'px';
+        newControl.style.height = 300 + 'px';
+        newControl.style.background = 'red'
         this.designer.appendChild(newControl);
         mobileDesignerToIDE("create","button create test");
+        globalservice.RESIZE.canresizeable(newControl.className);
       })
     },
     mounted() {

@@ -12,6 +12,7 @@
     "bootstrap-vue": "^2.16.0",
     "core-js": "^3.6.5",
     "jquery": "^3.5.1",
+    "jquery-ui-bundle": "^1.12.1-migrate",
     "vue": "^2.6.12",
     "vuedraggable": "^2.24.1",
     "vuetify": "^2.2.11",
