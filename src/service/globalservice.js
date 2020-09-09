@@ -4,7 +4,7 @@ import 'jquery-ui-bundle/jquery-ui.css';
 
 export default {
     OPEN: {
-        openservice(args) {
+        openService(args) {
             console.log(args);
         }
     },
