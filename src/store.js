@@ -1,6 +1,8 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import dragula from 'dragula';
+import $ from 'jquery';
+import 'jquery-ui-bundle';
+import 'jquery-ui-bundle/jquery-ui.css';
 
 Vue.use(Vuex);
 
@@ -18,12 +20,10 @@ export const store = new Vuex.Store({
         findElement(state, payload) {
             let name = payload.name;
             state[name] = payload.control;
-        }
+        },
     },
     actions: {
 
     },
-    getters: {
-
-    }
+    getters: {}
 });
