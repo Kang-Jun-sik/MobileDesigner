@@ -34,15 +34,13 @@ export default {
       }
     }).on('drop', function (el, target) {
 
-
       // *** 컨트롤 리사이즈 ***
-      // (1) 리사이즈가 가능한 컨트롤인지 먼저 확인한다.
+      // (1) 리사이즈가 가능한 컨트롤인지 먼저 확인한다. (특정 class Name으로 구분하여 표현)
       // (2) uid를 부여한다
       // (3) resizeable 함수를 호출한다.
 
-      //(1)
-      el.classList.add(GlobalService.CREATEUID.uuidv4());//(2)
-      GlobalService.RESIZE.canResize(el);//(3)
+      el.classList.add(GlobalService.CREATEUID.uuidv4());
+      GlobalService.RESIZE.canResize(el);
       console.log(el, target);
     })
     window.drake.containers.push(this.$store.state.mainDesigner);
