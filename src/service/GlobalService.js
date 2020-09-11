@@ -4,7 +4,7 @@ import 'jquery-ui-bundle';
 import 'jquery-ui-bundle/jquery-ui.css';
 import Vue from 'vue'
 import {mobileDesignerToIDE} from "@/utils/mobileDesignerToIDE";
-import Button from "@/components/Controls/Button";
+import ButtonComponent from "@/components/Controls/ButtonComponent";
 
 export default {
     OPEN: {
@@ -45,7 +45,7 @@ export default {
         mobileComponent(type, param) {
             switch (type){
                 case 'Button':
-                    var componentClass = Vue.extend(Button);
+                    var componentClass = Vue.extend(ButtonComponent);
                     break;
             }
             var instance = new componentClass();

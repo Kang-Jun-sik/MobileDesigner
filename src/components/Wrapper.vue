@@ -13,8 +13,6 @@ import ThumbnailDesignerWrapper from "@/components/ThumbnailDesigner";
 import ControlListWrapper from "@/components/ControlList";
 import dragula from "dragula";
 import GlobalService from "@/service/GlobalService";
-import Button from "@/components/Controls/Button";
-import DynamicAdd from "@/components/Controls/DynamicAdd";
 
 export default {
   name: 'mobile-wrapper',
@@ -42,7 +40,8 @@ export default {
       // (2) 이 정보로 동적으로 컴포넌트 생성
       // (3) 메인디자이너에 추가
 
-      var instance = GlobalService.MAKECOMPONENT.mobileComponent(el.lastElementChild.textContent);
+      var instance = GlobalService.MAKECOMPONENT.mobileComponent(el.textContent);
+      el.remove(); //인스턴스 정보전달후 삭제
       designer.appendChild(instance);
 
 
@@ -75,17 +74,17 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  div {
-    padding: 0;
-  }
+div {
+  padding: 0;
+}
 
-  .mobile-wrapper {
-    padding: 0;
-    margin: 10px;
-    display: grid;
-    grid-gap: 10px;
-    grid-template-columns: 2fr 1fr 1fr;
-    background-color: #fff;
-    color: #444;
-  }
+.mobile-wrapper {
+  padding: 0;
+  margin: 10px;
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: 2fr 1fr 1fr;
+  background-color: #fff;
+  color: #444;
+}
 </style>

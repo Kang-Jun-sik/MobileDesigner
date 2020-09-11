@@ -4,7 +4,8 @@
 
 <script>
   export default {
-    name: 'button-component'
+    name: 'button-component',
+
   }
 </script>
 
