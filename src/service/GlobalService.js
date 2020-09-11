@@ -43,12 +43,13 @@ export default {
 
     MAKECOMPONENT: {
         mobileComponent(type, param) {
+            let componentClass;
             switch (type){
                 case 'Button':
-                    var componentClass = Vue.extend(ButtonComponent);
+                    componentClass = Vue.extend(ButtonComponent);
                     break;
             }
-            var instance = new componentClass();
+            let instance = new componentClass();
             instance.$mount();
             return instance.$el;
         }

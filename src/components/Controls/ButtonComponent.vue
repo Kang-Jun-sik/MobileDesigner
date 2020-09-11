@@ -1,11 +1,15 @@
 <template>
-  <button class="dews-mobile-button">Button</button>
+  <button class="dews-mobile-button" @click="buttonClick">Button</button>
 </template>
 
 <script>
   export default {
     name: 'button-component',
-
+    methods: {
+      buttonClick() {
+        console.log('click!')
+      }
+    }
   }
 </script>
 

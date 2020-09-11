@@ -1,16 +1,22 @@
 <template>
   <div class="main-designer-wrapper">
     <div id="main-designer" ref="designerElement">
+      <search-container-wrapper></search-container-wrapper>
       <slot></slot>
     </div>
+    <button-tab-bar></button-tab-bar>
   </div>
 </template>
 
 <script>
 import {mobileDesignerToIDE} from "@/utils/mobileDesignerToIDE";
+import ButtonTabBar from "@/components/ButtonTabBar";
+import NavigationBar from "@/components/NavigationBar";
+import SearchContainerWrapper from "@/components/Containers/SearchContainer";
 
 export default {
   name: 'mainDesigner-wrapper',
+  components: {SearchContainerWrapper, ButtonTabBar},
   data() {
     return {
       mainDesigner: ''
@@ -28,20 +34,26 @@ export default {
 </script>
 
 <style lang="scss">
-div {
-  padding: 10px;
-}
+  div {
+    padding: 10px;
+  }
 
-#main-designer {
-  display: inline-block;
-  width: 700px;
-  height: 950px;
-  border: 40px solid #121212;
-  border-width: 55px 7px;
-  border-radius: 40px;
-  margin: 10px 0;
-  overflow: auto;
-  transition: all 0.5s ease;
-  animation: fadein 2s;
-}
+  .main-designer-wrapper {
+    display: inline-block;
+    position: relative;
+    width: 700px;
+    height: 950px;
+    border: 40px solid #121212;
+    border-width: 55px 7px;
+    border-radius: 40px;
+    margin: 10px 0;
+    overflow: auto;
+    transition: all 0.5s ease;
+    animation: fadein 2s;
+
+    #main-designer {
+      padding: 0;
+      height: 100%;
+    }
+  }
 </style>

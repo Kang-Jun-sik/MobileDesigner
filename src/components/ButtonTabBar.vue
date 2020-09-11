@@ -8,15 +8,15 @@
   }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
   div {
     padding: 0;
   }
   .button-tab-bar {
-    height: 100px;
-    background-color: #0062cc;
-    width: 700px;
     position: absolute;
+    width: 100%;
+    height: 44px;
+    background-color: #1c90fb;
     bottom: 0;
   }
 </style>
