@@ -7,20 +7,33 @@
 </template>
 
 <script>
+  import Vue from 'vue';
   import MainDesignerWrapper from "@/components/MainDesigner";
   import ThumbnailDesignerWrapper from "@/components/ThumbnailDesigner";
   import ControlListWrapper from "@/components/ControlList";
-
   import dragula from "dragula";
+  import ButtonComponent from "@/components/Controls/ButtonComponent";
 
   export default {
     name: 'mobile-wrapper',
+    data () {
+      return {
+        buttonComponent: ButtonComponent,
+        wrapperCount: 1
+      }
+    },
     components: {
       MainDesignerWrapper,
       ThumbnailDesignerWrapper,
       ControlListWrapper,
     },
     mounted() {
+      const button = Vue.extend(ButtonComponent);
+      const buttonControl = new button();
+      buttonControl.$mount();
+
+      const buttonEl = buttonControl.$el;
+
       let drake = dragula({
         revertOnSpill: true,
         copy: function(el, source) {
@@ -33,14 +46,19 @@
           return false
         }
       })
+      .on('drag', function(el, target) {
+      })
       .on('drop', function(el, target) {
-        console.log(el, target)
+        if (el.classList.contains('component-button')){
+          el = buttonEl;
+        }
+        console.log(el, buttonEl)
       })
       drake.containers.push(this.$store.state.mainDesigner, this.$store.state.containerElement,
           this.$store.state.componentElement, this.$store.state.etcElement);
 
       window.drake = drake;
-      console.log(drake)
+      console.log(drake);
     }
   }
 </script>

@@ -5,9 +5,11 @@
         <b-button block v-b-toggle.mobileContainer variant="secondary">Container</b-button>
       </b-card-header>
       <b-collapse id="mobileContainer" visible accordion="my-accordion" role="tabpanel">
-        <b-card-body class="controlName" v-for="(element, idx) in mobileContainer" :key="idx">
-          <b-button variant="dark">{{ element }}</b-button>
-        </b-card-body>
+        <b-button :class="'component-' + key"
+                  class="controlName"
+                  v-for="(name, key, idx) in mobileContainer"
+                  :key="idx"
+        >{{ name }}</b-button>
       </b-collapse>
     </b-card>
 
@@ -16,9 +18,11 @@
         <b-button block v-b-toggle.mobileComponent variant="secondary">Component</b-button>
       </b-card-header>
       <b-collapse id="mobileComponent" visible accordion="my-accordion" role="tabpanel">
-        <b-card-body class="controlName" v-for="(element, idx) in mobileComponent" :key="idx">
-          <b-button variant="dark">{{ element }}</b-button>
-        </b-card-body>
+        <b-button :class="'component-' + key"
+                  class="controlName"
+                  v-for="(name, key, idx) in mobileComponent"
+                  :key="idx"
+        >{{ name }}</b-button>
       </b-collapse>
     </b-card>
 
@@ -27,8 +31,8 @@
         <b-button block v-b-toggle.mobileEtc variant="secondary">Etc</b-button>
       </b-card-header>
       <b-collapse id="mobileEtc" visible accordion="my-accordion" role="tabpanel">
-        <b-card-body class="controlName" v-for="(element, idx) in mobileEtc" :key="idx">
-          <b-button variant="dark">{{ element }}</b-button>
+        <b-card-body class="controlName" v-for="(name, key, idx) in mobileEtc" :key="idx">
+          <b-button :class="'component-' + key" variant="dark">{{ name }}</b-button>
         </b-card-body>
       </b-collapse>
     </b-card>
@@ -40,9 +44,9 @@
     name: 'controlList-wrapper',
     data () {
       return {
-        mobileContainer: ['Container', 'Form'],
-        mobileComponent: ['Button', 'TextBox'],
-        mobileEtc: ['Message'],
+        mobileContainer: this.$store.state.containerControl,
+        mobileComponent: this.$store.state.componentControl,
+        mobileEtc: this.$store.state.etcControl,
       }
     },
     mounted() {
