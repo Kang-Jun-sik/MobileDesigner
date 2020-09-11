@@ -10,6 +10,7 @@ import GlobalComponent from './components/global-component'
 import Wrapper from "@/components/Wrapper";
 import registerService from "@/service/registerService";
 import { store } from './store';
+import GlobalService from "@/service/GlobalService";
 
 Vue.config.productionTip = false
 
@@ -21,6 +22,7 @@ Vue.component(GlobalComponent.name, GlobalComponent)
 Vue.component(Wrapper.name, Wrapper)
 
 registerService.init();
+GlobalService.SELECTION.selectService();
 
 //앱 진입
 new Vue({
