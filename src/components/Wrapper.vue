@@ -1,4 +1,4 @@
-<template>
+ <template>
   <div class="mobile-wrapper">
     <main-designer-wrapper></main-designer-wrapper>
     <thumbnail-designer-wrapper></thumbnail-designer-wrapper>
@@ -7,7 +7,6 @@
 </template>
 
 <script>
-  import Vue from 'vue';
   import MainDesignerWrapper from "@/components/MainDesigner";
   import ThumbnailDesignerWrapper from "@/components/ThumbnailDesigner";
   import ControlListWrapper from "@/components/ControlList";
@@ -28,12 +27,6 @@
       ControlListWrapper,
     },
     mounted() {
-      const button = Vue.extend(ButtonComponent);
-      const buttonControl = new button();
-      buttonControl.$mount();
-
-      const buttonEl = buttonControl.$el;
-
       let drake = dragula({
         revertOnSpill: true,
         copy: function(el, source) {
@@ -49,16 +42,11 @@
       .on('drag', function(el, target) {
       })
       .on('drop', function(el, target) {
-        if (el.classList.contains('component-button')){
-          el = buttonEl;
-        }
-        console.log(el, buttonEl)
+        console.log(el, target)
       })
+
       drake.containers.push(this.$store.state.mainDesigner, this.$store.state.containerElement,
           this.$store.state.componentElement, this.$store.state.etcElement);
-
-      window.drake = drake;
-      console.log(drake);
     }
   }
 </script>

@@ -33,8 +33,9 @@
   div {
     padding: 10px;
   }
+
   #main-designer {
-    display: inline-flex;
+    display: inline-block;
     width: 700px;
     height: 950px;
     border: 40px solid #121212;

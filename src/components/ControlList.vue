@@ -5,11 +5,11 @@
         <b-button block v-b-toggle.mobileContainer variant="secondary">Container</b-button>
       </b-card-header>
       <b-collapse id="mobileContainer" visible accordion="my-accordion" role="tabpanel">
-        <b-button :class="'component-' + key"
+        <div :class="'component-' + key"
                   class="controlName"
                   v-for="(name, key, idx) in mobileContainer"
                   :key="idx"
-        >{{ name }}</b-button>
+        >{{ name }}</div>
       </b-collapse>
     </b-card>
 
@@ -18,11 +18,11 @@
         <b-button block v-b-toggle.mobileComponent variant="secondary">Component</b-button>
       </b-card-header>
       <b-collapse id="mobileComponent" visible accordion="my-accordion" role="tabpanel">
-        <b-button :class="'component-' + key"
+        <div :class="'component-' + key"
                   class="controlName"
                   v-for="(name, key, idx) in mobileComponent"
                   :key="idx"
-        >{{ name }}</b-button>
+        >{{ name }}</div>
       </b-collapse>
     </b-card>
 
@@ -31,9 +31,11 @@
         <b-button block v-b-toggle.mobileEtc variant="secondary">Etc</b-button>
       </b-card-header>
       <b-collapse id="mobileEtc" visible accordion="my-accordion" role="tabpanel">
-        <b-card-body class="controlName" v-for="(name, key, idx) in mobileEtc" :key="idx">
-          <b-button :class="'component-' + key" variant="dark">{{ name }}</b-button>
-        </b-card-body>
+        <div :class="'component-' + key"
+             class="controlName"
+             v-for="(name, key, idx) in mobileEtc"
+             :key="idx"
+        >{{ name }}</div>
       </b-collapse>
     </b-card>
   </div>
@@ -85,13 +87,19 @@
     border-radius: 5px;
     padding: 10px;
     margin: 10px 0;
-  }
 
-  .controlName {
-    height: 45px;
-    text-align: center;
-    padding: 10px;
-    margin: 10px 0;
-    color: black;
+    .controlName {
+      display: inline-block;
+      height: 45px;
+      color: black;
+      text-align: center;
+      padding: 5px;
+      margin: 10px;
+      border-radius: 100px;
+      border: 2px solid #ececec;
+      background: darkgray;
+      transition: all .5s ease;
+      font-size: 14px;
+    }
   }
 </style>
