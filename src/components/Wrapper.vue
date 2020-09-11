@@ -75,17 +75,17 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-div {
-  padding: 0;
-}
+  div {
+    padding: 0;
+  }
 
-.mobile-wrapper {
-  padding: 0;
-  margin: 10px;
-  display: grid;
-  grid-gap: 10px;
-  grid-template-columns: 2fr 1fr 1fr;
-  background-color: #fff;
-  color: #444;
-}
+  .mobile-wrapper {
+    padding: 0;
+    margin: 10px;
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: 2fr 1fr 1fr;
+    background-color: #fff;
+    color: #444;
+  }
 </style>
