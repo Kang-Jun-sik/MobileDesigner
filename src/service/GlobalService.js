@@ -2,7 +2,9 @@ import dragula from "dragula";
 import $ from 'jquery';
 import 'jquery-ui-bundle';
 import 'jquery-ui-bundle/jquery-ui.css';
+import Vue from 'vue'
 import {mobileDesignerToIDE} from "@/utils/mobileDesignerToIDE";
+import Button from "@/components/Controls/Button";
 
 export default {
     OPEN: {
@@ -38,6 +40,20 @@ export default {
             });
         }
     },
+
+    MAKECOMPONENT: {
+        mobileComponent(type, param) {
+            switch (type){
+                case 'Button':
+                    var componentClass = Vue.extend(Button);
+                    break;
+            }
+            var instance = new componentClass();
+            instance.$mount();
+            return instance.$el;
+        }
+    },
+
     SELECTION: {
         selectService() {
             window.onclick = function (event) {

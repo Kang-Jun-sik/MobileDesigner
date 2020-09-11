@@ -25,7 +25,7 @@ registerService.init();
 GlobalService.SELECTION.selectService();
 
 //앱 진입
-new Vue({
+window.Vue = new Vue({
     vuetify,
     store,
     render: h => h(App)

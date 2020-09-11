@@ -29,7 +29,7 @@
   }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
   div {
     padding: 10px;
   }
