@@ -55,7 +55,7 @@ export default {
       background-color: #efefef;
 
       .ui-selected{
-        border: dashed;
+        border: dotted;
       }
     }
   }

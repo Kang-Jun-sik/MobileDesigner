@@ -44,6 +44,7 @@ export default {
               break;
           case 'Search Container':
               component = Vue.extend(SearchContainer);
+              break;
       }
       component = new component();
       component.$mount();
