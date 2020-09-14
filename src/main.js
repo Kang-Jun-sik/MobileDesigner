@@ -25,8 +25,9 @@ Vue.component(GlobalComponent.name, GlobalComponent)
 Vue.component(Wrapper.name, Wrapper)
 
 registerService.init();
+
 //GlobalService.SELECTION.selectService();
-GlobalService.selectService();
+//GlobalService.selectService();
 
 //앱 진입
 window.Vue = new Vue({
