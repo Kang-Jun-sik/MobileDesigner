@@ -14,6 +14,9 @@
 </script>
 
 <style lang="scss">
+  div{
+    padding: 0;
+  }
   .dews-mobile-button {
     min-width: 60px;
     min-height: 32px;
@@ -29,9 +32,10 @@
     letter-spacing: -0.5px;
     padding: 5px 9px;
     cursor: default;
+    margin: 0 10px 5px;
 
     .ui-resizable-handle {
-      padding: 0px;
+      padding: 0;
     }
   }
 </style>

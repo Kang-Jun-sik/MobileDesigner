@@ -10,13 +10,6 @@ div {
   display: none;
 }
 
-.gu-mirror {
-  position: fixed !important;
-  margin: 0 !important;
-  z-index: 9999 !important;
-  padding: 1em;
-}
-
 .gu-hide {
   display: none !important;
 }
@@ -29,13 +22,15 @@ div {
 }
 
 .gu-transit {
-  opacity: 0.5;
+  opacity: 1;
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
   filter: alpha(opacity=50);
 }
 
 .gu-mirror {
-  opacity: 0.5;
+  position: fixed !important;
+  margin: 0 !important;
+  opacity: 0;
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
   filter: alpha(opacity=50);
 }
