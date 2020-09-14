@@ -82,24 +82,26 @@
   }
 
   .controlList-wrapper {
-    background-color: #c9c9c9;
+    background-color: #e9ecef;
     color: #fff;
     border-radius: 5px;
     padding: 10px;
     margin: 10px 0;
 
     .controlName {
-      display: inline-block;
+      display: block;
+      width: 80%;
+      margin: 15px auto;
       height: 45px;
       color: black;
       text-align: center;
-      padding: 5px;
-      margin: 10px;
+      padding: 10px;
       border-radius: 100px;
-      border: 2px solid #ececec;
-      background: darkgray;
+      border: 1px solid #a9a9a9;
+      background: #c9c9c9;
       transition: all .5s ease;
-      font-size: 14px;
+      font-size: 15px;
+      font-weight: 500;
     }
   }
 </style>

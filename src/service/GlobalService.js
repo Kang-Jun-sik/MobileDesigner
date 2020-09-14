@@ -1,10 +1,10 @@
-import dragula from "dragula";
 import $ from 'jquery';
 import 'jquery-ui-bundle';
 import 'jquery-ui-bundle/jquery-ui.css';
 import Vue from 'vue'
 import {mobileDesignerToIDE} from "@/utils/mobileDesignerToIDE";
 import ButtonComponent from "@/components/Controls/ButtonComponent";
+import SearchContainer from "@/components/Containers/SearchContainer";
 
 export default {
     OPEN: {
@@ -42,17 +42,18 @@ export default {
         }
     },
 
-    MAKECOMPONENT: {
-        mobileComponent(type, param) {
-            switch (type) {
-                case 'Button':
-                    var componentClass = Vue.extend(ButtonComponent);
-                    break;
-            }
-            var instance = new componentClass();
-            instance.$mount();
-            return instance.$el;
-        }
+    addComponent(type, param) {
+      let component;
+      switch (type) {
+          case 'Button':
+              component = Vue.extend(ButtonComponent);
+              break;
+          case 'Search Container':
+              component = Vue.extend(SearchContainer);
+      }
+      component = new component();
+      component.$mount();
+      return component.$el;
     },
 
     SELECTION: {

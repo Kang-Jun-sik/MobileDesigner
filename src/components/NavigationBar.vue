@@ -1,22 +1,22 @@
 <template>
-  <div class="button-tab-bar"></div>
+  <div class="navigation-bar"></div>
 </template>
 
 <script>
   export default {
-    name: 'button-tab-bar'
+    name: 'navigation-bar'
   }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
   div {
     padding: 0;
   }
-  .button-tab-bar {
+  .navigation-bar {
     position: absolute;
     width: 100%;
     height: 44px;
     background-color: #1c90fb;
-    bottom: 0;
+    top: 0;
   }
 </style>
