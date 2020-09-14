@@ -29,41 +29,30 @@ export default {
         return source.id === 'mobileContainer' || source.id === 'mobileComponent' || source.id === 'mobileEtc';
       },
       accepts: function (el, target) {
-        if (target.closest('#main-designer')) {
+        //if (target.closest('#main-designer') && !el.classList.contains('ui-resizable-resizing')) {
+        if (target.closest('#main-designer') && !el.classList.contains('ui-resizable-resizing')) {
           return true;
         }
-        return false;
+        return true;
       }
     }).on('drop', function (el, target) {
 
-      // (1) el 정보얻고
-      // (2) 이 정보로 동적으로 컴포넌트 생성
-      // (3) 메인디자이너에 추가
+      if (el.classList.contains('controlName')) {
+        // (1) el 정보얻고
+        // (2) 이 정보로 동적으로 컴포넌트 생성
+        // (3) 메인디자이너에 추가
+        const uid = GlobalService.CREATEUID.uuidv4();
+        var instance = GlobalService.MAKECOMPONENT.mobileComponent(el.textContent);
+        instance.classList.add(uid);
+        el.replaceWith(instance);
+        GlobalService.RESIZE.canResize(uid);
+        GlobalService.SELECTION2.selectService(uid);
 
-      var instance = GlobalService.MAKECOMPONENT.mobileComponent(el.textContent);
-      el.remove(); //인스턴스 정보전달후 삭제
-      designer.appendChild(instance);
-
-
-      /*
-      var ComponentClass = Vue.extend(Button);
-      var instance = new ComponentClass();
-      instance.$mount();
-      var abc = instance.$el;
-      */
-
-      // *** 컨트롤 리사이즈 ***
-      // (1) 리사이즈가 가능한 컨트롤인지 먼저 확인한다. (특정 class Name으로 구분하여 표현)
-      // (2) uid를 부여한다
-      // (3) resizeable 함수를 호출한다.
-      /*
-      el.classList.add(GlobalService.CREATEUID.uuidv4());
-      GlobalService.RESIZE.canResize(el);
-      console.log(el, target);
-       */
-
-
+      } else {
+          console.log('test');
+      }
     })
+
     window.drake.containers.push(this.$store.state.mainDesigner);
     window.drake.containers.push(this.$store.state.containerElement);
     window.drake.containers.push(this.$store.state.componentElement);

@@ -22,8 +22,9 @@ export default {
     },
     RESIZE: {
         canResize(param) {
-            let clsName = "." + param.classList[param.classList.length - 1];
+            let clsName = "." + param;
             $(clsName).resizable({
+                handles: 'e,s',
                 delay: 0,
                 // eslint-disable-next-line no-unused-vars
                 resize: function (e, ui) {
@@ -43,7 +44,7 @@ export default {
 
     MAKECOMPONENT: {
         mobileComponent(type, param) {
-            switch (type){
+            switch (type) {
                 case 'Button':
                     var componentClass = Vue.extend(ButtonComponent);
                     break;
@@ -56,6 +57,7 @@ export default {
 
     SELECTION: {
         selectService() {
+            /*
             window.onclick = function (event) {
                 if (!canSelectable(event.target))
                     return;
@@ -76,6 +78,22 @@ export default {
                 if (target.classList.contains('canselect'))
                     return true;
             }
+            */
+        }
+    },
+    SELECTION2: {
+        selectService() {
+            $("#main-designer").selectable({
+                filter: "div.dews-mobile-component",
+                selected: function (e, ui) {
+
+                },
+                selecting: function (e, ui) {
+                    if ($(".ui-selected, .ui-selecting").length > 1) {
+                        $(ui.selecting).removeClass("ui-selecting");
+                    }
+                }
+            });
         }
     }
 }

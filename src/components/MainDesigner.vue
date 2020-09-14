@@ -43,5 +43,9 @@ div {
   overflow: auto;
   transition: all 0.5s ease;
   animation: fadein 2s;
+
+  .ui-selected{
+    border: dashed;
+  }
 }
 </style>
