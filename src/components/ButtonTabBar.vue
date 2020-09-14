@@ -16,7 +16,7 @@
     position: absolute;
     width: 100%;
     height: 44px;
-    background-color: #1c90fb;
+    background-color: #2280ff;
     bottom: 0;
   }
 </style>
