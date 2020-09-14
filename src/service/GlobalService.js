@@ -39,6 +39,7 @@ export default {
             delay: 0,
             // eslint-disable-next-line no-unused-vars
             resize: function (e, ui) {
+                console.log(e, ui)
                 e.stopPropagation();
             },
             // eslint-disable-next-line no-unused-vars
@@ -65,7 +66,19 @@ export default {
         component.$mount();
         return component.$el;
     },
-
+    selectService() {
+        $(".main-designer-wrapper").selectable({
+            filter: "div.dews-mobile-component",
+            selected: function (e, ui) {
+                console.log(e);
+            },
+            selecting: function (e, ui) {
+                if ($(".ui-selected, .ui-selecting").length > 1) {
+                    $(ui.selecting).removeClass("ui-selecting");
+                }
+            }
+        });
+    },
     SELECTION: {
         // selectService() {
         /*
@@ -91,18 +104,5 @@ export default {
         }
         */
         // }
-    },
-    selectService() {
-        $("#main-designer").selectable({
-            filter: "div.dews-mobile-component",
-            selected: function (e, ui) {
-                console.log(e);
-            },
-            selecting: function (e, ui) {
-                if ($(".ui-selected, .ui-selecting").length > 1) {
-                    $(ui.selecting).removeClass("ui-selecting");
-                }
-            }
-        });
     }
 }

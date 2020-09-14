@@ -102,6 +102,7 @@
       transition: all .5s ease;
       font-size: 15px;
       font-weight: 500;
+      cursor: pointer;
     }
   }
 </style>

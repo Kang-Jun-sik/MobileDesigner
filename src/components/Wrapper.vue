@@ -29,7 +29,7 @@ export default {
         return source.id === 'mobileContainer' || source.id === 'mobileComponent' || source.id === 'mobileEtc';
       },
       accepts: function (el, target) {
-        if (target.closest('#main-designer') && !el.classList.contains('ui-resizable-resizing')) {
+        if (target.closest('.main-designer') && !el.classList.contains('ui-resizable-resizing')) {
           return true;
         }
         return false;

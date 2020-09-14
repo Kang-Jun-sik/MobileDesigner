@@ -1,6 +1,6 @@
 <template>
   <div class="main-designer-wrapper">
-    <div id="main-designer" ref="designerElement">
+    <div class="main-designer dews-mobile-component" ref="designerElement">
       <slot></slot>
       <button-tab-bar></button-tab-bar>
     </div>
@@ -11,6 +11,7 @@
 import {mobileDesignerToIDE} from "@/utils/mobileDesignerToIDE";
 import ButtonTabBar from "@/components/ButtonTabBar";
 import NavigationBar from "@/components/NavigationBar";
+import GlobalService from "@/service/GlobalService";
 
 export default {
   name: 'mainDesigner-wrapper',
@@ -26,6 +27,10 @@ export default {
   mounted() {
     this.mainDesigner = this.$refs.designerElement;
     this.$store.commit('findDesigner', this.mainDesigner);
+
+    const uid = GlobalService.uuidv4();
+    this.mainDesigner.id = uid;
+    GlobalService.selectService(uid);
   },
   computed: {}
 }
@@ -49,7 +54,7 @@ export default {
     transition: all 0.5s ease;
     animation: fadein 2s;
 
-    #main-designer {
+    .main-designer {
       position: relative;
       padding: 10px 0;
       height: 100%;
@@ -58,6 +63,10 @@ export default {
       .ui-selected{
         border: 3px dotted;
       }
+    }
+
+    .ui-selected{
+      border: 3px dotted;
     }
   }
 </style>

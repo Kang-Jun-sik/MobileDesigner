@@ -16,8 +16,8 @@
   }
 
   .thumbnail-bottom-wrapper {
-    margin-top: 20px;
-    border-style: dashed;
+    margin-top: 35px;
+    border-style: inset;
 
     .thumbnail-bottom {
       width: 240px;

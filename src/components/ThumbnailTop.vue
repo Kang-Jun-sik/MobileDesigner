@@ -17,7 +17,7 @@
 
   .thumbnail-top-wrapper {
     margin-top: 20px;
-    border-style: dashed;
+    border-style: inset;
 
     .thumbnail-top {
       width: 180px;
