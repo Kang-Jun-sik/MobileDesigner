@@ -41,13 +41,12 @@ export default {
         // (1) el 정보얻고
         // (2) 이 정보로 동적으로 컴포넌트 생성
         // (3) 메인디자이너에 추가
-        const uid = GlobalService.CREATEUID.uuidv4();
-        var instance = GlobalService.addComponent(el.textContent);
+        const uid = GlobalService.uuidv4();
+        const instance = GlobalService.addComponent(el.textContent);
         instance.classList.add(uid);
         el.replaceWith(instance);
-        GlobalService.RESIZE.canResize(uid);
-        GlobalService.SELECTION2.selectService(uid);
-
+        GlobalService.canResize(uid);
+        GlobalService.selectService(uid);
       } else {
           console.log('test');
       }

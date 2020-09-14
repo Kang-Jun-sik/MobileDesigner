@@ -1,5 +1,5 @@
 <template>
-  <div class="search-container-wrapper">
+  <div class="search-container-wrapper dews-mobile-component">
     <div class="search-container-header">
       {{ title }}
     </div>

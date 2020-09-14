@@ -7,41 +7,35 @@ import ButtonComponent from "@/components/Controls/ButtonComponent";
 import SearchContainer from "@/components/Containers/SearchContainer";
 
 export default {
-    OPEN: {
-        openService(args) {
-            console.log(args);
-        }
-    },
-    CREATEUID: {
-        uuidv4() {
-            return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
-                var r = Math.random() * 16 | 0, v = c === 'x' ? r : (r & 0x3 | 0x8);
-                return v.toString(16);
-            });
-        }
-    },
-    RESIZE: {
-        canResize(param) {
-            let clsName = "." + param;
-            $(clsName).resizable({
-                handles: 'e,s',
-                delay: 0,
-                // eslint-disable-next-line no-unused-vars
-                resize: function (e, ui) {
-                    e.stopPropagation();
-                },
-                // eslint-disable-next-line no-unused-vars
-                start: function (e, ui) {
-                    e.stopPropagation();
-                },
-                // eslint-disable-next-line no-unused-vars
-                stop: function (e, ui) {
-                    e.stopPropagation();
-                }
-            });
-        }
+    openService(args) {
+        console.log('open Service');
     },
 
+    uuidv4() {
+        return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+            var r = Math.random() * 16 | 0, v = c === 'x' ? r : (r & 0x3 | 0x8);
+            return v.toString(16);
+        });
+    },
+    canResize(param) {
+        let clsName = "." + param;
+        $(clsName).resizable({
+            handles: 'e,s',
+            delay: 0,
+            // eslint-disable-next-line no-unused-vars
+            resize: function (e, ui) {
+                e.stopPropagation();
+            },
+            // eslint-disable-next-line no-unused-vars
+            start: function (e, ui) {
+                e.stopPropagation();
+            },
+            // eslint-disable-next-line no-unused-vars
+            stop: function (e, ui) {
+                e.stopPropagation();
+            }
+        });
+    },
     addComponent(type, param) {
       let component;
       switch (type) {
@@ -57,7 +51,7 @@ export default {
     },
 
     SELECTION: {
-        selectService() {
+        // selectService() {
             /*
             window.onclick = function (event) {
                 if (!canSelectable(event.target))
@@ -80,21 +74,19 @@ export default {
                     return true;
             }
             */
-        }
+        // }
     },
-    SELECTION2: {
-        selectService() {
-            $("#main-designer").selectable({
-                filter: "div.dews-mobile-component",
-                selected: function (e, ui) {
+    selectService() {
+        $("#main-designer").selectable({
+            filter: "div.dews-mobile-component",
+            selected: function (e, ui) {
 
-                },
-                selecting: function (e, ui) {
-                    if ($(".ui-selected, .ui-selecting").length > 1) {
-                        $(ui.selecting).removeClass("ui-selecting");
-                    }
+            },
+            selecting: function (e, ui) {
+                if ($(".ui-selected, .ui-selecting").length > 1) {
+                    $(ui.selecting).removeClass("ui-selecting");
                 }
-            });
-        }
+            }
+        });
     }
 }
