@@ -1,7 +1,6 @@
 <template>
   <div class="main-designer-wrapper">
     <div id="main-designer" ref="designerElement">
-      <search-container-wrapper></search-container-wrapper>
       <slot></slot>
     </div>
     <button-tab-bar></button-tab-bar>
@@ -12,11 +11,10 @@
 import {mobileDesignerToIDE} from "@/utils/mobileDesignerToIDE";
 import ButtonTabBar from "@/components/ButtonTabBar";
 import NavigationBar from "@/components/NavigationBar";
-import SearchContainerWrapper from "@/components/Containers/SearchContainer";
 
 export default {
   name: 'mainDesigner-wrapper',
-  components: {SearchContainerWrapper, ButtonTabBar},
+  components: {ButtonTabBar},
   data() {
     return {
       mainDesigner: ''
@@ -52,8 +50,9 @@ export default {
     animation: fadein 2s;
 
     #main-designer {
-      padding: 0;
+      padding: 10px;
       height: 100%;
+      background-color: #efefef;
     }
   }
 </style>

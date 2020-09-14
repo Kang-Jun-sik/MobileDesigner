@@ -35,22 +35,12 @@ export default {
         return false;
       }
     }).on('drop', function (el, target) {
-
-      // (1) el 정보얻고
-      // (2) 이 정보로 동적으로 컴포넌트 생성
-      // (3) 메인디자이너에 추가
-
-      var instance = GlobalService.MAKECOMPONENT.mobileComponent(el.textContent);
-      el.remove(); //인스턴스 정보전달후 삭제
-      designer.appendChild(instance);
-
-
-      /*
-      var ComponentClass = Vue.extend(Button);
-      var instance = new ComponentClass();
-      instance.$mount();
-      var abc = instance.$el;
-      */
+      console.log(el)
+      if (el.classList.contains('controlName')) {
+        console.log(el.textContent)
+        const component = GlobalService.addComponent(el.textContent);
+        el.replaceWith(component);
+      }
 
       // *** 컨트롤 리사이즈 ***
       // (1) 리사이즈가 가능한 컨트롤인지 먼저 확인한다. (특정 class Name으로 구분하여 표현)
@@ -69,6 +59,9 @@ export default {
     window.drake.containers.push(this.$store.state.componentElement);
     window.drake.containers.push(this.$store.state.etcElement);
     console.log(window.drake);
+  },
+  methods: {
+
   }
 }
 </script>

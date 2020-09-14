@@ -13,26 +13,34 @@
     name: 'search-container-wrapper',
     data() {
       return {
-        title: '수주등록',
+        title: '조회 조건',
       }
+    },
+    mounted() {
     }
   }
 </script>
 
 <style lang="scss" scoped>
-  .search-container-wrapper{
-    min-height: 200px;
+  div {
     padding: 0;
+  }
+
+  .search-container-wrapper{
 
     .search-container-header {
+      padding: 10px;
       width: 100%;
-      height: 50px;
-      background-color: #e9ecef;
+      height: 45px;
+      border-bottom: 1px solid black;
+      border-radius: 7px 7px 0 0;
+      background-color: white;
+      color: #007bff;
     }
 
     .search-container-content {
-      height: 150px;
-      background-color: #e0e0e0;
+      height: 70px;
+      background-color: #f8f9fa;
     }
   }
 </style>

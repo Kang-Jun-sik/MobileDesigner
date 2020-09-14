@@ -45,6 +45,10 @@ export const store = new Vuex.Store({
             let name = payload.name;
             state[name] = payload.control;
         },
+        setDrake(state, element){
+            console.log(window.drake.container)
+            console.log('state', state.dragulaContainer)
+        }
     },
     actions: {
 
