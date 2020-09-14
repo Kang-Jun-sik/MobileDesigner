@@ -29,14 +29,12 @@ export default {
         return source.id === 'mobileContainer' || source.id === 'mobileComponent' || source.id === 'mobileEtc';
       },
       accepts: function (el, target) {
-        //if (target.closest('#main-designer') && !el.classList.contains('ui-resizable-resizing')) {
         if (target.closest('#main-designer') && !el.classList.contains('ui-resizable-resizing')) {
           return true;
         }
         return false;
       }
     }).on('drop', function (el, target) {
-
       if (el.classList.contains('controlName')) {
         // (1) el 정보얻고
         // (2) 이 정보로 동적으로 컴포넌트 생성
@@ -45,6 +43,7 @@ export default {
         const instance = GlobalService.addComponent(el.textContent);
         instance.classList.add(uid);
         el.replaceWith(instance);
+
         GlobalService.canResize(uid);
         GlobalService.selectService(uid);
       } else {

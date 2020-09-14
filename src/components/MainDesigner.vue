@@ -2,8 +2,8 @@
   <div class="main-designer-wrapper">
     <div id="main-designer" ref="designerElement">
       <slot></slot>
+      <button-tab-bar></button-tab-bar>
     </div>
-    <button-tab-bar></button-tab-bar>
   </div>
 </template>
 
@@ -33,7 +33,7 @@ export default {
 
 <style lang="scss">
   div {
-    padding: 10px;
+    padding: 0;
   }
 
   .main-designer-wrapper {
@@ -50,12 +50,13 @@ export default {
     animation: fadein 2s;
 
     #main-designer {
-      padding: 10px;
+      position: relative;
+      padding: 10px 0;
       height: 100%;
       background-color: #efefef;
 
       .ui-selected{
-        border: dashed;
+        border: 3px dotted;
       }
     }
   }
