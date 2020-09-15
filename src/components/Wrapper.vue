@@ -45,7 +45,7 @@ export default {
         el.replaceWith(instance);
 
         GlobalService.canResize(uid);
-        GlobalService.selectService(uid);
+        //GlobalService.selectService(uid);
       } else {
         console.log('test');
       }

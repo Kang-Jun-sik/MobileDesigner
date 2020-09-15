@@ -30,7 +30,7 @@ export default {
 
     const uid = GlobalService.uuidv4();
     this.mainDesigner.id = uid;
-    GlobalService.selectService(uid);
+    GlobalService.selectService();
   },
   computed: {}
 }

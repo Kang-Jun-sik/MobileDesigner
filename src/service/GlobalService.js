@@ -21,7 +21,7 @@ export default {
             instance.classList.add(uid);
             designer.appendChild(instance);
             GlobalService.canResize(uid);
-            GlobalService.selectService(uid);
+            //GlobalService.selectService(uid);
         }
         console.log('open Service');
     },
@@ -66,6 +66,7 @@ export default {
         component.$mount();
         return component.$el;
     },
+    /*
     selectService() {
         $(".main-designer-wrapper").selectable({
             filter: "div.dews-mobile-component",
@@ -79,30 +80,70 @@ export default {
             }
         });
     },
-    SELECTION: {
-        // selectService() {
-        /*
-        window.onclick = function (event) {
-            if (!canSelectable(event.target))
-                return;
+     */
 
+    selectService() {
+        let mainDesigner = document.querySelector('.main-designer');
+        mainDesigner.addEventListener('click', selectionService);
+
+        function selectionService(event) {
+            let target = findtarget(event.target);
+            if (target == null)
+                return;
             if (window.selectedItem) {
-                if (window.selectedItem === event.target) //같은 컨트롤을 선택했을 경우 --> 바뀔 필요가 없다.
+                if (window.selectedItem === target) //같은 컨트롤을 선택했을 경우 --> 바뀔 필요가 없다.
                     return;
             }
-            //처리로직
-            window.selectedItem = event.target;
-            window.selectedItem.classList.add('selected');
+            if (document.querySelector('.ui-selected') !== null) {
+                let preSelected = document.querySelector('.ui-selected');
+                preSelected.classList.remove('ui-selected');
+            }
+            window.selectedItem = target;
+            window.selectedItem.classList.add('ui-selected');
             //IDE로 선택되었다고 메세지 송신
-            mobileDesignerToIDE("create", "button create test");
+            //mobileDesignerToIDE("create", "button create test");
         }
 
-        //className으로 선택할 수 있는 요소들만 디자이너에서 선택이 가능하도록 필터링하는 함수
-        function canSelectable(target) {
-            if (target.classList.contains('canselect'))
-                return true;
+        function findtarget(target) {
+            // eslint-disable-next-line no-constant-condition
+            while (true) {
+                if (target.classList.contains('dews-mobile-component')) {
+                    return target;
+                } else
+                    target = target.parentNode;
+            }
         }
-        */
-        // }
+
+        /*
+        window.onclick = function (event) {
+            let target = findtarget(event.target);
+            if (target == null)
+                return;
+            if (window.selectedItem) {
+                if (window.selectedItem === target) //같은 컨트롤을 선택했을 경우 --> 바뀔 필요가 없다.
+                    return;
+            }
+            if (document.querySelector('.ui-selected') !== null) {
+                let preSelected = document.querySelector('.ui-selected');
+                preSelected.classList.remove('ui-selected');
+            }
+            window.selectedItem = target;
+            window.selectedItem.classList.add('ui-selected');
+            //IDE로 선택되었다고 메세지 송신
+            //mobileDesignerToIDE("create", "button create test");
+        }
+
+        function findtarget(target) {
+            // eslint-disable-next-line no-constant-condition
+            while (true) {
+                if (target === document.querySelector('.mobile-wrapper'))
+                    return;
+                if (target.classList.contains('dews-mobile-component')) {
+                    return target;
+                } else
+                    target = target.parentNode;
+            }
+        }
+     */
     }
 }
