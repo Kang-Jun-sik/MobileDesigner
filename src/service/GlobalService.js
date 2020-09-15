@@ -66,84 +66,31 @@ export default {
         component.$mount();
         return component.$el;
     },
-    /*
+
     selectService() {
-        $(".main-designer-wrapper").selectable({
-            filter: "div.dews-mobile-component",
-            selected: function (e, ui) {
-                console.log(e);
-            },
-            selecting: function (e, ui) {
-                if ($(".ui-selected, .ui-selecting").length > 1) {
-                    $(ui.selecting).removeClass("ui-selecting");
-                }
+        $('#mainDesignerWrapper').click(function (event) {
+            if (window.selectedItem) {
+                if (window.selectedItem === event.target) //같은 컨트롤을 선택했을 경우 --> 바뀔 필요가 없다.
+                    return;
             }
+            let target;
+            if (event.target.classList.contains('dews-mobile-component'))
+                target = event.target;
+            else
+                target = findtarget(event.target);
+
+            if (document.querySelector('.ui-selected') !== null) {
+                let preSelected = document.querySelector('.ui-selected');
+                preSelected.classList.remove('ui-selected');
+            }
+            window.selectedItem = target;
+            window.selectedItem.classList.add('ui-selected');
+            //IDE로 선택되었다고 메세지 송신
+            //mobileDesignerToIDE("create", "button create test");
         });
-    },
-     */
-
-    selectService() {
-        let mainDesigner = document.querySelector('.main-designer-wrapper');
-        mainDesigner.addEventListener('click', selectionService);
-
-        function selectionService(event) {
-            let target = findTarget(event.target);
-            if (target == null)
-                return;
-            if (window.selectedItem) {
-                if (window.selectedItem === target) //같은 컨트롤을 선택했을 경우 --> 바뀔 필요가 없다.
-                    return;
-            }
-            if (document.querySelector('.ui-selected') !== null) {
-                let preSelected = document.querySelector('.ui-selected');
-                preSelected.classList.remove('ui-selected');
-            }
-            window.selectedItem = target;
-            window.selectedItem.classList.add('ui-selected');
-            //IDE로 선택되었다고 메세지 송신
-            //mobileDesignerToIDE("create", "button create test");
-        }
-
-        function findTarget(target) {
-            // eslint-disable-next-line no-constant-condition
-            while (true) {
-                if (target.classList.contains('dews-mobile-component')) {
-                    return target;
-                } else
-                    target = target.parentNode;
-            }
-        }
-
-        /*
-        window.onclick = function (event) {
-            let target = findtarget(event.target);
-            if (target == null)
-                return;
-            if (window.selectedItem) {
-                if (window.selectedItem === target) //같은 컨트롤을 선택했을 경우 --> 바뀔 필요가 없다.
-                    return;
-            }
-            if (document.querySelector('.ui-selected') !== null) {
-                let preSelected = document.querySelector('.ui-selected');
-                preSelected.classList.remove('ui-selected');
-            }
-            window.selectedItem = target;
-            window.selectedItem.classList.add('ui-selected');
-            //IDE로 선택되었다고 메세지 송신
-            //mobileDesignerToIDE("create", "button create test");
-        }
 
         function findtarget(target) {
-            // eslint-disable-next-line no-constant-condition
-            while (true) {
-                if (target === document.querySelector('.mobile-wrapper'))
-                    return;
-                if (target.classList.contains('dews-mobile-component')) {
-                    return target;
-                } else
-                    target = target.parentNode;
-            }
+            return target.closest('.dews-mobile-component');
         }
-     */
     }
 }
