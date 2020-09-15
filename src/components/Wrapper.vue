@@ -44,7 +44,7 @@ export default {
         instance.uid = uid;
         mobile.$store.commit('addItem', instance);
 
-        instance.$el.classList.add(uid);
+        instance.$el.id = uid;
         el.replaceWith(instance.$el);
         GlobalService.canResize(uid);
         //GlobalService.selectService(uid);
