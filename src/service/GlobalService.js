@@ -33,8 +33,8 @@ export default {
         });
     },
     canResize(param) {
-        let clsName = "." + param;
-        $(clsName).resizable({
+        let uid = "#" + param;
+        $(uid).resizable({
             handles: 'e,s',
             delay: 0,
             // eslint-disable-next-line no-unused-vars
@@ -64,7 +64,7 @@ export default {
         }
         component = new component();
         component.$mount();
-        return component.$el;
+        return component;
     },
 
     selectService() {

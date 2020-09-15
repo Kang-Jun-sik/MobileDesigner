@@ -11,6 +11,7 @@
     name: 'button-component',
     data() {
       return {
+        uid: '',
         buttonStyle: {
           width: '',
           height: ''

@@ -22,7 +22,7 @@ export default {
     ControlListWrapper,
   },
   mounted() {
-    const designer = this.$store.state.mainDesigner;
+    const mobile = this;
     window.drake = dragula({
       revertOnSpill: true,
       copy: function (el, source) {
@@ -42,9 +42,11 @@ export default {
         // (3) 메인디자이너에 추가
         const uid = GlobalService.uuidv4();
         const instance = GlobalService.addComponent(el.textContent);
-        instance.classList.add(uid);
-        el.replaceWith(instance);
+        instance.uid = uid;
+        mobile.$store.commit('addItem', instance);
 
+        instance.$el.id = uid;
+        el.replaceWith(instance.$el);
         GlobalService.canResize(uid);
         //GlobalService.selectService(uid);
       } else {

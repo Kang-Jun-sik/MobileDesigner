@@ -7,8 +7,12 @@
     let messageHandler = window.messageHandler || {};
 
     function MessageFromIDE(args) {
+        let obj = JSON.parse(args);
         console.log(args);
-        window.services.get("openService").call(this, args); // this(MessageFromIDE)가 메서드를 등록한 것처럼 호출해준다.
+
+        if (obj.commandType.toUpperCase() === 'OPEN') {
+            window.services.get("openService").call(this, args); // this(MessageFromIDE)가 메서드를 등록한 것처럼 호출해준다.
+        }
     }
 
     messageHandler.MessageFromIDE = MessageFromIDE;
