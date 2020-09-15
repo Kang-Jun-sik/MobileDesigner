@@ -1,6 +1,6 @@
 <template>
-  <div class="main-designer-wrapper">
-    <div class="main-designer dews-mobile-component" ref="designerElement">
+  <div id="mainDesignerWrapper" class="main-designer-wrapper">
+    <div id="mainDesigner" class="main-designer dews-mobile-component" ref="designerElement">
       <slot></slot>
       <button-tab-bar></button-tab-bar>
     </div>
