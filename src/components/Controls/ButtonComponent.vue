@@ -1,14 +1,29 @@
 <template>
-  <div class="dews-mobile-button dews-mobile-component">Button</div>
+  <div
+      class="dews-mobile-button dews-mobile-component"
+      ref="mobileButton"
+      :style="buttonStyle"
+  >Button</div>
 </template>
 
 <script>
   export default {
     name: 'button-component',
-    methods: {
-      buttonClick() {
-        console.log('click!')
+    data() {
+      return {
+        buttonStyle: {
+          width: '',
+          height: ''
+        }
       }
+    },
+    methods: {
+      setWidth(width) {
+        this.buttonStyle.width = width + 'px';
+      },
+      setHeight(height) {
+        this.buttonStyle.height = height + 'px';
+      },
     }
   }
 </script>
