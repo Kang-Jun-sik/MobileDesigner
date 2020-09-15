@@ -5,6 +5,11 @@
 <script>
   export default {
     name: 'button-component',
+    data() {
+      return {
+        uid: ''
+      }
+    },
     methods: {
       buttonClick() {
         console.log('click!')

@@ -64,7 +64,7 @@ export default {
         }
         component = new component();
         component.$mount();
-        return component.$el;
+        return component;
     },
 
     selectService() {

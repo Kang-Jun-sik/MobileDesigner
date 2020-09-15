@@ -8,6 +8,8 @@ Vue.use(Vuex);
 
 export const store = new Vuex.Store({
     state: {
+        items: [],
+
         mainDesigner: '',
         containerElement: '',
         componentElement: '',
@@ -38,6 +40,9 @@ export const store = new Vuex.Store({
         }
     },
     mutations: {
+        addItem(state, item) {
+            state.items.push(item);
+        },
         findDesigner(state, payload) {
             state.mainDesigner = payload;
         },
@@ -45,13 +50,15 @@ export const store = new Vuex.Store({
             let name = payload.name;
             state[name] = payload.control;
         },
-        setDrake(state, element){
+        setDrake(state, element) {
             console.log(window.drake.container)
             console.log('state', state.dragulaContainer)
         }
     },
-    actions: {
-
-    },
-    getters: {}
+    actions: {},
+    getters: {
+        items: state => {
+            return state.items;
+        }
+    }
 });
