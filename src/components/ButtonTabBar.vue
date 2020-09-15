@@ -1,5 +1,5 @@
 <template>
-  <div class="button-tab-bar"></div>
+  <div class="button-tab-bar dews-mobile-component"></div>
 </template>
 
 <script>
@@ -15,8 +15,12 @@
   .button-tab-bar {
     position: absolute;
     width: 100%;
-    height: 44px;
+    height: 45px;
     background-color: #2280ff;
     bottom: 0;
+  }
+
+  .ui-selected{
+    border: 3px dotted;
   }
 </style>

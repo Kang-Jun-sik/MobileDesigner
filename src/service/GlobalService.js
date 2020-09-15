@@ -83,11 +83,11 @@ export default {
      */
 
     selectService() {
-        let mainDesigner = document.querySelector('.main-designer');
+        let mainDesigner = document.querySelector('.main-designer-wrapper');
         mainDesigner.addEventListener('click', selectionService);
 
         function selectionService(event) {
-            let target = findtarget(event.target);
+            let target = findTarget(event.target);
             if (target == null)
                 return;
             if (window.selectedItem) {
@@ -104,7 +104,7 @@ export default {
             //mobileDesignerToIDE("create", "button create test");
         }
 
-        function findtarget(target) {
+        function findTarget(target) {
             // eslint-disable-next-line no-constant-condition
             while (true) {
                 if (target.classList.contains('dews-mobile-component')) {

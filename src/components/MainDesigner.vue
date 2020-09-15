@@ -2,8 +2,8 @@
   <div class="main-designer-wrapper">
     <div class="main-designer dews-mobile-component" ref="designerElement">
       <slot></slot>
-      <button-tab-bar></button-tab-bar>
     </div>
+    <button-tab-bar></button-tab-bar>
   </div>
 </template>
 
@@ -49,16 +49,17 @@ export default {
     border: 40px solid #121212;
     border-width: 55px 7px;
     border-radius: 40px;
+    padding-bottom: 45px !important;
     margin: 10px 0;
-    overflow: auto;
     transition: all 0.5s ease;
     animation: fadein 2s;
 
     .main-designer {
       position: relative;
-      padding: 10px 0;
+      padding: 10px 0 0;
       height: 100%;
       background-color: #efefef;
+      overflow: auto;
 
       .ui-selected{
         border: 3px dotted;

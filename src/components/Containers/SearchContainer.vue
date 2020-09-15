@@ -3,7 +3,7 @@
     <div class="search-container-header">
       {{ title }}
     </div>
-    <div class="search-container-content">
+    <div class="search-container-content" ref="searchContainer">
     </div>
   </div>
 </template>
@@ -17,6 +17,9 @@
       }
     },
     mounted() {
+      console.log(window.drake)
+
+      window.drake.containers.push(this.$refs.searchContainer)
     }
   }
 </script>
