@@ -28,9 +28,15 @@ export default {
       copy: function (el, source) {
         return source.id === 'mobileContainer' || source.id === 'mobileComponent' || source.id === 'mobileEtc';
       },
-      accepts: function (el, target) {
-        if (target.closest('.main-designer') && !el.classList.contains('ui-resizable-resizing')) {
-          return true;
+      accepts: function (el, target, source) {
+        if (['mobileContainer', 'mobileComponent', 'mobileEtc'].includes(source.id)) {
+          if (target.closest('.main-designer') && !el.classList.contains('ui-resizable-resizing')) {
+            return true
+          }
+        } else {
+          if (el.classList.contains('ui-selected') && !el.classList.contains('ui-resizable-resizing')) {
+            return true
+          }
         }
         return false;
       }
