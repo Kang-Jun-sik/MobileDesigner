@@ -29,7 +29,6 @@ export default {
         return source.id === 'mobileContainer' || source.id === 'mobileComponent' || source.id === 'mobileEtc';
       },
       accepts: function (el, target) {
-        console.log(el, target)
         if (target.closest('.main-designer') && !el.classList.contains('ui-resizable-resizing')) {
           return true;
         }
@@ -48,7 +47,6 @@ export default {
         instance.$el.id = uid;
         el.replaceWith(instance.$el);
         GlobalService.canResize(uid);
-        //GlobalService.selectService(uid);
       } else {
         console.log('test');
       }

@@ -32,6 +32,7 @@
   .search-container-wrapper{
     min-height: 120px;
     margin: 0 10px 5px;
+    background-color: #f8f9fa;
 
     .search-container-header {
       padding: 10px;

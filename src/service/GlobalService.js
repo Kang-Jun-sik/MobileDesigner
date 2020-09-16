@@ -10,13 +10,12 @@ import GlobalService from "@/service/GlobalService";
 
 export default {
     openService(args) {
-
         //(1) IDE로부터 받은 데이터 전처리
 
         //(2) 인스턴스 동적 생성후 디자이너 렌더링
-        for (var i = 0; i < 3; i++) {
+        for (let i = 0; i < 3; i++) {
             const uid = GlobalService.uuidv4(); //리사이즈 핸들러 등록을 위한 UID 생성
-            let designer = document.getElementById("main-designer");
+            const designer = document.getElementById("main-designer");
             const instance = GlobalService.addComponent('Search Container');
             instance.classList.add(uid);
             designer.appendChild(instance);
@@ -28,7 +27,7 @@ export default {
 
     uuidv4() {
         return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
-            var r = Math.random() * 16 | 0, v = c === 'x' ? r : (r & 0x3 | 0x8);
+            const r = Math.random() * 16 | 0, v = c === 'x' ? r : (r & 0x3 | 0x8);
             return v.toString(16);
         });
     },
@@ -39,7 +38,6 @@ export default {
             delay: 0,
             // eslint-disable-next-line no-unused-vars
             resize: function (e, ui) {
-                console.log(e, ui)
                 e.stopPropagation();
             },
             // eslint-disable-next-line no-unused-vars
@@ -74,10 +72,11 @@ export default {
                     return;
             }
             let target;
-            if (event.target.classList.contains('dews-mobile-component'))
+            if (event.target.classList.contains('dews-mobile-component')){
                 target = event.target;
-            else
-                target = findtarget(event.target);
+            } else {
+                target = findTarget(event.target);
+            }
 
             if (document.querySelector('.ui-selected') !== null) {
                 let preSelected = document.querySelector('.ui-selected');
@@ -89,7 +88,7 @@ export default {
             //mobileDesignerToIDE("create", "button create test");
         });
 
-        function findtarget(target) {
+        function findTarget(target) {
             return target.closest('.dews-mobile-component');
         }
     }
