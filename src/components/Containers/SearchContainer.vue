@@ -47,7 +47,6 @@
     .search-container-content {
       min-height: 70px;
       height: auto;
-      background-color: #f8f9fa;
     }
   }
 </style>
