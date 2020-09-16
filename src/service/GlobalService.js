@@ -31,9 +31,16 @@ export default {
             return v.toString(16);
         });
     },
-    canResize(param) {
-        let uid = "#" + param;
-        $(uid).resizable({
+    canResize(element) {
+        let uid;
+        if (!element.id) {
+            uid = element.parentNode.id;
+        } else {
+            uid = element.id;
+        }
+
+        let findUid = "#" + uid;
+        $(findUid).resizable({
             handles: 'e,s',
             delay: 0,
             // eslint-disable-next-line no-unused-vars
@@ -81,9 +88,12 @@ export default {
             if (document.querySelector('.ui-selected') !== null) {
                 let preSelected = document.querySelector('.ui-selected');
                 preSelected.classList.remove('ui-selected');
+                preSelected.classList.remove('ui-resizable');
             }
             window.selectedItem = target;
             window.selectedItem.classList.add('ui-selected');
+            window.selectedItem.classList.add('ui-resizable');
+            GlobalService.canResize(event.target);
             //IDE로 선택되었다고 메세지 송신
             //mobileDesignerToIDE("create", "button create test");
         });

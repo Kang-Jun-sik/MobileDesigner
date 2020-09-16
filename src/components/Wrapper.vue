@@ -46,7 +46,6 @@ export default {
 
         instance.$el.id = uid;
         el.replaceWith(instance.$el);
-        GlobalService.canResize(uid);
       } else {
         console.log('test');
       }
