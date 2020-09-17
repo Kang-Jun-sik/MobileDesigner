@@ -5,9 +5,20 @@
 </template>
 
 <script>
+
+import GlobalService from "@/service/GlobalService";
+
 export default {
   name: 'app',
-  components: {}
+  components: {},
+  mounted() {
+
+  },
+  created: function () {
+    this.$nextTick(function () {
+      GlobalService.openService();
+    })
+  }
 }
 </script>
 

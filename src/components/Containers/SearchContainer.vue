@@ -11,6 +11,7 @@
 <script>
   export default {
     name: 'search-container-wrapper',
+    uid: '',
     data() {
       return {
         title: '조회 조건',
@@ -18,7 +19,6 @@
     },
     mounted() {
       console.log(window.drake)
-
       window.drake.containers.push(this.$refs.searchContainer)
     }
   }

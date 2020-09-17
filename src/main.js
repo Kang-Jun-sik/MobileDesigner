@@ -28,7 +28,7 @@ registerService.init();
 
 //GlobalService.SELECTION.selectService();
 //GlobalService.selectService();
-GlobalService.openService();
+//GlobalService.openService();
 
 //앱 진입
 window.Vue = new Vue({

@@ -74,7 +74,6 @@ export default {
     window.drake.containers.push(this.$store.state.componentElement);
     window.drake.containers.push(this.$store.state.etcElement);
     console.log(window.drake);
-
   },
   methods: {}
 }

@@ -4,6 +4,7 @@
 
 <script>
   export default {
+    uid: '',
     name: 'textBox'
   }
 </script>
