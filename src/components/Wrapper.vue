@@ -9,7 +9,7 @@
 <script>
 import Vue from 'vue'
 import MainDesignerWrapper from "@/components/MainDesigner";
-import ThumbnailDesignerWrapper from "@/components/ThumbnailDesigner";
+import ThumbnailDesignerWrapper from "@/components/Thumbnails/ThumbnailDesigner";
 import ControlListWrapper from "@/components/ControlList";
 import dragula from "dragula";
 import GlobalService from "@/service/GlobalService";
@@ -52,6 +52,8 @@ export default {
 
         instance.$el.id = uid;
         el.replaceWith(instance.$el);
+
+        console.log(mobile.$store.state.items)
       } else {
         console.log('test');
       }
