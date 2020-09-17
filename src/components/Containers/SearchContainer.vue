@@ -32,7 +32,7 @@
   .search-container-wrapper{
     min-height: 120px;
     margin: 0 10px 5px;
-    background-color: #f8f9fa;
+    background-color: #fbfbfb;
 
     .search-container-header {
       padding: 10px;
@@ -40,7 +40,7 @@
       height: 45px;
       border-bottom: 1px solid black;
       border-radius: 7px 7px 0 0;
-      background-color: white;
+      background-color: #ffffff;
       color: #007bff;
     }
 

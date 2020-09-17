@@ -41,6 +41,7 @@ export default {
 
         let findUid = "#" + uid;
         $(findUid).resizable({
+            disabled: false,
             handles: 'e,s',
             delay: 0,
             // eslint-disable-next-line no-unused-vars
@@ -86,13 +87,17 @@ export default {
             }
 
             if (document.querySelector('.ui-selected') !== null) {
-                let preSelected = document.querySelector('.ui-selected');
+                const preSelected = document.querySelector('.ui-selected');
                 preSelected.classList.remove('ui-selected');
-                preSelected.classList.remove('ui-resizable');
+                $(`#${preSelected.id}`).resizable({
+                    disabled: true
+                })
+                preSelected.querySelector('.ui-resizable-e').style.display = 'none';
+                preSelected.querySelector('.ui-resizable-s').style.display = 'none';
+
             }
             window.selectedItem = target;
             window.selectedItem.classList.add('ui-selected');
-            window.selectedItem.classList.add('ui-resizable');
             GlobalService.canResize(event.target);
             //IDE로 선택되었다고 메세지 송신
             //mobileDesignerToIDE("create", "button create test");

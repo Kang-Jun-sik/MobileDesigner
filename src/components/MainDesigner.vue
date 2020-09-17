@@ -58,7 +58,7 @@ export default {
       position: relative;
       padding: 10px 0 0;
       height: 100%;
-      background-color: #efefef;
+      background-color: #efeff4;
       overflow: auto;
 
       .ui-selected{
