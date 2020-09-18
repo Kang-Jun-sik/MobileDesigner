@@ -36,11 +36,11 @@ export default {
       }
     }).on('drop', function (el, target) {
       if (el.classList.contains('controlName')) {
-        const uid = GlobalService.uuidv4();
+        const uid = GlobalService.createUid(el.textContent);
         const instance = GlobalService.addComponent(el.textContent);
         instance.uid = uid;
         _this.$store.commit('addItem', instance);
-        instance.$el.id = uid;
+        instance.$el.setAttribute('uid',uid);
         el.replaceWith(instance.$el);
       } else {
         console.log('test');

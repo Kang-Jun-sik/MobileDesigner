@@ -17,14 +17,15 @@ export default {
   components: {ButtonTabBar},
   data() {
     return {
-      mainDesigner: ''
+      mainDesigner: '',
+      uid:''
     }
   },
   created() {
   },
   mounted() {
     this.mainDesigner = document.querySelector('.main-designer')
-    const uid = GlobalService.uuidv4();
+    const uid = GlobalService.createUid('main-designer');
     this.mainDesigner.id = uid;
     GlobalService.selectService();
   },

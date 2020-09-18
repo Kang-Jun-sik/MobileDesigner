@@ -18,7 +18,7 @@ export default {
         let canvasDoc = xmlDoc.getElementsByTagName('canvas')[0];
         let type = canvasDoc.attributes.getNamedItem('type').nodeValue;
 
-        window.Vue.$store.state.items[0].setAttribute('uid', canvasDoc.getAttribute('uid')) //임시로 canvas에 uid 적용
+        window.Vue.$store.state.items[0].uid = canvasDoc.getAttribute('uid'); //임시로 canvas에 uid 적용
 
         // eslint-disable-next-line no-empty
         if (type === 'mpage') {
@@ -30,7 +30,7 @@ export default {
                 {
 
                 } else {
-                    pageParsing(canvasDoc.children[i], window.Vue.$store.state.items[0].getAttribute('uid'));
+                    pageParsing(canvasDoc.children[i], window.Vue.$store.state.items[0].uid);
                 }
             }
         }
@@ -44,15 +44,15 @@ export default {
                 if (clone.tagName === 'mLayout') {
                     const instance = GlobalService.addComponent('Search Container');
                     instance.uid = uid;
-                    instance.$el.id = uid;
+                    instance.$el.setAttribute('uid',uid);
                     window.Vue.$store.commit('addItem', instance);
                     let parent = window.Vue.$store.state.items.find(x => x.uid == parentuid);
-                    parent.appendChild(instance.$el);
+                    parent.$el.appendChild(instance.$el);
                 }
                 if (clone.tagName === 'mButton') {
                     const instance = GlobalService.addComponent('Button');
                     instance.uid = uid;
-                    instance.$el.id = uid;
+                    instance.$el.setAttribute('uid',uid);
                     window.Vue.$store.commit('addItem', instance);
                     let parent = window.Vue.$store.state.items.find(x => x.uid == parentuid);
                     parent.$el.appendChild(instance.$el);
@@ -67,16 +67,16 @@ export default {
                 if (clone.tagName === 'mLayout') {
                     const instance = GlobalService.addComponent('Search Container');
                     instance.uid = uid;
-                    instance.$el.id = uid;
+                    instance.$el.setAttribute('uid',uid);
                     window.Vue.$store.commit('addItem', instance);
                     let parent = window.Vue.$store.state.items.find(x => x.uid == parentuid);
-                    parent.appendChild(instance.$el);
+                    parent.$el.appendChild(instance.$el);
                     newparentid = instance.uid;
                 }
                 if (clone.tagName === 'mButton') {
                     const instance = GlobalService.addComponent('Button');
                     instance.uid = uid;
-                    instance.$el.id = uid;
+                    instance.$el.setAttribute('uid',uid);
                     window.Vue.$store.commit('addItem', instance);
                     let parent = window.Vue.$store.state.items.find(x => x.uid == parentuid);
                     parent.$el.appendChild(instance.$el);
@@ -102,12 +102,23 @@ export default {
         */
     },
 
+    /*
+ * 컨트롤 UID 생성
+ */
+
+    createUid(target){
+        let controlUid;
+        let date = new Date();
+        return controlUid = target + '-' + date.getTime();
+    },
+
     uuidv4() {
         return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
             const r = Math.random() * 16 | 0, v = c === 'x' ? r : (r & 0x3 | 0x8);
             return v.toString(16);
         });
     },
+
     canResize(element) {
         let uid;
         if (!element.id) {
