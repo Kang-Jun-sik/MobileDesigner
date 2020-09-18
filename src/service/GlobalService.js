@@ -11,13 +11,14 @@ import GlobalService from "@/service/GlobalService";
 export default {
     openService(args) {
         //(1) IDE로부터 받은 데이터 전처리
-        const desigerUid = window.Vue.$store.state.items[0].id; //canvas id => 수정 예정
         let tdata = `{ "commandType":"open","data":"<?xml version=\\"1.0\\" encoding=\\"utf-8\\"?><page title=\\"141414\\" name=\\"12341\\" type=\\"mpage\\"><canvas uid=\\"canvas-1485142915100\\" type=\\"mpage\\" title=\\"141414\\" component=\\"\\" function=\\"\\"><pageInformation><version>1.0</version><create>kjs1436</create><builddate d4p1:nil=\\"true\\" xmlns:d4p1=\\"http://www.w3.org/2001/XMLSchema-instance\\" /><createdate>2020-09-17T16:15:16.7463121+09:00</createdate><modifieddate d4p1:nil=\\"true\\" xmlns:d4p1=\\"http://www.w3.org/2001/XMLSchema-instance\\" /></pageInformation><mainButtons uid=\\"mainButtons-1385142915113\\"><mainButton uid=\\"mainButton-1485142971049\\" id=\\"information\\" buttonAttr=\\"disabled\\" type=\\"information\\" /><mainButton uid=\\"mainButton-1485142971050\\" id=\\"localize\\" buttonAttr=\\"disabled\\" type=\\"localize\\" /><mainButton uid=\\"mainButton-1485142971051\\" id=\\"approval\\" buttonAttr=\\"normal\\" type=\\"approval\\" /><mainButton uid=\\"mainButton-1485142971052\\" id=\\"add\\" buttonAttr=\\"normal\\" type=\\"add\\" /><mainButton uid=\\"mainButton-1485142971053\\" id=\\"search\\" buttonAttr=\\"normal\\" type=\\"search\\" /><mainButton uid=\\"mainButton-1485142971054\\" id=\\"delete\\" buttonAttr=\\"normal\\" type=\\"delete\\" /><mainButton uid=\\"mainButton-1485142971055\\" id=\\"print\\" buttonAttr=\\"normal\\" type=\\"print\\" /><mainButton uid=\\"mainButton-1485142971056\\" id=\\"save\\" buttonAttr=\\"normal\\" type=\\"save\\" /><mainButton uid=\\"mainButton-1485142971057\\" id=\\"configure\\" buttonAttr=\\"normal\\" type=\\"configure\\" /></mainButtons><mLayout uid=\\"mLayout-1485142971058\\" id=\\"mlayout\\"><mButton uid=\\"mButton-1485142971058\\" id=\\"mbutton\\" buttonType=\\"normal\\" disabled=\\"false\\" /></mLayout></canvas><dataSources /><pageCssStyle><![CDATA[]]></pageCssStyle><stylesheets /><javascripts /><settings /><datas /></page>","localization":"ko-KR"}`;
         let obj = JSON.parse(tdata);
         let parser = new DOMParser();
         let xmlDoc = parser.parseFromString(obj.data, "application/xml");
         let canvasDoc = xmlDoc.getElementsByTagName('canvas')[0];
         let type = canvasDoc.attributes.getNamedItem('type').nodeValue;
+
+        window.Vue.$store.state.items[0].setAttribute('uid', canvasDoc.getAttribute('uid')) //임시로 canvas에 uid 적용
 
         // eslint-disable-next-line no-empty
         if (type === 'mpage') {
@@ -29,7 +30,7 @@ export default {
                 {
 
                 } else {
-                    pageParsing(canvasDoc.children[i], desigerUid);
+                    pageParsing(canvasDoc.children[i], window.Vue.$store.state.items[0].getAttribute('uid'));
                 }
             }
         }
@@ -38,14 +39,14 @@ export default {
             // eslint-disable-next-line no-constant-condition
             if (node.childElementCount == 0) {
                 let clone = node.cloneNode();
-                let newparentid;
-                const uid = GlobalService.uuidv4();
+                //const uid = GlobalService.uuidv4();
+                const uid = clone.getAttribute('uid');
                 if (clone.tagName === 'mLayout') {
                     const instance = GlobalService.addComponent('Search Container');
                     instance.uid = uid;
                     instance.$el.id = uid;
                     window.Vue.$store.commit('addItem', instance);
-                    let parent = window.Vue.$store.state.items.find(x => x.id == parentuid);
+                    let parent = window.Vue.$store.state.items.find(x => x.uid == parentuid);
                     parent.appendChild(instance.$el);
                 }
                 if (clone.tagName === 'mButton') {
@@ -61,13 +62,14 @@ export default {
             } else {
                 let clone = node.cloneNode();
                 let newparentid;
-                const uid = GlobalService.uuidv4();
+                //const uid = GlobalService.uuidv4();
+                const uid = clone.getAttribute('uid');
                 if (clone.tagName === 'mLayout') {
                     const instance = GlobalService.addComponent('Search Container');
                     instance.uid = uid;
                     instance.$el.id = uid;
                     window.Vue.$store.commit('addItem', instance);
-                    let parent = window.Vue.$store.state.items.find(x => x.id == parentuid);
+                    let parent = window.Vue.$store.state.items.find(x => x.uid == parentuid);
                     parent.appendChild(instance.$el);
                     newparentid = instance.uid;
                 }
@@ -98,8 +100,6 @@ export default {
             //GlobalService.selectService(uid);
         }
         */
-
-        console.log('open Service');
     },
 
     uuidv4() {
@@ -177,7 +177,7 @@ export default {
             window.selectedItem.classList.add('ui-selected');
             GlobalService.canResize(event.target);
             //IDE로 선택되었다고 메세지 송신
-            //mobileDesignerToIDE("create", "button create test");
+            mobileDesignerToIDE("select", window.selectedItem);
         });
 
         function findTarget(target) {

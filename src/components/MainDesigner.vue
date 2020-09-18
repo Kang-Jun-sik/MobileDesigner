@@ -27,7 +27,7 @@ export default {
   mounted() {
     this.mainDesigner = this.$refs.designerElement;
     this.$store.commit('addItem', this.mainDesigner);
-    //this.$store.commit('findDesigner', this.mainDesigner);
+    this.$store.commit('findDesigner', this.mainDesigner);
 
     const uid = GlobalService.uuidv4();
     this.mainDesigner.id = uid;
