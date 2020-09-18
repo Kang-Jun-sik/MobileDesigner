@@ -4,6 +4,7 @@
       {{ title }}
     </div>
     <div class="search-container-content" ref="searchContainer">
+      <slot></slot>
     </div>
   </div>
 </template>
@@ -18,7 +19,6 @@
       }
     },
     mounted() {
-      console.log(window.drake)
       window.drake.containers.push(this.$refs.searchContainer)
     }
   }
@@ -30,8 +30,8 @@
   }
 
   .search-container-wrapper{
-    min-height: 120px;
-    margin: 0 10px 5px;
+    min-height: 106px;
+    margin: 0 7px 5px;
     background-color: #fbfbfb;
 
     .search-container-header {
@@ -45,8 +45,8 @@
     }
 
     .search-container-content {
-      min-height: 70px;
-      height: auto;
+      min-height: 55px;
+      background-color: #fbfbfb;
     }
   }
 </style>
