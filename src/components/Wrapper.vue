@@ -1,15 +1,15 @@
 <template>
   <div class="mobile-wrapper">
-    <main-designer-wrapper ref="mobileDesigner"></main-designer-wrapper>
-    <thumbnail-designer-wrapper ref="mobileThumbnail"></thumbnail-designer-wrapper>
-    <control-list-wrapper ref="mobileControlList"></control-list-wrapper>
+    <main-designer-wrapper ref="designerWrapper"></main-designer-wrapper>
+    <thumbnail-designer-wrapper ref="thumbnailWrapper"></thumbnail-designer-wrapper>
+    <control-list-wrapper ref="controlListWrapper"></control-list-wrapper>
   </div>
 </template>
 
 <script>
 import Vue from 'vue'
-import MainDesignerWrapper from "@/components/MainDesigner";
-import ThumbnailDesignerWrapper from "@/components/Thumbnails/ThumbnailDesigner";
+import MainDesignerWrapper from "@/components/MainDesignerArea/MainDesignerWrapper";
+import ThumbnailDesignerWrapper from "@/components/ThumbnailArea/ThumbnailDesigner";
 import ControlListWrapper from "@/components/ControlList";
 import dragula from "dragula";
 import GlobalService from "@/service/GlobalService";
@@ -22,9 +22,6 @@ export default {
     ControlListWrapper,
   },
   mounted() {
-    this.$store.commit('findDesigner', this.$refs.mobileDesigner);
-    this.$store.commit('addItem', this.$refs.mobileDesigner);
-
     const _this = this;
     window.drake = dragula({
       revertOnSpill: true,
@@ -46,7 +43,7 @@ export default {
         console.log('test');
       }
     })
-    window.drake.containers.push(this.$store.state.mainDesigner.$refs.main);
+    window.drake.containers.push(this.$store.state.mainDesigner.$el);
     window.drake.containers.push(this.$store.state.containerElement);
     window.drake.containers.push(this.$store.state.componentElement);
     window.drake.containers.push(this.$store.state.etcElement);
