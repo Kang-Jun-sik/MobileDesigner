@@ -19,7 +19,7 @@
     mounted() {
       this.designerElement = document.querySelector('.main-designer');
       const uid = GlobalService.uuidv4();
-      this.designerElement.id = uid;
+      //this.designerElement.id = uid;
       this.uid = uid
       GlobalService.selectService();
     }

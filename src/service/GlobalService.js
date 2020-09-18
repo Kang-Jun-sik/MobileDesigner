@@ -120,15 +120,8 @@ export default {
     },
 
     canResize(element) {
-        let uid;
-        if (!element.id) {
-            uid = element.parentNode.id;
-        } else {
-            uid = element.id;
-        }
-
-        let findUid = "#" + uid;
-        $(findUid).resizable({
+        let elementUid = element.getAttribute('uid');
+        $(`[uid=${elementUid}]`).resizable({
             disabled: false,
             handles: 'e,s',
             delay: 0,
@@ -177,7 +170,7 @@ export default {
             if (document.querySelector('.ui-selected') !== null) {
                 const preSelected = document.querySelector('.ui-selected');
                 preSelected.classList.remove('ui-selected');
-                $(`#${preSelected.id}`).resizable({
+                $(`[uid=${preSelected.getAttribute('uid')}]`).resizable({
                     disabled: true
                 })
                 preSelected.querySelector('.ui-resizable-e').style.display = 'none';
@@ -186,7 +179,7 @@ export default {
             }
             window.selectedItem = target;
             window.selectedItem.classList.add('ui-selected');
-            GlobalService.canResize(event.target);
+            GlobalService.canResize(target);
             //IDE로 선택되었다고 메세지 송신
             mobileDesignerToIDE("select", window.selectedItem);
         });
