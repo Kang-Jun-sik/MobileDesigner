@@ -12,7 +12,7 @@
 
 <style lang="scss" scoped>
   div {
-    padding: 10px 20px;
+    padding: 10px 15px;
   }
 
   .thumbnail-bottom-wrapper {
@@ -20,11 +20,11 @@
     border-style: inset;
 
     .thumbnail-bottom {
-      width: 240px;
-      height: 420px;
+      width: 210px;
+      height: 370px;
       display: block;
       border: 40px solid #121212;
-      border-width: 50px 7px;
+      border-width: 40px 7px;
       border-radius: 40px;
       margin: 15px auto;
       overflow: auto;

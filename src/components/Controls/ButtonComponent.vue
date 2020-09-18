@@ -47,8 +47,8 @@
     vertical-align: top;
     letter-spacing: -0.5px;
     padding: 5px 9px;
-    cursor: default;
-    margin: 0 10px 5px;
+    margin: 5px 7px;
+    cursor: pointer;
 
     .ui-resizable-handle {
       padding: 0;
