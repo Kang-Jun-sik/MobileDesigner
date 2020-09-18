@@ -23,6 +23,7 @@ export default {
   },
   mounted() {
     this.$store.commit('findDesigner', this.$refs.mobileDesigner);
+    this.$store.commit('addItem', this.$refs.mobileDesigner);
 
     const _this = this;
     window.drake = dragula({
