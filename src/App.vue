@@ -16,7 +16,7 @@ export default {
   },
   created: function () {
     this.$nextTick(function () {
-      GlobalService.openService();
+      //GlobalService.openService();
     })
   }
 }

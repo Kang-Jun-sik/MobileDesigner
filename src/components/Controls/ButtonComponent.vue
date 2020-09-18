@@ -3,15 +3,15 @@
       class="dews-mobile-button dews-mobile-component"
       ref="mobileButton"
       :style="buttonStyle"
-  >Button</div>
+  >{{ title }}</div>
 </template>
 
 <script>
   export default {
-    name: 'button-component',
     data() {
       return {
         uid: '',
+        title: 'Button',
         buttonStyle: {
           width: '',
           height: ''

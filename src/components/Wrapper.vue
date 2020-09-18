@@ -33,7 +33,7 @@ export default {
       }
     }).on('drop', function (el, target) {
       if (el.classList.contains('controlName')) {
-        const uid = GlobalService.createUid(el.textContent);
+        const uid = GlobalService.createUid(el.textContent.replace(/\s+/g, ''));
         const instance = GlobalService.addComponent(el.textContent);
         instance.uid = uid;
         _this.$store.commit('addItem', instance);

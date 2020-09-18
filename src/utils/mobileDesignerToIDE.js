@@ -98,15 +98,13 @@ let mobileDesignerToIDE = (commandType, elm, parentUID, key) => {
         }
     }
     */
-    `
-<?xml version="1.0"?><codepicker uid="codepicker-1599035676804" width_type="px" readonly="false" disabled="false" state="basic" useKeyword="true" ajax="true" id="codepicker1" helpCustom="false" helpSize="medium"/>`
     obj = {
         'commandType': commandType,
-        'data': `<?xml version="1.0"?><${elm.classList[0]} uid="${elm.id}"/>`
+        'data': `<?xml version="1.0"?><${elm.classList[0]} uid="${elm.getAttribute('uid')}"/>`
     }
     console.log(obj);
     // eslint-disable-next-line no-undef
-    //chromiumObject.mobileDesignerToIDE(obj); //실제 IDE 데이터 전송 로직
+    chromiumObject.mobileDesignerToIDE(obj); //실제 IDE 데이터 전송 로직
 };
 
 export {mobileDesignerToIDE};
