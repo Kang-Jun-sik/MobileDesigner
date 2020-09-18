@@ -162,7 +162,7 @@ export default {
     },
 
     selectService() {
-        $('#mainDesignerWrapper').click(function (event) {
+        $('.main-designer').click(function (event) {
             if (window.selectedItem) {
                 if (window.selectedItem === event.target) //같은 컨트롤을 선택했을 경우 --> 바뀔 필요가 없다.
                     return;

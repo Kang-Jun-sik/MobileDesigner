@@ -6,8 +6,8 @@
 </template>
 
 <script>
-  import ThumbnailTop from "@/components/Thumbnails/ThumbnailTop";
-  import ThumbnailBottom from "@/components/Thumbnails/ThumbnailBottom";
+  import ThumbnailTop from "@/components/ThumbnailArea/ThumbnailTop";
+  import ThumbnailBottom from "@/components/ThumbnailArea/ThumbnailBottom";
 
   export default {
     name: 'thumbnailDesigner-wrapper',
