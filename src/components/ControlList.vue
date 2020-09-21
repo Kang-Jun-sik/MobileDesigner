@@ -5,10 +5,10 @@
         <b-button block v-b-toggle.mobileContainer variant="secondary">Container</b-button>
       </b-card-header>
       <b-collapse id="mobileContainer" visible accordion="my-accordion" role="tabpanel">
-        <div :class="'component-' + key"
-                  class="controlName"
-                  v-for="(name, key, idx) in mobileContainer"
-                  :key="idx"
+        <div :class="'dews-mobile-' + key"
+          class="controlName"
+          v-for="(name, key, idx) in mobileContainer"
+          :key="idx"
         >{{ name }}</div>
       </b-collapse>
     </b-card>
@@ -18,10 +18,10 @@
         <b-button block v-b-toggle.mobileComponent variant="secondary">Component</b-button>
       </b-card-header>
       <b-collapse id="mobileComponent" visible accordion="my-accordion" role="tabpanel">
-        <div :class="'component-' + key"
-                  class="controlName"
-                  v-for="(name, key, idx) in mobileComponent"
-                  :key="idx"
+        <div :class="'dews-mobile-' + key"
+          class="controlName"
+          v-for="(name, key, idx) in mobileComponent"
+          :key="idx"
         >{{ name }}</div>
       </b-collapse>
     </b-card>
@@ -32,9 +32,9 @@
       </b-card-header>
       <b-collapse id="mobileEtc" visible accordion="my-accordion" role="tabpanel">
         <div :class="'component-' + key"
-             class="controlName"
-             v-for="(name, key, idx) in mobileEtc"
-             :key="idx"
+           class="controlName"
+           v-for="(name, key, idx) in mobileEtc"
+           :key="idx"
         >{{ name }}</div>
       </b-collapse>
     </b-card>

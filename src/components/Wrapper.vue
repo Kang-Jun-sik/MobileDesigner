@@ -56,9 +56,7 @@ export default {
           return true
         }
       } else {
-        console.log(el, Boolean(el.closest('.dews-mobile-component')), target, source)
         if (el.closest('.dews-mobile-component') && el.classList.contains('ui-selected') && !el.classList.contains('ui-resizable-resizing')) {
-          console.log('?????')
           return true
         }
       }
