@@ -98,9 +98,21 @@ let mobileDesignerToIDE = (commandType, elm, parentUID, key) => {
         }
     }
     */
-    obj = {
-        'commandType': commandType,
-        'data': `<?xml version="1.0"?><${elm.classList[0]} uid="${elm.getAttribute('uid')}"/>`
+
+    switch (commandType) {
+        case "select" :
+            obj = {
+                'commandType': commandType,
+                'data': `<?xml version="1.0"?><${elm.getAttribute('uid').split('-')[0]} uid="${elm.getAttribute('uid')}"/>`
+            }
+            break;
+        case "create":
+            obj = {
+                'commandType': commandType,
+                'parentId': parentUID,
+                'data': `<?xml version="1.0"?><${elm.getAttribute('uid').split('-')[0]} uid="${elm.getAttribute('uid')}"/>`
+            }
+            break;
     }
     console.log(obj);
     // eslint-disable-next-line no-undef

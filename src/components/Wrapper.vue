@@ -8,6 +8,7 @@
 
 <script>
 import Vue from 'vue'
+import {mobileDesignerToIDE} from "@/utils/mobileDesignerToIDE";
 import MainDesignerWrapper from "@/components/MainDesignerArea/MainDesignerWrapper";
 import ThumbnailDesignerWrapper from "@/components/ThumbnailArea/ThumbnailDesigner";
 import ControlListWrapper from "@/components/ControlList";
@@ -33,12 +34,23 @@ export default {
       }
     }).on('drop', function (el, target) {
       if (el.classList.contains('controlName')) {
-        const uid = GlobalService.createUid(el.textContent.replace(/\s+/g, ''));
+        let idTemp = el.textContent.replace(/\s+/g, '');
+
+        //sample Code
+        if (idTemp == 'Button')
+          idTemp = 'mButton';
+        else if (idTemp == 'SearchContainer')
+          idTemp = 'mLayout';
+
+        const uid = GlobalService.createUid(idTemp);
         const instance = GlobalService.addComponent(el.textContent);
         instance.uid = uid;
         _this.$store.commit('addItem', instance);
-        instance.$el.setAttribute('uid',uid);
+        instance.$el.setAttribute('uid', uid);
         el.replaceWith(instance.$el);
+        let parentNode = instance.$el.parentElement.closest('.dews-mobile-component');
+        let parentUid = parentNode.getAttribute('uid');
+        mobileDesignerToIDE("create", instance.$el, parentUid);
       } else {
         console.log('test');
       }
