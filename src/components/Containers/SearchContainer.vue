@@ -1,5 +1,5 @@
 <template>
-  <div class="search-container-wrapper dews-mobile-component">
+  <div class="dews-mobile-searchContainer dews-mobile-component">
     <div class="search-container-header">
       {{ title }}
     </div>
@@ -29,7 +29,7 @@
     padding: 0;
   }
 
-  .search-container-wrapper{
+  .dews-mobile-searchContainer{
     min-height: 106px;
     margin: 0 7px 5px;
     background-color: #fbfbfb;
