@@ -14,91 +14,91 @@
  *   change: 컨트롤 변경
  */
 
+/*
+let childInfo = function (elm) {
+    if (elm) {
+        if (elm.children) {
+            for (let i = 0; i < elm.children.length; i++) {
+                let elc = elm.children[i];
+                xw.startElement(elc.uid.split('-')[0], '').writeAttribute('uid', elc.uid);
+                xw.writeAttribute('parentUID', elc.parentUID);
+                if (elc.option) {
+                    for (let attIdx in elc.option) {
+                        if (elc.container.classList.contains('dews-dialog-contents')) {
+                            if (attIdx !== 'uid') {
+                                xw.writeAttribute(attIdx, elc.option[attIdx]);
+                            }
+                        } else {
+                            if (!(elc.uid.split('-')[0] === 'canvas' && (attIdx === 'uid'))) {
+                                xw.writeAttribute(attIdx, elc.option[attIdx]);
+                            }
+                        }
+                    }
+                }
+                xw.endDocument();
+                childInfo(elc);
+                xw.endElement(elc.uid.split('-')[0], '');
+            }
+        }
+    }
+}
+
+if (commandType !== 'change_columns' && commandType !== 'change_control') {
+    if (elm) {
+        if (elm.uid) {
+            xw.startDocument().startElement(elm.uid.split('-')[0], '').writeAttribute('uid', elm.uid);
+            if (elm.option) {
+                for (let attrIdx in elm.option) {
+                    if (elm.container.classList.contains('dews-dialog-contents')) {
+                        if (attrIdx !== 'uid') {
+                            xw.writeAttribute(attrIdx, elm.option[attrIdx]);
+
+                            if (commandType === 'change') {
+                                if (attrIdx === key) {
+                                    value = elm.option[attrIdx];
+                                }
+                            }
+
+                        }
+                    } else if (commandType === 'change') {
+                        if (attrIdx === key) {
+                            value = elm.option[attrIdx];
+                        }
+                    } else if (commandType === 'addButton') {//2018.06.18 hju - 드랍다운버튼과 스플릿버튼의 버튼 추가
+                        if (elm.uid.split('-')[0] === 'dropdownbutton') {
+                            value = 'Button';
+                        } else if (elm.uid.split('-')[0] === 'splitbutton') {
+                            value = 'SplitButton';
+                        }
+                        break;
+                    } else {
+                        if (!(elm.uid.split('-')[0] === 'canvas' && (attrIdx === 'uid'))) {
+                            xw.writeAttribute(attrIdx, elm.option[attrIdx]);
+                        }
+                    }
+                }
+            }
+            //2018.02.21 hju - 자식 노드가 있는 경우 자식 노드까지 xml을 생성하기 위한 작업
+            if (commandType === 'delete') {
+                if (elm.children) {
+                    xw.endDocument();
+                    childInfo(elm);
+                }
+            }
+            xw.endElement(elm.uid.split('-')[0], '');
+        } else {
+            return false;
+        }
+    }
+}
+*/
+
 let mobileDesignerToIDE = (commandType, elm, parentUID, key) => {
     let XMLWriter = require('xml-writer');
     let xw = new XMLWriter;
     let obj = {};
     let value;
-
-    /*
-    let childInfo = function (elm) {
-        if (elm) {
-            if (elm.children) {
-                for (let i = 0; i < elm.children.length; i++) {
-                    let elc = elm.children[i];
-                    xw.startElement(elc.uid.split('-')[0], '').writeAttribute('uid', elc.uid);
-                    xw.writeAttribute('parentUID', elc.parentUID);
-                    if (elc.option) {
-                        for (let attIdx in elc.option) {
-                            if (elc.container.classList.contains('dews-dialog-contents')) {
-                                if (attIdx !== 'uid') {
-                                    xw.writeAttribute(attIdx, elc.option[attIdx]);
-                                }
-                            } else {
-                                if (!(elc.uid.split('-')[0] === 'canvas' && (attIdx === 'uid'))) {
-                                    xw.writeAttribute(attIdx, elc.option[attIdx]);
-                                }
-                            }
-                        }
-                    }
-                    xw.endDocument();
-                    childInfo(elc);
-                    xw.endElement(elc.uid.split('-')[0], '');
-                }
-            }
-        }
-    }
-
-    if (commandType !== 'change_columns' && commandType !== 'change_control') {
-        if (elm) {
-            if (elm.uid) {
-                xw.startDocument().startElement(elm.uid.split('-')[0], '').writeAttribute('uid', elm.uid);
-                if (elm.option) {
-                    for (let attrIdx in elm.option) {
-                        if (elm.container.classList.contains('dews-dialog-contents')) {
-                            if (attrIdx !== 'uid') {
-                                xw.writeAttribute(attrIdx, elm.option[attrIdx]);
-
-                                if (commandType === 'change') {
-                                    if (attrIdx === key) {
-                                        value = elm.option[attrIdx];
-                                    }
-                                }
-
-                            }
-                        } else if (commandType === 'change') {
-                            if (attrIdx === key) {
-                                value = elm.option[attrIdx];
-                            }
-                        } else if (commandType === 'addButton') {//2018.06.18 hju - 드랍다운버튼과 스플릿버튼의 버튼 추가
-                            if (elm.uid.split('-')[0] === 'dropdownbutton') {
-                                value = 'Button';
-                            } else if (elm.uid.split('-')[0] === 'splitbutton') {
-                                value = 'SplitButton';
-                            }
-                            break;
-                        } else {
-                            if (!(elm.uid.split('-')[0] === 'canvas' && (attrIdx === 'uid'))) {
-                                xw.writeAttribute(attrIdx, elm.option[attrIdx]);
-                            }
-                        }
-                    }
-                }
-                //2018.02.21 hju - 자식 노드가 있는 경우 자식 노드까지 xml을 생성하기 위한 작업
-                if (commandType === 'delete') {
-                    if (elm.children) {
-                        xw.endDocument();
-                        childInfo(elm);
-                    }
-                }
-                xw.endElement(elm.uid.split('-')[0], '');
-            } else {
-                return false;
-            }
-        }
-    }
-    */
-
+    
     switch (commandType) {
         case "select" :
             obj = {
