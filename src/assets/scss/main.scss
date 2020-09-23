@@ -2,7 +2,7 @@ div {
   padding: 0;
 }
 
-#app{
+#app {
   padding: 0;
   box-sizing: border-box;
 }
@@ -23,17 +23,13 @@ div {
 }
 
 .gu-transit {
-  opacity: 1;
+  opacity: 0.5;
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
   filter: alpha(opacity=50);
 }
 
 .gu-mirror {
-  position: fixed !important;
-  margin: 0 !important;
   opacity: 0.5;
-  z-index: 9999 !important;
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
   filter: alpha(opacity=50);
 }
-

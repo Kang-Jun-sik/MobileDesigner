@@ -3,10 +3,7 @@
     <mobile-wrapper></mobile-wrapper>
   </div>
 </template>
-
 <script>
-
-import GlobalService from "@/service/GlobalService";
 
 export default {
   name: 'app',
@@ -16,7 +13,7 @@ export default {
   },
   created: function () {
     this.$nextTick(function () {
-      //GlobalService.openService();
+      
     })
   }
 }

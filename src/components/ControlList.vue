@@ -67,7 +67,7 @@
         }
       ]
       mobileControl.forEach(control => {
-        this.$store.commit('findElement', control)
+        this.$store.commit('findElement', control);
       })
     },
     methods: {

@@ -1,8 +1,5 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import $ from 'jquery';
-import 'jquery-ui-bundle';
-import 'jquery-ui-bundle/jquery-ui.css';
 
 Vue.use(Vuex);
 

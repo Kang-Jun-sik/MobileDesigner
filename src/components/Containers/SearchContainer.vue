@@ -19,7 +19,7 @@
       }
     },
     mounted() {
-      window.drake.containers.push(this.$refs.searchContainer)
+      window.drake.containers.push(this.$refs.searchContainer);
     }
   }
 </script>

@@ -7,7 +7,6 @@
 </template>
 
 <script>
-import Vue from 'vue'
 import {mobileDesignerToIDE} from "@/utils/mobileDesignerToIDE";
 import MainDesignerWrapper from "@/components/MainDesignerArea/MainDesignerWrapper";
 import ThumbnailDesignerWrapper from "@/components/ThumbnailArea/ThumbnailDesigner";
@@ -33,10 +32,18 @@ export default {
         return _this.acceptCheck(el, target, source);
       }
     }).on('drop', function (el, target) {
+      _this.drop(el, target);
+    })
+    window.drake.containers.push(this.$store.state.mainDesigner.$el);
+    window.drake.containers.push(this.$store.state.containerElement);
+    window.drake.containers.push(this.$store.state.componentElement);
+    window.drake.containers.push(this.$store.state.etcElement);
+  },
+  methods: {
+    drop(el, target) {
       if (el.classList.contains('controlName')) {
-        let idTemp = el.textContent.replace(/\s+/g, '');
-
         //sample Code
+        let idTemp = el.textContent.replace(/\s+/g, '');
         if (idTemp == 'Button')
           idTemp = 'mButton';
         else if (idTemp == 'SearchContainer')
@@ -45,34 +52,25 @@ export default {
         const uid = GlobalService.createUid(idTemp);
         const instance = GlobalService.addComponent(el.textContent);
         instance.uid = uid;
-        _this.$store.commit('addItem', instance);
+        window.Vue.$store.commit('addItem', instance);
         instance.$el.setAttribute('uid', uid);
         el.replaceWith(instance.$el);
         let parentNode = instance.$el.parentElement.closest('.dews-mobile-component');
         let parentUid = parentNode.getAttribute('uid');
         mobileDesignerToIDE("create", instance.$el, parentUid);
-      } else {
-        console.log('test');
       }
-    })
-    window.drake.containers.push(this.$store.state.mainDesigner.$el);
-    window.drake.containers.push(this.$store.state.containerElement);
-    window.drake.containers.push(this.$store.state.componentElement);
-    window.drake.containers.push(this.$store.state.etcElement);
-    console.log(window.drake);
-  },
-  methods: {
+    },
     acceptCheck(el, target, source) {
       if (['mobileContainer', 'mobileComponent', 'mobileEtc'].includes(source.id)) {
         if (target.closest('.main-designer') && !el.classList.contains('ui-resizable-resizing')) {
-          return true
+          return true;
         }
       } else {
         if (el.closest('.dews-mobile-component') && el.classList.contains('ui-selected') && !el.classList.contains('ui-resizable-resizing')) {
-          return true
+          return true;
         }
       }
-      return false
+      return false;
     }
   },
 }

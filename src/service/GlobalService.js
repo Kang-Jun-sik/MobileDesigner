@@ -7,7 +7,6 @@ import ButtonComponent from "@/components/Controls/ButtonComponent";
 import SearchContainer from "@/components/Containers/SearchContainer";
 import GlobalService from "@/service/GlobalService";
 
-
 export default {
     openService(args) {
         //(1) IDE로부터 받은 데이터 전처리
@@ -72,7 +71,6 @@ export default {
     /*
      * 컨트롤 UID 생성
      */
-
     createUid(target) {
         let controlUid;
         let date = new Date();
@@ -141,8 +139,7 @@ export default {
             window.selectedItem = target;
             window.selectedItem.classList.add('ui-selected');
             GlobalService.canResize(target);
-            //IDE로 선택되었다고 메세지 송신
-            mobileDesignerToIDE("select", window.selectedItem);
+            mobileDesignerToIDE("select", window.selectedItem); //IDE로 선택되었다고 메세지 송신
         });
 
         function findTarget(target) {

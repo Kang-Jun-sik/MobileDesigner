@@ -1,16 +1,16 @@
 # DEWS 개발도구 Mobile Designer Web APP
 
-## Project setup (project dependency 설치)
+## Project setup
 ```
 npm install
 ```
 
-### Compiles and hot-reloads for development (Local Server 구동)
+### Compiles and hot-reloads for development
 ```
 npm run serve
 ```
 
-### Compiles and minifies for production (배포버전 빌드)
+### Compiles and minifies for production
 ```
 npm run build
 ```
