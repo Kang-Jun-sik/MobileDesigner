@@ -35,9 +35,5 @@
     height: 100%;
     background-color: #efeff4;
     overflow: auto;
-
-    .ui-selected{
-      border: 3px dotted;
-    }
   }
 </style>

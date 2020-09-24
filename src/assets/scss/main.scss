@@ -5,10 +5,22 @@ div {
 #app {
   padding: 0;
   box-sizing: border-box;
-}
 
-.ui-selectable-helper {
-  display: none;
+  .ui-selectable-helper {
+    display: none;
+  }
+
+  .ui-resizable-handle {
+    background-color: rgba(0,0,0,.75);
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+  }
+
+  .ui-resizable-se {
+    bottom: -5px;
+    right: -5px;
+  }
 }
 
 .gu-hide {

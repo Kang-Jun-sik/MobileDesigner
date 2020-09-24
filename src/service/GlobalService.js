@@ -78,23 +78,40 @@ export default {
     },
 
     canResize(element) {
-        let elementUid = element.getAttribute('uid');
-        $(`[uid=${elementUid}]`).resizable({
+        const set_position = function(width, height){
+            $('.ui-resizable-n').css('left', (width/2-4)+'px');
+            $('.ui-resizable-e').css('top', (height/2-4)+'px');
+            $('.ui-resizable-s').css('left', (width/2-4)+'px');
+            $('.ui-resizable-w').css('top', (height/2-4)+'px');
+        };
+
+        const elementUid = element.getAttribute('uid');
+        const target = $(`[uid=${elementUid}]`);
+        $(target).resizable({
             disabled: false,
-            handles: 'e,s',
+            handles: 'n, e, s, w, ne, se, sw, nw',
             delay: 0,
-            // eslint-disable-next-line no-unused-vars
             resize: function (e, ui) {
                 e.stopPropagation();
+                let width = $(e.target).width();
+                let height = $(e.target).height();
+                set_position(width, height);
+                console.log('resize')
             },
-            // eslint-disable-next-line no-unused-vars
             start: function (e, ui) {
                 e.stopPropagation();
+                console.log('start')
             },
-            // eslint-disable-next-line no-unused-vars
             stop: function (e, ui) {
                 e.stopPropagation();
-            }
+                console.log('stop')
+            },
+            create: function(e, ui) {
+                let width = $(e.target).width();
+                let height = $(e.target).height();
+                set_position(width, height);
+                console.log('create', e.target)
+            },
         });
     },
 
@@ -132,8 +149,8 @@ export default {
                 $(`[uid=${preSelected.getAttribute('uid')}]`).resizable({
                     disabled: true
                 })
-                preSelected.querySelector('.ui-resizable-e').style.display = 'none';
-                preSelected.querySelector('.ui-resizable-s').style.display = 'none';
+                // preSelected.querySelector('.ui-resizable-e').style.display = 'none';
+                // preSelected.querySelector('.ui-resizable-s').style.display = 'none';
 
             }
             window.selectedItem = target;

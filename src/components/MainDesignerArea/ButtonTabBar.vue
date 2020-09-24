@@ -36,8 +36,4 @@
       float: right;
     }
   }
-
-  .ui-selected{
-    border: 3px dotted;
-  }
 </style>

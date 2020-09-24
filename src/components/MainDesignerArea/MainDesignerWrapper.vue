@@ -46,9 +46,5 @@ export default {
     margin: 10px 0;
     transition: all 0.5s ease;
     animation: fadein 2s;
-
-    .ui-selected{
-      border: 3px dotted;
-    }
   }
 </style>
