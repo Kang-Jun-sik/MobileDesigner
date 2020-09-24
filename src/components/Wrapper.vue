@@ -57,17 +57,45 @@ export default {
         el.replaceWith(instance.$el);
         let parentNode = instance.$el.parentElement.closest('.dews-mobile-component');
         let parentUid = parentNode.getAttribute('uid');
-        mobileDesignerToIDE("create", instance.$el, parentUid);
+        //mobileDesignerToIDE("create", instance.$el, parentUid);
       }
     },
     acceptCheck(el, target, source) {
+      //드래그해서 컨트롤 생성시 체크
       if (['mobileContainer', 'mobileComponent', 'mobileEtc'].includes(source.id)) {
         if (target.closest('.main-designer') && !el.classList.contains('ui-resizable-resizing')) {
-          return true;
+          // 메인디자이너에 컨트롤 생성시 컨트롤별 조건 체크
+
+          //◎ Button
+          if (el.classList.contains('dews-mobile-button')) {
+            if (target.classList.contains('search-container-content'))
+              return true;
+          }
+          //◎ Search Container
+          else if (el.classList.contains('dews-mobile-searchContainer')) {
+            if (target.classList.contains('main-designer')) {
+              return true;
+            }
+          }
+          return false;
         }
-      } else {
+      }
+      //기존 생성된 컨트롤 재배치시 체크
+      else {
         if (el.closest('.dews-mobile-component') && el.classList.contains('ui-selected') && !el.classList.contains('ui-resizable-resizing')) {
-          return true;
+
+          //◎ Button
+          if (el.classList.contains('dews-mobile-button')) {
+            if (target.classList.contains('search-container-content')) {
+              return true;
+            }
+          }
+          //◎ Search Container
+          else if (el.classList.contains('dews-mobile-searchContainer')) {
+            if (target.classList.contains('main-designer')) {
+              return true;
+            }
+          }
         }
       }
       return false;
