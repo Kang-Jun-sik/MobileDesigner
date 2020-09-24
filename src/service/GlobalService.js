@@ -78,11 +78,11 @@ export default {
     },
 
     canResize(element) {
-        const set_position = function(width, height){
-            $('.ui-resizable-n').css('left', (width/2-4)+'px');
-            $('.ui-resizable-e').css('top', (height/2-4)+'px');
-            $('.ui-resizable-s').css('left', (width/2-4)+'px');
-            $('.ui-resizable-w').css('top', (height/2-4)+'px');
+        const set_position = function (width, height) {
+            $('.ui-resizable-n').css('left', (width / 2 - 4) + 'px');
+            $('.ui-resizable-e').css('top', (height / 2 - 4) + 'px');
+            $('.ui-resizable-s').css('left', (width / 2 - 4) + 'px');
+            $('.ui-resizable-w').css('top', (height / 2 - 4) + 'px');
         };
 
         const elementUid = element.getAttribute('uid');
@@ -106,13 +106,13 @@ export default {
                 e.stopPropagation();
                 console.log('stop')
             },
-            create: function(e, ui) {
+            create: function (e, ui) {
                 let width = $(e.target).width();
                 let height = $(e.target).height();
                 set_position(width, height);
                 console.log('create', e.target)
             },
-        });
+        }).bind(this, set_position(element.offsetWidth, element.offsetHeight))
     },
 
     addComponent(type, param) {
