@@ -87,16 +87,26 @@ export default {
 
         const elementUid = element.getAttribute('uid');
         const target = $(`[uid=${elementUid}]`);
+        console.log(target.css('minHeight'))
         $(target).resizable({
             disabled: false,
             handles: 'n, e, s, w, ne, se, sw, nw',
             delay: 0,
+            minHeight: parseInt(target.css('minHeight'), 10),
             resize: function (e, ui) {
                 e.stopPropagation();
-                let width = $(e.target).width();
-                let height = $(e.target).height();
+                let dir = ui.element.data('ui-resizable').axis;
+                if (!['s' ,'e'].includes(dir)) {
+                    // 수정 필요
+                    ui.position.left = ui.originalPosition.left;
+                    ui.position.top = ui.originalPosition.top;
+                    ui.size.width = ui.originalSize.width;
+                    ui.size.height = ui.originalSize.height;
+                }
+                console.log(ui);
+                let width = ui.size.width;
+                let height = ui.size.height;
                 set_position(width, height);
-                console.log('resize')
             },
             start: function (e, ui) {
                 e.stopPropagation();
