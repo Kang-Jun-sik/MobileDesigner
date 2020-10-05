@@ -87,7 +87,6 @@ export default {
 
         const elementUid = element.getAttribute('uid');
         const target = $(`[uid=${elementUid}]`);
-        console.log(target.css('minHeight'))
         $(target).resizable({
             disabled: false,
             handles: 'n, e, s, w, ne, se, sw, nw',
@@ -103,7 +102,6 @@ export default {
                     ui.size.width = ui.originalSize.width;
                     ui.size.height = ui.originalSize.height;
                 }
-                console.log(ui);
                 let width = ui.size.width;
                 let height = ui.size.height;
                 set_position(width, height);
@@ -120,7 +118,6 @@ export default {
                 let width = $(e.target).width();
                 let height = $(e.target).height();
                 set_position(width, height);
-                console.log('create', e.target)
             },
         }).bind(this, set_position(element.offsetWidth, element.offsetHeight))
     },
@@ -155,13 +152,19 @@ export default {
 
             if (document.querySelector('.ui-selected') !== null) {
                 const preSelected = document.querySelector('.ui-selected');
+                // const resizeDir = ['n', 'e', 's', 'w', 'ne', 'se', 'sw', 'nw'];
                 preSelected.classList.remove('ui-selected');
                 $(`[uid=${preSelected.getAttribute('uid')}]`).resizable({
                     disabled: true
                 })
-                // preSelected.querySelector('.ui-resizable-e').style.display = 'none';
-                // preSelected.querySelector('.ui-resizable-s').style.display = 'none';
-
+                preSelected.querySelector('.ui-resizable-n').style.display = 'none';
+                preSelected.querySelector('.ui-resizable-e').style.display = 'none';
+                preSelected.querySelector('.ui-resizable-s').style.display = 'none';
+                preSelected.querySelector('.ui-resizable-w').style.display = 'none';
+                preSelected.querySelector('.ui-resizable-ne').style.display = 'none';
+                preSelected.querySelector('.ui-resizable-se').style.display = 'none';
+                preSelected.querySelector('.ui-resizable-sw').style.display = 'none';
+                preSelected.querySelector('.ui-resizable-nw').style.display = 'none';
             }
             window.selectedItem = target;
             window.selectedItem.classList.add('ui-selected');
