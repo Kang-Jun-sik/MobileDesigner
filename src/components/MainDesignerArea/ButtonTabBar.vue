@@ -26,13 +26,15 @@
   }
   .button-tab-bar {
     position: absolute;
-    width: 100%;
+    width: 1025px;
     height: 45px;
     background-color: #2280ff;
+    margin: 0 21px 21px;
+    border-radius: 0 0 27px 27px;
     bottom: 0;
 
     .dews-main-buttons {
-      margin: 10px 5px 0 0;
+      margin: 10px 10px 0 0;
       float: right;
     }
   }

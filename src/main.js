@@ -6,7 +6,6 @@ import { BootstrapVue } from "bootstrap-vue";
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 
-import GlobalComponent from './components/global-component'
 import Wrapper from "@/components/Wrapper";
 import registerService from "@/service/registerService";
 import { store } from './store';
@@ -17,7 +16,6 @@ Vue.config.productionTip = false
 Vue.use(BootstrapVue)
 
 //글로벌 컴포넌트 등록
-Vue.component(GlobalComponent.name, GlobalComponent)
 Vue.component(Wrapper.name, Wrapper)
 
 registerService.init();

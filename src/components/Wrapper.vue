@@ -1,16 +1,14 @@
 <template>
   <div class="mobile-wrapper">
-    <main-designer-wrapper ref="designerWrapper"></main-designer-wrapper>
-    <thumbnail-designer-wrapper ref="thumbnailWrapper"></thumbnail-designer-wrapper>
     <control-list-wrapper ref="controlListWrapper"></control-list-wrapper>
+    <main-designer-wrapper ref="designerWrapper"></main-designer-wrapper>
   </div>
 </template>
 
 <script>
 import {mobileDesignerToIDE} from "@/utils/mobileDesignerToIDE";
 import MainDesignerWrapper from "@/components/MainDesignerArea/MainDesignerWrapper";
-import ThumbnailDesignerWrapper from "@/components/ThumbnailArea/ThumbnailDesigner";
-import ControlListWrapper from "@/components/ControlList";
+import ControlListWrapper from "@/components/ControlListArea/ControlListWrapper";
 import dragula from "dragula";
 import GlobalService from "@/service/GlobalService";
 
@@ -18,7 +16,6 @@ export default {
   name: 'mobile-wrapper',
   components: {
     MainDesignerWrapper,
-    ThumbnailDesignerWrapper,
     ControlListWrapper,
   },
   mounted() {
@@ -105,17 +102,14 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-div {
-  padding: 0;
-}
+  div {
+    padding: 0;
+  }
 
-.mobile-wrapper {
-  padding: 0;
-  margin: 10px;
-  display: grid;
-  grid-gap: 10px;
-  grid-template-columns: 2fr 1fr 1fr;
-  background-color: #fff;
-  color: #444;
-}
+  .mobile-wrapper {
+    padding: 0;
+    display: inline-flex;
+    grid-gap: 25px;
+    color: #444;
+  }
 </style>

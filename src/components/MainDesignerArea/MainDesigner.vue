@@ -29,10 +29,14 @@
 </script>
 
 <style lang="scss" scoped>
+  div {
+    padding: 0;
+  }
+
   .main-designer {
     position: relative;
-    padding: 10px 0 0;
-    height: 100%;
+    height: 645px;
+    margin: 0 22px 0 21px;
     background-color: #efeff4;
     overflow: auto;
   }
