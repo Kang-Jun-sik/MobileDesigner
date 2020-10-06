@@ -6,7 +6,7 @@
         <div class="header-icon"></div>
       </div>
       <b-collapse id="mobileContainer" class="container-list-content" accordion="dews-control" role="tabpanel">
-        <div v-for="(name, key, idx) in containerControl" :key="idx"
+        <div v-for="(name, key, idx) in mobileContainer" :key="idx"
             :class="'dews-mobile-' + key"
             class="content-box"
         >
@@ -21,33 +21,32 @@
 <script>
   export default {
     name: 'control-list',
-    data() {
+    data () {
       return {
-        containerControl: {
-          searchContainer: 'Search Container',
-          listContainer: 'List Container',
-          formContainer: 'Form Container',
-          infoBoxContainer: 'InfoBox Container'
-        },
-        componentControl: {
-          button: 'Button',
-          textBox: 'Text box',
-          numTextBox: 'Numeric text box',
-          maskTextBox: 'Mask text box',
-          checkBox: 'Check box',
-          radioButton: 'Radio Button',
-          dropdownList: 'Dropdown List'
-        },
-        etcControl: {
-          messageBox: 'Message box',
-          snackBar: 'Snack Bar',
-          tooltipBox: 'Tooltip',
-          loadingBox: 'Loading',
-          progressBar: 'Progress Bar',
-          slider: 'Slider'
-        }
+        mobileContainer: this.$store.state.containerControl,
+        mobileComponent: this.$store.state.componentControl,
+        mobileEtc: this.$store.state.etcControl,
       }
-    }
+    },
+    mounted() {
+      const mobileControl = [
+        {
+          name: 'containerElement',
+          control: document.querySelector('#mobileContainer')
+        },
+        {
+          name: 'componentElement',
+          control: document.querySelector('#mobileComponent')
+        },
+        {
+          name: 'etcElement',
+          control: document.querySelector('#mobileEtc')
+        }
+      ]
+      mobileControl.forEach(control => {
+        this.$store.commit('findElement', control);
+      })
+    },
   }
 </script>
 
