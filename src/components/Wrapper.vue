@@ -57,6 +57,7 @@ export default {
         el.replaceWith(instance.$el);
         let parentNode = instance.$el.parentElement.closest('.dews-mobile-component');
         let parentUid = parentNode.getAttribute('uid');
+        GlobalService.getcontextmenu();
         //mobileDesignerToIDE("create", instance.$el, parentUid);
       }
     },

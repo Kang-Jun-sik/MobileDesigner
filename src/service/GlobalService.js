@@ -1,6 +1,8 @@
 import $ from 'jquery';
 import 'jquery-ui-bundle';
 import 'jquery-ui-bundle/jquery-ui.css';
+import 'jquery-contextmenu'
+
 import Vue from 'vue'
 import {mobileDesignerToIDE} from "@/utils/mobileDesignerToIDE";
 import ButtonComponent from "@/components/Controls/ButtonComponent";
@@ -175,5 +177,25 @@ export default {
         function findTarget(target) {
             return target.closest('.dews-mobile-component');
         }
+    },
+
+    getcontextmenu(){
+        $.contextMenu({
+            // define which elements trigger this menu
+            selector: ".dews-mobile-searchContainer",
+            // define the elements of the menu
+            items: {
+                "edit": {name: "Edit", icon: "edit"},
+                "cut": {name: "Cut", icon: "cut"},
+                copy: {name: "Copy", icon: "copy"},
+                "paste": {name: "Paste", icon: "paste"},
+                "delete": {name: "Delete", icon: "delete"},
+                "sep1": "---------",
+                "quit": {name: "Quit", icon: function(){
+                        return 'context-menu-icon context-menu-icon-quit';
+                    }}
+            }
+            // there's more, have a look at the demos and docs...
+        });
     }
 }
