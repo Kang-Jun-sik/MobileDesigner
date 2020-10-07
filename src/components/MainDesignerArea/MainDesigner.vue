@@ -37,6 +37,7 @@
     position: relative;
     height: 645px;
     margin: 0 22px 0 21px;
+    padding: 10px 0;
     background-color: #efeff4;
     overflow: auto;
   }

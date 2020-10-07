@@ -6,7 +6,6 @@
 </template>
 
 <script>
-import {mobileDesignerToIDE} from "@/utils/mobileDesignerToIDE";
 import MainDesignerWrapper from "@/components/MainDesignerArea/MainDesignerWrapper";
 import ControlListWrapper from "@/components/ControlListArea/ControlListWrapper";
 import dragula from "dragula";
@@ -23,7 +22,7 @@ export default {
     window.drake = dragula({
       revertOnSpill: true,
       copy: function (el, source) {
-        return source.id === 'mobileContainer' || source.id === 'mobileComponent' || source.id === 'mobileEtc';
+        return source.id === 'containerList' || source.id === 'componentList' || source.id === 'etcList';
       },
       accepts: function (el, target, source) {
         return _this.acceptCheck(el, target, source);
@@ -38,12 +37,13 @@ export default {
   },
   methods: {
     drop(el, target) {
-      if (el.classList.contains('controlName')) {
+      if (el.classList.contains('dewsControl')) {
         //sample Code
         let idTemp = el.textContent.replace(/\s+/g, '');
-        if (idTemp == 'Button')
+        console.log('drop', el, idTemp)
+        if (idTemp === 'Button')
           idTemp = 'mButton';
-        else if (idTemp == 'SearchContainer')
+        else if (idTemp === 'SearchContainer')
           idTemp = 'mLayout';
 
         const uid = GlobalService.createUid(idTemp);
@@ -57,9 +57,10 @@ export default {
         //mobileDesignerToIDE("create", instance.$el, parentUid);
       }
     },
+
     acceptCheck(el, target, source) {
       //드래그해서 컨트롤 생성시 체크
-      if (['mobileContainer', 'mobileComponent', 'mobileEtc'].includes(source.id)) {
+      if (['containerList', 'componentList', 'etcList'].includes(source.id)) {
         if (target.closest('.main-designer') && !el.classList.contains('ui-resizable-resizing')) {
           // 메인디자이너에 컨트롤 생성시 컨트롤별 조건 체크
 
