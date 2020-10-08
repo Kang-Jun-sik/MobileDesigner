@@ -1,5 +1,5 @@
 <template>
-  <div class="navigation-bar-wrapper">
+  <div :class="mobileLayout" class="navigation-bar-wrapper">
     <div class="status-bar">
       status bar
       <div class="status-bar-icon">
@@ -25,7 +25,18 @@
     name: 'navigation-bar',
     data() {
       return {
+        mobileLayout: this.$store.state.mobileLayout,
         title: 'Navigation Bar',
+      }
+    },
+    computed: {
+      layoutSize: function() {
+        return this.$store.getters.mobileLayoutCheck
+      }
+    },
+    watch: {
+      layoutSize: function(state) {
+        this.mobileLayout = state;
       }
     }
   }
@@ -35,11 +46,27 @@
   div {
     padding: 0;
   }
-  .navigation-bar-wrapper {
-    position: absolute;
+
+  .smartPhone {
+    width: 363px;
+    height: 72px;
+    margin: 21px 21px 0;
+  }
+
+  .tabletM {
+    width: 768px;
+    height: 70px;
+    margin: 23px 20px 0;
+  }
+
+  .tabletL {
     width: 1025px;
     height: 70px;
     margin: 23px 21px 0;
+  }
+
+  .navigation-bar-wrapper {
+    position: absolute;
     border-radius: 27px 27px 0 0;
     background-color: #ffffff;
     top: 0;

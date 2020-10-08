@@ -109,8 +109,9 @@ export default {
 
   .mobile-wrapper {
     padding: 0;
-    display: inline-flex;
-    grid-gap: 25px;
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: 150px 1fr;
     color: #444;
   }
 </style>

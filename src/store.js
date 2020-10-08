@@ -11,6 +11,11 @@ export const store = new Vuex.Store({
         containerElement: '',
         componentElement: '',
         etcElement: '',
+        dragulaContainer: [],
+
+        designerWrapperLayout: 'designer-wrapper-tabletL',
+        designerLayout: 'designer-tabletL',
+        mobileLayout: 'tabletL'
     },
     mutations: {
         addItem(state, item) {
@@ -24,14 +29,28 @@ export const store = new Vuex.Store({
             state[name] = payload.control;
         },
         setDrake(state, element) {
-            console.log(window.drake.container)
-            console.log('state', state.dragulaContainer)
+            console.log(window.drake.container);
+            console.log('state', state.dragulaContainer);
+        },
+        setLayout(state, payload) {
+            state.designerWrapperLayout = payload.wrapper;
+            state.designerLayout = payload.designer;
+            state.mobileLayout = payload.layout;
         }
     },
     actions: {},
     getters: {
-        items: state => {
+        items(state) {
             return state.items;
+        },
+        wrapperSizeCheck(state) {
+            return state.designerWrapperLayout;
+        },
+        designerSizeCheck(state) {
+            return state.designerLayout;
+        },
+        mobileLayoutCheck(state) {
+            return state.mobileLayout;
         }
     }
 });

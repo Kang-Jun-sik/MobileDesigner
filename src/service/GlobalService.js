@@ -139,10 +139,17 @@ export default {
 
     selectService() {
         $('.main-designer').click(function (event) {
-            if (window.selectedItem) {
-                if (window.selectedItem === event.target) //같은 컨트롤을 선택했을 경우 --> 바뀔 필요가 없다.
-                    return;
+            // 메인 디자이너 영역 선택 방지
+            if (event.target.classList.contains('main-designer')) {
+                window.selectedItem = event.target;
+                mobileDesignerToIDE("select", window.selectedItem);
+                return
             }
+            // 같은 컨트롤을 선택했을 경우 재 선택하는 것을 방지
+            if (window.selectedItem && window.selectedItem === event.target) {
+                return
+            }
+
             let target;
             if (event.target.classList.contains('dews-mobile-component')) {
                 target = event.target;
@@ -152,7 +159,6 @@ export default {
 
             if (document.querySelector('.ui-selected') !== null) {
                 const preSelected = document.querySelector('.ui-selected');
-                // const resizeDir = ['n', 'e', 's', 'w', 'ne', 'se', 'sw', 'nw'];
                 preSelected.classList.remove('ui-selected');
                 $(`[uid=${preSelected.getAttribute('uid')}]`).resizable({
                     disabled: true
@@ -169,7 +175,7 @@ export default {
             window.selectedItem = target;
             window.selectedItem.classList.add('ui-selected');
             GlobalService.canResize(target);
-            mobileDesignerToIDE("select", window.selectedItem); //IDE로 선택되었다고 메세지 송신
+            mobileDesignerToIDE("select", window.selectedItem); // IDE로 선택되었다고 메세지 송신
         });
 
         function findTarget(target) {

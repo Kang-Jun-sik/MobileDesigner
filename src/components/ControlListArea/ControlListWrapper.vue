@@ -22,6 +22,7 @@ export default {
 
   .controlList-wrapper {
     width: 150px;
+    min-height: 852px;
     color: #000000;
     background-color: #f3f6fa;
   }

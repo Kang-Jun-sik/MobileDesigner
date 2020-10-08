@@ -13,7 +13,7 @@ export default {
   },
   created: function () {
     this.$nextTick(function () {
-      
+
     })
   }
 }
@@ -23,7 +23,9 @@ export default {
 @import "src/assets/scss/main";
 
 #app {
+  min-width: 1002px;
   max-width: 1272px;
+  min-height: 852px;
   padding: 0;
   overflow: auto;
 }

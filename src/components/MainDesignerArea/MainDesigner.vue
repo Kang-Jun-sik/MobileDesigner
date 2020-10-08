@@ -1,5 +1,5 @@
 <template>
-  <div class="main-designer dews-mobile-component">
+  <div :class="designerLayout" class="dews-mobile-component main-designer">
     <slot></slot>
   </div>
 </template>
@@ -11,6 +11,7 @@
     name: 'main-designer',
     data() {
       return {
+        designerLayout: this.$store.state.designerLayout,
         designerElement: '',
         id: '',
         uid: ''
@@ -24,6 +25,16 @@
       this.uid = uid;
        */
       GlobalService.selectService();
+    },
+    computed: {
+      designerSize: function() {
+        return this.$store.getters.designerSizeCheck
+      }
+    },
+    watch: {
+      designerSize: function(state) {
+        this.designerLayout = state;
+      }
     }
   }
 </script>
@@ -32,13 +43,25 @@
   div {
     padding: 0;
   }
-
   .main-designer {
     position: relative;
-    height: 645px;
-    margin: 0 22px 0 21px;
     padding: 10px 0;
     background-color: #efeff4;
     overflow: auto;
+  }
+
+  .designer-smartPhone {
+    height: 642px;
+    margin: 0 24px 0 21px;
+  }
+
+  .designer-tabletM {
+    height: 910px;
+    margin: 0 23px 0 20px;
+  }
+
+  .designer-tabletL {
+    height: 645px;
+    margin: 0 22px 0 21px;
   }
 </style>

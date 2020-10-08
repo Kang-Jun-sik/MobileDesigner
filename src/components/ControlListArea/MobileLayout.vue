@@ -1,13 +1,13 @@
 <template>
   <div class="controlList-mobile-layout">
-    <div class="mobile-layout smartPhone-layout">
-      <div class="mobile-image smartPhone-image"></div>
+    <div class="mobile-layout smartPhone-layout smartPhone" @click="selectLayout($event)">
+      <div class="mobile-image smartPhone-image smartPhone"></div>
     </div>
-    <div class="mobile-layout tabletM-layout">
-      <div class="mobile-image tabletM-image"></div>
+    <div class="mobile-layout tabletM-layout tabletM" @click="selectLayout($event)">
+      <div class="mobile-image tabletM-image tabletM"></div>
     </div>
-    <div class="mobile-layout tabletL-layout">
-      <div class="mobile-image tabletL-image"></div>
+    <div class="mobile-layout tabletL-layout tabletL" @click="selectLayout($event)">
+      <div class="mobile-image tabletL-image tabletL"></div>
     </div>
   </div>
 </template>
@@ -15,6 +15,36 @@
 <script>
   export default {
     name: 'mobile-layout',
+    data() {
+      return {
+
+      }
+    },
+    methods: {
+      selectLayout: function(e) {
+        e.stopPropagation();
+
+        if (e.target.classList.contains('smartPhone')){
+          this.$store.commit('setLayout', {
+            wrapper: 'designer-wrapper-smartPhone',
+            designer: 'designer-smartPhone',
+            layout: 'smartPhone'
+          })
+        } else if (e.target.classList.contains('tabletM')){
+          this.$store.commit('setLayout', {
+            wrapper: 'designer-wrapper-tabletM',
+            designer: 'designer-tabletM',
+            layout: 'tabletM'
+          })
+        } else if (e.target.classList.contains('tabletL')){
+          this.$store.commit('setLayout', {
+            wrapper: 'designer-wrapper-tabletL',
+            designer: 'designer-tabletL',
+            layout: 'tabletL'
+          })
+        }
+      },
+    }
   }
 </script>
 
@@ -31,6 +61,7 @@
       display: inline-block;
       height: 36px;
       background-color: #4e5c7b;
+      cursor: pointer;
 
       .mobile-image {
         width: 16px;
