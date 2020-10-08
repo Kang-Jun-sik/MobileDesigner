@@ -140,6 +140,12 @@ export default {
         return component;
     },
 
+    deleteService(target){
+        if(target){
+            target.remove();
+        }
+    },
+
     selectService() {
         $('.main-designer').click(function (event) {
             // 메인 디자이너 영역 선택 방지

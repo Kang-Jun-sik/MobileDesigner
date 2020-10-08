@@ -18,6 +18,12 @@ let mobileDesignerToIDE = (commandType, elm, parentUID, key) => {
                 'data': `<?xml version="1.0"?><${elm.getAttribute('uid').split('-')[0]} uid="${elm.getAttribute('uid')}"/>`
             }
             break;
+        case "delete":
+            obj = {
+                'commandType': commandType,
+                'parentId': parentUID,
+                'data': `<?xml version="1.0"?><${elm.getAttribute('uid').split('-')[0]} uid="${elm.getAttribute('uid')}"/>`
+            }
     }
     console.log(obj);
     // eslint-disable-next-line no-undef

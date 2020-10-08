@@ -1,5 +1,6 @@
 import $ from "jquery";
 import 'jquery-contextmenu'
+import GlobalService from "@/service/GlobalService";
 
 export default {
     getcontextmenu(instance) {
@@ -11,12 +12,10 @@ export default {
                     // define the elements of the menu
                     items: {
                         "edit": {name: "SearchOption1", icon: "ic-edit"},
-                        "view": {name: "View", icon: "view"}, // This is own custom FontAwesome icon
-                        "cut":  {name: "mainDesignerOption2", icon: "cut"},
                         "sep1": "---------",
                     },
                     callback: function(itemKey, opt, rootMenu, originalEvent) {
-
+                        console.log(itemKey);
 
                     }
                     // there's more, have a look at the demos and docs...
@@ -29,12 +28,16 @@ export default {
                     selector: ".ui-selected",
                     // define the elements of the menu
                     items: {
-                        "edit": {name: "SearchOption1", icon: "edit"},
-                        "cut":   {name: "SearchOption2", icon: "cut"},
+                        "edit": {name: "Search-container-option", icon: "edit"},
+                        "delete": {name: "Delete", icon: "delete"},
                         "sep1": "---------",
                     },
                     callback: function(itemKey, opt, rootMenu, originalEvent) {
-
+                        console.log(itemKey);
+                        switch (itemKey){
+                            case "delete" :
+                                GlobalService.deleteService(opt.$trigger[0]);
+                        }
                     }
                     // there's more, have a look at the demos and docs...
                 });
@@ -47,11 +50,15 @@ export default {
                     // define the elements of the menu
                     items: {
                         "b1": {name: "ButtonOption1", icon: "edit"},
+                        "delete": {name: "Delete", icon: "delete"},
                         "sep1": "---------",
                     },
                     callback: function(itemKey, opt, rootMenu, originalEvent) {
-
-
+                        console.log(itemKey);
+                        switch (itemKey){
+                            case "delete" :
+                                GlobalService.deleteService(opt.$trigger[0]);
+                        }
                     }
                     // there's more, have a look at the demos and docs...
                 });
