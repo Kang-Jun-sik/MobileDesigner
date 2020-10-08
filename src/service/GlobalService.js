@@ -8,6 +8,7 @@ import {mobileDesignerToIDE} from "@/utils/mobileDesignerToIDE";
 import ButtonComponent from "@/components/Controls/ButtonComponent";
 import SearchContainer from "@/components/Containers/SearchContainer";
 import GlobalService from "@/service/GlobalService";
+import ContextMenuService from "@/service/ContextMenuService";
 
 export default {
     openService(args) {
@@ -171,31 +172,13 @@ export default {
             window.selectedItem = target;
             window.selectedItem.classList.add('ui-selected');
             GlobalService.canResize(target);
+            ContextMenuService.destroycontextmenu();
+            ContextMenuService.getcontextmenu(window.selectedItem);
             mobileDesignerToIDE("select", window.selectedItem); //IDE로 선택되었다고 메세지 송신
         });
 
         function findTarget(target) {
             return target.closest('.dews-mobile-component');
         }
-    },
-
-    getcontextmenu(){
-        $.contextMenu({
-            // define which elements trigger this menu
-            selector: ".dews-mobile-searchContainer",
-            // define the elements of the menu
-            items: {
-                "edit": {name: "Edit", icon: "edit"},
-                "cut": {name: "Cut", icon: "cut"},
-                copy: {name: "Copy", icon: "copy"},
-                "paste": {name: "Paste", icon: "paste"},
-                "delete": {name: "Delete", icon: "delete"},
-                "sep1": "---------",
-                "quit": {name: "Quit", icon: function(){
-                        return 'context-menu-icon context-menu-icon-quit';
-                    }}
-            }
-            // there's more, have a look at the demos and docs...
-        });
     }
 }
