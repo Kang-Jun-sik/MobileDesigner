@@ -1,11 +1,14 @@
 import $ from 'jquery';
 import 'jquery-ui-bundle';
 import 'jquery-ui-bundle/jquery-ui.css';
+import 'jquery-contextmenu';
+
 import Vue from 'vue'
 import {mobileDesignerToIDE} from "@/utils/mobileDesignerToIDE";
 import ButtonComponent from "@/components/Controls/ButtonComponent";
 import SearchContainer from "@/components/Containers/SearchContainer";
 import GlobalService from "@/service/GlobalService";
+import ContextMenuService from "@/service/ContextMenuService";
 
 export default {
     openService(args) {
@@ -23,9 +26,9 @@ export default {
         // eslint-disable-next-line no-empty
         if (type === 'mpage') {
             for (let i = 0; i < canvasDoc.childElementCount; i++) {
-                if (canvasDoc.children[i].tagName == "pageInformation")
+                if (canvasDoc.children[i].tagName === "pageInformation")
                     continue;
-                if (canvasDoc.children[i].tagName == "mainButtons")
+                if (canvasDoc.children[i].tagName === "mainButtons")
                     // eslint-disable-next-line no-empty
                 {
 
@@ -56,9 +59,9 @@ export default {
         function pageParsing(node, parentuid) {
             let clone = node.cloneNode();
             let instance = createControl(clone);
-            let parent = window.Vue.$store.state.items.find(x => x.uid == parentuid);
+            let parent = window.Vue.$store.state.items.find(x => x.uid === parentuid);
             parent.$el.appendChild(instance.$el);
-            if (node.childElementCount == 0) {
+            if (node.childElementCount === 0) {
                 return;
             } else {
                 for (let i = 0; i < node.childElementCount; i++) {
@@ -175,7 +178,9 @@ export default {
             window.selectedItem = target;
             window.selectedItem.classList.add('ui-selected');
             GlobalService.canResize(target);
-            mobileDesignerToIDE("select", window.selectedItem); // IDE로 선택되었다고 메세지 송신
+            ContextMenuService.destroycontextmenu();
+            ContextMenuService.getcontextmenu(window.selectedItem);
+            mobileDesignerToIDE("select", window.selectedItem); //IDE로 선택되었다고 메세지 송신
         });
 
         function findTarget(target) {

@@ -10,6 +10,7 @@ import MainDesignerWrapper from "@/components/MainDesignerArea/MainDesignerWrapp
 import ControlListWrapper from "@/components/ControlListArea/ControlListWrapper";
 import dragula from "dragula";
 import GlobalService from "@/service/GlobalService";
+import ContextMenuService from "@/service/ContextMenuService";
 
 export default {
   name: 'mobile-wrapper',
@@ -54,6 +55,7 @@ export default {
         el.replaceWith(instance.$el);
         let parentNode = instance.$el.parentElement.closest('.dews-mobile-component');
         let parentUid = parentNode.getAttribute('uid');
+        //ContextMenuService.getcontextmenu(instance.$el);
         //mobileDesignerToIDE("create", instance.$el, parentUid);
       }
     },
