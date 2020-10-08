@@ -2,7 +2,7 @@ import $ from "jquery";
 import 'jquery-contextmenu'
 
 export default {
-    getcontextmenu(instance) {
+    getContextMenu(instance) {
         switch (instance.classList[0]) {
             case "main-designer" :
                 $.contextMenu({
@@ -58,7 +58,8 @@ export default {
                 break;
         }
     },
-    destroycontextmenu(){
+
+    destroyContextMenu(){
         $.contextMenu('destroy');
     }
 }

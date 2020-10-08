@@ -50,6 +50,7 @@ export default {
     position: relative;
     padding-top: 93px !important;
     padding-bottom: 45px !important;
+    overflow: hidden;
   }
 
   .designer-wrapper-smartPhone {

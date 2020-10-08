@@ -178,11 +178,14 @@ export default {
             window.selectedItem = target;
             window.selectedItem.classList.add('ui-selected');
             GlobalService.canResize(target);
-            ContextMenuService.destroycontextmenu();
-            ContextMenuService.getcontextmenu(window.selectedItem);
+            ContextMenuService.destroyContextMenu();
+            ContextMenuService.getContextMenu(window.selectedItem);
             mobileDesignerToIDE("select", window.selectedItem); //IDE로 선택되었다고 메세지 송신
         });
 
+        const find = function() {
+
+        }
         function findTarget(target) {
             return target.closest('.dews-mobile-component');
         }
