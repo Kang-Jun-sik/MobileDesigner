@@ -17,7 +17,6 @@ export default {
                     },
                     callback: function(itemKey, opt, rootMenu, originalEvent) {
 
-
                     }
                     // there's more, have a look at the demos and docs...
                 });

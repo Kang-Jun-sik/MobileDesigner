@@ -1,5 +1,5 @@
 <template>
-  <div :class="designerLayout" class="dews-mobile-component main-designer">
+  <div :class="designerLayout" class="main-designer dews-mobile-component">
     <slot></slot>
   </div>
 </template>
