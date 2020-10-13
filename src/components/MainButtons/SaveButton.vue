@@ -1,14 +1,20 @@
 <template>
-  <div class="dews-mobile-save dews-mobile-component"></div>
+  <div :uid="uid" class="dews-mobile-save dews-mobile-component"></div>
 </template>
 
 <script>
+  import GlobalService from "@/service/GlobalService";
+
   export default {
     name: 'save-button',
     data() {
       return {
-        buttonAttr: false
+        buttonAttr: false,
+        uid: '',
       }
+    },
+    created() {
+      this.uid = GlobalService.createUid('mSaveButton');
     }
   }
 </script>

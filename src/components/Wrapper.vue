@@ -41,7 +41,6 @@ export default {
       if (el.classList.contains('dewsControl')) {
         //sample Code
         let idTemp = el.textContent.replace(/\s+/g, '');
-        console.log('drop', el, idTemp)
         if (idTemp === 'Button')
           idTemp = 'mButton';
         else if (idTemp === 'SearchContainer')
@@ -50,12 +49,12 @@ export default {
         const uid = GlobalService.createUid(idTemp);
         const instance = GlobalService.addComponent(el.textContent);
         instance.uid = uid;
-        window.Vue.$store.commit('addItem', instance);
+        this.$store.commit('addItem', instance);
         instance.$el.setAttribute('uid', uid);
         el.replaceWith(instance.$el);
         let parentNode = instance.$el.parentElement.closest('.dews-mobile-component');
         let parentUid = parentNode.getAttribute('uid');
-        //ContextMenuService.getcontextmenu(instance.$el);
+        //ContextMenuService.getContextMenu(instance.$el);
         //mobileDesignerToIDE("create", instance.$el, parentUid);
       }
     },

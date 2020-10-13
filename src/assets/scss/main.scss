@@ -23,20 +23,32 @@ body {
     display: none;
   }
 
-  .ui-resizable-handle {
-    background-color: rgba(0,0,0,.75);
-    width: 7px;
-    height: 7px;
-    border-radius: 50%;
+  .main-designer {
+    .ui-resizable-handle {
+      background-color: rgba(0,0,0,.75);
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+    }
+
+    .ui-resizable-n, .ui-resizable-w, .ui-resizable-ne,
+    .ui-resizable-se, .ui-resizable-sw, .ui-resizable-nw {
+      cursor: not-allowed;
+    }
+
+    .ui-resizable-s, .ui-resizable-e {
+      background-color: #dc3545;
+    }
   }
 
-  .ui-resizable-s, .ui-resizable-e {
-    background-color: #dc3545;
-  }
-
-  .ui-resizable-n, .ui-resizable-w, .ui-resizable-ne,
-  .ui-resizable-se, .ui-resizable-sw, .ui-resizable-nw {
-    cursor: not-allowed;
+  .button-tab-bar {
+    .ui-resizable-handle {
+      background-color: rgba(0,0,0,.75);
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      cursor: default;
+    }
   }
 
   .ui-resizable-se {

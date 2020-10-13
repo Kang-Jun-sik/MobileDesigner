@@ -1,14 +1,20 @@
 <template>
-  <div class="dews-mobile-delete dews-mobile-component"></div>
+  <div :uid="uid" class="dews-mobile-delete dews-mobile-component"></div>
 </template>
 
 <script>
+  import GlobalService from "@/service/GlobalService";
+
   export default {
     name: 'delete-button',
     data() {
       return {
-        buttonAttr: false
+        buttonAttr: false,
+        uid: '',
       }
+    },
+    created() {
+      this.uid = GlobalService.createUid('mDeleteButton');
     }
   }
 </script>

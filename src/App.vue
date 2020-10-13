@@ -20,13 +20,13 @@ export default {
 </script>
 
 <style lang="scss">
-@import "src/assets/scss/main";
+  @import "src/assets/scss/main";
 
-#app {
-  min-width: 1002px;
-  max-width: 1272px;
-  min-height: 852px;
-  padding: 0;
-  overflow: auto;
-}
+  #app {
+    min-width: 1002px;
+    max-width: 1272px;
+    min-height: 852px;
+    padding: 0;
+    overflow: auto;
+  }
 </style>
