@@ -23,6 +23,12 @@
         mobileLayout: this.$store.state.mobileLayout,
       }
     },
+    mounted() {
+      this.$store.commit('addItem', this.$refs.addButton);
+      this.$store.commit('addItem', this.$refs.searchButton);
+      this.$store.commit('addItem', this.$refs.deleteButton);
+      this.$store.commit('addItem', this.$refs.saveButton);
+    },
     computed: {
       buttonTabBarSize: function() {
         return this.$store.getters.mobileLayoutCheck
