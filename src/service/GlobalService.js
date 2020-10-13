@@ -99,16 +99,13 @@ export default {
             resize: function (e, ui) {
                 e.stopPropagation();
                 let dir = ui.element.data('ui-resizable').axis;
-                console.log('start resize', ui)
                 if (!['s' ,'e'].includes(dir)) {
-                    console.log(dir, ui);
                     // 수정 필요
                     ui.position.left = ui.originalPosition.left;
                     ui.position.top = ui.originalPosition.top;
                     ui.size.width = ui.originalSize.width;
                     ui.size.height = ui.originalSize.height;
                 }
-                console.log('resize end', ui);
                 let width = ui.size.width;
                 let height = ui.size.height;
                 set_position(width, height);
@@ -144,41 +141,43 @@ export default {
 
     selectService() {
         $('.main-designer-wrapper').click(function (event) {
-            console.log('selectService', event.target)
             // 같은 컨트롤을 선택했을 경우 재 선택하는 것을 방지
             if (window.selectedItem && window.selectedItem === event.target) {
                 return
             }
 
             let target;
-            if (event.target.classList.contains('main-designer')) {
-                target = event.target;
-            } else if (event.target.classList.contains('dews-mobile-component') && !event.target.classList.contains('main-designer')) {
+            if (event.target.classList.contains('dews-mobile-component')) {
                 target = event.target;
             } else {
                 target = findTarget(event.target);
             }
 
+            // target이 null인 경우, dews-mobile-component 영역이 아니므로 return 한다.
+            if (target === null) {
+                return
+            }
+
             if (document.querySelector('.ui-selected') !== null) {
                 const preSelected = document.querySelector('.ui-selected');
+                const resizeDir = ['.ui-resizable-n', '.ui-resizable-e', '.ui-resizable-s', '.ui-resizable-w',
+                    '.ui-resizable-ne', '.ui-resizable-se', '.ui-resizable-sw', '.ui-resizable-nw']
+
                 preSelected.classList.remove('ui-selected');
                 $(`[uid=${preSelected.getAttribute('uid')}]`).resizable({
                     disabled: true
                 })
-                preSelected.querySelector('.ui-resizable-n').style.display = 'none';
-                preSelected.querySelector('.ui-resizable-e').style.display = 'none';
-                preSelected.querySelector('.ui-resizable-s').style.display = 'none';
-                preSelected.querySelector('.ui-resizable-w').style.display = 'none';
-                preSelected.querySelector('.ui-resizable-ne').style.display = 'none';
-                preSelected.querySelector('.ui-resizable-se').style.display = 'none';
-                preSelected.querySelector('.ui-resizable-sw').style.display = 'none';
-                preSelected.querySelector('.ui-resizable-nw').style.display = 'none';
+                if (!preSelected.classList.contains('main-designer')) {
+                    resizeDir.forEach(dir => {
+                        preSelected.querySelector(dir).style.display = 'none';
+                    })
+                }
             }
 
             window.selectedItem = target;
             window.selectedItem.classList.add('ui-selected');
+            // main-designer의 경우 resize 표시가 필요없으므로 canResize를 호출하지 않는다.
             if (!target.classList.contains('main-designer')) {
-                console.log('select')
                 GlobalService.canResize(target);
             }
             ContextMenuService.destroyContextMenu();
@@ -186,9 +185,6 @@ export default {
             mobileDesignerToIDE("select", window.selectedItem); // IDE로 선택되었다고 메세지 송신
         });
 
-        const find = function() {
-
-        }
         function findTarget(target) {
             return target.closest('.dews-mobile-component');
         }

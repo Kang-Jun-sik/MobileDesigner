@@ -1,5 +1,5 @@
 <template>
-  <div :class="designerLayout" class="main-designer dews-mobile-component">
+  <div :uid="uid" :class="designerLayout" class="main-designer dews-mobile-component">
     <slot></slot>
   </div>
 </template>
@@ -18,6 +18,7 @@
       }
     },
     mounted() {
+      this.uid = GlobalService.createUid('mCanvas')
       /*
       const uid = GlobalService.createUid('canvas');
       this.designerElement = document.querySelector('.main-designer');
