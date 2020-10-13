@@ -20,8 +20,8 @@ export default {
         let canvasDoc = xmlDoc.getElementsByTagName('canvas')[0];
         let type = canvasDoc.attributes.getNamedItem('type').nodeValue;
 
-        window.Vue.$store.state.items[0].uid = canvasDoc.getAttribute('uid'); //임시로 canvas에 uid 적용
-        window.Vue.$store.state.items[0].$el.setAttribute('uid', canvasDoc.getAttribute('uid')) //임시로 canvas에 적용
+        Vue.$store.state.items[0].uid = canvasDoc.getAttribute('uid'); // 임시로 canvas에 uid 적용
+        Vue.$store.state.items[0].$el.setAttribute('uid', canvasDoc.getAttribute('uid')) // 임시로 canvas에 적용
 
         // eslint-disable-next-line no-empty
         if (type === 'mpage') {
@@ -52,14 +52,14 @@ export default {
             }
             instance.uid = uid;
             instance.$el.setAttribute('uid', uid);
-            window.Vue.$store.commit('addItem', instance);
+            Vue.$store.commit('addItem', instance);
             return instance;
         }
 
-        function pageParsing(node, parentuid) {
+        function pageParsing(node, parentUid) {
             let clone = node.cloneNode();
             let instance = createControl(clone);
-            let parent = window.Vue.$store.state.items.find(x => x.uid === parentuid);
+            let parent = Vue.$store.state.items.find(x => x.uid === parentUid);
             parent.$el.appendChild(instance.$el);
             if (node.childElementCount === 0) {
                 return;
@@ -94,6 +94,7 @@ export default {
             disabled: false,
             handles: 'n, e, s, w, ne, se, sw, nw',
             delay: 0,
+            minWidth: parseInt(target.css('minWidth'), 10),
             minHeight: parseInt(target.css('minHeight'), 10),
             resize: function (e, ui) {
                 e.stopPropagation();
@@ -111,11 +112,9 @@ export default {
             },
             start: function (e, ui) {
                 e.stopPropagation();
-                console.log('start')
             },
             stop: function (e, ui) {
                 e.stopPropagation();
-                console.log('stop')
             },
             create: function (e, ui) {
                 let width = $(e.target).width();
@@ -147,13 +146,7 @@ export default {
     },
 
     selectService() {
-        $('.main-designer').click(function (event) {
-            // 메인 디자이너 영역 선택 방지
-            if (event.target.classList.contains('main-designer')) {
-                window.selectedItem = event.target;
-                mobileDesignerToIDE("select", window.selectedItem);
-                return
-            }
+        $('.main-designer-wrapper').click(function (event) {
             // 같은 컨트롤을 선택했을 경우 재 선택하는 것을 방지
             if (window.selectedItem && window.selectedItem === event.target) {
                 return
@@ -166,27 +159,36 @@ export default {
                 target = findTarget(event.target);
             }
 
+            // target이 null인 경우, dews-mobile-component 영역이 아니므로 return 한다.
+            if (target === null) {
+                return
+            }
+
             if (document.querySelector('.ui-selected') !== null) {
                 const preSelected = document.querySelector('.ui-selected');
+                const resizeDir = ['.ui-resizable-n', '.ui-resizable-e', '.ui-resizable-s', '.ui-resizable-w',
+                    '.ui-resizable-ne', '.ui-resizable-se', '.ui-resizable-sw', '.ui-resizable-nw']
+
                 preSelected.classList.remove('ui-selected');
                 $(`[uid=${preSelected.getAttribute('uid')}]`).resizable({
                     disabled: true
                 })
-                preSelected.querySelector('.ui-resizable-n').style.display = 'none';
-                preSelected.querySelector('.ui-resizable-e').style.display = 'none';
-                preSelected.querySelector('.ui-resizable-s').style.display = 'none';
-                preSelected.querySelector('.ui-resizable-w').style.display = 'none';
-                preSelected.querySelector('.ui-resizable-ne').style.display = 'none';
-                preSelected.querySelector('.ui-resizable-se').style.display = 'none';
-                preSelected.querySelector('.ui-resizable-sw').style.display = 'none';
-                preSelected.querySelector('.ui-resizable-nw').style.display = 'none';
+                if (!preSelected.classList.contains('main-designer')) {
+                    resizeDir.forEach(dir => {
+                        preSelected.querySelector(dir).style.display = 'none';
+                    })
+                }
             }
+
             window.selectedItem = target;
             window.selectedItem.classList.add('ui-selected');
-            GlobalService.canResize(target);
-            ContextMenuService.destroycontextmenu();
-            ContextMenuService.getcontextmenu(window.selectedItem);
-            mobileDesignerToIDE("select", window.selectedItem); //IDE로 선택되었다고 메세지 송신
+            // main-designer의 경우 resize 표시가 필요없으므로 canResize를 호출하지 않는다.
+            if (!target.classList.contains('main-designer')) {
+                GlobalService.canResize(target);
+            }
+            ContextMenuService.destroyContextMenu();
+            ContextMenuService.getContextMenu(window.selectedItem);
+            mobileDesignerToIDE("select", window.selectedItem); // IDE로 선택되었다고 메세지 송신
         });
 
         function findTarget(target) {

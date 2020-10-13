@@ -1,14 +1,20 @@
 <template>
-  <div class="dews-mobile-save dews-mobile-component"></div>
+  <div :uid="uid" class="dews-mobile-save dews-mobile-component"></div>
 </template>
 
 <script>
+  import GlobalService from "@/service/GlobalService";
+
   export default {
     name: 'save-button',
     data() {
       return {
-        buttonAttr: false
+        buttonAttr: false,
+        uid: '',
       }
+    },
+    created() {
+      this.uid = GlobalService.createUid('mSaveButton');
     }
   }
 </script>
@@ -16,9 +22,9 @@
 <style>
   .dews-mobile-save {
     display: inline-block;
-    width: 42px;
-    height: 27px;
-    background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDIyLjAuMSwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPgo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IgoJIHZpZXdCb3g9IjAgMCAzMiAzMiIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgMzIgMzIiIHhtbDpzcGFjZT0icHJlc2VydmUiPgo8cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCIgZmlsbD0iI0ZGRkZGRiIgZD0iTTIyLDI0SDEwYy0wLjY0NCwwLTIsMC0yLTJWMTBjMC0yLDEuMzU2LTIsMi0yaDF2NWgxMFY4aDEKCWMwLjY0NCwwLDIsMCwyLDJ2MTJDMjQsMjQsMjIuNjQ0LDI0LDIyLDI0eiBNMjEsMTZIMTF2NmgxMFYxNnogTTEyLDhoOHY0aC04Vjh6Ii8+Cjwvc3ZnPgo=) 0 no-repeat;
-    background-size: 37px;
+    width: 24px;
+    height: 24px;
+    margin-right: 24px;
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAGKADAAQAAAABAAAAGAAAAADB/VeXAAAA/UlEQVRIDe1VwQ3CMAxsmKDdhBE7ApsVJgA2KBOEc5Wz0tZuqlDBh0iRnfPlro6FaJpvrRjjBfuOXbMGXGrdb0VRxD9dvgmUx6R+5lfQjWcvgtdiXxPfNrHELKzaxBKzMM9AcPD9TiwxC9sysEyUb4kRK8RBRVICvnQyLYFOS0J2vmW5l4ZlIYQwLjF5P3VcFSuAXG+rgwrp9ZXfGaBN/njY8VZcDZu9TEOSmwJgQDo0YiSWonVXsD1P1AnRWjDtSsZTnb3nZAvL68wtXo7t6YBaVfFvUHw2PtFLmBiO/uEUbzqETOOpFIA9J39g7NVAkmTyOMBANObiM6eDD28pyGgkXgWahAAAAABJRU5ErkJggg==');
   }
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <div :class="designerLayout" class="dews-mobile-component main-designer">
+  <div :uid="uid" :class="designerLayout" class="main-designer dews-mobile-component">
     <slot></slot>
   </div>
 </template>
@@ -18,6 +18,7 @@
       }
     },
     mounted() {
+      this.uid = GlobalService.createUid('mCanvas')
       /*
       const uid = GlobalService.createUid('canvas');
       this.designerElement = document.querySelector('.main-designer');
@@ -51,17 +52,17 @@
   }
 
   .designer-smartPhone {
-    height: 642px;
+    height: 626px;
     margin: 0 24px 0 21px;
   }
 
   .designer-tabletM {
-    height: 910px;
+    height: 892px;
     margin: 0 23px 0 20px;
   }
 
   .designer-tabletL {
-    height: 645px;
+    height: 629px;
     margin: 0 22px 0 21px;
   }
 </style>

@@ -3,7 +3,7 @@ import 'jquery-contextmenu'
 import GlobalService from "@/service/GlobalService";
 
 export default {
-    getcontextmenu(instance) {
+    getContextMenu(instance) {
         switch (instance.classList[0]) {
             case "main-designer" :
                 $.contextMenu({
@@ -16,7 +16,6 @@ export default {
                     },
                     callback: function(itemKey, opt, rootMenu, originalEvent) {
                         console.log(itemKey);
-
                     }
                     // there's more, have a look at the demos and docs...
                 });
@@ -65,7 +64,8 @@ export default {
                 break;
         }
     },
-    destroycontextmenu(){
+
+    destroyContextMenu(){
         $.contextMenu('destroy');
     }
 }

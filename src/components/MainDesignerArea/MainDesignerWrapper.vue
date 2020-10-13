@@ -48,8 +48,9 @@ export default {
   .main-designer-wrapper {
     display: inline-block;
     position: relative;
-    padding-top: 93px !important;
-    padding-bottom: 45px !important;
+    padding-top: 99px !important;
+    padding-bottom: 76px !important;
+    overflow: hidden;
   }
 
   .designer-wrapper-smartPhone {

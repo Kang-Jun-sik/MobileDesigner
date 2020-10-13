@@ -1,10 +1,11 @@
 <template>
   <div :class="mobileLayout" class="button-tab-bar">
+    <div class="dews-mobile-buttonMenu"></div>
     <div class="dews-main-buttons">
-      <add-button></add-button>
-      <search-button></search-button>
-      <delete-button></delete-button>
-      <save-button></save-button>
+      <add-button ref="addButton"></add-button>
+      <search-button ref="searchButton"></search-button>
+      <delete-button ref="deleteButton"></delete-button>
+      <save-button ref="saveButton"></save-button>
     </div>
   </div>
 </template>
@@ -42,31 +43,40 @@
 
   .button-tab-bar {
     position: absolute;
-    background-color: #2280ff;
+    backdrop-filter: blur(20px);
+    background-color: rgba(28, 144, 251, 0.95);
     border-radius: 0 0 27px 27px;
     bottom: 0;
 
+    .dews-mobile-buttonMenu {
+      margin: 16px 0 0 23px;
+      float: left;
+      width: 24px;
+      height: 24px;
+      background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAGKADAAQAAAABAAAAGAAAAADB/VeXAAAAX0lEQVRIDWNgGCzg////AUB8Hojvg9hUdxfQ0AdADAPnibWAiViFaOoY0fiUc4FOBwXRBSAG+YT6QUS5E0dNGPQhAE1FoxkNd0xBg2g0o+EOolEZgiEwmtGIDaLBl9EAiKiEf0/YLGcAAAAASUVORK5CYII=');
+    }
+
     .dews-main-buttons {
-      margin: 10px 10px 0 0;
+      margin: 17px 0 0 0;
       float: right;
     }
   }
 
   .smartPhone {
     width: 363px;
-    height: 45px;
-    margin: 0 21px 20px;
+    height: 56px;
+    margin: 0 21px 19px;
   }
 
   .tabletM {
     width: 768px;
-    height: 45px;
+    height: 56px;
     margin: 0 20px 20px;
   }
 
   .tabletL {
     width: 1025px;
-    height: 45px;
-    margin: 0 21px 21px;
+    height: 56px;
+    margin: 0 21px 20px;
   }
 </style>
