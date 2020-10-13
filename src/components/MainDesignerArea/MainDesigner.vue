@@ -19,17 +19,11 @@
     },
     mounted() {
       this.uid = GlobalService.createUid('mCanvas')
-      /*
-      const uid = GlobalService.createUid('canvas');
-      this.designerElement = document.querySelector('.main-designer');
-      this.designerElement.setAttribute('uid', uid);
-      this.uid = uid;
-       */
       GlobalService.selectService();
     },
     computed: {
       designerSize: function() {
-        return this.$store.getters.designerSizeCheck
+        return this.$store.getters.designerSizeCheck;
       }
     },
     watch: {

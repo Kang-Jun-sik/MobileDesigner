@@ -93,7 +93,7 @@ export default {
         $(target).resizable({
             disabled: false,
             handles: 'n, e, s, w, ne, se, sw, nw',
-            delay: 0,
+            delay: 150,
             minWidth: parseInt(target.css('minWidth'), 10),
             minHeight: parseInt(target.css('minHeight'), 10),
             resize: function (e, ui) {

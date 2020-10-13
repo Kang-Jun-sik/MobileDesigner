@@ -81,7 +81,6 @@
         height: 30px;
         border-radius: 4px;
         background-color: #ffffff;
-        margin: 4px auto;
 
         .componentList-content-title {
           display: inline-block;
