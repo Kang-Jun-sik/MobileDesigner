@@ -94,17 +94,21 @@ export default {
             disabled: false,
             handles: 'n, e, s, w, ne, se, sw, nw',
             delay: 0,
+            minWidth: parseInt(target.css('minWidth'), 10),
             minHeight: parseInt(target.css('minHeight'), 10),
             resize: function (e, ui) {
                 e.stopPropagation();
                 let dir = ui.element.data('ui-resizable').axis;
+                console.log('start resize', ui)
                 if (!['s' ,'e'].includes(dir)) {
+                    console.log(dir, ui);
                     // 수정 필요
                     ui.position.left = ui.originalPosition.left;
                     ui.position.top = ui.originalPosition.top;
                     ui.size.width = ui.originalSize.width;
                     ui.size.height = ui.originalSize.height;
                 }
+                console.log('resize end', ui);
                 let width = ui.size.width;
                 let height = ui.size.height;
                 set_position(width, height);
@@ -139,7 +143,8 @@ export default {
     },
 
     selectService() {
-        $('.main-designer').click(function (event) {
+        $('.main-designer-wrapper').click(function (event) {
+            console.log('selectService', event.target)
             // 같은 컨트롤을 선택했을 경우 재 선택하는 것을 방지
             if (window.selectedItem && window.selectedItem === event.target) {
                 return
@@ -173,6 +178,7 @@ export default {
             window.selectedItem = target;
             window.selectedItem.classList.add('ui-selected');
             if (!target.classList.contains('main-designer')) {
+                console.log('select')
                 GlobalService.canResize(target);
             }
             ContextMenuService.destroyContextMenu();

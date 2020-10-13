@@ -2,10 +2,10 @@
   <div :class="mobileLayout" class="button-tab-bar">
     <div class="dews-mobile-buttonMenu"></div>
     <div class="dews-main-buttons">
-      <add-button></add-button>
-      <search-button></search-button>
-      <delete-button></delete-button>
-      <save-button></save-button>
+      <add-button ref="addButton"></add-button>
+      <search-button ref="searchButton"></search-button>
+      <delete-button ref="deleteButton"></delete-button>
+      <save-button ref="saveButton"></save-button>
     </div>
   </div>
 </template>
