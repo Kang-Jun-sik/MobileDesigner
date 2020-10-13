@@ -49,7 +49,7 @@ export default {
     display: inline-block;
     position: relative;
     padding-top: 99px !important;
-    padding-bottom: 77px !important;
+    padding-bottom: 76px !important;
     overflow: hidden;
   }
 

@@ -65,7 +65,7 @@
   .smartPhone {
     width: 363px;
     height: 56px;
-    margin: 0 21px 20px;
+    margin: 0 21px 19px;
   }
 
   .tabletM {
@@ -77,6 +77,6 @@
   .tabletL {
     width: 1025px;
     height: 56px;
-    margin: 0 21px 21px;
+    margin: 0 21px 20px;
   }
 </style>

@@ -51,7 +51,7 @@
   }
 
   .designer-smartPhone {
-    height: 625px;
+    height: 626px;
     margin: 0 24px 0 21px;
   }
 
@@ -61,7 +61,7 @@
   }
 
   .designer-tabletL {
-    height: 628px;
+    height: 629px;
     margin: 0 22px 0 21px;
   }
 </style>
