@@ -54,19 +54,19 @@
 
   .smartPhone {
     width: 363px;
-    height: 45px;
+    height: 50px;
     margin: 0 21px 20px;
   }
 
   .tabletM {
     width: 768px;
-    height: 45px;
+    height: 50px;
     margin: 0 20px 20px;
   }
 
   .tabletL {
     width: 1025px;
-    height: 45px;
+    height: 50px;
     margin: 0 21px 21px;
   }
 </style>

@@ -34,19 +34,22 @@
     padding: 0;
   }
   .dews-mobile-button {
-    min-width: 60px;
-    min-height: 32px;
-    border-radius: 2px;
+    width: 68px;
+    height: 28px;
+    min-width: 61px;
+    min-height: 24px;
+    border-radius: 4px;
     border: 1px solid #a6a6a6;
     background: linear-gradient(#fff, #f0f0f0);
     color: #000;
+    font-size: 14px;
     font-weight: 400;
+    line-height: 1.8;
     display: inline-block;
     position: relative;
     text-align: center;
     vertical-align: top;
     letter-spacing: -0.5px;
-    padding: 5px 9px;
     margin: 5px 7px;
     cursor: pointer;
 

@@ -51,17 +51,17 @@
   }
 
   .designer-smartPhone {
-    height: 642px;
+    height: 637px;
     margin: 0 24px 0 21px;
   }
 
   .designer-tabletM {
-    height: 910px;
+    height: 905px;
     margin: 0 23px 0 20px;
   }
 
   .designer-tabletL {
-    height: 645px;
+    height: 640px;
     margin: 0 22px 0 21px;
   }
 </style>

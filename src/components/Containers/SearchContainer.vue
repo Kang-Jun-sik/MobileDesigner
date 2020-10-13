@@ -30,9 +30,11 @@
   }
 
   .dews-mobile-searchContainer{
+    min-width: 349px;
     min-height: 106px;
     margin: 0 7px 5px;
     background-color: #fbfbfb;
+    cursor: pointer;
 
     .search-container-header {
       padding: 10px;
