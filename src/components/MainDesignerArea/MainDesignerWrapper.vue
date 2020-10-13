@@ -48,8 +48,8 @@ export default {
   .main-designer-wrapper {
     display: inline-block;
     position: relative;
-    padding-top: 93px !important;
-    padding-bottom: 71px !important;
+    padding-top: 99px !important;
+    padding-bottom: 77px !important;
     overflow: hidden;
   }
 

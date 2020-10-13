@@ -49,19 +49,19 @@
 
   .smartPhone {
     width: 363px;
-    height: 72px;
+    height: 78px;
     margin: 21px 21px 0;
   }
 
   .tabletM {
     width: 768px;
-    height: 70px;
+    height: 76px;
     margin: 23px 20px 0;
   }
 
   .tabletL {
     width: 1025px;
-    height: 70px;
+    height: 76px;
     margin: 23px 21px 0;
   }
 
@@ -80,7 +80,7 @@
     }
 
     .navigation-bar {
-      height: 46px;
+      height: 52px;
 
       .navigation-section-left {
         .navigation-arrow {
