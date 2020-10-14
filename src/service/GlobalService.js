@@ -160,64 +160,63 @@ export default {
         }
     },
 
-    /*
-    * 컨트롤 선택
-    * */
+    /**
+     * 컨트롤 선택(메인 디자이너 클릭시)
+     */
     selectService() {
         $('.main-designer-wrapper').click(function (event) {
-            // 같은 컨트롤을 선택했을 경우 재 선택하는 것을 방지
-            if (window.selectedItem && window.selectedItem === event.target) {
-                return;
-            }
-
-            let target;
-            if (event.target.classList.contains('dews-mobile-component')) {
-                target = event.target;
-            } else {
-                target = findTarget(event.target);
-            }
-
-            // target이 null인 경우, dews-mobile-component 영역이 아니므로 return 한다.
-            if (target === null) {
-                return;
-            }
-
-            if (document.querySelector('.ui-selected') !== null) {
-                const preSelected = document.querySelector('.ui-selected');
-                //const resizeDir = ['.ui-resizable-n', '.ui-resizable-e', '.ui-resizable-s', '.ui-resizable-w', '.ui-resizable-ne', '.ui-resizable-se', '.ui-resizable-sw', '.ui-resizable-nw']
-
-                preSelected.classList.remove('ui-selected');
-                $(`[uid=${preSelected.getAttribute('uid')}]`).resizable({
-                    disabled: true
-                })
-                if (!preSelected.classList.contains('main-designer')) {
-                    let preList = preSelected.querySelectorAll(':scope > .ui-resizable-handle');
-                    preList.forEach(x => x.style.display = 'none');
-                    /*
-                    resizeDir.forEach(dir => {
-                        preSelected.querySelector(dir).style.display = 'none';
-                    })
-                     */
-                }
-            }
-
-            window.selectedItem = target;
-            window.selectedItem.classList.add('ui-selected');
-            // main-designer의 경우 resize 표시가 필요없으므로 canResize를 호출하지 않는다.
-            if (!target.classList.contains('main-designer')) {
-                GlobalService.canResize(target);
-            }
-            ContextMenuService.destroyContextMenu();
-            ContextMenuService.getContextMenu(window.selectedItem);
-            mobileDesignerToIDE("select", window.selectedItem); // IDE로 선택되었다고 메세지 송신
-            event.preventDefault();
+            GlobalService.selectServiceParam(event);
         });
+    },
+
+    /**
+     * 컨트롤 선택
+     */
+    selectServiceParam(event) {
+        // 같은 컨트롤을 선택했을 경우 재 선택하는 것을 방지
+        if (window.selectedItem && window.selectedItem === event.target) {
+            return;
+        }
+
+        let target;
+        if (event.target.classList.contains('dews-mobile-component')) {
+            target = event.target;
+        } else {
+            target = findTarget(event.target);
+        }
+        // target이 null인 경우, dews-mobile-component 영역이 아니므로 return 한다.
+        if (target === null) {
+            return;
+        }
+
+        if (document.querySelector('.ui-selected') !== null) {
+            const preSelected = document.querySelector('.ui-selected');
+            //const resizeDir = ['.ui-resizable-n', '.ui-resizable-e', '.ui-resizable-s', '.ui-resizable-w', '.ui-resizable-ne', '.ui-resizable-se', '.ui-resizable-sw', '.ui-resizable-nw']
+            preSelected.classList.remove('ui-selected');
+            $(`[uid=${preSelected.getAttribute('uid')}]`).resizable({
+                disabled: true
+            })
+            if (!preSelected.classList.contains('main-designer')) {
+                let preList = preSelected.querySelectorAll(':scope > .ui-resizable-handle');
+                preList.forEach(x => x.style.display = 'none');
+            }
+        }
+
+        window.selectedItem = target;
+        window.selectedItem.classList.add('ui-selected');
+        // main-designer의 경우 resize 표시가 필요없으므로 canResize를 호출하지 않는다.
+        if (!target.classList.contains('main-designer')) {
+            GlobalService.canResize(target);
+        }
+        ContextMenuService.destroyContextMenu();
+        ContextMenuService.getContextMenu(window.selectedItem);
+        mobileDesignerToIDE("select", window.selectedItem); // IDE로 선택되었다고 메세지 송신
+        event.preventDefault();
 
         function findTarget(target) {
             return target.closest('.dews-mobile-component');
         }
     },
-
     /*
     * 컨트롤 Split
     * */
