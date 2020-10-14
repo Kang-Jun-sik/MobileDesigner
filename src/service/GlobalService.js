@@ -99,7 +99,7 @@ export default {
             resize: function (e, ui) {
                 e.stopPropagation();
                 let dir = ui.element.data('ui-resizable').axis;
-                if (!['s' ,'e'].includes(dir)) {
+                if (!['s', 'e'].includes(dir)) {
                     // 수정 필요
                     ui.position.left = ui.originalPosition.left;
                     ui.position.top = ui.originalPosition.top;
@@ -139,8 +139,8 @@ export default {
         return component;
     },
 
-    deleteService(target){
-        if(target){
+    deleteService(target) {
+        if (target) {
             target.remove();
         }
     },
@@ -149,7 +149,7 @@ export default {
         $('.main-designer-wrapper').click(function (event) {
             // 같은 컨트롤을 선택했을 경우 재 선택하는 것을 방지
             if (window.selectedItem && window.selectedItem === event.target) {
-                return
+                return;
             }
 
             let target;
@@ -161,22 +161,25 @@ export default {
 
             // target이 null인 경우, dews-mobile-component 영역이 아니므로 return 한다.
             if (target === null) {
-                return
+                return;
             }
 
             if (document.querySelector('.ui-selected') !== null) {
                 const preSelected = document.querySelector('.ui-selected');
-                const resizeDir = ['.ui-resizable-n', '.ui-resizable-e', '.ui-resizable-s', '.ui-resizable-w',
-                    '.ui-resizable-ne', '.ui-resizable-se', '.ui-resizable-sw', '.ui-resizable-nw']
+                //const resizeDir = ['.ui-resizable-n', '.ui-resizable-e', '.ui-resizable-s', '.ui-resizable-w', '.ui-resizable-ne', '.ui-resizable-se', '.ui-resizable-sw', '.ui-resizable-nw']
 
                 preSelected.classList.remove('ui-selected');
                 $(`[uid=${preSelected.getAttribute('uid')}]`).resizable({
                     disabled: true
                 })
                 if (!preSelected.classList.contains('main-designer')) {
+                    let preList = preSelected.querySelectorAll(':scope > .ui-resizable-handle');
+                    preList.forEach(x => x.style.display = 'none');
+                    /*
                     resizeDir.forEach(dir => {
                         preSelected.querySelector(dir).style.display = 'none';
                     })
+                     */
                 }
             }
 
@@ -189,6 +192,7 @@ export default {
             ContextMenuService.destroyContextMenu();
             ContextMenuService.getContextMenu(window.selectedItem);
             mobileDesignerToIDE("select", window.selectedItem); // IDE로 선택되었다고 메세지 송신
+            event.preventDefault();
         });
 
         function findTarget(target) {
