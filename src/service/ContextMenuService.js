@@ -27,15 +27,20 @@ export default {
                     selector: ".ui-selected",
                     // define the elements of the menu
                     items: {
+                        "split": {name: "Split", icon: 'edit'},
                         "edit": {name: "Search-container-option", icon: "edit"},
                         "delete": {name: "Delete", icon: "delete"},
                         "sep1": "---------",
                     },
                     callback: function(itemKey, opt, rootMenu, originalEvent) {
-                        console.log(itemKey);
+                        console.log('searchContainer ContextMenu', itemKey, opt);
                         switch (itemKey){
                             case "delete" :
                                 GlobalService.deleteService(opt.$trigger[0]);
+                                break;
+                            case "split":
+                                GlobalService.splitService(opt.$trigger[0]);
+                                break;
                         }
                     }
                     // there's more, have a look at the demos and docs...
@@ -53,7 +58,7 @@ export default {
                         "sep1": "---------",
                     },
                     callback: function(itemKey, opt, rootMenu, originalEvent) {
-                        console.log(itemKey);
+                        console.log(itemKey, opt);
                         switch (itemKey){
                             case "delete" :
                                 GlobalService.deleteService(opt.$trigger[0]);
