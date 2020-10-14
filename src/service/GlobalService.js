@@ -84,51 +84,53 @@ export default {
     },
 
     /*
-    * 컨트롤 리사이즈
-    * */
+     * 컨트롤 리사이즈
+     */
     canResize(element) {
-        const set_position = function (width, height) {
+        const elementUid = element.getAttribute('uid');
+        const target = $(`[uid=${elementUid}]`);
+        $(target).resizable({
+                disabled: false,
+                handles: 'n, e, s, w, ne, se, sw, nw',
+                delay: 0,
+                minWidth: parseInt(target.css('minWidth'), 10),
+                minHeight: parseInt(target.css('minHeight'), 10),
+                maxWidth: parseInt(target.css('maxWidth'), 10),
+                resize: function (e, ui) {
+                    e.stopPropagation();
+                    let dir = ui.element.data('ui-resizable').axis;
+                    if (!['s', 'e'].includes(dir)) {
+                        // 수정 필요
+                        ui.position.left = ui.originalPosition.left;
+                        ui.position.top = ui.originalPosition.top;
+                        ui.size.width = ui.originalSize.width;
+                        ui.size.height = ui.originalSize.height;
+                    }
+                    let width = ui.size.width;
+                    let height = ui.size.height;
+                    set_position(width, height);
+                },
+                start: function (e, ui) {
+                    e.stopPropagation();
+                },
+                stop: function (e, ui) {
+                    e.stopPropagation();
+                },
+                create: function (e, ui) {
+                    let width = $(e.target).width();
+                    let height = $(e.target).height();
+                    set_position(width, height);
+                },
+            }
+        );
+        set_position(element.offsetWidth, element.offsetHeight);
+
+        function set_position(width, height) {
             $('.ui-resizable-n').css('left', (width / 2 - 4) + 'px');
             $('.ui-resizable-e').css('top', (height / 2 - 4) + 'px');
             $('.ui-resizable-s').css('left', (width / 2 - 4) + 'px');
             $('.ui-resizable-w').css('top', (height / 2 - 4) + 'px');
-        };
-
-        const elementUid = element.getAttribute('uid');
-        const target = $(`[uid=${elementUid}]`);
-        $(target).resizable({
-            disabled: false,
-            handles: 'n, e, s, w, ne, se, sw, nw',
-            delay: 150,
-            minWidth: parseInt(target.css('minWidth'), 10),
-            minHeight: parseInt(target.css('minHeight'), 10),
-            maxWidth: parseInt(target.css('maxWidth'), 10),
-            resize: function (e, ui) {
-                e.stopPropagation();
-                let dir = ui.element.data('ui-resizable').axis;
-                if (!['s', 'e'].includes(dir)) {
-                    // 수정 필요
-                    ui.position.left = ui.originalPosition.left;
-                    ui.position.top = ui.originalPosition.top;
-                    ui.size.width = ui.originalSize.width;
-                    ui.size.height = ui.originalSize.height;
-                }
-                let width = ui.size.width;
-                let height = ui.size.height;
-                set_position(width, height);
-            },
-            start: function (e, ui) {
-                e.stopPropagation();
-            },
-            stop: function (e, ui) {
-                e.stopPropagation();
-            },
-            create: function (e, ui) {
-                let width = $(e.target).width();
-                let height = $(e.target).height();
-                set_position(width, height);
-            },
-        }).bind(this, set_position(element.offsetWidth, element.offsetHeight))
+        }
     },
 
     /*
@@ -152,8 +154,8 @@ export default {
     /*
     * 컨트롤 삭제
     * */
-    deleteService(target){
-        if (target){
+    deleteService(target) {
+        if (target) {
             target.remove();
         }
     },
