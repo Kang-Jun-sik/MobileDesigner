@@ -11,6 +11,9 @@ import GlobalService from "@/service/GlobalService";
 import ContextMenuService from "@/service/ContextMenuService";
 
 export default {
+    /*
+    * IDE <-> Designer 통신
+    * */
     openService(args) {
         //(1) IDE로부터 받은 데이터 전처리
         //let tdata = `{ "commandType":"open","data":"<?xml version=\\"1.0\\" encoding=\\"utf-8\\"?><page title=\\"141414\\" name=\\"12341\\" type=\\"mpage\\"><canvas uid=\\"canvas-1485142915100\\" type=\\"mpage\\" title=\\"141414\\" component=\\"\\" function=\\"\\"><pageInformation><version>1.0</version><create>kjs1436</create><builddate d4p1:nil=\\"true\\" xmlns:d4p1=\\"http://www.w3.org/2001/XMLSchema-instance\\" /><createdate>2020-09-17T16:15:16.7463121+09:00</createdate><modifieddate d4p1:nil=\\"true\\" xmlns:d4p1=\\"http://www.w3.org/2001/XMLSchema-instance\\" /></pageInformation><mainButtons uid=\\"mainButtons-1385142915113\\"><mainButton uid=\\"mainButton-1485142971049\\" id=\\"information\\" buttonAttr=\\"disabled\\" type=\\"information\\" /><mainButton uid=\\"mainButton-1485142971050\\" id=\\"localize\\" buttonAttr=\\"disabled\\" type=\\"localize\\" /><mainButton uid=\\"mainButton-1485142971051\\" id=\\"approval\\" buttonAttr=\\"normal\\" type=\\"approval\\" /><mainButton uid=\\"mainButton-1485142971052\\" id=\\"add\\" buttonAttr=\\"normal\\" type=\\"add\\" /><mainButton uid=\\"mainButton-1485142971053\\" id=\\"search\\" buttonAttr=\\"normal\\" type=\\"search\\" /><mainButton uid=\\"mainButton-1485142971054\\" id=\\"delete\\" buttonAttr=\\"normal\\" type=\\"delete\\" /><mainButton uid=\\"mainButton-1485142971055\\" id=\\"print\\" buttonAttr=\\"normal\\" type=\\"print\\" /><mainButton uid=\\"mainButton-1485142971056\\" id=\\"save\\" buttonAttr=\\"normal\\" type=\\"save\\" /><mainButton uid=\\"mainButton-1485142971057\\" id=\\"configure\\" buttonAttr=\\"normal\\" type=\\"configure\\" /></mainButtons><mLayout uid=\\"mLayout-1485142971058\\" id=\\"mlayout\\"><mButton uid=\\"mButton-1485142971058\\" id=\\"mbutton\\" buttonType=\\"normal\\" disabled=\\"false\\" /></mLayout></canvas><dataSources /><pageCssStyle><![CDATA[]]></pageCssStyle><stylesheets /><javascripts /><settings /><datas /></page>","localization":"ko-KR"}`;
@@ -80,6 +83,9 @@ export default {
         return controlUid = target + '-' + date.getTime();
     },
 
+    /*
+    * 컨트롤 리사이즈
+    * */
     canResize(element) {
         const set_position = function (width, height) {
             $('.ui-resizable-n').css('left', (width / 2 - 4) + 'px');
@@ -96,6 +102,7 @@ export default {
             delay: 150,
             minWidth: parseInt(target.css('minWidth'), 10),
             minHeight: parseInt(target.css('minHeight'), 10),
+            maxWidth: parseInt(target.css('maxWidth'), 10),
             resize: function (e, ui) {
                 e.stopPropagation();
                 let dir = ui.element.data('ui-resizable').axis;
@@ -124,6 +131,9 @@ export default {
         }).bind(this, set_position(element.offsetWidth, element.offsetHeight))
     },
 
+    /*
+    * 컴포넌트 추가
+    * */
     addComponent(type, param) {
         let component;
         switch (type) {
@@ -139,12 +149,18 @@ export default {
         return component;
     },
 
-    deleteService(target) {
-        if (target) {
+    /*
+    * 컨트롤 삭제
+    * */
+    deleteService(target){
+        if (target){
             target.remove();
         }
     },
 
+    /*
+    * 컨트롤 선택
+    * */
     selectService() {
         $('.main-designer-wrapper').click(function (event) {
             // 같은 컨트롤을 선택했을 경우 재 선택하는 것을 방지
@@ -198,5 +214,12 @@ export default {
         function findTarget(target) {
             return target.closest('.dews-mobile-component');
         }
+    },
+
+    /*
+    * 컨트롤 Split
+    * */
+    splitService(target) {
+        console.log('splitService', target.classList)
     }
 }

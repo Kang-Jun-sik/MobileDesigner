@@ -1,5 +1,6 @@
 <template>
   <div
+      :uid="uid"
       class="dews-mobile-button dews-mobile-component"
       ref="mobileButton"
       :style="buttonStyle"
@@ -7,6 +8,8 @@
 </template>
 
 <script>
+  import GlobalService from "@/service/GlobalService";
+
   export default {
     data() {
       return {
@@ -17,6 +20,9 @@
           height: ''
         }
       }
+    },
+    created() {
+      this.uid = GlobalService.createUid('mButton');
     },
     methods: {
       setWidth(width) {

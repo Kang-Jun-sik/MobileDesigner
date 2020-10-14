@@ -1,5 +1,5 @@
 <template>
-  <div class="dews-mobile-searchContainer dews-mobile-component">
+  <div :uid="uid" class="dews-mobile-searchContainer dews-mobile-component">
     <div class="search-container-header">
       {{ title }}
     </div>
@@ -10,13 +10,19 @@
 </template>
 
 <script>
+  import GlobalService from "@/service/GlobalService";
+
   export default {
     name: 'search-container-wrapper',
     uid: '',
     data() {
       return {
         title: '조회 조건',
+        uid: '',
       }
+    },
+    created() {
+      this.uid = GlobalService.createUid('mLayout');
     },
     mounted() {
       window.drake.containers.push(this.$refs.searchContainer);
@@ -32,6 +38,7 @@
   .dews-mobile-searchContainer{
     min-width: 349px;
     min-height: 106px;
+    max-width: 1011px;
     margin: 0 7px 5px;
     background-color: #fbfbfb;
     cursor: pointer;
