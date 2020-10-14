@@ -39,22 +39,21 @@ export default {
   methods: {
     drop(el, target) {
       if (el.classList.contains('dewsControl')) {
-        //sample Code
-        let idTemp = el.textContent.replace(/\s+/g, '');
-        if (idTemp === 'Button')
-          idTemp = 'mButton';
-        else if (idTemp === 'SearchContainer')
-          idTemp = 'mLayout';
+        let componentName = el.textContent.replace(/\s+/g, '');
+        if (componentName === 'Button')
+          componentName = 'mButton';
+        else if (componentName === 'SearchContainer')
+          componentName = 'mLayout';
 
-        const uid = GlobalService.createUid(idTemp);
-        const instance = GlobalService.addComponent(el.textContent);
-        instance.uid = uid;
-        this.$store.commit('addItem', instance);
-        instance.$el.setAttribute('uid', uid);
-        el.replaceWith(instance.$el);
-        let parentNode = instance.$el.parentElement.closest('.dews-mobile-component');
+        // 컴포넌트 추가 후, $el로 replace
+        const component = GlobalService.addComponent(el.textContent);
+        this.$store.commit('addItem', component);
+        el.replaceWith(component.$el);
+
+        // 부모 노드 찾기
+        let parentNode = component.$el.parentElement.closest('.dews-mobile-component');
         let parentUid = parentNode.getAttribute('uid');
-        //ContextMenuService.getContextMenu(instance.$el);
+        ContextMenuService.getContextMenu(component.$el);
         //mobileDesignerToIDE("create", instance.$el, parentUid);
       }
     },
