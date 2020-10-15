@@ -39,7 +39,7 @@ export default {
                 {
 
                 } else {
-                    pageParsing(canvasDoc.children[i], window.Vue.$store.state.items[0].uid);
+                    pageParsing(canvasDoc.children[i], mPage.uid);
                 }
             }
         }
@@ -58,14 +58,14 @@ export default {
             }
             instance.uid = uid;
             instance.$el.setAttribute('uid', uid);
-            Vue.$store.commit('addItem', instance);
+            window.Vue.$store.commit('addItem', instance);
             return instance;
         }
 
         function pageParsing(node, parentUid) {
             let clone = node.cloneNode();
             let instance = createControl(clone);
-            let parent = Vue.$store.state.items.find(x => x.uid === parentUid);
+            let parent = window.Vue.$store.state.items.find(x => x.uid === parentUid);
             parent.$el.appendChild(instance.$el);
             if (node.childElementCount === 0) {
                 return;
