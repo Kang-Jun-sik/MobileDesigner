@@ -1,6 +1,7 @@
 import $ from "jquery";
 import 'jquery-contextmenu'
 import GlobalService from "@/service/GlobalService";
+import {mobileDesignerToIDE} from "@/utils/mobileDesignerToIDE";
 
 export default {
     getContextMenu(instance) {
@@ -36,6 +37,7 @@ export default {
                         console.log('searchContainer ContextMenu', itemKey, opt);
                         switch (itemKey){
                             case "delete" :
+                                GlobalService.sendDeleteMessage(opt.$trigger[0]);
                                 GlobalService.deleteService(opt.$trigger[0]);
                                 break;
                             case "split":
