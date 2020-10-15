@@ -10,6 +10,7 @@ import SearchContainer from "@/components/Containers/SearchContainer";
 import GlobalService from "@/service/GlobalService";
 import ContextMenuService from "@/service/ContextMenuService";
 
+
 export default {
     /*
     * IDE <-> Designer 통신
@@ -20,11 +21,13 @@ export default {
         let obj = JSON.parse(args);
         let parser = new DOMParser();
         let xmlDoc = parser.parseFromString(obj.data, "application/xml");
-        let canvasDoc = xmlDoc.getElementsByTagName('canvas')[0];
+        //let canvasDoc = xmlDoc.getElementsByTagName('canvas')[0];
+        let canvasDoc = xmlDoc.getElementsByTagName('mobile-page')[0];
         let type = canvasDoc.attributes.getNamedItem('type').nodeValue;
+        let mPage = window.Vue.$store.state.items.find(x => x.uid.startsWith("mobile-page"));
 
-        Vue.$store.state.items[0].uid = canvasDoc.getAttribute('uid'); // 임시로 canvas에 uid 적용
-        Vue.$store.state.items[0].$el.setAttribute('uid', canvasDoc.getAttribute('uid')) // 임시로 canvas에 적용
+        mPage.uid = canvasDoc.getAttribute('uid'); // 임시로 canvas에 uid 적용
+        mPage.$el.setAttribute('uid', canvasDoc.getAttribute('uid')) // 임시로 canvas에 적용
 
         // eslint-disable-next-line no-empty
         if (type === 'mpage') {
@@ -46,10 +49,10 @@ export default {
             const type = clone.tagName;
             let instance;
             switch (type) {
-                case 'mLayout':
+                case 'mobile-area':
                     instance = GlobalService.addComponent('Search Container');
                     break;
-                case 'mButton':
+                case 'mobile-button':
                     instance = GlobalService.addComponent('Button');
                     break;
             }

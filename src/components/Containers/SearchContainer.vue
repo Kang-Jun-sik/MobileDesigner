@@ -22,7 +22,7 @@
       }
     },
     created() {
-      this.uid = GlobalService.createUid('mLayout');
+      this.uid = GlobalService.createUid('mobile-area');
     },
     mounted() {
       window.drake.containers.push(this.$refs.searchContainer);

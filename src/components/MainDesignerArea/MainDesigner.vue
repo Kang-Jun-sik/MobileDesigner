@@ -18,7 +18,7 @@
       }
     },
     mounted() {
-      this.uid = GlobalService.createUid('mCanvas')
+      this.uid = GlobalService.createUid('mobile-page')
       GlobalService.selectService();
     },
     computed: {

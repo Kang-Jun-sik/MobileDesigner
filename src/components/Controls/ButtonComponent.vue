@@ -22,7 +22,7 @@
       }
     },
     created() {
-      this.uid = GlobalService.createUid('mButton');
+      this.uid = GlobalService.createUid('mobile-button');
     },
     methods: {
       setWidth(width) {

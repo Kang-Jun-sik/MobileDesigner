@@ -11,6 +11,7 @@ import ControlListWrapper from "@/components/ControlListArea/ControlListWrapper"
 import dragula from "dragula";
 import GlobalService from "@/service/GlobalService";
 import ContextMenuService from "@/service/ContextMenuService";
+import {mobileDesignerToIDE} from "@/utils/mobileDesignerToIDE";
 
 export default {
   name: 'mobile-wrapper',
@@ -41,9 +42,9 @@ export default {
       if (el.classList.contains('dewsControl')) {
         let componentName = el.textContent.replace(/\s+/g, '');
         if (componentName === 'Button')
-          componentName = 'mButton';
+          componentName = 'mobile-button';
         else if (componentName === 'SearchContainer')
-          componentName = 'mLayout';
+          componentName = 'mobile-area';
 
         // 컴포넌트 추가 후, $el로 replace
         const component = GlobalService.addComponent(el.textContent);
@@ -54,7 +55,8 @@ export default {
         let parentNode = component.$el.parentElement.closest('.dews-mobile-component');
         let parentUid = parentNode.getAttribute('uid');
         ContextMenuService.getContextMenu(component.$el);
-        //mobileDesignerToIDE("create", instance.$el, parentUid);
+
+        mobileDesignerToIDE("create", component.$el, parentUid);
       }
     },
 
