@@ -63,6 +63,7 @@ export default {
                         console.log(itemKey, opt);
                         switch (itemKey){
                             case "delete" :
+                                GlobalService.sendDeleteMessage(opt.$trigger[0]);
                                 GlobalService.deleteService(opt.$trigger[0]);
                         }
                     }
