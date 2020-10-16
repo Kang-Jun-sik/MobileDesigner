@@ -167,7 +167,7 @@ export default {
      * 컨트롤 선택(메인 디자이너 클릭시)
      */
     selectService() {
-        $('.main-designer-wrapper').click(function (event) {
+        $('.main-designer-wrapper').mousedown(function (event) {
             GlobalService.selectServiceParam(event);
         });
     },
