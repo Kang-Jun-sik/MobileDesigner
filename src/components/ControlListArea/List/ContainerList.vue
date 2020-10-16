@@ -41,6 +41,7 @@
 
 <style lang="scss" scoped>
   .dews-containerList-wrapper {
+    margin-bottom: 1px;
     .containerList-header {
       width: 150px;
       height: 30px;

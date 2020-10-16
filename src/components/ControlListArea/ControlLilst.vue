@@ -1,6 +1,6 @@
 <template>
   <div class="control-list">
-    <panel-list ref="panelList"></panel-list>
+    <area-list ref="areaList"></area-list>
     <container-list ref="containerList"></container-list>
     <component-list ref="componentList"></component-list>
     <etc-list ref="etcList"></etc-list>
@@ -11,10 +11,10 @@
   import ContainerList from "@/components/ControlListArea/List/ContainerList";
   import ComponentList from "@/components/ControlListArea/List/ComponentList";
   import EtcList from "@/components/ControlListArea/List/EtcList";
-  import PanelList from "@/components/ControlListArea/List/PanelList";
+  import AreaList from "@/components/ControlListArea/List/AreaList";
   export default {
     name: 'control-list',
-    components: {PanelList, EtcList, ComponentList, ContainerList},
+    components: {AreaList, EtcList, ComponentList, ContainerList},
   }
 </script>
 

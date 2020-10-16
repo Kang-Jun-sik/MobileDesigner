@@ -8,6 +8,7 @@ export const store = new Vuex.Store({
         items: [],
 
         mainDesigner: '',
+        areaElement: '',
         containerElement: '',
         componentElement: '',
         etcElement: '',

@@ -24,7 +24,7 @@ export default {
     window.drake = dragula({
       revertOnSpill: true,
       copy: function (el, source) {
-        return source.id === 'containerList' || source.id === 'componentList' || source.id === 'etcList';
+        return source.id === 'areaList' || source.id === 'containerList' || source.id === 'componentList' || source.id === 'etcList';
       },
       accepts: function (el, target, source) {
         return _this.acceptCheck(el, target, source);
@@ -33,6 +33,7 @@ export default {
       _this.drop(el, target);
     })
     window.drake.containers.push(this.$store.state.mainDesigner.$el);
+    window.drake.containers.push(this.$store.state.areaElement);
     window.drake.containers.push(this.$store.state.containerElement);
     window.drake.containers.push(this.$store.state.componentElement);
     window.drake.containers.push(this.$store.state.etcElement);
@@ -62,7 +63,7 @@ export default {
 
     acceptCheck(el, target, source) {
       //드래그해서 컨트롤 생성시 체크
-      if (['containerList', 'componentList', 'etcList'].includes(source.id)) {
+      if (['areaList', 'containerList', 'componentList', 'etcList'].includes(source.id)) {
         if (target.closest('.main-designer') && !el.classList.contains('ui-resizable-resizing')) {
           // 메인디자이너에 컨트롤 생성시 컨트롤별 조건 체크
 
