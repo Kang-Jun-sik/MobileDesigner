@@ -48,6 +48,7 @@
 
 <style lang="scss" scoped>
   .dews-componentList-wrapper {
+    margin-bottom: 1px;
     .componentList-header {
       width: 150px;
       height: 30px;

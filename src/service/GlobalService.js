@@ -93,39 +93,39 @@ export default {
         const elementUid = element.getAttribute('uid');
         const target = $(`[uid=${elementUid}]`);
         $(target).resizable({
-                disabled: false,
-                handles: 'n, e, s, w, ne, se, sw, nw',
-                delay: 0,
-                minWidth: parseInt(target.css('minWidth'), 10),
-                minHeight: parseInt(target.css('minHeight'), 10),
-                maxWidth: parseInt(target.css('maxWidth'), 10),
-                resize: function (e, ui) {
-                    e.stopPropagation();
-                    let dir = ui.element.data('ui-resizable').axis;
-                    if (!['s', 'e'].includes(dir)) {
-                        // 수정 필요
-                        ui.position.left = ui.originalPosition.left;
-                        ui.position.top = ui.originalPosition.top;
-                        ui.size.width = ui.originalSize.width;
-                        ui.size.height = ui.originalSize.height;
-                    }
-                    let width = ui.size.width;
-                    let height = ui.size.height;
-                    set_position(width, height);
-                },
-                start: function (e, ui) {
-                    e.stopPropagation();
-                },
-                stop: function (e, ui) {
-                    e.stopPropagation();
-                },
-                create: function (e, ui) {
-                    let width = $(e.target).width();
-                    let height = $(e.target).height();
-                    set_position(width, height);
-                },
-            }
-        );
+            disabled: false,
+            handles: 'n, e, s, w, ne, se, sw, nw',
+            delay: 0,
+
+            minWidth: parseInt(target.css('minWidth'), 10),
+            minHeight: parseInt(target.css('minHeight'), 10),
+            maxWidth: parseInt(target.css('maxWidth'), 10),
+            resize: function (e, ui) {
+                e.stopPropagation();
+                let dir = ui.element.data('ui-resizable').axis;
+                if (!['s', 'e'].includes(dir)) {
+                    // 수정 필요
+                    ui.position.left = ui.originalPosition.left;
+                    ui.position.top = ui.originalPosition.top;
+                    ui.size.width = ui.originalSize.width;
+                    ui.size.height = ui.originalSize.height;
+                }
+                let width = ui.size.width;
+                let height = ui.size.height;
+                set_position(width, height);
+            },
+            start: function (e, ui) {
+                e.stopPropagation();
+            },
+            stop: function (e, ui) {
+                e.stopPropagation();
+            },
+            create: function (e, ui) {
+                let width = $(e.target).width();
+                let height = $(e.target).height();
+                set_position(width, height);
+            },
+        });
         set_position(element.offsetWidth, element.offsetHeight);
 
         function set_position(width, height) {
