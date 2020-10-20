@@ -167,7 +167,7 @@ export default {
      * 컨트롤 선택(메인 디자이너 클릭시)
      */
     selectService() {
-        $('.main-designer-wrapper').click(function (event) {
+        $('.main-designer-wrapper').mousedown(function (event) {
             GlobalService.selectServiceParam(event);
         });
     },
@@ -221,9 +221,19 @@ export default {
         }
     },
     /*
-    * 컨트롤 Split
-    * */
+     * 컨트롤 Split
+     */
     splitService(target) {
         console.log('splitService', target.classList)
+    },
+
+    /*
+     * 컨트롤 삭제 메세지 (Mobile Designer --> IDE)
+     * */
+    sendDeleteMessage(component) {
+        // 부모 노드 찾기
+        let parentNode = component.parentElement.closest('.dews-mobile-component');
+        let parentUid = parentNode.getAttribute('uid');
+        mobileDesignerToIDE("delete", component, parentUid);
     }
 }
