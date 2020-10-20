@@ -168,24 +168,23 @@ export default {
      */
     selectService() {
         $('.main-designer-wrapper').mousedown(function (event) {
-            GlobalService.selectServiceParam(event);
+            GlobalService.selectServiceParam(event.target);
         });
     },
 
     /**
      * 컨트롤 선택
      */
-    selectServiceParam(event) {
+    selectServiceParam(eventTarget) {
         // 같은 컨트롤을 선택했을 경우 재 선택하는 것을 방지
-        if (window.selectedItem && window.selectedItem === event.target) {
+        if (window.selectedItem && window.selectedItem === eventTarget) {
             return;
         }
-
         let target;
-        if (event.target.classList.contains('dews-mobile-component')) {
-            target = event.target;
+        if (eventTarget.classList.contains('dews-mobile-component')) {
+            target = eventTarget;
         } else {
-            target = findTarget(event.target);
+            target = findTarget(eventTarget);
         }
         // target이 null인 경우, dews-mobile-component 영역이 아니므로 return 한다.
         if (target === null) {
