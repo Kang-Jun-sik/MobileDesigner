@@ -4,6 +4,10 @@ import GlobalService from "@/service/GlobalService";
 import {mobileDesignerToIDE} from "@/utils/mobileDesignerToIDE";
 
 export default {
+    /*
+    * 마우스 오른쪽 클릭
+    * ContextMenu 호출
+    * */
     getContextMenu(instance) {
         switch (instance.classList[0]) {
             case "main-designer" :

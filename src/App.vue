@@ -3,20 +3,11 @@
     <mobile-wrapper></mobile-wrapper>
   </div>
 </template>
+
 <script>
-
-export default {
-  name: 'app',
-  components: {},
-  mounted() {
-
-  },
-  created: function () {
-    this.$nextTick(function () {
-
-    })
+  export default {
+    name: 'app',
   }
-}
 </script>
 
 <style lang="scss">

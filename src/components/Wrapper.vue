@@ -39,6 +39,9 @@ export default {
     window.drake.containers.push(this.$store.state.etcElement);
   },
   methods: {
+    /*
+    * 드롭할 때, 컴포넌트 호출 및 $el로 replace 처리
+    * */
     drop(el, target) {
       if (el.classList.contains('dewsControl')) {
         let componentName = el.textContent.replace(/\s+/g, '');
@@ -61,12 +64,16 @@ export default {
       }
     },
 
+    /*
+    * 드래그해서 컨트롤 생성시 체크
+    * */
     acceptCheck(el, target, source) {
-      //드래그해서 컨트롤 생성시 체크
       if (['areaList', 'containerList', 'componentList', 'etcList'].includes(source.id)) {
+        // 컨트롤 리스트에서 메인 디자이너로 Drag&Drop 할 경우
         if (target.closest('.main-designer') && !el.classList.contains('ui-resizable-resizing')) {
-          // 메인디자이너에 컨트롤 생성시 컨트롤별 조건 체크
-
+          /*
+          * 메인디자이너에 컨트롤 생성시 컨트롤별 조건 체크
+          * */
           //◎ Button
           if (el.classList.contains('dews-mobile-button')) {
             if (target.classList.contains('search-container-content'))
@@ -80,9 +87,8 @@ export default {
           }
           return false;
         }
-      }
-      //기존 생성된 컨트롤 재배치시 체크
-      else {
+      } else {
+        // 메인 디자이너에서 기존 생성된 컨트롤을 재배치할 경우
         if (el.closest('.dews-mobile-component') && el.classList.contains('ui-selected') && !el.classList.contains('ui-resizable-resizing')) {
 
           //◎ Button
