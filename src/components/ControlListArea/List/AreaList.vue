@@ -22,7 +22,6 @@
     data() {
       return {
         mobileArea: {
-          areaPanel: 'Area Panel',
           areaBox: 'Area Box',
           areaTabs: 'Area Tabs',
         }
@@ -91,10 +90,6 @@
           height: 16px;
           object-fit: contain;
           margin: -3px 5px;
-        }
-
-        .areaList-areaPanel {
-          background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAEKADAAQAAAABAAAAEAAAAAAXnVPIAAABMklEQVQ4EZ1TMU7DQBC8vZxreELyA/gBfMBckfQgiESXUNJBAyUukaBIaigs5QPhBZgf+AkpI3HxMmvF1nGXxj7J8mhnZ7w71lE6vn4i0veq42Hp5+pZpZNpjTvq6/YLaDX1UXoa7eFe0BxSWXs75GT3Au5kzxf0O7jL89cy7I8mqMXGfVfMXxCdy8PMPzAshAsNogkq4zKk+rj6fM+85od0fKMYHGrWq6toAiI6Gzi38JsEa2cWCLxZqaUjg5aJwHajiI7DcmSAfdc7Yy7DxsqYObg8rEcZYNS5BIadj4CXSm03EM8w/gzBXoUG0QTyq5C87HqK0NacJCXwSMSaKLOT6b8cognkC/v/bQX7B+ISRlIvmvpBg4YM3/nHmwhbsfC6902CWLRGrqTcSITU+TC0fxIEc8/S8pUbAAAAAElFTkSuQmCC');
         }
 
         .areaList-areaBox {
