@@ -136,6 +136,13 @@ export default {
         }
     },
 
+    setPosition(width, height) {
+        $('.ui-resizable-n').css('left', (width / 2 - 4) + 'px');
+        $('.ui-resizable-e').css('top', (height / 2 - 4) + 'px');
+        $('.ui-resizable-s').css('left', (width / 2 - 4) + 'px');
+        $('.ui-resizable-w').css('top', (height / 2 - 4) + 'px');
+    },
+
     /*
     * 컴포넌트 추가
     * */
@@ -234,5 +241,19 @@ export default {
         let parentNode = component.parentElement.closest('.dews-mobile-component');
         let parentUid = parentNode.getAttribute('uid');
         mobileDesignerToIDE("delete", component, parentUid);
-    }
+    },
+
+    /*
+    * 리사이즈 박스 없애는 함수
+    **/
+    destoryResizable(){
+        /*
+        const elementUid = item.getAttribute('uid');
+        const target = $(`[uid=${elementUid}]`);
+         */
+        if(window.selectedItem) {
+            //$(target).resizable('destroy');
+            GlobalService.setPosition(window.selectedItem.offsetWidth,window.selectedItem.offsetHeight);
+        }
+    },
 }

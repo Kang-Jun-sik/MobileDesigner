@@ -13,6 +13,8 @@
 </template>
 
 <script>
+  import GlobalService from "@/service/GlobalService";
+
   export default {
     name: 'mobile-layout',
     data() {
@@ -54,7 +56,9 @@
           this.chkTabletM = 'off';
           this.chkTabletL = 'on';
         }
-      },
+        if(window.selectedItem)
+          GlobalService.destoryResizable(window.selectedItem);
+      }
     }
   }
 </script>
