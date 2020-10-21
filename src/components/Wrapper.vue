@@ -44,14 +44,9 @@ export default {
     * */
     drop(el, target) {
       if (el.classList.contains('dewsControl')) {
-        let componentName = el.textContent.replace(/\s+/g, '');
-        if (componentName === 'Button')
-          componentName = 'mobile-button';
-        else if (componentName === 'SearchContainer')
-          componentName = 'mobile-area';
-
         // 컴포넌트 추가 후, $el로 replace
-        const component = GlobalService.addComponent(el.textContent);
+        const componentName = el.textContent.replace(/\s+/g, '');
+        const component = GlobalService.addComponent(componentName);
         this.$store.commit('addItem', component);
         el.replaceWith(component.$el);
 
@@ -60,6 +55,7 @@ export default {
         let parentUid = parentNode.getAttribute('uid');
         ContextMenuService.getContextMenu(component.$el);
 
+        // IDE로 create 전송
         mobileDesignerToIDE("create", component.$el, parentUid);
       }
     },
@@ -68,21 +64,26 @@ export default {
     * 드래그해서 컨트롤 생성시 체크
     * */
     acceptCheck(el, target, source) {
-      if (['areaList', 'containerList', 'componentList', 'etcList'].includes(source.id)) {
+      const controlList = ['areaList', 'containerList', 'componentList', 'etcList'];
+      if (controlList.includes(source.id)) {
         // 컨트롤 리스트에서 메인 디자이너로 Drag&Drop 할 경우
         if (target.closest('.main-designer') && !el.classList.contains('ui-resizable-resizing')) {
           /*
           * 메인디자이너에 컨트롤 생성시 컨트롤별 조건 체크
           * */
-          //◎ Button
+          // Button
           if (el.classList.contains('dews-mobile-button')) {
             if (target.classList.contains('search-container-content'))
               return true;
           }
-          //◎ Search Container
+          // Search Container
           else if (el.classList.contains('dews-mobile-searchContainer')) {
             if (target.classList.contains('main-designer')) {
               return true;
+            }
+          } else if (el.classList.contains('dews-mobile-areaPanel')) {
+            if (target.classList.contains('main-designer')) {
+              return true
             }
           }
           return false;
@@ -90,7 +91,6 @@ export default {
       } else {
         // 메인 디자이너에서 기존 생성된 컨트롤을 재배치할 경우
         if (el.closest('.dews-mobile-component') && el.classList.contains('ui-selected') && !el.classList.contains('ui-resizable-resizing')) {
-
           //◎ Button
           if (el.classList.contains('dews-mobile-button')) {
             if (target.classList.contains('search-container-content')) {

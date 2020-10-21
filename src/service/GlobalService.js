@@ -9,6 +9,7 @@ import ButtonComponent from "@/components/Controls/ButtonComponent";
 import SearchContainer from "@/components/Containers/SearchContainer";
 import GlobalService from "@/service/GlobalService";
 import ContextMenuService from "@/service/ContextMenuService";
+import AreaPanel from "@/components/Area/AreaPanel";
 
 
 export default {
@@ -145,8 +146,11 @@ export default {
             case 'Button':
                 component = Vue.extend(ButtonComponent);
                 break;
-            case 'Search Container':
+            case 'SearchContainer':
                 component = Vue.extend(SearchContainer);
+                break;
+            case 'AreaPanel':
+                component = Vue.extend(AreaPanel);
                 break;
         }
         component = new component();
@@ -194,7 +198,6 @@ export default {
 
         if (document.querySelector('.ui-selected') !== null) {
             const preSelected = document.querySelector('.ui-selected');
-            //const resizeDir = ['.ui-resizable-n', '.ui-resizable-e', '.ui-resizable-s', '.ui-resizable-w', '.ui-resizable-ne', '.ui-resizable-se', '.ui-resizable-sw', '.ui-resizable-nw']
             preSelected.classList.remove('ui-selected');
             $(`[uid=${preSelected.getAttribute('uid')}]`).resizable({
                 disabled: true
