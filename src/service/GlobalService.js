@@ -5,11 +5,14 @@ import 'jquery-contextmenu';
 
 import Vue from 'vue'
 import {mobileDesignerToIDE} from "@/utils/mobileDesignerToIDE";
-import ButtonComponent from "@/components/Controls/ButtonComponent";
-import SearchContainer from "@/components/Containers/SearchContainer";
 import GlobalService from "@/service/GlobalService";
 import ContextMenuService from "@/service/ContextMenuService";
+
+import Button from "@/components/Controls/ButtonComponent";
+import SearchContainer from "@/components/Containers/SearchContainer";
 import AreaPanel from "@/components/Area/AreaPanel";
+import DewsBox from "@/components/Area/AreaBox";
+import DewsTabs from "@/components/Area/tab/AreaTabs";
 
 
 export default {
@@ -151,7 +154,7 @@ export default {
         let component;
         switch (type) {
             case 'Button':
-                component = Vue.extend(ButtonComponent);
+                component = Vue.extend(Button);
                 break;
             case 'SearchContainer':
                 component = Vue.extend(SearchContainer);
@@ -159,6 +162,11 @@ export default {
             case 'AreaPanel':
                 component = Vue.extend(AreaPanel);
                 break;
+            case 'DewsBox':
+                component = Vue.extend(DewsBox);
+                break;
+            case 'DewsTabs':
+                component = Vue.extend(DewsTabs);
         }
         component = new component();
         component.$mount();

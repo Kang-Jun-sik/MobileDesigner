@@ -1,23 +1,37 @@
 <template>
   <div :uid="uid" class="dews-panel">
-    <area-item ref="areaItem"></area-item>
+    <area-item :colNum="cols.col6" :areaStyle="areaStyle.dewsBox"></area-item>
+    <area-item :colNum="cols.col6" :areaStyle="areaStyle.dewsTabs"></area-item>
   </div>
 </template>
 
 <script>
   import AreaItem from "@/components/Area/AreaItem";
   import GlobalService from "@/service/GlobalService";
+
   export default {
     name: 'dews-area-panel',
     components: {AreaItem},
     data() {
       return {
-        uid: ''
+        uid: '',
+        cols: {
+          col4: 'col-4',
+          col5: 'col-5',
+          col6: 'col-6',
+          col7: 'col-7',
+          col8: 'col-8',
+          col12: 'col-12'
+        },
+        areaStyle: {
+          dewsBox: 'dews-box',
+          dewsTabs: 'dews-tabs'
+        }
       }
     },
-    mounted() {
+    created() {
       this.uid = GlobalService.createUid('mobile-panel');
-    }
+    },
   }
 </script>
 

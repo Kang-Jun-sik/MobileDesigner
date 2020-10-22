@@ -1,22 +1,32 @@
 <template>
-  <div :uid="uid" class="dews-item col-8">
-    <dews-box ref="dewsBox"></dews-box>
-  </div>
+  <div :uid="uid" class="dews-item" :class="col"></div>
 </template>
 
 <script>
-  import DewsBox from "@/components/Area/AreaBox";
   import GlobalService from "@/service/GlobalService";
+
   export default {
     name: 'area-item',
-    components: {DewsBox},
+    props: ['colNum', 'areaStyle'],
     data() {
       return {
         uid: '',
+        col: this.colNum,
+        area: this.areaStyle,
       }
     },
-    mounted() {
+    created() {
       this.uid = GlobalService.createUid('mobile-item');
+    },
+    mounted() {
+      let areaItem;
+      if (this.area === 'dews-box') {
+        areaItem = GlobalService.addComponent('DewsBox');
+      } else if (this.area === 'dews-tabs') {
+        areaItem = GlobalService.addComponent('DewsTabs');
+      }
+
+      this.$el.appendChild(areaItem.$el);
     }
   }
 </script>

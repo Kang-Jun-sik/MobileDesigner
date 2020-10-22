@@ -1,9 +1,9 @@
 <template>
-  <div class="dews-box-wrap" >
+  <div :uid="uid" class="dews-box-wrap">
     <div class="dews-box-title" @click="onToggleClick($event)" :collapsed="collapsed">
       <h2><button class="dews-box-title-button" type="button">{{ title }}</button></h2>
     </div>
-    <div class="dews-box-content-wrap" :style="style.height" part="content" >
+    <div class="dews-box-content-wrap" :style="style" part="content">
       <div class="dews-box-content">
         <slot></slot>
       </div>
@@ -12,21 +12,31 @@
 </template>
 
 <script>
+  import GlobalService from "@/service/GlobalService";
+
   export default {
     name: 'dews-box',
     data() {
       return {
+        uid: '',
         title: 'Box#1',
-        collapsed: true,
+        collapsed: '',
         style: {
           height: ''
-        }
+        },
       }
+    },
+    created() {
+      this.uid = GlobalService.createUid('mobile-box');
     },
     methods: {
       onToggleClick: function (e){
+        e.stopPropagation();
         if (!this.collapsed) {
-          this.collapsed = true;
+          this.collapsed = 'open';
+          this.style.height = '306px';
+        } else {
+          this.collapsed = '';
           this.style.height = '0px';
         }
       },
