@@ -10,8 +10,14 @@
         let obj = JSON.parse(args);
         console.log(args);
 
-        if (obj.commandType.toUpperCase() === 'OPEN') {
-            window.services.get("openService").call(this, args); // this(MessageFromIDE)가 메서드를 등록한 것처럼 호출해준다.
+        switch (obj.commandType.toUpperCase()) {
+            //등록된 서비스를 호출
+            case 'OPEN' :
+                window.services.get("openService").call(this, args);
+                break;
+            case 'SELECT_IDE' :
+                window.services.get("selectFromIDEService").call(this, args);
+                break;
         }
     }
 
