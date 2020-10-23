@@ -1,6 +1,6 @@
 <template>
-  <div :uid="uid" class="content">
-    <div></div>
+  <div :uid="uid" class="content" :class="onActive">
+    <div :style="style"></div>
   </div>
 </template>
 
@@ -10,10 +10,16 @@
 
   export default {
     name: 'dews-tab',
+    props: ['active'],
     data() {
       return {
         uid: '',
         title: 'Tab',
+        onActive: this.active,
+        style: {
+          height: '',
+          backgroundColor: '#ffffff'
+        }
       }
     },
     created() {
@@ -22,6 +28,12 @@
     mounted() {
       const parentTabs = this.$el.closest('.dews-tabs-wrap');
       store.commit('addTabTitle', [parentTabs.getAttribute('uid'), this.title]);
+
+      if (this.onActive === 'active') {
+        this.style.height = '300px';
+      } else {
+        this.style.height = '0px';
+      }
     }
   }
 </script>

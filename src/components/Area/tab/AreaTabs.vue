@@ -26,7 +26,7 @@
       return {
         uid: '',
         titleList: 'Tab',
-        active: ''
+        active: 'active'
       }
     },
     created() {
