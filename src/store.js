@@ -16,7 +16,9 @@ export const store = new Vuex.Store({
 
         designerWrapperLayout: 'designer-wrapper-tabletL',
         designerLayout: 'designer-tabletL',
-        mobileLayout: 'tabletL'
+        mobileLayout: 'tabletL',
+
+        tabTitles: {},
     },
     mutations: {
         addItem(state, item) {
@@ -37,6 +39,13 @@ export const store = new Vuex.Store({
             state.designerWrapperLayout = payload.wrapper;
             state.designerLayout = payload.designer;
             state.mobileLayout = payload.layout;
+        },
+        addTabTitle(state, payload) {
+            if (state.tabTitles[payload[0]]) {
+                state.tabTitles[payload[0]].push(payload[1]);
+            } else {
+                state.tabTitles[payload[0]] = [payload[1]];
+            }
         }
     },
     actions: {},
@@ -52,6 +61,9 @@ export const store = new Vuex.Store({
         },
         mobileLayoutCheck(state) {
             return state.mobileLayout;
+        },
+        tabTitleList(state) {
+            return state.tabTitles;
         }
     }
 });
