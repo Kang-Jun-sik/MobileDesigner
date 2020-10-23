@@ -19,7 +19,7 @@
     },
     mounted() {
       this.uid = GlobalService.createUid('mobile-page')
-      GlobalService.selectService();
+      GlobalService.selectService(); //메인 디자이너에 컨트롤 선택 이벤트 추가
     },
     computed: {
       designerSize: function() {

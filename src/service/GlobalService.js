@@ -86,11 +86,15 @@ export default {
      * 디자이너 컨트롤 선택 서비스 (IDE --> MOBILE DESIGNER Control Selection)
      * @param args
      */
-    selectFromIDEService(args){
-        //(1) uid를 추출한다
-        //(2) uid를 이용해 vuex에서 해당 componet의 $el을 가져온다
-        //(3) 해당 $el을 selectServiceParam함수의 파라미터로 넘겨준다
+    selectFromIDEService(args) {
+        //(1) uid를 추출한다.
+        //(2) uid를 이용해 vuex에서 해당 componet의 $el을 가져온다.
+        //(3) 해당 $el을 selectServiceParam함수의 파라미터로 넘겨준다.
         console.log(args);
+        let message = JSON.parse(args);
+        let uid = message['controlUniqueId'];
+        let vcomponent = window.Vue.$store.state.items.find(x => x.uid == uid);
+        GlobalService.selectServiceParam(vcomponent.$el);
     },
 
     /*
@@ -103,7 +107,7 @@ export default {
     },
 
     /*
-     * 컨트롤 리사이즈
+     * 컨트롤 리사이즈 (jQuery 라이브러리 사용)
      */
     canResize(element) {
         const elementUid = element.getAttribute('uid');
@@ -151,6 +155,7 @@ export default {
         }
     },
 
+
     setPosition(width, height) {
         $('.ui-resizable-n').css('left', (width / 2 - 4) + 'px');
         $('.ui-resizable-e').css('top', (height / 2 - 4) + 'px');
@@ -159,7 +164,7 @@ export default {
     },
 
     /*
-    * 컴포넌트 추가
+    * 컴포넌트 추가 (vuex에서 관리될 수 있도록 Vue Component 객체 생성)
     **/
     addComponent(type, param) {
         let component;
@@ -183,31 +188,44 @@ export default {
         component.$mount();
         return component;
 
-        function removeSpaceBetweenWord(word){
+        function removeSpaceBetweenWord(word) {
             return word.split(' ').join('');
         }
     },
 
     /*
-    * 컨트롤 삭제
-    * */
+    * 컨트롤 삭제 (디자이너에서만 삭제)
+    **/
     deleteService(target) {
         if (target) {
             target.remove();
         }
     },
 
+    /*
+     * 컨트롤 삭제 메세지 전달 함수 (Mobile Designer --> IDE)
+     **/
+    sendDeleteMessage(component) {
+        // 부모 노드 찾기
+        let parentNode = component.parentElement.closest('.dews-mobile-component');
+        let parentUid = parentNode.getAttribute('uid');
+        mobileDesignerToIDE("delete", component, parentUid);
+    },
+
     /**
-     * 컨트롤 선택(메인 디자이너 클릭시)
+     * 컨트롤 선택(이벤트)
+     * @param {event}
      */
     selectService() {
         $('.main-designer-wrapper').mousedown(function (event) {
             GlobalService.selectServiceParam(event.target);
+            event.preventDefault();
         });
     },
 
     /**
-     * 컨트롤 선택
+     * 컨트롤 선택(파라미터)
+     * @param {eventTarget}
      */
     selectServiceParam(eventTarget) {
         // 같은 컨트롤을 선택했을 경우 재 선택하는 것을 방지
@@ -246,12 +264,13 @@ export default {
         ContextMenuService.destroyContextMenu();
         ContextMenuService.getContextMenu(window.selectedItem);
         mobileDesignerToIDE("select", window.selectedItem); // IDE로 선택되었다고 메세지 송신
-        event.preventDefault();
+        //event.preventDefault();
 
         function findTarget(target) {
             return target.closest('.dews-mobile-component');
         }
     },
+
     /*
      * 컨트롤 Split
      */
@@ -260,26 +279,11 @@ export default {
     },
 
     /*
-     * 컨트롤 삭제 메세지 (Mobile Designer --> IDE)
-     * */
-    sendDeleteMessage(component) {
-        // 부모 노드 찾기
-        let parentNode = component.parentElement.closest('.dews-mobile-component');
-        let parentUid = parentNode.getAttribute('uid');
-        mobileDesignerToIDE("delete", component, parentUid);
-    },
-
-    /*
-    * 리사이즈 박스 없애는 함수
+    * 리사이즈 박스 없애는 함수(수정 필요)
     **/
-    destoryResizable(){
-        /*
-        const elementUid = item.getAttribute('uid');
-        const target = $(`[uid=${elementUid}]`);
-         */
-        if(window.selectedItem) {
-            //$(target).resizable('destroy');
-            GlobalService.setPosition(window.selectedItem.offsetWidth,window.selectedItem.offsetHeight);
+    destoryResizable() {
+        if (window.selectedItem) {
+            GlobalService.setPosition(window.selectedItem.offsetWidth, window.selectedItem.offsetHeight);
         }
     },
 }
