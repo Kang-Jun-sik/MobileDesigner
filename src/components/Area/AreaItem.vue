@@ -63,7 +63,7 @@
     padding-right: 0;
   }
   @for $i from $area-item-col-size-start through $area-item-col-size-end {
-    .dews-item.col-#{$i} {
+    .dews-item.col-fd-#{$i} {
       @include item-col-size($i);
     }
   }

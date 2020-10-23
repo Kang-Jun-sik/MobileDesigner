@@ -16,12 +16,12 @@
       return {
         uid: '',
         cols: {
-          col4: 'col-4',
-          col5: 'col-5',
-          col6: 'col-6',
-          col7: 'col-7',
-          col8: 'col-8',
-          col12: 'col-12'
+          col4: 'col-fd-4',
+          col5: 'col-fd-5',
+          col6: 'col-fd-6',
+          col7: 'col-fd-7',
+          col8: 'col-fd-8',
+          col12: 'col-fd-12'
         },
         areaStyle: {
           dewsBox: 'dews-box',

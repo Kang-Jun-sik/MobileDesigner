@@ -3,8 +3,9 @@
     <div class="dews-tabs-title">
       <div class="title-list">
 <!--        <button class="title" v-for="(title, idx) in titleList" :key="idx" @click="selectTab($event, idx)">{{ title }}</button>-->
-        <button class="title active">Tab#1</button>
-        <button class="title">Tab#2</button>
+        <button class="title active"><span>Tab#1 Tab#1 Tab#1 Tab#1</span></button>
+        <button class="title"><span>Tab#2</span></button>
+
       </div>
     </div>
     <div class="dews-tabs-content">
@@ -46,6 +47,21 @@
   }
 </script>
 
-<style>
+<style lang="scss" scoped>
+@import 'node_modules/@dews/dews-mobile-style/scss/variables/variables';
+@import 'node_modules/@dews/dews-mobile-style/scss/mixins/_mixins';
 
+//======================================
+// dews-area-tabs
+//======================================
+
+//--------------------------------------
+// 레이아웃 영역
+//--------------------------------------
+* {
+  @include reset();
+}
+.dews-tabs-wrap {
+  @include area-tabs-title();
+}
 </style>

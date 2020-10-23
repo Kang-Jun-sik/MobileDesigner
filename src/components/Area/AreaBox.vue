@@ -84,19 +84,19 @@
     }
   }
 }
-//
-//:host([collapsed]) [part='content'] {
-//  //display: block;
-//  //height: 300px;
-//  transition: height 0.5s;
-//  transition-timing-function: ease-in-out;
-//}
-//
-//[part='content'] {
-//  //display: none;
-//  overflow: hidden;
-//  height: 0;
-//  transition: height 0.5s;
-//  transition-timing-function: ease-in-out;
-//}
+
+:host([collapsed]) [part='content'] {
+  //display: block;
+  //height: 300px;
+  transition: height 0.5s;
+  transition-timing-function: ease-in-out;
+}
+
+[part='content'] {
+  //display: none;
+  overflow: hidden;
+  height: 0;
+  transition: height 0.5s;
+  transition-timing-function: ease-in-out;
+}
 </style>
