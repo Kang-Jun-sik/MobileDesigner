@@ -53,7 +53,7 @@
   position: relative;
   width: 100%;
 }
-@include media("(min-width: #{$media-size-tablet-l})") {
+.designer-tabletL {
   .dews-panel {
     display: flex;
     flex-flow: row nowrap;
