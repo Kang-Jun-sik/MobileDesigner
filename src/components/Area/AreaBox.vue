@@ -1,5 +1,5 @@
 <template>
-  <div :uid="uid" class="dews-box-wrap">
+  <div :uid="uid" class="dews-mobile-areaBox dews-mobile-component dews-box-wrap">
     <div class="dews-box-title" @click="onToggleClick($event)" :collapsed="collapsed">
       <h2><button class="dews-box-title-button" type="button">{{ title }}</button></h2>
     </div>
@@ -39,6 +39,11 @@
           this.collapsed = '';
           this.style.height = '0px';
         }
+
+        const box = document.querySelector('.dews-box-wrap')
+        box.addEventListener('transitionend', () => {
+          GlobalService.setPosition(box.offsetWidth, box.offsetHeight);
+        })
       },
     }
   }
@@ -64,6 +69,9 @@
 // 애니메이션 영역
 //--------------------------------------
 .dews-box-wrap {
+  max-width: 1011px;
+  margin: 0 7px 5px;
+
   .dews-box-title {
     .dews-box-title-button {
       &:after {

@@ -12,9 +12,7 @@ export default {
         switch (instance.classList[0]) {
             case "main-designer" :
                 $.contextMenu({
-                    // define which elements trigger this menu
                     selector: ".ui-selected",
-                    // define the elements of the menu
                     items: {
                         "edit": {name: "SearchOption1", icon: "ic-edit"},
                         "sep1": "---------",
@@ -28,9 +26,7 @@ export default {
 
             case "dews-mobile-searchContainer" :
                 $.contextMenu({
-                    // define which elements trigger this menu
                     selector: ".ui-selected",
-                    // define the elements of the menu
                     items: {
                         "split": {name: "Split", icon: 'edit'},
                         "edit": {name: "Search-container-option", icon: "edit"},
@@ -49,15 +45,12 @@ export default {
                                 break;
                         }
                     }
-                    // there's more, have a look at the demos and docs...
                 });
                 break;
 
             case "dews-mobile-button" :
                 $.contextMenu({
-                    // define which elements trigger this menu
                     selector: ".ui-selected",
-                    // define the elements of the menu
                     items: {
                         "b1": {name: "ButtonOption1", icon: "edit"},
                         "delete": {name: "Delete", icon: "delete"},
@@ -71,8 +64,22 @@ export default {
                                 GlobalService.deleteService(opt.$trigger[0]);
                         }
                     }
-                    // there's more, have a look at the demos and docs...
                 });
+                break;
+
+            case "dews-mobile-areaBox":
+                $.contextMenu({
+                    selector: ".ui-selected",
+                    items: {
+                        "split": {name: "Split", icon: "edit"}
+                    },
+                    callback: function(itemKey, opt) {
+                        switch (itemKey){
+                            case "split":
+                                GlobalService.splitService(opt.$trigger[0]);
+                        }
+                    }
+                })
                 break;
         }
     },
