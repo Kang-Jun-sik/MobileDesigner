@@ -1,5 +1,5 @@
 <template>
-  <div :uid="uid" class="dews-item" :class="col"></div>
+  <div :uid="uid" class="dews-item dews-mobile-component" :class="col"></div>
 </template>
 
 <script>
@@ -15,7 +15,17 @@
       }
     },
     created() {
-      this.uid = GlobalService.createUid('mobile-item');
+      function guid() {
+        function s4() {
+          return Math.floor((1 + Math.random()) * 0x10000)
+              .toString(16)
+              .substring(1);
+        }
+        return 'mobile-item' + '-' + s4() + s4();
+      }
+
+      // this.uid = GlobalService.createUid('mobile-item');
+      this.uid = guid();
     },
     mounted() {
 
@@ -40,7 +50,9 @@
   @include reset();
   position: relative;
   display: block;
+  box-sizing: content-box;
   min-height: 1px;
+  background-clip: content-box;
 }
 @include media("(min-width: #{$media-size-tablet-l})") {
   .dews-item {

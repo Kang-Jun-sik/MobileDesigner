@@ -146,7 +146,7 @@ export default {
                 set_position(width, height);
             },
         });
-        set_position(element.offsetWidth, element.offsetHeight);
+        set_position(element.offsetWidth , element.offsetHeight);
 
         function set_position(width, height) {
             $('.ui-resizable-n').css('left', (width / 2 - 4) + 'px');
@@ -288,7 +288,8 @@ export default {
             area = GlobalService.addComponent('AreaPanel');
             designerArea.appendChild(area.$el);
             area.$el.querySelectorAll('.dews-item')[0].appendChild(target);
-            // area.$el.querySelectorAll('.dews-item')[1].style.height = area.$el.querySelectorAll('.dews-item')[0].offsetHeight + 'px';
+            area.$el.querySelectorAll('.dews-item')[1].style.height = target.offsetHeight + 'px';
+            area.$el.querySelectorAll('.dews-item')[1].style.backgroundColor = '#ffffff';
             GlobalService.setPosition(target.offsetWidth, target.offsetHeight);
             console.log(area, area.$el);
         } else {
