@@ -32,6 +32,11 @@
     created() {
       this.uid = GlobalService.createUid('mobile-panel');
     },
+    mounted() {
+      this.$nextTick(() => {
+        console.log('mounted')
+      })
+    }
   }
 </script>
 

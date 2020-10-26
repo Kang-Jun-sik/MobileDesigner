@@ -21,9 +21,9 @@
     mounted() {
       let areaItem;
       if (this.area === 'dews-box') {
-        areaItem = GlobalService.addComponent('DewsBox');
+        areaItem = GlobalService.addComponent('AreaBox');
       } else if (this.area === 'dews-tabs') {
-        areaItem = GlobalService.addComponent('DewsTabs');
+        areaItem = GlobalService.addComponent('AreaTabs');
       }
 
       this.$el.appendChild(areaItem.$el);

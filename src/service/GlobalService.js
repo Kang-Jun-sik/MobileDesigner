@@ -11,8 +11,8 @@ import ContextMenuService from "@/service/ContextMenuService";
 import Button from "@/components/Controls/ButtonComponent";
 import SearchContainer from "@/components/Containers/SearchContainer";
 import AreaPanel from "@/components/Area/AreaPanel";
-import DewsBox from "@/components/Area/AreaBox";
-import DewsTabs from "@/components/Area/tab/AreaTabs";
+import AreaBox from "@/components/Area/AreaBox";
+import AreaTabs from "@/components/Area/tab/AreaTabs";
 
 
 export default {
@@ -178,11 +178,12 @@ export default {
             case 'AreaPanel':
                 component = Vue.extend(AreaPanel);
                 break;
-            case 'DewsBox':
-                component = Vue.extend(DewsBox);
+            case 'AreaBox':
+                component = Vue.extend(AreaBox);
                 break;
-            case 'DewsTabs':
-                component = Vue.extend(DewsTabs);
+            case 'AreaTabs':
+                component = Vue.extend(AreaTabs);
+                break;
         }
         component = new component();
         component.$mount();
@@ -218,7 +219,7 @@ export default {
      */
     selectService() {
         $('.main-designer-wrapper').mousedown(function (event) {
-            GlobalService.selectServiceParam(event.target);
+            GlobalService.selectServiceParam(event.target, event);
             event.preventDefault();
         });
     },
@@ -227,19 +228,15 @@ export default {
      * 컨트롤 선택(파라미터)
      * @param {eventTarget}
      */
-    selectServiceParam(eventTarget) {
-        // 같은 컨트롤을 선택했을 경우 재 선택하는 것을 방지
-        if (window.selectedItem && window.selectedItem === eventTarget) {
-            return;
-        }
+    selectServiceParam(eventTarget, event) {
         let target;
         if (eventTarget.classList.contains('dews-mobile-component')) {
             target = eventTarget;
         } else {
             target = findTarget(eventTarget);
         }
-        // target이 null인 경우, dews-mobile-component 영역이 아니므로 return 한다.
-        if (target === null) {
+        // 같은 컨트롤을 선택했을 경우 재 선택하는 것을 방지 / target이 null인 경우 return (dews-mobile-component가 아님)
+        if ((window.selectedItem && window.selectedItem === target) || target === null) {
             return;
         }
 
@@ -264,7 +261,7 @@ export default {
         ContextMenuService.destroyContextMenu();
         ContextMenuService.getContextMenu(window.selectedItem);
         mobileDesignerToIDE("select", window.selectedItem); // IDE로 선택되었다고 메세지 송신
-        //event.preventDefault();
+        event.preventDefault();
 
         function findTarget(target) {
             return target.closest('.dews-mobile-component');
