@@ -19,7 +19,7 @@
     data() {
       return {
         uid: '',
-        title: 'Box#1',
+        title: 'Box',
         collapsed: '',
         style: {
           height: ''
@@ -30,6 +30,7 @@
       this.uid = GlobalService.createUid('mobile-box');
     },
     methods: {
+      // click 이벤트
       onToggleClick: function (e){
         e.stopPropagation();
         if (!this.collapsed) {
@@ -40,7 +41,7 @@
           this.style.height = '0px';
         }
 
-        const box = document.querySelector('.dews-box-wrap')
+        const box = this.$el;
         box.addEventListener('transitionend', () => {
           GlobalService.setPosition(box.offsetWidth, box.offsetHeight);
         })
