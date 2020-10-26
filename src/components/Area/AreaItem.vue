@@ -7,26 +7,18 @@
 
   export default {
     name: 'area-item',
-    props: ['colNum', 'areaStyle'],
+    props: ['colNum'],
     data() {
       return {
         uid: '',
         col: this.colNum,
-        area: this.areaStyle,
       }
     },
     created() {
       this.uid = GlobalService.createUid('mobile-item');
     },
     mounted() {
-      let areaItem;
-      if (this.area === 'dews-box') {
-        areaItem = GlobalService.addComponent('AreaBox');
-      } else if (this.area === 'dews-tabs') {
-        areaItem = GlobalService.addComponent('AreaTabs');
-      }
 
-      this.$el.appendChild(areaItem.$el);
     }
   }
 </script>

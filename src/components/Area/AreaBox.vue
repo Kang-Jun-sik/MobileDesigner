@@ -69,9 +69,6 @@
 // 애니메이션 영역
 //--------------------------------------
 .dews-box-wrap {
-  max-width: 1011px;
-  margin: 0 7px 5px;
-
   .dews-box-title {
     .dews-box-title-button {
       &:after {

@@ -1,7 +1,7 @@
 <template>
   <div :uid="uid" class="dews-panel">
-    <area-item :colNum="cols.col6" :areaStyle="areaStyle.dewsBox"></area-item>
-    <area-item :colNum="cols.col6" :areaStyle="areaStyle.dewsTabs"></area-item>
+    <area-item :colNum="cols.col6"></area-item>
+    <area-item :colNum="cols.col6"></area-item>
   </div>
 </template>
 
@@ -23,10 +23,6 @@
           col8: 'col-fd-8',
           col12: 'col-fd-12'
         },
-        areaStyle: {
-          dewsBox: 'dews-box',
-          dewsTabs: 'dews-tabs'
-        }
       }
     },
     created() {

@@ -215,7 +215,7 @@ export default {
 
     /**
      * 컨트롤 선택(이벤트)
-     * @param {event}
+     * @param {eventTarget, event}
      */
     selectService() {
         $('.main-designer-wrapper').mousedown(function (event) {
@@ -226,7 +226,7 @@ export default {
 
     /**
      * 컨트롤 선택(파라미터)
-     * @param {eventTarget}
+     * @param {eventTarget, event}
      */
     selectServiceParam(eventTarget, event) {
         let target;
@@ -271,9 +271,20 @@ export default {
     /*
      * 컨트롤 Split
      */
-    splitService(target) {
-        console.log('splitService', target.classList)
-    },
+    splitService(type, target) {
+        const designerArea = document.querySelector('.main-designer');
+        let area;
+        console.log(target);
+        if (!target.parentElement.classList.contains('dews-panel')) {
+            area = GlobalService.addComponent('AreaPanel');
+            designerArea.appendChild(area.$el);
+            area.$el.querySelectorAll('.dews-item')[0].appendChild(target);
+            // area.$el.querySelectorAll('.dews-item')[1].style.height = area.$el.querySelectorAll('.dews-item')[0].offsetHeight + 'px';
+            GlobalService.setPosition(target.offsetWidth, target.offsetHeight);
+            console.log(area, area.$el);
+        }
+    }
+    ,
 
     /*
     * 리사이즈 박스 없애는 함수(수정 필요)

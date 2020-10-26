@@ -62,6 +62,7 @@ export default {
                             case "delete" :
                                 GlobalService.sendDeleteMessage(opt.$trigger[0]);
                                 GlobalService.deleteService(opt.$trigger[0]);
+                                break;
                         }
                     }
                 });
@@ -71,12 +72,17 @@ export default {
                 $.contextMenu({
                     selector: ".ui-selected",
                     items: {
-                        "split": {name: "Split", icon: "edit"}
+                        "vertical": {name: "세로분할", icon: "edit"},
+                        // "horizontal": {name: "가로분할", icon: "edit"}
                     },
                     callback: function(itemKey, opt) {
                         switch (itemKey){
-                            case "split":
-                                GlobalService.splitService(opt.$trigger[0]);
+                            case "vertical":
+                                GlobalService.splitService(itemKey, opt.$trigger[0]);
+                                break;
+                            case "horizontal":
+                                GlobalService.splitService(itemKey, opt.$trigger[0]);
+                                break;
                         }
                     }
                 })
