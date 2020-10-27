@@ -132,7 +132,7 @@ export default {
                 }
                 let width = ui.size.width;
                 let height = ui.size.height;
-                set_position(width, height);
+                handlerPosition(width, height);
             },
             start: function (e, ui) {
                 e.stopPropagation();
@@ -143,12 +143,12 @@ export default {
             create: function (e, ui) {
                 let width = $(e.target).width();
                 let height = $(e.target).height();
-                set_position(width, height);
+                handlerPosition(width, height);
             },
         });
-        set_position(element.offsetWidth , element.offsetHeight);
 
-        function set_position(width, height) {
+        handlerPosition(element.offsetWidth , element.offsetHeight);
+        function handlerPosition(width, height) {
             $('.ui-resizable-n').css('left', (width / 2 - 4) + 'px');
             $('.ui-resizable-e').css('top', (height / 2 - 4) + 'px');
             $('.ui-resizable-s').css('left', (width / 2 - 4) + 'px');
@@ -156,8 +156,17 @@ export default {
         }
     },
 
-
-    setPosition(width, height) {
+    /*
+    * Layout 변경 및 Box collapsed를 위한 resize handler 위치 css 수정
+    **/
+    setPosition(el, width, height) {
+        if (el === window.selectedItem) {
+            width = window.selectedItem.offsetWidth;
+            height = window.selectedItem.offsetHeight;
+        } else {
+            width = el.offsetWidth;
+            height = el.offsetHeight;
+        }
         $('.ui-resizable-n').css('left', (width / 2 - 4) + 'px');
         $('.ui-resizable-e').css('top', (height / 2 - 4) + 'px');
         $('.ui-resizable-s').css('left', (width / 2 - 4) + 'px');
@@ -294,16 +303,6 @@ export default {
             console.log(area, area.$el);
         } else {
             // 2. 이미 분할이 되어있는 경우
-        }
-    }
-    ,
-
-    /*
-    * 리사이즈 박스 없애는 함수(수정 필요)
-    **/
-    destoryResizable() {
-        if (window.selectedItem) {
-            GlobalService.setPosition(window.selectedItem.offsetWidth, window.selectedItem.offsetHeight);
         }
     },
 }

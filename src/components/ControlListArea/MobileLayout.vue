@@ -1,12 +1,12 @@
 <template>
   <div class="controlList-mobile-layout">
-    <div :class="chkPhone" class="mobile-layout smartPhone" @click="selectLayout($event)">
+    <div :class="chkLayout.phone" class="mobile-layout smartPhone" @click="selectLayout($event)">
       <div class="mobile-image smartPhone-image smartPhone"></div>
     </div>
-    <div :class="chkTabletM" class="mobile-layout tabletM" @click="selectLayout($event)">
+    <div :class="chkLayout.tabletM" class="mobile-layout tabletM" @click="selectLayout($event)">
       <div class="mobile-image tabletM-image tabletM"></div>
     </div>
-    <div :class="chkTabletL" class="mobile-layout tabletL" @click="selectLayout($event)">
+    <div :class="chkLayout.tabletL" class="mobile-layout tabletL" @click="selectLayout($event)">
       <div class="mobile-image tabletL-image tabletL"></div>
     </div>
   </div>
@@ -19,45 +19,42 @@
     name: 'mobile-layout',
     data() {
       return {
-        chkPhone: 'off',
-        chkTabletM: 'off',
-        chkTabletL: 'on'
+        chkLayout: {
+          phone: 'off',
+          tabletM: 'off',
+          tabletL: 'on'
+        },
       }
     },
     methods: {
       selectLayout: function(e) {
         e.stopPropagation();
 
+        let chk;
         if (e.target.classList.contains('smartPhone')){
-          this.$store.commit('setLayout', {
-            wrapper: 'designer-wrapper-smartPhone',
-            designer: 'designer-smartPhone',
-            layout: 'smartPhone'
-          })
-          this.chkPhone = 'on';
-          this.chkTabletM = 'off';
-          this.chkTabletL = 'off';
+          this.$store.commit('setLayout', 'smartPhone')
+          chk = 'phone';
         } else if (e.target.classList.contains('tabletM')){
-          this.$store.commit('setLayout', {
-            wrapper: 'designer-wrapper-tabletM',
-            designer: 'designer-tabletM',
-            layout: 'tabletM'
-          })
-          this.chkPhone = 'off';
-          this.chkTabletM = 'on';
-          this.chkTabletL = 'off';
+          this.$store.commit('setLayout', 'tabletM')
+          chk = 'tabletM';
         } else if (e.target.classList.contains('tabletL')){
-          this.$store.commit('setLayout', {
-            wrapper: 'designer-wrapper-tabletL',
-            designer: 'designer-tabletL',
-            layout: 'tabletL'
-          })
-          this.chkPhone = 'off';
-          this.chkTabletM = 'off';
-          this.chkTabletL = 'on';
+          this.$store.commit('setLayout', 'tabletL')
+          chk = 'tabletL';
         }
-        if(window.selectedItem)
-          GlobalService.destoryResizable(window.selectedItem);
+
+        // click된 Layout class on 추가 및 나머지 Layout off class 추가
+        for (let key in this.chkLayout) {
+          if (key === chk) {
+            this.chkLayout[key] = 'on';
+          } else {
+            this.chkLayout[key] = 'off';
+          }
+        }
+
+        // Layout 변경시 selectedItem이 존재한다면 width, height 변경을 위해 setPosition 함수 호출
+        if (window.selectedItem) {
+          setTimeout(GlobalService.setPosition, 500, window.selectedItem);
+        }
       }
     }
   }

@@ -42,9 +42,7 @@
         }
 
         const box = this.$el;
-        box.addEventListener('transitionend', () => {
-          GlobalService.setPosition(box.offsetWidth, box.offsetHeight);
-        })
+        setTimeout(GlobalService.setPosition, 500, box);
       },
     }
   }
