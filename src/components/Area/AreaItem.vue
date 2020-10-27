@@ -51,26 +51,29 @@
   position: relative;
   display: block;
   box-sizing: content-box;
+  width: 100%;
   min-height: 1px;
   background-clip: content-box;
 }
-@include media("(min-width: #{$media-size-tablet-l})") {
+.designer-tabletL {
   .dews-item {
     padding: 0 $area-item-space;
     flex: 1 0 100%;
     min-width: $area-item-size-minimum-width;
   }
+
   .dews-item:first-of-type {
     padding-left: 0;
   }
+
   .dews-item:last-of-type {
     padding-right: 0;
   }
+
   @for $i from $area-item-col-size-start through $area-item-col-size-end {
     .dews-item.col-fd-#{$i} {
       @include item-col-size($i);
     }
   }
 }
-
 </style>
