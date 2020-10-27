@@ -276,14 +276,5 @@ export default {
      */
     splitService(target) {
         console.log('splitService', target.classList)
-    },
-
-    /*
-    * 리사이즈 박스 없애는 함수(수정 필요)
-    **/
-    destoryResizable() {
-        if (window.selectedItem) {
-            GlobalService.setPosition(window.selectedItem.offsetWidth, window.selectedItem.offsetHeight);
-        }
-    },
+    }
 }
