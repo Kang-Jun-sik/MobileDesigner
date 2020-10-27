@@ -83,7 +83,11 @@ export default {
             }
           } else if (el.classList.contains('dews-mobile-areaPanel')) {
             if (target.classList.contains('main-designer')) {
-              return true
+              return true;
+            }
+          } else if (el.classList.contains('dews-mobile-areaBox')) {
+            if (target.classList.contains('main-designer')) {
+              return true;
             }
           }
           return false;

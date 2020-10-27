@@ -1,5 +1,5 @@
 <template>
-  <div :uid="uid" class="dews-box-wrap">
+  <div :uid="uid" class="dews-mobile-areaBox dews-mobile-component dews-box-wrap">
     <div class="dews-box-title" @click="onToggleClick($event)" :collapsed="collapsed">
       <h2><button class="dews-box-title-button" type="button">{{ title }}</button></h2>
     </div>
@@ -19,7 +19,7 @@
     data() {
       return {
         uid: '',
-        title: 'Box#1',
+        title: 'Box',
         collapsed: '',
         style: {
           height: ''
@@ -30,6 +30,7 @@
       this.uid = GlobalService.createUid('mobile-box');
     },
     methods: {
+      // click 이벤트
       onToggleClick: function (e){
         e.stopPropagation();
         if (!this.collapsed) {
@@ -39,6 +40,9 @@
           this.collapsed = '';
           this.style.height = '0px';
         }
+
+        const box = this.$el;
+        setTimeout(GlobalService.setPosition, 500, box);
       },
     }
   }

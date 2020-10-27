@@ -4,6 +4,7 @@ import 'jquery-ui-bundle/jquery-ui.css';
 import 'jquery-contextmenu';
 
 import Vue from 'vue'
+import { store } from "@/store";
 import {mobileDesignerToIDE} from "@/utils/mobileDesignerToIDE";
 import GlobalService from "@/service/GlobalService";
 import ContextMenuService from "@/service/ContextMenuService";
@@ -11,8 +12,8 @@ import ContextMenuService from "@/service/ContextMenuService";
 import Button from "@/components/Controls/ButtonComponent";
 import SearchContainer from "@/components/Containers/SearchContainer";
 import AreaPanel from "@/components/Area/AreaPanel";
-import DewsBox from "@/components/Area/AreaBox";
-import DewsTabs from "@/components/Area/tab/AreaTabs";
+import AreaBox from "@/components/Area/AreaBox";
+import AreaTabs from "@/components/Area/tab/AreaTabs";
 
 
 export default {
@@ -131,7 +132,7 @@ export default {
                 }
                 let width = ui.size.width;
                 let height = ui.size.height;
-                set_position(width, height);
+                handlerPosition(width, height);
             },
             start: function (e, ui) {
                 e.stopPropagation();
@@ -142,12 +143,12 @@ export default {
             create: function (e, ui) {
                 let width = $(e.target).width();
                 let height = $(e.target).height();
-                set_position(width, height);
+                handlerPosition(width, height);
             },
         });
-        set_position(element.offsetWidth, element.offsetHeight);
 
-        function set_position(width, height) {
+        handlerPosition(element.offsetWidth , element.offsetHeight);
+        function handlerPosition(width, height) {
             $('.ui-resizable-n').css('left', (width / 2 - 4) + 'px');
             $('.ui-resizable-e').css('top', (height / 2 - 4) + 'px');
             $('.ui-resizable-s').css('left', (width / 2 - 4) + 'px');
@@ -155,8 +156,17 @@ export default {
         }
     },
 
-
-    setPosition(width, height) {
+    /*
+    * Layout 변경 및 Box collapsed를 위한 resize handler 위치 css 수정
+    **/
+    setPosition(el, width, height) {
+        if (el === window.selectedItem) {
+            width = window.selectedItem.offsetWidth;
+            height = window.selectedItem.offsetHeight;
+        } else {
+            width = el.offsetWidth;
+            height = el.offsetHeight;
+        }
         $('.ui-resizable-n').css('left', (width / 2 - 4) + 'px');
         $('.ui-resizable-e').css('top', (height / 2 - 4) + 'px');
         $('.ui-resizable-s').css('left', (width / 2 - 4) + 'px');
@@ -178,11 +188,12 @@ export default {
             case 'AreaPanel':
                 component = Vue.extend(AreaPanel);
                 break;
-            case 'DewsBox':
-                component = Vue.extend(DewsBox);
+            case 'AreaBox':
+                component = Vue.extend(AreaBox);
                 break;
-            case 'DewsTabs':
-                component = Vue.extend(DewsTabs);
+            case 'AreaTabs':
+                component = Vue.extend(AreaTabs);
+                break;
         }
         component = new component();
         component.$mount();
@@ -214,32 +225,28 @@ export default {
 
     /**
      * 컨트롤 선택(이벤트)
-     * @param {event}
+     * @param {eventTarget, event}
      */
     selectService() {
         $('.main-designer-wrapper').mousedown(function (event) {
-            GlobalService.selectServiceParam(event.target);
+            GlobalService.selectServiceParam(event.target, event);
             event.preventDefault();
         });
     },
 
     /**
      * 컨트롤 선택(파라미터)
-     * @param {eventTarget}
+     * @param {eventTarget, event}
      */
-    selectServiceParam(eventTarget) {
-        // 같은 컨트롤을 선택했을 경우 재 선택하는 것을 방지
-        if (window.selectedItem && window.selectedItem === eventTarget) {
-            return;
-        }
+    selectServiceParam(eventTarget, event) {
         let target;
         if (eventTarget.classList.contains('dews-mobile-component')) {
             target = eventTarget;
         } else {
             target = findTarget(eventTarget);
         }
-        // target이 null인 경우, dews-mobile-component 영역이 아니므로 return 한다.
-        if (target === null) {
+        // 같은 컨트롤을 선택했을 경우 재 선택하는 것을 방지 / target이 null인 경우 return (dews-mobile-component가 아님)
+        if ((window.selectedItem && window.selectedItem === target) || target === null) {
             return;
         }
 
@@ -274,7 +281,28 @@ export default {
     /*
      * 컨트롤 Split
      */
-    splitService(target) {
-        console.log('splitService', target.classList)
-    }
+    splitService(type, target) {
+        const layoutStyle = store.state.designerLayout;
+        // TabletL 사이즈가 아니라면 분할이 불가능하므로 리턴
+        if (layoutStyle !== 'designer-tabletL') {
+            return
+        }
+
+        const designerArea = document.querySelector('.main-designer');
+        let area;
+
+        // 분할 로직
+        if (!target.parentElement.classList.contains('dews-item')) {
+            // 1. AreaBox/ AreaTabs가 분할되지 않은 경우 (col-12를 다 차지하고 있음)
+            area = GlobalService.addComponent('AreaPanel');
+            designerArea.appendChild(area.$el);
+            area.$el.querySelectorAll('.dews-item')[0].appendChild(target);
+            area.$el.querySelectorAll('.dews-item')[1].style.height = target.offsetHeight + 'px';
+            area.$el.querySelectorAll('.dews-item')[1].style.backgroundColor = '#ffffff';
+            GlobalService.setPosition(target.offsetWidth, target.offsetHeight);
+            console.log(area, area.$el);
+        } else {
+            // 2. 이미 분할이 되어있는 경우
+        }
+    },
 }

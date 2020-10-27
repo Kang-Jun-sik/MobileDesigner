@@ -1,5 +1,5 @@
 <template>
-  <div :uid="uid" class="dews-item" :class="col"></div>
+  <div :uid="uid" class="dews-item dews-mobile-component" :class="col"></div>
 </template>
 
 <script>
@@ -7,26 +7,28 @@
 
   export default {
     name: 'area-item',
-    props: ['colNum', 'areaStyle'],
+    props: ['colNum'],
     data() {
       return {
         uid: '',
         col: this.colNum,
-        area: this.areaStyle,
       }
     },
     created() {
-      this.uid = GlobalService.createUid('mobile-item');
-    },
-    mounted() {
-      let areaItem;
-      if (this.area === 'dews-box') {
-        areaItem = GlobalService.addComponent('DewsBox');
-      } else if (this.area === 'dews-tabs') {
-        areaItem = GlobalService.addComponent('DewsTabs');
+      function guid() {
+        function s4() {
+          return Math.floor((1 + Math.random()) * 0x10000)
+              .toString(16)
+              .substring(1);
+        }
+        return 'mobile-item' + '-' + s4() + s4();
       }
 
-      this.$el.appendChild(areaItem.$el);
+      // this.uid = GlobalService.createUid('mobile-item');
+      this.uid = guid();
+    },
+    mounted() {
+
     }
   }
 </script>
@@ -48,25 +50,30 @@
   @include reset();
   position: relative;
   display: block;
+  box-sizing: content-box;
+  width: 100%;
   min-height: 1px;
+  background-clip: content-box;
 }
-@include media("(min-width: #{$media-size-tablet-l})") {
+.designer-tabletL {
   .dews-item {
     padding: 0 $area-item-space;
     flex: 1 0 100%;
     min-width: $area-item-size-minimum-width;
   }
+
   .dews-item:first-of-type {
     padding-left: 0;
   }
+
   .dews-item:last-of-type {
     padding-right: 0;
   }
+
   @for $i from $area-item-col-size-start through $area-item-col-size-end {
     .dews-item.col-fd-#{$i} {
       @include item-col-size($i);
     }
   }
 }
-
 </style>

@@ -40,9 +40,9 @@
   }
   .main-designer {
     position: relative;
-    padding: 10px 0;
+    padding: 8px 5px 5px 7px;
     background-color: #efeff4;
-    overflow: auto;
+    overflow-y: scroll;
   }
 
   .designer-smartPhone {

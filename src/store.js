@@ -36,9 +36,9 @@ export const store = new Vuex.Store({
             console.log('state', state.dragulaContainer);
         },
         setLayout(state, payload) {
-            state.designerWrapperLayout = payload.wrapper;
-            state.designerLayout = payload.designer;
-            state.mobileLayout = payload.layout;
+            state.designerWrapperLayout = 'designer-wrapper-' + payload;
+            state.designerLayout = 'designer-' + payload;
+            state.mobileLayout = payload;
         },
         addTabTitle(state, payload) {
             if (state.tabTitles[payload[0]]) {
