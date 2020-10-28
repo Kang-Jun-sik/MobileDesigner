@@ -2,6 +2,7 @@ import $ from "jquery";
 import 'jquery-contextmenu'
 import GlobalService from "@/service/GlobalService";
 import {mobileDesignerToIDE} from "@/utils/mobileDesignerToIDE";
+import SplitService from "@/service/SplitService";
 
 export default {
     /*
@@ -28,7 +29,6 @@ export default {
                 $.contextMenu({
                     selector: ".ui-selected",
                     items: {
-                        "split": {name: "Split", icon: 'edit'},
                         "edit": {name: "Search-container-option", icon: "edit"},
                         "delete": {name: "Delete", icon: "delete"},
                         "sep1": "---------",
@@ -39,9 +39,6 @@ export default {
                             case "delete" :
                                 GlobalService.sendDeleteMessage(opt.$trigger[0]);
                                 GlobalService.deleteService(opt.$trigger[0]);
-                                break;
-                            case "split":
-                                GlobalService.splitService(opt.$trigger[0]);
                                 break;
                         }
                     }
@@ -73,15 +70,15 @@ export default {
                     selector: ".ui-selected",
                     items: {
                         "vertical": {name: "세로분할", icon: "edit"},
-                        // "horizontal": {name: "가로분할", icon: "edit"}
+                        "horizontal": {name: "가로분할", icon: "edit"}
                     },
                     callback: function(itemKey, opt) {
                         switch (itemKey){
                             case "vertical":
-                                GlobalService.splitService(itemKey, opt.$trigger[0]);
+                                SplitService.verticalSplit(opt.$trigger[0]);
                                 break;
                             case "horizontal":
-                                GlobalService.splitService(itemKey, opt.$trigger[0]);
+                                SplitService.horizontalSplit(opt.$trigger[0]);
                                 break;
                         }
                     }

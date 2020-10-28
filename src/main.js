@@ -7,7 +7,7 @@ import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 
 import Wrapper from "@/components/Wrapper";
-import registerService from "@/service/registerService";
+import RegisterService from "@/service/RegisterService";
 import { store } from './store';
 
 Vue.config.productionTip = false
@@ -18,7 +18,7 @@ Vue.use(BootstrapVue)
 //글로벌 컴포넌트 등록
 Vue.component(Wrapper.name, Wrapper)
 
-registerService.init();
+RegisterService.init();
 
 //앱 진입
 window.Vue = new Vue({

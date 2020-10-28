@@ -19,6 +19,8 @@ export const store = new Vuex.Store({
         mobileLayout: 'tabletL',
 
         tabTitles: {},
+
+        splitCount: 0,
     },
     mutations: {
         addItem(state, item) {

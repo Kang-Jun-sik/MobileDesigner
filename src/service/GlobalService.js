@@ -160,13 +160,8 @@ export default {
     * Layout 변경 및 Box collapsed를 위한 resize handler 위치 css 수정
     **/
     setPosition(el, width, height) {
-        if (el === window.selectedItem) {
-            width = window.selectedItem.offsetWidth;
-            height = window.selectedItem.offsetHeight;
-        } else {
-            width = el.offsetWidth;
-            height = el.offsetHeight;
-        }
+        width = el.offsetWidth;
+        height = el.offsetHeight;
         $('.ui-resizable-n').css('left', (width / 2 - 4) + 'px');
         $('.ui-resizable-e').css('top', (height / 2 - 4) + 'px');
         $('.ui-resizable-s').css('left', (width / 2 - 4) + 'px');
@@ -275,34 +270,6 @@ export default {
 
         function findTarget(target) {
             return target.closest('.dews-mobile-component');
-        }
-    },
-
-    /*
-     * 컨트롤 Split
-     */
-    splitService(type, target) {
-        const layoutStyle = store.state.designerLayout;
-        // TabletL 사이즈가 아니라면 분할이 불가능하므로 리턴
-        if (layoutStyle !== 'designer-tabletL') {
-            return
-        }
-
-        const designerArea = document.querySelector('.main-designer');
-        let area;
-
-        // 분할 로직
-        if (!target.parentElement.classList.contains('dews-item')) {
-            // 1. AreaBox/ AreaTabs가 분할되지 않은 경우 (col-12를 다 차지하고 있음)
-            area = GlobalService.addComponent('AreaPanel');
-            designerArea.appendChild(area.$el);
-            area.$el.querySelectorAll('.dews-item')[0].appendChild(target);
-            area.$el.querySelectorAll('.dews-item')[1].style.height = target.offsetHeight + 'px';
-            area.$el.querySelectorAll('.dews-item')[1].style.backgroundColor = '#ffffff';
-            GlobalService.setPosition(target.offsetWidth, target.offsetHeight);
-            console.log(area, area.$el);
-        } else {
-            // 2. 이미 분할이 되어있는 경우
         }
     },
 }
