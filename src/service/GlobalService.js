@@ -94,8 +94,8 @@ export default {
         console.log(args);
         let message = JSON.parse(args);
         let uid = message['controlUniqueId'];
-        let vcomponent = window.Vue.$store.state.items.find(x => x.uid == uid);
-        GlobalService.selectServiceParam(vcomponent.$el);
+        let vComponent = window.Vue.$store.state.items.find(x => x.uid == uid);
+        GlobalService.selectServiceParam(vComponent.$el);
     },
 
     /*
@@ -129,10 +129,18 @@ export default {
                     ui.position.top = ui.originalPosition.top;
                     ui.size.width = ui.originalSize.width;
                     ui.size.height = ui.originalSize.height;
+                } else if (dir === 'e') {
+                    if (element.parentElement.classList.contains('dews-item')) {
+                        if (element.parentElement.nextSibling) {
+                            let nextElement = element.parentElement.nextSibling;
+                            console.log(nextElement)
+                        }
+                    }
+                    // console.log(element.parentElement);
                 }
                 let width = ui.size.width;
                 let height = ui.size.height;
-                handlerPosition(width, height);
+                GlobalService.setPosition(element, width, height);
             },
             start: function (e, ui) {
                 e.stopPropagation();
@@ -143,17 +151,11 @@ export default {
             create: function (e, ui) {
                 let width = $(e.target).width();
                 let height = $(e.target).height();
-                handlerPosition(width, height);
+                GlobalService.setPosition(element, width, height);
             },
         });
 
-        handlerPosition(element.offsetWidth , element.offsetHeight);
-        function handlerPosition(width, height) {
-            $('.ui-resizable-n').css('left', (width / 2 - 4) + 'px');
-            $('.ui-resizable-e').css('top', (height / 2 - 4) + 'px');
-            $('.ui-resizable-s').css('left', (width / 2 - 4) + 'px');
-            $('.ui-resizable-w').css('top', (height / 2 - 4) + 'px');
-        }
+        GlobalService.setPosition(element, element.offsetWidth, element.offsetHeight);
     },
 
     /*
@@ -220,20 +222,20 @@ export default {
 
     /**
      * 컨트롤 선택(이벤트)
-     * @param {eventTarget, event}
+     * @param {eventTarget}
      */
     selectService() {
         $('.main-designer-wrapper').mousedown(function (event) {
-            GlobalService.selectServiceParam(event.target, event);
+            GlobalService.selectServiceParam(event.target,);
             event.preventDefault();
         });
     },
 
     /**
      * 컨트롤 선택(파라미터)
-     * @param {eventTarget, event}
+     * @param {eventTarget}
      */
-    selectServiceParam(eventTarget, event) {
+    selectServiceParam(eventTarget) {
         let target;
         if (eventTarget.classList.contains('dews-mobile-component')) {
             target = eventTarget;
@@ -266,7 +268,6 @@ export default {
         ContextMenuService.destroyContextMenu();
         ContextMenuService.getContextMenu(window.selectedItem);
         mobileDesignerToIDE("select", window.selectedItem); // IDE로 선택되었다고 메세지 송신
-        //event.preventDefault();
 
         function findTarget(target) {
             return target.closest('.dews-mobile-component');
