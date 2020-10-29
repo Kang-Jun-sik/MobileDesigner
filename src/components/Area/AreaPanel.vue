@@ -1,7 +1,7 @@
 <template>
   <div :uid="uid" class="dews-panel">
-    <area-item :colNum="cols.col6"></area-item>
-    <area-item :colNum="cols.col6"></area-item>
+    <area-item :colNum="cols.col4"></area-item>
+    <area-item :colNum="cols.col8"></area-item>
   </div>
 </template>
 
@@ -30,7 +30,6 @@
     },
     mounted() {
       this.$nextTick(() => {
-        console.log('mounted')
       })
     }
   }
