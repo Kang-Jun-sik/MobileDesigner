@@ -1,6 +1,6 @@
 <template>
   <div class="controlList-mobile-layout">
-    <div :class="chkLayout.phone" class="mobile-layout smartPhone" @click="selectLayout($event)">
+    <div :class="chkLayout.smartPhone" class="mobile-layout smartPhone" @click="selectLayout($event)">
       <div class="mobile-image smartPhone-image smartPhone"></div>
     </div>
     <div :class="chkLayout.tabletM" class="mobile-layout tabletM" @click="selectLayout($event)">
@@ -20,7 +20,7 @@
     data() {
       return {
         chkLayout: {
-          phone: 'off',
+          smartPhone: 'off',
           tabletM: 'off',
           tabletL: 'on'
         },
@@ -32,15 +32,15 @@
 
         let chk;
         if (e.target.classList.contains('smartPhone')){
-          this.$store.commit('setLayout', 'smartPhone')
-          chk = 'phone';
+          chk = 'smartPhone';
         } else if (e.target.classList.contains('tabletM')){
-          this.$store.commit('setLayout', 'tabletM')
           chk = 'tabletM';
         } else if (e.target.classList.contains('tabletL')){
-          this.$store.commit('setLayout', 'tabletL')
           chk = 'tabletL';
         }
+
+        // Vuex에 Layout Style Commit
+        this.$store.commit('setLayout', chk);
 
         // click된 Layout class on 추가 및 나머지 Layout off class 추가
         for (let key in this.chkLayout) {
