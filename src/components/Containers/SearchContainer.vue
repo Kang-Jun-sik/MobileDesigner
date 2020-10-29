@@ -1,10 +1,21 @@
 <template>
-  <div :uid="uid" class="dews-mobile-searchContainer dews-mobile-component">
-    <div class="search-container-header">
-      {{ title }}
+  <div :uid="uid" class="dews-mobile-searchContainer">
+    <div class="dews-container-option-control">
+      <h3 class="option-sub-title" v-if="title">{{ title }}</h3>
+      <div v-if="customButton.length" class="option-convenience-button">
+        <ul>
+          <li v-for="(custom, idx) in customButton" :key="idx" :class="custom.type">{{ custom.button }}</li>
+        </ul>
+      </div>
     </div>
-    <div class="search-container-content" ref="searchContainer">
-      <slot></slot>
+
+    <div class="dews-search-field">
+      <ul class="form-field">
+        <slot v-if="this.inputList">
+          <li v-for="(input, idx) in inputList" :key="idx"> {{ input }}</li>
+        </slot>
+        <slot v-else></slot>
+      </ul>
     </div>
   </div>
 </template>
@@ -13,12 +24,14 @@
   import GlobalService from "@/service/GlobalService";
 
   export default {
-    name: 'search-container-wrapper',
+    name: 'dews-search-container',
     uid: '',
     data() {
       return {
-        title: '조회 조건',
         uid: '',
+        title: 'Search Container',
+        customButton: [],
+        inputList: [],
       }
     },
     created() {
@@ -31,31 +44,5 @@
 </script>
 
 <style lang="scss" scoped>
-  div {
-    padding: 0;
-  }
 
-  .dews-mobile-searchContainer{
-    min-width: 349px;
-    min-height: 106px;
-    max-width: 1011px;
-    margin: 0 7px 5px;
-    background-color: #fbfbfb;
-    cursor: pointer;
-
-    .search-container-header {
-      padding: 10px;
-      width: 100%;
-      height: 45px;
-      border-bottom: 1px solid black;
-      border-radius: 7px 7px 0 0;
-      background-color: #ffffff;
-      color: #007bff;
-    }
-
-    .search-container-content {
-      min-height: 55px;
-      background-color: #fbfbfb;
-    }
-  }
 </style>
