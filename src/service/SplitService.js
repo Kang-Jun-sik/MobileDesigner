@@ -20,7 +20,7 @@ export default {
             target.replaceWith(areaElement);
 
             // 초기 세로 분할의 경우 item이 2개 필요하기 때문에 for문 사용
-            for (let i=0; i < 2; i++) {
+            for (let i = 0; i < 2; i++) {
                 let item = ControlService.addComponent('AreaItem');
                 areaElement.appendChild(item.$el);
             }

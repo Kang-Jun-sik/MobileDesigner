@@ -6,11 +6,9 @@
 </template>
 
 <script>
+import dragula from "dragula";
 import MainDesignerWrapper from "@/components/MainDesignerArea/MainDesignerWrapper";
 import ControlListWrapper from "@/components/ControlListArea/ControlListWrapper";
-import dragula from "dragula";
-
-import GlobalService from "@/service/GlobalService";
 import ControlService from "@/service/ControlService";
 import ContextMenuService from "@/service/ContextMenuService";
 import {mobileDesignerToIDE} from "@/utils/mobileDesignerToIDE";
@@ -64,7 +62,7 @@ export default {
 
     /*
     * 드래그해서 컨트롤 생성시 체크
-    * */
+    **/
     acceptCheck(el, target, source) {
       const controlList = ['areaList', 'containerList', 'componentList', 'etcList'];
       if (controlList.includes(source.id)) {
@@ -72,7 +70,7 @@ export default {
         if (target.closest('.main-designer') && !el.classList.contains('ui-resizable-resizing')) {
           /*
           * 메인디자이너에 컨트롤 생성시 컨트롤별 조건 체크
-          * */
+          **/
           // Button
           if (el.classList.contains('dews-mobile-button')) {
             if (target.classList.contains('search-container-content'))
@@ -83,12 +81,19 @@ export default {
             if (target.classList.contains('main-designer')) {
               return true;
             }
-          } else if (el.classList.contains('dews-mobile-areaPanel')) {
+          }
+          // Area Panel
+          else if (el.classList.contains('dews-mobile-areaPanel')) {
             if (target.classList.contains('main-designer')) {
               return true;
             }
-          } else if (el.classList.contains('dews-mobile-areaBox')) {
+          }
+          // Area Box
+          else if (el.classList.contains('dews-mobile-areaBox')) {
             if (target.classList.contains('main-designer')) {
+              return true;
+            }
+            else if (target.classList.contains('dews-mobile-areaItem')){
               return true;
             }
           }
