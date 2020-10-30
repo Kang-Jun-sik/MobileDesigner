@@ -6,6 +6,7 @@
 
 <script>
   import GlobalService from "@/service/GlobalService";
+  import ControlService from "@/service/ControlService";
 
   export default {
     name: 'main-designer',
@@ -18,7 +19,7 @@
       }
     },
     mounted() {
-      this.uid = GlobalService.createUid('mobile-page')
+      this.uid = ControlService.createUid('mobile-page')
       GlobalService.selectService(); //메인 디자이너에 컨트롤 선택 이벤트 추가
     },
     computed: {

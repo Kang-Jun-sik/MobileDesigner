@@ -1,6 +1,7 @@
 import $ from "jquery";
 import 'jquery-contextmenu'
 import GlobalService from "@/service/GlobalService";
+import ControlService from "@/service/ControlService";
 import {mobileDesignerToIDE} from "@/utils/mobileDesignerToIDE";
 import SplitService from "@/service/SplitService";
 
@@ -37,8 +38,8 @@ export default {
                         console.log('searchContainer ContextMenu', itemKey, opt);
                         switch (itemKey){
                             case "delete" :
-                                GlobalService.sendDeleteMessage(opt.$trigger[0]);
-                                GlobalService.deleteService(opt.$trigger[0]);
+                                ControlService.sendDeleteMessage(opt.$trigger[0]);
+                                ControlService.deleteService(opt.$trigger[0]);
                                 break;
                         }
                     }
@@ -57,8 +58,8 @@ export default {
                         console.log(itemKey, opt);
                         switch (itemKey){
                             case "delete" :
-                                GlobalService.sendDeleteMessage(opt.$trigger[0]);
-                                GlobalService.deleteService(opt.$trigger[0]);
+                                ControlService.sendDeleteMessage(opt.$trigger[0]);
+                                ControlService.deleteService(opt.$trigger[0]);
                                 break;
                         }
                     }

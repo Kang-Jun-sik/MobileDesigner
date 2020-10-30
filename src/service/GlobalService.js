@@ -7,11 +7,13 @@ import Vue from 'vue'
 import { store } from "@/store";
 import {mobileDesignerToIDE} from "@/utils/mobileDesignerToIDE";
 import GlobalService from "@/service/GlobalService";
+import ControlService from "@/service/ControlService";
 import ContextMenuService from "@/service/ContextMenuService";
 
 import Button from "@/components/Controls/ButtonComponent";
 import SearchContainer from "@/components/Containers/SearchContainer";
 import AreaPanel from "@/components/Area/AreaPanel";
+import AreaItem from "@/components/Area/AreaItem";
 import AreaBox from "@/components/Area/AreaBox";
 import AreaTabs from "@/components/Area/tab/AreaTabs";
 
@@ -56,10 +58,10 @@ export default {
             let instance;
             switch (type) {
                 case 'mobile-area':
-                    instance = GlobalService.addComponent('SearchContainer');
+                    instance = ControlService.addComponent('SearchContainer');
                     break;
                 case 'mobile-button':
-                    instance = GlobalService.addComponent('Button');
+                    instance = ControlService.addComponent('Button');
                     break;
             }
             instance.uid = uid;
@@ -99,17 +101,8 @@ export default {
     },
 
     /*
-     * 컨트롤 UID 생성
-     */
-    createUid(target) {
-        let controlUid;
-        let date = new Date();
-        return controlUid = target + '-' + date.getTime();
-    },
-
-    /*
-     * 컨트롤 리사이즈 (jQuery 라이브러리 사용)
-     */
+    * 컨트롤 리사이즈 (jQuery 라이브러리 사용)
+    * */
     canResize(element) {
         const elementUid = element.getAttribute('uid');
         const target = $(`[uid=${elementUid}]`);
@@ -160,7 +153,7 @@ export default {
 
     /*
     * Layout 변경 및 Box collapsed를 위한 resize handler 위치 css 수정
-    **/
+    * */
     setPosition(el, width, height) {
         width = el.offsetWidth;
         height = el.offsetHeight;
@@ -168,56 +161,6 @@ export default {
         $('.ui-resizable-e').css('top', (height / 2 - 4) + 'px');
         $('.ui-resizable-s').css('left', (width / 2 - 4) + 'px');
         $('.ui-resizable-w').css('top', (height / 2 - 4) + 'px');
-    },
-
-    /*
-    * 컴포넌트 추가 (vuex에서 관리될 수 있도록 Vue Component 객체 생성)
-    **/
-    addComponent(type, param) {
-        let component;
-        switch (removeSpaceBetweenWord(type)) {
-            case 'Button':
-                component = Vue.extend(Button);
-                break;
-            case 'SearchContainer':
-                component = Vue.extend(SearchContainer);
-                break;
-            case 'AreaPanel':
-                component = Vue.extend(AreaPanel);
-                break;
-            case 'AreaBox':
-                component = Vue.extend(AreaBox);
-                break;
-            case 'AreaTabs':
-                component = Vue.extend(AreaTabs);
-                break;
-        }
-        component = new component();
-        component.$mount();
-        return component;
-
-        function removeSpaceBetweenWord(word) {
-            return word.split(' ').join('');
-        }
-    },
-
-    /*
-    * 컨트롤 삭제 (디자이너에서만 삭제)
-    **/
-    deleteService(target) {
-        if (target) {
-            target.remove();
-        }
-    },
-
-    /*
-     * 컨트롤 삭제 메세지 전달 함수 (Mobile Designer --> IDE)
-     **/
-    sendDeleteMessage(component) {
-        // 부모 노드 찾기
-        let parentNode = component.parentElement.closest('.dews-mobile-component');
-        let parentUid = parentNode.getAttribute('uid');
-        mobileDesignerToIDE("delete", component, parentUid);
     },
 
     /**

@@ -17,7 +17,7 @@
 
 <script>
   import DewsTab from "@/components/Area/tab/AreaTab";
-  import GlobalService from "@/service/GlobalService";
+  import ControlService from "@/service/ControlService";
   import { store } from '@/store';
 
   export default {
@@ -31,7 +31,7 @@
       }
     },
     created() {
-      this.uid = GlobalService.createUid('mobile-tabs');
+      this.uid = ControlService.createUid('mobile-tabs');
       this.titleList = store.state.tabTitles;
     },
     mounted() {

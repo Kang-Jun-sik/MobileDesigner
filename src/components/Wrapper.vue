@@ -9,7 +9,9 @@
 import MainDesignerWrapper from "@/components/MainDesignerArea/MainDesignerWrapper";
 import ControlListWrapper from "@/components/ControlListArea/ControlListWrapper";
 import dragula from "dragula";
+
 import GlobalService from "@/service/GlobalService";
+import ControlService from "@/service/ControlService";
 import ContextMenuService from "@/service/ContextMenuService";
 import {mobileDesignerToIDE} from "@/utils/mobileDesignerToIDE";
 
@@ -46,7 +48,7 @@ export default {
       if (el.classList.contains('dewsControl')) {
         // 컴포넌트 추가 후, $el로 replace
         const componentName = el.textContent.replace(/\s+/g, '');
-        const component = GlobalService.addComponent(componentName);
+        const component = ControlService.addComponent(componentName);
         this.$store.commit('addItem', component);
         el.replaceWith(component.$el);
 

@@ -3,15 +3,20 @@
 </template>
 
 <script>
-  import GlobalService from "@/service/GlobalService";
-
   export default {
     name: 'area-item',
-    props: ['colNum'],
     data() {
       return {
         uid: '',
-        col: this.colNum,
+        col: 'col-fd-6',
+        cols: {
+          col4: 'col-fd-4',
+          col5: 'col-fd-5',
+          col6: 'col-fd-6',
+          col7: 'col-fd-7',
+          col8: 'col-fd-8',
+          col12: 'col-fd-12'
+        },
       }
     },
     created() {
@@ -23,8 +28,6 @@
         }
         return 'mobile-item' + '-' + s4() + s4();
       }
-
-      // this.uid = GlobalService.createUid('mobile-item');
       this.uid = guid();
     },
     mounted() {
@@ -57,17 +60,17 @@
 }
 .designer-tabletL {
   .dews-item {
-    padding: 0 $area-item-space;
+    margin: 0 $area-item-space;
     flex: 1 0 100%;
     min-width: $area-item-size-minimum-width;
   }
 
   .dews-item:first-of-type {
-    padding-left: 0;
+    margin-left: 0;
   }
 
   .dews-item:last-of-type {
-    padding-right: 0;
+    margin-right: 0;
   }
 
   @for $i from $area-item-col-size-start through $area-item-col-size-end {

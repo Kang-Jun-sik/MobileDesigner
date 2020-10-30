@@ -5,7 +5,7 @@
 </template>
 
 <script>
-  import GlobalService from "@/service/GlobalService";
+  import ControlService from "@/service/ControlService";
   import { store } from '@/store';
 
   export default {
@@ -23,7 +23,7 @@
       }
     },
     created() {
-      this.uid = GlobalService.createUid('mobile-tab');
+      this.uid = ControlService.createUid('mobile-tab');
     },
     mounted() {
       const parentTabs = this.$el.closest('.dews-tabs-wrap');

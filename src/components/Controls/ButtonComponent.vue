@@ -8,7 +8,7 @@
 </template>
 
 <script>
-  import GlobalService from "@/service/GlobalService";
+  import ControlService from "@/service/ControlService";
 
   export default {
     data() {
@@ -22,7 +22,7 @@
       }
     },
     created() {
-      this.uid = GlobalService.createUid('mobile-button');
+      this.uid = ControlService.createUid('mobile-button');
     },
     methods: {
       setWidth(width) {

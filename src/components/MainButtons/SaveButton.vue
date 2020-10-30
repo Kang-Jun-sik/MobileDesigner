@@ -3,7 +3,7 @@
 </template>
 
 <script>
-  import GlobalService from "@/service/GlobalService";
+  import ControlService from "@/service/ControlService";
 
   export default {
     name: 'save-button',
@@ -14,7 +14,7 @@
       }
     },
     created() {
-      this.uid = GlobalService.createUid('mSaveButton');
+      this.uid = ControlService.createUid('mSaveButton');
     }
   }
 </script>

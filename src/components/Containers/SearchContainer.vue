@@ -10,7 +10,7 @@
 </template>
 
 <script>
-  import GlobalService from "@/service/GlobalService";
+  import ControlService from "@/service/ControlService";
 
   export default {
     name: 'search-container-wrapper',
@@ -22,7 +22,7 @@
       }
     },
     created() {
-      this.uid = GlobalService.createUid('mobile-area');
+      this.uid = ControlService.createUid('mobile-area');
     },
     mounted() {
       window.drake.containers.push(this.$refs.searchContainer);

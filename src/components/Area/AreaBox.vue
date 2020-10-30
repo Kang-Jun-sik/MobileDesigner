@@ -13,6 +13,7 @@
 
 <script>
   import GlobalService from "@/service/GlobalService";
+  import ControlService from "@/service/ControlService";
 
   export default {
     name: 'dews-box',
@@ -27,7 +28,7 @@
       }
     },
     created() {
-      this.uid = GlobalService.createUid('mobile-box');
+      this.uid = ControlService.createUid('mobile-box');
     },
     methods: {
       // click 이벤트
