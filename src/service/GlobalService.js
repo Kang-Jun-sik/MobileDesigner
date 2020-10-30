@@ -4,7 +4,7 @@ import 'jquery-ui-bundle/jquery-ui.css';
 import 'jquery-contextmenu';
 
 import Vue from 'vue'
-import { store } from "@/store";
+import {store} from "@/store";
 import {mobileDesignerToIDE} from "@/utils/mobileDesignerToIDE";
 import GlobalService from "@/service/GlobalService";
 import ControlService from "@/service/ControlService";
@@ -99,15 +99,24 @@ export default {
         let vComponent = window.Vue.$store.state.items.find(x => x.uid == uid);
         GlobalService.selectServiceParam(vComponent.$el);
     },
+    /**
+     * 하위 자식 컨트롤의 사이즈 조절을 위한 로직 ex) dews-mobile-areBox > dews-box-content-wrap
+     * */
+    alsoResizeTarget(target) {
+        if(target[0].classList.contains('dews-mobile-areaBox')){
+            return target.find('.dews-box-content-wrap');
+        }
+    },
 
     /*
     * 컨트롤 리사이즈 (jQuery 라이브러리 사용)
-    * */
+    **/
     canResize(element) {
         const elementUid = element.getAttribute('uid');
         const target = $(`[uid=${elementUid}]`);
         $(target).resizable({
             disabled: false,
+            alsoResize: GlobalService.alsoResizeTarget(target),
             handles: 'n, e, s, w, ne, se, sw, nw',
             delay: 0,
             minWidth: parseInt(target.css('minWidth'), 10),
@@ -147,7 +156,6 @@ export default {
                 GlobalService.setPosition(element, width, height);
             },
         });
-
         GlobalService.setPosition(element, element.offsetWidth, element.offsetHeight);
     },
 
