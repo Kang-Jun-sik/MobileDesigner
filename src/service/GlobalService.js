@@ -167,6 +167,16 @@ export default {
         $('.ui-resizable-w').css('top', (height / 2 - 4) + 'px');
     },
 
+    destoryResizable(item){
+        var dotList = document.querySelectorAll('.ui-resizable-handle');
+        Array.prototype.forEach.call( dotList, function( node ) {
+            node.parentNode.removeChild( node );
+        });
+        const elementUid = item.getAttribute('uid');
+        const target = $(`[uid=${elementUid}]`);
+        $(target).resizable('destroy');
+    },
+
     /**
      * 컨트롤 선택(이벤트)
      * @param {eventTarget}

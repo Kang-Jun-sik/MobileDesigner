@@ -51,8 +51,11 @@
           }
         }
 
-        // Layout 변경시 selectedItem이 존재한다면 width, height 변경을 위해 setPosition 함수 호출
+        // Layout 변경시 selectedItem이 존재한다면 width, hei
+        // ght 변경을 위해 setPosition 함수 호출
         if (window.selectedItem) {
+          GlobalService.destoryResizable(window.selectedItem);
+          GlobalService.canResize(window.selectedItem);
           setTimeout(GlobalService.setPosition, 500, window.selectedItem);
         }
       }
