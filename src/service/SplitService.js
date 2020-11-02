@@ -9,8 +9,7 @@ export default {
     **/
     verticalSplit(target) {
         // TabletL 사이즈가 아니라면 분할이 불가능하므로 리턴
-        if (store.state.designerLayout !== 'designer-tabletL')
-            return;
+        if (store.state.designerLayout !== 'designer-tabletL') return;
 
         let area, areaElement;
         if (!target.parentElement.classList.contains('dews-item')) {
@@ -45,39 +44,25 @@ export default {
     * */
     horizontalSplit(target) {
         // TabletL 사이즈가 아니라면 분할이 불가능하므로 리턴
-        if (store.state.designerLayout !== 'designer-tabletL')
-            return;
-        let splitParent = target.closest('.dews-item');
-        // eslint-disable-next-line no-undef
-        let cloneTarget = $.clone(target);
-        let assignHeight = (target.offsetHeight / 2);
+        if (store.state.designerLayout !== 'designer-tabletL') return;
 
-        for (let i = 0; i < 2; i++) {
-            let newPanel = ControlService.addComponent('AreaPanel');
-            let item = ControlService.addComponent('AreaItem');
-            let newPanelEl = newPanel.$el;
-            let itemEl = item.$el;
+        // AreaBox/ AreaTabs의 부모가 AreaItem일 때만 가로 분할 가능
+        let area, areaElement;
+        if (target.parentElement.classList.contains('dews-item')) {
+            area = ControlService.addComponent('AreaPanel');
+            areaElement = area.$el;
+            target.replaceWith(areaElement)
+            let areaItem = ControlService.addComponent('AreaItem');
+            areaElement.appendChild(areaItem.$el);
+            areaItem.$el.appendChild(target);
 
-            itemEl.style.height = assignHeight + 'px';
-            itemEl.style.backgroundColor = '#ffffff';
+            let splitArea = ControlService.addComponent('AreaPanel');
+            let splitItem = ControlService.addComponent('AreaItem');
+            splitArea.$el.appendChild(splitItem.$el);
+            splitItem.$el.style.height = (parseInt(target.querySelector('.dews-box-content-wrap').style.height, 10) / 2) + 'px'
+            splitItem.$el.style.backgroundColor = '#ffffff';
 
-            newPanelEl.style.height = assignHeight + 'px';
-            newPanelEl.style.backgroundColor = '#ffffff';
-
-            if (i == 0) {
-                //기존 노드
-                cloneTarget.style.height = assignHeight + 'px';
-                itemEl.appendChild(cloneTarget);
-                newPanelEl.appendChild(itemEl);
-                target.replaceWith(newPanelEl);
-
-            } else if (i == 1) {
-                //스플릿 영역
-                newPanelEl.style.marginTop = '12px';
-                newPanelEl.appendChild(itemEl);
-                splitParent.appendChild(newPanelEl);
-            }
+            areaElement.parentElement.appendChild(splitArea.$el);
         }
-        console.log(target);
     },
 }
