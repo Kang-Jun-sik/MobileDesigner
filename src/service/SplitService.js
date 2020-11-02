@@ -59,7 +59,7 @@ export default {
             let splitArea = ControlService.addComponent('AreaPanel');
             let splitItem = ControlService.addComponent('AreaItem');
             splitArea.$el.appendChild(splitItem.$el);
-            splitItem.$el.style.height = (parseInt(target.querySelector('.dews-box-content-wrap').style.height, 10) / 2) + 'px'
+            splitItem.$el.style.height = (parseInt(target.offsetHeight, 10)) + 'px'
             splitItem.$el.style.backgroundColor = '#ffffff';
             splitItem.$el.style.marginBottom = '12px';
 
