@@ -95,6 +95,14 @@ export default {
             } else if (target.classList.contains('dews-mobile-areaItem')){
               return true;
             }
+          } else if (el.classList.contains('dews-mobile-formContainer')) {
+            if (target.classList.contains('main-designer')) {
+              return true;
+            }
+          } else if (el.classList.contains('dews-mobile-listContainer')) {
+            if (target.classList.contains('main-designer')) {
+              return true;
+            }
           }
           return false;
         }
