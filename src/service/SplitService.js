@@ -1,6 +1,7 @@
 import {store} from "@/store";
 import GlobalService from "@/service/GlobalService";
 import ControlService from "@/service/ControlService";
+import $ from "jquery";
 
 export default {
     /*
@@ -47,10 +48,9 @@ export default {
         if (store.state.designerLayout !== 'designer-tabletL')
             return;
         let splitParent = target.closest('.dews-item');
-        let cloneTarget = target.cloneNode();
-
-        let assignHeight = (target.offsetHeight/2);
-        let assignWidth = target.offsetWidth;
+        // eslint-disable-next-line no-undef
+        let cloneTarget = $.clone(target);
+        let assignHeight = (target.offsetHeight / 2);
 
         for (let i = 0; i < 2; i++) {
             let newPanel = ControlService.addComponent('AreaPanel');
@@ -66,6 +66,7 @@ export default {
 
             if (i == 0) {
                 //기존 노드
+                cloneTarget.style.height = assignHeight + 'px';
                 itemEl.appendChild(cloneTarget);
                 newPanelEl.appendChild(itemEl);
                 target.replaceWith(newPanelEl);
