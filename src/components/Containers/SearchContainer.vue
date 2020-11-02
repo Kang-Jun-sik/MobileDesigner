@@ -1,10 +1,49 @@
 <template>
-  <div :uid="uid" class="dews-mobile-searchContainer dews-mobile-component">
-    <div class="search-container-header">
-      {{ title }}
+  <div :uid="uid" class="dews-mobile-searchContainer">
+    <div class="dews-container-option-control">
+      <h3 class="option-sub-title" v-if="title">{{ title }}</h3>
+<!--      <div v-if="customButton.length" class="option-convenience-button">-->
+      <div class="option-convenience-button">
+        <ul>
+<!--          <li v-for="(custom, idx) in customButton" :key="idx" :class="custom.type">{{ custom.button }}</li>-->
+          <li class="data-capture"><button class="capture"><span> Data Capture</span></button></li>
+          <li class="data-set"><button class="set"><span>Data Set</span></button></li>
+          <li class="data-reset"><button class="reset"><span>Data Reset</span></button></li>
+        </ul>
+      </div>
     </div>
-    <div class="search-container-content" ref="searchContainer">
-      <slot></slot>
+
+    <div class="dews-search-field">
+      <ul class="form-field">
+<!--        <slot v-if="this.inputList">-->
+<!--          <li v-for="(input, idx) in inputList" :key="idx"> {{ input }}</li>-->
+<!--        </slot>-->
+<!--        <slot v-else></slot>-->
+        <li>
+          <div class="dews-textbox">
+            <label for="">항목명</label>
+            <input type="text" id="textbox" class="">
+          </div>
+        </li>
+        <li>
+          <div class="dews-textbox">
+            <label for="">항목명</label>
+            <input type="text" id="textbox" class="">
+          </div>
+        </li>
+        <li>
+          <div class="dews-textbox">
+            <label for="">항목명</label>
+            <input type="text" id="textbox" class="">
+          </div>
+        </li>
+        <li>
+          <div class="dews-textbox">
+            <label for="">항목명</label>
+            <input type="text" id="textbox" class="">
+          </div>
+        </li>
+      </ul>
     </div>
   </div>
 </template>
@@ -13,12 +52,14 @@
   import ControlService from "@/service/ControlService";
 
   export default {
-    name: 'search-container-wrapper',
+    name: 'dews-search-container',
     uid: '',
     data() {
       return {
-        title: '조회 조건',
         uid: '',
+        title: 'Search Container',
+        customButton: [],
+        inputList: [],
       }
     },
     created() {
@@ -31,31 +72,58 @@
 </script>
 
 <style lang="scss" scoped>
-  div {
-    padding: 0;
+@import 'node_modules/@dews/dews-mobile-style/scss/variables/variables';
+@import 'node_modules/@dews/dews-mobile-style/scss/mixins/_mixins';
+
+//======================================
+// dews-search-container
+//======================================
+//--------------------------------------
+// 레이아웃 영역
+//--------------------------------------
+* {
+  @include reset();
+}
+
+
+//--------------------------------------
+// dews-container-option-bar
+//--------------------------------------
+.dews-container-option-control {
+  @include option-control();
+}
+
+
+.dews-search-field{
+  @include form-field();
+
+  :host([col='2']) & {
+    @include form-field(2);
   }
+}
 
-  .dews-mobile-searchContainer{
-    min-width: 349px;
-    min-height: 106px;
-    max-width: 1011px;
-    margin: 0 7px 5px;
-    background-color: #fbfbfb;
-    cursor: pointer;
+//임시 input component 모양 잡기
+label {
+  display: block;
+  width: 100%;
+  margin-bottom: 2px;
+  font-size: 12px;
+  line-height: 1.5;
+  text-align: left;
+  color: rgba(60, 60, 67, 0.6);
+}
+input[type="text"] {
+  position: relative;
+  width: 100%;
+  height: 36px;
+  padding: 7px 10px;
+  color: rgb(17, 17, 17);
+  border: 1px solid rgba(60, 60, 67, 0.08);
+  border-radius: 4px;
+  background-color: rgb(255, 255, 255);
+  font-size: 15px;
+  line-height: 1.47;
+  text-align: left;
+}
 
-    .search-container-header {
-      padding: 10px;
-      width: 100%;
-      height: 45px;
-      border-bottom: 1px solid black;
-      border-radius: 7px 7px 0 0;
-      background-color: #ffffff;
-      color: #007bff;
-    }
-
-    .search-container-content {
-      min-height: 55px;
-      background-color: #fbfbfb;
-    }
-  }
 </style>

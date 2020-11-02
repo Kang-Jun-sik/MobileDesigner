@@ -3,7 +3,7 @@
     <div class="dews-box-title" @click="onToggleClick($event)" :collapsed="collapsed">
       <h2><button class="dews-box-title-button" type="button">{{ title }}</button></h2>
     </div>
-    <div class="dews-box-content-wrap" :style="style" part="content">
+    <div class="dews-box-content-wrap" :style="style" part="content" ref="boxContent">
       <div class="dews-box-content">
         <slot></slot>
       </div>
@@ -29,6 +29,9 @@
     },
     created() {
       this.uid = ControlService.createUid('mobile-box');
+    },
+    mounted() {
+      window.drake.containers.push(this.$refs.boxContent);
     },
     methods: {
       // click 이벤트

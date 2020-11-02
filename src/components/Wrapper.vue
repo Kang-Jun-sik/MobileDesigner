@@ -76,12 +76,6 @@ export default {
             if (target.classList.contains('search-container-content'))
               return true;
           }
-          // Search Container
-          else if (el.classList.contains('dews-mobile-searchContainer')) {
-            if (target.classList.contains('main-designer')) {
-              return true;
-            }
-          }
           // Area Panel
           else if (el.classList.contains('dews-mobile-areaPanel')) {
             if (target.classList.contains('main-designer')) {
@@ -93,6 +87,28 @@ export default {
             if (target.classList.contains('main-designer')) {
               return true;
             } else if (target.classList.contains('dews-mobile-areaItem')){
+              return true;
+            }
+          }
+          // Search Container
+          else if (el.classList.contains('dews-mobile-searchContainer')) {
+            if (target.classList.contains('main-designer')) {
+              return true;
+            } else if (target.classList.contains('dews-box-content-wrap')){
+              return true;
+            }
+          }
+          // Form Container
+          else if (el.classList.contains('dews-mobile-formContainer')) {
+            if (target.classList.contains('main-designer')) {
+              return true;
+            } else if (target.classList.contains('dews-box-content-wrap')){
+              return true;
+            }
+          }
+          // List Container
+          else if (el.classList.contains('dews-mobile-listContainer')) {
+            if (target.classList.contains('main-designer')) {
               return true;
             }
           }

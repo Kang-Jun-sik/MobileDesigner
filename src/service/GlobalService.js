@@ -4,7 +4,7 @@ import 'jquery-ui-bundle/jquery-ui.css';
 import 'jquery-contextmenu';
 
 import Vue from 'vue'
-import {store} from "@/store";
+import { store } from "@/store";
 import {mobileDesignerToIDE} from "@/utils/mobileDesignerToIDE";
 import GlobalService from "@/service/GlobalService";
 import ControlService from "@/service/ControlService";
@@ -12,6 +12,9 @@ import ContextMenuService from "@/service/ContextMenuService";
 
 import Button from "@/components/Controls/ButtonComponent";
 import SearchContainer from "@/components/Containers/SearchContainer";
+import FormContainer from "@/components/Containers/FormContainer";
+import ListContainer from "@/components/Containers/ListContainer";
+
 import AreaPanel from "@/components/Area/AreaPanel";
 import AreaItem from "@/components/Area/AreaItem";
 import AreaBox from "@/components/Area/AreaBox";
@@ -99,6 +102,7 @@ export default {
         let vComponent = window.Vue.$store.state.items.find(x => x.uid == uid);
         GlobalService.selectServiceParam(vComponent.$el);
     },
+
     /**
      * 하위 자식 컨트롤의 사이즈 조절을 위한 로직 ex) dews-mobile-areBox > dews-box-content-wrap
      * */
@@ -110,7 +114,7 @@ export default {
 
     /*
     * 컨트롤 리사이즈 (jQuery 라이브러리 사용)
-    **/
+    * */
     canResize(element) {
         const elementUid = element.getAttribute('uid');
         const target = $(`[uid=${elementUid}]`);
@@ -131,14 +135,6 @@ export default {
                     ui.position.top = ui.originalPosition.top;
                     ui.size.width = ui.originalSize.width;
                     ui.size.height = ui.originalSize.height;
-                } else if (dir === 'e') {
-                    if (element.parentElement.classList.contains('dews-item')) {
-                        if (element.parentElement.nextSibling) {
-                            let nextElement = element.parentElement.nextSibling;
-                            console.log(nextElement)
-                        }
-                    }
-                    // console.log(element.parentElement);
                 }
                 let width = ui.size.width;
                 let height = ui.size.height;
@@ -177,7 +173,7 @@ export default {
      */
     selectService() {
         $('.main-designer-wrapper').mousedown(function (event) {
-            GlobalService.selectServiceParam(event.target,);
+            GlobalService.selectServiceParam(event.target);
             event.preventDefault();
         });
     },
