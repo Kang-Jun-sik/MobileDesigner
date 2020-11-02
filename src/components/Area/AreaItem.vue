@@ -1,5 +1,5 @@
 <template>
-  <div :uid="uid" class="dews-mobile-areaItem dews-item dews-mobile-component" :class="col" ref="dewsitem"></div>
+  <div :uid="uid" class="dews-mobile-areaItem dews-item dews-mobile-component" :class="col" ref="dewsItem"></div>
 </template>
 
 <script>
@@ -29,11 +29,11 @@ export default {
 
       return 'mobile-item' + '-' + s4() + s4();
     }
-
+    // item 구분을 위한 guid 추가
     this.uid = guid();
   },
   mounted() {
-    window.drake.containers.push(this.$refs.dewsitem);
+    window.drake.containers.push(this.$refs.dewsItem);
   }
 }
 </script>

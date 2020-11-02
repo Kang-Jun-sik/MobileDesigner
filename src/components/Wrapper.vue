@@ -62,7 +62,7 @@ export default {
 
     /*
     * 드래그해서 컨트롤 생성시 체크
-    **/
+    * */
     acceptCheck(el, target, source) {
       const controlList = ['areaList', 'containerList', 'componentList', 'etcList'];
       if (controlList.includes(source.id)) {
@@ -70,7 +70,7 @@ export default {
         if (target.closest('.main-designer') && !el.classList.contains('ui-resizable-resizing')) {
           /*
           * 메인디자이너에 컨트롤 생성시 컨트롤별 조건 체크
-          **/
+          * */
           // Button
           if (el.classList.contains('dews-mobile-button')) {
             if (target.classList.contains('search-container-content'))
@@ -92,8 +92,7 @@ export default {
           else if (el.classList.contains('dews-mobile-areaBox')) {
             if (target.classList.contains('main-designer')) {
               return true;
-            }
-            else if (target.classList.contains('dews-mobile-areaItem')){
+            } else if (target.classList.contains('dews-mobile-areaItem')){
               return true;
             }
           }
