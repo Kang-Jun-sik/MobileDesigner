@@ -1,13 +1,15 @@
 import Vue from 'vue'
 import { store } from "@/store";
+import {mobileDesignerToIDE} from "@/utils/mobileDesignerToIDE";
 
 import Button from "@/components/Controls/ButtonComponent";
-import SearchContainer from "@/components/Containers/SearchContainer";
 import AreaPanel from "@/components/Area/AreaPanel";
 import AreaItem from "@/components/Area/AreaItem";
 import AreaBox from "@/components/Area/AreaBox";
 import AreaTabs from "@/components/Area/tab/AreaTabs";
-import {mobileDesignerToIDE} from "@/utils/mobileDesignerToIDE";
+
+import SearchContainer from "@/components/Containers/SearchContainer";
+import FormContainer from "@/components/Containers/FormContainer";
 
 export default {
     /*
@@ -29,9 +31,6 @@ export default {
             case 'Button':
                 component = Vue.extend(Button);
                 break;
-            case 'SearchContainer':
-                component = Vue.extend(SearchContainer);
-                break;
             case 'AreaPanel':
                 component = Vue.extend(AreaPanel);
                 break;
@@ -43,6 +42,12 @@ export default {
                 break;
             case 'AreaTabs':
                 component = Vue.extend(AreaTabs);
+                break;
+            case 'SearchContainer':
+                component = Vue.extend(SearchContainer);
+                break;
+            case 'FormContainer':
+                component = Vue.extend(FormContainer);
                 break;
         }
         component = new component();

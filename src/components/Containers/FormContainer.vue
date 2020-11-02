@@ -94,7 +94,7 @@
 </template>
 
 <script>
-  import GlobalService from "@/service/GlobalService";
+  import ControlService from "@/service/ControlService";
 
   export default {
     name: 'dews-form-container',
@@ -106,7 +106,7 @@
       }
     },
     created() {
-      this.uid = GlobalService.createUid('mobile-form');
+      this.uid = ControlService.createUid('mobile-form');
     }
   }
 </script>
