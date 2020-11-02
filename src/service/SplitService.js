@@ -61,6 +61,7 @@ export default {
             splitArea.$el.appendChild(splitItem.$el);
             splitItem.$el.style.height = (parseInt(target.querySelector('.dews-box-content-wrap').style.height, 10) / 2) + 'px'
             splitItem.$el.style.backgroundColor = '#ffffff';
+            splitItem.$el.style.marginBottom = '12px';
 
             areaElement.parentElement.appendChild(splitArea.$el);
         }
