@@ -5,10 +5,11 @@ import ControlService from "@/service/ControlService";
 export default {
     /*
     * 세로 분할 로직
-    * */
+    **/
     verticalSplit(target) {
         // TabletL 사이즈가 아니라면 분할이 불가능하므로 리턴
-        if (store.state.designerLayout !== 'designer-tabletL') return
+        if (store.state.designerLayout !== 'designer-tabletL')
+            return;
 
         let area, areaElement;
         if (!target.parentElement.classList.contains('dews-item')) {
@@ -43,6 +44,39 @@ export default {
     * */
     horizontalSplit(target) {
         // TabletL 사이즈가 아니라면 분할이 불가능하므로 리턴
-        if (store.state.designerLayout !== 'designer-tabletL') return
+        if (store.state.designerLayout !== 'designer-tabletL')
+            return;
+        let splitParent = target.closest('.dews-item');
+        let cloneTarget = target.cloneNode();
+
+        let assignHeight = (target.offsetHeight/2);
+        let assignWidth = target.offsetWidth;
+
+        for (let i = 0; i < 2; i++) {
+            let newPanel = ControlService.addComponent('AreaPanel');
+            let item = ControlService.addComponent('AreaItem');
+            let newPanelEl = newPanel.$el;
+            let itemEl = item.$el;
+
+            itemEl.style.height = assignHeight + 'px';
+            itemEl.style.backgroundColor = '#ffffff';
+
+            newPanelEl.style.height = assignHeight + 'px';
+            newPanelEl.style.backgroundColor = '#ffffff';
+
+            if (i == 0) {
+                //기존 노드
+                itemEl.appendChild(cloneTarget);
+                newPanelEl.appendChild(itemEl);
+                target.replaceWith(newPanelEl);
+
+            } else if (i == 1) {
+                //스플릿 영역
+                newPanelEl.style.marginTop = '12px';
+                newPanelEl.appendChild(itemEl);
+                splitParent.appendChild(newPanelEl);
+            }
+        }
+        console.log(target);
     },
 }
