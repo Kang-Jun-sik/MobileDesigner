@@ -85,6 +85,10 @@
   @include reset();
 }
 
+//component design
+.dews-mobile-searchContainer {
+  border: 1px dotted blue;
+}
 
 //--------------------------------------
 // dews-container-option-bar

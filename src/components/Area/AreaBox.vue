@@ -67,6 +67,10 @@
 }
 .dews-box-wrap {
   @include area-box();
+
+  //box design
+  padding: 15px;
+  border: 1px dotted blue;
 }
 //--------------------------------------
 // 애니메이션 영역

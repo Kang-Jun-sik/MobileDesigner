@@ -60,6 +60,10 @@ export default {
   width: 100%;
   min-height: 1px;
   background-clip: content-box;
+
+  //item design
+  padding: 15px;
+  border: 1px dotted blue;
 }
 
 .designer-tabletL {
