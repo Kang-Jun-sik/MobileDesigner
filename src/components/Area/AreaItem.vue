@@ -62,10 +62,8 @@ export default {
   background-clip: content-box;
 
   //item design
-  &.design-active {
-    padding: 10px;
-    border: 1px dotted blue;
-  }
+  padding: 10px;
+  border: 1px dotted blue;
 }
 
 .designer-tabletL {

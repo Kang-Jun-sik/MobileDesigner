@@ -69,10 +69,7 @@
   @include area-box();
 
   //box design
-  &.design-active {
-    padding: 10px;
-    border: 1px dotted blue;
-  }
+  padding: 10px;
 }
 //--------------------------------------
 // 애니메이션 영역

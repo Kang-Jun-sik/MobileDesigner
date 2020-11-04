@@ -87,10 +87,6 @@
 
 //component design
 .dews-mobile-searchContainer {
-
-  &.design-active {
-    border: 1px dotted blue;
-  }
 }
 
 //--------------------------------------
