@@ -48,12 +48,14 @@
 
   .designer-smartPhone {
     height: 626px;
-    margin: 0 24px 0 21px;
+    //margin: 0 24px 0 21px;
+    margin: 0 33px 0 21px;
   }
 
   .designer-tabletM {
     height: 892px;
-    margin: 0 23px 0 20px;
+    //margin: 0 23px 0 20px;
+    margin: 0 33px 0 20px;
   }
 
   .designer-tabletL {
