@@ -69,9 +69,9 @@
   }
 
   .smartPhone {
-    width: 444px;
+    width: 430px;
     height: 56px;
-    margin: 0 28px 19px;
+    margin: 0 25px 20px;
   }
 
   .tabletM {
