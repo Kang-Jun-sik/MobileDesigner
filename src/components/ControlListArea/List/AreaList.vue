@@ -22,8 +22,6 @@
     data() {
       return {
         mobileArea: {
-          areaPanel: 'Area Panel',
-          areaItem: 'Area Item',
           areaBox: 'Area Box',
           areaTabs: 'Area Tabs',
         }
@@ -92,14 +90,6 @@
           height: 16px;
           object-fit: contain;
           margin: -3px 5px;
-        }
-
-        .areaList-areaPanel {
-          background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAEKADAAQAAAABAAAAEAAAAAAXnVPIAAAAhElEQVQ4EWP0C0luY2RkqmQgEfwHqf//r53BLzQVzCZRP1i5P1AvEyM5OpH0sCCxGUAmIvNxsTeung23F8UAkAZkSWwGoFvChE0RKWIYLkC3gZBhGAaMeoFQkGHKYwQiRbFAKAYw7WdgYCIq7WLTCRQD6WUBZUlQjoQnbhyKsQn/B+oFABhNK+i0PW3WAAAAAElFTkSuQmCC');
-        }
-
-        .areaList-areaItem {
-          background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAEKADAAQAAAABAAAAEAAAAAAXnVPIAAAAo0lEQVQ4Ea1TwQ2AIAwEwnz60QmMQ7iADuEIvlxQtCZnro2QYOTTo727tgn4phtm78PkKk8SfjoW1/TjjSv1N729tMF/UZImElZQ3FWCLvu2Pn2VAUQgIJLWgYNcAPga1QS2o+321kQZMMGacY3xvyuwc2l8nk6tABEIiCXjf1ewHTERT2CxWoGL1oxrjEP2vTIrg0Ub5UvKj3wed4b8lk6X9gS/lzfIR3t2BwAAAABJRU5ErkJggg==');
         }
 
         .areaList-areaBox {
