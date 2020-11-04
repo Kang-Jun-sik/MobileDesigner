@@ -77,11 +77,13 @@ export default {
               return true;
           }
           // Area Panel
+          /*
           else if (el.classList.contains('dews-mobile-areaPanel')) {
             if (target.classList.contains('main-designer')) {
               return true;
             }
           }
+          */
           // Area Box
           else if (el.classList.contains('dews-mobile-areaBox')) {
             if (target.classList.contains('main-designer')) {
@@ -92,9 +94,7 @@ export default {
           }
           // Search Container
           else if (el.classList.contains('dews-mobile-searchContainer')) {
-            if (target.classList.contains('main-designer')) {
-              return true;
-            } else if (target.classList.contains('dews-box-content-wrap')){
+            if (target.classList.contains('dews-box-content-wrap')){
               return true;
             }
           }
@@ -129,6 +129,13 @@ export default {
               return true;
             }
           }
+          //@ Area Box
+          else if (el.classList.contains('dews-mobile-areaBox')) {
+            if (target.classList.contains('dews-mobile-areaItem')) {
+              return true;
+            }
+          }
+
         }
       }
       return false;

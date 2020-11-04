@@ -16,7 +16,7 @@ export default {
                 $.contextMenu({
                     selector: ".ui-selected",
                     items: {
-                        "edit": {name: "SearchOption1", icon: "ic-edit"},
+                        "edit": {name: "mainDesignerOption", icon: "ic-edit"},
                         "sep1": "---------",
                     },
                     callback: function(itemKey, opt, rootMenu, originalEvent) {
@@ -78,6 +78,23 @@ export default {
                             case "vertical":
                                 SplitService.verticalSplit(opt.$trigger[0]);
                                 break;
+                            case "delete" :
+                                ControlService.sendDeleteMessage(opt.$trigger[0]);
+                                ControlService.deleteService(opt.$trigger[0]);
+                                break;
+                        }
+                    }
+                })
+                break;
+
+            case "dews-mobile-areaItem":
+                $.contextMenu({
+                    selector: ".ui-selected",
+                    items: {
+                        "delete": {name: "Delete", icon: "delete"}
+                    },
+                    callback: function(itemKey, opt) {
+                        switch (itemKey){
                             case "delete" :
                                 ControlService.sendDeleteMessage(opt.$trigger[0]);
                                 ControlService.deleteService(opt.$trigger[0]);
