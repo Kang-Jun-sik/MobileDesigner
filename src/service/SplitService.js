@@ -28,42 +28,9 @@ export default {
 
             // 왼쪽 item에 target(box 혹은 tabs) appendChild (default)
             areaElement.querySelectorAll('.dews-item')[0].appendChild(target);
-            // target(box 혹은 tabs)이 들어가지 않은 또 다른 item이 생성되었다는 표시를 위하여 style 추가 (수정필요)
-            areaElement.querySelectorAll('.dews-item')[1].style.height = target.offsetHeight + 'px';
-            areaElement.querySelectorAll('.dews-item')[1].style.backgroundColor = '#ffffff';
-            areaElement.querySelectorAll('.dews-item')[1].style.marginBottom = '12px';
-
             GlobalService.setPosition(target, target.offsetWidth, target.offsetHeight);
         } else {
             // 2. 이미 분할이 되어있는 경우
         }
-    },
-
-    /*
-    * 가로 분할 로직
-    * */
-    horizontalSplit(target) {
-        // TabletL 사이즈가 아니라면 분할이 불가능하므로 리턴
-        if (store.state.designerLayout !== 'designer-tabletL') return;
-
-        // AreaBox/ AreaTabs의 부모가 AreaItem일 때만 가로 분할 가능
-        let area, areaElement;
-        if (target.parentElement.classList.contains('dews-item')) {
-            area = ControlService.addComponent('AreaPanel');
-            areaElement = area.$el;
-            target.replaceWith(areaElement)
-            let areaItem = ControlService.addComponent('AreaItem');
-            areaElement.appendChild(areaItem.$el);
-            areaItem.$el.appendChild(target);
-
-            let splitArea = ControlService.addComponent('AreaPanel');
-            let splitItem = ControlService.addComponent('AreaItem');
-            splitArea.$el.appendChild(splitItem.$el);
-            splitItem.$el.style.height = (parseInt(target.offsetHeight, 10)) + 'px'
-            splitItem.$el.style.backgroundColor = '#ffffff';
-            splitItem.$el.style.marginBottom = '12px';
-
-            areaElement.parentElement.appendChild(splitArea.$el);
-        }
-    },
+    }
 }

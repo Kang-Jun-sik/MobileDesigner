@@ -71,15 +71,11 @@ export default {
                     selector: ".ui-selected",
                     items: {
                         "vertical": {name: "세로분할", icon: "edit"},
-                        "horizontal": {name: "가로분할", icon: "edit"}
                     },
                     callback: function(itemKey, opt) {
                         switch (itemKey){
                             case "vertical":
                                 SplitService.verticalSplit(opt.$trigger[0]);
-                                break;
-                            case "horizontal":
-                                SplitService.horizontalSplit(opt.$trigger[0]);
                                 break;
                         }
                     }
