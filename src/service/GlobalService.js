@@ -107,6 +107,9 @@ export default {
      * 하위 자식 컨트롤의 사이즈 조절을 위한 로직 ex) dews-mobile-areBox > dews-box-content-wrap
      * */
     alsoResizeTarget(target) {
+        if(target[0] === null)
+            return;
+
         if(target[0].classList.contains('dews-mobile-areaBox')){
             return target.find('.dews-box-content-wrap');
         }
@@ -174,7 +177,8 @@ export default {
         });
         const elementUid = item.getAttribute('uid');
         const target = $(`[uid=${elementUid}]`);
-        $(target).resizable('destroy');
+        if(target)
+            $(target).resizable('destroy');
     },
 
     /**
