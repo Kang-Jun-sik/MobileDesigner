@@ -60,7 +60,7 @@
   }
 
   .tabletL {
-    width: 1025px;
+    width: 1062px;
     height: 76px;
     margin: 23px 21px 0;
   }
