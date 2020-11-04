@@ -70,7 +70,7 @@
 
   //box design
   &.design-active {
-    padding: 15px;
+    padding: 10px;
     border: 1px dotted blue;
   }
 }
