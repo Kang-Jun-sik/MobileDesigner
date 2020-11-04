@@ -67,6 +67,9 @@ export default {
 }
 .dews-box-wrap {
   @include area-box();
+
+  //box design
+  padding: 10px;
 }
 //--------------------------------------
 // 애니메이션 영역

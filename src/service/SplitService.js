@@ -1,7 +1,6 @@
 import {store} from "@/store";
 import GlobalService from "@/service/GlobalService";
 import ControlService from "@/service/ControlService";
-import $ from "jquery";
 
 export default {
     /*

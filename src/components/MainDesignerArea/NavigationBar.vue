@@ -48,19 +48,19 @@
   }
 
   .smartPhone {
-    width: 363px;
+    width: 430px;
     height: 78px;
-    margin: 21px 21px 0;
+    margin: 21px 25px 0;
   }
 
   .tabletM {
-    width: 768px;
+    width: 859px;
     height: 76px;
     margin: 23px 20px 0;
   }
 
   .tabletL {
-    width: 1025px;
+    width: 1062px;
     height: 76px;
     margin: 23px 21px 0;
   }

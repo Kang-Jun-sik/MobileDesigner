@@ -85,6 +85,9 @@
   @include reset();
 }
 
+//component design
+.dews-mobile-searchContainer {
+}
 
 //--------------------------------------
 // dews-container-option-bar
