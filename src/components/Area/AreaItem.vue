@@ -63,6 +63,7 @@ export default {
 
   //item design
   padding: 10px;
+  min-height: 30px;
   border: 1px dotted blue;
 }
 
