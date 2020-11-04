@@ -94,7 +94,7 @@ export default {
           else if (el.classList.contains('dews-mobile-searchContainer')) {
             if (target.classList.contains('main-designer')) {
               return true;
-            } else if (target.classList.contains('dews-box-content')){
+            } else if (target.classList.contains('dews-box-content-wrap')){
               return true;
             }
           }

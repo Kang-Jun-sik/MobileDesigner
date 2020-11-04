@@ -3,8 +3,8 @@
     <div class="dews-box-title" @click="onToggleClick($event)" :collapsed="collapsed">
       <h2><button class="dews-box-title-button" type="button">{{ title }}</button></h2>
     </div>
-    <div class="dews-box-content-wrap" :style="contentStyle" part="content">
-      <div class="dews-box-content" :style="contentStyle" ref="boxContent">
+    <div class="dews-box-content-wrap" :style="style" part="content" ref="boxContent">
+      <div class="dews-box-content">
         <slot></slot>
       </div>
     </div>
@@ -12,56 +12,44 @@
 </template>
 
 <script>
-  import GlobalService from "@/service/GlobalService";
-  import ControlService from "@/service/ControlService";
+import GlobalService from "@/service/GlobalService";
+import ControlService from "@/service/ControlService";
 
-  export default {
-    name: 'dews-box',
-    data() {
-      return {
-        uid: '',
-        title: 'Box',
-        collapsed: '',
-        boxHeight: '',
-        contentStyle: {
-          height: 'fit-content',
-          minHeight: ''
-        },
-      }
-    },
-    created() {
-      this.uid = ControlService.createUid('mobile-box');
-    },
-    mounted() {
-      window.drake.containers.push(this.$refs.boxContent);
-    },
-    methods: {
-      // click 이벤트
-      onToggleClick: function (e){
-        e.stopPropagation();
-
-        if (!this.collapsed) {
-          this.collapsed = 'open';
-          if (this.boxHeight) {
-            this.$el.style.height = this.boxHeight;
-          }
-          this.contentStyle.height = 'fit-content';
-          this.contentStyle.minHeight = '306px';
-        } else {
-          this.collapsed = '';
-          if (this.$el.style.height !== this.boxHeight) {
-            this.boxHeight = this.$el.style.height;
-          }
-          this.$el.style.height = '';
-          this.contentStyle.height = '0px';
-          this.contentStyle.minHeight = '0px';
-        }
-
-        const box = this.$el;
-        setTimeout(GlobalService.setPosition, 500, box);
+export default {
+  name: 'dews-box',
+  data() {
+    return {
+      uid: '',
+      title: 'Box',
+      collapsed: '',
+      style: {
+        height: ''
       },
     }
+  },
+  created() {
+    this.uid = ControlService.createUid('mobile-box');
+  },
+  mounted() {
+    window.drake.containers.push(this.$refs.boxContent);
+  },
+  methods: {
+    // click 이벤트
+    onToggleClick: function (e){
+      e.stopPropagation();
+      if (!this.collapsed) {
+        this.collapsed = 'open';
+        this.style.height = '306px';
+      } else {
+        this.collapsed = '';
+        this.style.height = '0px';
+      }
+
+      const box = this.$el;
+      setTimeout(GlobalService.setPosition, 500, box);
+    },
   }
+}
 </script>
 
 <style lang="scss" scoped>
