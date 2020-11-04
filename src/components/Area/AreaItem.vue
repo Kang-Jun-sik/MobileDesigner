@@ -61,11 +61,6 @@ export default {
   width: 100%;
   min-height: 1px;
   background-clip: content-box;
-
-  //item design
-  padding: 10px;
-  min-height: 30px;
-  border: 1px dotted blue;
 }
 
 .designer-tabletL {
@@ -88,5 +83,15 @@ export default {
       @include item-col-size($i);
     }
   }
+}
+
+//--------------------------------------
+// FD 추가 영역
+//--------------------------------------
+.dews-item {
+  //item design
+  padding: 10px;
+  min-height: 40px;
+  border: 1px dotted blue;
 }
 </style>

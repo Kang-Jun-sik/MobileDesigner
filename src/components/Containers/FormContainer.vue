@@ -138,6 +138,13 @@
   @include form-field();
 }
 
+//--------------------------------------
+// FD 추가 영역
+//--------------------------------------
+.dews-box-content-wrap {
+  min-height: 40px;
+}
+
 
 //임시 button component 모양 잡기
 button {

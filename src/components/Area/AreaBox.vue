@@ -110,4 +110,17 @@ export default {
   transition: height 0.5s;
   transition-timing-function: ease-in-out;
 }
+
+//--------------------------------------
+// FD 추가 영역
+//--------------------------------------
+.dews-box-wrap {
+  //box design
+  padding: 10px;
+
+  .dews-box-content-wrap {
+    min-height: 40px;
+  }
+}
+
 </style>

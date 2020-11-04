@@ -85,10 +85,6 @@
   @include reset();
 }
 
-//component design
-.dews-mobile-searchContainer {
-}
-
 //--------------------------------------
 // dews-container-option-bar
 //--------------------------------------
@@ -104,6 +100,14 @@
     @include form-field(2);
   }
 }
+
+//--------------------------------------
+// FD 추가 영역
+//--------------------------------------
+.dews-box-content-wrap {
+  min-height: 40px;
+}
+
 
 //임시 input component 모양 잡기
 label {
