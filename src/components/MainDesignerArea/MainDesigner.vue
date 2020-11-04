@@ -49,7 +49,7 @@
   .designer-smartPhone {
     height: 626px;
     //margin: 0 24px 0 21px;
-    margin: 0 33px 0 21px;
+    margin: 0 29px 0 28px;
   }
 
   .designer-tabletM {
