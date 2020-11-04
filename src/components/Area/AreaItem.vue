@@ -54,9 +54,10 @@ export default {
 
 .dews-item {
   @include reset();
+
   position: relative;
   display: block;
-  box-sizing: content-box;
+  box-sizing: border-box;
   width: 100%;
   min-height: 1px;
   background-clip: content-box;
@@ -72,14 +73,14 @@ export default {
     margin: 0 $area-item-space;
     flex: 1 0 100%;
     min-width: $area-item-size-minimum-width;
-  }
 
-  .dews-item:first-of-type {
-    margin-left: 0;
-  }
+    &:first-of-type {
+      margin-left: 0;
+    }
 
-  .dews-item:last-of-type {
-    margin-right: 0;
+    &:last-of-type {
+      margin-right: 0;
+    }
   }
 
   @for $i from $area-item-col-size-start through $area-item-col-size-end {
