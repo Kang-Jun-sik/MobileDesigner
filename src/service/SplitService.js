@@ -27,10 +27,6 @@ export default {
 
             // 왼쪽 item에 target(box 혹은 tabs) appendChild (default)
             areaElement.querySelectorAll('.dews-item')[0].appendChild(target);
-            // target(box 혹은 tabs)이 들어가지 않은 또 다른 item이 생성되었다는 표시를 위하여 style 추가 (수정필요)
-            areaElement.querySelectorAll('.dews-item')[1].style.height = target.offsetHeight + 'px';
-            areaElement.querySelectorAll('.dews-item')[1].style.backgroundColor = '#ffffff';
-            areaElement.querySelectorAll('.dews-item')[1].style.marginBottom = '12px';
 
             GlobalService.setPosition(target, target.offsetWidth, target.offsetHeight);
         } else {
