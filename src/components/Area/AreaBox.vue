@@ -3,7 +3,7 @@
     <div class="dews-box-title" @click="onToggleClick($event)" :collapsed="collapsed">
       <h2><button class="dews-box-title-button" type="button">{{ title }}</button></h2>
     </div>
-    <div class="dews-box-content-wrap" :style="style" part="content" ref="boxContent">
+    <div :muid="muid" class="dews-box-content-wrap" :style="style" part="content" ref="boxContent">
       <div class="dews-box-content">
         <slot></slot>
       </div>
@@ -20,6 +20,7 @@ export default {
   data() {
     return {
       uid: '',
+      muid: '',
       title: 'Box',
       collapsed: '',
       style: {
@@ -29,6 +30,7 @@ export default {
   },
   created() {
     this.uid = ControlService.createUid('mobile-box');
+    this.muid = ControlService.createUid('designer-box');
   },
   mounted() {
     window.drake.containers.push(this.$refs.boxContent);

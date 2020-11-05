@@ -13,11 +13,15 @@ import FormContainer from "@/components/Containers/FormContainer";
 export default {
     /*
     * 컨트롤 UID 생성
-    **/
+    * */
     createUid(target) {
-        let controlUid;
-        let date = new Date();
-        return controlUid = target + '-' + date.getTime();
+        function s4() {
+            return Math.floor((1 + Math.random()) * 0x10000)
+                .toString(16)
+                .substring(1);
+        }
+
+        return target + '-' + s4() + s4();
     },
 
     /*

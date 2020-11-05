@@ -1,13 +1,16 @@
 <template>
-  <div :uid="uid" class="dews-mobile-areaItem dews-item dews-mobile-component" :class="col" ref="dewsItem"></div>
+  <div :uid="uid" :muid="muid" class="dews-mobile-areaItem dews-item dews-mobile-component" :class="col" ref="dewsItem"></div>
 </template>
 
 <script>
+import ControlService from "@/service/ControlService";
+
 export default {
   name: 'area-item',
   data() {
     return {
       uid: '',
+      muid: '',
       col: 'col-fd-6',
       cols: {
         col4: 'col-fd-4',
@@ -20,17 +23,9 @@ export default {
     }
   },
   created() {
-    function guid() {
-      function s4() {
-        return Math.floor((1 + Math.random()) * 0x10000)
-            .toString(16)
-            .substring(1);
-      }
-
-      return 'mobile-item' + '-' + s4() + s4();
-    }
     // item 구분을 위한 guid 추가
-    this.uid = guid();
+    this.uid = ControlService.createUid('mobile-item');
+    this.muid = ControlService.createUid('designer-item');
   },
   mounted() {
     window.drake.containers.push(this.$refs.dewsItem);
