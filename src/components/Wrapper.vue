@@ -76,25 +76,25 @@ export default {
             if (target.classList.contains('search-container-content'))
               return true;
           }
-          // Area Panel
-          /*
-          else if (el.classList.contains('dews-mobile-areaPanel')) {
-            if (target.classList.contains('main-designer')) {
-              return true;
-            }
-          }
-          */
+              // Area Panel
+              /*
+              else if (el.classList.contains('dews-mobile-areaPanel')) {
+                if (target.classList.contains('main-designer')) {
+                  return true;
+                }
+              }
+              */
           // Area Box
           else if (el.classList.contains('dews-mobile-areaBox')) {
             if (target.classList.contains('main-designer')) {
               return true;
-            } else if (target.classList.contains('dews-mobile-areaItem')){
+            } else if (target.classList.contains('dews-mobile-areaItem')) {
               return true;
             }
           }
           // Search Container
           else if (el.classList.contains('dews-mobile-searchContainer')) {
-            if (target.classList.contains('dews-box-content-wrap')){
+            if (target.classList.contains('dews-box-content-wrap')) {
               return true;
             }
           }
@@ -102,7 +102,7 @@ export default {
           else if (el.classList.contains('dews-mobile-formContainer')) {
             if (target.classList.contains('main-designer')) {
               return true;
-            } else if (target.classList.contains('dews-box-content-wrap')){
+            } else if (target.classList.contains('dews-box-content-wrap')) {
               return true;
             }
           }
@@ -133,9 +133,10 @@ export default {
           else if (el.classList.contains('dews-mobile-areaBox')) {
             if (target.classList.contains('dews-mobile-areaItem')) {
               return true;
+            } else if (target.classList.contains('main-designer')) {
+              return true;
             }
           }
-
         }
       }
       return false;
@@ -145,15 +146,15 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  div {
-    padding: 0;
-  }
+div {
+  padding: 0;
+}
 
-  .mobile-wrapper {
-    padding: 0;
-    display: grid;
-    grid-gap: 10px;
-    grid-template-columns: 150px 1fr;
-    color: #444;
-  }
+.mobile-wrapper {
+  padding: 0;
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: 150px 1fr;
+  color: #444;
+}
 </style>
