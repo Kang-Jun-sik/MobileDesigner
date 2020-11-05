@@ -167,10 +167,10 @@ export default {
         $('.ui-resizable-w').css('top', (height / 2 - 4) + 'px');
     },
 
-    destroyResizableUI(){
-        var dotList = document.querySelectorAll('.ui-resizable-handle');
-        Array.prototype.forEach.call( dotList, function( node ) {
-            node.parentNode.removeChild( node );
+    removeResizeHandler(){
+        const resizeHandler = document.querySelectorAll('.ui-resizable-handle');
+        Array.prototype.forEach.call(resizeHandler, function(handler) {
+            handler.parentNode.removeChild(handler);
         });
     },
 
@@ -225,7 +225,7 @@ export default {
         window.selectedItem.classList.add('ui-selected');
         // main-designer의 경우 resize 표시가 필요없으므로 canResize를 호출하지 않는다.
         if (!target.classList.contains('main-designer')) {
-            GlobalService.destroyResizableUI();
+            GlobalService.removeResizeHandler();
             GlobalService.canResize(target);
         }
         ContextMenuService.destroyContextMenu();

@@ -52,7 +52,7 @@
         }
 
         // 리사이즈 핸들러 (UI) div 삭제
-        GlobalService.destroyResizableUI();
+        GlobalService.removeResizeHandler();
 
         // 선택된 아이템에 대해 리사이즈 핸들러 객체 삭제후 재등록
         if (window.selectedItem) {
