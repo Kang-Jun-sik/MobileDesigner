@@ -1,5 +1,5 @@
 import {store} from "@/store";
-import GlobalService from "@/service/GlobalService";
+import ResizeService from "@/service/ResizeService";
 import ControlService from "@/service/ControlService";
 
 export default {
@@ -27,7 +27,7 @@ export default {
 
             // 왼쪽 item에 target(box 혹은 tabs) appendChild (default)
             areaElement.querySelectorAll('.dews-item')[0].appendChild(target);
-            GlobalService.setPosition(target, target.offsetWidth, target.offsetHeight);
+            ResizeService.setPosition(target, target.offsetWidth, target.offsetHeight);
         } else {
             // 2. 이미 분할이 되어있는 경우
         }
