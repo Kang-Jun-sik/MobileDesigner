@@ -13,7 +13,6 @@ import Button from "@/components/Controls/ButtonComponent";
 import SearchContainer from "@/components/Containers/SearchContainer";
 
 
-
 export default {
     /**
      * 페이지 오픈 서비스 (EWP -> MOBILE DESIGNER PAGE Rendering)
@@ -100,10 +99,10 @@ export default {
      * 하위 자식 컨트롤의 사이즈 조절을 위한 로직 ex) dews-mobile-areBox > dews-box-content-wrap
      * */
     alsoResizeTarget(target) {
-        if(target[0] === null)
+        if (target === null)
             return;
 
-        if(target[0].classList.contains('dews-mobile-areaBox')){
+        if (target[0].classList.contains('dews-mobile-areaBox')) {
             return target.find('.dews-box-content-wrap');
         }
     },
@@ -113,7 +112,7 @@ export default {
     * */
     canResize(element) {
         //메인 디자이너의 경우 리사이즈 핸들러가 필요없음
-        if(element.classList.contains('main-designer'))
+        if (element.classList.contains('main-designer'))
             return;
 
         const elementUid = element.getAttribute('uid');
@@ -167,19 +166,44 @@ export default {
         $('.ui-resizable-w').css('top', (height / 2 - 4) + 'px');
     },
 
-    removeResizeHandler(){
+    removeResizeHandler() {
         const resizeHandler = document.querySelectorAll('.ui-resizable-handle');
-        Array.prototype.forEach.call(resizeHandler, function(handler) {
+        Array.prototype.forEach.call(resizeHandler, function (handler) {
             handler.parentNode.removeChild(handler);
         });
     },
 
-    destoryResizable(item){
+    destoryResizable(item) {
         const elementUid = item.getAttribute('uid');
         const target = $(`[uid=${elementUid}]`);
         let isDesigner = item.classList.contains('main-designer');
-        if(target && !isDesigner)
+        if (target && !isDesigner)
             $(target).resizable('destroy');
+    },
+
+    /**
+     * 디자이너 키바인딩
+     */
+    keyBindingService() {
+        document.addEventListener('keydown', function (event) {
+            const key = event.key;
+            if (key === "Delete") {
+                // Do things
+                if (window.selectedItem) {
+                    ControlService.sendDeleteMessage(window.selectedItem);
+                    ControlService.deleteService(window.selectedItem);
+                }
+            }
+        });
+
+        /*
+        document.addEventListener('keydown', function(event) {
+            const key = event.key;
+            if (key === "Delete") {
+                // Do things
+            }
+        });
+         */
     },
 
     /**
