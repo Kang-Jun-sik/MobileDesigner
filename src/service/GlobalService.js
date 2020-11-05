@@ -102,7 +102,8 @@ export default {
         document.addEventListener('keydown', function (event) {
             const key = event.key;
             if (key === "Delete") {
-                // Do things
+                if (window.selectedItem.classList.contains('main-designer'))
+                    return;
                 if (window.selectedItem) {
                     ControlService.sendDeleteMessage(window.selectedItem);
                     ControlService.deleteService(window.selectedItem);

@@ -65,7 +65,7 @@ export default {
      * 하위 자식 컨트롤의 사이즈 조절을 위한 로직 ex) dews-mobile-areBox > dews-box-content-wrap
      * */
     alsoResizeTarget(target) {
-        if(target[0] === null)
+        if(target === null)
             return;
 
         if(target[0].classList.contains('dews-mobile-areaBox')){

@@ -68,6 +68,7 @@ export default {
 
             //(2)vuex에서 삭제할 것
             target.remove();
+            window.selectedItem = null;
         }
     },
 
