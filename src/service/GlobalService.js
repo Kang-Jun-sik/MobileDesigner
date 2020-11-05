@@ -119,6 +119,10 @@ export default {
     * 컨트롤 리사이즈 (jQuery 라이브러리 사용)
     * */
     canResize(element) {
+        //메인 디자이너의 경우 리사이즈 핸들러가 필요없음
+        if(element.classList.contains('main-designer'))
+            return;
+
         const elementUid = element.getAttribute('uid');
         const target = $(`[uid=${elementUid}]`);
         $(target).resizable({
@@ -180,7 +184,8 @@ export default {
     destoryResizable(item){
         const elementUid = item.getAttribute('uid');
         const target = $(`[uid=${elementUid}]`);
-        if(target)
+        let isDesigner = item.classList.contains('main-designer');
+        if(target && !isDesigner)
             $(target).resizable('destroy');
     },
 
