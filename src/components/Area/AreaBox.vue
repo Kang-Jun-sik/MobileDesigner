@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import GlobalService from "@/service/GlobalService";
+import ResizeService from "@/service/ResizeService";
 import ControlService from "@/service/ControlService";
 
 export default {
@@ -46,7 +46,7 @@ export default {
       }
 
       const box = this.$el;
-      setTimeout(GlobalService.setPosition, 500, box);
+      setTimeout(ResizeService.setPosition, 500, box);
     },
   }
 }

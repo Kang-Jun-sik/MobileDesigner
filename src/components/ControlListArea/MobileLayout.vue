@@ -13,7 +13,7 @@
 </template>
 
 <script>
-  import GlobalService from "@/service/GlobalService";
+  import ResizeService from "@/service/ResizeService";
 
   export default {
     name: 'mobile-layout',
@@ -52,13 +52,13 @@
         }
 
         // 리사이즈 핸들러 (UI) div 삭제
-        GlobalService.removeResizeHandler();
+        ResizeService.removeResizeHandler();
 
         // 선택된 아이템에 대해 리사이즈 핸들러 객체 삭제후 재등록
         if (window.selectedItem) {
-          GlobalService.destoryResizable(window.selectedItem);
-          GlobalService.canResize(window.selectedItem);
-          setTimeout(GlobalService.setPosition, 500, window.selectedItem);
+          ResizeService.destoryResizable(window.selectedItem);
+          ResizeService.canResize(window.selectedItem);
+          setTimeout(ResizeService.setPosition, 500, window.selectedItem);
         }
       }
     }
