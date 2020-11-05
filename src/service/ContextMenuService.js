@@ -1,8 +1,6 @@
 import $ from "jquery";
 import 'jquery-contextmenu'
-import GlobalService from "@/service/GlobalService";
 import ControlService from "@/service/ControlService";
-import {mobileDesignerToIDE} from "@/utils/mobileDesignerToIDE";
 import SplitService from "@/service/SplitService";
 
 export default {

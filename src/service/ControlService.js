@@ -1,5 +1,4 @@
 import Vue from 'vue'
-import { store } from "@/store";
 import {mobileDesignerToIDE} from "@/utils/mobileDesignerToIDE";
 
 import Button from "@/components/Controls/ButtonComponent";
@@ -18,8 +17,13 @@ export default {
     createUid(target) {
         let controlUid;
         let date = new Date();
-
         return controlUid = target + '-' + date.getTime();
+    },
+
+    createDrakeUid(target) {
+        let controlUid;
+        let date = new Date();
+        return controlUid = 'drake' + '-' + target + '-' + date.getTime();
     },
 
     /*
@@ -61,9 +65,14 @@ export default {
 
     /*
     * 컨트롤 삭제 (디자이너에서만 삭제)
-    * */
+    **/
     deleteService(target) {
         if (target) {
+            //메모리 해제 로직
+            //(1)dragula container에서 삭제할 것
+            const elementUid = target.getAttribute('uid');
+
+            //(2)vuex에서 삭제할 것
             target.remove();
         }
     },
@@ -77,5 +86,5 @@ export default {
         let parentUid = parentNode.getAttribute('uid');
         mobileDesignerToIDE("delete", component, parentUid);
     },
-
+//(메인 디자이너 아이템 재배치 케이스)
 }

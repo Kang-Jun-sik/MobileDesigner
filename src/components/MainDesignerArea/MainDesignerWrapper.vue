@@ -1,8 +1,7 @@
 <template>
   <div id="mainDesignerWrapper"
        :class="designerWrapperLayout"
-       class="main-designer-wrapper"
-  >
+       class="main-designer-wrapper">
     <navigation-bar ref="navigationBar"></navigation-bar>
     <main-designer ref="mainDesigner"></main-designer>
     <button-tab-bar ref="buttonTabBar"></button-tab-bar>

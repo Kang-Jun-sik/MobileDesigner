@@ -3,22 +3,15 @@ import 'jquery-ui-bundle';
 import 'jquery-ui-bundle/jquery-ui.css';
 import 'jquery-contextmenu';
 
-import Vue from 'vue'
-import { store } from "@/store";
 import {mobileDesignerToIDE} from "@/utils/mobileDesignerToIDE";
+
 import GlobalService from "@/service/GlobalService";
 import ControlService from "@/service/ControlService";
 import ContextMenuService from "@/service/ContextMenuService";
 
 import Button from "@/components/Controls/ButtonComponent";
 import SearchContainer from "@/components/Containers/SearchContainer";
-import FormContainer from "@/components/Containers/FormContainer";
-import ListContainer from "@/components/Containers/ListContainer";
 
-import AreaPanel from "@/components/Area/AreaPanel";
-import AreaItem from "@/components/Area/AreaItem";
-import AreaBox from "@/components/Area/AreaBox";
-import AreaTabs from "@/components/Area/tab/AreaTabs";
 
 
 export default {
