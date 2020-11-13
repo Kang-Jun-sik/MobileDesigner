@@ -10,6 +10,8 @@ import AreaTabs from "@/components/Area/tab/AreaTabs";
 import SearchContainer from "@/components/Containers/SearchContainer";
 import FormContainer from "@/components/Containers/FormContainer";
 
+import _ from "lodash";
+
 export default {
     /*
     * 컨트롤 UID 생성
@@ -67,10 +69,13 @@ export default {
     deleteService(target) {
         if (target) {
             //메모리 해제 로직
+            //(1)dragula container에서 제거
 
-            //(1)dragula container에서 삭제할 것
-
-            //(2)vuex에서 삭제할 것
+            //(2)vuex에서 제거
+            let uid = target.getAttribute('uid');
+            if (uid) {
+                _.remove(window.Vue.$store.state.items, function (item) { return item.uid === uid });
+            }
             target.remove();
             window.selectedItem = null;
         }
@@ -84,5 +89,6 @@ export default {
         let parentNode = component.parentElement.closest('.dews-mobile-component');
         let parentUid = parentNode.getAttribute('uid');
         mobileDesignerToIDE("delete", component, parentUid);
-    },
+    }
+    ,
 }
