@@ -37,7 +37,7 @@ export default {
                         switch (itemKey){
                             case "delete" :
                                 ControlService.sendDeleteMessage(opt.$trigger[0]);
-                                ControlService.deleteService(opt.$trigger[0]);
+                                ControlService.deleteControl(opt.$trigger[0]);
                                 break;
                         }
                     }
@@ -57,7 +57,7 @@ export default {
                         switch (itemKey){
                             case "delete" :
                                 ControlService.sendDeleteMessage(opt.$trigger[0]);
-                                ControlService.deleteService(opt.$trigger[0]);
+                                ControlService.deleteControl(opt.$trigger[0]);
                                 break;
                         }
                     }
@@ -78,7 +78,7 @@ export default {
                                 break;
                             case "delete" :
                                 ControlService.sendDeleteMessage(opt.$trigger[0]);
-                                ControlService.deleteService(opt.$trigger[0]);
+                                ControlService.deleteControl(opt.$trigger[0]);
                                 break;
                         }
                     }
@@ -95,7 +95,7 @@ export default {
                         switch (itemKey){
                             case "delete" :
                                 ControlService.sendDeleteMessage(opt.$trigger[0]);
-                                ControlService.deleteService(opt.$trigger[0]);
+                                ControlService.deleteControl(opt.$trigger[0]);
                                 break;
                         }
                     }

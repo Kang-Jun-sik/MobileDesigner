@@ -44,11 +44,7 @@ export default {
 
       // click된 Layout class on 추가 및 나머지 Layout off class 추가
       for (let key in this.chkLayout) {
-        if (key === chk) {
-          this.chkLayout[key] = 'on';
-        } else {
-          this.chkLayout[key] = 'off';
-        }
+        this.chkLayout[key] = key === chk ? 'on' : 'off';
       }
 
       // 리사이즈 핸들러 (UI) div 삭제
@@ -56,9 +52,7 @@ export default {
 
       // 선택된 아이템에 대해 리사이즈 핸들러 객체 삭제후 재등록
       if (window.selectedItem) {
-
-        if (window.selectedItem.classList.contains('main-designer'))
-          return;
+        if (window.selectedItem.classList.contains('main-designer')) return;
         ResizeService.destoryResizable(window.selectedItem);
         ResizeService.canResize(window.selectedItem);
         setTimeout(ResizeService.setPosition, 500, window.selectedItem);

@@ -1,4 +1,4 @@
-import {store} from "@/store";
+import { store } from "@/store";
 import ResizeService from "@/service/ResizeService";
 import ControlService from "@/service/ControlService";
 
@@ -23,6 +23,7 @@ export default {
             for (let i = 0; i < 2; i++) {
                 let item = ControlService.addComponent('AreaItem');
                 areaElement.appendChild(item.$el);
+                store.commit('addItem', item);
             }
 
             // 왼쪽 item에 target(box 혹은 tabs) appendChild (default)

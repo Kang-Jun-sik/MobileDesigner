@@ -60,7 +60,7 @@ export default {
 
 .designer-tabletL {
   .dews-item {
-    margin: 0 $area-item-space;
+    margin: 0 $area-item-space 12px;
     flex: 1 0 100%;
     min-width: $area-item-size-minimum-width;
 

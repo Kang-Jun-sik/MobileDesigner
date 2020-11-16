@@ -12,14 +12,14 @@ export const store = new Vuex.Store({
         containerElement: '',
         componentElement: '',
         etcElement: '',
-        dragulaContainer: [],
+
+        dragulaUid: {},
 
         designerWrapperLayout: 'designer-wrapper-tabletL',
         designerLayout: 'designer-tabletL',
         mobileLayout: 'tabletL',
 
         tabTitles: {},
-
         splitCount: 0,
     },
     mutations: {
@@ -33,14 +33,13 @@ export const store = new Vuex.Store({
             let name = payload.name;
             state[name] = payload.control;
         },
-        setDrake(state, element) {
-            console.log(window.drake.container);
-            console.log('state', state.dragulaContainer);
-        },
         setLayout(state, payload) {
             state.designerWrapperLayout = 'designer-wrapper-' + payload;
             state.designerLayout = 'designer-' + payload;
             state.mobileLayout = payload;
+        },
+        matchDragulaUid(state, payload) {
+            state.dragulaUid[payload.uid] = payload.muid;
         },
         addTabTitle(state, payload) {
             if (state.tabTitles[payload[0]]) {

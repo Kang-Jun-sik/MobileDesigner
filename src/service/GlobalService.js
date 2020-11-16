@@ -106,7 +106,7 @@ export default {
                     return;
                 if (window.selectedItem) {
                     ControlService.sendDeleteMessage(window.selectedItem);
-                    ControlService.deleteService(window.selectedItem);
+                    ControlService.deleteControl(window.selectedItem);
                 }
             }
         });
