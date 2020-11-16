@@ -29,7 +29,7 @@ export default {
     }
   },
   created() {
-    this.uid = ControlService.createUid('mobile-box');
+    this.uid = ControlService.createUid('dews-box');
     this.muid = ControlService.createUid('designer-box');
   },
   mounted() {
