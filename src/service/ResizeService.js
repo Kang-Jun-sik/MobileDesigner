@@ -93,4 +93,18 @@ export default {
 
         if(target && !isDesigner) $(target).resizable('destroy');
     },
+
+    disableResize(item) {
+        const elementUid = item.getAttribute('uid');
+        const target = $(`[uid=${elementUid}]`);
+        let isDesigner = item.classList.contains('main-designer');
+
+        if (target && !isDesigner) {
+            $(target).resizable({
+                disabled: true,
+                handles: 'n, e, s, w, ne, se, sw, nw'
+            });
+            ResizeService.setPosition(item, item.offsetWidth, item.offsetHeight);
+        }
+    }
 }
