@@ -27,7 +27,7 @@ export default {
         //let canvasDoc = xmlDoc.getElementsByTagName('canvas')[0];
         let canvasDoc = xmlDoc.getElementsByTagName('mobile-page')[0];
         let type = canvasDoc.attributes.getNamedItem('type').nodeValue;
-        let mPage = window.Vue.$store.state.items.find(x => x.uid.startsWith("mobile-page"));
+        let mPage = window.Vue.$store.state.items.find(item => item.uid.startsWith("mobile-page"));
 
         mPage.uid = canvasDoc.getAttribute('uid'); // 임시로 canvas에 uid 적용
         mPage.$el.setAttribute('uid', canvasDoc.getAttribute('uid')) // 임시로 canvas에 적용
@@ -87,56 +87,45 @@ export default {
     selectFromIDEService(args) {
         //(1) uid를 추출한다.
         //(2) uid를 이용해 vuex에서 해당 componet의 $el을 가져온다.
-        //(3) 해당 $el을 selectServiceParam함수의 파라미터로 넘겨준다.
+        //(3) 해당 $el을 selectControl 함수의 파라미터로 넘겨준다.
         console.log(args);
-        let message = JSON.parse(args);
-        let uid = message['controlUniqueId'];
-        let vComponent = window.Vue.$store.state.items.find(x => x.uid == uid);
-        GlobalService.selectServiceParam(vComponent.$el);
+        const message = JSON.parse(args);
+        const uid = message['controlUniqueId'];
+        let control = window.Vue.$store.state.items.find(item => item.uid === uid);
+        GlobalService.selectControl(control.$el);
     },
 
     /**
      * 디자이너 키바인딩
      */
-    keyBindingService() {
+    keyBinding() {
         document.addEventListener('keydown', function (event) {
             const key = event.key;
             if (key === "Delete") {
-                if (window.selectedItem.classList.contains('main-designer'))
-                    return;
+                if (window.selectedItem.classList.contains('main-designer')) return;
                 if (window.selectedItem) {
                     ControlService.sendDeleteMessage(window.selectedItem);
                     ControlService.deleteControl(window.selectedItem);
                 }
             }
         });
-
-        /*
-        document.addEventListener('keydown', function(event) {
-            const key = event.key;
-            if (key === "Delete") {
-                // Do things
-            }
-        });
-         */
     },
 
-    /**
-     * 컨트롤 선택 (이벤트)
-     * @param {eventTarget}
-     */
-    selectService() {
-        $('.main-designer-wrapper').mousedown(function (event) {
-            GlobalService.selectServiceParam(event.target);
-            event.preventDefault();
+    /*
+    * 컨트롤 선택 이벤트 등록
+    * */
+    selectControlEvent() {
+        $('.main-designer-wrapper').mousedown(function (e) {
+            GlobalService.selectControl(e.target);
+            e.preventDefault();
         });
     },
 
-    /**
-     * 컨트롤 선택 (파라미터)
-     * @param {eventTarget}
-     */
-    selectServiceParam(eventTarget) {
+    /*
+    * 컨트롤 선택 이벤트 실행
+    * @param eventTarget - 선택한 컨트롤
+    * */
+    selectControl(eventTarget) {
         let target;
         if (eventTarget.classList.contains('dews-mobile-component')) {
             target = eventTarget;
