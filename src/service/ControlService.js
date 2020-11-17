@@ -90,6 +90,8 @@ export default {
         // 3) target drake.containers, Vuex items에서 삭제
         this.deleteDrakeContainer(target);
         this.deleteItems(target);
+
+        // 4) target 객체 제거
         target.remove();
 
         // selectItem이 없으므로 null 처리
@@ -114,13 +116,14 @@ export default {
             } else {
                 this.deleteDrakeContainer(targetSibling);
                 this.deleteItems(targetSibling);
+                targetPanel.remove();
                 targetSibling.remove();
             }
         }
     },
 
     /*
-    * target의 자식 노드 dragula와 Vuex items에서 삭제
+    * target의 자식 노드 drake.containers와 Vuex items에서 삭제
     * */
     deleteTargetChild(target) {
         target.childNodes.forEach(child => {
@@ -128,18 +131,18 @@ export default {
                 this.deleteDrakeContainer(child);
                 this.deleteItems(child);
             }
-
+            // AreaBox의 box-content-wrap과 같이 안에 Control이 있을 수 있기 때문에 uid와 muid를 가지고 있을 때 함수 호출
             if (child.getAttribute('uid') || child.getAttribute('muid')) this.deleteTargetChild(child);
         });
     },
 
     /*
-    * Dragula의 Containers에 저장된 Control 정보 삭제
+    * Dragula의 drake.containers에 저장된 Control 정보 삭제
     * */
     deleteDrakeContainer(target) {
         const targetUid = target.getAttribute('uid');
 
-        // target의 root element의 uid 정보가 root에 포함되어 있지 않은 경우, muid로 판단
+        // target의 root element의 uid 정보가 root에 포함되어 있지 않은 경우 muid로 판단
         if (store.state.dragulaUid[targetUid]) {
             const mUid = store.state.dragulaUid[targetUid];
             _.remove(window.drake.containers, function(container) {
@@ -154,7 +157,7 @@ export default {
     },
 
     /*
-    * Vuex의 items에 존재하는 Control 삭제
+    * Vuex의 items에 저장된 Control 삭제
     * */
     deleteItems(target) {
         _.remove(store.state.items, function(item) {
