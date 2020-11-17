@@ -3,7 +3,7 @@
     <div class="dews-box-title" @click="onToggleClick($event)" :collapsed="collapsed">
       <h2><button class="dews-box-title-button" type="button">{{ title }}</button></h2>
     </div>
-    <div :muid="muid" class="dews-box-content-wrap" :style="style" part="content" ref="boxContent">
+    <div :muid="muid" class="dews-box-content-wrap" ref="boxContent" :style="contentStyle" part="content">
       <div class="dews-box-content">
         <slot></slot>
       </div>
@@ -23,10 +23,11 @@ export default {
       uid: '',
       muid: '',
       title: 'Box',
-      collapsed: '',
-      style: {
-        height: ''
-      },
+      collapsed: true,
+      height: '',
+      contentStyle: {
+        display: 'block'
+      }
     }
   },
   created() {
@@ -41,16 +42,19 @@ export default {
     // click 이벤트
     onToggleClick: function (e){
       e.stopPropagation();
-      if (!this.collapsed) {
-        this.collapsed = 'open';
-        this.style.height = '306px';
+      const box = document.querySelector('.dews-box-wrap');
+
+      if (this.contentStyle.display === 'block') {
+        this.collapsed = false;
+        box.style.setProperty('height', '', 'important');
+        this.contentStyle.display = 'none';
       } else {
-        this.collapsed = '';
-        this.style.height = '0px';
+        this.collapsed = true;
+        box.style.setProperty('height', box.style.height);
+        this.contentStyle.display = 'block';
       }
 
-      const box = this.$el;
-      setTimeout(ResizeService.setPosition, 500, box);
+      ResizeService.setPosition(box, box.offsetWidth, box.offsetHeight);
     },
   }
 }
@@ -101,17 +105,12 @@ export default {
 }
 
 :host([collapsed]) [part='content'] {
-  //display: block;
-  //height: 300px;
-  transition: height 0.5s;
+  transition: all 0.5s;
   transition-timing-function: ease-in-out;
 }
 
 [part='content'] {
-  //display: none;
-  overflow: hidden;
-  height: 0;
-  transition: height 0.5s;
+  transition: all 0.5s;
   transition-timing-function: ease-in-out;
 }
 
@@ -120,6 +119,7 @@ export default {
 //--------------------------------------
 .dews-box-wrap {
   //box design
+  min-height: 72px;
   padding: 10px;
 
   .dews-box-content-wrap {
