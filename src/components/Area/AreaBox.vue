@@ -31,7 +31,7 @@ export default {
     }
   },
   created() {
-    this.uid = ControlService.createUid('mobile-box');
+    this.uid = ControlService.createUid('dews-box');
     this.muid = ControlService.createUid('designer-box');
     store.commit('matchDragulaUid', {'uid': this.uid, 'muid': this.muid});
   },
