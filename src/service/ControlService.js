@@ -89,7 +89,8 @@ export default {
 
         // 3) target drake.containers, Vuex items에서 삭제
         this.deleteDrakeContainer(target);
-        this.deleteControlElement(target);
+        this.deleteItems(target);
+        target.remove();
 
         // selectItem이 없으므로 null 처리
         window.selectedItem = null;
@@ -108,7 +109,8 @@ export default {
                 targetPanel.replaceWith(element);
             } else {
                 this.deleteDrakeContainer(targetSibling);
-                this.deleteControlElement(targetSibling);
+                this.deleteItems(targetSibling);
+                targetSibling.remove();
             }
         }
     },
@@ -118,12 +120,13 @@ export default {
     * */
     deleteTargetChild(target) {
         target.childNodes.forEach(child => {
-            if (child.classList.contains('dews-mobile-component')) {
+            if (child.getAttribute('uid')) {
                 this.deleteDrakeContainer(child);
-                this.deleteControlElement(child);
-                this.deleteTargetChild(child);
+                this.deleteItems(child);
             }
-        })
+
+            if (child.getAttribute('uid') || child.getAttribute('muid')) this.deleteTargetChild(child);
+        });
     },
 
     /*
@@ -132,9 +135,8 @@ export default {
     deleteDrakeContainer(target) {
         const targetUid = target.getAttribute('uid');
 
-        // target의 root element의 uid 정보가 containers에 저장되어 있는지 check
+        // target의 root element의 uid 정보가 root에 포함되어 있지 않은 경우, muid로 판단
         if (store.state.dragulaUid[targetUid]) {
-            // uid 정보가 root에 포함되어 있지 않은 경우, muid로 판단
             const mUid = store.state.dragulaUid[targetUid];
             _.remove(window.drake.containers, function(container) {
                 return container.getAttribute('muid') === mUid;
@@ -148,12 +150,11 @@ export default {
     },
 
     /*
-    * Vuex의 items에 존재하는 Control 삭제 및 Control Element Dom 삭제
+    * Vuex의 items에 존재하는 Control 삭제
     * */
-    deleteControlElement(target) {
+    deleteItems(target) {
         _.remove(store.state.items, function(item) {
             return item.uid === target.getAttribute('uid');
         });
-        target.remove();
     },
 }
