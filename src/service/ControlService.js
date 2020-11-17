@@ -107,6 +107,10 @@ export default {
             if (targetSibling.hasChildNodes()) {
                 const element = targetSibling.childNodes[0];
                 targetPanel.replaceWith(element);
+                targetPanel.childNodes.forEach(child => {
+                    this.deleteDrakeContainer(child);
+                    this.deleteItems(child);
+                });
             } else {
                 this.deleteDrakeContainer(targetSibling);
                 this.deleteItems(targetSibling);
