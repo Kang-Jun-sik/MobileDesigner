@@ -13,7 +13,7 @@
       </div>
     </div>
 
-    <div class="dews-search-field">
+    <div class="dews-search-field" ref="searchContainer" :muid="muid">
       <ul class="form-field">
 <!--        <slot v-if="this.inputList">-->
 <!--          <li v-for="(input, idx) in inputList" :key="idx"> {{ input }}</li>-->
@@ -21,26 +21,26 @@
 <!--        <slot v-else></slot>-->
         <li>
           <div class="dews-textbox">
-            <label for="">항목명</label>
-            <input type="text" id="textbox" class="">
+            <label>항목명</label>
+            <input type="text" class="">
           </div>
         </li>
         <li>
           <div class="dews-textbox">
-            <label for="">항목명</label>
-            <input type="text" id="textbox" class="">
+            <label>항목명</label>
+            <input type="text" class="">
           </div>
         </li>
         <li>
           <div class="dews-textbox">
-            <label for="">항목명</label>
-            <input type="text" id="textbox" class="">
+            <label>항목명</label>
+            <input type="text" class="">
           </div>
         </li>
         <li>
           <div class="dews-textbox">
-            <label for="">항목명</label>
-            <input type="text" id="textbox" class="">
+            <label>항목명</label>
+            <input type="text" class="">
           </div>
         </li>
       </ul>
@@ -50,6 +50,7 @@
 
 <script>
   import ControlService from "@/service/ControlService";
+  import { store } from "@/store";
 
   export default {
     name: 'dews-search-container',
@@ -57,6 +58,7 @@
     data() {
       return {
         uid: '',
+        muid: '',
         title: 'Search Container',
         customButton: [],
         inputList: [],
@@ -64,6 +66,8 @@
     },
     created() {
       this.uid = ControlService.createUid('mobile-area');
+      this.muid = ControlService.createUid('designer-search');
+      store.commit('matchDragulaUid', {'uid': this.uid, 'muid': this.muid});
     },
     mounted() {
       window.drake.containers.push(this.$refs.searchContainer);

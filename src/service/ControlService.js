@@ -81,8 +81,6 @@ export default {
         // target이 존재하지 않다면 return
         if (!target) return;
 
-        const targetUid = target.getAttribute('uid');
-
         // 1) AreaItem이 하나만 남을 경우를 생각하여 splitDelete 함수 호출 후, replaceWith
         if (target.classList.contains('dews-item')) this.deleteSplit(target);
 
@@ -119,15 +117,13 @@ export default {
     * target의 자식 노드 dragula와 Vuex items에서 삭제
     * */
     deleteTargetChild(target) {
-        if (target.childNodes) {
-            target.childNodes.forEach(child => {
-                if (child.classList.contains('dews-mobile-component')) {
-                    this.deleteDrakeContainer(child);
-                    this.deleteControlElement(child);
-                    this.deleteTargetChild(child);
-                }
-            })
-        }
+        target.childNodes.forEach(child => {
+            if (child.classList.contains('dews-mobile-component')) {
+                this.deleteDrakeContainer(child);
+                this.deleteControlElement(child);
+                this.deleteTargetChild(child);
+            }
+        })
     },
 
     /*
