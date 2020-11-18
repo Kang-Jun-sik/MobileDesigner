@@ -30,19 +30,25 @@ body {
 
   .main-designer {
     .ui-resizable-handle {
-      background-color: rgba(0,0,0,.75);
+      background-color: #000000bf;
       width: 6px;
       height: 6px;
       border-radius: 50%;
     }
 
-    .ui-resizable-n, .ui-resizable-w, .ui-resizable-ne,
-    .ui-resizable-se, .ui-resizable-sw, .ui-resizable-nw {
+    .ui-resizable-n, .ui-resizable-w, .ui-resizable-ne, .ui-resizable-se,
+    .ui-resizable-sw, .ui-resizable-nw {
       cursor: not-allowed;
     }
 
     .ui-resizable-s, .ui-resizable-e {
       background-color: #dc3545;
+    }
+
+    .dews-mobile-areaBox {
+      .ui-resizable-e {
+        background-color: #000000bf;
+      }
     }
   }
 
