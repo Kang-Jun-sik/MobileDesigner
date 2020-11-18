@@ -126,13 +126,12 @@ export default {
     * target의 자식 노드 drake.containers와 Vuex items에서 삭제
     * */
     deleteTargetChild(target) {
-        target.childNodes.forEach(child => {
+        Array.from(target.children).forEach(child => {
             if (child.getAttribute('uid')) {
                 this.deleteDrakeContainer(child);
                 this.deleteItems(child);
             }
-            // AreaBox의 box-content-wrap과 같이 안에 Control이 있을 수 있기 때문에 uid와 muid를 가지고 있을 때 함수 호출
-            if (child.getAttribute('uid') || child.getAttribute('muid')) this.deleteTargetChild(child);
+            this.deleteTargetChild(child);
         });
     },
 

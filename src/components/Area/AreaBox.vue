@@ -3,8 +3,8 @@
     <div class="dews-box-title" @click="onToggleClick($event)" :collapsed="collapsed">
       <h2><button class="dews-box-title-button" type="button">{{ title }}</button></h2>
     </div>
-    <div :muid="muid" class="dews-box-content-wrap" ref="boxContent" :style="contentStyle" part="content">
-      <div class="dews-box-content">
+    <div class="dews-box-content-wrap" :style="contentStyle" part="content">
+      <div :muid="muid" class="dews-box-content" ref="boxContent">
         <slot></slot>
       </div>
     </div>
@@ -32,7 +32,8 @@ export default {
   },
   created() {
     this.uid = ControlService.createUid('dews-box');
-    this.muid = ControlService.createUid('designer-box');
+    this.muid = ControlService.createUid('designer-content');
+
     store.commit('matchDragulaUid', {'uid': this.uid, 'muid': this.muid});
   },
   mounted() {
@@ -122,8 +123,9 @@ export default {
   min-height: 72px;
   padding: 10px;
 
-  .dews-box-content-wrap {
+  .dews-box-content {
     min-height: 40px;
+    padding-top: 10px;
   }
 }
 

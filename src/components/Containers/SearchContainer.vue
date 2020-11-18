@@ -13,7 +13,7 @@
       </div>
     </div>
 
-    <div class="dews-search-field" ref="searchContainer" :muid="muid">
+    <div :muid="muid" class="dews-search-field" ref="searchContainer">
       <ul class="form-field">
 <!--        <slot v-if="this.inputList">-->
 <!--          <li v-for="(input, idx) in inputList" :key="idx"> {{ input }}</li>-->
