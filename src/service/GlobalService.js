@@ -107,16 +107,15 @@ export default {
                     ControlService.sendDeleteMessage(window.selectedItem);
                     ControlService.deleteControl(window.selectedItem);
                 }
-            }
-            else if( event.ctrlKey && key === 'z'){
-                if(window.Vue.$store.state.undoRedoItems.length > 0){
-                    alert('undo');
+            } else if (event.ctrlKey && key === 'z') {
+                if (window.Vue.$store.state.undoItems.length > 0) {
+                    console.log('undo execute');
+
                 }
-            }
-            else if( event.ctrlKey && key === 'y'){
-                if(window.Vue.$store.state.undoRedoItems.length > 0)
-                {
-                    alert('redo');
+            } else if (event.ctrlKey && key === 'y') {
+                if (window.Vue.$store.state.redoItems.length > 0) {
+                    console.log('redo execute');
+
                 }
             }
         });

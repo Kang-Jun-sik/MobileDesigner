@@ -42,7 +42,7 @@ export default {
   methods: {
     /*
     * 드롭할 때, 컴포넌트 호출 및 $el로 replace 처리
-    * */
+    **/
     drop(el, target) {
       if (el.classList.contains('dewsControl')) {
         // 컴포넌트 추가 후, $el로 replace
@@ -50,12 +50,18 @@ export default {
         const component = ControlService.addComponent(componentName);
         this.$store.commit('addItem', component);
         el.replaceWith(component.$el);
-
+        ContextMenuService.getContextMenu(component.$el);
 
         // 부모 노드 찾기
         let parentNode = component.$el.parentElement.closest('.dews-mobile-component');
         let parentUid = parentNode.getAttribute('uid');
-        ContextMenuService.getContextMenu(component.$el);
+
+        // Undo Redo Service - type : addItem
+        let undoItem = {};
+        undoItem.type = "addItem";
+        undoItem.parentUid = parentUid;
+        undoItem.data = component;
+        UndoRedoService.addUndoItem(undoItem);
 
         // IDE로 create 전송
         mobileDesignerToIDE("create", component.$el, parentUid);
@@ -64,7 +70,7 @@ export default {
 
     /*
     * 드래그해서 컨트롤 생성시 체크
-    * */
+    **/
     acceptCheck(el, target, source) {
       const controlList = ['areaList', 'containerList', 'componentList', 'etcList'];
       if (controlList.includes(source.id)) {
@@ -72,7 +78,7 @@ export default {
         if (target.closest('.main-designer') && !el.classList.contains('ui-resizable-resizing')) {
           /*
           * 메인디자이너에 컨트롤 생성시 컨트롤별 조건 체크
-          * */
+          **/
           // Button
           if (el.classList.contains('dews-mobile-button')) {
             if (target.classList.contains('search-container-content'))

@@ -2,8 +2,11 @@ import { store } from "@/store";
 
 export default {
 
-    //undo stack에 쌓기
-    addUndoRedoItem(){
+    addUndoItem(undoItem){
+        window.Vue.$store.commit('addUndoItem', undoItem);
+    },
+
+    addRedoItem() {
 
     },
 
