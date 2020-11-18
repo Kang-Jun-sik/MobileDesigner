@@ -126,7 +126,7 @@ export default {
     * target의 자식 노드 drake.containers와 Vuex items에서 삭제
     * */
     deleteTargetChild(target) {
-        target.children.forEach(child => {
+        Array.from(target.children).forEach(child => {
             if (child.getAttribute('uid')) {
                 this.deleteDrakeContainer(child);
                 this.deleteItems(child);
