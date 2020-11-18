@@ -12,6 +12,7 @@ import ControlListWrapper from "@/components/ControlListArea/ControlListWrapper"
 import ControlService from "@/service/ControlService";
 import ContextMenuService from "@/service/ContextMenuService";
 import {mobileDesignerToIDE} from "@/utils/mobileDesignerToIDE";
+import UndoRedoService from "@/service/UndoRedoService";
 
 export default {
   name: 'mobile-wrapper',
@@ -49,6 +50,7 @@ export default {
         const component = ControlService.addComponent(componentName);
         this.$store.commit('addItem', component);
         el.replaceWith(component.$el);
+
 
         // 부모 노드 찾기
         let parentNode = component.$el.parentElement.closest('.dews-mobile-component');

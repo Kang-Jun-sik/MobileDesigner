@@ -108,6 +108,17 @@ export default {
                     ControlService.deleteControl(window.selectedItem);
                 }
             }
+            else if( event.ctrlKey && key === 'z'){
+                if(window.Vue.$store.state.undoRedoItems.length > 0){
+                    alert('undo');
+                }
+            }
+            else if( event.ctrlKey && key === 'y'){
+                if(window.Vue.$store.state.undoRedoItems.length > 0)
+                {
+                    alert('redo');
+                }
+            }
         });
     },
 

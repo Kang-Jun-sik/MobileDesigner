@@ -6,8 +6,7 @@ Vue.use(Vuex);
 export const store = new Vuex.Store({
     state: {
         items: [],
-        undoitems : [],
-        redoitems : [],
+        undoRedoItems:[],
 
         mainDesigner: '',
         areaElement: '',
@@ -28,11 +27,8 @@ export const store = new Vuex.Store({
         addItem(state, item) {
             state.items.push(item);
         },
-        addUndoItem(state, item) {
-            state.undoitems.push(item);
-        },
-        addRedoItem(state, item) {
-            state.redoitems.push(item);
+        addUndoRedoItem(state, item) {
+            state.undoRedoItems.push(item);
         },
         findDesigner(state, payload) {
             state.mainDesigner = payload;
@@ -62,11 +58,8 @@ export const store = new Vuex.Store({
         items(state) {
             return state.items;
         },
-        undoitems(state){
-            return state.undoitems;
-        },
-        redoitems(state){
-            return state.redoitems;
+        undoRedoItems(state){
+            return state.undoRedoItems;
         },
         wrapperSizeCheck(state) {
             return state.designerWrapperLayout;
