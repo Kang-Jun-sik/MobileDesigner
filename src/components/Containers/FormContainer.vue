@@ -31,26 +31,26 @@
         <ul class="form-field">
           <li>
             <div class="dews-textbox">
-              <label for="">항목명</label>
-              <input type="text" id="textbox" class="">
+              <label>항목명</label>
+              <input type="text" class="">
             </div>
           </li>
           <li>
             <div class="dews-textbox">
-              <label for="">항목명</label>
-              <input type="text" id="textbox" class="">
+              <label>항목명</label>
+              <input type="text" class="">
             </div>
           </li>
           <li>
             <div class="dews-textbox">
-              <label for="">항목명</label>
-              <input type="text" id="textbox" class="">
+              <label>항목명</label>
+              <input type="text" class="">
             </div>
           </li>
           <li>
             <div class="dews-textbox">
-              <label for="">항목명</label>
-              <input type="text" id="textbox" class="">
+              <label>항목명</label>
+              <input type="text" class="">
             </div>
           </li>
         </ul>

@@ -124,6 +124,9 @@ export default {
 
     /*
     * target의 자식 노드 drake.containers와 Vuex items에서 삭제
+    * uid: drake.container과 items에서 저장되어있는 컨트롤들을 실제로 삭제하는 역할
+    *      uid를 통해 drake.container(drag&drop 할 수 있는 영역이라 items와 다름)의 muid를 삭제할 수 있음
+    * muid: content 또는 field 안에 있는 컨트롤들을 식별하기 위해 필요
     * */
     deleteTargetChild(target) {
         target.childNodes.forEach(child => {
