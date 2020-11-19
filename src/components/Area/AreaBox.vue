@@ -46,15 +46,19 @@ export default {
       e.stopPropagation();
       const box = document.querySelector('.dews-box-wrap');
 
-      if (this.contentStyle.display === 'block') {
-        this.collapsed = false;
-        box.style.setProperty('height', '', 'important');
-        this.contentStyle.display = 'none';
-      } else {
-        this.collapsed = true;
-        box.style.setProperty('height', box.style.height);
-        this.contentStyle.display = 'block';
-      }
+
+      // if (this.contentStyle.display === 'block') {
+      //   this.collapsed = false;
+      //   box.style.setProperty('height', '', 'important');
+      //   this.contentStyle.display = 'none';
+      // } else {
+      //   this.collapsed = true;
+      //   box.style.setProperty('height', box.style.height);
+      //   this.contentStyle.display = 'block';
+      // }
+
+      this.collapsed = false;
+
 
       ResizeService.setPosition(box);
     },
@@ -102,19 +106,35 @@ export default {
           transition-timing-function: ease-in-out;
         }
       }
+
+      &+[part='content'] {
+        height: 300px;
+        transition: height 0.5s;
+        transition-timing-function: ease-in-out;
+      }
     }
+  }
+  [part='content'] {
+    overflow: hidden;
+    height: 40px;
+    min-height: 40px;
+    transition: height 0.5s;
+    transition-timing-function: ease-in-out;
   }
 }
 
-:host([collapsed]) [part='content'] {
-  transition: all 0.5s;
-  transition-timing-function: ease-in-out;
-}
-
-[part='content'] {
-  transition: all 0.5s;
-  transition-timing-function: ease-in-out;
-}
+//[collapsed] [part='content'] {
+//  height: 300px;
+//  transition: height 0.5s;
+//  transition-timing-function: ease-in-out;
+//}
+//[part='content'] {
+//  overflow: hidden;
+//  height: 40px;
+//  min-height: 40px;
+//  transition: height 0.5s;
+//  transition-timing-function: ease-in-out;
+//}
 
 //--------------------------------------
 // FD 추가 영역
