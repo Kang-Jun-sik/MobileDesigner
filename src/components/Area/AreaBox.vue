@@ -1,5 +1,5 @@
 <template>
-  <div :uid="uid" class="dews-mobile-areaBox dews-mobile-component dews-box-wrap">
+  <div :uid="uid" class="dews-mobile-areaBox dews-mobile-component dews-box-wrap" ref="box">
     <div class="dews-box-title" @click="onToggleClick($event)" :collapsed="collapsed">
       <h2><button class="dews-box-title-button" type="button">{{ title }}</button></h2>
     </div>
@@ -23,7 +23,6 @@ export default {
       uid: '',
       muid: '',
       title: 'Box',
-      handles: "",
       collapsed: true,
       height: '',
       contentStyle: {
@@ -44,7 +43,7 @@ export default {
     // click 이벤트
     onToggleClick: function (e){
       e.stopPropagation();
-      const box = document.querySelector('.dews-box-wrap');
+      const box = this.$refs.box;
 
       if (this.contentStyle.display === 'block') {
         this.collapsed = false;
@@ -56,7 +55,7 @@ export default {
         this.contentStyle.display = 'block';
       }
 
-      ResizeService.setPosition(box);
+      setTimeout(ResizeService.setPosition, 10, box);
     },
   }
 }

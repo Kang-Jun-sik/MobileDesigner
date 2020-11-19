@@ -30,21 +30,21 @@ export default {
     selectLayout: function (e) {
       e.stopPropagation();
 
-      let chk;
+      let layout;
       if (e.target.classList.contains('smartPhone')) {
-        chk = 'smartPhone';
+        layout = 'smartPhone';
       } else if (e.target.classList.contains('tabletM')) {
-        chk = 'tabletM';
+        layout = 'tabletM';
       } else if (e.target.classList.contains('tabletL')) {
-        chk = 'tabletL';
+        layout = 'tabletL';
       }
 
       // Vuex에 Layout Style Commit
-      this.$store.commit('setLayout', chk);
+      this.$store.commit('setLayout', layout);
 
       // click된 Layout class on 추가 및 나머지 Layout off class 추가
       for (let key in this.chkLayout) {
-        this.chkLayout[key] = key === chk ? 'on' : 'off';
+        this.chkLayout[key] = key === layout ? 'on' : 'off';
       }
 
       // 리사이즈 핸들러 (UI) div 삭제
