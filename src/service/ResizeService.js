@@ -9,13 +9,13 @@ export default {
         //메인 디자이너의 경우 리사이즈 핸들러가 필요없음
         if(element.classList.contains('main-designer')) return
 
+        const $element = element;
         const elementUid = element.getAttribute('uid');
         const target = $(`[uid=${elementUid}]`);
         $(target).resizable({
             disabled: false,
             alsoResize: ResizeService.alsoResizeTarget(target),
             handles: "s, e",
-            delay: 0,
             minWidth: parseInt(target.css('minWidth'), 10),
             minHeight: parseInt(target.css('minHeight'), 10),
             maxWidth: parseInt(target.css('maxWidth'), 10),

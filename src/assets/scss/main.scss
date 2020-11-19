@@ -34,9 +34,9 @@ body {
 
   .dews-control-handle {
     position: absolute;
-    background-color: blue;
-    width: 5px;
-    height: 5px;
+    background-color: #575757;
+    width: 6px;
+    height: 6px;
     border-radius: 50%;
     z-index: 100;
   }
@@ -87,6 +87,12 @@ body {
   }
 
   .button-tab-bar {
+    .dews-control-handle {
+      background-color: #393939;
+      width: 5px;
+      height: 5px;
+    }
+
     .ui-resizable-handle {
       cursor: default;
     }

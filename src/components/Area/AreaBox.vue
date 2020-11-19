@@ -23,6 +23,7 @@ export default {
       uid: '',
       muid: '',
       title: 'Box',
+      handles: "",
       collapsed: true,
       height: '',
       contentStyle: {
@@ -120,6 +121,7 @@ export default {
 //--------------------------------------
 .dews-box-wrap {
   //box design
+  max-width: 1033px;
   min-height: 72px;
   padding: 10px;
 
