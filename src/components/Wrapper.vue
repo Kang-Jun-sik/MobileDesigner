@@ -58,6 +58,7 @@ export default {
 
         // Undo Redo Service - type : addItem
         let undoItem = {};
+        // Test Code
         undoItem.type = "addItem";
         undoItem.parentUid = parentUid;
         undoItem.data = component;
