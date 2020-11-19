@@ -28,43 +28,68 @@ body {
     display: none;
   }
 
+  .ui-icon {
+    background-image: none;
+  }
+
+  .dews-control-handle {
+    position: absolute;
+    background-color: blue;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    z-index: 100;
+  }
+
+  .handle-n {
+    top: -5px;
+    left: 0;
+  }
+
+  .handle-e {
+    top: 0;
+    right: -5px;
+  }
+
+  .handle-s {
+    bottom: -5px;
+    left: 0;
+  }
+
+  .handle-w {
+    top: 0;
+    left: -5px;
+  }
+
+  .handle-ne {
+    top: -5px;
+    right: -5px;
+  }
+
+  .handle-se {
+    bottom: -5px;
+    right: -5px;
+  }
+
+  .handle-sw {
+    bottom: -5px;
+    left: -5px;
+  }
+
+  .handle-nw {
+    top: -5px;
+    left: -5px;
+  }
+
   .main-designer {
     .ui-resizable-handle {
-      background-color: #000000bf;
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-    }
-
-    .ui-resizable-n, .ui-resizable-w, .ui-resizable-ne, .ui-resizable-se,
-    .ui-resizable-sw, .ui-resizable-nw {
-      cursor: not-allowed;
-    }
-
-    .ui-resizable-s, .ui-resizable-e {
-      background-color: #dc3545;
-    }
-
-    .dews-mobile-areaBox {
-      .ui-resizable-e {
-        background-color: #000000bf;
-      }
     }
   }
 
   .button-tab-bar {
     .ui-resizable-handle {
-      background-color: rgba(0,0,0,.75);
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
       cursor: default;
     }
-  }
-
-  .ui-resizable-se {
-    bottom: -5px;
-    right: -5px;
   }
 }
 

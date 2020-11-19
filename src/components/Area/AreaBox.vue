@@ -55,7 +55,7 @@ export default {
         this.contentStyle.display = 'block';
       }
 
-      ResizeService.setPosition(box, box.offsetWidth, box.offsetHeight);
+      ResizeService.setPosition(box);
     },
   }
 }
