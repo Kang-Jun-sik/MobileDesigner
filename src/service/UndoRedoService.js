@@ -18,23 +18,45 @@ export default {
      *  case 1) addItem <==> deleteItem
      *  case 2) control property change before <==> control property change after
      */
+        let parent;
+        let paretUid;
         switch (item.type){
             case 'addItem' :
                 ControlService.sendDeleteMessage(item.data.$el);
                 ControlService.deleteControl(item.data.$el);
                 break;
+            case 'deleteItem' :
+                paretUid = item.parentUid;
+                parent = window.Vue.$store.state.items.find(item => item.uid === paretUid);
+                if(parent){
+                    window.Vue.$store.commit('addItem', item.data);
+                    parent.$el.appendChild(item.data.$el);
+                }
+                break;
         }
     },
 
     /*
-     * [undo action] 반대로 동작한다.
-     *  case 1) addItem <==> deleteItem
-     *  case 2) control property change before <==> control property change after
+     * [redo action]
+     * redo stack에 쌓인 대로 동작한다.
      */
     redoAction(item){
+        let parent;
+        let paretUid;
         switch (item.type){
-            case 'addItem' :
 
+            case 'addItem' :
+                paretUid = item.parentUid;
+                parent = window.Vue.$store.state.items.find(item => item.uid === paretUid);
+                if(parent){
+                    window.Vue.$store.commit('addItem', item.data);
+                    parent.$el.appendChild(item.data.$el);
+                }
+                break;
+
+            case 'deleteItem' :
+                ControlService.sendDeleteMessage(item.data.$el);
+                ControlService.deleteControl(item.data.$el);
                 break;
         }
     },
