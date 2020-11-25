@@ -190,7 +190,7 @@ export default {
         handles.forEach(handle => {
             let newHandle = document.createElement('div');
             newHandle.className = `dews-control-handle handle-${handle}`;
-            $element.append(newHandle);
+            $element.appendChild(newHandle);
         })
 
         ResizeService.setPosition($element);

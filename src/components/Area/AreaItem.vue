@@ -1,5 +1,5 @@
 <template>
-  <div :uid="uid" class="dews-mobile-areaItem dews-item dews-mobile-component" :class="col" ref="dewsItem"></div>
+  <div :uid="uid" class="dews-mobile-areaItem dews-mobile-component dews-item" :class="col" ref="dewsItem"></div>
 </template>
 
 <script>
@@ -10,6 +10,7 @@ export default {
   data() {
     return {
       uid: '',
+      handles: 'e',
       col: 'col-fd-6',
       cols: {
         col4: 'col-fd-4',
@@ -86,6 +87,6 @@ export default {
   padding: 10px 10px 0;
   margin-bottom: 12px;
   min-height: 40px;
-  border: 1px dotted blue;
+  border: 1px dotted #343a40;
 }
 </style>
