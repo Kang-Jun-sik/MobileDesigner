@@ -117,7 +117,10 @@ export default {
                     ControlService.sendDeleteMessage(window.selectedItem);
                     ControlService.deleteControl(window.selectedItem);
                 }
-            } else if (event.ctrlKey && key === 'z') {
+            }
+            /*
+            //UNDO REDO의 호출은 IDE로부터 오기때문에 주석처리
+            else if (event.ctrlKey && key === 'z') {
                 if (window.Vue.$store.state.undoItems.length > 0) {
                     console.log('undo execute');
                     UndoRedoService.undoExecute();
@@ -128,6 +131,7 @@ export default {
                     UndoRedoService.redoExecute();
                 }
             }
+            */
         });
     },
 

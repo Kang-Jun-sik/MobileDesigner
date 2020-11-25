@@ -27,6 +27,7 @@ let mobileDesignerToIDE = (commandType, elm, parentUID, key) => {
                 'parentId': parentUID,
                 'data': `<?xml version="1.0"?><${control} uid="${elm.getAttribute('uid')}"/>`
             }
+            break;
     }
     console.log(obj);
     // eslint-disable-next-line no-undef
