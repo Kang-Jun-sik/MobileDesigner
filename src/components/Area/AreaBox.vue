@@ -45,19 +45,15 @@ export default {
       e.stopPropagation();
       const box = this.$refs.box;
 
-
-      // if (this.contentStyle.display === 'block') {
-      //   this.collapsed = false;
-      //   box.style.setProperty('height', '', 'important');
-      //   this.contentStyle.display = 'none';
-      // } else {
-      //   this.collapsed = true;
-      //   box.style.setProperty('height', box.style.height);
-      //   this.contentStyle.display = 'block';
-      // }
-
-      this.collapsed = false;
-
+      if (this.contentStyle.display === 'block') {
+        this.collapsed = false;
+        box.style.setProperty('height', '', 'important');
+        this.contentStyle.display = 'none';
+      } else {
+        this.collapsed = true;
+        box.style.setProperty('height', box.style.height);
+        this.contentStyle.display = 'block';
+      }
 
       setTimeout(ResizeService.setPosition, 10, box);
     },
@@ -105,20 +101,7 @@ export default {
           transition-timing-function: ease-in-out;
         }
       }
-
-      &+[part='content'] {
-        height: 300px;
-        transition: height 0.5s;
-        transition-timing-function: ease-in-out;
-      }
     }
-  }
-  [part='content'] {
-    overflow: hidden;
-    height: 40px;
-    min-height: 40px;
-    transition: height 0.5s;
-    transition-timing-function: ease-in-out;
   }
 }
 
