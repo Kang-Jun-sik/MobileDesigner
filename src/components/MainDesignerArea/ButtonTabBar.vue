@@ -11,17 +11,17 @@
 </template>
 
 <script>
+  import { mapGetters } from "vuex";
   import AddButton from "@/components/MainButtons/AddButton";
   import SearchButton from "@/components/MainButtons/SearchButton";
   import DeleteButton from "@/components/MainButtons/DeleteButton";
   import SaveButton from "@/components/MainButtons/SaveButton";
+
   export default {
     name: 'button-tab-bar',
     components: {SaveButton, DeleteButton, SearchButton, AddButton},
     data() {
-      return {
-        mobileLayout: this.$store.state.mobileLayout,
-      }
+      return {}
     },
     mounted() {
       this.$store.commit('addItem', this.$refs.addButton);
@@ -30,15 +30,10 @@
       this.$store.commit('addItem', this.$refs.saveButton);
     },
     computed: {
-      buttonTabBarSize: function() {
-        return this.$store.getters.mobileLayoutCheck
-      }
+      ...mapGetters({
+        mobileLayout: "mobileSize"
+      })
     },
-    watch: {
-      buttonTabBarSize: function(state) {
-        this.mobileLayout = state;
-      }
-    }
   }
 </script>
 

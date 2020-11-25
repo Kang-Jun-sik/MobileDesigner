@@ -28,7 +28,7 @@ export default {
         //let canvasDoc = xmlDoc.getElementsByTagName('canvas')[0];
         let canvasDoc = xmlDoc.getElementsByTagName('mobile-page')[0];
         let type = canvasDoc.attributes.getNamedItem('type').nodeValue;
-        let mPage = window.Vue.$store.state.items.find(item => item.uid.startsWith("mobile-page"));
+        let mPage = window.Vue.$store.state.item.items.find(item => item.uid.startsWith("mobile-page"));
 
         mPage.uid = canvasDoc.getAttribute('uid'); // 임시로 canvas에 uid 적용
         mPage.$el.setAttribute('uid', canvasDoc.getAttribute('uid')) // 임시로 canvas에 적용
@@ -69,7 +69,7 @@ export default {
         function pageParsing(node, parentUid) {
             let clone = node.cloneNode();
             let instance = createControl(clone);
-            let parent = window.Vue.$store.state.items.find(item => item.uid === parentUid);
+            let parent = window.Vue.$store.state.item.items.find(item => item.uid === parentUid);
             parent.$el.appendChild(instance.$el);
 
             if (node.childElementCount === 0) return
@@ -90,7 +90,7 @@ export default {
         console.log(args);
         const message = JSON.parse(args);
         const uid = message['controlUniqueId'];
-        let control = window.Vue.$store.state.items.find(item => item.uid === uid);
+        let control = window.Vue.$store.state.item.items.find(item => item.uid === uid);
         GlobalService.selectControl(control.$el);
     },
 
@@ -118,12 +118,12 @@ export default {
                     ControlService.deleteControl(window.selectedItem);
                 }
             } else if (event.ctrlKey && key === 'z') {
-                if (window.Vue.$store.state.undoItems.length > 0) {
+                if (window.Vue.$store.state.item.undoItems.length > 0) {
                     console.log('undo execute');
                     UndoRedoService.undoExecute();
                 }
             } else if (event.ctrlKey && key === 'y') {
-                if (window.Vue.$store.state.redoItems.length > 0) {
+                if (window.Vue.$store.state.item.redoItems.length > 0) {
                     console.log('redo execute');
                     UndoRedoService.redoExecute();
                 }

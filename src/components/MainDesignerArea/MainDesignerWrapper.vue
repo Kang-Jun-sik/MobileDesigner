@@ -9,33 +9,26 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 import ButtonTabBar from "@/components/MainDesignerArea/ButtonTabBar";
 import NavigationBar from "@/components/MainDesignerArea/NavigationBar";
-import GlobalService from "@/service/GlobalService";
 import MainDesigner from "@/components/MainDesignerArea/MainDesigner";
 
 export default {
   name: 'main-designer-wrapper',
   components: {NavigationBar, MainDesigner, ButtonTabBar},
   data() {
-    return {
-      designerWrapperLayout: this.$store.state.designerWrapperLayout,
-    }
+    return {}
   },
   mounted() {
-    this.$store.commit('findDesigner', this.$refs.mainDesigner);
+    this.$store.commit('setDesigner', this.$refs.mainDesigner);
     this.$store.commit('addItem', this.$refs.mainDesigner);
   },
   computed: {
-    wrapperSize: function() {
-      return this.$store.getters.wrapperSizeCheck
-    }
+    ...mapGetters({
+      designerWrapperLayout: "wrapperSize"
+    })
   },
-  watch: {
-    wrapperSize: function(state) {
-      this.designerWrapperLayout = state;
-    }
-  }
 }
 </script>
 

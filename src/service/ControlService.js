@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import _ from "lodash";
-import { store } from "@/store";
+import store from "@/store/index";
 import {mobileDesignerToIDE} from "@/utils/mobileDesignerToIDE";
 
 import Button from "@/components/Controls/ButtonComponent";
@@ -142,12 +142,12 @@ export default {
         const targetUid = target.getAttribute('uid');
 
         // target의 root element의 uid 정보가 root에 포함되어 있지 않은 경우 muid로 판단
-        if (store.state.dragulaUid[targetUid]) {
-            const mUid = store.state.dragulaUid[targetUid];
+        if (store.state.item.dragulaUid[targetUid]) {
+            const mUid = store.state.item.dragulaUid[targetUid];
             _.remove(window.drake.containers, function(container) {
                 return container.getAttribute('muid') === mUid;
             });
-            delete store.state.dragulaUid[targetUid];
+            delete store.state.item.dragulaUid[targetUid];
         } else {
             _.remove(window.drake.containers, function(container) {
                 return container.getAttribute('uid') === targetUid;
@@ -159,7 +159,7 @@ export default {
     * Vuex의 items에 저장된 Control 삭제
     * */
     deleteItems(target) {
-        _.remove(store.state.items, function(item) {
+        _.remove(store.state.item.items, function(item) {
             return item.uid === target.getAttribute('uid');
         });
     },

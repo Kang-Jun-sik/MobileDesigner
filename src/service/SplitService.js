@@ -1,4 +1,4 @@
-import { store } from "@/store";
+import store from "@/store/index"
 import ResizeService from "@/service/ResizeService";
 import ControlService from "@/service/ControlService";
 
@@ -8,7 +8,7 @@ export default {
     **/
     verticalSplit(target) {
         // TabletL 사이즈가 아니라면 분할이 불가능하므로 리턴
-        if (store.state.designerLayout !== 'designer-tabletL') return;
+        if (store.state.layout.designerLayout !== 'designer-tabletL') return;
 
         let area, areaElement;
         if (!target.parentElement.classList.contains('dews-item')) {

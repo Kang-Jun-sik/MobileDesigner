@@ -6,7 +6,7 @@
 
 <script>
   import ControlService from "@/service/ControlService";
-  import { store } from '@/store';
+  import store from "@/store/index";
 
   export default {
     name: 'dews-tab',

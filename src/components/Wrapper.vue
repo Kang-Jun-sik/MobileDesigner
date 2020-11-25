@@ -22,6 +22,7 @@ export default {
   },
   mounted() {
     const _this = this;
+    const _designerState = this.$store.state.designer;
     window.drake = dragula({
       revertOnSpill: true,
       copy: function (el, source) {
@@ -33,11 +34,12 @@ export default {
     }).on('drop', function (el, target) {
       _this.drop(el, target);
     })
-    window.drake.containers.push(this.$store.state.mainDesigner.$el);
-    window.drake.containers.push(this.$store.state.areaElement);
-    window.drake.containers.push(this.$store.state.containerElement);
-    window.drake.containers.push(this.$store.state.componentElement);
-    window.drake.containers.push(this.$store.state.etcElement);
+
+    window.drake.containers.push(_designerState.mainDesigner.$el);
+    window.drake.containers.push(_designerState.areaList);
+    window.drake.containers.push(_designerState.containerList);
+    window.drake.containers.push(_designerState.componentList);
+    window.drake.containers.push(_designerState.etcList);
   },
   methods: {
     /*

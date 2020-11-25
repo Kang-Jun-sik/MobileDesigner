@@ -37,11 +37,11 @@
       }
     },
     mounted() {
-      const componentElement = {
-        name: 'componentElement',
+      const componentList = {
+        name: 'componentList',
         control: document.querySelector('#componentList')
       }
-      this.$store.commit('findElement', componentElement);
+      this.$store.commit('setControlList', componentList);
     }
   }
 </script>

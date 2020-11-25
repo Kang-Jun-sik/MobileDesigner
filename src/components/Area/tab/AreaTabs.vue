@@ -32,11 +32,11 @@
     },
     created() {
       this.uid = ControlService.createUid('mobile-tabs');
-      this.titleList = store.state.tabTitles;
+      // this.titleList = store.state.tabTitles;
     },
     mounted() {
-      const titles = store.getters.tabTitleList;
-      this.titleList = titles[this.uid];
+      // const titles = store.getters.tabTitleList;
+      // this.titleList = titles[this.uid];
     },
     methods: {
       // selectTab: function (evt, idx){

@@ -32,11 +32,11 @@
       }
     },
     mounted() {
-      const etcElement = {
-        name: 'etcElement',
+      const etcList = {
+        name: 'etcList',
         control: document.querySelector('#etcList')
       }
-      this.$store.commit('findElement', etcElement);
+      this.$store.commit('setControlList', etcList);
     }
   }
 </script>
