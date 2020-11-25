@@ -12,6 +12,7 @@ import ContextMenuService from "@/service/ContextMenuService";
 
 import Button from "@/components/Controls/ButtonComponent";
 import SearchContainer from "@/components/Containers/SearchContainer";
+import UndoRedoService from "@/service/UndoRedoService";
 
 export default {
     /**
@@ -102,18 +103,29 @@ export default {
             if (key === "Delete") {
                 if (window.selectedItem.classList.contains('main-designer')) return;
                 if (window.selectedItem) {
+
+                    // Undo Redo Service - type : deleteItem
+                    let parentNode = window.selectedItem.parentElement.closest('.dews-mobile-component');
+                    let parentUid = parentNode.getAttribute('uid');
+                    let undoItem = {};
+                    // Test Code
+                    undoItem.type = "deleteItem";
+                    undoItem.parentUid = parentUid;
+                    undoItem.data = window.selectedItem;
+                    UndoRedoService.addUndoItem(undoItem);
+
                     ControlService.sendDeleteMessage(window.selectedItem);
                     ControlService.deleteControl(window.selectedItem);
                 }
             } else if (event.ctrlKey && key === 'z') {
                 if (window.Vue.$store.state.undoItems.length > 0) {
                     console.log('undo execute');
-
+                    UndoRedoService.undoExecute();
                 }
             } else if (event.ctrlKey && key === 'y') {
                 if (window.Vue.$store.state.redoItems.length > 0) {
                     console.log('redo execute');
-
+                    UndoRedoService.redoExecute();
                 }
             }
         });
@@ -178,7 +190,7 @@ export default {
         handles.forEach(handle => {
             let newHandle = document.createElement('div');
             newHandle.className = `dews-control-handle handle-${handle}`;
-            $element.append(newHandle);
+            $element.appendChild(newHandle);
         })
 
         ResizeService.setPosition($element);
