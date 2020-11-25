@@ -18,6 +18,9 @@
             case 'SELECT_IDE' :
                 window.services.get("selectFromIDEService").call(this, args);
                 break;
+            case 'UNDO_REDO' :
+                window.services.get("undoredoAction").call(this, args);
+                break;
         }
     }
 

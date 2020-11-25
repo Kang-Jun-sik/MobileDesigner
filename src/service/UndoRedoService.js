@@ -80,5 +80,11 @@ export default {
             UndoRedoService.redoAction(redoItem);
         }
         console.log('redo Service execute');
+    },
+
+    //undo / redo action from IDE
+    undoredoAction(item){
+        console.log(item);
+        console.log('do undo redo from ide');
     }
 }
