@@ -38,7 +38,7 @@ body {
     width: 6px;
     height: 6px;
     border-radius: 50%;
-    z-index: 100;
+    z-index: 80;
   }
 
   .handle-n {
@@ -82,8 +82,6 @@ body {
   }
 
   .main-designer {
-    .ui-resizable-handle {
-    }
   }
 
   .button-tab-bar {
