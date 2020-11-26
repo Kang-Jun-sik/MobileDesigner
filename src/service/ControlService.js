@@ -101,7 +101,7 @@ export default {
     },
 
     /*
-    * Split 확인한 후, replaceWith 하거나 delete
+    * AreaItem이 하나만 남을 경우, replaceWith 하거나 delete
     * */
     deleteSplit(target) {
         const targetPanel = target.parentElement;

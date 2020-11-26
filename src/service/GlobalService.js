@@ -157,12 +157,9 @@ export default {
             $(`[uid=${selectedElement.getAttribute('uid')}]`).resizable({
                 disabled: true
             })
-            // 이 전에 선택된 element select handle remove
-            if (!selectedElement.classList.contains('main-designer')) {
-                GlobalService.removeSelectHandler(selectedElement);
-                ResizeService.removeResizeHandler();
-            }
         }
+        GlobalService.removeSelectHandler();
+        ResizeService.removeResizeHandler();
 
         window.selectedItem = target;
         window.selectedItem.classList.add('selected');
@@ -197,8 +194,8 @@ export default {
         ResizeService.setPosition($element);
     },
 
-    removeSelectHandler(element) {
-        const handles = element.querySelectorAll(':scope > .dews-control-handle');
+    removeSelectHandler() {
+        const handles = document.querySelectorAll('.dews-control-handle');
         Array.from(handles).forEach(handle => handle.remove());
     }
 }

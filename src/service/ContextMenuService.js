@@ -89,10 +89,14 @@ export default {
                 $.contextMenu({
                     selector: ".selected",
                     items: {
+                        "vertical": {name: "세로분할", icon: "edit"},
                         "delete": {name: "Delete", icon: "delete"}
                     },
                     callback: function(itemKey, opt) {
                         switch (itemKey){
+                            case "vertical":
+                                SplitService.verticalSplit(opt.$trigger[0]);
+                                break;
                             case "delete" :
                                 ControlService.sendDeleteMessage(opt.$trigger[0]);
                                 ControlService.deleteControl(opt.$trigger[0]);
