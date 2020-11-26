@@ -13,6 +13,7 @@ import ControlService from "@/service/ControlService";
 import ContextMenuService from "@/service/ContextMenuService";
 import {mobileDesignerToIDE} from "@/utils/mobileDesignerToIDE";
 import UndoRedoService from "@/service/UndoRedoService";
+import ResizeService from "@/service/ResizeService";
 
 export default {
   name: 'mobile-wrapper',
@@ -33,6 +34,9 @@ export default {
       }
     }).on('drop', function (el, target) {
       _this.drop(el, target);
+      if (window.selectedItem) {
+        ResizeService.setPosition(window.selectedItem);
+      }
     })
 
     window.drake.containers.push(_designerState.mainDesigner.$el);

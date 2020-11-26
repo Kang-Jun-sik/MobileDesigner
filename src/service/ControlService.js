@@ -1,6 +1,8 @@
 import Vue from 'vue'
 import _ from "lodash";
 import store from "@/store/index";
+
+import ControlService from "@/service/ControlService";
 import {mobileDesignerToIDE} from "@/utils/mobileDesignerToIDE";
 
 import Button from "@/components/Controls/ButtonComponent";
@@ -82,14 +84,14 @@ export default {
         if (!target) return;
 
         // 1) AreaItem이 하나만 남을 경우를 생각하여 splitDelete 함수 호출 후, replaceWith
-        if (target.classList.contains('dews-item')) this.deleteSplit(target);
+        if (target.classList.contains('dews-item')) ControlService.deleteSplit(target);
 
         // 2) target의 자식 노드까지 drake.containers, Vuex items에서 삭제
-        this.deleteTargetChild(target);
+        ControlService.deleteTargetChild(target);
 
         // 3) target drake.containers, Vuex items에서 삭제
-        this.deleteDrakeContainer(target);
-        this.deleteItems(target);
+        ControlService.deleteDrakeContainer(target);
+        ControlService.deleteItems(target);
 
         // 4) target 객체 제거
         target.remove();
@@ -109,12 +111,12 @@ export default {
             if (targetSibling.hasChildNodes()) {
                 targetPanel.replaceWith(...targetSibling.childNodes);
                 targetPanel.childNodes.forEach(child => {
-                    this.deleteDrakeContainer(child);
-                    this.deleteItems(child);
+                    ControlService.deleteDrakeContainer(child);
+                    ControlService.deleteItems(child);
                 });
             } else {
-                this.deleteDrakeContainer(targetSibling);
-                this.deleteItems(targetSibling);
+                ControlService.deleteDrakeContainer(targetSibling);
+                ControlService.deleteItems(targetSibling);
                 targetPanel.remove();
                 targetSibling.remove();
             }
@@ -127,10 +129,10 @@ export default {
     deleteTargetChild(target) {
         Array.from(target.children).forEach(child => {
             if (child.getAttribute('uid')) {
-                this.deleteDrakeContainer(child);
-                this.deleteItems(child);
+                ControlService.deleteDrakeContainer(child);
+                ControlService.deleteItems(child);
             }
-            this.deleteTargetChild(child);
+            ControlService.deleteTargetChild(child);
         });
     },
 
