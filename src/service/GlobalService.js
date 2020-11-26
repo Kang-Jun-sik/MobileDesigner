@@ -104,15 +104,17 @@ export default {
                 if (window.selectedItem.classList.contains('main-designer')) return;
                 if (window.selectedItem) {
 
+                    /*
                     // Undo Redo Service - type : deleteItem
                     let parentNode = window.selectedItem.parentElement.closest('.dews-mobile-component');
                     let parentUid = parentNode.getAttribute('uid');
                     let undoItem = {};
-                    // Test Code
+                    //Test Code
                     undoItem.type = "deleteItem";
                     undoItem.parentUid = parentUid;
                     undoItem.data = window.selectedItem;
                     UndoRedoService.addUndoItem(undoItem);
+                    */
 
                     ControlService.sendDeleteMessage(window.selectedItem);
                     ControlService.deleteControl(window.selectedItem);
