@@ -3,7 +3,6 @@ import ControlService from "@/service/ControlService";
 import UndoRedoService from "@/service/UndoRedoService";
 
 export default {
-
     addUndoItem(undoItem) {
         store.commit('addUndoItem', undoItem);
     },
@@ -12,12 +11,12 @@ export default {
 
     },
 
-    undoAction(item){
     /*
      * [undo action] 반대로 동작한다.
      *  case 1) addItem <==> deleteItem
      *  case 2) control property change before <==> control property change after
      */
+    undoAction(item){
         let parent;
         let parentUid;
         switch (item.type){
@@ -27,7 +26,7 @@ export default {
                 break;
             case 'deleteItem' :
                 parentUid = item.parentUid;
-                parent = store.state.item.items.find(item => item.uid === parentUid);
+                parent = store.state.component.items.find(item => item.uid === parentUid);
                 if (parent){
                     store.commit('addItem', item.data);
                     parent.$el.appendChild(item.data.$el);
@@ -46,7 +45,7 @@ export default {
         switch (item.type){
             case 'addItem' :
                 parentUid = item.parentUid;
-                parent = store.state.item.items.find(item => item.uid === parentUid);
+                parent = store.state.component.items.find(item => item.uid === parentUid);
                 if (parent){
                     store.commit('addItem', item.data);
                     parent.$el.appendChild(item.data.$el);
@@ -63,7 +62,7 @@ export default {
     //undo 수행
     undoExecute() {
         //가장 Top에 있는 undoItem을 얻어온다.
-        let undoItem = store.state.item.undoItems.pop();
+        let undoItem = store.state.component.undoItems.pop();
         if (undoItem){
             store.commit('addRedoItem', undoItem); //redo stack에 추가
             UndoRedoService.undoAction(undoItem);
@@ -73,7 +72,7 @@ export default {
 
     //redo 수행
     redoExecute() {
-        let redoItem = window.Vue.$store.state.redoItems.pop();
+        let redoItem = store.state.component.redoItems.pop();
         if (redoItem){
             store.commit('addUndoItem', redoItem); //undo stack에 추가
             UndoRedoService.redoAction(redoItem);

@@ -117,7 +117,7 @@ export default {
         }
       } else {
         // 메인 디자이너에서 기존 생성된 컨트롤을 재배치할 경우
-        if (el.closest('.dews-mobile-component') && el.classList.contains('ui-selected') && !el.classList.contains('ui-resizable-resizing')) {
+        if (el.closest('.dews-mobile-component') && el.classList.contains('selected') && !el.classList.contains('ui-resizable-resizing')) {
           //◎ Button
           if (el.classList.contains('dews-mobile-button')) {
             if (target.classList.contains('search-container-content')) {

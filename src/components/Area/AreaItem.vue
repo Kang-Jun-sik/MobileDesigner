@@ -10,7 +10,7 @@ export default {
   data() {
     return {
       uid: '',
-      handles: 'e',
+      handle: 'e',
       col: 'col-fd-6',
       cols: {
         col4: 'col-fd-4',

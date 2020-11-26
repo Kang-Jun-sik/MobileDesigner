@@ -107,8 +107,7 @@ export default {
         if (targetPanel.childElementCount === 2) {
             const targetSibling = target.nextSibling ? target.nextSibling : target.previousSibling;
             if (targetSibling.hasChildNodes()) {
-                const element = targetSibling.childNodes[0];
-                targetPanel.replaceWith(element);
+                targetPanel.replaceWith(...targetSibling.childNodes);
                 targetPanel.childNodes.forEach(child => {
                     this.deleteDrakeContainer(child);
                     this.deleteItems(child);
@@ -142,12 +141,12 @@ export default {
         const targetUid = target.getAttribute('uid');
 
         // target의 root element의 uid 정보가 root에 포함되어 있지 않은 경우 muid로 판단
-        if (store.state.item.dragulaUid[targetUid]) {
-            const mUid = store.state.item.dragulaUid[targetUid];
+        if (store.state.component.dragulaUid[targetUid]) {
+            const mUid = store.state.component.dragulaUid[targetUid];
             _.remove(window.drake.containers, function(container) {
                 return container.getAttribute('muid') === mUid;
             });
-            delete store.state.item.dragulaUid[targetUid];
+            delete store.state.component.dragulaUid[targetUid];
         } else {
             _.remove(window.drake.containers, function(container) {
                 return container.getAttribute('uid') === targetUid;
@@ -159,7 +158,7 @@ export default {
     * Vuex의 items에 저장된 Control 삭제
     * */
     deleteItems(target) {
-        _.remove(store.state.item.items, function(item) {
+        _.remove(store.state.component.items, function(item) {
             return item.uid === target.getAttribute('uid');
         });
     },

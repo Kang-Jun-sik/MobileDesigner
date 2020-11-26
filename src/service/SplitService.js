@@ -27,8 +27,8 @@ export default {
             }
 
             // 왼쪽 item에 target(box 혹은 tabs) appendChild (default)
-            areaElement.querySelectorAll('.dews-item')[0].appendChild(target);
-            ResizeService.setPosition(target, target.offsetWidth, target.offsetHeight);
+            areaElement.querySelectorAll(':scope > .dews-item')[0].appendChild(target);
+            ResizeService.setPosition(target);
         } else {
             // 2. 이미 분할이 되어있는 경우
         }

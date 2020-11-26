@@ -121,6 +121,10 @@ body {
   filter: alpha(opacity=50);
 }
 
+.context-menu-list {
+  z-index: 100 !important;
+}
+
 .context-menu-icon-view {
   content: "👀"; /* Unicode for ".fa-share-square-o" icon*/
   font-family: "FontAwesome" !important;
