@@ -59,6 +59,15 @@ export default {
                 case 'mobile-button':
                     instance = ControlService.addComponent('Button');
                     break;
+                case 'dews-area-panel':
+                    instance = ControlService.addComponent('AreaPanel');
+                    break;
+                case 'mobile-item':
+                    instance = ControlService.addComponent('AreaItem');
+                    break;
+                case 'dews-box':
+                    instance = ControlService.addComponent('AreaBox');
+                    break;
             }
             instance.uid = uid;
             instance.$el.setAttribute('uid', uid);
