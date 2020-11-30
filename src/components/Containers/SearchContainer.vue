@@ -20,22 +20,13 @@
 <!--        </slot>-->
 <!--        <slot v-else></slot>-->
         <li>
-          <div class="dews-textbox">
-            <label>항목명</label>
-            <input type="text" class="">
-          </div>
+          <dews-text-box></dews-text-box>
         </li>
         <li>
-          <div class="dews-textbox">
-            <label>항목명</label>
-            <input type="text" class="">
-          </div>
+          <dews-checkbox></dews-checkbox>
         </li>
         <li>
-          <div class="dews-textbox">
-            <label>항목명</label>
-            <input type="text" class="">
-          </div>
+          <dews-radio-button></dews-radio-button>
         </li>
         <li>
           <div class="dews-textbox">
@@ -51,9 +42,13 @@
 <script>
   import ControlService from "@/service/ControlService";
   import store from "@/store/index";
+  import DewsTextBox from "@/components/Controls/DewsTextBox";
+  import DewsCheckbox from "@/components/Controls/DewsCheckBox";
+  import DewsRadioButton from "@/components/Controls/DewsRadioButton";
 
   export default {
     name: 'dews-search-container',
+    components: {DewsRadioButton, DewsCheckbox, DewsTextBox},
     uid: '',
     data() {
       return {
