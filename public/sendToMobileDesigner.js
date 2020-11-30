@@ -19,7 +19,7 @@
                 window.services.get("selectFromIDEService").call(this, args);
                 break;
             case 'UNDO_REDO' :
-                window.services.get("undoredoAction").call(this, args);
+                window.services.get("undoredoService").call(this, args);
                 break;
             case 'PASTE' :
                 break;

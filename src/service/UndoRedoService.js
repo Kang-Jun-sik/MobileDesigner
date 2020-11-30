@@ -86,7 +86,7 @@ export default {
     },
 
     //undo or redo action from IDE
-    undoredoAction(item){
+    undoredoService(item){
         console.log(item);
         console.log('do undo redo from ide');
     }

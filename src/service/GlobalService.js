@@ -81,7 +81,7 @@ export default {
             let parent = window.Vue.$store.state.component.items.find(item => item.uid === parentUid);
             parent.$el.appendChild(instance.$el);
 
-            if (node.childElementCount === 0) return
+            if (node.childElementCount === 0) return;
             for (let i = 0; i < node.childElementCount; i++) {
                 pageParsing(node.children[i], instance.uid);
             }
