@@ -28,11 +28,11 @@
       }
     },
     mounted() {
-      const areaElement = {
-        name: 'areaElement',
+      const areaList = {
+        name: 'areaList',
         control: document.querySelector('#areaList')
       }
-      this.$store.commit('findElement', areaElement);
+      this.$store.commit('setControlList', areaList);
     }
   }
 </script>

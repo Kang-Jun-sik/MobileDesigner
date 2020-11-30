@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import App from './App.vue';
-import { store } from './store';
+import store from './store/index';
 import vuetify from './plugins/vuetify';
 
 import { BootstrapVue } from "bootstrap-vue";

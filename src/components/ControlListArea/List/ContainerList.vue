@@ -30,11 +30,11 @@
       }
     },
     mounted() {
-      const containerElement = {
-        name: 'containerElement',
+      const containerList = {
+        name: 'containerList',
         control: document.querySelector('#containerList')
       }
-      this.$store.commit('findElement', containerElement);
+      this.$store.commit('setControlList', containerList);
     }
   }
 </script>

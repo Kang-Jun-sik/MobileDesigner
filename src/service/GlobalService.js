@@ -28,7 +28,7 @@ export default {
         //let canvasDoc = xmlDoc.getElementsByTagName('canvas')[0];
         let canvasDoc = xmlDoc.getElementsByTagName('mobile-page')[0];
         let type = canvasDoc.attributes.getNamedItem('type').nodeValue;
-        let mPage = window.Vue.$store.state.items.find(item => item.uid.startsWith("mobile-page"));
+        let mPage = window.Vue.$store.state.component.items.find(item => item.uid.startsWith("mobile-page"));
 
         mPage.uid = canvasDoc.getAttribute('uid'); // 임시로 canvas에 uid 적용
         mPage.$el.setAttribute('uid', canvasDoc.getAttribute('uid')) // 임시로 canvas에 적용
@@ -78,7 +78,7 @@ export default {
         function pageParsing(node, parentUid) {
             let clone = node.cloneNode();
             let instance = createControl(clone);
-            let parent = window.Vue.$store.state.items.find(item => item.uid === parentUid);
+            let parent = window.Vue.$store.state.component.items.find(item => item.uid === parentUid);
             parent.$el.appendChild(instance.$el);
 
             if (node.childElementCount === 0) return
@@ -99,7 +99,7 @@ export default {
         console.log(args);
         const message = JSON.parse(args);
         const uid = message['controlUniqueId'];
-        let control = window.Vue.$store.state.items.find(item => item.uid === uid);
+        let control = window.Vue.$store.state.component.items.find(item => item.uid === uid);
         GlobalService.selectControl(control.$el);
     },
 
@@ -115,8 +115,8 @@ export default {
 
                     /*
                     // Undo Redo Service - type : deleteItem
-                    let parentNode = window.selectedItem.parentElement.closest('.dews-mobile-component');
-                    let parentUid = parentNode.getAttribute('uid');
+                    const parentNode = window.selectedItem.parentElement.closest('.dews-mobile-component');
+                    const parentUid = parentNode.getAttribute('uid');
                     let undoItem = {};
                     //Test Code
                     undoItem.type = "deleteItem";
@@ -132,12 +132,12 @@ export default {
             /*
             //UNDO REDO의 호출은 IDE로부터 오기때문에 주석처리
             else if (event.ctrlKey && key === 'z') {
-                if (window.Vue.$store.state.undoItems.length > 0) {
+                if (window.Vue.$store.state.component.undoItems.length > 0) {
                     console.log('undo execute');
                     UndoRedoService.undoExecute();
                 }
             } else if (event.ctrlKey && key === 'y') {
-                if (window.Vue.$store.state.redoItems.length > 0) {
+                if (window.Vue.$store.state.component.redoItems.length > 0) {
                     console.log('redo execute');
                     UndoRedoService.redoExecute();
                 }
@@ -166,26 +166,25 @@ export default {
         // 같은 컨트롤을 선택했을 경우 재 선택하는 것을 방지 / target이 null인 경우 return (dews-mobile-component가 아님)
         if ((window.selectedItem && window.selectedItem === target) || target === null) return;
 
-        if (document.querySelector('.ui-selected')) {
-            const selectedElement = document.querySelector('.ui-selected');
-            selectedElement.classList.remove('ui-selected');
+        if (document.querySelector('.selected')) {
+            const selectedElement = document.querySelector('.selected');
+            selectedElement.classList.remove('selected');
             // 이 전에 선택된 element resizable disabled 처리
             $(`[uid=${selectedElement.getAttribute('uid')}]`).resizable({
                 disabled: true
             })
-            // 이 전에 선택된 element select handle remove
-            if (!selectedElement.classList.contains('main-designer')) {
-                GlobalService.removeSelectHandler(selectedElement);
-            }
         }
+        GlobalService.removeSelectHandler();
+        ResizeService.removeResizeHandler();
 
         window.selectedItem = target;
-        window.selectedItem.classList.add('ui-selected');
+        window.selectedItem.classList.add('selected');
 
         // main-designer의 경우 resize 표시가 필요없으므로 canResize를 호출하지 않는다.
         if (!target.classList.contains('main-designer')) {
-            ResizeService.removeResizeHandler();
-            ResizeService.canResize(target);
+            if (!target.classList.contains('dews-box-wrap')) {
+                ResizeService.canResize(target);
+            }
             GlobalService.showSelectHandler(target);
         }
 
@@ -211,8 +210,8 @@ export default {
         ResizeService.setPosition($element);
     },
 
-    removeSelectHandler(element) {
-        const handles = element.querySelectorAll(':scope > .dews-control-handle');
+    removeSelectHandler() {
+        const handles = document.querySelectorAll('.dews-control-handle');
         Array.from(handles).forEach(handle => handle.remove());
     }
 }

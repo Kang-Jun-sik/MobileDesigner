@@ -21,24 +21,20 @@
 </template>
 
 <script>
+  import { mapGetters } from "vuex";
+
   export default {
     name: 'navigation-bar',
     data() {
       return {
-        mobileLayout: this.$store.state.mobileLayout,
         title: 'Navigation Bar',
       }
     },
     computed: {
-      layoutSize: function() {
-        return this.$store.getters.mobileLayoutCheck
-      }
+      ...mapGetters({
+        mobileLayout: "mobileSize"
+      })
     },
-    watch: {
-      layoutSize: function(state) {
-        this.mobileLayout = state;
-      }
-    }
   }
 </script>
 

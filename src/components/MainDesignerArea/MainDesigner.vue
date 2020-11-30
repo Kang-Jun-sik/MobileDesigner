@@ -5,6 +5,7 @@
 </template>
 
 <script>
+  import { mapGetters } from "vuex";
   import GlobalService from "@/service/GlobalService";
   import ControlService from "@/service/ControlService";
 
@@ -12,7 +13,6 @@
     name: 'main-designer',
     data() {
       return {
-        designerLayout: this.$store.state.designerLayout,
         designerElement: '',
         id: '',
         uid: ''
@@ -24,15 +24,10 @@
       GlobalService.selectControlEvent(); //메인 디자이너에 컨트롤 선택 이벤트 추가
     },
     computed: {
-      designerSize: function() {
-        return this.$store.getters.designerSizeCheck;
-      }
+      ...mapGetters({
+        designerLayout: "designerSize"
+      })
     },
-    watch: {
-      designerSize: function(state) {
-        this.designerLayout = state;
-      }
-    }
   }
 </script>
 

@@ -1,4 +1,5 @@
 import $ from "jquery";
+import store from "@/store/index";
 import ResizeService from "@/service/ResizeService";
 
 export default {
@@ -9,13 +10,14 @@ export default {
         //메인 디자이너의 경우 리사이즈 핸들러가 필요없음
         if(element.classList.contains('main-designer')) return
 
-        const $element = element;
+        const elementHandles = store.state.service.handles[element.classList[0]] ?
+            store.state.service.handles[element.classList[0]] : "";
         const elementUid = element.getAttribute('uid');
         const target = $(`[uid=${elementUid}]`);
         $(target).resizable({
             disabled: false,
             alsoResize: ResizeService.alsoResizeTarget(target),
-            handles: "s, e",
+            handles: elementHandles,
             minWidth: parseInt(target.css('minWidth'), 10),
             minHeight: parseInt(target.css('minHeight'), 10),
             maxWidth: parseInt(target.css('maxWidth'), 10),
@@ -74,22 +76,10 @@ export default {
     destoryResizable(item){
         const elementUid = item.getAttribute('uid');
         const target = $(`[uid=${elementUid}]`);
-        let isDesigner = item.classList.contains('main-designer');
+        const mainDesigner = item.classList.contains('main-designer');
 
-        if (target && !isDesigner) $(target).resizable('destroy');
-    },
-
-    disableResize(item) {
-        const elementUid = item.getAttribute('uid');
-        const target = $(`[uid=${elementUid}]`);
-        let isDesigner = item.classList.contains('main-designer');
-
-        if (target && !isDesigner) {
-            $(target).resizable({
-                disabled: true,
-                handles: 'n, e, s, w, ne, se, sw, nw'
-            });
-            ResizeService.setPosition(item, item.offsetWidth, item.offsetHeight);
+        if (target && !mainDesigner) {
+            $(target).resizable('destroy');
         }
-    }
+    },
 }

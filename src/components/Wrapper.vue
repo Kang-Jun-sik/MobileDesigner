@@ -13,6 +13,7 @@ import ControlService from "@/service/ControlService";
 import ContextMenuService from "@/service/ContextMenuService";
 import {mobileDesignerToIDE} from "@/utils/mobileDesignerToIDE";
 import UndoRedoService from "@/service/UndoRedoService";
+import ResizeService from "@/service/ResizeService";
 
 export default {
   name: 'mobile-wrapper',
@@ -22,6 +23,7 @@ export default {
   },
   mounted() {
     const _this = this;
+    const _designerState = this.$store.state.designer;
     window.drake = dragula({
       revertOnSpill: true,
       copy: function (el, source) {
@@ -32,12 +34,16 @@ export default {
       }
     }).on('drop', function (el, target) {
       _this.drop(el, target);
+      if (window.selectedItem) {
+        ResizeService.setPosition(window.selectedItem);
+      }
     })
-    window.drake.containers.push(this.$store.state.mainDesigner.$el);
-    window.drake.containers.push(this.$store.state.areaElement);
-    window.drake.containers.push(this.$store.state.containerElement);
-    window.drake.containers.push(this.$store.state.componentElement);
-    window.drake.containers.push(this.$store.state.etcElement);
+
+    window.drake.containers.push(_designerState.mainDesigner.$el);
+    window.drake.containers.push(_designerState.areaList);
+    window.drake.containers.push(_designerState.containerList);
+    window.drake.containers.push(_designerState.componentList);
+    window.drake.containers.push(_designerState.etcList);
   },
   methods: {
     /*
@@ -116,7 +122,7 @@ export default {
         }
       } else {
         // 메인 디자이너에서 기존 생성된 컨트롤을 재배치할 경우
-        if (el.closest('.dews-mobile-component') && el.classList.contains('ui-selected') && !el.classList.contains('ui-resizable-resizing')) {
+        if (el.closest('.dews-mobile-component') && el.classList.contains('selected') && !el.classList.contains('ui-resizable-resizing')) {
           //◎ Button
           if (el.classList.contains('dews-mobile-button')) {
             if (target.classList.contains('search-container-content')) {

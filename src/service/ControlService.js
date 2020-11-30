@@ -1,6 +1,8 @@
 import Vue from 'vue'
 import _ from "lodash";
-import { store } from "@/store";
+import store from "@/store/index";
+
+import ControlService from "@/service/ControlService";
 import {mobileDesignerToIDE} from "@/utils/mobileDesignerToIDE";
 
 import Button from "@/components/Controls/ButtonComponent";
@@ -82,14 +84,14 @@ export default {
         if (!target) return;
 
         // 1) AreaItem이 하나만 남을 경우를 생각하여 splitDelete 함수 호출 후, replaceWith
-        if (target.classList.contains('dews-item')) this.deleteSplit(target);
+        if (target.classList.contains('dews-item')) ControlService.deleteSplit(target);
 
         // 2) target의 자식 노드까지 drake.containers, Vuex items에서 삭제
-        this.deleteTargetChild(target);
+        ControlService.deleteTargetChild(target);
 
         // 3) target drake.containers, Vuex items에서 삭제
-        this.deleteDrakeContainer(target);
-        this.deleteItems(target);
+        ControlService.deleteDrakeContainer(target);
+        ControlService.deleteItems(target);
 
         // 4) target 객체 제거
         target.remove();
@@ -99,7 +101,7 @@ export default {
     },
 
     /*
-    * Split 확인한 후, replaceWith 하거나 delete
+    * AreaItem이 하나만 남을 경우, replaceWith 하거나 delete
     * */
     deleteSplit(target) {
         const targetPanel = target.parentElement;
@@ -107,15 +109,14 @@ export default {
         if (targetPanel.childElementCount === 2) {
             const targetSibling = target.nextSibling ? target.nextSibling : target.previousSibling;
             if (targetSibling.hasChildNodes()) {
-                const element = targetSibling.childNodes[0];
-                targetPanel.replaceWith(element);
+                targetPanel.replaceWith(...targetSibling.childNodes);
                 targetPanel.childNodes.forEach(child => {
-                    this.deleteDrakeContainer(child);
-                    this.deleteItems(child);
+                    ControlService.deleteDrakeContainer(child);
+                    ControlService.deleteItems(child);
                 });
             } else {
-                this.deleteDrakeContainer(targetSibling);
-                this.deleteItems(targetSibling);
+                ControlService.deleteDrakeContainer(targetSibling);
+                ControlService.deleteItems(targetSibling);
                 targetPanel.remove();
                 targetSibling.remove();
             }
@@ -128,10 +129,10 @@ export default {
     deleteTargetChild(target) {
         Array.from(target.children).forEach(child => {
             if (child.getAttribute('uid')) {
-                this.deleteDrakeContainer(child);
-                this.deleteItems(child);
+                ControlService.deleteDrakeContainer(child);
+                ControlService.deleteItems(child);
             }
-            this.deleteTargetChild(child);
+            ControlService.deleteTargetChild(child);
         });
     },
 
@@ -142,12 +143,12 @@ export default {
         const targetUid = target.getAttribute('uid');
 
         // target의 root element의 uid 정보가 root에 포함되어 있지 않은 경우 muid로 판단
-        if (store.state.dragulaUid[targetUid]) {
-            const mUid = store.state.dragulaUid[targetUid];
+        if (store.state.component.dragulaUid[targetUid]) {
+            const mUid = store.state.component.dragulaUid[targetUid];
             _.remove(window.drake.containers, function(container) {
                 return container.getAttribute('muid') === mUid;
             });
-            delete store.state.dragulaUid[targetUid];
+            delete store.state.component.dragulaUid[targetUid];
         } else {
             _.remove(window.drake.containers, function(container) {
                 return container.getAttribute('uid') === targetUid;
@@ -159,7 +160,7 @@ export default {
     * Vuex의 items에 저장된 Control 삭제
     * */
     deleteItems(target) {
-        _.remove(store.state.items, function(item) {
+        _.remove(store.state.component.items, function(item) {
             return item.uid === target.getAttribute('uid');
         });
     },

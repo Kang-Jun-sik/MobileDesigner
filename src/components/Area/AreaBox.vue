@@ -14,7 +14,7 @@
 <script>
 import ResizeService from "@/service/ResizeService";
 import ControlService from "@/service/ControlService";
-import { store } from "@/store";
+import store from "@/store/index";
 
 export default {
   name: 'dews-box',
@@ -34,7 +34,7 @@ export default {
     this.uid = ControlService.createUid('dews-box');
     this.muid = ControlService.createUid('designer-content');
 
-    store.commit('matchDragulaUid', {'uid': this.uid, 'muid': this.muid});
+    store.commit('matchUid', {'uid': this.uid, 'muid': this.muid});
   },
   mounted() {
     window.drake.containers.push(this.$refs.boxContent);

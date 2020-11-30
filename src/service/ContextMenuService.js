@@ -12,7 +12,7 @@ export default {
         switch (instance.classList[0]) {
             case "main-designer" :
                 $.contextMenu({
-                    selector: ".ui-selected",
+                    selector: ".selected",
                     items: {
                         "edit": {name: "mainDesignerOption", icon: "ic-edit"},
                         "sep1": "---------",
@@ -26,7 +26,7 @@ export default {
 
             case "dews-mobile-searchContainer" :
                 $.contextMenu({
-                    selector: ".ui-selected",
+                    selector: ".selected",
                     items: {
                         "edit": {name: "Search-container-option", icon: "edit"},
                         "delete": {name: "Delete", icon: "delete"},
@@ -46,7 +46,7 @@ export default {
 
             case "dews-mobile-button" :
                 $.contextMenu({
-                    selector: ".ui-selected",
+                    selector: ".selected",
                     items: {
                         "b1": {name: "ButtonOption1", icon: "edit"},
                         "delete": {name: "Delete", icon: "delete"},
@@ -66,7 +66,7 @@ export default {
 
             case "dews-mobile-areaBox":
                 $.contextMenu({
-                    selector: ".ui-selected",
+                    selector: ".selected",
                     items: {
                         "vertical": {name: "세로분할", icon: "edit"},
                         "delete": {name: "Delete", icon: "delete"}
@@ -87,12 +87,16 @@ export default {
 
             case "dews-mobile-areaItem":
                 $.contextMenu({
-                    selector: ".ui-selected",
+                    selector: ".selected",
                     items: {
+                        "vertical": {name: "세로분할", icon: "edit"},
                         "delete": {name: "Delete", icon: "delete"}
                     },
                     callback: function(itemKey, opt) {
                         switch (itemKey){
+                            case "vertical":
+                                SplitService.verticalSplit(opt.$trigger[0]);
+                                break;
                             case "delete" :
                                 ControlService.sendDeleteMessage(opt.$trigger[0]);
                                 ControlService.deleteControl(opt.$trigger[0]);
