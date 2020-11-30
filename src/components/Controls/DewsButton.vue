@@ -1,20 +1,20 @@
 <template>
-  <div
-      :uid="uid"
-      class="dews-mobile-button dews-mobile-component"
-      ref="mobileButton"
-      :style="buttonStyle"
-  >{{ title }}</div>
+  <button class="dews-mobile-button" :disabled="disable">
+    <span class="icon"></span>
+    <span class="text">{{ title }}</span>
+  </button>
 </template>
 
 <script>
   import ControlService from "@/service/ControlService";
 
   export default {
+    name: 'dews-button',
     data() {
       return {
         uid: '',
         title: 'Button',
+        disable: false,
         buttonStyle: {
           width: '',
           height: ''
