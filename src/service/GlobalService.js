@@ -10,7 +10,7 @@ import ResizeService from "@/service/ResizeService";
 import ControlService from "@/service/ControlService";
 import ContextMenuService from "@/service/ContextMenuService";
 
-import Button from "@/components/Controls/ButtonComponent";
+import Button from "@/components/Controls/DewsButton";
 import SearchContainer from "@/components/Containers/SearchContainer";
 import UndoRedoService from "@/service/UndoRedoService";
 
