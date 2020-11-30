@@ -1,5 +1,5 @@
 <template>
-  <div :uid="uid" class="content" :class="onActive">
+  <div :uid="uid" class="content dews-mobile-component" :class="onActive">
     <div :style="style"></div>
   </div>
 </template>

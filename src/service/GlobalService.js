@@ -59,6 +59,15 @@ export default {
                 case 'mobile-button':
                     instance = ControlService.addComponent('Button');
                     break;
+                case 'dews-area-panel':
+                    instance = ControlService.addComponent('AreaPanel');
+                    break;
+                case 'mobile-item':
+                    instance = ControlService.addComponent('AreaItem');
+                    break;
+                case 'dews-box':
+                    instance = ControlService.addComponent('AreaBox');
+                    break;
             }
             instance.uid = uid;
             instance.$el.setAttribute('uid', uid);
@@ -104,20 +113,25 @@ export default {
                 if (window.selectedItem.classList.contains('main-designer')) return;
                 if (window.selectedItem) {
 
+                    /*
                     // Undo Redo Service - type : deleteItem
                     let parentNode = window.selectedItem.parentElement.closest('.dews-mobile-component');
                     let parentUid = parentNode.getAttribute('uid');
                     let undoItem = {};
-                    // Test Code
+                    //Test Code
                     undoItem.type = "deleteItem";
                     undoItem.parentUid = parentUid;
                     undoItem.data = window.selectedItem;
                     UndoRedoService.addUndoItem(undoItem);
+                    */
 
                     ControlService.sendDeleteMessage(window.selectedItem);
                     ControlService.deleteControl(window.selectedItem);
                 }
-            } else if (event.ctrlKey && key === 'z') {
+            }
+            /*
+            //UNDO REDO의 호출은 IDE로부터 오기때문에 주석처리
+            else if (event.ctrlKey && key === 'z') {
                 if (window.Vue.$store.state.undoItems.length > 0) {
                     console.log('undo execute');
                     UndoRedoService.undoExecute();
@@ -128,6 +142,7 @@ export default {
                     UndoRedoService.redoExecute();
                 }
             }
+            */
         });
     },
 

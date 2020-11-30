@@ -18,6 +18,7 @@ export default {
      *  case 1) addItem <==> deleteItem
      *  case 2) control property change before <==> control property change after
      */
+        /*
         let parent;
         let paretUid;
         switch (item.type){
@@ -34,6 +35,7 @@ export default {
                 }
                 break;
         }
+        */
     },
 
     /*
@@ -74,11 +76,19 @@ export default {
 
     //redo 수행
     redoExecute() {
+        /*
         let redoItem = window.Vue.$store.state.redoItems.pop();
         if(redoItem){
             window.Vue.$store.commit('addUndoItem', redoItem); //undo stack에 추가
             UndoRedoService.redoAction(redoItem);
         }
         console.log('redo Service execute');
+         */
+    },
+
+    //undo or redo action from IDE
+    undoredoAction(item){
+        console.log(item);
+        console.log('do undo redo from ide');
     }
 }

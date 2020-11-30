@@ -1,5 +1,5 @@
 <template>
-  <div :uid="uid" class="dews-panel"></div>
+  <div :uid="uid" class="dews-panel dews-mobile-component"></div>
 </template>
 
 <script>
