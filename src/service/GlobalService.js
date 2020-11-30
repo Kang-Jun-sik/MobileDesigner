@@ -181,7 +181,7 @@ export default {
         window.selectedItem.classList.add('selected');
 
         // main-designer의 경우 resize 표시가 필요없으므로 canResize를 호출하지 않는다.
-        if (!target.classList.contains('main-designer')) {
+        if (!target.classList.contains('main-designer') && !target.classList.contains('dews-panel')) {
             if (!target.classList.contains('dews-box-wrap')) {
                 ResizeService.canResize(target);
             }
