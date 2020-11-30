@@ -5,7 +5,7 @@ import store from "@/store/index";
 import ControlService from "@/service/ControlService";
 import {mobileDesignerToIDE} from "@/utils/mobileDesignerToIDE";
 
-import Button from "@/components/Controls/ButtonComponent";
+import Button from "@/components/Controls/DewsButton";
 import AreaPanel from "@/components/Area/AreaPanel";
 import AreaItem from "@/components/Area/AreaItem";
 import AreaBox from "@/components/Area/AreaBox";

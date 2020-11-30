@@ -45,7 +45,7 @@ export default {
       e.stopPropagation();
       const box = this.$refs.box;
 
-      if (this.contentStyle.display === 'block') {
+      if (this.collapsed) {
         this.collapsed = false;
         box.style.setProperty('height', '', 'important');
         this.contentStyle.display = 'none';
