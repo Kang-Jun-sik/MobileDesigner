@@ -1,5 +1,5 @@
 <template>
-  <div :uid="uid" class="dews-panel dews-mobile-component"></div>
+  <div :uid="uid" class="dews-mobile-areaPanel dews-mobile-component dews-panel dews-panel-hide"></div>
 </template>
 
 <script>
@@ -15,10 +15,7 @@
     created() {
       this.uid = ControlService.createUid('mobile-panel');
     },
-    mounted() {
-      this.$nextTick(() => {
-      })
-    }
+    mounted() {},
   }
 </script>
 
@@ -46,5 +43,14 @@
     flex-flow: row nowrap;
     align-items: flex-start;
   }
+}
+
+//--------------------------------------
+// FD 추가 영역
+//--------------------------------------
+.dews-panel.dews-panel-show {
+  padding: 12px 10px 0;
+  border: 1px dotted #193a75;
+  margin-bottom: 12px;
 }
 </style>

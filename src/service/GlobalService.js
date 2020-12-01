@@ -5,6 +5,7 @@ import 'jquery-contextmenu';
 
 import {mobileDesignerToIDE} from "@/utils/mobileDesignerToIDE";
 
+import store from "@/store/index";
 import GlobalService from "@/service/GlobalService";
 import ResizeService from "@/service/ResizeService";
 import ControlService from "@/service/ControlService";
@@ -150,10 +151,28 @@ export default {
     * 컨트롤 선택 이벤트 등록
     * */
     selectControlEvent() {
-        $('.main-designer-wrapper').mousedown(function (e) {
-            GlobalService.selectControl(e.target);
+        const $mainDesigner = document.querySelector('.main-designer-wrapper');
+        $mainDesigner.addEventListener('mousedown', function (e) {
+            const target = e.target;
+
+            // 이벤트 위임 방법을 사용하여 선택한 AreaPanel만 보일수 있도록 로직 추가
+            const panels = $mainDesigner.querySelectorAll('.dews-panel');
+            Array.from(panels).forEach(panel => {
+                if (panel.classList.contains('dews-panel-show')) {
+                    panel.classList.add('dews-panel-hide');
+                    panel.classList.remove('dews-panel-show');
+                }
+            });
+            if (target.classList.contains('dews-panel')) {
+                if (target.classList.contains('dews-panel-hide')) {
+                    target.classList.add('dews-panel-show');
+                    target.classList.remove('dews-panel-hide');
+                }
+            }
+
+            GlobalService.selectControl(target);
             e.preventDefault();
-        });
+        })
     },
 
     /*
@@ -181,8 +200,9 @@ export default {
         window.selectedItem.classList.add('selected');
 
         // main-designer의 경우 resize 표시가 필요없으므로 canResize를 호출하지 않는다.
-        if (!target.classList.contains('main-designer') && !target.classList.contains('dews-panel')) {
-            if (!target.classList.contains('dews-box-wrap')) {
+        if (!target.classList.contains('main-designer')) {
+            if (!target.classList.contains('dews-box-wrap')
+                && !target.classList.contains('dews-panel')) {
                 ResizeService.canResize(target);
             }
             GlobalService.showSelectHandler(target);

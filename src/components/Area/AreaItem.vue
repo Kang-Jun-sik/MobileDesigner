@@ -84,9 +84,9 @@ export default {
 //--------------------------------------
 .dews-item {
   //item design
-  padding: 10px 10px 0;
+  padding: 12px 10px 0;
   margin-bottom: 12px;
   min-height: 40px;
-  border: 1px dotted #343a40;
+  border: 1px dotted #212121;
 }
 </style>
