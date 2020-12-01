@@ -1,10 +1,36 @@
 <template>
-  <span :uid="uid" class="dews-mobile-checkbox" :class="checkBoxClass" @click="clickHandler($event)">
+<!--  <span :uid="uid" class="dews-checkbox-wrap" :class="checkBoxClass" @click="clickHandler($event)">-->
+<!--    <span class="checkbox-control">-->
+<!--      <input type="checkbox" :checked="checked" :disabled="disabled">-->
+<!--      <span class="checkbox-shape"></span>-->
+<!--    </span>-->
+<!--    <label class="checkbox-label">{{ title }}</label>-->
+<!--  </span>-->
+
+  <span :uid="uid" class="dews-checkbox-wrap" :class="checkBoxClass" @click="clickHandler($event)">
     <span class="checkbox-control">
-      <input type="checkbox" :checked="checked" :disabled="disabled">
+      <input type="checkbox">
       <span class="checkbox-shape"></span>
     </span>
-    <label class="checkbox-label">{{ title }}</label>
+    <label class="checkbox-label">라벨</label>
+
+    <span class="checkbox-control">
+      <input type="checkbox" checked="checked">
+      <span class="checkbox-shape"></span>
+    </span>
+    <label class="checkbox-label">라벨</label>
+
+    <span class="checkbox-control">
+      <input type="checkbox" disabled="disabled">
+      <span class="checkbox-shape"></span>
+    </span>
+    <label class="checkbox-label">라벨</label>
+
+    <span class="checkbox-control">
+      <input type="checkbox" checked="checked" disabled="disabled">
+      <span class="checkbox-shape"></span>
+    </span>
+    <label class="checkbox-label">라벨</label>
   </span>
 </template>
 
@@ -36,5 +62,24 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+@import 'node_modules/@dews/dews-mobile-style/scss/variables/variables';
+@import 'node_modules/@dews/dews-mobile-style/scss/mixins/_mixins';
+//======================================
+// dews-checkbox
+//======================================
+//--------------------------------------
+// 레이아웃 영역
+//--------------------------------------
+* {
+  @include reset();
+}
+:host {
+  display: inline-block;
+  margin: 0px;
+  padding: 0px;
+  font-size: 0;
+}
+.dews-checkbox-wrap {
+  @include checkbox-wrap();
+}
 </style>
