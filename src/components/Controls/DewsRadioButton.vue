@@ -1,18 +1,10 @@
 <template>
-<!--  <span :uid="uid" class="dews-mobile-radiobutton dews-radio-wrap" @click="clickHandler($event)">-->
-<!--    <span class="radio-control">-->
-<!--      <input type="radio" :checked="checked" :disabled="disabled">-->
-<!--      <span class="radio-shape"></span>-->
-<!--    </span>-->
-<!--    <label class="radio-label">{{ title }}</label>-->
-<!--  </span>-->
-
-  <span :uid="uid" class="dews-mobile-radiobutton dews-radio-wrap">
+  <span :uid="uid" class="dews-mobile-radiobutton dews-radio-wrap" @click="clickHandler($event)">
     <span class="radio-control">
-      <input type="radio">
+      <input type="radio" :checked="checked" :data-checked="checked" :disabled="disabled">
       <span class="radio-shape"></span>
     </span>
-    <label class="radio-label">라벨</label>
+    <label class="radio-label">{{ title }}</label>
 
     <span class="radio-control">
       <input type="radio" checked="checked">
@@ -42,10 +34,11 @@ export default {
   data() {
     return {
       uid: '',
-      title: '',
+      title: '라벨',
       checked: false,
       disabled: false,
       readonly: false,
+      picked: false,
     }
   },
   created() {
@@ -54,8 +47,13 @@ export default {
   mounted() {
   },
   methods: {
-    clickHandler (e){
-      e.stopPropagation();
+    clickHandler(e) {
+      if (this.disabled) return
+
+      this.checked = !this.checked;
+    },
+    setDisabled() {
+      this.disabled = !this.disabled;
     },
   }
 }
