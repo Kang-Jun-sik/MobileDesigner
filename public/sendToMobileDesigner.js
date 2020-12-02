@@ -23,6 +23,12 @@
                 break;
             case 'PASTE' :
                 break;
+            case 'CREATE' :
+                window.services.get("createItemService").call(this, args);
+                break;
+            case 'DELETE' :
+                window.services.get("deleteItemService").call(this, args);
+                break;
         }
     }
 

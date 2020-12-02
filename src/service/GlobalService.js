@@ -43,49 +43,56 @@ export default {
                 {
 
                 } else {
-                    pageParsing(canvasDoc.children[i], mPage.uid);
+                    GlobalService.PageParsing(canvasDoc.children[i], mPage.uid);
+                    //pageParsing(canvasDoc.children[i], mPage.uid);
                 }
             }
         }
+    },
 
-        function createControl(clone) {
-            const uid = clone.getAttribute('uid');
-            const type = clone.tagName;
-            let instance;
-            switch (type) {
-                case 'mobile-area':
-                    instance = ControlService.addComponent('SearchContainer');
-                    break;
-                case 'mobile-button':
-                    instance = ControlService.addComponent('Button');
-                    break;
-                case 'dews-area-panel':
-                    instance = ControlService.addComponent('AreaPanel');
-                    break;
-                case 'mobile-item':
-                    instance = ControlService.addComponent('AreaItem');
-                    break;
-                case 'dews-box':
-                    instance = ControlService.addComponent('AreaBox');
-                    break;
-            }
-            instance.uid = uid;
-            instance.$el.setAttribute('uid', uid);
-            window.Vue.$store.commit('addItem', instance);
-            return instance;
+    /**
+     * Recursive Function For Control Rendering
+     */
+    PageParsing(node, parentUid) {
+        let clone = node.cloneNode();
+        let instance = GlobalService.createControlFromData(clone);
+        let parent = window.Vue.$store.state.component.items.find(item => item.uid === parentUid);
+        parent.$el.appendChild(instance.$el);
+
+        if (node.childElementCount === 0) return;
+        for (let i = 0; i < node.childElementCount; i++) {
+            GlobalService.PageParsing(node.children[i], instance.uid);
         }
+    },
 
-        function pageParsing(node, parentUid) {
-            let clone = node.cloneNode();
-            let instance = createControl(clone);
-            let parent = window.Vue.$store.state.component.items.find(item => item.uid === parentUid);
-            parent.$el.appendChild(instance.$el);
-
-            if (node.childElementCount === 0) return;
-            for (let i = 0; i < node.childElementCount; i++) {
-                pageParsing(node.children[i], instance.uid);
-            }
+    /**
+     * Xml Data --> Create Control Logic
+     */
+    createControlFromData(clone) {
+        const uid = clone.getAttribute('uid');
+        const type = clone.tagName;
+        let instance;
+        switch (type) {
+            case 'mobile-area':
+                instance = ControlService.addComponent('SearchContainer');
+                break;
+            case 'mobile-button':
+                instance = ControlService.addComponent('Button');
+                break;
+            case 'dews-area-panel':
+                instance = ControlService.addComponent('AreaPanel');
+                break;
+            case 'mobile-item':
+                instance = ControlService.addComponent('AreaItem');
+                break;
+            case 'dews-box':
+                instance = ControlService.addComponent('AreaBox');
+                break;
         }
+        instance.uid = uid;
+        instance.$el.setAttribute('uid', uid);
+        window.Vue.$store.commit('addItem', instance);
+        return instance;
     },
 
     /**
@@ -112,43 +119,16 @@ export default {
             if (key === "Delete") {
                 if (window.selectedItem.classList.contains('main-designer')) return;
                 if (window.selectedItem) {
-
-                    /*
-                    // Undo Redo Service - type : deleteItem
-                    const parentNode = window.selectedItem.parentElement.closest('.dews-mobile-component');
-                    const parentUid = parentNode.getAttribute('uid');
-                    let undoItem = {};
-                    //Test Code
-                    undoItem.type = "deleteItem";
-                    undoItem.parentUid = parentUid;
-                    undoItem.data = window.selectedItem;
-                    UndoRedoService.addUndoItem(undoItem);
-                    */
-
                     ControlService.sendDeleteMessage(window.selectedItem);
                     ControlService.deleteControl(window.selectedItem);
                 }
             }
-            /*
-            //UNDO REDO의 호출은 IDE로부터 오기때문에 주석처리
-            else if (event.ctrlKey && key === 'z') {
-                if (window.Vue.$store.state.component.undoItems.length > 0) {
-                    console.log('undo execute');
-                    UndoRedoService.undoExecute();
-                }
-            } else if (event.ctrlKey && key === 'y') {
-                if (window.Vue.$store.state.component.redoItems.length > 0) {
-                    console.log('redo execute');
-                    UndoRedoService.redoExecute();
-                }
-            }
-            */
         });
     },
 
     /*
     * 컨트롤 선택 이벤트 등록
-    * */
+    **/
     selectControlEvent() {
         $('.main-designer-wrapper').mousedown(function (e) {
             GlobalService.selectControl(e.target);
@@ -159,7 +139,7 @@ export default {
     /*
     * 컨트롤 선택 이벤트 실행
     * @param eventTarget - 선택한 컨트롤
-    * */
+    **/
     selectControl(eventTarget) {
         let target = eventTarget.classList.contains('dews-mobile-component') ? eventTarget : findTarget(eventTarget);
 
