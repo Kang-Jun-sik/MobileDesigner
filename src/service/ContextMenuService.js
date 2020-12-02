@@ -17,51 +17,31 @@ export default {
                         "edit": {name: "mainDesignerOption", icon: "ic-edit"},
                         "sep1": "---------",
                     },
-                    callback: function(itemKey, opt, rootMenu, originalEvent) {
+                    callback: function(itemKey, opt) {
                         console.log(itemKey);
                     }
-                    // there's more, have a look at the demos and docs...
                 });
                 break;
 
-            case "dews-mobile-searchContainer" :
+            case "dews-mobile-areaItem":
                 $.contextMenu({
                     selector: ".selected",
                     items: {
-                        "edit": {name: "Search-container-option", icon: "edit"},
-                        "delete": {name: "Delete", icon: "delete"},
-                        "sep1": "---------",
+                        "vertical": {name: "세로분할", icon: "edit"},
+                        "delete": {name: "Delete", icon: "delete"}
                     },
-                    callback: function(itemKey, opt, rootMenu, originalEvent) {
-                        console.log('searchContainer ContextMenu', itemKey, opt);
+                    callback: function(itemKey, opt) {
                         switch (itemKey){
+                            case "vertical":
+                                SplitService.verticalSplit(opt.$trigger[0]);
+                                break;
                             case "delete" :
                                 ControlService.sendDeleteMessage(opt.$trigger[0]);
                                 ControlService.deleteControl(opt.$trigger[0]);
                                 break;
                         }
                     }
-                });
-                break;
-
-            case "dews-mobile-button" :
-                $.contextMenu({
-                    selector: ".selected",
-                    items: {
-                        "b1": {name: "ButtonOption1", icon: "edit"},
-                        "delete": {name: "Delete", icon: "delete"},
-                        "sep1": "---------",
-                    },
-                    callback: function(itemKey, opt, rootMenu, originalEvent) {
-                        console.log(itemKey, opt);
-                        switch (itemKey){
-                            case "delete" :
-                                ControlService.sendDeleteMessage(opt.$trigger[0]);
-                                ControlService.deleteControl(opt.$trigger[0]);
-                                break;
-                        }
-                    }
-                });
+                })
                 break;
 
             case "dews-mobile-areaBox":
@@ -85,25 +65,42 @@ export default {
                 })
                 break;
 
-            case "dews-mobile-areaItem":
+            case "dews-mobile-searchContainer" :
                 $.contextMenu({
                     selector: ".selected",
                     items: {
-                        "vertical": {name: "세로분할", icon: "edit"},
-                        "delete": {name: "Delete", icon: "delete"}
+                        "edit": {name: "Search-container-option", icon: "edit"},
+                        "delete": {name: "Delete", icon: "delete"},
+                        "sep1": "---------",
                     },
                     callback: function(itemKey, opt) {
                         switch (itemKey){
-                            case "vertical":
-                                SplitService.verticalSplit(opt.$trigger[0]);
-                                break;
                             case "delete" :
                                 ControlService.sendDeleteMessage(opt.$trigger[0]);
                                 ControlService.deleteControl(opt.$trigger[0]);
                                 break;
                         }
                     }
-                })
+                });
+                break;
+
+            case "dews-mobile-button" :
+                $.contextMenu({
+                    selector: ".selected",
+                    items: {
+                        "b1": {name: "ButtonOption1", icon: "edit"},
+                        "delete": {name: "Delete", icon: "delete"},
+                        "sep1": "---------",
+                    },
+                    callback: function(itemKey, opt) {
+                        switch (itemKey){
+                            case "delete" :
+                                ControlService.sendDeleteMessage(opt.$trigger[0]);
+                                ControlService.deleteControl(opt.$trigger[0]);
+                                break;
+                        }
+                    }
+                });
                 break;
         }
     },

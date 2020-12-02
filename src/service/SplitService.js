@@ -97,13 +97,13 @@ export default {
             || target.closest('.dews-panel').childElementCount === 3) return
 
         // 1) 분할 비율을 4:8 또는 8:4로 변경
-        const targetParent = target.parentElement;
-        const parentSibling = targetParent.nextSibling ? targetParent.nextSibling : targetParent.previousSibling;
+        const targetParentItem = target.parentElement;
+        const parentSiblingItem = targetParentItem.nextSibling ? targetParentItem.nextSibling : targetParentItem.previousSibling;
 
         store.state.component.items.forEach(item => {
-            if (item.uid === target.getAttribute('uid')) {
+            if (item.uid === targetParentItem.getAttribute('uid')) {
                 item.col = 'col-fd-8';
-            } else if (item.uid === parentSibling.getAttribute('uid')) {
+            } else if (item.uid === parentSiblingItem.getAttribute('uid')) {
                 item.col = 'col-fd-4';
             }
         });
@@ -118,7 +118,6 @@ export default {
     parentPanelCount(element) {
         let _element = element;
         let cnt = 0;
-
         while (!_element.classList.contains('main-designer')) {
             if (_element.parentElement.classList.contains('dews-panel')) {
                 cnt += 1
