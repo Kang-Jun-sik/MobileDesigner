@@ -1,13 +1,11 @@
 <template>
-<!--  <span :uid="uid" class="dews-checkbox-wrap" :class="checkBoxClass" @click="clickHandler($event)">-->
-<!--    <span class="checkbox-control">-->
-<!--      <input type="checkbox" :checked="checked" :disabled="disabled">-->
-<!--      <span class="checkbox-shape"></span>-->
-<!--    </span>-->
-<!--    <label class="checkbox-label">{{ title }}</label>-->
-<!--  </span>-->
-
   <span :uid="uid" class="dews-checkbox-wrap" :class="checkBoxClass" @click="clickHandler($event)">
+    <span class="checkbox-control">
+      <input type="checkbox" v-model="checked" :data-checked="checked" :disabled="disabled">
+      <span class="checkbox-shape"></span>
+    </span>
+    <label class="checkbox-label">{{ title }}</label>
+
     <span class="checkbox-control">
       <input type="checkbox">
       <span class="checkbox-shape"></span>
@@ -43,7 +41,7 @@ export default {
     return {
       uid: '',
       checkBoxClass: '',
-      title: '',
+      title: '라벨',
       checked: false,
       disabled: false,
     }
@@ -54,9 +52,14 @@ export default {
   mounted() {
   },
   methods: {
-    clickHandler (e){
-      e.stopPropagation();
+    clickHandler(e) {
+      if (this.disabled) return
+
+      this.checked = !this.checked;
     },
+    setDisabled() {
+      this.disabled = !this.disabled;
+    }
   }
 }
 </script>
