@@ -1,35 +1,24 @@
 <template>
-<!--  <div :uid="uid" class="dews-mobile-textbox textbox-wrap">-->
-<!--    <label>{{ title }}</label>-->
-<!--    <input @change="onChange($event)" type="text" :value="value" :required="required"-->
-<!--           :disabled="disabled" :readonly="readonly" :placeholder="placeholder">-->
-<!--  </div>-->
+  <div :uid="uid" class="dews-mobile-textbox textbox-wrap">
+    <label :for="id">{{ title }}</label>
+    <input :id="id" @click="onClick($event)" @change="onChange($event)"
+           type="text" :value="value" :placeholder="placeholder"
+           :required="required" :disabled="disabled" :readonly="readonly" ref="textBox">
 
-  <div class="dews-mobile-textbox textbox-wrap">
-    <label>value</label>
-    <input type="text" class="dews-input" placeholder="placeholder" value="value" id="">
+    <label for="">value</label>
+    <input id="" type="text" class="dews-input" placeholder="placeholder" value="value">
 
-    <label>placeholder</label>
-    <input type="text" class="dews-input" placeholder="placeholder" value="value" id="">
+    <label for="">placeholder</label>
+    <input id="" type="text" class="dews-input" placeholder="placeholder" value="value">
 
-    <label>readonly</label>
-    <input type="text" class="dews-input" placeholder="placeholder" value="value" id="" readonly="readonly">
+    <label for="">readonly</label>
+    <input id="" type="text" class="dews-input" placeholder="placeholder" value="value" readonly="readonly">
 
-    <label>disabled</label>
-    <input type="text" class="dews-input" placeholder="placeholder" value="value" id="" disabled="disabled">
+    <label for="">disabled</label>
+    <input id="" type="text" class="dews-input" placeholder="placeholder" value="value" disabled="disabled">
 
     <label for="multi-textbox">multi-textbox value</label>
     <textarea class="dews-multi-input" id="multi-textbox">value </textarea>
-
-    <label for="multi-textbox">multi-textbox placeholder</label>
-    <textarea class="dews-multi-input" id="multi-textbox" placeholder="placeholder"></textarea>
-
-    <label for="multi-textbox">multi-textbox readonly</label>
-    <textarea class="dews-multi-input" id="multi-textbox" readonly="readonly">value</textarea>
-
-    <label for="multi-textbox">multi-textbox disabled</label>
-    <textarea class="dews-multi-input" id="multi-textbox" disabled="disabled">value</textarea>
-
   </div>
 </template>
 
@@ -40,8 +29,9 @@ export default {
   name: 'dews-text-box',
   data() {
     return {
+      id: '',
       uid: '',
-      title: '',
+      title: 'textbox',
       value: '',
       placeholder: '',
       required: false,
@@ -57,9 +47,21 @@ export default {
   mounted() {
   },
   methods: {
-    onChange (e){
+    onClick(e) {
+      this.$refs.textBox.focus();
+    },
+    onChange(e) {
       e.stopPropagation();
       this.value = e.target.value;
+    },
+    setRequired() {
+      this.required = !this.required;
+    },
+    setDisabled() {
+      this.disabled = !this.disabled;
+    },
+    setReadonly() {
+      this.readonly = !this.readonly;
     }
   }
 }
