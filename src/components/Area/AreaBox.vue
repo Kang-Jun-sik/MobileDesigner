@@ -4,7 +4,7 @@
       <h2><button class="dews-box-title-button" type="button">{{ title }}</button></h2>
     </div>
     <div class="dews-box-content-wrap" :style="contentStyle" part="content">
-      <div :muid="muid" class="dews-box-content" ref="boxContent">
+      <div :muid="muid" class="dews-box-content addable-area" ref="boxContent">
         <slot></slot>
       </div>
     </div>

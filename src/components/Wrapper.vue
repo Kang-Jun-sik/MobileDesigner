@@ -62,15 +62,6 @@ export default {
         let parentNode = component.$el.parentElement.closest('.dews-mobile-component');
         let parentUid = parentNode.getAttribute('uid');
 
-        // Undo Redo Service - type : addItem
-        /*
-        let undoItem = {};
-        //Test Code
-        undoItem.type = "addItem";
-        undoItem.parentUid = parentUid;
-        undoItem.data = component;
-        UndoRedoService.addUndoItem(undoItem);
-        */
         // IDE로 create 전송
         mobileDesignerToIDE("create", component.$el, parentUid);
       }

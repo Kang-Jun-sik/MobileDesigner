@@ -4,8 +4,6 @@ import 'jquery-ui-bundle/jquery-ui.css';
 import 'jquery-contextmenu';
 
 import {mobileDesignerToIDE} from "@/utils/mobileDesignerToIDE";
-
-import store from "@/store/index";
 import GlobalService from "@/service/GlobalService";
 import ResizeService from "@/service/ResizeService";
 import ControlService from "@/service/ControlService";
@@ -13,7 +11,6 @@ import ContextMenuService from "@/service/ContextMenuService";
 
 import Button from "@/components/Controls/DewsButton";
 import SearchContainer from "@/components/Containers/SearchContainer";
-import UndoRedoService from "@/service/UndoRedoService";
 
 export default {
     /**
