@@ -1,5 +1,3 @@
-import ControlService from "@/service/ControlService";
-import UndoRedoService from "@/service/UndoRedoService";
 import GlobalService from "@/service/GlobalService";
 
 export default {
