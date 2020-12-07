@@ -1,12 +1,11 @@
-let mobileDesignerToIDE = (commandType, elm, parentUID, key) => {
-    let XMLWriter = require('xml-writer');
-    let xw = new XMLWriter;
-    let obj = {};
-    let value;
-    let uidtemp = elm.getAttribute('uid');
-    let controlIndex = uidtemp.lastIndexOf('-');
-    let control = uidtemp.substring(0, controlIndex);
+const mobileDesignerToIDE = (commandType, elm, parentUID, key) => {
+    const XMLWriter = require('xml-writer');
+    const xw = new XMLWriter;
+    const elementUid = elm.getAttribute('uid');
+    const controlIndex = elementUid.lastIndexOf('-');
+    const control = elementUid.substring(0, controlIndex);
 
+    let obj = {};
     switch (commandType) {
         case "select" :
             obj = {
@@ -29,9 +28,10 @@ let mobileDesignerToIDE = (commandType, elm, parentUID, key) => {
             }
             break;
     }
+
     console.log(obj);
     // eslint-disable-next-line no-undef
-    // chromiumObject.mobileDesignerToIDE(obj); //실제 IDE 데이터 전송 로직
+    chromiumObject.mobileDesignerToIDE(obj); //실제 IDE 데이터 전송 로직
 };
 
-export {mobileDesignerToIDE};
+export default mobileDesignerToIDE;

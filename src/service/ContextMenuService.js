@@ -1,6 +1,6 @@
 import $ from "jquery";
 import 'jquery-contextmenu'
-import ControlService from "@/service/ControlService";
+import DeleteService from "@/service/DeleteService";
 import SplitService from "@/service/SplitService";
 
 export default {
@@ -36,8 +36,7 @@ export default {
                                 SplitService.verticalSplit(opt.$trigger[0]);
                                 break;
                             case "delete" :
-                                ControlService.sendDeleteMessage(opt.$trigger[0]);
-                                ControlService.deleteControl(opt.$trigger[0]);
+                                DeleteService.deleteControl(opt.$trigger[0]);
                                 break;
                         }
                     }
@@ -57,8 +56,7 @@ export default {
                                 SplitService.verticalSplit(opt.$trigger[0]);
                                 break;
                             case "delete" :
-                                ControlService.sendDeleteMessage(opt.$trigger[0]);
-                                ControlService.deleteControl(opt.$trigger[0]);
+                                DeleteService.deleteControl(opt.$trigger[0]);
                                 break;
                         }
                     }
@@ -76,8 +74,7 @@ export default {
                     callback: function(itemKey, opt) {
                         switch (itemKey){
                             case "delete" :
-                                ControlService.sendDeleteMessage(opt.$trigger[0]);
-                                ControlService.deleteControl(opt.$trigger[0]);
+                                DeleteService.deleteControl(opt.$trigger[0]);
                                 break;
                         }
                     }
@@ -95,8 +92,7 @@ export default {
                     callback: function(itemKey, opt) {
                         switch (itemKey){
                             case "delete" :
-                                ControlService.sendDeleteMessage(opt.$trigger[0]);
-                                ControlService.deleteControl(opt.$trigger[0]);
+                                DeleteService.deleteControl(opt.$trigger[0]);
                                 break;
                         }
                     }

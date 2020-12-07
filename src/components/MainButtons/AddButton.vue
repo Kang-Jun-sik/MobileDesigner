@@ -3,20 +3,20 @@
 </template>
 
 <script>
-  import ControlService from "@/service/ControlService";
+import CreateService from "@/service/CreateService";
 
-  export default {
-    name: 'add-button',
-    data() {
-      return {
-        buttonAttr: false,
-        uid: '',
-      }
-    },
-    created() {
-      this.uid = ControlService.createUid('mAddButton');
+export default {
+  name: 'add-button',
+  data() {
+    return {
+      buttonAttr: false,
+      uid: '',
     }
+  },
+  created() {
+    this.uid = CreateService.createUid('mAddButton');
   }
+}
 </script>
 
 <style lang="scss" scoped>

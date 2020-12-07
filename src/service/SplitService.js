@@ -1,8 +1,8 @@
 import store from "@/store/index"
 import SplitService from "@/service/SplitService";
 import ResizeService from "@/service/ResizeService";
-import ControlService from "@/service/ControlService";
-import {mobileDesignerToIDE} from "@/utils/mobileDesignerToIDE";
+import CreateService from "@/service/CreateService";
+import DeleteService from "@/service/DeleteService";
 
 export default {
     //To do - 부모 아이디 찾는 로직 함수화 (부모 uid 리턴할것)
@@ -28,34 +28,31 @@ export default {
     * */
     setSplit(target) {
         // 분할을 통해 target이 재배치되기 때문에 삭제를 위해 sendDeleteMessage 호출
-        ControlService.sendDeleteMessage(target);
+        DeleteService.sendDeleteMessage(target);
 
         // 분할을 위한 AreaPanel extend 후, target과 area.$el를 replaceWith 실행
-        const areaPanel = ControlService.addComponent('AreaPanel');
+        const areaPanel = CreateService.addComponent('AreaPanel');
         store.commit('addItem', areaPanel);
+
         const areaPanelElement = areaPanel.$el;
         target.replaceWith(areaPanelElement);
 
-        // 분할하며 생성된 AreaPanel 부모 노드 찾기
-        const panelParent = areaPanelElement.parentElement.closest('.dews-mobile-component');
-        const panelParentUid = panelParent.getAttribute('uid');
-        mobileDesignerToIDE("create", areaPanelElement, panelParentUid);
+        CreateService.sendCreateMessage(areaPanelElement);
 
         for (let i = 0; i < 2; i++) {
-            let item = ControlService.addComponent('AreaItem');
+            let item = CreateService.addComponent('AreaItem');
             areaPanelElement.appendChild(item.$el);
             store.commit('addItem', item);
 
-            const parentElement = item.$el.parentElement.closest('.dews-mobile-component');
-            const parentUid = parentElement.getAttribute('uid');
-            mobileDesignerToIDE("create", item.$el, parentUid);
+            CreateService.sendCreateMessage(item.$el);
         }
 
         // 왼쪽 item에 target(box 혹은 tabs) appendChild (default)
         const areaItem = areaPanelElement.querySelectorAll(':scope > .dews-item')[0];
         areaItem.appendChild(target);
-        mobileDesignerToIDE("create", target, areaItem.getAttribute('uid'));
         ResizeService.setPosition(target);
+
+        CreateService.sendCreateMessage(target);
     },
 
     /*
@@ -70,7 +67,7 @@ export default {
             || target.parentElement.childElementCount !== 2) return
 
         const parentElement = target.parentElement;
-        const addItem = ControlService.addComponent('AreaItem');
+        const addItem = CreateService.addComponent('AreaItem');
         parentElement.appendChild(addItem.$el);
         store.commit('addItem', addItem);
 

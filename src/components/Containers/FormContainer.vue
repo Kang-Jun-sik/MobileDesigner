@@ -94,21 +94,21 @@
 </template>
 
 <script>
-  import ControlService from "@/service/ControlService";
+import CreateService from "@/service/CreateService";
 
-  export default {
-    name: 'dews-form-container',
-    data() {
-      return {
-        uid: '',
-        title: 'Form Container',
-        customButton: [],
-      }
-    },
-    created() {
-      this.uid = ControlService.createUid('mobile-form');
+export default {
+  name: 'dews-form-container',
+  data() {
+    return {
+      uid: '',
+      title: 'Form Container',
+      customButton: [],
     }
+  },
+  created() {
+    this.uid = CreateService.createUid('mobile-form');
   }
+}
 </script>
 
 <style lang="scss" scoped>

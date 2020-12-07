@@ -16,18 +16,18 @@
                 window.services.get("openService").call(this, args);
                 break;
             case 'SELECT_IDE' :
-                window.services.get("selectFromIDEService").call(this, args);
+                window.services.get("selectFromIDE").call(this, args);
+                break;
+            case 'CREATE' :
+                window.services.get("createFromIDE").call(this, args);
+                break;
+            case 'DELETE' :
+                window.services.get("deleteFromIDE").call(this, args);
                 break;
             case 'UNDO_REDO' :
                 window.services.get("undoredoService").call(this, args);
                 break;
             case 'PASTE' :
-                break;
-            case 'CREATE' :
-                window.services.get("createItemService").call(this, args);
-                break;
-            case 'DELETE' :
-                window.services.get("deleteItemService").call(this, args);
                 break;
         }
     }

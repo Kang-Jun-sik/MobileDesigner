@@ -13,7 +13,7 @@
 
 <script>
 import ResizeService from "@/service/ResizeService";
-import ControlService from "@/service/ControlService";
+import CreateService from "@/service/CreateService";
 import store from "@/store/index";
 
 export default {
@@ -31,8 +31,8 @@ export default {
     }
   },
   created() {
-    this.uid = ControlService.createUid('dews-box');
-    this.muid = ControlService.createUid('designer-content');
+    this.uid = CreateService.createUid('dews-box');
+    this.muid = CreateService.createUid('designer-content');
 
     store.commit('matchUid', {'uid': this.uid, 'muid': this.muid});
   },

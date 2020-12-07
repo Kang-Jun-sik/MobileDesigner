@@ -33,7 +33,7 @@
 </template>
 
 <script>
-import ControlService from "@/service/ControlService";
+import CreateService from "@/service/CreateService";
 
 export default {
   name: 'dews-checkbox',
@@ -47,7 +47,7 @@ export default {
     }
   },
   created() {
-    this.uid = ControlService.createUid('dews-checkbox');
+    this.uid = CreateService.createUid('dews-checkbox');
   },
   mounted() {
   },

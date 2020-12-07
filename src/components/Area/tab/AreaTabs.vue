@@ -16,35 +16,35 @@
 </template>
 
 <script>
-  import DewsTab from "@/components/Area/tab/AreaTab";
-  import ControlService from "@/service/ControlService";
-  import { store } from '@/store';
+import store from "@/store/index";
+import DewsTab from "@/components/Area/tab/AreaTab";
+import CreateService from "@/service/CreateService";
 
-  export default {
-    name: 'dews-tabs',
-    components: {DewsTab},
-    data() {
-      return {
-        uid: '',
-        titleList: 'Tab',
-        active: 'active'
-      }
-    },
-    created() {
-      this.uid = ControlService.createUid('mobile-tabs');
-      // this.titleList = store.state.tabTitles;
-    },
-    mounted() {
-      // const titles = store.getters.tabTitleList;
-      // this.titleList = titles[this.uid];
-    },
-    methods: {
-      // selectTab: function (evt, idx){
-      //   console.log(document.querySelector(".dews-tabs-content :nth-child(1)"))
-      //   console.log(evt, idx);
-      // }
+export default {
+  name: 'dews-tabs',
+  components: {DewsTab},
+  data() {
+    return {
+      uid: '',
+      titleList: 'Tab',
+      active: 'active'
     }
+  },
+  created() {
+    this.uid = CreateService.createUid('mobile-tabs');
+    // this.titleList = store.state.tabTitles;
+  },
+  mounted() {
+    // const titles = store.getters.tabTitleList;
+    // this.titleList = titles[this.uid];
+  },
+  methods: {
+    // selectTab: function (evt, idx){
+    //   console.log(document.querySelector(".dews-tabs-content :nth-child(1)"))
+    //   console.log(evt, idx);
+    // }
   }
+}
 </script>
 
 <style lang="scss" scoped>

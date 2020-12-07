@@ -40,34 +40,34 @@
 </template>
 
 <script>
-  import ControlService from "@/service/ControlService";
-  import store from "@/store/index";
-  import DewsTextBox from "@/components/Controls/DewsTextBox";
-  import DewsCheckbox from "@/components/Controls/DewsCheckBox";
-  import DewsRadioButton from "@/components/Controls/DewsRadioButton";
+import store from "@/store/index";
+import CreateService from "@/service/CreateService";
+import DewsTextBox from "@/components/Controls/DewsTextBox";
+import DewsCheckbox from "@/components/Controls/DewsCheckBox";
+import DewsRadioButton from "@/components/Controls/DewsRadioButton";
 
-  export default {
-    name: 'dews-search-container',
-    components: {DewsRadioButton, DewsCheckbox, DewsTextBox},
-    uid: '',
-    data() {
-      return {
-        uid: '',
-        muid: '',
-        title: 'Search Container',
-        customButton: [],
-        inputList: [],
-      }
-    },
-    created() {
-      this.uid = ControlService.createUid('mobile-area');
-      this.muid = ControlService.createUid('designer-search');
-      store.commit('matchUid', {'uid': this.uid, 'muid': this.muid});
-    },
-    mounted() {
-      window.drake.containers.push(this.$refs.searchContainer);
+export default {
+  name: 'dews-search-container',
+  components: {DewsRadioButton, DewsCheckbox, DewsTextBox},
+  uid: '',
+  data() {
+    return {
+      uid: '',
+      muid: '',
+      title: 'Search Container',
+      customButton: [],
+      inputList: [],
     }
+  },
+  created() {
+    this.uid = CreateService.createUid('mobile-area');
+    this.muid = CreateService.createUid('designer-search');
+    store.commit('matchUid', {'uid': this.uid, 'muid': this.muid});
+  },
+  mounted() {
+    window.drake.containers.push(this.$refs.searchContainer);
   }
+}
 </script>
 
 <style lang="scss" scoped>

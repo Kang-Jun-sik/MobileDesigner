@@ -21,7 +21,7 @@
 </template>
 
 <script>
-import ControlService from "@/service/ControlService";
+import CreateService from "@/service/CreateService";
 
 export default {
   name: 'dews-textarea',
@@ -40,7 +40,7 @@ export default {
     }
   },
   created() {
-    this.uid = ControlService.createUid('dews-textarea')
+    this.uid = CreateService.createUid('dews-textarea')
   },
   mounted() {
   },

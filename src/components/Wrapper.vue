@@ -9,9 +9,9 @@
 import dragula from "dragula";
 import MainDesignerWrapper from "@/components/MainDesignerArea/MainDesignerWrapper";
 import ControlListWrapper from "@/components/ControlListArea/ControlListWrapper";
-import ControlService from "@/service/ControlService";
+
+import CreateService from "@/service/CreateService";
 import ContextMenuService from "@/service/ContextMenuService";
-import {mobileDesignerToIDE} from "@/utils/mobileDesignerToIDE";
 import UndoRedoService from "@/service/UndoRedoService";
 import ResizeService from "@/service/ResizeService";
 
@@ -53,17 +53,13 @@ export default {
       if (el.classList.contains('dewsControl')) {
         // 컴포넌트 추가 후, $el로 replace
         const componentName = el.textContent.replace(/\s+/g, '');
-        const component = ControlService.addComponent(componentName);
+        const component = CreateService.addComponent(componentName);
         this.$store.commit('addItem', component);
         el.replaceWith(component.$el);
         ContextMenuService.getContextMenu(component.$el);
 
-        // 부모 노드 찾기
-        let parentNode = component.$el.parentElement.closest('.dews-mobile-component');
-        let parentUid = parentNode.getAttribute('uid');
-
         // IDE로 create 전송
-        mobileDesignerToIDE("create", component.$el, parentUid);
+        CreateService.sendCreateMessage(component.$el);
       }
     },
 

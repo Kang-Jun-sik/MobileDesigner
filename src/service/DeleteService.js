@@ -1,0 +1,141 @@
+import store from "@/store/index";
+import _ from "lodash";
+
+import mobileDesignerToIDE from "@/utils/mobileDesignerToIDE";
+import DeleteService from "@/service/DeleteService";
+import UndoRedoService from "@/service/UndoRedoService";
+import CreateService from "@/service/CreateService";
+
+export default {
+    deleteFromIDE(args) {
+        console.log('Delete Control from IDE');
+        let obj = JSON.parse(args);
+        // 1) ID 추출
+        let delItemUid = obj['controlUniqueId'];
+        if (delItemUid) {
+            let control = store.state.component.items.find(item => item.uid === delItemUid);
+            DeleteService.deleteControl(control.$el);
+        }
+    },
+
+    /*
+    * 컨트롤 삭제 메세지 전달 함수 (Mobile Designer --> IDE)
+    * */
+    sendDeleteMessage(component) {
+        const parent = component.parentElement.closest('.dews-mobile-component')
+        const parentUid = parent.getAttribute('uid');
+
+        mobileDesignerToIDE("delete", component, parentUid);
+    },
+
+    /*
+    * 컨트롤 삭제를 위한 공통 로직
+    * */
+    deleteControl(target) {
+        if (!target) return;
+
+        // IDE에서 삭제
+        DeleteService.sendDeleteMessage(target);
+
+        // 1) AreaItem이 하나만 남을 경우를 생각하여 splitDelete 함수 호출 후, replaceWith
+        if (target.classList.contains('dews-item')) DeleteService.deleteSplit(target);
+
+        // 2) target의 자식 노드까지 drake.containers, Vuex items에서 삭제
+        DeleteService.deleteTargetChild(target);
+
+        // 3) target drake.containers, Vuex items에서 삭제
+        DeleteService.deleteDrakeContainer(target);
+        DeleteService.deleteItems(target);
+
+        // 4) target 객체 제거
+        target.remove();
+
+        // selectItem이 없으므로 null 처리
+        window.selectedItem = null;
+    },
+
+    /*
+    * AreaItem이 하나만 남을 경우, replaceWith 하거나 delete
+    * */
+    deleteSplit(target) {
+        const $mainDesigner = document.querySelector('.main-designer');
+        const targetPanel = target.parentElement;
+
+        if (targetPanel.childElementCount === 2) {
+            const targetSibling = target.nextSibling ? target.nextSibling : target.previousSibling;
+
+            if (targetSibling.hasChildNodes()) {
+                DeleteService.deleteSplitItems(targetPanel, true);
+
+                const _childNodes = [...targetSibling.childNodes];
+                _childNodes.forEach(child => {
+                    mobileDesignerToIDE("create", child, $mainDesigner.getAttribute('uid'));
+                })
+                targetPanel.replaceWith(...targetSibling.childNodes);
+
+                DeleteService.deleteSplitItems(targetSibling, true);
+            } else {
+                DeleteService.deleteSplitItems(targetSibling, false);
+                DeleteService.deleteSplitItems(targetPanel, false);
+            }
+        }
+    },
+
+    /*
+    * deleteSplit 함수에서 조건에 따른 처리를 한 후, item 삭제
+    * @param item - AreaItem, AreaPanel
+    * */
+    deleteSplitItems(item, hasChild) {
+        DeleteService.sendDeleteMessage(item);
+        DeleteService.deleteDrakeContainer(item);
+        DeleteService.deleteItems(item);
+
+        if (!hasChild) item.remove();
+    },
+
+    /*
+    * target의 자식 노드 drake.containers와 Vuex items에서 삭제
+    * @param target
+    * */
+    deleteTargetChild(target) {
+        Array.from(target.children).forEach(child => {
+            if (child.getAttribute('uid')) {
+                DeleteService.sendDeleteMessage(child);
+                DeleteService.deleteDrakeContainer(child);
+                DeleteService.deleteItems(child);
+            }
+            DeleteService.deleteTargetChild(child);
+        });
+    },
+
+    /*
+    * Dragula의 drake.containers에 저장된 Control 정보 삭제
+    * @param target
+    * */
+    deleteDrakeContainer(target) {
+        const targetUid = target.getAttribute('uid');
+
+        // target의 root element의 uid 정보가 root에 포함되어 있지 않은 경우 muid로 판단
+        if (store.state.component.dragulaUid[targetUid]) {
+            const mUid = store.state.component.dragulaUid[targetUid];
+            _.remove(window.drake.containers, function(container) {
+                return container.getAttribute('muid') === mUid;
+            });
+            delete store.state.component.dragulaUid[targetUid];
+        } else {
+            _.remove(window.drake.containers, function(container) {
+                return container.getAttribute('uid') === targetUid;
+            });
+        }
+    },
+
+    /*
+    * Vuex의 items에 저장된 Control 삭제
+    * @param target
+    * */
+    deleteItems(target) {
+        _.remove(store.state.component.items, function(item) {
+            return item.uid === target.getAttribute('uid');
+        });
+    },
+}

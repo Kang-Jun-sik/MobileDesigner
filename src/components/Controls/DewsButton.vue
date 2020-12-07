@@ -6,33 +6,33 @@
 </template>
 
 <script>
-  import ControlService from "@/service/ControlService";
+import CreateService from "@/service/CreateService";
 
-  export default {
-    name: 'dews-button',
-    data() {
-      return {
-        uid: '',
-        title: 'Button',
-        disable: false,
-        buttonStyle: {
-          width: '',
-          height: ''
-        }
+export default {
+  name: 'dews-button',
+  data() {
+    return {
+      uid: '',
+      title: 'Button',
+      disable: false,
+      buttonStyle: {
+        width: '',
+        height: ''
       }
-    },
-    created() {
-      this.uid = ControlService.createUid('mobile-button');
-    },
-    methods: {
-      setWidth(width) {
-        this.buttonStyle.width = width + 'px';
-      },
-      setHeight(height) {
-        this.buttonStyle.height = height + 'px';
-      },
     }
+  },
+  created() {
+    this.uid = CreateService.createUid('mobile-button');
+  },
+  methods: {
+    setWidth(width) {
+      this.buttonStyle.width = width + 'px';
+    },
+    setHeight(height) {
+      this.buttonStyle.height = height + 'px';
+    },
   }
+}
 </script>
 
 <style lang="scss" scoped>

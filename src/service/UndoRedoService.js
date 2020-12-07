@@ -1,5 +1,5 @@
 import store from "@/store/index";
-import ControlService from "@/service/ControlService";
+import DeleteService from "@/service/DeleteService";
 import UndoRedoService from "@/service/UndoRedoService";
 
 export default {
@@ -22,8 +22,8 @@ export default {
         let parentUid;
         switch (item.type){
             case 'addItem' :
-                ControlService.sendDeleteMessage(item.data.$el);
-                ControlService.deleteControl(item.data.$el);
+                DeleteService.sendDeleteMessage(item.data.$el);
+                DeleteService.deleteControl(item.data.$el);
                 break;
             case 'deleteItem' :
                 parentUid = item.parentUid;
@@ -56,8 +56,8 @@ export default {
                 break;
 
             case 'deleteItem' :
-                ControlService.sendDeleteMessage(item.data.$el);
-                ControlService.deleteControl(item.data.$el);
+                DeleteService.sendDeleteMessage(item.data.$el);
+                DeleteService.deleteControl(item.data.$el);
                 break;
         }
     },

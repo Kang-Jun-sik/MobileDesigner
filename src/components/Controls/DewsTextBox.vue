@@ -23,7 +23,7 @@
 </template>
 
 <script>
-import ControlService from "@/service/ControlService";
+import CreateService from "@/service/CreateService";
 
 export default {
   name: 'dews-text-box',
@@ -42,7 +42,7 @@ export default {
     }
   },
   created() {
-    this.uid = ControlService.createUid('dews-textbox')
+    this.uid = CreateService.createUid('dews-textbox')
   },
   mounted() {
   },

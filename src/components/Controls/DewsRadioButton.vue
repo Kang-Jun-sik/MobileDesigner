@@ -27,7 +27,7 @@
 </template>
 
 <script>
-import ControlService from "@/service/ControlService";
+import CreateService from "@/service/CreateService";
 
 export default {
   name: 'dews-radio-button',
@@ -42,7 +42,7 @@ export default {
     }
   },
   created() {
-    this.uid = ControlService.createUid('dews-radiobutton');
+    this.uid = CreateService.createUid('dews-radiobutton');
   },
   mounted() {
   },

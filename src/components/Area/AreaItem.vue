@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import ControlService from "@/service/ControlService";
+import CreateService from "@/service/CreateService";
 
 export default {
   name: 'area-item',
@@ -24,7 +24,7 @@ export default {
   },
   created() {
     // item 구분을 위한 guid 추가
-    this.uid = ControlService.createUid('mobile-item');
+    this.uid = CreateService.createUid('mobile-item');
   },
   mounted() {
     window.drake.containers.push(this.$refs.dewsItem);

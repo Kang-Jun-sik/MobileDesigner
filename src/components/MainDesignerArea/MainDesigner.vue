@@ -5,30 +5,31 @@
 </template>
 
 <script>
-  import { mapGetters } from "vuex";
-  import GlobalService from "@/service/GlobalService";
-  import ControlService from "@/service/ControlService";
+import { mapGetters } from "vuex";
+import GlobalService from "@/service/GlobalService";
+import SelectService from "@/service/SelectService";
+import CreateService from "@/service/CreateService";
 
-  export default {
-    name: 'main-designer',
-    data() {
-      return {
-        designerElement: '',
-        id: '',
-        uid: ''
-      }
-    },
-    mounted() {
-      this.uid = ControlService.createUid('mobile-page');
-      GlobalService.keyBinding();
-      GlobalService.selectControlEvent(); //메인 디자이너에 컨트롤 선택 이벤트 추가
-    },
-    computed: {
-      ...mapGetters({
-        designerLayout: "designerSize"
-      })
-    },
-  }
+export default {
+  name: 'main-designer',
+  data() {
+    return {
+      designerElement: '',
+      id: '',
+      uid: ''
+    }
+  },
+  mounted() {
+    this.uid = CreateService.createUid('mobile-page');
+    GlobalService.keyBinding();
+    SelectService.selectControlEvent(); //메인 디자이너에 컨트롤 선택 이벤트 추가
+  },
+  computed: {
+    ...mapGetters({
+      designerLayout: "designerSize"
+    })
+  },
+}
 </script>
 
 <style lang="scss" scoped>
