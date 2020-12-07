@@ -3,10 +3,10 @@ import GlobalService from "@/service/GlobalService";
 export default {
     createItemService(args){
         console.log('create Item from IDE');
-        let obj = JSON.parse(args);
-        let parser = new DOMParser();
-        const parentuid = obj['controlUniqueId'];
+        const obj = JSON.parse(args);
+        const parser = new DOMParser();
+        const parentUid = obj['controlUniqueId'];
         let xmlDoc = parser.parseFromString(obj["controlAttributeValue"], "application/xml");
-        GlobalService.PageParsing(xmlDoc.firstElementChild, parentuid);
+        GlobalService.pageParsing(xmlDoc.firstElementChild, parentUid);
     }
 }

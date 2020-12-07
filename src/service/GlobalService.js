@@ -3,6 +3,7 @@ import 'jquery-ui-bundle';
 import 'jquery-ui-bundle/jquery-ui.css';
 import 'jquery-contextmenu';
 
+import store from "@/store/index";
 import {mobileDesignerToIDE} from "@/utils/mobileDesignerToIDE";
 import GlobalService from "@/service/GlobalService";
 import ResizeService from "@/service/ResizeService";
@@ -20,14 +21,13 @@ export default {
     openService(args) {
         //(1) IDE로부터 받은 데이터 전처리
         //let tdata = `{ "commandType":"open","data":"<?xml version=\\"1.0\\" encoding=\\"utf-8\\"?><page title=\\"141414\\" name=\\"12341\\" type=\\"mpage\\"><canvas uid=\\"canvas-1485142915100\\" type=\\"mpage\\" title=\\"141414\\" component=\\"\\" function=\\"\\"><pageInformation><version>1.0</version><create>kjs1436</create><builddate d4p1:nil=\\"true\\" xmlns:d4p1=\\"http://www.w3.org/2001/XMLSchema-instance\\" /><createdate>2020-09-17T16:15:16.7463121+09:00</createdate><modifieddate d4p1:nil=\\"true\\" xmlns:d4p1=\\"http://www.w3.org/2001/XMLSchema-instance\\" /></pageInformation><mainButtons uid=\\"mainButtons-1385142915113\\"><mainButton uid=\\"mainButton-1485142971049\\" id=\\"information\\" buttonAttr=\\"disabled\\" type=\\"information\\" /><mainButton uid=\\"mainButton-1485142971050\\" id=\\"localize\\" buttonAttr=\\"disabled\\" type=\\"localize\\" /><mainButton uid=\\"mainButton-1485142971051\\" id=\\"approval\\" buttonAttr=\\"normal\\" type=\\"approval\\" /><mainButton uid=\\"mainButton-1485142971052\\" id=\\"add\\" buttonAttr=\\"normal\\" type=\\"add\\" /><mainButton uid=\\"mainButton-1485142971053\\" id=\\"search\\" buttonAttr=\\"normal\\" type=\\"search\\" /><mainButton uid=\\"mainButton-1485142971054\\" id=\\"delete\\" buttonAttr=\\"normal\\" type=\\"delete\\" /><mainButton uid=\\"mainButton-1485142971055\\" id=\\"print\\" buttonAttr=\\"normal\\" type=\\"print\\" /><mainButton uid=\\"mainButton-1485142971056\\" id=\\"save\\" buttonAttr=\\"normal\\" type=\\"save\\" /><mainButton uid=\\"mainButton-1485142971057\\" id=\\"configure\\" buttonAttr=\\"normal\\" type=\\"configure\\" /></mainButtons><mLayout uid=\\"mLayout-1485142971058\\" id=\\"mlayout\\"><mButton uid=\\"mButton-1485142971058\\" id=\\"mbutton\\" buttonType=\\"normal\\" disabled=\\"false\\" /></mLayout></canvas><dataSources /><pageCssStyle><![CDATA[]]></pageCssStyle><stylesheets /><javascripts /><settings /><datas /></page>","localization":"ko-KR"}`;
-        let obj = JSON.parse(args);
-        let parser = new DOMParser();
-        let xmlDoc = parser.parseFromString(obj.data, "application/xml");
-        //let canvasDoc = xmlDoc.getElementsByTagName('canvas')[0];
-        let canvasDoc = xmlDoc.getElementsByTagName('mobile-page')[0];
-        let type = canvasDoc.attributes.getNamedItem('type').nodeValue;
-        let mPage = window.Vue.$store.state.component.items.find(item => item.uid.startsWith("mobile-page"));
+        const obj = JSON.parse(args);
+        const parser = new DOMParser();
+        const xmlDoc = parser.parseFromString(obj.data, "application/xml");
+        const canvasDoc = xmlDoc.getElementsByTagName('mobile-page')[0];
+        const type = canvasDoc.attributes.getNamedItem('type').nodeValue;
 
+        let mPage = store.state.component.items.find(item => item.uid.startsWith("mobile-page"));
         mPage.uid = canvasDoc.getAttribute('uid'); // 임시로 canvas에 uid 적용
         mPage.$el.setAttribute('uid', canvasDoc.getAttribute('uid')) // 임시로 canvas에 적용
 
@@ -41,7 +41,7 @@ export default {
                 {
 
                 } else {
-                    GlobalService.PageParsing(canvasDoc.children[i], mPage.uid);
+                    GlobalService.pageParsing(canvasDoc.children[i], mPage.uid);
                     //pageParsing(canvasDoc.children[i], mPage.uid);
                 }
             }
@@ -51,15 +51,22 @@ export default {
     /**
      * Recursive Function For Control Rendering
      */
-    PageParsing(node, parentUid) {
-        let clone = node.cloneNode();
-        let instance = GlobalService.createControlFromData(clone);
-        let parent = window.Vue.$store.state.component.items.find(item => item.uid === parentUid);
-        parent.$el.appendChild(instance.$el);
+    pageParsing(node, parentUid) {
+        let instance = node.cloneNode();
+        instance = GlobalService.createControlFromData(instance);
+
+        const parent = store.state.component.items.find(item => item.uid === parentUid);
+        const parentMUid = parent.muid ? parent.muid : '';
+
+        if (parentMUid) {
+            parent.$el.querySelector(`[muid=${parentMUid}]`).appendChild(instance.$el);
+        } else {
+            parent.$el.appendChild(instance.$el);
+        }
 
         if (node.childElementCount === 0) return;
         for (let i = 0; i < node.childElementCount; i++) {
-            GlobalService.PageParsing(node.children[i], instance.uid);
+            GlobalService.pageParsing(node.children[i], instance.uid);
         }
     },
 
@@ -69,6 +76,7 @@ export default {
     createControlFromData(clone) {
         const uid = clone.getAttribute('uid');
         const type = clone.tagName;
+
         let instance;
         switch (type) {
             case 'mobile-area':
@@ -87,9 +95,11 @@ export default {
                 instance = ControlService.addComponent('AreaBox');
                 break;
         }
+
         instance.uid = uid;
         instance.$el.setAttribute('uid', uid);
-        window.Vue.$store.commit('addItem', instance);
+        store.commit('addItem', instance);
+
         return instance;
     },
 
@@ -104,7 +114,7 @@ export default {
         console.log(args);
         const message = JSON.parse(args);
         const uid = message['controlUniqueId'];
-        let control = window.Vue.$store.state.component.items.find(item => item.uid === uid);
+        let control = store.state.component.items.find(item => item.uid === uid);
         GlobalService.selectControl(control.$el);
     },
 

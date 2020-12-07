@@ -93,8 +93,9 @@ export default {
         ControlService.deleteDrakeContainer(target);
         ControlService.deleteItems(target);
 
-        // 4) target 객체 제거
+        // 4) target 객체 제거 및 IDE에서 제거
         target.remove();
+        ControlService.sendDeleteMessage(target);
 
         // selectItem이 없으므로 null 처리
         window.selectedItem = null;
@@ -108,6 +109,7 @@ export default {
 
         if (targetPanel.childElementCount === 2) {
             const targetSibling = target.nextSibling ? target.nextSibling : target.previousSibling;
+
             if (targetSibling.hasChildNodes()) {
                 targetPanel.replaceWith(...targetSibling.childNodes);
                 targetPanel.childNodes.forEach(child => {
@@ -115,12 +117,21 @@ export default {
                     ControlService.deleteItems(child);
                 });
             } else {
-                ControlService.deleteDrakeContainer(targetSibling);
-                ControlService.deleteItems(targetSibling);
-                targetPanel.remove();
-                targetSibling.remove();
+                ControlService.deleteSplitItems(targetSibling);
             }
+
+            ControlService.deleteSplitItems(targetPanel);
         }
+    },
+
+    /*
+    * deleteSplit 함수에서 조건에 따른 처리를 한 후, item 삭제
+    * @param item - AreaItem, AreaPanel
+    * */
+    deleteSplitItems(item) {
+        ControlService.deleteDrakeContainer(item);
+        ControlService.deleteItems(item);
+        item.remove();
     },
 
     /*

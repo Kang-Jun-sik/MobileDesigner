@@ -9,7 +9,7 @@ export default {
         //(1) ID 추출
         let delItemUid = obj['controlUniqueId'];
         if (delItemUid) {
-            let control = window.Vue.$store.state.component.items.find(item => item.uid === delItemUid);
+            let control = store.state.component.items.find(item => item.uid === delItemUid);
             ControlService.deleteControl(control.$el);
         }
     }

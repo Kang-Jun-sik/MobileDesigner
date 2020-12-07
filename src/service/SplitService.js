@@ -27,23 +27,23 @@ export default {
     * AreaPanel 생성 후, 2개의 AreaItem을 생성하여 분할한다.
     * */
     setSplit(target) {
-        const targetParentNode = target.closest('.dews-mobile-component');
-        const targetParentUid = targetParentNode.getAttribute('uid');
-        mobileDesignerToIDE("delete", target, targetParentUid); //IDE에서는 삭제
+        // 분할을 통해 target이 재배치되기 때문에 삭제를 위해 sendDeleteMessage 호출
+        ControlService.sendDeleteMessage(target);
 
         // 분할을 위한 AreaPanel extend 후, target과 area.$el를 replaceWith 실행
         const areaPanel = ControlService.addComponent('AreaPanel');
-        const panelElement = areaPanel.$el;
-        target.replaceWith(panelElement);
+        store.commit('addItem', areaPanel);
+        const areaPanelElement = areaPanel.$el;
+        target.replaceWith(areaPanelElement);
 
-        // 부모 노드 찾기
-        const panelParent = panelElement.parentElement.closest('.dews-mobile-component');
+        // 분할하며 생성된 AreaPanel 부모 노드 찾기
+        const panelParent = areaPanelElement.parentElement.closest('.dews-mobile-component');
         const panelParentUid = panelParent.getAttribute('uid');
-        mobileDesignerToIDE("create", panelElement, panelParentUid);
+        mobileDesignerToIDE("create", areaPanelElement, panelParentUid);
 
         for (let i = 0; i < 2; i++) {
             let item = ControlService.addComponent('AreaItem');
-            panelElement.appendChild(item.$el);
+            areaPanelElement.appendChild(item.$el);
             store.commit('addItem', item);
 
             const parentElement = item.$el.parentElement.closest('.dews-mobile-component');
@@ -52,7 +52,7 @@ export default {
         }
 
         // 왼쪽 item에 target(box 혹은 tabs) appendChild (default)
-        const areaItem = panelElement.querySelectorAll(':scope > .dews-item')[0];
+        const areaItem = areaPanelElement.querySelectorAll(':scope > .dews-item')[0];
         areaItem.appendChild(target);
         mobileDesignerToIDE("create", target, areaItem.getAttribute('uid'));
         ResizeService.setPosition(target);
