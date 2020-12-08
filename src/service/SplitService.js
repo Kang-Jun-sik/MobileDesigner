@@ -5,7 +5,6 @@ import CreateService from "@/service/CreateService";
 import DeleteService from "@/service/DeleteService";
 
 export default {
-    //To do - 부모 아이디 찾는 로직 함수화 (부모 uid 리턴할것)
     verticalSplit(target) {
         // TabletL 사이즈가 아니라면 분할이 불가능하므로 리턴
         if (store.state.layout.designerLayout !== 'designer-tabletL') return;
@@ -27,23 +26,19 @@ export default {
     * AreaPanel 생성 후, 2개의 AreaItem을 생성하여 분할한다.
     * */
     setSplit(target) {
-        // 분할을 통해 target이 재배치되기 때문에 삭제를 위해 sendDeleteMessage 호출
         DeleteService.sendDeleteMessage(target);
 
         // 분할을 위한 AreaPanel extend 후, target과 area.$el를 replaceWith 실행
         const areaPanel = CreateService.addComponent('AreaPanel');
         store.commit('addItem', areaPanel);
-
         const areaPanelElement = areaPanel.$el;
         target.replaceWith(areaPanelElement);
-
         CreateService.sendCreateMessage(areaPanelElement);
 
         for (let i = 0; i < 2; i++) {
             let item = CreateService.addComponent('AreaItem');
             areaPanelElement.appendChild(item.$el);
             store.commit('addItem', item);
-
             CreateService.sendCreateMessage(item.$el);
         }
 
@@ -56,8 +51,8 @@ export default {
     },
 
     /*
-    * target => dews-item (이미 분할이 되어있는 경우)
     * 하나의 AreaPanel 최대 3개까지 분할 가능 4:4:4
+    * @param target => dews-item (이미 분할이 되어있는 경우)
     * */
     itemSplit(target) {
         // target(item)이 존재하는 AreaPanel안에 또다른 AreaPanel(AreaPanel 2개)이 존재한다면 이미 분할된 상태이므로 return
@@ -70,6 +65,7 @@ export default {
         const addItem = CreateService.addComponent('AreaItem');
         parentElement.appendChild(addItem.$el);
         store.commit('addItem', addItem);
+        CreateService.sendCreateMessage(addItem.$el);
 
         const childElement = Array.from(parentElement.children);
         childElement.forEach(child => {
@@ -81,9 +77,8 @@ export default {
     },
 
     /*
-    * target => dews-box / dews-tabs (이 두가지가 이미 분할된 item 속에 들어있을 경우)
-    * 1Row 당 최대 3개까지 분할 가능
-    * 분할 가능 비율 (4:8 / 8:4)로 변경 후, 재분할 진행(비율은 6:6 고정)
+    * 분할 가능 비율 (4:8 / 8:4)로 변경 후, 재분할 진행 (비율은 6:6 고정 / 1Row 당 최대 3개까지 분할 가능)
+    * @param target => dews-box / dews-tabs (이 두가지가 이미 분할된 item 속에 들어있을 경우)
     * */
     areaSplit(target) {
         // target(box, tabs)이 존재하는 AreaPanel이 2개 이상이라면 이미 3개가 분할된 상태이므로 return
@@ -111,6 +106,7 @@ export default {
 
     /*
     * 재분할 전, AreaPanel을 Count하여 하나만 있다면 재분할 가능 (그 이상 재분할 불가능)
+    * @param element
     * */
     parentPanelCount(element) {
         let _element = element;
@@ -127,6 +123,7 @@ export default {
 
     /*
     * 재분할 전, AreaPanel을 Count하여 하나만 있다면 재분할 가능 (그 이상 재분할 불가능)
+    * @param element
     * */
     childPanelCount(element) {
         let cnt = 1;

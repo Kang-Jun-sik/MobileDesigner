@@ -3,7 +3,6 @@ import _ from "lodash";
 
 import mobileDesignerToIDE from "@/utils/mobileDesignerToIDE";
 import DeleteService from "@/service/DeleteService";
-import UndoRedoService from "@/service/UndoRedoService";
 import CreateService from "@/service/CreateService";
 
 export default {
@@ -55,33 +54,6 @@ export default {
     },
 
     /*
-    * AreaItem이 하나만 남을 경우, replaceWith 하거나 delete
-    * */
-    deleteSplit(target) {
-        const $mainDesigner = document.querySelector('.main-designer');
-        const targetPanel = target.parentElement;
-
-        if (targetPanel.childElementCount === 2) {
-            const targetSibling = target.nextSibling ? target.nextSibling : target.previousSibling;
-
-            if (targetSibling.hasChildNodes()) {
-                DeleteService.deleteSplitItems(targetPanel, true);
-
-                const _childNodes = [...targetSibling.childNodes];
-                _childNodes.forEach(child => {
-                    mobileDesignerToIDE("create", child, $mainDesigner.getAttribute('uid'));
-                })
-                targetPanel.replaceWith(...targetSibling.childNodes);
-
-                DeleteService.deleteSplitItems(targetSibling, true);
-            } else {
-                DeleteService.deleteSplitItems(targetSibling, false);
-                DeleteService.deleteSplitItems(targetPanel, false);
-            }
-        }
-    },
-
-    /*
     * deleteSplit 함수에서 조건에 따른 처리를 한 후, item 삭제
     * @param item - AreaItem, AreaPanel
     * */
@@ -91,6 +63,32 @@ export default {
         DeleteService.deleteItems(item);
 
         if (!hasChild) item.remove();
+    },
+
+    /*
+    * AreaItem이 하나만 남을 경우, replaceWith 하거나 delete
+    * */
+    deleteSplit(target) {
+        const targetPanel = target.parentElement;
+
+        if (targetPanel.childElementCount === 2) {
+            const targetSibling = target.nextSibling ? target.nextSibling : target.previousSibling;
+
+            DeleteService.deleteSplitItems(targetSibling, targetSibling.hasChildNodes());
+            DeleteService.deleteSplitItems(targetPanel, targetSibling.hasChildNodes());
+
+            if (targetSibling.hasChildNodes()) {
+                const _childElement = [...targetSibling.children]
+                _childElement.forEach(element => {
+                    DeleteService.sendDeleteMessage(element);
+                });
+
+                targetPanel.replaceWith(...targetSibling.childNodes);
+                _childElement.forEach(element => {
+                    CreateService.sendCreateMessage(element);
+                });
+            }
+        }
     },
 
     /*
