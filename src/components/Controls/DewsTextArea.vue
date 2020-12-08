@@ -6,17 +6,17 @@
            :required="required" :disabled="disabled" :readonly="readonly" ref="textArea">
     </textarea>
 
-    <label for="multi-textbox">multi-textbox value</label>
-    <textarea class="dews-multi-input" id="multi-textbox">value </textarea>
+<!--    <label for="multi-textbox">multi-textbox value</label>-->
+<!--    <textarea class="dews-multi-input" id="multi-textbox">value </textarea>-->
 
-    <label for="multi-textbox">multi-textbox placeholder</label>
-    <textarea class="dews-multi-input" id="multi-textbox" placeholder="placeholder"></textarea>
+<!--    <label for="multi-textbox">multi-textbox placeholder</label>-->
+<!--    <textarea class="dews-multi-input" id="multi-textbox" placeholder="placeholder"></textarea>-->
 
-    <label for="multi-textbox">multi-textbox readonly</label>
-    <textarea class="dews-multi-input" id="multi-textbox" readonly="readonly">value</textarea>
+<!--    <label for="multi-textbox">multi-textbox readonly</label>-->
+<!--    <textarea class="dews-multi-input" id="multi-textbox" readonly="readonly">value</textarea>-->
 
-    <label for="multi-textbox">multi-textbox disabled</label>
-    <textarea class="dews-multi-input" id="multi-textbox" disabled="disabled">value</textarea>
+<!--    <label for="multi-textbox">multi-textbox disabled</label>-->
+<!--    <textarea class="dews-multi-input" id="multi-textbox" disabled="disabled">value</textarea>-->
   </div>
 </template>
 

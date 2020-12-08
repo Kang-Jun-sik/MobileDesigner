@@ -6,29 +6,29 @@
     </span>
     <label class="checkbox-label">{{ title }}</label>
 
-    <span class="checkbox-control">
-      <input type="checkbox">
-      <span class="checkbox-shape"></span>
-    </span>
-    <label class="checkbox-label">라벨</label>
+<!--    <span class="checkbox-control">-->
+<!--      <input type="checkbox">-->
+<!--      <span class="checkbox-shape"></span>-->
+<!--    </span>-->
+<!--    <label class="checkbox-label">라벨</label>-->
 
-    <span class="checkbox-control">
-      <input type="checkbox" checked="checked">
-      <span class="checkbox-shape"></span>
-    </span>
-    <label class="checkbox-label">라벨</label>
+<!--    <span class="checkbox-control">-->
+<!--      <input type="checkbox" checked="checked">-->
+<!--      <span class="checkbox-shape"></span>-->
+<!--    </span>-->
+<!--    <label class="checkbox-label">라벨</label>-->
 
-    <span class="checkbox-control">
-      <input type="checkbox" disabled="disabled">
-      <span class="checkbox-shape"></span>
-    </span>
-    <label class="checkbox-label">라벨</label>
+<!--    <span class="checkbox-control">-->
+<!--      <input type="checkbox" disabled="disabled">-->
+<!--      <span class="checkbox-shape"></span>-->
+<!--    </span>-->
+<!--    <label class="checkbox-label">라벨</label>-->
 
-    <span class="checkbox-control">
-      <input type="checkbox" checked="checked" disabled="disabled">
-      <span class="checkbox-shape"></span>
-    </span>
-    <label class="checkbox-label">라벨</label>
+<!--    <span class="checkbox-control">-->
+<!--      <input type="checkbox" checked="checked" disabled="disabled">-->
+<!--      <span class="checkbox-shape"></span>-->
+<!--    </span>-->
+<!--    <label class="checkbox-label">라벨</label>-->
   </span>
 </template>
 

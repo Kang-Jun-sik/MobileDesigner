@@ -5,20 +5,20 @@
            type="text" :value="value" :placeholder="placeholder"
            :required="required" :disabled="disabled" :readonly="readonly" ref="textBox">
 
-    <label for="">value</label>
-    <input id="" type="text" class="dews-input" placeholder="placeholder" value="value">
+<!--    <label for="">value</label>-->
+<!--    <input id="" type="text" class="dews-input" placeholder="placeholder" value="value">-->
 
-    <label for="">placeholder</label>
-    <input id="" type="text" class="dews-input" placeholder="placeholder" value="value">
+<!--    <label for="">placeholder</label>-->
+<!--    <input id="" type="text" class="dews-input" placeholder="placeholder" value="value">-->
 
-    <label for="">readonly</label>
-    <input id="" type="text" class="dews-input" placeholder="placeholder" value="value" readonly="readonly">
+<!--    <label for="">readonly</label>-->
+<!--    <input id="" type="text" class="dews-input" placeholder="placeholder" value="value" readonly="readonly">-->
 
-    <label for="">disabled</label>
-    <input id="" type="text" class="dews-input" placeholder="placeholder" value="value" disabled="disabled">
+<!--    <label for="">disabled</label>-->
+<!--    <input id="" type="text" class="dews-input" placeholder="placeholder" value="value" disabled="disabled">-->
 
-    <label for="multi-textbox">multi-textbox value</label>
-    <textarea class="dews-multi-input" id="multi-textbox">value </textarea>
+<!--    <label for="multi-textbox">multi-textbox value</label>-->
+<!--    <textarea class="dews-multi-input" id="multi-textbox">value </textarea>-->
   </div>
 </template>
 
