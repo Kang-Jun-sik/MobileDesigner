@@ -27,6 +27,7 @@ export default {
     * */
     setSplit(target) {
         DeleteService.sendDeleteMessage(target);
+        DeleteService.reArrangeDelete(target);
 
         // 분할을 위한 AreaPanel extend 후, target과 area.$el를 replaceWith 실행
         const areaPanel = CreateService.addComponent('AreaPanel');
@@ -48,6 +49,7 @@ export default {
         ResizeService.setPosition(target);
 
         CreateService.sendCreateMessage(target);
+        CreateService.reArrangeCreate(target);
     },
 
     /*

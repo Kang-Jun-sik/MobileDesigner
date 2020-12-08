@@ -28,6 +28,19 @@ export default {
     },
 
     /*
+    * 컨트롤 재정렬을 위한 컨트롤 삭제 로직
+    * @param target
+    * */
+    reArrangeDelete(target) {
+        Array.from(target.children).forEach(child => {
+            if (child.getAttribute('uid')){
+                DeleteService.sendDeleteMessage(child);
+            }
+            DeleteService.reArrangeDelete(child);
+        });
+    },
+
+    /*
     * 컨트롤 삭제를 위한 공통 로직
     * */
     deleteControl(target) {
@@ -81,11 +94,13 @@ export default {
                 const _childElement = [...targetSibling.children]
                 _childElement.forEach(element => {
                     DeleteService.sendDeleteMessage(element);
+                    DeleteService.reArrangeDelete(element);
                 });
 
                 targetPanel.replaceWith(...targetSibling.childNodes);
                 _childElement.forEach(element => {
                     CreateService.sendCreateMessage(element);
+                    CreateService.reArrangeCreate(element);
                 });
             }
         }

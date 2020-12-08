@@ -1,6 +1,7 @@
 import Vue from "vue";
 
 import mobileDesignerToIDE from "@/utils/mobileDesignerToIDE";
+import CreateService from "@/service/CreateService";
 import PageOpenService from "@/service/PageOpenService";
 
 import Button from "@/components/Controls/DewsButton";
@@ -27,6 +28,19 @@ export default {
         const parentUid = parent.getAttribute('uid');
 
         mobileDesignerToIDE("create", component, parentUid);
+    },
+
+    /*
+    * 컨트롤 재정렬을 위한 컨트롤 생성 로직
+    * @param target
+    * */
+    reArrangeCreate(target) {
+        Array.from(target.children).forEach(child => {
+            if (child.getAttribute('uid')) {
+                CreateService.sendCreateMessage(child);
+            }
+            CreateService.reArrangeCreate(child);
+        });
     },
 
     /*
