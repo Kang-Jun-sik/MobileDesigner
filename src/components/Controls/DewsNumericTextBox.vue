@@ -1,6 +1,22 @@
 <template>
   <div class="numeric-textbox-wrap" :class="{disabled: disabled ? 'disabled' : '', readonly: readonly ? 'readonly': ''}">
-
+    <label v-if="title" for="numeric-box">{{ title }}</label>
+    <label v-else class="undefined" for="numeric-box"></label>
+    <div class="numeric-wrap">
+      <span v-if="prefix">{{ prefix }}</span>
+      <span class="numeric view" :class="disabled ? 'disabled' : ''" @click="focusIn()">
+        <input id="numeric-box" class="numeric-box" type="text" :value="value"
+               :disabled="disabled" :readonly="readonly" :placeholder="placeholder">
+      </span>
+      <span class="numeric mask" style="display: none;">
+        <input type="text" :value="value" :step="step" :min="min" :max="max">
+      </span>
+      <span v-if="suffix">{{ suffix }}</span>
+      <span class="stepper">
+        <button class="button-stepper minus" @click="stepperDecrement()"></button>
+        <button class="button-stepper plus" @click="stepperIncrement()"></button>
+      </span>
+    </div>
   </div>
 </template>
 
@@ -24,8 +40,17 @@ export default {
       min: null,
       restrict: false,
       maxLength: null,
-      round: 'round'
+      round: 'round',
+      step: 1,
     }
+  },
+  created() {
+
+  },
+  methods: {
+    focusIn() {},
+    stepperDecrement() {},
+    stepperIncrement() {}
   }
 }
 </script>

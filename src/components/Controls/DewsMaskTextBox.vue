@@ -1,5 +1,5 @@
 <template>
-  <div class="mask-textbox-wrap">
+  <div :uid="uid" class="mask-textbox-wrap">
     <label>{{ title }}</label>
     <span @click="onClick()" class="view" :class="disabled ? 'disabled' : ''">
       <input type="text" @focus="onClick()"
@@ -14,10 +14,13 @@
 </template>
 
 <script>
+import CreateService from "@/service/CreateService";
+
 export default {
   name: 'dews-maskbox',
   data() {
     return {
+      uid: '',
       title: 'title',
       placeholder: '',
       format: '',
@@ -35,6 +38,7 @@ export default {
     }
   },
   created() {
+    this.uid = CreateService.createUid('dews-maskbox');
   },
   methods: {
     onClick() {
