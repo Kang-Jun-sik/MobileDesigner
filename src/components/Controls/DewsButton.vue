@@ -22,7 +22,7 @@ export default {
     }
   },
   created() {
-    this.uid = CreateService.createUid('mobile-button');
+    this.uid = CreateService.createUid('dews-button');
   },
   methods: {
     setWidth(width) {

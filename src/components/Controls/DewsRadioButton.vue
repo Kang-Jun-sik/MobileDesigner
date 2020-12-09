@@ -30,7 +30,7 @@
 import CreateService from "@/service/CreateService";
 
 export default {
-  name: 'dews-radio-button',
+  name: 'dews-radiobutton',
   data() {
     return {
       uid: '',

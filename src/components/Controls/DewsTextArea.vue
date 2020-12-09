@@ -40,7 +40,7 @@ export default {
     }
   },
   created() {
-    this.uid = CreateService.createUid('dews-textarea')
+    this.uid = CreateService.createUid('dews-textbox')
   },
   mounted() {
   },

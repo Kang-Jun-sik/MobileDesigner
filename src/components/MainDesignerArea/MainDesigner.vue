@@ -20,7 +20,7 @@ export default {
     }
   },
   mounted() {
-    this.uid = CreateService.createUid('mobile-page');
+    this.uid = CreateService.createUid('mobile-designer');
     GlobalService.keyBinding();
     SelectService.selectControlEvent(); //메인 디자이너에 컨트롤 선택 이벤트 추가
   },

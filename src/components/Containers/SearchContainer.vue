@@ -15,19 +15,14 @@
 
     <div :muid="muid" class="dews-search-field" ref="searchContainer">
       <ul class="form-field">
+<!--        <dews-textbox></dews-textbox>-->
+<!--        <dews-checkbox></dews-checkbox>-->
+<!--        <dews-radiobutton></dews-radiobutton>-->
+
 <!--        <slot v-if="this.inputList">-->
 <!--          <li v-for="(input, idx) in inputList" :key="idx"> {{ input }}</li>-->
 <!--        </slot>-->
 <!--        <slot v-else></slot>-->
-<!--        <li>-->
-<!--          <dews-text-box></dews-text-box>-->
-<!--        </li>-->
-<!--        <li>-->
-<!--          <dews-checkbox></dews-checkbox>-->
-<!--        </li>-->
-<!--        <li>-->
-<!--          <dews-radio-button></dews-radio-button>-->
-<!--        </li>-->
       </ul>
     </div>
   </div>
@@ -36,26 +31,27 @@
 <script>
 import store from "@/store/index";
 import CreateService from "@/service/CreateService";
-import DewsTextBox from "@/components/Controls/DewsTextBox";
+import DewsTextbox from "@/components/Controls/DewsTextBox";
 import DewsCheckbox from "@/components/Controls/DewsCheckBox";
-import DewsRadioButton from "@/components/Controls/DewsRadioButton";
+import DewsRadiobutton from "@/components/Controls/DewsRadioButton";
 
 export default {
   name: 'dews-search-container',
-  // components: {DewsRadioButton, DewsCheckbox, DewsTextBox},
+  // components: {DewsCheckbox, DewsRadiobutton, DewsTextbox},
   uid: '',
   data() {
     return {
       uid: '',
       muid: '',
       title: 'Search Container',
+      col: 1,
       customButton: [],
       inputList: [],
     }
   },
   created() {
-    this.uid = CreateService.createUid('mobile-area');
-    this.muid = CreateService.createUid('designer-search');
+    this.uid = CreateService.createUid('dews-search-container');
+    this.muid = CreateService.createUid('search-field');
     store.commit('matchUid', {'uid': this.uid, 'muid': this.muid});
   },
   mounted() {

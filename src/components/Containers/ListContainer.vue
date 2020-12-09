@@ -33,7 +33,7 @@ export default {
     }
   },
   created() {
-    this.uid = GlobalService.createUid('mobile-list');
+    this.uid = GlobalService.createUid('dews-list-container');
   }
 }
 </script>

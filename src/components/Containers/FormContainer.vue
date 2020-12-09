@@ -106,7 +106,7 @@ export default {
     }
   },
   created() {
-    this.uid = CreateService.createUid('mobile-form');
+    this.uid = CreateService.createUid('dews-form-container');
   }
 }
 </script>

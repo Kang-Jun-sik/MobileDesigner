@@ -31,7 +31,7 @@ export default {
     }
   },
   created() {
-    this.uid = CreateService.createUid('mobile-tabs');
+    this.uid = CreateService.createUid('dews-tabs');
     // this.titleList = store.state.tabTitles;
   },
   mounted() {

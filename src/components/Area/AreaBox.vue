@@ -32,7 +32,7 @@ export default {
   },
   created() {
     this.uid = CreateService.createUid('dews-box');
-    this.muid = CreateService.createUid('designer-content');
+    this.muid = CreateService.createUid('box-content');
 
     store.commit('matchUid', {'uid': this.uid, 'muid': this.muid});
   },

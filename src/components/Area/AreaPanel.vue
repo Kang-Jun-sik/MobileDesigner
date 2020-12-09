@@ -13,7 +13,7 @@ export default {
     }
   },
   created() {
-    this.uid = CreateService.createUid('mobile-panel');
+    this.uid = CreateService.createUid('dews-area-panel');
   },
   mounted() {},
 }

@@ -12,19 +12,11 @@ export default {
       uid: '',
       handle: 'e',
       col: 'col-fd-6',
-      cols: {
-        col4: 'col-fd-4',
-        col5: 'col-fd-5',
-        col6: 'col-fd-6',
-        col7: 'col-fd-7',
-        col8: 'col-fd-8',
-        col12: 'col-fd-12'
-      },
     }
   },
   created() {
     // item 구분을 위한 guid 추가
-    this.uid = CreateService.createUid('mobile-item');
+    this.uid = CreateService.createUid('area-item');
   },
   mounted() {
     window.drake.containers.push(this.$refs.dewsItem);

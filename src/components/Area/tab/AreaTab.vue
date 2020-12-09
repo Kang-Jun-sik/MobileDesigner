@@ -23,7 +23,7 @@ export default {
     }
   },
   created() {
-    this.uid = CreateService.createUid('mobile-tab');
+    this.uid = CreateService.createUid('dews-tab');
   },
   mounted() {
     const parentTabs = this.$el.closest('.dews-tabs-wrap');

@@ -26,7 +26,7 @@
 import CreateService from "@/service/CreateService";
 
 export default {
-  name: 'dews-text-box',
+  name: 'dews-textbox',
   data() {
     return {
       id: '',
