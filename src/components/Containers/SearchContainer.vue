@@ -19,21 +19,15 @@
 <!--          <li v-for="(input, idx) in inputList" :key="idx"> {{ input }}</li>-->
 <!--        </slot>-->
 <!--        <slot v-else></slot>-->
-        <li>
-          <dews-text-box></dews-text-box>
-        </li>
-        <li>
-          <dews-checkbox></dews-checkbox>
-        </li>
-        <li>
-          <dews-radio-button></dews-radio-button>
-        </li>
-        <li>
-          <div class="dews-textbox">
-            <label>항목명</label>
-            <input type="text" class="">
-          </div>
-        </li>
+<!--        <li>-->
+<!--          <dews-text-box></dews-text-box>-->
+<!--        </li>-->
+<!--        <li>-->
+<!--          <dews-checkbox></dews-checkbox>-->
+<!--        </li>-->
+<!--        <li>-->
+<!--          <dews-radio-button></dews-radio-button>-->
+<!--        </li>-->
       </ul>
     </div>
   </div>
@@ -48,7 +42,7 @@ import DewsRadioButton from "@/components/Controls/DewsRadioButton";
 
 export default {
   name: 'dews-search-container',
-  components: {DewsRadioButton, DewsCheckbox, DewsTextBox},
+  // components: {DewsRadioButton, DewsCheckbox, DewsTextBox},
   uid: '',
   data() {
     return {
