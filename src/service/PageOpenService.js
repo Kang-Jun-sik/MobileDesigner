@@ -16,7 +16,7 @@ export default {
         const canvasDoc = xmlDoc.getElementsByTagName('mobile-page')[0];
         const type = canvasDoc.attributes.getNamedItem('type').nodeValue;
 
-        let mPage = store.state.component.items.find(item => item.uid.startsWith("mobile-page"));
+        let mPage = store.state.component.items.find(item => item.uid.startsWith("main-designer"));
         mPage.uid = canvasDoc.getAttribute('uid'); // 임시로 canvas에 uid 적용
         mPage.$el.setAttribute('uid', canvasDoc.getAttribute('uid')) // 임시로 canvas에 적용
 
@@ -71,7 +71,7 @@ export default {
 
         let instance;
         switch (type) {
-            case 'mobile-area':
+            case 'dews-search-container':
                 instance = CreateService.addComponent('SearchContainer');
                 break;
             case 'mobile-button':
@@ -80,7 +80,7 @@ export default {
             case 'dews-area-panel':
                 instance = CreateService.addComponent('AreaPanel');
                 break;
-            case 'mobile-item':
+            case 'area-item':
                 instance = CreateService.addComponent('AreaItem');
                 break;
             case 'dews-box':
