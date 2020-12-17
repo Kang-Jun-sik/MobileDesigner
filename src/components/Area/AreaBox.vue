@@ -47,12 +47,12 @@ export default {
 
       if (this.collapsed) {
         this.collapsed = false;
-        box.style.setProperty('height', '', 'important');
         this.contentStyle.display = 'none';
+        box.style.setProperty('height', '', 'important');
       } else {
         this.collapsed = true;
-        box.style.setProperty('height', box.style.height);
         this.contentStyle.display = 'block';
+        box.style.setProperty('height', box.style.height);
       }
 
       setTimeout(ResizeService.setPosition, 10, box);
