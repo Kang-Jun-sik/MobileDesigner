@@ -12,7 +12,6 @@ import ControlListWrapper from "@/components/ControlListArea/ControlListWrapper"
 
 import CreateService from "@/service/CreateService";
 import ContextMenuService from "@/service/ContextMenuService";
-import UndoRedoService from "@/service/UndoRedoService";
 import ResizeService from "@/service/ResizeService";
 
 export default {
@@ -23,11 +22,12 @@ export default {
   },
   mounted() {
     const _this = this;
-    const _designerState = this.$store.state.designer;
+    const _designer = this.$store.state.designer;
+
     window.drake = dragula({
       revertOnSpill: true,
       copy: function (el, source) {
-        return source.id === 'areaList' || source.id === 'containerList' || source.id === 'componentList' || source.id === 'etcList';
+        return ['areaList', 'containerList', 'componentList', 'etcList'].includes(source.id);
       },
       accepts: function (el, target, source) {
         return _this.acceptCheck(el, target, source);
@@ -39,11 +39,8 @@ export default {
       }
     })
 
-    window.drake.containers.push(_designerState.mainDesigner.$el);
-    window.drake.containers.push(_designerState.areaList);
-    window.drake.containers.push(_designerState.containerList);
-    window.drake.containers.push(_designerState.componentList);
-    window.drake.containers.push(_designerState.etcList);
+    window.drake.containers.push(_designer.mainDesigner.$el, _designer.areaList, _designer.containerList,
+        _designer.componentList, _designer.etcList);
   },
   methods: {
     /*
@@ -118,7 +115,7 @@ export default {
           }
           //◎ Search Container
           else if (el.classList.contains('dews-mobile-searchContainer')) {
-            if (target.classList.contains('main-designer')) {
+            if (target.classList.contains('dews-box-content')) {
               return true;
             }
           }
