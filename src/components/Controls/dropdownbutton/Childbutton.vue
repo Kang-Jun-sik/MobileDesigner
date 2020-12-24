@@ -17,7 +17,7 @@ export default {
     }
   },
   created() {
-    this.uid = CreateService.createUid('dropdown-childbutton');
+    this.uid = CreateService.createUid('dropdownbutton-childbutton');
   }
 }
 </script>
