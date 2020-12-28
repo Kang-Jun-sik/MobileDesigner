@@ -55,12 +55,12 @@ export default {
     /*
     * 하나의 AreaPanel 최대 3개까지 분할 가능 4:4:4
     * @param target => dews-item (이미 분할이 되어있는 경우)
+    * 1) target(item)이 존재하는 AreaPanel안에 또다른 AreaPanel(AreaPanel 2개)이 존재한다면 이미 분할된 상태이므로 return
+    * 2) target(item)이 존재하는 AreaPanel에는 최대 3개(4:4:4)의 item이 들어갈 수 있으므로 2개가 아니면 return
     * */
     itemSplit(target) {
-        // target(item)이 존재하는 AreaPanel안에 또다른 AreaPanel(AreaPanel 2개)이 존재한다면 이미 분할된 상태이므로 return
-        // target(item)이 존재하는 AreaPanel에는 최대 3개(4:4:4)의 item이 들어갈 수 있으므로 2개가 아니면 return
-        if (SplitService.childPanelCount(target.parentElement) >= 2
-            || SplitService.parentPanelCount(target) >= 2
+        if (SplitService.parentPanelCount(target) >= 2
+            || SplitService.childPanelCount(target.parentElement) >= 2
             || target.parentElement.childElementCount !== 2) return
 
         const parentElement = target.parentElement;
@@ -81,18 +81,17 @@ export default {
     /*
     * 분할 가능 비율 (4:8 / 8:4)로 변경 후, 재분할 진행 (비율은 6:6 고정 / 1Row 당 최대 3개까지 분할 가능)
     * @param target => dews-box / dews-tabs (이 두가지가 이미 분할된 item 속에 들어있을 경우)
+    * 1) target(box, tabs)이 존재하는 AreaPanel이 2개 이상이라면 이미 3개가 분할된 상태이므로 return
+    * 2) target(box, tabs)이 존재하는 AreaItem의 SiblingItem이 이미 분활된 상태(AreaPanel 2개)라면 return
+    * 3) target(box, tabs)이 존재하는 AreaPanel에 이미 item이 3개(4:4:4)가 존재한다면 return
     * */
     areaSplit(target) {
-        // target(box, tabs)이 존재하는 AreaPanel이 2개 이상이라면 이미 3개가 분할된 상태이므로 return
-        // target(box, tabs)이 존재하는 AreaItem의 SiblingItem이 이미 분활된 상태(AreaPanel 2개)라면 return
-        // target(box, tabs)이 존재하는 AreaPanel에 이미 item이 3개(4:4:4)가 존재한다면 return
-        if (SplitService.parentPanelCount(target) >= 2
-            || SplitService.childPanelCount(target.closest('.dews-panel')) >= 2
-            || target.closest('.dews-panel').childElementCount === 3) return
-
-        // 1) 분할 비율을 4:8 또는 8:4로 변경
         const targetParentItem = target.parentElement;
         const parentSiblingItem = targetParentItem.nextSibling ? targetParentItem.nextSibling : targetParentItem.previousSibling;
+
+        if (SplitService.parentPanelCount(target) >= 2
+            || SplitService.childPanelCount(parentSiblingItem) >= 2
+            || target.closest('.dews-panel').childElementCount === 3) return
 
         store.state.component.items.forEach(item => {
             if (item.uid === targetParentItem.getAttribute('uid')) {
@@ -133,9 +132,9 @@ export default {
             const elementInPanel = Array.from(el.children).filter(child => {
                 return child.classList.contains('dews-panel')
             })
-            if (elementInPanel.length > 0) cnt += 1;
+            if (el.classList.contains('dews-panel') || elementInPanel.length > 0) cnt += 1;
         })
 
         return cnt;
-    }
+    },
 }
