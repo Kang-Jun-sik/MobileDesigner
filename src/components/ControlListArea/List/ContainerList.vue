@@ -7,7 +7,7 @@
     <b-collapse id="containerList" class="containerList-content" accordion="dews-control" role="tabpanel">
       <div v-for="(name, key, idx) in mobileContainer" :key="idx"
            :class="'dews-mobile-' + key"
-           class="dewsControl containerList-content-box"
+           class="dews-control-list containerList-content-box"
       >
         <div :class="'containerList-' + key" class="containerList-content-icon"></div>
         <div class="containerList-content-title">{{ name }}</div>

@@ -1,5 +1,5 @@
 <template>
-  <div class="date-picker-wrap focus">
+  <div class="dews-mobile-datePicker date-picker-wrap focus">
     <label>{{ title }}</label>
     <span class="select-wrap">
       <span class="select-shape">

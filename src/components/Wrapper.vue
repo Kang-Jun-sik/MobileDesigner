@@ -10,6 +10,7 @@ import dragula from "dragula";
 import MainDesignerWrapper from "@/components/MainDesignerArea/MainDesignerWrapper";
 import ControlListWrapper from "@/components/ControlListArea/ControlListWrapper";
 
+import componentAcceptsCheck from "@/service/AcceptsCheckService";
 import CreateService from "@/service/CreateService";
 import ContextMenuService from "@/service/ContextMenuService";
 import ResizeService from "@/service/ResizeService";
@@ -30,7 +31,7 @@ export default {
         return ['areaList', 'containerList', 'componentList', 'etcList'].includes(source.id);
       },
       accepts: function (el, target, source) {
-        return _this.acceptCheck(el, target, source);
+        return componentAcceptsCheck(el, target);
       }
     }).on('drop', function (el, target) {
       _this.drop(el, target);
@@ -47,17 +48,15 @@ export default {
     * 드롭할 때, 컴포넌트 호출 및 $el로 replace 처리
     **/
     drop(el, target) {
-      if (el.classList.contains('dewsControl')) {
-        // 컴포넌트 추가 후, $el로 replace
-        const componentName = el.textContent.replace(/\s+/g, '');
-        const component = CreateService.addComponent(componentName);
-        this.$store.commit('addItem', component);
-        el.replaceWith(component.$el);
-        ContextMenuService.getContextMenu(component.$el);
+      if (!el.classList.contains('dews-control-list')) return
 
-        // IDE로 create 전송
-        CreateService.sendCreateMessage(component.$el);
-      }
+      const componentName = el.textContent.replace(/\s+/g, '');
+      const component = CreateService.addComponent(componentName);
+      this.$store.commit('addItem', component);
+      el.replaceWith(component.$el);
+
+      ContextMenuService.getContextMenu(component.$el);
+      CreateService.sendCreateMessage(component.$el);
     },
 
     /*
@@ -77,10 +76,10 @@ export default {
               return true;
           }
           // Area Box
-          else if (el.classList.contains('dews-mobile-areaBox')) {
+          else if (el.classList.contains('dews-mobile-box')) {
             if (target.classList.contains('main-designer')) {
               return true;
-            } else if (target.classList.contains('dews-mobile-areaItem')) {
+            } else if (target.classList.contains('dews-mobile-item')) {
               return true;
             }
           }
@@ -120,8 +119,8 @@ export default {
             }
           }
           //@ Area Box
-          else if (el.classList.contains('dews-mobile-areaBox')) {
-            if (target.classList.contains('dews-mobile-areaItem')) {
+          else if (el.classList.contains('dews-mobile-box')) {
+            if (target.classList.contains('dews-mobile-item')) {
               return true;
             } else if (target.classList.contains('main-designer')) {
               return true;

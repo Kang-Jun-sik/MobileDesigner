@@ -1,5 +1,5 @@
 <template>
-  <div class="period-picker-wrap focus">
+  <div class="dews-mobile-periodPicker period-picker-wrap focus">
     <label>{{ title }}</label>
     <span class="select-wrap">
       <span class="select-shape">

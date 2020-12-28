@@ -7,7 +7,7 @@
     <b-collapse id="componentList" class="componentList-content" accordion="dews-control" role="tabpanel">
       <div v-for="(name, key, idx) in mobileComponent" :key="idx"
            :class="'dews-mobile-' + key"
-           class="dewsControl componentList-content-box"
+           class="dews-control-list componentList-content-box"
       >
         <div :class="'componentList-' + key" class="componentList-content-icon"></div>
         <div class="componentList-content-title">{{ name }}</div>
@@ -23,11 +23,16 @@
       return {
         mobileComponent: {
           button: 'Button',
-          textBox: 'Text box',
-          numTextBox: 'Numeric text box',
-          maskTextBox: 'Mask text box',
+          textbox: 'Text box',
+          checkbox: "Check Box",
+          radiobutton: 'Radio Button',
+          numeric: 'Numeric text box',
+          maskbox: 'Mask text box',
           calendar: 'Calendar',
           editor: 'Editor',
+          datePicker: 'Date Picker',
+          periodPicker: 'Period Picker',
+          timePicker: "Time Picker",
           zipcodePicker: 'Zip code Picker',
           file: 'File/Multi File',
           chart: 'Chart',
@@ -104,15 +109,23 @@
           background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAEKADAAQAAAABAAAAEAAAAAAXnVPIAAAAhUlEQVQ4EWNgGPKA0S8kuY2RkamSVJ/8B2n4/6+dwS80Fcwm1QCQen+gXiZGqE4QB90QbGLoapjQBUjlsyBrQLZx4+rZYMfBxEB8GBukByaP4gKQIEwCZjC6GLo8igEwTaTQOL0AMwTmbHSbYfIURSMoCbCAEgOIAYtOuMlEMP6DEtLQBwBTeDW+tVzCawAAAABJRU5ErkJggg==');
         }
 
-        .componentList-textBox {
+        .componentList-textbox {
           background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAEKADAAQAAAABAAAAEAAAAAAXnVPIAAAAXUlEQVQ4EWNgGPKA0S8kuY2RkamSVJ/8B2n4/6+dwS80Fcwm1QCQen+gXiZGqE4QhxxDmMjRhKxn1AAGBiZY0G9cPRsWIchhhJcN0ssCSgygtECybqDm/6CENPQBAPzPF7yhP6FYAAAAAElFTkSuQmCC');
         }
 
-        .componentList-numTextBox {
+        .componentList-checkbox {
           background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAEKADAAQAAAABAAAAEAAAAAAXnVPIAAAAXUlEQVQ4EWNgGPKA0S8kuY2RkamSVJ/8B2n4/6+dwS80Fcwm1QCQen+gXiZGqE4QhxxDmMjRhKxn1AAGBiZY0G9cPRsWIchhhJcN0ssCSgygtECybqDm/6CENPQBAPzPF7yhP6FYAAAAAElFTkSuQmCC');
         }
 
-        .componentList-maskTextBox {
+        .componentList-radiobutton {
+          background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAEKADAAQAAAABAAAAEAAAAAAXnVPIAAAAXUlEQVQ4EWNgGPKA0S8kuY2RkamSVJ/8B2n4/6+dwS80Fcwm1QCQen+gXiZGqE4QhxxDmMjRhKxn1AAGBiZY0G9cPRsWIchhhJcN0ssCSgygtECybqDm/6CENPQBAPzPF7yhP6FYAAAAAElFTkSuQmCC');
+        }
+
+        .componentList-numeric {
+          background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAEKADAAQAAAABAAAAEAAAAAAXnVPIAAAAXUlEQVQ4EWNgGPKA0S8kuY2RkamSVJ/8B2n4/6+dwS80Fcwm1QCQen+gXiZGqE4QhxxDmMjRhKxn1AAGBiZY0G9cPRsWIchhhJcN0ssCSgygtECybqDm/6CENPQBAPzPF7yhP6FYAAAAAElFTkSuQmCC');
+        }
+
+        .componentList-maskbox {
           background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAEKADAAQAAAABAAAAEAAAAAAXnVPIAAAAXUlEQVQ4EWNgGPKA0S8kuY2RkamSVJ/8B2n4/6+dwS80Fcwm1QCQen+gXiZGqE4QhxxDmMjRhKxn1AAGBiZY0G9cPRsWIchhhJcN0ssCSgygtECybqDm/6CENPQBAPzPF7yhP6FYAAAAAElFTkSuQmCC');
         }
 
@@ -122,6 +135,18 @@
 
         .componentList-editor {
           background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAEKADAAQAAAABAAAAEAAAAAAXnVPIAAAAeklEQVQ4EWNgoBAwgvT7h6b+RzZn4+rZYHFkMVzqWGCKYJpAhqEbCFMDopHVgfhwA0AcGIApgvFhNDaD4QZgk4RpRKZxqsMpgawbykZWy4RFniShUQMYGChOieAQR44WZDZ6dCDLwdjwhISsGCaJLIaLTR0v4DKdGHEAG9Y4bjkAvHsAAAAASUVORK5CYII=');
+        }
+
+        .componentList-datePicker {
+          background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAEKADAAQAAAABAAAAEAAAAAAXnVPIAAAAxUlEQVQ4EWNgGPKA0S8kuY2RkamSVJ/8B2n4/6+dwS80Fcwm1QCQen+gXhZGInT6haSuYmBkEGb4z/B205rZYchamJA52NhgzQz/H21aPdsZ6OZHED5CJUEDQDZvWjOnBKQFTINcggQIGwB0tl9ISg9ID5BeyPD//18k/QwEDYD4mVEOGNh7gRolgWGmFhCaagAzhAXGwEcjBxxI8z8GhglA9Q4gPSykxuGG1bMvwDSD9LKAEgMoLRATnSAbkcF/UEIa+gAAO/4+T7Rces8AAAAASUVORK5CYII=');
+        }
+
+        .componentList-periodPicker {
+          background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAEKADAAQAAAABAAAAEAAAAAAXnVPIAAAAxUlEQVQ4EWNgGPKA0S8kuY2RkamSVJ/8B2n4/6+dwS80Fcwm1QCQen+gXhZGInT6haSuYmBkEGb4z/B205rZYchamJA52NhgzQz/H21aPdsZ6OZHED5CJUEDQDZvWjOnBKQFTINcggQIGwB0tl9ISg9ID5BeyPD//18k/QwEDYD4mVEOGNh7gRolgWGmFhCaagAzhAXGwEcjBxxI8z8GhglA9Q4gPSykxuGG1bMvwDSD9LKAEgMoLRATnSAbkcF/UEIa+gAAO/4+T7Rces8AAAAASUVORK5CYII=');
+        }
+
+        .componentList-timePicker {
+          background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAEKADAAQAAAABAAAAEAAAAAAXnVPIAAAAxUlEQVQ4EWNgGPKA0S8kuY2RkamSVJ/8B2n4/6+dwS80Fcwm1QCQen+gXhZGInT6haSuYmBkEGb4z/B205rZYchamJA52NhgzQz/H21aPdsZ6OZHED5CJUEDQDZvWjOnBKQFTINcggQIGwB0tl9ISg9ID5BeyPD//18k/QwEDYD4mVEOGNh7gRolgWGmFhCaagAzhAXGwEcjBxxI8z8GhglA9Q4gPSykxuGG1bMvwDSD9LKAEgMoLRATnSAbkcF/UEIa+gAAO/4+T7Rces8AAAAASUVORK5CYII=');
         }
 
         .componentList-zipcodePicker {

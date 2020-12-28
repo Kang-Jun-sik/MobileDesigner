@@ -1,5 +1,5 @@
 <template>
-  <div :uid="uid" class="mask-textbox-wrap">
+  <div :uid="uid" class="dews-mobile-maskbox mask-textbox-wrap">
     <label>{{ title }}</label>
     <span @click="onClick()" class="view" :class="disabled ? 'disabled' : ''">
       <input type="text" @focus="onClick()"

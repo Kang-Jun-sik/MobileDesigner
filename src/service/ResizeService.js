@@ -57,7 +57,7 @@ export default {
     alsoResizeTarget(target) {
         if (target === null) return;
 
-        if (target[0].classList.contains('dews-mobile-areaBox')) {
+        if (target[0].classList.contains('dews-mobile-box')) {
             return target.find('.dews-box-content-wrap');
         }
     },

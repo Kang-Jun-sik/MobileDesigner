@@ -1,5 +1,5 @@
 <template>
-  <div class="dropdown-list-wrap">
+  <div class="dews-mobile-dropdownList dropdown-list-wrap">
     <label>{{ title }}</label>
     <span class="select-wrap">
     <span class="select-shape">

@@ -2,10 +2,8 @@
   <div :uid="uid" class="dews-mobile-searchContainer dews-mobile-component">
     <div class="dews-container-option-control">
       <h3 class="option-sub-title" v-if="title">{{ title }}</h3>
-<!--      <div v-if="customButton.length" class="option-convenience-button">-->
       <div class="option-convenience-button">
         <ul>
-<!--          <li v-for="(custom, idx) in customButton" :key="idx" :class="custom.type">{{ custom.button }}</li>-->
           <li class="data-capture"><button class="capture"><span> Data Capture</span></button></li>
           <li class="data-set"><button class="set"><span>Data Set</span></button></li>
           <li class="data-reset"><button class="reset"><span>Data Reset</span></button></li>
@@ -13,8 +11,8 @@
       </div>
     </div>
 
-    <div :muid="muid" class="dews-search-field" ref="searchContainer">
-      <ul class="form-field">
+    <div class="dews-search-field" ref="searchContainer">
+      <ul :muid="muid" class="form-field">
 <!--        <dews-textbox></dews-textbox>-->
 <!--        <dews-checkbox></dews-checkbox>-->
 <!--        <dews-radiobutton></dews-radiobutton>-->

@@ -1,5 +1,5 @@
 <template>
-  <span :uid="uid" class="dews-dropdown-button" :class="{ group: group ? 'group' : '' }">
+  <span :uid="uid" class="dews-mobile-dropdownButton dews-dropdown-button" :class="{ group: group ? 'group' : '' }">
     <button @click="clickHandler($event)" class="dews-button dropdown" :class="{ui, size, disabled: disabled ? 'disabled' : ''}">
       <span class="button-icon"></span>
       <span class="button-text">{{ text }}</span>

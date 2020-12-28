@@ -1,5 +1,5 @@
 <template>
-  <div :uid="uid" class="dews-mobile-areaItem dews-mobile-component dews-item" :class="col" ref="dewsItem"></div>
+  <div :uid="uid" class="dews-mobile-item dews-mobile-component dews-item" :class="col" ref="dewsItem"></div>
 </template>
 
 <script>

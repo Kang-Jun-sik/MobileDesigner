@@ -1,5 +1,5 @@
 <template>
-  <div class="numeric-textbox-wrap" :class="{disabled: disabled ? 'disabled' : '', readonly: readonly ? 'readonly': ''}">
+  <div class="dews-mobile-numeric numeric-textbox-wrap" :class="{disabled: disabled ? 'disabled' : '', readonly: readonly ? 'readonly': ''}">
     <label v-if="title" for="numeric-box">{{ title }}</label>
     <label v-else class="undefined" for="numeric-box"></label>
     <div class="numeric-wrap">

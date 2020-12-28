@@ -23,7 +23,7 @@ export default {
                 });
                 break;
 
-            case "dews-mobile-areaItem":
+            case "dews-mobile-item":
                 $.contextMenu({
                     selector: ".selected",
                     items: {
@@ -43,7 +43,7 @@ export default {
                 })
                 break;
 
-            case "dews-mobile-areaBox":
+            case "dews-mobile-box":
                 $.contextMenu({
                     selector: ".selected",
                     items: {
