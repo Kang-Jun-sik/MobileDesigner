@@ -33,7 +33,8 @@ export default {
       accepts: function (el, target, source) {
         return componentAcceptsCheck(el, target);
       }
-    }).on('drop', function (el, target) {
+    })
+    .on('drop', function (el, target) {
       _this.drop(el, target);
       if (window.selectedItem) {
         ResizeService.setPosition(window.selectedItem);
@@ -58,78 +59,6 @@ export default {
       ContextMenuService.getContextMenu(component.$el);
       CreateService.sendCreateMessage(component.$el);
     },
-
-    /*
-    * 드래그해서 컨트롤 생성시 체크
-    **/
-    acceptCheck(el, target, source) {
-      const controlList = ['areaList', 'containerList', 'componentList', 'etcList'];
-      if (controlList.includes(source.id)) {
-        // 컨트롤 리스트에서 메인 디자이너로 Drag&Drop 할 경우
-        if (target.closest('.main-designer') && !el.classList.contains('ui-resizable-resizing')) {
-          /*
-          * 메인디자이너에 컨트롤 생성시 컨트롤별 조건 체크
-          **/
-          // Button
-          if (el.classList.contains('dews-mobile-button')) {
-            if (target.classList.contains('search-container-content'))
-              return true;
-          }
-          // Area Box
-          else if (el.classList.contains('dews-mobile-box')) {
-            if (target.classList.contains('main-designer')) {
-              return true;
-            } else if (target.classList.contains('dews-mobile-item')) {
-              return true;
-            }
-          }
-          // Search Container
-          else if (el.classList.contains('dews-mobile-searchContainer')) {
-            if (target.classList.contains('dews-box-content')) {
-              return true;
-            }
-          }
-          // Form Container
-          else if (el.classList.contains('dews-mobile-formContainer')) {
-            if (target.classList.contains('dews-box-content')) {
-              return true;
-            }
-          }
-          // List Container
-          else if (el.classList.contains('dews-mobile-listContainer')) {
-            if (target.classList.contains('main-designer')) {
-              return true;
-            }
-          }
-          return false;
-        }
-      } else {
-        // 메인 디자이너에서 기존 생성된 컨트롤을 재배치할 경우
-        if (el.closest('.dews-mobile-component') && el.classList.contains('selected') && !el.classList.contains('ui-resizable-resizing')) {
-          //◎ Button
-          if (el.classList.contains('dews-mobile-button')) {
-            if (target.classList.contains('search-container-content')) {
-              return true;
-            }
-          }
-          //◎ Search Container
-          else if (el.classList.contains('dews-mobile-searchContainer')) {
-            if (target.classList.contains('dews-box-content')) {
-              return true;
-            }
-          }
-          //@ Area Box
-          else if (el.classList.contains('dews-mobile-box')) {
-            if (target.classList.contains('dews-mobile-item')) {
-              return true;
-            } else if (target.classList.contains('main-designer')) {
-              return true;
-            }
-          }
-        }
-      }
-      return false;
-    }
   },
 }
 </script>
