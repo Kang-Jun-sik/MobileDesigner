@@ -1,34 +1,25 @@
 <template>
-  <div>
-    <div class="dropdown-list-wrap" @click="clickHandler">
-      <label>{{ title }}</label>
-      <span class="select-wrap">
-      <span class="select-shape">
-        <span class="select-input">
-          {{ selectItem[0] }}
-        </span>
-        <span v-if="multi && selectItem.length > 1" class="select-multi">
-          외 <strong>{{ selectItem[selectItem.length - 1] }}</strong>
-        </span>
+  <div class="dropdown-list-wrap">
+    <label>{{ title }}</label>
+    <span class="select-wrap">
+    <span class="select-shape">
+      <span class="select-input">
+        {{ selectItem[0] }}
       </span>
-      <span class="select-icon dropdown-icon"></span>
+      <span v-if="multi && selectItem.length > 1" class="select-multi">
+        외 <strong>{{ selectItem[selectItem.length - 1] }}</strong>
+      </span>
     </span>
-    </div>
-
-<!--    <drawer-layout>-->
-<!--      <div v-if="multi" class="drawer-dropdown-multi"></div>-->
-<!--      <div v-else class="drawer-dropdown-single"></div>-->
-<!--    </drawer-layout>-->
+    <span class="select-icon dropdown-icon"></span>
+  </span>
   </div>
 </template>
 
 <script>
 import CreateService from "@/service/CreateService";
-import DrawerLayout from "@/components/Controls/DewsDrawerlayout";
 
 export default {
   name: 'dews-dropdownlist',
-  // components: {DrawerLayout},
   data() {
     return {
       uid: '',
@@ -46,9 +37,6 @@ export default {
     this.uid = CreateService.createUid('dews-dropdownlist');
   },
   methods: {
-    clickHandler() {
-
-    },
   }
 }
 </script>

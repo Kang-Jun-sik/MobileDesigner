@@ -1,38 +1,36 @@
 <template>
-  <div :uid="uid" class="time-picker-wrap">
+  <div class="period-picker-wrap focus">
     <label>{{ title }}</label>
     <span class="select-wrap">
       <span class="select-shape">
-        <span class="select-input">{{ inputValue }}</span>
+        <span class="select-input">
+          {{ inputValue }}
+        </span>
       </span>
-      <span class="select-icon time-picker-icon"></span>
+      <span class="select-icon period-picker-icon"></span>
     </span>
   </div>
 </template>
 
 <script>
-import CreateService from "@/service/CreateService";
-
 export default {
-  name: 'dews-timepicker',
+  name: 'dews-periodpicker',
   data() {
     return {
       uid: '',
       title: '',
-      inputValue: '',
       disabled: false,
       readonly: false,
-      height: '',
       value: '',
+      inputValue: '',
+      visible: false,
+      hdDisabled: false,
       min: '',
       max: '',
-      step: 1,
+      end: '',
+      start: '',
     }
   },
-  created() {
-    this.uid = CreateService.createUid('dews-timepicker');
-  },
-  methods: {},
 }
 </script>
 
