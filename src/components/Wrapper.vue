@@ -7,9 +7,10 @@
 
 <script>
 import dragula from "dragula";
+import axios from 'axios'
+
 import MainDesignerWrapper from "@/components/MainDesignerArea/MainDesignerWrapper";
 import ControlListWrapper from "@/components/ControlListArea/ControlListWrapper";
-
 import CreateService from "@/service/CreateService";
 import ContextMenuService from "@/service/ContextMenuService";
 import UndoRedoService from "@/service/UndoRedoService";
@@ -22,6 +23,7 @@ export default {
     ControlListWrapper,
   },
   mounted() {
+
     const _this = this;
     const _designerState = this.$store.state.designer;
     window.drake = dragula({
@@ -44,6 +46,17 @@ export default {
     window.drake.containers.push(_designerState.containerList);
     window.drake.containers.push(_designerState.componentList);
     window.drake.containers.push(_designerState.etcList);
+
+    // axios Sample code ==> 기타 API 서버의 연동을 위한 테스트 코드 (vue.config.js Proxy Table 참조할 것)
+    /*
+    axios.get("/api/getList")
+        .then((res) => {
+          console.log('proxyRequest res', res)
+        })
+        .catch((error) => {
+          console.log('proxyRequest error', error)
+        })
+    */
   },
   methods: {
     /*
