@@ -11,6 +11,7 @@ import AreaBox from "@/components/Area/AreaBox";
 import AreaTabs from "@/components/Area/tab/AreaTabs";
 import SearchContainer from "@/components/Containers/SearchContainer";
 import FormContainer from "@/components/Containers/FormContainer";
+import TextBox from "@/components/Controls/DewsTextBox";
 
 export default {
     createFromIDE(args) {
@@ -62,9 +63,6 @@ export default {
     addComponent(type, param) {
         let component;
         switch (removeSpaceBetweenWord(type)) {
-            case 'Button':
-                component = Vue.extend(Button);
-                break;
             case 'AreaPanel':
                 component = Vue.extend(AreaPanel);
                 break;
@@ -83,6 +81,11 @@ export default {
             case 'FormContainer':
                 component = Vue.extend(FormContainer);
                 break;
+            case 'Button':
+                component = Vue.extend(Button);
+                break;
+            case 'Textbox':
+                component = Vue.extend(TextBox);
         }
         component = new component();
         component.$mount();

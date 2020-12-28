@@ -13,14 +13,18 @@
 
     <div class="dews-search-field" ref="searchContainer">
       <ul :muid="muid" class="form-field">
-<!--        <dews-textbox></dews-textbox>-->
-<!--        <dews-checkbox></dews-checkbox>-->
-<!--        <dews-radiobutton></dews-radiobutton>-->
+        <dews-textbox></dews-textbox>
+        <dews-checkbox></dews-checkbox>
+        <dews-radiobutton></dews-radiobutton>
 
-<!--        <slot v-if="this.inputList">-->
-<!--          <li v-for="(input, idx) in inputList" :key="idx"> {{ input }}</li>-->
-<!--        </slot>-->
-<!--        <slot v-else></slot>-->
+        <dews-button></dews-button>
+        <dews-dropdownbutton></dews-dropdownbutton>
+        <dews-dropdownlist></dews-dropdownlist>
+        <dews-maskbox></dews-maskbox>
+        <dews-numerictextbox></dews-numerictextbox>
+        <dews-datepicker></dews-datepicker>
+        <dews-periodpicker></dews-periodpicker>
+        <dews-timepicker></dews-timepicker>
       </ul>
     </div>
   </div>
@@ -32,10 +36,20 @@ import CreateService from "@/service/CreateService";
 import DewsTextbox from "@/components/Controls/DewsTextBox";
 import DewsCheckbox from "@/components/Controls/DewsCheckBox";
 import DewsRadiobutton from "@/components/Controls/DewsRadioButton";
+import DewsDatepicker from "@/components/DewsDatePicker";
+import DewsPeriodpicker from "@/components/Controls/DewsPeriodPicker";
+import DewsMaskbox from "@/components/Controls/DewsMaskTextBox";
+import DewsNumerictextbox from "@/components/Controls/DewsNumericTextBox";
+import DewsTimepicker from "@/components/Controls/DewsTimePicker";
+import DewsDropdownbutton from "@/components/Controls/dropdownbutton/DewsDropdownbutton";
+import DewsDropdownlist from "@/components/Controls/dropdownlist/DewsDropdownlist";
 
 export default {
   name: 'dews-search-container',
-  // components: {DewsCheckbox, DewsRadiobutton, DewsTextbox},
+  components: {
+    DewsCheckbox, DewsRadiobutton, DewsTextbox,
+    DewsDropdownlist,
+    DewsDropdownbutton, DewsTimepicker, DewsNumerictextbox, DewsMaskbox, DewsPeriodpicker, DewsDatepicker},
   uid: '',
   data() {
     return {
