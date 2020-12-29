@@ -1,25 +1,12 @@
 <template>
-  <div :uid="uid" class="dews-mobile-textbox textbox-wrap">
-    <label :for="id">{{ title }}</label>
-    <input :id="id" @click="onClick($event)" @change="onChange($event)"
-           type="text" :value="value" :placeholder="placeholder"
-           :required="required" :disabled="disabled" :readonly="readonly" ref="textBox">
-
-<!--    <label for="">value</label>-->
-<!--    <input id="" type="text" class="dews-input" placeholder="placeholder" value="value">-->
-
-<!--    <label for="">placeholder</label>-->
-<!--    <input id="" type="text" class="dews-input" placeholder="placeholder" value="value">-->
-
-<!--    <label for="">readonly</label>-->
-<!--    <input id="" type="text" class="dews-input" placeholder="placeholder" value="value" readonly="readonly">-->
-
-<!--    <label for="">disabled</label>-->
-<!--    <input id="" type="text" class="dews-input" placeholder="placeholder" value="value" disabled="disabled">-->
-
-<!--    <label for="multi-textbox">multi-textbox value</label>-->
-<!--    <textarea class="dews-multi-input" id="multi-textbox">value </textarea>-->
-  </div>
+  <li>
+    <div :uid="uid" class="dews-mobile-textbox textbox-wrap">
+      <label :for="id">{{ title }}</label>
+      <input :id="id" @click="onClick($event)" @change="onChange($event)"
+             type="text" :value="value" :placeholder="placeholder"
+             :required="required" :disabled="disabled" :readonly="readonly" ref="textBox">
+    </div>
+  </li>
 </template>
 
 <script>

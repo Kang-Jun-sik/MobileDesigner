@@ -1,7 +1,8 @@
 <template>
-  <div class="dews-mobile-periodPicker period-picker-wrap focus">
-    <label>{{ title }}</label>
-    <span class="select-wrap">
+  <li>
+    <div class="dews-mobile-periodPicker period-picker-wrap focus">
+      <label>{{ title }}</label>
+      <span class="select-wrap">
       <span class="select-shape">
         <span class="select-input">
           {{ inputValue }}
@@ -9,7 +10,8 @@
       </span>
       <span class="select-icon period-picker-icon"></span>
     </span>
-  </div>
+    </div>
+  </li>
 </template>
 
 <script>

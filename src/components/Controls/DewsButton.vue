@@ -1,9 +1,11 @@
 <template>
-  <button class="dews-mobile-button dews-button" :class="[ui, size, type,
+  <li>
+    <button class="dews-mobile-button dews-button" :class="[ui, size, type,
     disabled ? 'disabled' : '', group ? 'group' : '']" >
-    <span class="button-icon"></span>
-    <span class="button-text">{{ text }}</span>
-  </button>
+      <span class="button-icon"></span>
+      <span class="button-text">{{ text }}</span>
+    </button>
+  </li>
 </template>
 
 <script>

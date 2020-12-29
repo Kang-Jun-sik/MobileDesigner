@@ -1,7 +1,8 @@
 <template>
-  <div class="dews-mobile-dropdownList dropdown-list-wrap">
-    <label>{{ title }}</label>
-    <span class="select-wrap">
+  <li>
+    <div class="dews-mobile-dropdownList dropdown-list-wrap">
+      <label>{{ title }}</label>
+      <span class="select-wrap">
     <span class="select-shape">
       <span class="select-input">
         {{ selectItem[0] }}
@@ -12,7 +13,8 @@
     </span>
     <span class="select-icon dropdown-icon"></span>
   </span>
-  </div>
+    </div>
+  </li>
 </template>
 
 <script>

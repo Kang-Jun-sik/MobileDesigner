@@ -1,5 +1,6 @@
 <template>
-  <span :uid="uid" class="dews-mobile-dropdownButton dews-dropdown-button" :class="group ? 'group' : ''">
+  <li>
+    <span :uid="uid" class="dews-mobile-dropdownButton dews-dropdown-button" :class="group ? 'group' : ''">
     <button @click="clickHandler($event)" class="dews-button dropdown"
             :class="[ui, size, disabled ? 'disabled' : '']">
       <span class="button-icon"></span>
@@ -9,6 +10,7 @@
       <dews-dropdown-childbutton></dews-dropdown-childbutton>
     </span>
   </span>
+  </li>
 </template>
 
 <script>
