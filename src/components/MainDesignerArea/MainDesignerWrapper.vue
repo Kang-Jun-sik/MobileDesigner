@@ -1,10 +1,12 @@
 <template>
-  <div id="mainDesignerWrapper"
-       :class="designerWrapperLayout"
-       class="main-designer-wrapper">
-    <navigation-bar ref="navigationBar"></navigation-bar>
-    <main-designer ref="mainDesigner"></main-designer>
-    <button-tab-bar ref="buttonTabBar"></button-tab-bar>
+  <div class="top-main-designer-wrapper">
+    <div id="mainDesignerWrapper"
+         :class="designerWrapperLayout"
+         class="main-designer-wrapper">
+      <navigation-bar ref="navigationBar"></navigation-bar>
+      <main-designer ref="mainDesigner"></main-designer>
+      <button-tab-bar ref="buttonTabBar"></button-tab-bar>
+    </div>
   </div>
 </template>
 
@@ -37,8 +39,12 @@ export default {
     padding: 0;
   }
 
+  .top-main-designer-wrapper {
+    padding-left: 180px !important;
+  }
   .main-designer-wrapper {
-    display: inline-block;
+    //display: inline-block;
+    display: block;
     position: relative;
     padding-top: 99px !important;
     padding-bottom: 76px !important;

@@ -141,9 +141,9 @@ div {
 
 .mobile-wrapper {
   padding: 0;
-  display: grid;
-  grid-gap: 10px;
-  grid-template-columns: 150px 1fr;
+  //display: grid;
+  //grid-gap: 10px;
+  //grid-template-columns: 150px 1fr;
   color: #444;
 }
 </style>
