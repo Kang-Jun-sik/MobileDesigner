@@ -40,7 +40,7 @@ export default {
   }
 
   .top-main-designer-wrapper {
-    padding-left: 180px !important;
+    padding-left: 160px !important;
   }
   .main-designer-wrapper {
     //display: inline-block;

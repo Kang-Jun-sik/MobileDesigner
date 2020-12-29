@@ -14,7 +14,7 @@ export default {
   data() {
     return {
       uid: '',
-      text: '',
+      text: 'Button',
       TYPE_LIST: {
         text: 'text',
         icon: 'icon',
