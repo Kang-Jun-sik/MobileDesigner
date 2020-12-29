@@ -17,7 +17,7 @@
         <li><dews-checkbox></dews-checkbox></li>
         <li><dews-radiobutton></dews-radiobutton></li>
 
-        <li><dews-button type="icon-text" text="버튼입니다." size="medium" icon="ico-set"></dews-button></li>
+        <li><dews-button></dews-button></li>
         <li><dews-dropdownbutton></dews-dropdownbutton></li>
         <li><dews-dropdownlist></dews-dropdownlist></li>
         <li><dews-maskbox></dews-maskbox></li>
