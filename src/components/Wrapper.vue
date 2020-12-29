@@ -49,11 +49,19 @@ export default {
     * 드롭할 때, 컴포넌트 호출 및 $el로 replace 처리
     **/
     drop(element, target) {
+      console.log(element, target)
       if (!element.classList.contains('dews-control-list')) return
 
       const componentName = element.textContent.replace(/\s+/g, '');
       const component = CreateService.addComponent(componentName);
-      element.replaceWith(component.$el);
+
+      if (element.classList.contains('componentList-content-box') && target.classList.contains('form-field')) {
+        const li = document.createElement('li');
+        li.appendChild(component.$el);
+        element.replaceWith(li);
+      } else {
+        element.replaceWith(component.$el);
+      }
       this.$store.commit('addItem', component);
 
       ContextMenuService.getContextMenu(component.$el);

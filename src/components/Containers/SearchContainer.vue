@@ -11,20 +11,20 @@
       </div>
     </div>
 
-    <div class="dews-search-field" ref="searchContainer">
-      <ul :muid="muid" class="form-field">
-        <li><dews-textbox></dews-textbox></li>
-        <li><dews-checkbox></dews-checkbox></li>
-        <li><dews-radiobutton></dews-radiobutton></li>
+    <div class="dews-search-field">
+      <ul :muid="muid" class="form-field" ref="searchContainer">
+<!--        <li><dews-textbox></dews-textbox></li>-->
+<!--        <li><dews-checkbox></dews-checkbox></li>-->
+<!--        <li><dews-radiobutton></dews-radiobutton></li>-->
 
-        <li><dews-button></dews-button></li>
-        <li><dews-dropdownbutton></dews-dropdownbutton></li>
-        <li><dews-dropdownlist></dews-dropdownlist></li>
-        <li><dews-maskbox></dews-maskbox></li>
-        <li><dews-numerictextbox></dews-numerictextbox></li>
-        <li><dews-periodpicker></dews-periodpicker></li>
-        <li><dews-timepicker></dews-timepicker></li>
-        <li><dews-datepicker></dews-datepicker></li>
+<!--        <li><dews-button></dews-button></li>-->
+<!--        <li><dews-dropdownbutton></dews-dropdownbutton></li>-->
+<!--        <li><dews-dropdownlist></dews-dropdownlist></li>-->
+<!--        <li><dews-maskbox></dews-maskbox></li>-->
+<!--        <li><dews-numerictextbox></dews-numerictextbox></li>-->
+<!--        <li><dews-periodpicker></dews-periodpicker></li>-->
+<!--        <li><dews-timepicker></dews-timepicker></li>-->
+<!--        <li><dews-datepicker></dews-datepicker></li>-->
       </ul>
     </div>
   </div>
@@ -47,11 +47,11 @@ import DewsDatepicker from "@/components/Controls/DewsDatePicker";
 
 export default {
   name: 'dews-search-container',
-  components: {
-    DewsDatepicker,
-    DewsCheckbox, DewsRadiobutton, DewsTextbox,
-    DewsButton, DewsDropdownlist,
-    DewsDropdownbutton, DewsTimepicker, DewsNumerictextbox, DewsMaskbox, DewsPeriodpicker},
+  // components: {
+  //   DewsDatepicker,
+  //   DewsCheckbox, DewsRadiobutton, DewsTextbox,
+  //   DewsButton, DewsDropdownlist,
+  //   DewsDropdownbutton, DewsTimepicker, DewsNumerictextbox, DewsMaskbox, DewsPeriodpicker},
   uid: '',
   data() {
     return {
@@ -134,6 +134,11 @@ input[type="text"] {
   font-size: 15px;
   line-height: 1.47;
   text-align: left;
+}
+
+// DFD용 scss 추가
+.form-field {
+  min-height: 20px;
 }
 
 </style>
