@@ -22,9 +22,10 @@
         <li><dews-dropdownlist></dews-dropdownlist></li>
         <li><dews-maskbox></dews-maskbox></li>
         <li><dews-numerictextbox></dews-numerictextbox></li>
-        <li><dews-datepicker></dews-datepicker></li>
         <li><dews-periodpicker></dews-periodpicker></li>
         <li><dews-timepicker></dews-timepicker></li>
+
+        <li><dews-datepicker></dews-datepicker></li>
       </ul>
     </div>
   </div>
@@ -37,20 +38,21 @@ import DewsTextbox from "@/components/Controls/DewsTextBox";
 import DewsCheckbox from "@/components/Controls/DewsCheckBox";
 import DewsRadiobutton from "@/components/Controls/DewsRadioButton";
 import DewsButton from "@/components/Controls/DewsButton";
-import DewsDatepicker from "@/components/DewsDatePicker";
 import DewsPeriodpicker from "@/components/Controls/DewsPeriodPicker";
 import DewsMaskbox from "@/components/Controls/DewsMaskTextBox";
 import DewsNumerictextbox from "@/components/Controls/DewsNumericTextBox";
 import DewsTimepicker from "@/components/Controls/DewsTimePicker";
 import DewsDropdownbutton from "@/components/Controls/dropdownbutton/DewsDropdownbutton";
 import DewsDropdownlist from "@/components/Controls/dropdownlist/DewsDropdownlist";
+import DewsDatepicker from "@/components/Controls/DewsDatePicker";
 
 export default {
   name: 'dews-search-container',
   components: {
+    DewsDatepicker,
     DewsCheckbox, DewsRadiobutton, DewsTextbox,
     DewsButton, DewsDropdownlist,
-    DewsDropdownbutton, DewsTimepicker, DewsNumerictextbox, DewsMaskbox, DewsPeriodpicker, DewsDatepicker},
+    DewsDropdownbutton, DewsTimepicker, DewsNumerictextbox, DewsMaskbox, DewsPeriodpicker},
   uid: '',
   data() {
     return {
