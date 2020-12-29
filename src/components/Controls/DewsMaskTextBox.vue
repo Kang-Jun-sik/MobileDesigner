@@ -1,16 +1,18 @@
 <template>
-  <div :uid="uid" class="dews-mobile-maskbox mask-textbox-wrap">
-    <label>{{ title }}</label>
-    <span @click="onClick()" class="view" :class="disabled ? 'disabled' : ''">
+  <li>
+    <div :uid="uid" class="dews-mobile-maskbox mask-textbox-wrap">
+      <label>{{ title }}</label>
+      <span @click="onClick()" class="view" :class="disabled ? 'disabled' : ''">
       <input type="text" @focus="onClick()"
              :disabled="disabled" :readonly="readonly"
              :value="value" :placeholder="placeholder">
     </span>
-    <span class="mask" style="display: none;">
+      <span class="mask" style="display: none;">
       <input type="text" @focus="onFocus()" @blur="onBlur()">
     </span>
-    <span class="input-state" :class="stateType">{{ stateMessage }}</span>
-  </div>
+      <span class="input-state" :class="stateType">{{ stateMessage }}</span>
+    </div>
+  </li>
 </template>
 
 <script>

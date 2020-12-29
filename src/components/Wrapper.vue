@@ -48,13 +48,13 @@ export default {
     /*
     * 드롭할 때, 컴포넌트 호출 및 $el로 replace 처리
     **/
-    drop(el, target) {
-      if (!el.classList.contains('dews-control-list')) return
+    drop(element, target) {
+      if (!element.classList.contains('dews-control-list')) return
 
-      const componentName = el.textContent.replace(/\s+/g, '');
+      const componentName = element.textContent.replace(/\s+/g, '');
       const component = CreateService.addComponent(componentName);
+      element.replaceWith(component.$el);
       this.$store.commit('addItem', component);
-      el.replaceWith(component.$el);
 
       ContextMenuService.getContextMenu(component.$el);
       CreateService.sendCreateMessage(component.$el);

@@ -1,13 +1,15 @@
 <template>
-  <div :uid="uid" class="dews-mobile-timePicker time-picker-wrap">
-    <label>{{ title }}</label>
-    <span class="select-wrap">
+  <li>
+    <div :uid="uid" class="dews-mobile-timePicker time-picker-wrap">
+      <label>{{ title }}</label>
+      <span class="select-wrap">
       <span class="select-shape">
         <span class="select-input">{{ inputValue }}</span>
       </span>
       <span class="select-icon time-picker-icon"></span>
     </span>
-  </div>
+    </div>
+  </li>
 </template>
 
 <script>
