@@ -12,7 +12,7 @@ export default {
   data() {
     return {
       uid: '',
-      text: '',
+      text: 'ChildButton',
       disabled: false
     }
   },

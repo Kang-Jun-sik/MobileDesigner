@@ -1,20 +1,23 @@
 <template>
-  <span :uid="uid" class="dews-mobile-dropdownButton dews-dropdown-button" :class="{ group: group ? 'group' : '' }">
-    <button @click="clickHandler($event)" class="dews-button dropdown" :class="{ui, size, disabled: disabled ? 'disabled' : ''}">
+  <span :uid="uid" class="dews-mobile-dropdownButton dews-dropdown-button" :class="group ? 'group' : ''">
+    <button @click="clickHandler($event)" class="dews-button dropdown"
+            :class="[ui, size, disabled ? 'disabled' : '']">
       <span class="button-icon"></span>
       <span class="button-text">{{ text }}</span>
     </button>
-    <span class="button-list" :class="{ selected: selected ? 'selected' : '' }">
-      {{ childButtons }}
+    <span class="button-list" :class="selected ? 'selected' : ''">
+      <dews-dropdown-childbutton></dews-dropdown-childbutton>
     </span>
   </span>
 </template>
 
 <script>
 import CreateService from "@/service/CreateService";
+import DewsDropdownChildbutton from "@/components/Controls/dropdownbutton/Childbutton";
 
 export default {
   name: 'dews-dropdownbutton',
+  components: {DewsDropdownChildbutton},
   data() {
     return {
       uid: '',
@@ -28,12 +31,11 @@ export default {
         solid: 'solid',
         emphasize: 'emphasize'
       },
-      ui: '',
-      size: '',
+      ui: 'solid',
+      size: 'medium',
       disabled: false,
       group: false,
       selected: false,
-      childButtons: [],
     }
   },
   created() {

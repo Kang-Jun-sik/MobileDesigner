@@ -1,6 +1,6 @@
 <template>
-  <button class="dews-mobile-button dews-button" :class="{ui, type, size, icon,
-    disabled: disabled ? 'disabled' : '', group: group ? 'group' : ''}">
+  <button class="dews-mobile-button dews-button" :class="[ui, size, type,
+    disabled ? 'disabled' : '', group ? 'group' : '']" >
     <span class="button-icon"></span>
     <span class="button-text">{{ text }}</span>
   </button>
@@ -53,9 +53,9 @@ export default {
         solid: 'solid',
         emphasize: 'emphasize'
       },
-      ui: '',
-      type: '',
-      size: '',
+      ui: 'solid',
+      type: 'text',
+      size: 'small',
       icon: '',
       link: '',
       disabled: false,
@@ -64,10 +64,6 @@ export default {
   },
   created() {
     this.uid = CreateService.createUid('dews-button');
-    this.ui =  this.UI_LIST.solid;
-    this.type = this.TYPE_LIST.text;
-    this.size = this.SIZE_LIST.medium;
-    this.icon = this.ICON_LIST.default;
   },
   methods: {}
 }
