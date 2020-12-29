@@ -1,20 +1,18 @@
 <template>
-  <li>
-    <div class="dews-mobile-dropdownList dropdown-list-wrap">
-      <label>{{ title }}</label>
-      <span class="select-wrap">
-    <span class="select-shape">
-      <span class="select-input">
-        {{ selectItem[0] }}
+  <div class="dews-mobile-dropdownList dropdown-list-wrap">
+    <label>{{ title }}</label>
+    <span class="select-wrap">
+      <span class="select-shape">
+        <span class="select-input">
+          {{ selectItem[0] }}
+        </span>
+        <span v-if="multi && selectItem.length > 1" class="select-multi">
+          외 <strong>{{ selectItem[selectItem.length - 1] }}</strong>
+        </span>
       </span>
-      <span v-if="multi && selectItem.length > 1" class="select-multi">
-        외 <strong>{{ selectItem[selectItem.length - 1] }}</strong>
-      </span>
+      <span class="select-icon dropdown-icon"></span>
     </span>
-    <span class="select-icon dropdown-icon"></span>
-  </span>
-    </div>
-  </li>
+  </div>
 </template>
 
 <script>

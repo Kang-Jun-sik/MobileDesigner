@@ -1,12 +1,10 @@
 <template>
-  <li>
-    <div :uid="uid" class="dews-mobile-textbox textbox-wrap">
-      <label :for="id">{{ title }}</label>
-      <input :id="id" @click="onClick($event)" @change="onChange($event)"
-             type="text" :value="value" :placeholder="placeholder"
-             :required="required" :disabled="disabled" :readonly="readonly" ref="textBox">
-    </div>
-  </li>
+  <div :uid="uid" class="dews-mobile-textbox textbox-wrap">
+    <label :for="id">{{ title }}</label>
+    <input :id="id" @click="onClick($event)" @change="onChange($event)"
+     type="text" :value="value" :placeholder="placeholder"
+     :required="required" :disabled="disabled" :readonly="readonly" ref="textBox">
+  </div>
 </template>
 
 <script>

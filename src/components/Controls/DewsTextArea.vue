@@ -1,13 +1,11 @@
 <template>
-  <li>
-    <div :uid="uid" class="dews-mobile-textbox textbox-wrap">
-      <label :for="id">{{ title }}</label>
-      <textarea :id="id" @click="onClick($event)" @change="onChange($event)"
-                type="text" :value="value" :placeholder="placeholder"
-             :required="required" :disabled="disabled" :readonly="readonly" ref="textArea">
-      </textarea>
-    </div>
-  </li>
+  <div :uid="uid" class="dews-mobile-textbox textbox-wrap">
+    <label :for="id">{{ title }}</label>
+    <textarea :id="id" @click="onClick($event)" @change="onChange($event)"
+      type="text" :value="value" :placeholder="placeholder"
+      :required="required" :disabled="disabled" :readonly="readonly" ref="textArea">
+    </textarea>
+  </div>
 </template>
 
 <script>

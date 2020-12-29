@@ -1,13 +1,11 @@
 <template>
-  <li>
-    <span :uid="uid" class="dews-mobile-radiobutton dews-radio-wrap" @click="clickHandler($event)">
+  <span :uid="uid" class="dews-mobile-radiobutton dews-radio-wrap" @click="clickHandler($event)">
     <span class="radio-control">
       <input type="radio" :checked="checked" :data-checked="checked" :disabled="disabled">
       <span class="radio-shape"></span>
     </span>
     <label class="radio-label">{{ title }}</label>
-    </span>
-  </li>
+  </span>
 </template>
 
 <script>

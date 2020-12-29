@@ -1,8 +1,7 @@
 <template>
-  <li>
-    <div class="dews-mobile-datePicker date-picker-wrap focus">
-      <label>{{ title }}</label>
-      <span class="select-wrap">
+  <div class="dews-mobile-datePicker date-picker-wrap focus">
+    <label>{{ title }}</label>
+    <span class="select-wrap">
       <span class="select-shape">
         <span class="select-input">
           {{ inputValue }}
@@ -10,8 +9,7 @@
       </span>
       <span class="select-icon date-picker-icon"></span>
     </span>
-    </div>
-  </li>
+  </div>
 </template>
 
 <script>
