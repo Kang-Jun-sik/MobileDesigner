@@ -13,18 +13,18 @@
 
     <div class="dews-search-field" ref="searchContainer">
       <ul :muid="muid" class="form-field">
-        <dews-textbox></dews-textbox>
-        <dews-checkbox></dews-checkbox>
-        <dews-radiobutton></dews-radiobutton>
+        <li><dews-textbox></dews-textbox></li>
+        <li><dews-checkbox></dews-checkbox></li>
+        <li><dews-radiobutton></dews-radiobutton></li>
 
-        <dews-button></dews-button>
-        <dews-dropdownbutton></dews-dropdownbutton>
-        <dews-dropdownlist></dews-dropdownlist>
-        <dews-maskbox></dews-maskbox>
-        <dews-numerictextbox></dews-numerictextbox>
-        <dews-datepicker></dews-datepicker>
-        <dews-periodpicker></dews-periodpicker>
-        <dews-timepicker></dews-timepicker>
+        <li><dews-button></dews-button></li>
+        <li><dews-dropdownbutton></dews-dropdownbutton></li>
+        <li><dews-dropdownlist></dews-dropdownlist></li>
+        <li><dews-maskbox></dews-maskbox></li>
+        <li><dews-numerictextbox></dews-numerictextbox></li>
+        <li><dews-datepicker></dews-datepicker></li>
+        <li><dews-periodpicker></dews-periodpicker></li>
+        <li><dews-timepicker></dews-timepicker></li>
       </ul>
     </div>
   </div>
