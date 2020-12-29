@@ -53,10 +53,10 @@ export default {
         solid: 'solid',
         emphasize: 'emphasize'
       },
-      ui: this.UI_LIST.solid,
-      type: this.TYPE_LIST.text,
-      size: this.SIZE_LIST.medium,
-      icon: this.ICON_LIST.default,
+      ui: '',
+      type: '',
+      size: '',
+      icon: '',
       link: '',
       disabled: false,
       group: false,
@@ -64,9 +64,12 @@ export default {
   },
   created() {
     this.uid = CreateService.createUid('dews-button');
+    this.ui =  this.UI_LIST.solid;
+    this.type = this.TYPE_LIST.text;
+    this.size = this.SIZE_LIST.medium;
+    this.icon = this.ICON_LIST.default;
   },
-  methods: {
-  }
+  methods: {}
 }
 </script>
 

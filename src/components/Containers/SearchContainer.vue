@@ -36,6 +36,7 @@ import CreateService from "@/service/CreateService";
 import DewsTextbox from "@/components/Controls/DewsTextBox";
 import DewsCheckbox from "@/components/Controls/DewsCheckBox";
 import DewsRadiobutton from "@/components/Controls/DewsRadioButton";
+import DewsButton from "@/components/Controls/DewsButton";
 import DewsDatepicker from "@/components/DewsDatePicker";
 import DewsPeriodpicker from "@/components/Controls/DewsPeriodPicker";
 import DewsMaskbox from "@/components/Controls/DewsMaskTextBox";
@@ -48,7 +49,7 @@ export default {
   name: 'dews-search-container',
   components: {
     DewsCheckbox, DewsRadiobutton, DewsTextbox,
-    DewsDropdownlist,
+    DewsButton, DewsDropdownlist,
     DewsDropdownbutton, DewsTimepicker, DewsNumerictextbox, DewsMaskbox, DewsPeriodpicker, DewsDatepicker},
   uid: '',
   data() {
