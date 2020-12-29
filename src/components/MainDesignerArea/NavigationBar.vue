@@ -56,7 +56,7 @@
   }
 
   .tabletL {
-    width: 1062px;
+    width: 1077px;
     height: 76px;
     margin: 23px 21px 0;
   }
