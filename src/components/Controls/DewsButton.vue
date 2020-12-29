@@ -71,31 +71,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  div{
-    padding: 0;
-  }
-  .dews-mobile-button {
-    width: 68px;
-    height: 28px;
-    min-width: 61px;
-    min-height: 24px;
-    border-radius: 4px;
-    border: 1px solid #a6a6a6;
-    background: linear-gradient(#fff, #f0f0f0);
-    color: #000;
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 1.8;
-    display: inline-block;
-    position: relative;
-    text-align: center;
-    vertical-align: top;
-    letter-spacing: -0.5px;
-    margin: 5px 7px;
-    cursor: pointer;
-
-    .ui-resizable-handle {
-      padding: 0;
-    }
-  }
+@import 'node_modules/@dews/dews-mobile-style/scss/variables/variables';
+@import 'node_modules/@dews/dews-mobile-style/scss/mixins/_mixins';
+* {
+  @include reset();
+}
+@include dews-button();
 </style>
