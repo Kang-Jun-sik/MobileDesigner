@@ -62,9 +62,6 @@ export default {
 //--------------------------------------
 // 레이아웃 영역
 //--------------------------------------
-* {
-  @include reset();
-}
 .textbox-wrap {
   label {
     @include label-wrap();

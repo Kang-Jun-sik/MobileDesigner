@@ -56,9 +56,6 @@ export default {
 <style lang="scss" scoped>
 @import 'node_modules/@dews/dews-mobile-style/scss/variables/variables';
 @import 'node_modules/@dews/dews-mobile-style/scss/mixins/_mixins';
-* {
-  @include reset();
-}
 @include dews-dropdownbutton();
 
 </style>

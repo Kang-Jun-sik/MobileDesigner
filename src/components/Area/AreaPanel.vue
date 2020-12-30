@@ -30,9 +30,6 @@ export default {
 //--------------------------------------
 // 레이아웃 영역
 //--------------------------------------
-* {
-  @include reset();
-}
 .dews-panel {
   position: relative;
   width: 100%;
