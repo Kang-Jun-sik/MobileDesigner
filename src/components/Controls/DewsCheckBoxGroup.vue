@@ -1,0 +1,38 @@
+<template>
+  <div :uid="uid" class="dews-checkbox-group-wrap">
+    <span class="checkbox-group-label">{{ title }}</span>
+    <div class="checkbox-group" :class="align">
+      <span class="group-item">
+        <dews-checkbox></dews-checkbox>
+      </span>
+      <span class="group-item">
+        <dews-checkbox></dews-checkbox>
+      </span>
+    </div>
+  </div>
+</template>
+
+<script>
+import DewsCheckbox from "@/components/Controls/DewsCheckBox";
+import CreateService from "@/service/CreateService";
+
+export default {
+  name: 'dews-checkbox-group',
+  components: {DewsCheckbox},
+  data() {
+    return {
+      uid: '',
+      title: 'CheckBoxGroup',
+      align: 'horizontal',
+      groupItemClass: 'group-item',
+    }
+  },
+  created() {
+    this.uid = CreateService.createUid('dews-checkbox-group');
+  }
+}
+</script>
+
+<style lang="scss" scoped>
+
+</style>
