@@ -47,7 +47,6 @@
       width: 150px;
       height: 30px;
       background-color: #bfccdd;
-
       .etcList-header-title {
         display: inline-block;
         height: 19px;
@@ -58,7 +57,6 @@
         color: #4f5565;
         margin: 1px 7px;
       }
-
       .etcList-header-arrow {
         display: inline-block;
         float: right;
@@ -66,17 +64,37 @@
         width: 16px;
         height: 16px;
         object-fit: contain;
-        background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAEKADAAQAAAABAAAAEAAAAAAXnVPIAAAAW0lEQVQ4EWNgGAWDPAT8QlMn+IWk9ONzJjMuSaDGBYyMjOlAbKGhbaxw89q5jdjUYjUAqjkeSYMBLkMYkRSBmQGhqQb/GRjOo4uD+EDFhhtWz76ATW5UbCBDAAAP0hVgqGYaXgAAAABJRU5ErkJggg==');
+        background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgdmlld0JveD0iMCAwIDE2IDE2Ij4KICAgIDxnPgogICAgICAgIDxwYXRoIGZpbGw9IiM0ZjU1NjUiIGQ9Ik0zLjY0Ni4zNTRhLjUuNSAwIDAgMSAuNzA3IDBsMi43OTMgMi43OTJBLjUuNSAwIDAgMSA2Ljc5MyA0SDEuMjA3YS41LjUgMCAwIDEtLjM1NC0uODU0eiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTM5MSAtMTQ1KSByb3RhdGUoMTgwIDIwMS41IDc3LjUpIi8+CiAgICA8L2c+Cjwvc3ZnPgo=');
+      }
+      &.not-collapsed {
+        .etcList-header-arrow {
+          background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAEKADAAQAAAABAAAAEAAAAAAXnVPIAAAAW0lEQVQ4EWNgGAWDPAT8QlMn+IWk9ONzJjMuSaDGBYyMjOlAbKGhbaxw89q5jdjUYjUAqjkeSYMBLkMYkRSBmQGhqQb/GRjOo4uD+EDFhhtWz76ATW5UbCBDAAAP0hVgqGYaXgAAAABJRU5ErkJggg==');
+        }
+      }
+      &:hover {
+        background-color: #a4b7d1;
       }
     }
-
     .etcList-content {
       .etcList-content-box {
         width: 135px;
         height: 30px;
+        border: 1px solid transparent;
         border-radius: 4px;
         background-color: #ffffff;
         margin: 4px auto;
+
+        &:hover:not(:active) {
+          border: 1px solid #c7d6e8;
+          background-color: #e2e9f2;
+          .etcList-content-title {
+            color: #819fc9;
+          }
+        }
+        &:active {
+          border:1px solid #acc0d8;
+          background-color: #c7d6e8;
+        }
 
         .etcList-content-title {
           display: inline-block;

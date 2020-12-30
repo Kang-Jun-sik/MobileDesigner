@@ -16,10 +16,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  div {
-    padding: 0;
-  }
-
   .controlList-wrapper {
     position: fixed;
     top: 0;

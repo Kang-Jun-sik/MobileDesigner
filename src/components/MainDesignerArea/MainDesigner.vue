@@ -33,9 +33,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  div {
-    padding: 0;
-  }
   .main-designer {
     position: relative;
     padding: 8px 5px 5px 7px;

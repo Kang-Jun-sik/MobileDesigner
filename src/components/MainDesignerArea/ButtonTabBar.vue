@@ -38,10 +38,6 @@
 </script>
 
 <style lang="scss" scoped>
-  div {
-    padding: 0;
-  }
-
   .button-tab-bar {
     position: absolute;
     backdrop-filter: blur(20px);

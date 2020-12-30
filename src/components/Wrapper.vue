@@ -72,12 +72,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-div {
-  padding: 0;
-}
-
 .mobile-wrapper {
-  padding: 0;
+  //padding: 0;
   //display: grid;
   //grid-gap: 10px;
   //grid-template-columns: 150px 1fr;

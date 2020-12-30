@@ -1,25 +1,22 @@
-div {
-  padding: 0;
-}
+@import 'node_modules/@dews/dews-mobile-style/scss/variables/variables';
+@import 'node_modules/@dews/dews-mobile-style/scss/mixins/_mixins';
 
+* {
+  @include reset();
+}
 body {
   background-color: #d5dae2 !important;
 }
 
+//app common
 #app {
-  padding: 0;
-  box-sizing: border-box;
-
   .dews-control-list {
     cursor: pointer;
   }
 
-  .componentList-content-box.dews-control-list {
-    display: inline-block;
-    margin: 4px 8px;
-  }
-
-  .main-designer-wrapper, .navigation-bar-wrapper, .button-tab-bar {
+  .main-designer-wrapper,
+  .navigation-bar-wrapper,
+  .button-tab-bar {
     transition: all 0.5s ease;
     animation: fadein .5s;
   }
@@ -27,61 +24,49 @@ body {
   .ui-selectable-helper {
     display: none;
   }
-
   .ui-icon {
     background-image: none;
   }
-
   .dews-control-handle {
     position: absolute;
-    background-color: #575757;
+    z-index: 80;
     width: 6px;
     height: 6px;
     border-radius: 50%;
-    z-index: 80;
+    background-color: #575757;
   }
 
   .handle-n {
     top: -5px;
     left: 0;
   }
-
   .handle-e {
     top: 0;
     right: -5px;
   }
-
   .handle-s {
     bottom: -5px;
     left: 0;
   }
-
   .handle-w {
     top: 0;
     left: -5px;
   }
-
   .handle-ne {
     top: -5px;
     right: -5px;
   }
-
   .handle-se {
     bottom: -5px;
     right: -5px;
   }
-
   .handle-sw {
     bottom: -5px;
     left: -5px;
   }
-
   .handle-nw {
     top: -5px;
     left: -5px;
-  }
-
-  .main-designer {
   }
 
   .button-tab-bar {
@@ -90,30 +75,27 @@ body {
       width: 5px;
       height: 5px;
     }
-
     .ui-resizable-handle {
       cursor: default;
     }
   }
 }
 
+//moving
 .gu-hide {
   display: none !important;
 }
-
 .gu-unselectable {
   -webkit-user-select: none !important;
   -moz-user-select: none !important;
   -ms-user-select: none !important;
   user-select: none !important;
 }
-
 .gu-transit {
   opacity: 0.5;
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
   filter: alpha(opacity=50);
 }
-
 .gu-mirror {
   display: inline-flex;
   opacity: 0;
@@ -121,21 +103,51 @@ body {
   filter: alpha(opacity=50);
 }
 
+//context menu
 .context-menu-list {
   z-index: 100 !important;
 }
-
 .context-menu-icon-view {
   content: "👀"; /* Unicode for ".fa-share-square-o" icon*/
   font-family: "FontAwesome" !important;
 }
-
 .context-menu-icon-ic-edit {
   background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABUAAAAVCAYAAACpF6WWAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMTM4IDc5LjE1OTgyNCwgMjAxNi8wOS8xNC0wMTowOTowMSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTcgKFdpbmRvd3MpIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjAyM0MxNjMxQjQ5MzExRTdCQ0U2Qzk3ODlBNDQ0ODcyIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOjAyM0MxNjMyQjQ5MzExRTdCQ0U2Qzk3ODlBNDQ0ODcyIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6MDIzQzE2MkZCNDkzMTFFN0JDRTZDOTc4OUE0NDQ4NzIiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6MDIzQzE2MzBCNDkzMTFFN0JDRTZDOTc4OUE0NDQ4NzIiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz4Kb7U+AAAA/ElEQVR42mL8//8/A7UBEwMNAE0MZUEX8PHxwWf5P3SJLVu2kOxSXiDOAeIbQHwNiNOAmINc7ysCcS8QPwbiWiBeD8TqQDwTiB8CcR0Qi5Bi6Dogvg3ExkCcCcRyQFyOJC8GxI1Qw2cQFaZAEAjEWkB8nYAvuYA4HYgziPX+9SGRTn+RoP8XsYa+AuL/WDAjGpYH4pfEGnqKSFd641KLzdDlRBjIBsTFQLyMlHRKyLXtQPwWiDcQaygof0cD8WscBlYCcSwQR2ErC/AlqTtA7ADN8zAAymHbgTgOiO2B+C456RRUgOgDcR4QXwDihUC8DSqGN3MwjuySHyDAANzTNwipsTmkAAAAAElFTkSuQmCC)
 }
 
+//dews-control-list drag style
+.dews-control-list.gu-transit {
+  width: 135px;
+  height: 30px;
+  border-radius: 4px;
+  box-shadow: 0 2px 5px 0 rgba(153, 166, 183, 0.7);
+  border: 1px solid #acc0d8;
+  background-color: #c7d6e8;
+  .areaList-content-icon,
+  .componentList-content-icon,
+  .containerList-content-icon,
+  .etcList-content-icon {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    -o-object-fit: contain;
+    object-fit: contain;
+    margin: -3px 5px;
+  }
+  .areaList-content-title,
+  .componentList-content-title,
+  .containerList-content-title,
+  .etcList-content-title {
+    display: inline-block;
+    height: 19px;
+    font-size: 12.5px;
+    font-weight: 600;
+    line-height: 1.62;
+    color: #000000;
+  }
+}
 
-
+// vue 제외된 dews-mobile-style
 .form-field {
   display: flex;
   overflow: hidden;

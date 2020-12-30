@@ -51,9 +51,6 @@ export default {
 //--------------------------------------
 // 레이아웃 영역
 //--------------------------------------
-* {
-  @include reset();
-}
 :host {
   display: inline-block;
   margin: 0;
