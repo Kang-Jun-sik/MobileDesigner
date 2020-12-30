@@ -11,6 +11,7 @@ import axios from 'axios'
 
 import MainDesignerWrapper from "@/components/MainDesignerArea/MainDesignerWrapper";
 import ControlListWrapper from "@/components/ControlListArea/ControlListWrapper";
+import componentAcceptsCheck from "@/service/AcceptsCheckService";
 import CreateService from "@/service/CreateService";
 import ContextMenuService from "@/service/ContextMenuService";
 import ResizeService from "@/service/ResizeService";
@@ -31,9 +32,10 @@ export default {
         return ['areaList', 'containerList', 'componentList', 'etcList'].includes(source.id);
       },
       accepts: function (el, target, source) {
-        return _this.acceptCheck(el, target, source);
+        return componentAcceptsCheck(el, target);
       }
-    }).on('drop', function (el, target) {
+    })
+    .on('drop', function (el, target) {
       _this.drop(el, target);
       if (window.selectedItem) {
         ResizeService.setPosition(window.selectedItem);
@@ -57,105 +59,35 @@ export default {
     /*
     * 드롭할 때, 컴포넌트 호출 및 $el로 replace 처리
     **/
-    drop(el, target) {
-      if (el.classList.contains('dewsControl')) {
-        // 컴포넌트 추가 후, $el로 replace
-        const componentName = el.textContent.replace(/\s+/g, '');
-        const component = CreateService.addComponent(componentName);
-        this.$store.commit('addItem', component);
-        el.replaceWith(component.$el);
-        ContextMenuService.getContextMenu(component.$el);
+    drop(element, target) {
+      console.log(element, target)
+      if (!element.classList.contains('dews-control-list')) return
 
-        // IDE로 create 전송
-        CreateService.sendCreateMessage(component.$el);
-      }
-    },
+      const componentName = element.textContent.replace(/\s+/g, '');
+      const component = CreateService.addComponent(componentName);
 
-    /*
-    * 드래그해서 컨트롤 생성시 체크
-    **/
-    acceptCheck(el, target, source) {
-      const controlList = ['areaList', 'containerList', 'componentList', 'etcList'];
-      if (controlList.includes(source.id)) {
-        // 컨트롤 리스트에서 메인 디자이너로 Drag&Drop 할 경우
-        if (target.closest('.main-designer') && !el.classList.contains('ui-resizable-resizing')) {
-          /*
-          * 메인디자이너에 컨트롤 생성시 컨트롤별 조건 체크
-          **/
-          // Button
-          if (el.classList.contains('dews-mobile-button')) {
-            if (target.classList.contains('search-container-content'))
-              return true;
-          }
-          // Area Box
-          else if (el.classList.contains('dews-mobile-areaBox')) {
-            if (target.classList.contains('main-designer')) {
-              return true;
-            } else if (target.classList.contains('dews-mobile-areaItem')) {
-              return true;
-            }
-          }
-          // Search Container
-          else if (el.classList.contains('dews-mobile-searchContainer')) {
-            if (target.classList.contains('dews-box-content')) {
-              return true;
-            }
-          }
-          // Form Container
-          else if (el.classList.contains('dews-mobile-formContainer')) {
-            if (target.classList.contains('dews-box-content')) {
-              return true;
-            }
-          }
-          // List Container
-          else if (el.classList.contains('dews-mobile-listContainer')) {
-            if (target.classList.contains('main-designer')) {
-              return true;
-            }
-          }
-          return false;
-        }
+      if (element.classList.contains('componentList-content-box') && target.classList.contains('form-field')) {
+        const li = document.createElement('li');
+        li.appendChild(component.$el);
+        element.replaceWith(li);
       } else {
-        // 메인 디자이너에서 기존 생성된 컨트롤을 재배치할 경우
-        if (el.closest('.dews-mobile-component') && el.classList.contains('selected') && !el.classList.contains('ui-resizable-resizing')) {
-          //◎ Button
-          if (el.classList.contains('dews-mobile-button')) {
-            if (target.classList.contains('search-container-content')) {
-              return true;
-            }
-          }
-          //◎ Search Container
-          else if (el.classList.contains('dews-mobile-searchContainer')) {
-            if (target.classList.contains('dews-box-content')) {
-              return true;
-            }
-          }
-          //@ Area Box
-          else if (el.classList.contains('dews-mobile-areaBox')) {
-            if (target.classList.contains('dews-mobile-areaItem')) {
-              return true;
-            } else if (target.classList.contains('main-designer')) {
-              return true;
-            }
-          }
-        }
+        element.replaceWith(component.$el);
       }
-      return false;
-    }
+      this.$store.commit('addItem', component);
+
+      ContextMenuService.getContextMenu(component.$el);
+      CreateService.sendCreateMessage(component.$el);
+    },
   },
 }
 </script>
 
 <style lang="scss" scoped>
-div {
-  padding: 0;
-}
-
 .mobile-wrapper {
-  padding: 0;
-  display: grid;
-  grid-gap: 10px;
-  grid-template-columns: 150px 1fr;
+  //padding: 0;
+  //display: grid;
+  //grid-gap: 10px;
+  //grid-template-columns: 150px 1fr;
   color: #444;
 }
 </style>

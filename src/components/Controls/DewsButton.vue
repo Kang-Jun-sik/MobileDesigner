@@ -1,7 +1,8 @@
 <template>
-  <button class="dews-mobile-button" :disabled="disable">
-    <span class="icon"></span>
-    <span class="text">{{ title }}</span>
+  <button :uid="uid" class="dews-mobile-button dews-mobile-component dews-button" :class="[ui, size, type,
+    disabled ? 'disabled' : '', group ? 'group' : '']" >
+    <span class="button-icon"></span>
+    <span class="button-text">{{ text }}</span>
   </button>
 </template>
 
@@ -13,54 +14,63 @@ export default {
   data() {
     return {
       uid: '',
-      title: 'Button',
-      disable: false,
-      buttonStyle: {
-        width: '',
-        height: ''
-      }
+      text: 'Button',
+      TYPE_LIST: {
+        text: 'text',
+        icon: 'icon',
+        iconText: 'iconText'
+      },
+      SIZE_LIST: {
+        small: 'small',
+        medium: 'medium',
+        large: 'large',
+      },
+      ICON_LIST: {
+        'default': '',
+        'ico-set': 'ico-set',
+        'ico-search': 'ico-search',
+        'ico-add': 'ico-add',
+        'ico-delete': 'ico-delete',
+        'ico-save': 'ico-save',
+        'ico-qr': 'ico-qr',
+        'ico-barcode': 'ico-barcode',
+        'ico-scan': 'ico-scan',
+        'ico-download': 'ico-download',
+        'ico-upload': 'ico-upload',
+        'ico-up': 'ico-up',
+        'ico-down': 'ico-down',
+        'ico-left': 'ico-left',
+        'ico-right': 'ico-right',
+        'ico-excel': 'ico-excel',
+        'ico-edit': 'ico-edit',
+        'ico-file': 'ico-file',
+        'ico-reset': 'ico-reset',
+        'ico-language': 'ico-language',
+        'ico-information': 'ico-information',
+        'ico-subtraction': 'ico-subtraction'
+      },
+      UI_LIST: {
+        solid: 'solid',
+        emphasize: 'emphasize'
+      },
+      ui: 'solid',
+      type: 'text',
+      size: 'small',
+      icon: '',
+      link: '',
+      disabled: false,
+      group: false,
     }
   },
   created() {
     this.uid = CreateService.createUid('dews-button');
   },
-  methods: {
-    setWidth(width) {
-      this.buttonStyle.width = width + 'px';
-    },
-    setHeight(height) {
-      this.buttonStyle.height = height + 'px';
-    },
-  }
+  methods: {}
 }
 </script>
 
 <style lang="scss" scoped>
-  div{
-    padding: 0;
-  }
-  .dews-mobile-button {
-    width: 68px;
-    height: 28px;
-    min-width: 61px;
-    min-height: 24px;
-    border-radius: 4px;
-    border: 1px solid #a6a6a6;
-    background: linear-gradient(#fff, #f0f0f0);
-    color: #000;
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 1.8;
-    display: inline-block;
-    position: relative;
-    text-align: center;
-    vertical-align: top;
-    letter-spacing: -0.5px;
-    margin: 5px 7px;
-    cursor: pointer;
-
-    .ui-resizable-handle {
-      padding: 0;
-    }
-  }
+@import 'node_modules/@dews/dews-mobile-style/scss/variables/variables';
+@import 'node_modules/@dews/dews-mobile-style/scss/mixins/_mixins';
+@include dews-button();
 </style>

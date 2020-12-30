@@ -1,7 +1,7 @@
 export default {
     state: {
         handles: {
-            'dews-mobile-areaItem': 'e',
+            'dews-mobile-item': 'e',
         },
         splitCount: 1,
     },

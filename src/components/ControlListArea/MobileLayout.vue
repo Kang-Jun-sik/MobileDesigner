@@ -63,10 +63,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-div {
-  padding: 0;
-}
-
 .controlList-mobile-layout {
   min-width: 150px;
   height: 36px;

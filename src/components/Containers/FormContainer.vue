@@ -2,8 +2,6 @@
   <div :uid="uid" class="dews-mobile-formContainer">
     <div class="dews-container-option-control">
       <h3 class="option-sub-title" v-if="title">{{ title }}</h3>
-
-<!--      <div v-if="customButton.length" class="option-custom-button">-->
       <div class="option-custom-button">
         <ul>
           <li><button><span>확정</span></button></li>
@@ -28,31 +26,7 @@
     <div class="form-section">
       <h3 class="dews-form-section-title">기본정보</h3>
       <div class="dews-form-field">
-        <ul class="form-field">
-          <li>
-            <div class="dews-textbox">
-              <label>항목명</label>
-              <input type="text" class="">
-            </div>
-          </li>
-          <li>
-            <div class="dews-textbox">
-              <label>항목명</label>
-              <input type="text" class="">
-            </div>
-          </li>
-          <li>
-            <div class="dews-textbox">
-              <label>항목명</label>
-              <input type="text" class="">
-            </div>
-          </li>
-          <li>
-            <div class="dews-textbox">
-              <label>항목명</label>
-              <input type="text" class="">
-            </div>
-          </li>
+        <ul class="form-container-field form-field" ref="formContainerField">
         </ul>
       </div>
     </div>
@@ -60,31 +34,7 @@
     <div class="form-section">
       <h3 class="dews-form-section-title">추가정보</h3>
       <div class="dews-form-field">
-        <ul class="form-field">
-          <li>
-            <div class="dews-textbox">
-              <label for="">항목명</label>
-              <input type="text" id="textbox" class="">
-            </div>
-          </li>
-          <li>
-            <div class="dews-textbox">
-              <label for="">항목명</label>
-              <input type="text" id="textbox" class="">
-            </div>
-          </li>
-          <li>
-            <div class="dews-textbox">
-              <label for="">항목명</label>
-              <input type="text" id="textbox" class="">
-            </div>
-          </li>
-          <li>
-            <div class="dews-textbox">
-              <label for="">항목명</label>
-              <input type="text" id="textbox" class="">
-            </div>
-          </li>
+        <ul class="form-add-field form-field" ref="formContainerAddField">
         </ul>
       </div>
     </div>
@@ -102,11 +52,14 @@ export default {
     return {
       uid: '',
       title: 'Form Container',
-      customButton: [],
     }
   },
   created() {
     this.uid = CreateService.createUid('dews-form-container');
+  },
+  mounted() {
+    window.drake.containers.push(this.$refs.formContainerField);
+    window.drake.containers.push(this.$refs.formContainerAddField);
   }
 }
 </script>
@@ -121,9 +74,6 @@ export default {
 //--------------------------------------
 // 레이아웃 영역
 //--------------------------------------
-* {
-  @include reset();
-}
 //--------------------------------------
 // dews-container-option-bar
 //--------------------------------------

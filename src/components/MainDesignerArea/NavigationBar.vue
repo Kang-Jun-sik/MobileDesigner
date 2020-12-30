@@ -39,14 +39,10 @@
 </script>
 
 <style lang="scss" scoped>
-  div {
-    padding: 0;
-  }
-
   .smartPhone {
     width: 430px;
-    height: 78px;
-    margin: 21px 25px 0;
+    height: 79px;
+    margin: 20px 24px 0;
   }
 
   .tabletM {
@@ -56,20 +52,20 @@
   }
 
   .tabletL {
-    width: 1062px;
+    width: 1077px;
     height: 76px;
     margin: 23px 21px 0;
   }
 
   .navigation-bar-wrapper {
     position: absolute;
-    border-radius: 27px 27px 0 0;
+    border-radius: 33px 33px 0 0;
     background-color: #ffffff;
     top: 0;
 
     .status-bar {
       height: 24px;
-      margin: 0 10px;
+      margin: 0 15px;
       .status-bar-icon {
 
       }

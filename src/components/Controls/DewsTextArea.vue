@@ -2,21 +2,9 @@
   <div :uid="uid" class="dews-mobile-textbox textbox-wrap">
     <label :for="id">{{ title }}</label>
     <textarea :id="id" @click="onClick($event)" @change="onChange($event)"
-              type="text" :value="value" :placeholder="placeholder"
-           :required="required" :disabled="disabled" :readonly="readonly" ref="textArea">
+      type="text" :value="value" :placeholder="placeholder"
+      :required="required" :disabled="disabled" :readonly="readonly" ref="textArea">
     </textarea>
-
-<!--    <label for="multi-textbox">multi-textbox value</label>-->
-<!--    <textarea class="dews-multi-input" id="multi-textbox">value </textarea>-->
-
-<!--    <label for="multi-textbox">multi-textbox placeholder</label>-->
-<!--    <textarea class="dews-multi-input" id="multi-textbox" placeholder="placeholder"></textarea>-->
-
-<!--    <label for="multi-textbox">multi-textbox readonly</label>-->
-<!--    <textarea class="dews-multi-input" id="multi-textbox" readonly="readonly">value</textarea>-->
-
-<!--    <label for="multi-textbox">multi-textbox disabled</label>-->
-<!--    <textarea class="dews-multi-input" id="multi-textbox" disabled="disabled">value</textarea>-->
   </div>
 </template>
 
@@ -69,9 +57,6 @@ export default {
 //--------------------------------------
 // 레이아웃 영역
 //--------------------------------------
-* {
-  @include reset();
-}
 .textbox-wrap {
   label {
     @include label-wrap();

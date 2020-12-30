@@ -1,5 +1,5 @@
 <template>
-  <div :uid="uid" class="dews-mobile-areaPanel dews-mobile-component dews-panel dews-panel-hide"></div>
+  <div :uid="uid" class="dews-mobile-panel dews-mobile-component dews-panel dews-panel-hide"></div>
 </template>
 
 <script>
@@ -30,9 +30,6 @@ export default {
 //--------------------------------------
 // 레이아웃 영역
 //--------------------------------------
-* {
-  @include reset();
-}
 .dews-panel {
   position: relative;
   width: 100%;

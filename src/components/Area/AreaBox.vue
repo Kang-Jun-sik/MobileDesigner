@@ -1,5 +1,5 @@
 <template>
-  <div :uid="uid" class="dews-mobile-areaBox dews-mobile-component dews-box-wrap" ref="box">
+  <div :uid="uid" class="dews-mobile-box dews-mobile-component dews-box-wrap" ref="box">
     <div class="dews-box-title" @click="onToggleClick($event)" :collapsed="collapsed">
       <h2><button class="dews-box-title-button" type="button">{{ title }}</button></h2>
     </div>
@@ -47,12 +47,12 @@ export default {
 
       if (this.collapsed) {
         this.collapsed = false;
-        box.style.setProperty('height', '', 'important');
         this.contentStyle.display = 'none';
+        box.style.setProperty('height', '', 'important');
       } else {
         this.collapsed = true;
-        box.style.setProperty('height', box.style.height);
         this.contentStyle.display = 'block';
+        box.style.setProperty('height', box.style.height);
       }
 
       setTimeout(ResizeService.setPosition, 10, box);
@@ -71,9 +71,6 @@ export default {
 //--------------------------------------
 // 레이아웃 영역
 //--------------------------------------
-* {
-  @include reset();
-}
 .dews-box-wrap {
   @include area-box();
 
@@ -123,7 +120,7 @@ export default {
 //--------------------------------------
 .dews-box-wrap {
   //box design
-  max-width: 1033px;
+  max-width: 1050px;
   min-height: 72px;
   padding: 10px;
 

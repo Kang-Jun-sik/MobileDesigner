@@ -12,7 +12,7 @@ export default {
         switch (instance.classList[0]) {
             case "main-designer" :
                 $.contextMenu({
-                    selector: ".selected",
+                    selector: ".user-selected",
                     items: {
                         "edit": {name: "mainDesignerOption", icon: "ic-edit"},
                         "sep1": "---------",
@@ -23,9 +23,9 @@ export default {
                 });
                 break;
 
-            case "dews-mobile-areaItem":
+            case "dews-mobile-item":
                 $.contextMenu({
-                    selector: ".selected",
+                    selector: ".user-selected",
                     items: {
                         "vertical": {name: "세로분할", icon: "edit"},
                         "delete": {name: "Delete", icon: "delete"}
@@ -43,9 +43,9 @@ export default {
                 })
                 break;
 
-            case "dews-mobile-areaBox":
+            case "dews-mobile-box":
                 $.contextMenu({
-                    selector: ".selected",
+                    selector: ".user-selected",
                     items: {
                         "vertical": {name: "세로분할", icon: "edit"},
                         "delete": {name: "Delete", icon: "delete"}
@@ -65,7 +65,7 @@ export default {
 
             case "dews-mobile-searchContainer" :
                 $.contextMenu({
-                    selector: ".selected",
+                    selector: ".user-selected",
                     items: {
                         "edit": {name: "Search-container-option", icon: "edit"},
                         "delete": {name: "Delete", icon: "delete"},
@@ -83,7 +83,7 @@ export default {
 
             case "dews-mobile-button" :
                 $.contextMenu({
-                    selector: ".selected",
+                    selector: ".user-selected",
                     items: {
                         "b1": {name: "ButtonOption1", icon: "edit"},
                         "delete": {name: "Delete", icon: "delete"},

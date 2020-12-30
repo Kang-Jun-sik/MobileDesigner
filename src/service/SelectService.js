@@ -60,14 +60,14 @@ export default {
     * @param eventTarget - 선택한 컨트롤
     * */
     selectControl(eventTarget) {
-        let target = eventTarget.classList.contains('dews-mobile-component') ? eventTarget : findTarget(eventTarget);
+        const target = eventTarget.classList.contains('dews-mobile-component') ? eventTarget : findTarget(eventTarget);
 
         // 같은 컨트롤을 선택했을 경우 재 선택하는 것을 방지 / target이 null인 경우 return (dews-mobile-component가 아님)
         if ((window.selectedItem && window.selectedItem === target) || target === null) return;
 
-        if (document.querySelector('.selected')) {
-            const selectedElement = document.querySelector('.selected');
-            selectedElement.classList.remove('selected');
+        if (document.querySelector('.user-selected')) {
+            const selectedElement = document.querySelector('.user-selected');
+            selectedElement.classList.remove('user-selected');
             // 이 전에 선택된 element resizable disabled 처리
             $(`[uid=${selectedElement.getAttribute('uid')}]`).resizable({
                 disabled: true
@@ -77,7 +77,7 @@ export default {
         ResizeService.removeResizeHandler();
 
         window.selectedItem = target;
-        window.selectedItem.classList.add('selected');
+        window.selectedItem.classList.add('user-selected');
 
         // main-designer의 경우 resize 표시가 필요없으므로 canResize를 호출하지 않는다.
         if (!target.classList.contains('main-designer')) {

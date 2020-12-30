@@ -1,5 +1,5 @@
 <template>
-  <div :uid="uid" class="dews-mobile-areaItem dews-mobile-component dews-item" :class="col" ref="dewsItem"></div>
+  <div :uid="uid" class="dews-mobile-item dews-mobile-component dews-item" :class="col" ref="dewsItem"></div>
 </template>
 
 <script>
@@ -34,10 +34,6 @@ export default {
 //--------------------------------------
 // 레이아웃 영역
 //--------------------------------------
-* {
-  @include reset();
-}
-
 .dews-item {
   @include reset();
 

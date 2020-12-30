@@ -16,12 +16,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  div {
-    padding: 0;
-  }
-
   .controlList-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 150px;
+    height: 100%;
     min-height: 852px;
     color: #000000;
     background-color: #f3f6fa;

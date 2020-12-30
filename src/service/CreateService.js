@@ -11,6 +11,16 @@ import AreaBox from "@/components/Area/AreaBox";
 import AreaTabs from "@/components/Area/tab/AreaTabs";
 import SearchContainer from "@/components/Containers/SearchContainer";
 import FormContainer from "@/components/Containers/FormContainer";
+import TextBox from "@/components/Controls/DewsTextBox";
+import CheckBox from "@/components/Controls/DewsCheckBox";
+import RadioButton from "@/components/Controls/DewsRadioButton";
+import NumericTextBox from "@/components/Controls/DewsNumericTextBox";
+import MaskTextBox from "@/components/Controls/DewsMaskTextBox";
+import DatePicker from "@/components/Controls/DewsDatePicker";
+import PeriodPicker from "@/components/Controls/DewsPeriodPicker";
+import TimePicker from "@/components/Controls/DewsTimePicker";
+import DropdownButton from "@/components/Controls/dropdownbutton/DewsDropdownbutton";
+import DropdownList from "@/components/Controls/dropdownlist/DewsDropdownlist";
 
 export default {
     createFromIDE(args) {
@@ -62,9 +72,6 @@ export default {
     addComponent(type, param) {
         let component;
         switch (removeSpaceBetweenWord(type)) {
-            case 'Button':
-                component = Vue.extend(Button);
-                break;
             case 'AreaPanel':
                 component = Vue.extend(AreaPanel);
                 break;
@@ -82,6 +89,39 @@ export default {
                 break;
             case 'FormContainer':
                 component = Vue.extend(FormContainer);
+                break;
+            case 'Button':
+                component = Vue.extend(Button);
+                break;
+            case 'TextBox':
+                component = Vue.extend(TextBox);
+                break;
+            case 'CheckBox':
+                component = Vue.extend(CheckBox);
+                break;
+            case 'RadioButton':
+                component = Vue.extend(RadioButton);
+                break;
+            case 'NumericTextBox':
+                component = Vue.extend(NumericTextBox);
+                break;
+            case 'MaskTextBox':
+                component = Vue.extend(MaskTextBox);
+                break;
+            case 'DatePicker':
+                component = Vue.extend(DatePicker);
+                break;
+            case 'PeriodPicker':
+                component = Vue.extend(PeriodPicker);
+                break;
+            case 'TimePicker':
+                component = Vue.extend(TimePicker);
+                break;
+            case 'DropdownButton':
+                component = Vue.extend(DropdownButton);
+                break;
+            case 'DropdownList':
+                component = Vue.extend(DropdownList);
                 break;
         }
         component = new component();

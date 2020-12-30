@@ -1,34 +1,10 @@
 <template>
-  <span :uid="uid" class="dews-checkbox-wrap" :class="checkBoxClass" @click="clickHandler($event)">
+  <span :uid="uid" class="dews-mobile-checkbox dews-checkbox-wrap" :class="checkBoxClass" @click="clickHandler($event)">
     <span class="checkbox-control">
       <input type="checkbox" v-model="checked" :data-checked="checked" :disabled="disabled">
       <span class="checkbox-shape"></span>
     </span>
     <label class="checkbox-label">{{ title }}</label>
-
-<!--    <span class="checkbox-control">-->
-<!--      <input type="checkbox">-->
-<!--      <span class="checkbox-shape"></span>-->
-<!--    </span>-->
-<!--    <label class="checkbox-label">라벨</label>-->
-
-<!--    <span class="checkbox-control">-->
-<!--      <input type="checkbox" checked="checked">-->
-<!--      <span class="checkbox-shape"></span>-->
-<!--    </span>-->
-<!--    <label class="checkbox-label">라벨</label>-->
-
-<!--    <span class="checkbox-control">-->
-<!--      <input type="checkbox" disabled="disabled">-->
-<!--      <span class="checkbox-shape"></span>-->
-<!--    </span>-->
-<!--    <label class="checkbox-label">라벨</label>-->
-
-<!--    <span class="checkbox-control">-->
-<!--      <input type="checkbox" checked="checked" disabled="disabled">-->
-<!--      <span class="checkbox-shape"></span>-->
-<!--    </span>-->
-<!--    <label class="checkbox-label">라벨</label>-->
   </span>
 </template>
 
@@ -73,13 +49,10 @@ export default {
 //--------------------------------------
 // 레이아웃 영역
 //--------------------------------------
-* {
-  @include reset();
-}
 :host {
   display: inline-block;
-  margin: 0px;
-  padding: 0px;
+  margin: 0;
+  padding: 0;
   font-size: 0;
 }
 .dews-checkbox-wrap {

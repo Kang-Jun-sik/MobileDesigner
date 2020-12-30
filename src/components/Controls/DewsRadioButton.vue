@@ -5,24 +5,6 @@
       <span class="radio-shape"></span>
     </span>
     <label class="radio-label">{{ title }}</label>
-
-<!--    <span class="radio-control">-->
-<!--      <input type="radio" checked="checked">-->
-<!--      <span class="radio-shape"></span>-->
-<!--    </span>-->
-<!--    <label class="radio-label">라벨</label>-->
-
-<!--    <span class="radio-control">-->
-<!--      <input type="radio" disabled="disabled">-->
-<!--      <span class="radio-shape"></span>-->
-<!--    </span>-->
-<!--    <label class="radio-label">라벨</label>-->
-
-<!--    <span class="radio-control">-->
-<!--      <input type="radio" disabled="disabled" checked="checked">-->
-<!--      <span class="radio-shape"></span>-->
-<!--    </span>-->
-<!--    <label class="radio-label">라벨</label>-->
   </span>
 </template>
 
@@ -69,9 +51,6 @@ export default {
 //--------------------------------------
 // 레이아웃 영역
 //--------------------------------------
-* {
-  @include reset();
-}
 :host {
   display: inline-block;
   margin: 0;
