@@ -1,5 +1,5 @@
 <template>
-  <div class="dews-mobile-periodPicker period-picker-wrap focus">
+  <div :uid="uid" class="dews-mobile-periodPicker period-picker-wrap focus">
     <label>{{ title }}</label>
     <span class="select-wrap">
       <span class="select-shape">
@@ -13,12 +13,14 @@
 </template>
 
 <script>
+import CreateService from "@/service/CreateService";
+
 export default {
   name: 'dews-periodpicker',
   data() {
     return {
       uid: '',
-      title: '',
+      title: 'PeriodPicker',
       disabled: false,
       readonly: false,
       value: '',
@@ -30,6 +32,9 @@ export default {
       end: '',
       start: '',
     }
+  },
+  created() {
+    this.uid = CreateService.addComponent('dews-periodpicker');
   },
 }
 </script>

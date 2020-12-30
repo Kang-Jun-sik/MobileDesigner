@@ -1,5 +1,5 @@
 <template>
-  <div class="dews-mobile-numeric numeric-textbox-wrap" :class="{disabled: disabled ? 'disabled' : '', readonly: readonly ? 'readonly': ''}">
+  <div :uid="uid" class="dews-mobile-numeric numeric-textbox-wrap" :class="{disabled: disabled ? 'disabled' : '', readonly: readonly ? 'readonly': ''}">
     <label v-if="title" for="numeric-box">{{ title }}</label>
     <label v-else class="undefined" for="numeric-box"></label>
     <div class="numeric-wrap">
@@ -21,12 +21,14 @@
 </template>
 
 <script>
+import CreateService from "@/service/CreateService";
+
 export default {
   name: 'dews-numerictextbox',
   data() {
     return {
       uid: '',
-      title: 'title',
+      title: 'NumericTextBox',
       placeholder: '',
       disabled: false,
       readonly: false,
@@ -45,7 +47,7 @@ export default {
     }
   },
   created() {
-
+    this.uid = CreateService.addComponent('dews-numerictextbox');
   },
   methods: {
     focusIn() {},

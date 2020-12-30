@@ -25,7 +25,7 @@
           searchContainer: 'Search Container',
           listContainer: 'List Container',
           formContainer: 'Form Container',
-          infoBoxContainer: 'Info box Container'
+          infoBoxContainer: 'InfoBox Container'
         },
       }
     },
@@ -80,7 +80,7 @@
         .containerList-content-title {
           display: inline-block;
           height: 19px;
-          font-size: 12.5px;
+          font-size: 12px;
           font-weight: 600;
           line-height: 1.62;
           color: #000000;

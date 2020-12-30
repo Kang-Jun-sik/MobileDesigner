@@ -21,7 +21,7 @@ export default {
   data() {
     return {
       uid: '',
-      text: '',
+      text: 'DropdownButton',
       SIZE_LIST: {
         small: 'small',
         medium: 'medium',

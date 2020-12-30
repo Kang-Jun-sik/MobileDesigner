@@ -12,7 +12,7 @@
     </div>
 
     <div class="dews-search-field">
-      <ul :muid="muid" class="form-field" ref="searchContainer">
+      <ul :muid="muid" class="search-container-field form-field" ref="searchContainerField">
 <!--        <li><dews-textbox></dews-textbox></li>-->
 <!--        <li><dews-checkbox></dews-checkbox></li>-->
 <!--        <li><dews-radiobutton></dews-radiobutton></li>-->
@@ -69,7 +69,7 @@ export default {
     store.commit('matchUid', {'uid': this.uid, 'muid': this.muid});
   },
   mounted() {
-    window.drake.containers.push(this.$refs.searchContainer);
+    window.drake.containers.push(this.$refs.searchContainerField);
   }
 }
 </script>

@@ -23,11 +23,13 @@
       return {
         mobileComponent: {
           button: 'Button',
-          textbox: 'Text box',
+          textbox: 'Text Box',
           checkbox: "Check Box",
           radiobutton: 'Radio Button',
-          numeric: 'Numeric text box',
-          maskbox: 'Mask text box',
+          numeric: 'Numeric Text Box',
+          maskbox: 'Mask Text Box',
+          dropdownButton: 'Dropdown Button',
+          dropdownList: 'Dropdown List',
           calendar: 'Calendar',
           editor: 'Editor',
           datePicker: 'Date Picker',
@@ -91,7 +93,7 @@
         .componentList-content-title {
           display: inline-block;
           height: 19px;
-          font-size: 12.5px;
+          font-size: 12px;
           font-weight: 600;
           line-height: 1.62;
           color: #000000;
@@ -127,6 +129,14 @@
 
         .componentList-maskbox {
           background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAALlJREFUOBFjYBjygNEvJLmNkZGpklSf/Adp+P+vncEvNBXMJtUAkHp/oF4WRiJ0BgQkCPxnZX3A+Pu3AojeuHq2AEwbE4yBjwZqeg+U54fRIJth6llgDHz0v///CxkZGRX+////AERvWj27AKaeKBcgawYZAtMMogm6AOZcoCFgfVB6AswQgi4ABhhI50dgAAoi0TD9DCzw0IALYTKQQh0e+iBVIL0soMQASgsQB2JqxifyH5SQhj4AAAHIQXGxQReUAAAAAElFTkSuQmCC');
+        }
+
+        .componentList-dropdownButton {
+          background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAEKADAAQAAAABAAAAEAAAAAAXnVPIAAAAhUlEQVQ4EWNgGPKA0S8kuY2RkamSVJ/8B2n4/6+dwS80Fcwm1QCQen+gXiZGqE4QB90QbGLoapjQBUjlsyBrQLZx4+rZYMfBxEB8GBukByaP4gKQIEwCZjC6GLo8igEwTaTQOL0AMwTmbHSbYfIURSMoCbCAEgOIAYtOuMlEMP6DEtLQBwBTeDW+tVzCawAAAABJRU5ErkJggg==');
+        }
+
+        .componentList-dropdownList {
+          background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAEKADAAQAAAABAAAAEAAAAAAXnVPIAAAAhUlEQVQ4EWNgGPKA0S8kuY2RkamSVJ/8B2n4/6+dwS80Fcwm1QCQen+gXiZGqE4QB90QbGLoapjQBUjlsyBrQLZx4+rZYMfBxEB8GBukByaP4gKQIEwCZjC6GLo8igEwTaTQOL0AMwTmbHSbYfIURSMoCbCAEgOIAYtOuMlEMP6DEtLQBwBTeDW+tVzCawAAAABJRU5ErkJggg==');
         }
 
         .componentList-calendar {

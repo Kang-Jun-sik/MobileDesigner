@@ -12,6 +12,15 @@ import AreaTabs from "@/components/Area/tab/AreaTabs";
 import SearchContainer from "@/components/Containers/SearchContainer";
 import FormContainer from "@/components/Containers/FormContainer";
 import TextBox from "@/components/Controls/DewsTextBox";
+import CheckBox from "@/components/Controls/DewsCheckBox";
+import RadioButton from "@/components/Controls/DewsRadioButton";
+import NumericTextBox from "@/components/Controls/DewsNumericTextBox";
+import MaskTextBox from "@/components/Controls/DewsMaskTextBox";
+import DatePicker from "@/components/Controls/DewsDatePicker";
+import PeriodPicker from "@/components/Controls/DewsPeriodPicker";
+import TimePicker from "@/components/Controls/DewsTimePicker";
+import Dropdownlist from "@/components/Controls/dropdownlist/DewsDropdownlist";
+import Dropdownbutton from "@/components/Controls/dropdownbutton/DewsDropdownbutton";
 
 export default {
     createFromIDE(args) {
@@ -84,8 +93,30 @@ export default {
             case 'Button':
                 component = Vue.extend(Button);
                 break;
-            case 'Textbox':
+            case 'TextBox':
                 component = Vue.extend(TextBox);
+                break;
+            case 'Checkbox':
+                component = Vue.extend(CheckBox);
+                break;
+            case 'RadioButton':
+                component = Vue.extend(RadioButton);
+                break;
+            case 'NumericTextBox':
+                component = Vue.extend(NumericTextBox);
+                break;
+            case 'MaskTextBox':
+                component = Vue.extend(MaskTextBox);
+                break;
+            case 'DatePicker':
+                component = Vue.extend(DatePicker);
+                break;
+            case 'PeriodPicker':
+                component = Vue.extend(PeriodPicker);
+                break;
+            case 'TimePicker':
+                component = Vue.extend(TimePicker);
+                break;
         }
         component = new component();
         component.$mount();

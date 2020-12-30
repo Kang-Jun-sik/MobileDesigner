@@ -16,7 +16,7 @@ export default {
     return {
       id: '',
       uid: '',
-      title: 'textbox',
+      title: 'TextBox',
       value: '',
       placeholder: '',
       required: false,

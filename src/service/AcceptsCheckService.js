@@ -13,19 +13,19 @@ const componentAcceptsCheck = (component, target) => {
         "dews-mobile-listContainer": ["dews-box-content"],
         "dews-mobile-formContainer": ["dews-box-content"],
 
-        "dews-mobile-button": ["form-field"],
-        "dews-mobile-textbox": ["form-field"],
-        "dews-mobile-checkbox": ["form-field"],
-        "dews-mobile-radiobutton": ["form-field"],
-        "dews-mobile-maskbox": ["form-field"],
-        "dews-mobile-numeric": ["form-field"],
+        "dews-mobile-button": ["search-container-field", "form-container-field"],
+        "dews-mobile-textbox": ["search-container-field", "form-container-field"],
+        "dews-mobile-checkbox": ["search-container-field", "form-container-field"],
+        "dews-mobile-radiobutton": ["search-container-field", "form-container-field"],
+        "dews-mobile-maskbox": ["search-container-field", "form-container-field"],
+        "dews-mobile-numeric": ["search-container-field", "form-container-field"],
 
-        "dews-mobile-datepicker": ["form-field"],
-        "dews-mobile-periodPicker": ["form-field"],
-        "dews-mobile-timePicker": ["form-field"],
+        "dews-mobile-datepicker": ["search-container-field", "form-container-field"],
+        "dews-mobile-periodPicker": ["search-container-field", "form-container-field"],
+        "dews-mobile-timePicker": ["search-container-field", "form-container-field"],
 
-        "dews-mobile-dropdownButton": ["form-field"],
-        "dews-mobile-dropdownList": ["form-field"],
+        "dews-mobile-dropdownButton": ["search-container-field", "form-container-field"],
+        "dews-mobile-dropdownList": ["search-container-field", "form-container-field"],
     }
 
     return componentInformation[checkedComponent].includes(dropTarget);

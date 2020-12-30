@@ -1,5 +1,5 @@
 <template>
-  <div class="dews-mobile-datePicker date-picker-wrap focus">
+  <div :uid="uid" class="dews-mobile-datePicker date-picker-wrap focus">
     <label>{{ title }}</label>
     <span class="select-wrap">
       <span class="select-shape">
@@ -20,7 +20,7 @@ export default {
   data() {
     return {
       uid: '',
-      title: '',
+      title: 'DatePicker',
       disabled: false,
       readonly: false,
       required: false,

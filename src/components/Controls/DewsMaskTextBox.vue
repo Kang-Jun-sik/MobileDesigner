@@ -21,7 +21,7 @@ export default {
   data() {
     return {
       uid: '',
-      title: 'title',
+      title: 'MaskTextBox',
       placeholder: '',
       format: '',
       type: 'text',

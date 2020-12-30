@@ -1,5 +1,5 @@
 <template>
-  <div class="dews-mobile-dropdownList dropdown-list-wrap">
+  <div :uid="uid" class="dews-mobile-dropdownList dropdown-list-wrap">
     <label>{{ title }}</label>
     <span class="select-wrap">
       <span class="select-shape">
@@ -23,7 +23,7 @@ export default {
   data() {
     return {
       uid: '',
-      title: '',
+      title: 'DropdownList',
       multi: false,
       disable: false,
       readonly: false,

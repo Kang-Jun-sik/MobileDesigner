@@ -18,7 +18,7 @@ export default {
   data() {
     return {
       uid: '',
-      title: '',
+      title: 'TimePicker',
       inputValue: '',
       disabled: false,
       readonly: false,
