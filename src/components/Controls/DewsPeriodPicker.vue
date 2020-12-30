@@ -34,7 +34,7 @@ export default {
     }
   },
   created() {
-    this.uid = CreateService.addComponent('dews-periodpicker');
+    this.uid = CreateService.createUid('dews-periodpicker');
   },
 }
 </script>

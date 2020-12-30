@@ -19,8 +19,8 @@ import MaskTextBox from "@/components/Controls/DewsMaskTextBox";
 import DatePicker from "@/components/Controls/DewsDatePicker";
 import PeriodPicker from "@/components/Controls/DewsPeriodPicker";
 import TimePicker from "@/components/Controls/DewsTimePicker";
-import Dropdownlist from "@/components/Controls/dropdownlist/DewsDropdownlist";
-import Dropdownbutton from "@/components/Controls/dropdownbutton/DewsDropdownbutton";
+import DropdownButton from "@/components/Controls/dropdownbutton/DewsDropdownbutton";
+import DropdownList from "@/components/Controls/dropdownlist/DewsDropdownlist";
 
 export default {
     createFromIDE(args) {
@@ -96,7 +96,7 @@ export default {
             case 'TextBox':
                 component = Vue.extend(TextBox);
                 break;
-            case 'Checkbox':
+            case 'CheckBox':
                 component = Vue.extend(CheckBox);
                 break;
             case 'RadioButton':
@@ -116,6 +116,12 @@ export default {
                 break;
             case 'TimePicker':
                 component = Vue.extend(TimePicker);
+                break;
+            case 'DropdownButton':
+                component = Vue.extend(DropdownButton);
+                break;
+            case 'DropdownList':
+                component = Vue.extend(DropdownList);
                 break;
         }
         component = new component();

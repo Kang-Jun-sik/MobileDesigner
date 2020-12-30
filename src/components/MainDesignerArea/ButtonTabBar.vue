@@ -42,7 +42,7 @@
     position: absolute;
     backdrop-filter: blur(20px);
     background-color: rgba(28, 144, 251, 0.95);
-    border-radius: 0 0 27px 27px;
+    border-radius: 0 0 33px 33px;
     bottom: 0;
 
     .dews-mobile-buttonMenu {
@@ -62,7 +62,7 @@
   .smartPhone {
     width: 430px;
     height: 56px;
-    margin: 0 25px 20px;
+    margin: 0 24px 20px;
   }
 
   .tabletM {

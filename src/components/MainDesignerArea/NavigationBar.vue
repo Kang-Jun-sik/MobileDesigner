@@ -41,8 +41,8 @@
 <style lang="scss" scoped>
   .smartPhone {
     width: 430px;
-    height: 78px;
-    margin: 21px 25px 0;
+    height: 79px;
+    margin: 20px 24px 0;
   }
 
   .tabletM {
@@ -59,13 +59,13 @@
 
   .navigation-bar-wrapper {
     position: absolute;
-    border-radius: 27px 27px 0 0;
+    border-radius: 33px 33px 0 0;
     background-color: #ffffff;
     top: 0;
 
     .status-bar {
       height: 24px;
-      margin: 0 10px;
+      margin: 0 15px;
       .status-bar-icon {
 
       }

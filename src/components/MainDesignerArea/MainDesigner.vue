@@ -43,7 +43,7 @@ export default {
   .designer-smartPhone {
     height: 626px;
     //margin: 0 24px 0 21px;
-    margin: 0 25px 0 25px;
+    margin: 0 26px 0 24px;
   }
 
   .designer-tabletM {

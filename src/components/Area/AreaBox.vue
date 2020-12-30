@@ -120,7 +120,7 @@ export default {
 //--------------------------------------
 .dews-box-wrap {
   //box design
-  max-width: 1033px;
+  max-width: 1050px;
   min-height: 72px;
   padding: 10px;
 

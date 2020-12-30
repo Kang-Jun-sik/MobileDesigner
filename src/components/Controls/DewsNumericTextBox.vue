@@ -47,7 +47,7 @@ export default {
     }
   },
   created() {
-    this.uid = CreateService.addComponent('dews-numerictextbox');
+    this.uid = CreateService.createUid('dews-numerictextbox');
   },
   methods: {
     focusIn() {},

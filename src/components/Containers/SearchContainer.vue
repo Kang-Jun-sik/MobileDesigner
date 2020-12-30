@@ -94,6 +94,7 @@ export default {
 
 .dews-search-field{
   @include form-field();
+  padding: 0 17px 0;
 
   :host([col='2']) & {
     @include form-field(2);

@@ -30,15 +30,15 @@
           maskbox: 'Mask Text Box',
           dropdownButton: 'Dropdown Button',
           dropdownList: 'Dropdown List',
-          calendar: 'Calendar',
-          editor: 'Editor',
           datePicker: 'Date Picker',
           periodPicker: 'Period Picker',
           timePicker: "Time Picker",
           zipcodePicker: 'Zip code Picker',
+          complex: 'Complex Control',
+          calendar: 'Calendar',
+          editor: 'Editor',
           file: 'File/Multi File',
           chart: 'Chart',
-          complex: 'Complex Control',
           map: 'Map'
         },
       }
