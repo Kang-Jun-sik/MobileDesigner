@@ -1,7 +1,11 @@
 <template>
   <div :uid="uid" class="dews-button-group">
     <ul class="button-group-wrap">
-      <li><dews-button></dews-button></li>
+      <li>
+        <dews-button></dews-button>
+        <dews-button></dews-button>
+        <dews-button></dews-button>
+      </li>
     </ul>
   </div>
 </template>

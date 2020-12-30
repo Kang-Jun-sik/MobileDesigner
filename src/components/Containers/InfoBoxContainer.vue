@@ -1,6 +1,7 @@
 <template>
-  <div :uid="uid" class="dews-container-infobox">
+  <div :uid="uid" class="dews-mobile-infoContainer dews-container-infobox">
     <p class="info-text">
+      <!-- Test를 위해 value값에 TestValue 바인딩 -->
       {{ value }}
     </p>
   </div>
@@ -14,7 +15,7 @@ export default {
   data() {
     return {
       uid: '',
-      value: '',
+      value: 'TestValue',
       type: 'basic',
     }
   },

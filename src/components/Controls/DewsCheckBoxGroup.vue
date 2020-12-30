@@ -8,6 +8,9 @@
       <span class="group-item">
         <dews-checkbox></dews-checkbox>
       </span>
+      <span class="group-item">
+        <dews-checkbox></dews-checkbox>
+      </span>
     </div>
   </div>
 </template>

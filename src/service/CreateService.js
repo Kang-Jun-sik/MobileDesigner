@@ -11,6 +11,7 @@ import AreaBox from "@/components/Area/AreaBox";
 import AreaTabs from "@/components/Area/tab/AreaTabs";
 import SearchContainer from "@/components/Containers/SearchContainer";
 import FormContainer from "@/components/Containers/FormContainer";
+import InfoBoxContainer from "@/components/Containers/InfoBoxContainer";
 import TextBox from "@/components/Controls/DewsTextBox";
 import CheckBox from "@/components/Controls/DewsCheckBox";
 import RadioButton from "@/components/Controls/DewsRadioButton";
@@ -89,6 +90,9 @@ export default {
                 break;
             case 'FormContainer':
                 component = Vue.extend(FormContainer);
+                break;
+            case 'InfoBoxContainer':
+                component = Vue.extend(InfoBoxContainer);
                 break;
             case 'Button':
                 component = Vue.extend(Button);

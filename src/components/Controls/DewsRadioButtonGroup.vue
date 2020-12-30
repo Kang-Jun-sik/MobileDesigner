@@ -8,6 +8,9 @@
       <span class="group-item">
         <dews-radiobutton></dews-radiobutton>
       </span>
+      <span class="group-item">
+        <dews-radiobutton></dews-radiobutton>
+      </span>
     </div>
   </div>
 </template>
