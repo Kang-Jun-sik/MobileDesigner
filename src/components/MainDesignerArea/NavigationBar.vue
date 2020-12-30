@@ -39,10 +39,6 @@
 </script>
 
 <style lang="scss" scoped>
-  div {
-    padding: 0;
-  }
-
   .smartPhone {
     width: 430px;
     height: 78px;

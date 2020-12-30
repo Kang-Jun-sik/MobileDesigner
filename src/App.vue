@@ -18,7 +18,7 @@
     max-width: 1360px;
     //max-width: 1272px;
     min-height: 852px;
-    padding: 0;
+    //padding: 0;
     overflow: auto;
   }
 </style>

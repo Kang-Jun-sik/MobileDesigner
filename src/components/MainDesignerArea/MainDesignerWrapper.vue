@@ -35,10 +35,6 @@ export default {
 </script>
 
 <style lang="scss">
-  div {
-    padding: 0;
-  }
-
   .top-main-designer-wrapper {
     padding-left: 160px !important;
   }
