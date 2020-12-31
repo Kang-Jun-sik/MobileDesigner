@@ -149,10 +149,10 @@ body {
 
 // vue 제외된 dews-mobile-style
 .form-field {
-  display: flex;
-  overflow: hidden;
-  flex-wrap: wrap;
+  @include clearfix();
 
+  display: flex;
+  flex-wrap: wrap;
   li {
     float: left;
     width: 100%;
