@@ -1,5 +1,5 @@
 <template>
-  <div :uid="uid" class="dews-mobile-textbox textbox-wrap">
+  <div :uid="uid" class="dews-mobile-textbox dews-mobile-component textbox-wrap">
     <label :for="id">{{ title }}</label>
     <textarea :id="id" @click="onClick($event)" @change="onChange($event)"
       type="text" :value="value" :placeholder="placeholder"
