@@ -16,4 +16,8 @@ export default {
             }
         });
     },
+
+    checkComplex(component) {
+        return component.closest('.dews-mobile-complex');
+    },
 }

@@ -1,5 +1,5 @@
 <template>
-  <div :uid="uid" class="dews-mobile-dropdownList dropdown-list-wrap">
+  <div :uid="uid" class="dews-mobile-dropdownList dropdown-list-wrap" ref="dropdownList">
     <label>{{ title }}</label>
     <span class="select-wrap">
       <span class="select-shape">
@@ -17,6 +17,7 @@
 
 <script>
 import CreateService from "@/service/CreateService";
+import GlobalService from "@/service/GlobalService";
 
 export default {
   name: 'dews-dropdownlist',
@@ -35,6 +36,9 @@ export default {
   },
   created() {
     this.uid = CreateService.createUid('dews-dropdownlist');
+  },
+  mounted() {
+    this.title = GlobalService.checkComplex(this.$refs.dropdownList) ? '' : this.title;
   },
   methods: {
   }
