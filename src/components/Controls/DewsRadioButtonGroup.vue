@@ -38,5 +38,14 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import 'node_modules/@dews/dews-mobile-style/scss/variables/variables';
+@import 'node_modules/@dews/dews-mobile-style/scss/mixins/_mixins';
+
+//======================================
+// dews-radio-group
+//======================================
+.dews-radio-group-wrap {
+  @include radio-group-wrap();
+}
 
 </style>

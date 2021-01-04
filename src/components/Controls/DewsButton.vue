@@ -73,4 +73,19 @@ export default {
 @import 'node_modules/@dews/dews-mobile-style/scss/variables/variables';
 @import 'node_modules/@dews/dews-mobile-style/scss/mixins/_mixins';
 @include dews-button();
+
+.group{
+  flex: 1 1 auto;
+  margin-right: 8px;
+  .dews-button:not(.icon) {
+    height: 100%;
+  }
+
+  &:last-child {
+    margin-right: 0;
+  }
+  &.icon {
+    flex: 0 0 0;
+  }
+}
 </style>
