@@ -18,10 +18,15 @@ import RadioButton from "@/components/Controls/DewsRadioButton";
 import NumericTextBox from "@/components/Controls/DewsNumericTextBox";
 import MaskTextBox from "@/components/Controls/DewsMaskTextBox";
 import DatePicker from "@/components/Controls/DewsDatePicker";
-import PeriodPicker from "@/components/Controls/DewsPeriodPicker";
+import MonthPicker from "@/components/Controls/DewsMonthPicker";
 import TimePicker from "@/components/Controls/DewsTimePicker";
+import PeriodPicker from "@/components/Controls/DewsPeriodPicker";
 import DropdownButton from "@/components/Controls/dropdownbutton/DewsDropdownbutton";
 import DropdownList from "@/components/Controls/dropdownlist/DewsDropdownlist";
+import Complex from "@/components/Controls/DewsComplex";
+import ButtonGroup from "@/components/Controls/DewsButtonGroup";
+import RadioButtonGroup from "@/components/Controls/DewsRadioButtonGroup";
+import CheckBoxGroup from "@/components/Controls/DewsCheckBoxGroup";
 
 export default {
     createFromIDE(args) {
@@ -115,17 +120,32 @@ export default {
             case 'DatePicker':
                 component = Vue.extend(DatePicker);
                 break;
-            case 'PeriodPicker':
-                component = Vue.extend(PeriodPicker);
+            case 'MonthPicker':
+                component = Vue.extend(MonthPicker);
                 break;
             case 'TimePicker':
                 component = Vue.extend(TimePicker);
+                break;
+            case 'PeriodPicker':
+                component = Vue.extend(PeriodPicker);
                 break;
             case 'DropdownButton':
                 component = Vue.extend(DropdownButton);
                 break;
             case 'DropdownList':
                 component = Vue.extend(DropdownList);
+                break;
+            case 'ComplexControl':
+                component = Vue.extend(Complex);
+                break;
+            case 'ButtonGroup':
+                component = Vue.extend(ButtonGroup);
+                break;
+            case 'RadioGroup':
+                component = Vue.extend(RadioButtonGroup);
+                break;
+            case 'CheckBoxGroup':
+                component = Vue.extend(CheckBoxGroup);
                 break;
         }
         component = new component();

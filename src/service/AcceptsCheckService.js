@@ -21,12 +21,18 @@ const componentAcceptsCheck = (component, target) => {
         "dews-mobile-maskbox": ["search-container-field", "form-container-field"],
         "dews-mobile-numeric": ["search-container-field", "form-container-field"],
 
+        "dews-mobile-buttonGroup": ["search-container-field", "form-container-field"],
+        "dews-mobile-radioGroup": ["search-container-field", "form-container-field"],
+        "dews-mobile-checkboxGroup": ["search-container-field", "form-container-field"],
+
         "dews-mobile-datePicker": ["search-container-field", "form-container-field"],
         "dews-mobile-periodPicker": ["search-container-field", "form-container-field"],
+        "dews-mobile-monthPicker": ["search-container-field", "form-container-field"],
         "dews-mobile-timePicker": ["search-container-field", "form-container-field"],
 
         "dews-mobile-dropdownButton": ["search-container-field", "form-container-field"],
         "dews-mobile-dropdownList": ["search-container-field", "form-container-field"],
+        "dews-mobile-complex": ["search-container-field", "form-container-field"],
     }
 
     return componentInformation[checkedComponent].includes(dropTarget);

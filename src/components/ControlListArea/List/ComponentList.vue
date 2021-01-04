@@ -23,16 +23,20 @@
       return {
         mobileComponent: {
           button: 'Button',
-          textbox: 'Text Box',
-          checkbox: "Check Box",
+          buttonGroup: 'Button Group',
           radiobutton: 'Radio Button',
-          numeric: 'Numeric Text Box',
+          radioGroup: 'Radio Group',
+          checkbox: "Check Box",
+          checkboxGroup: "Check Box Group",
+          textbox: 'Text Box',
           maskbox: 'Mask Text Box',
-          dropdownButton: 'Dropdown Button',
+          numeric: 'Numeric Text Box',
           dropdownList: 'Dropdown List',
+          dropdownButton: 'Dropdown Button',
           datePicker: 'Date Picker',
+          monthPicker: 'Month Picker',
+          timePicker: 'Time Picker',
           periodPicker: 'Period Picker',
-          timePicker: "Time Picker",
           zipcodePicker: 'Zip code Picker',
           complex: 'Complex Control',
           calendar: 'Calendar',
@@ -169,6 +173,10 @@
 
         .componentList-datePicker {
           background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAItJREFUOBFjYKAm8A9JeUDIPHQ1jCANfqGpF4AMfUKa0eQvbFw925AJJEiGZpA2AxABNgDEoAj4h6b+J9UAmB6KXUC0ASAbYbYiu5ZoA5A1IbNZkDn42MAoA0c5uhq8LkB2NjIb2RC8BiArxMvGFjh4NQAlYXoodgE4EIGp6CLMREI2w+RBemBsimgACdMlOFB58D4AAAAASUVORK5CYII=');
+        }
+
+        .componentList-monthPicker {
+          background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAIlJREFUOBFjYKAm8A9JeUDIPHQ1jCANfqGpF4AMfUKa0eQvbFw925AJJEiGZpA2AxABNgDEoAj4h6b+J9UAmB6KXYBhAMhkmOm42MiuxTAAWZJoNsxGojUAFcL0sKBrgkmgi8P4wLgHpx0Yn2IvYLgA3QaYTbho6rgAmIouEvI7ugtAetDFyOIDAPL+KToH34IpAAAAAElFTkSuQmCC');
         }
 
         .componentList-periodPicker {

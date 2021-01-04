@@ -1,5 +1,5 @@
 <template>
-  <div :uid="uid" class="dews-radio-group-wrap">
+  <div :uid="uid" class="dews-mobile-radioGroup dews-radio-group-wrap">
     <span class="radio-group-label">{{ title }}</span>
     <div class="radio-group" :class="align">
       <span class="group-item">

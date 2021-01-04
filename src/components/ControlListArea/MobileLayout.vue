@@ -53,8 +53,8 @@ export default {
       // 선택된 아이템에 대해 리사이즈 핸들러 객체 삭제후 재등록
       if (window.selectedItem) {
         if (window.selectedItem.classList.contains('main-designer')) return;
-        ResizeService.destoryResizable(window.selectedItem);
-        ResizeService.canResize(window.selectedItem);
+        // ResizeService.destoryResizable(window.selectedItem);
+        // ResizeService.canResize(window.selectedItem);
         setTimeout(ResizeService.setPosition, 500, window.selectedItem);
       }
     }

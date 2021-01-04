@@ -1,5 +1,5 @@
 <template>
-  <div :uid="uid" class="dews-complex">
+  <div :uid="uid" class="dews-mobile-complex dews-complex">
     <label>{{ title }}</label>
     <ul class="complex-wrap">
       <li class="complex-line">

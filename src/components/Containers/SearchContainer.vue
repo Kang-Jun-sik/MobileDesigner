@@ -13,11 +13,6 @@
 
     <div class="dews-search-field">
       <ul :muid="muid" class="search-container-field form-field" ref="searchContainerField">
-        <li><dews-monthpicker></dews-monthpicker></li>
-        <li><dews-checkbox-group></dews-checkbox-group></li>
-        <li><dews-radiobutton-group></dews-radiobutton-group></li>
-        <li><dews-button-group></dews-button-group></li>
-        <li><dews-complex></dews-complex></li>
       </ul>
     </div>
   </div>
@@ -26,15 +21,9 @@
 <script>
 import store from "@/store/index";
 import CreateService from "@/service/CreateService";
-import DewsMonthpicker from "@/components/Controls/DewsMonthPicker";
-import DewsCheckboxGroup from "@/components/Controls/DewsCheckBoxGroup";
-import DewsRadiobuttonGroup from "@/components/Controls/DewsRadioButtonGroup";
-import DewsButtonGroup from "@/components/Controls/DewsButtonGroup";
-import DewsComplex from "@/components/Controls/DewsComplex";
 
 export default {
   name: 'dews-search-container',
-  components: {DewsComplex, DewsButtonGroup, DewsRadiobuttonGroup, DewsCheckboxGroup, DewsMonthpicker},
   uid: '',
   data() {
     return {
