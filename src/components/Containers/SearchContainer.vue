@@ -13,18 +13,11 @@
 
     <div class="dews-search-field">
       <ul :muid="muid" class="search-container-field form-field" ref="searchContainerField">
-<!--        <li><dews-textbox></dews-textbox></li>-->
-<!--        <li><dews-checkbox></dews-checkbox></li>-->
-<!--        <li><dews-radiobutton></dews-radiobutton></li>-->
-
-<!--        <li><dews-button></dews-button></li>-->
-<!--        <li><dews-dropdownbutton></dews-dropdownbutton></li>-->
-<!--        <li><dews-dropdownlist></dews-dropdownlist></li>-->
-<!--        <li><dews-maskbox></dews-maskbox></li>-->
-<!--        <li><dews-numerictextbox></dews-numerictextbox></li>-->
-<!--        <li><dews-periodpicker></dews-periodpicker></li>-->
-<!--        <li><dews-timepicker></dews-timepicker></li>-->
-<!--        <li><dews-datepicker></dews-datepicker></li>-->
+        <li><dews-monthpicker></dews-monthpicker></li>
+        <li><dews-checkbox-group></dews-checkbox-group></li>
+        <li><dews-radiobutton-group></dews-radiobutton-group></li>
+        <li><dews-button-group></dews-button-group></li>
+        <li><dews-complex></dews-complex></li>
       </ul>
     </div>
   </div>
@@ -33,25 +26,15 @@
 <script>
 import store from "@/store/index";
 import CreateService from "@/service/CreateService";
-import DewsTextbox from "@/components/Controls/DewsTextBox";
-import DewsCheckbox from "@/components/Controls/DewsCheckBox";
-import DewsRadiobutton from "@/components/Controls/DewsRadioButton";
-import DewsButton from "@/components/Controls/DewsButton";
-import DewsPeriodpicker from "@/components/Controls/DewsPeriodPicker";
-import DewsMaskbox from "@/components/Controls/DewsMaskTextBox";
-import DewsNumerictextbox from "@/components/Controls/DewsNumericTextBox";
-import DewsTimepicker from "@/components/Controls/DewsTimePicker";
-import DewsDropdownbutton from "@/components/Controls/dropdownbutton/DewsDropdownbutton";
-import DewsDropdownlist from "@/components/Controls/dropdownlist/DewsDropdownlist";
-import DewsDatepicker from "@/components/Controls/DewsDatePicker";
+import DewsMonthpicker from "@/components/Controls/DewsMonthPicker";
+import DewsCheckboxGroup from "@/components/Controls/DewsCheckBoxGroup";
+import DewsRadiobuttonGroup from "@/components/Controls/DewsRadioButtonGroup";
+import DewsButtonGroup from "@/components/Controls/DewsButtonGroup";
+import DewsComplex from "@/components/Controls/DewsComplex";
 
 export default {
   name: 'dews-search-container',
-  // components: {
-  //   DewsDatepicker,
-  //   DewsCheckbox, DewsRadiobutton, DewsTextbox,
-  //   DewsButton, DewsDropdownlist,
-  //   DewsDropdownbutton, DewsTimepicker, DewsNumerictextbox, DewsMaskbox, DewsPeriodpicker},
+  components: {DewsComplex, DewsButtonGroup, DewsRadiobuttonGroup, DewsCheckboxGroup, DewsMonthpicker},
   uid: '',
   data() {
     return {

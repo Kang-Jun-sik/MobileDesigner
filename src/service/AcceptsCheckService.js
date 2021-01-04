@@ -12,6 +12,7 @@ const componentAcceptsCheck = (component, target) => {
         "dews-mobile-searchContainer": ["dews-box-content"],
         "dews-mobile-listContainer": ["dews-box-content"],
         "dews-mobile-formContainer": ["dews-box-content"],
+        "dews-mobile-infoContainer": ["dews-box-content"],
 
         "dews-mobile-button": ["search-container-field", "form-container-field"],
         "dews-mobile-textbox": ["search-container-field", "form-container-field"],

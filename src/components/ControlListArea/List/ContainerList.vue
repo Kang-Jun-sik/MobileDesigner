@@ -25,7 +25,7 @@
           searchContainer: 'Search Container',
           listContainer: 'List Container',
           formContainer: 'Form Container',
-          infoBoxContainer: 'InfoBox Container'
+          infoContainer: 'InfoBox Container'
         },
       }
     },
@@ -126,7 +126,7 @@
           background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAEKADAAQAAAABAAAAEAAAAAAXnVPIAAAAo0lEQVQ4Ea1TwQ2AIAwEwnz60QmMQ7iADuEIvlxQtCZnro2QYOTTo727tgn4phtm78PkKk8SfjoW1/TjjSv1N729tMF/UZImElZQ3FWCLvu2Pn2VAUQgIJLWgYNcAPga1QS2o+321kQZMMGacY3xvyuwc2l8nk6tABEIiCXjf1ewHTERT2CxWoGL1oxrjEP2vTIrg0Ub5UvKj3wed4b8lk6X9gS/lzfIR3t2BwAAAABJRU5ErkJggg==');
         }
 
-        .containerList-infoBoxContainer {
+        .containerList-infoContainer {
           background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAEKADAAQAAAABAAAAEAAAAAAXnVPIAAABdElEQVQ4EZ1TwUoDMRCdyWbtfxRa6s0fEBQPYguVRb1pKZZ+g6hn9R/cWrAnZVHblbaUXvXqvYL+R93djJnFXZIehDYw5M3kvclkkmD9sHWNKM5hyUHMJ3UD9aN2ipfUp/R9rRW4itLQSAPn0PPa5cShC0DY5SARjJ1YXPX7t1856Q+IxUDNO1lXkoagyIc5bKSGqqtcNa16jfIi30rAOzuyEA6CTil8vnuHAj7iGjy8Bt23MOgUXVmY1A5Oi2YSK0EidNkJNU0CIeZtUnHcdNC5NNftHgh95jmeZYQw8LcyzHMiaeYS7JkxqwJzgTFfE9ti3PStBNxtclTJJJhYRLKiiEZmzDoCX5VycaoJVqMygXChFye0mfk8I5c4CPy8UVV9E1LCJIK4iUAzJgmSFQeh9xNF2+P+ff4W0pfIBHOMXvzPRCU7LsmGS+4HmyA4jvTOpjjTWEfIgsOn7rfGrcz/b9bJVx+slfwl+UfmTVgiH2ntLx3VjLOS1LfoAAAAAElFTkSuQmCC');
         }
       }
