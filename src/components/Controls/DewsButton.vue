@@ -66,7 +66,6 @@ export default {
   created() {
     this.uid = CreateService.createUid('dews-button');
     this.group = this.isGroup ? this.isGroup : false;
-    console.log(this, this.group)
   },
   methods: {}
 }

@@ -1,9 +1,15 @@
 <template>
   <div :uid="uid" class="dews-mobile-textbox dews-mobile-component textbox-wrap">
     <label :for="id">{{ title }}</label>
-    <input :id="id" @click="onClick($event)" @change="onChange($event)"
+    <input v-if="!multi" :id="id" @click="onClick($event)" @change="onChange($event)"
      type="text" :value="value" :placeholder="placeholder"
      :required="required" :disabled="disabled" :readonly="readonly" ref="textBox">
+
+    <textarea v-else :id="id" @click="onClick($event)" @change="onChange($event)"
+      type="text" :value="value" :placeholder="placeholder"
+      :required="required" :disabled="disabled" :readonly="readonly" ref="textArea">
+    </textarea>
+
   </div>
 </template>
 
@@ -32,9 +38,7 @@ export default {
   mounted() {
   },
   methods: {
-    onClick(e) {
-      this.$refs.textBox.focus();
-    },
+    onClick(e) {},
     onChange(e) {
       e.stopPropagation();
       this.value = e.target.value;
