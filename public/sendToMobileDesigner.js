@@ -28,6 +28,7 @@
                 window.services.get("undoredoService").call(this, args);
                 break;
             case 'PASTE' :
+                window.services.get("pasteFromIDE").call(this, args);
                 break;
         }
     }
