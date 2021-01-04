@@ -11,6 +11,7 @@ import CreateService from "@/service/CreateService";
 
 export default {
   name: 'dews-button',
+  props: ['isGroup'],
   data() {
     return {
       uid: '',
@@ -64,6 +65,8 @@ export default {
   },
   created() {
     this.uid = CreateService.createUid('dews-button');
+    this.group = this.isGroup ? this.isGroup : false;
+    console.log(this, this.group)
   },
   methods: {}
 }
