@@ -65,12 +65,14 @@ export default {
     //undo 수행
     undoExecute() {
         //가장 Top에 있는 undoItem을 얻어온다.
+        /*
         let undoItem = store.state.component.undoItems.pop();
         if (undoItem){
             store.commit('addRedoItem', undoItem); //redo stack에 추가
             UndoRedoService.undoAction(undoItem);
         }
         console.log('undo Service execute');
+         */
     },
 
     //redo 수행
