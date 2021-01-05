@@ -37,12 +37,12 @@
   }
   .title {
     font-size: 12px;
+    font-weight: 500;
     color: #000000;
   }
 
   @include dews-control-list-icon();
 }
-
 
 
 
