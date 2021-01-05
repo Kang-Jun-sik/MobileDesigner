@@ -1,5 +1,5 @@
 <template>
-  <div :uid="uid" class="dews-mobile-box dews-mobile-component dews-box-wrap" ref="box">
+  <div :uid="uid" class="dews-mobile-box dews-mobile-component dews-box-wrap dews-area" ref="box">
     <div class="dews-box-title" @click="onToggleClick($event)" :collapsed="collapsed">
       <h2><button class="dews-box-title-button" type="button">{{ title }}</button></h2>
     </div>

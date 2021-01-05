@@ -1,5 +1,5 @@
 <template>
-  <div :uid="uid" class="dews-mobile-listContainer">
+  <div :uid="uid" class="dews-mobile-listContainer dews-container">
     <div class="dews-container-option-control">
       <h3 class="option-sub-title" v-if="title">{{ title }}</h3>
 
@@ -20,7 +20,7 @@
 </template>
 
 <script>
-import GlobalService from "@/service/GlobalService";
+import CreateService from "@/service/CreateService";
 
 export default {
   name: 'dews-list-container',
@@ -33,7 +33,7 @@ export default {
     }
   },
   created() {
-    this.uid = GlobalService.createUid('dews-list-container');
+    this.uid = CreateService.createUid('dews-list-container');
   }
 }
 </script>

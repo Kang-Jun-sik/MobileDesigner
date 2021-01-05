@@ -10,6 +10,7 @@ import AreaItem from "@/components/Area/AreaItem";
 import AreaBox from "@/components/Area/AreaBox";
 import AreaTabs from "@/components/Area/tab/AreaTabs";
 import SearchContainer from "@/components/Containers/SearchContainer";
+import ListContainer from "@/components/Containers/ListContainer";
 import FormContainer from "@/components/Containers/FormContainer";
 import InfoBoxContainer from "@/components/Containers/InfoBoxContainer";
 import TextBox from "@/components/Controls/DewsTextBox";
@@ -92,6 +93,9 @@ export default {
                 break;
             case 'SearchContainer':
                 component = Vue.extend(SearchContainer);
+                break;
+            case 'ListContainer':
+                component = Vue.extend(ListContainer);
                 break;
             case 'FormContainer':
                 component = Vue.extend(FormContainer);

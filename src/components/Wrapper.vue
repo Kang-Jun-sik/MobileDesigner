@@ -32,6 +32,10 @@ export default {
         return ['areaList', 'containerList', 'componentList', 'etcList'].includes(source.id);
       },
       accepts: function (el, target, source) {
+        if (target.classList.contains('dews-box-content') && target.querySelector('.dews-container')) {
+          return;
+        }
+
         return componentAcceptsCheck(el, target);
       }
     })
@@ -58,7 +62,7 @@ export default {
   methods: {
     /*
     * 드롭할 때, 컴포넌트 호출 및 $el로 replace 처리
-    **/
+    * */
     drop(element, target) {
       if (!element.classList.contains('dews-control-list')) return
 
