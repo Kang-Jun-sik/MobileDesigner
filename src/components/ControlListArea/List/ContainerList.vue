@@ -1,16 +1,16 @@
 <template>
-  <div class="dews-containerList-wrapper">
-    <div class="containerList-header" v-b-toggle.containerList role="tab">
-      <div class="containerList-header-title">Container</div>
-      <div class="containerList-header-arrow"></div>
+  <div class="control-list-warpper dews-containerList-wrapper">
+    <div class="control-header containerList-header" v-b-toggle.containerList role="tab">
+      <div class="header-title containerList-header-title">Container</div>
+      <div class="header-arrow containerList-header-arrow"></div>
     </div>
-    <b-collapse id="containerList" class="containerList-content" accordion="dews-control" role="tabpanel">
+    <b-collapse id="containerList" class="control-content containerList-content" accordion="dews-control" role="tabpanel">
       <div v-for="(name, key, idx) in mobileContainer" :key="idx"
            :class="'dews-mobile-' + key"
            class="dews-control-list containerList-content-box"
       >
-        <div :class="'containerList-' + key" class="containerList-content-icon"></div>
-        <div class="containerList-content-title">{{ name }}</div>
+        <div :class="'containerList-' + key" class="icon containerList-content-icon"></div>
+        <div class="title containerList-content-title">{{ name }}</div>
       </div>
     </b-collapse>
   </div>
@@ -40,96 +40,96 @@
 </script>
 
 <style lang="scss" scoped>
-  .dews-containerList-wrapper {
-    margin-bottom: 1px;
-    .containerList-header {
-      width: 150px;
-      height: 30px;
-      background-color: #bfccdd;
-
-      .containerList-header-title {
-        display: inline-block;
-        height: 19px;
-        font-size: 15px;
-        font-weight: bold;
-        line-height: 1.62;
-        text-align: left;
-        color: #4f5565;
-        margin: 1px 7px;
-      }
-      .containerList-header-arrow {
-        display: inline-block;
-        float: right;
-        margin: 5px auto;
-        width: 16px;
-        height: 16px;
-        object-fit: contain;
-        background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgdmlld0JveD0iMCAwIDE2IDE2Ij4KICAgIDxnPgogICAgICAgIDxwYXRoIGZpbGw9IiM0ZjU1NjUiIGQ9Ik0zLjY0Ni4zNTRhLjUuNSAwIDAgMSAuNzA3IDBsMi43OTMgMi43OTJBLjUuNSAwIDAgMSA2Ljc5MyA0SDEuMjA3YS41LjUgMCAwIDEtLjM1NC0uODU0eiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTM5MSAtMTQ1KSByb3RhdGUoMTgwIDIwMS41IDc3LjUpIi8+CiAgICA8L2c+Cjwvc3ZnPgo=');
-      }
-      &.not-collapsed {
-        .containerList-header-arrow {
-          background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAEKADAAQAAAABAAAAEAAAAAAXnVPIAAAAW0lEQVQ4EWNgGAWDPAT8QlMn+IWk9ONzJjMuSaDGBYyMjOlAbKGhbaxw89q5jdjUYjUAqjkeSYMBLkMYkRSBmQGhqQb/GRjOo4uD+EDFhhtWz76ATW5UbCBDAAAP0hVgqGYaXgAAAABJRU5ErkJggg==');
-        }
-      }
-      &:hover {
-        background-color: #a4b7d1;
-      }
-    }
-    .containerList-content {
-      .containerList-content-box {
-        margin: 4px auto;
-        width: 135px;
-        height: 30px;
-        border: 1px solid transparent;
-        border-radius: 4px;
-        background-color: #ffffff;
-
-
-        &:hover:not(:active) {
-          border: 1px solid #c7d6e8;
-          background-color: #e2e9f2;
-          .containerList-content-title {
-            color: #819fc9;
-          }
-        }
-        &:active {
-          border:1px solid #acc0d8;
-          background-color: #c7d6e8;
-        }
-
-        .containerList-content-title {
-          display: inline-block;
-          height: 19px;
-          font-size: 12px;
-          font-weight: 600;
-          line-height: 1.62;
-          color: #000000;
-        }
-
-        .containerList-content-icon {
-          display: inline-block;
-          width: 16px;
-          height: 16px;
-          object-fit: contain;
-          margin: -3px 5px;
-        }
-
-        .containerList-searchContainer {
-          background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAEKADAAQAAAABAAAAEAAAAAAXnVPIAAABMklEQVQ4EZ1TMU7DQBC8vZxreELyA/gBfMBckfQgiESXUNJBAyUukaBIaigs5QPhBZgf+AkpI3HxMmvF1nGXxj7J8mhnZ7w71lE6vn4i0veq42Hp5+pZpZNpjTvq6/YLaDX1UXoa7eFe0BxSWXs75GT3Au5kzxf0O7jL89cy7I8mqMXGfVfMXxCdy8PMPzAshAsNogkq4zKk+rj6fM+85od0fKMYHGrWq6toAiI6Gzi38JsEa2cWCLxZqaUjg5aJwHajiI7DcmSAfdc7Yy7DxsqYObg8rEcZYNS5BIadj4CXSm03EM8w/gzBXoUG0QTyq5C87HqK0NacJCXwSMSaKLOT6b8cognkC/v/bQX7B+ISRlIvmvpBg4YM3/nHmwhbsfC6902CWLRGrqTcSITU+TC0fxIEc8/S8pUbAAAAAElFTkSuQmCC');
-        }
-
-        .containerList-listContainer {
-          background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAEKADAAQAAAABAAAAEAAAAAAXnVPIAAAAhElEQVQ4EWP0C0luY2RkqmQgEfwHqf//r53BLzQVzCZRP1i5P1AvEyM5OpH0sCCxGUAmIvNxsTeung23F8UAkAZkSWwGoFvChE0RKWIYLkC3gZBhGAaMeoFQkGHKYwQiRbFAKAYw7WdgYCIq7WLTCRQD6WUBZUlQjoQnbhyKsQn/B+oFABhNK+i0PW3WAAAAAElFTkSuQmCC');
-        }
-
-        .containerList-formContainer {
-          background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAEKADAAQAAAABAAAAEAAAAAAXnVPIAAAAo0lEQVQ4Ea1TwQ2AIAwEwnz60QmMQ7iADuEIvlxQtCZnro2QYOTTo727tgn4phtm78PkKk8SfjoW1/TjjSv1N729tMF/UZImElZQ3FWCLvu2Pn2VAUQgIJLWgYNcAPga1QS2o+321kQZMMGacY3xvyuwc2l8nk6tABEIiCXjf1ewHTERT2CxWoGL1oxrjEP2vTIrg0Ub5UvKj3wed4b8lk6X9gS/lzfIR3t2BwAAAABJRU5ErkJggg==');
-        }
-
-        .containerList-infoContainer {
-          background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAEKADAAQAAAABAAAAEAAAAAAXnVPIAAABdElEQVQ4EZ1TwUoDMRCdyWbtfxRa6s0fEBQPYguVRb1pKZZ+g6hn9R/cWrAnZVHblbaUXvXqvYL+R93djJnFXZIehDYw5M3kvclkkmD9sHWNKM5hyUHMJ3UD9aN2ipfUp/R9rRW4itLQSAPn0PPa5cShC0DY5SARjJ1YXPX7t1856Q+IxUDNO1lXkoagyIc5bKSGqqtcNa16jfIi30rAOzuyEA6CTil8vnuHAj7iGjy8Bt23MOgUXVmY1A5Oi2YSK0EidNkJNU0CIeZtUnHcdNC5NNftHgh95jmeZYQw8LcyzHMiaeYS7JkxqwJzgTFfE9ti3PStBNxtclTJJJhYRLKiiEZmzDoCX5VycaoJVqMygXChFye0mfk8I5c4CPy8UVV9E1LCJIK4iUAzJgmSFQeh9xNF2+P+ff4W0pfIBHOMXvzPRCU7LsmGS+4HmyA4jvTOpjjTWEfIgsOn7rfGrcz/b9bJVx+slfwl+UfmTVgiH2ntLx3VjLOS1LfoAAAAAElFTkSuQmCC');
-        }
-      }
-    }
-  }
+  //.dews-containerList-wrapper {
+  //  margin-bottom: 1px;
+  //  .containerList-header {
+  //    width: 150px;
+  //    height: 30px;
+  //    background-color: #bfccdd;
+  //
+  //    .containerList-header-title {
+  //      display: inline-block;
+  //      height: 19px;
+  //      font-size: 15px;
+  //      font-weight: bold;
+  //      line-height: 1.62;
+  //      text-align: left;
+  //      color: #4f5565;
+  //      margin: 1px 7px;
+  //    }
+  //    .containerList-header-arrow {
+  //      display: inline-block;
+  //      float: right;
+  //      margin: 5px auto;
+  //      width: 16px;
+  //      height: 16px;
+  //      object-fit: contain;
+  //      background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgdmlld0JveD0iMCAwIDE2IDE2Ij4KICAgIDxnPgogICAgICAgIDxwYXRoIGZpbGw9IiM0ZjU1NjUiIGQ9Ik0zLjY0Ni4zNTRhLjUuNSAwIDAgMSAuNzA3IDBsMi43OTMgMi43OTJBLjUuNSAwIDAgMSA2Ljc5MyA0SDEuMjA3YS41LjUgMCAwIDEtLjM1NC0uODU0eiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTM5MSAtMTQ1KSByb3RhdGUoMTgwIDIwMS41IDc3LjUpIi8+CiAgICA8L2c+Cjwvc3ZnPgo=');
+  //    }
+  //    &.not-collapsed {
+  //      .containerList-header-arrow {
+  //        background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAEKADAAQAAAABAAAAEAAAAAAXnVPIAAAAW0lEQVQ4EWNgGAWDPAT8QlMn+IWk9ONzJjMuSaDGBYyMjOlAbKGhbaxw89q5jdjUYjUAqjkeSYMBLkMYkRSBmQGhqQb/GRjOo4uD+EDFhhtWz76ATW5UbCBDAAAP0hVgqGYaXgAAAABJRU5ErkJggg==');
+  //      }
+  //    }
+  //    &:hover {
+  //      background-color: #a4b7d1;
+  //    }
+  //  }
+  //  .containerList-content {
+  //    .containerList-content-box {
+  //      margin: 4px auto;
+  //      width: 135px;
+  //      height: 30px;
+  //      border: 1px solid transparent;
+  //      border-radius: 4px;
+  //      background-color: #ffffff;
+  //
+  //
+  //      &:hover:not(:active) {
+  //        border: 1px solid #c7d6e8;
+  //        background-color: #e2e9f2;
+  //        .containerList-content-title {
+  //          color: #819fc9;
+  //        }
+  //      }
+  //      &:active {
+  //        border:1px solid #acc0d8;
+  //        background-color: #c7d6e8;
+  //      }
+  //
+  //      .containerList-content-title {
+  //        display: inline-block;
+  //        height: 19px;
+  //        font-size: 12px;
+  //        font-weight: 600;
+  //        line-height: 1.62;
+  //        color: #000000;
+  //      }
+  //
+  //      .containerList-content-icon {
+  //        display: inline-block;
+  //        width: 16px;
+  //        height: 16px;
+  //        object-fit: contain;
+  //        margin: -3px 5px;
+  //      }
+  //
+  //      .containerList-searchContainer {
+  //        background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAEKADAAQAAAABAAAAEAAAAAAXnVPIAAABMklEQVQ4EZ1TMU7DQBC8vZxreELyA/gBfMBckfQgiESXUNJBAyUukaBIaigs5QPhBZgf+AkpI3HxMmvF1nGXxj7J8mhnZ7w71lE6vn4i0veq42Hp5+pZpZNpjTvq6/YLaDX1UXoa7eFe0BxSWXs75GT3Au5kzxf0O7jL89cy7I8mqMXGfVfMXxCdy8PMPzAshAsNogkq4zKk+rj6fM+85od0fKMYHGrWq6toAiI6Gzi38JsEa2cWCLxZqaUjg5aJwHajiI7DcmSAfdc7Yy7DxsqYObg8rEcZYNS5BIadj4CXSm03EM8w/gzBXoUG0QTyq5C87HqK0NacJCXwSMSaKLOT6b8cognkC/v/bQX7B+ISRlIvmvpBg4YM3/nHmwhbsfC6902CWLRGrqTcSITU+TC0fxIEc8/S8pUbAAAAAElFTkSuQmCC');
+  //      }
+  //
+  //      .containerList-listContainer {
+  //        background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAEKADAAQAAAABAAAAEAAAAAAXnVPIAAAAhElEQVQ4EWP0C0luY2RkqmQgEfwHqf//r53BLzQVzCZRP1i5P1AvEyM5OpH0sCCxGUAmIvNxsTeung23F8UAkAZkSWwGoFvChE0RKWIYLkC3gZBhGAaMeoFQkGHKYwQiRbFAKAYw7WdgYCIq7WLTCRQD6WUBZUlQjoQnbhyKsQn/B+oFABhNK+i0PW3WAAAAAElFTkSuQmCC');
+  //      }
+  //
+  //      .containerList-formContainer {
+  //        background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAEKADAAQAAAABAAAAEAAAAAAXnVPIAAAAo0lEQVQ4Ea1TwQ2AIAwEwnz60QmMQ7iADuEIvlxQtCZnro2QYOTTo727tgn4phtm78PkKk8SfjoW1/TjjSv1N729tMF/UZImElZQ3FWCLvu2Pn2VAUQgIJLWgYNcAPga1QS2o+321kQZMMGacY3xvyuwc2l8nk6tABEIiCXjf1ewHTERT2CxWoGL1oxrjEP2vTIrg0Ub5UvKj3wed4b8lk6X9gS/lzfIR3t2BwAAAABJRU5ErkJggg==');
+  //      }
+  //
+  //      .containerList-infoContainer {
+  //        background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAEKADAAQAAAABAAAAEAAAAAAXnVPIAAABdElEQVQ4EZ1TwUoDMRCdyWbtfxRa6s0fEBQPYguVRb1pKZZ+g6hn9R/cWrAnZVHblbaUXvXqvYL+R93djJnFXZIehDYw5M3kvclkkmD9sHWNKM5hyUHMJ3UD9aN2ipfUp/R9rRW4itLQSAPn0PPa5cShC0DY5SARjJ1YXPX7t1856Q+IxUDNO1lXkoagyIc5bKSGqqtcNa16jfIi30rAOzuyEA6CTil8vnuHAj7iGjy8Bt23MOgUXVmY1A5Oi2YSK0EidNkJNU0CIeZtUnHcdNC5NNftHgh95jmeZYQw8LcyzHMiaeYS7JkxqwJzgTFfE9ti3PStBNxtclTJJJhYRLKiiEZmzDoCX5VycaoJVqMygXChFye0mfk8I5c4CPy8UVV9E1LCJIK4iUAzJgmSFQeh9xNF2+P+ff4W0pfIBHOMXvzPRCU7LsmGS+4HmyA4jvTOpjjTWEfIgsOn7rfGrcz/b9bJVx+slfwl+UfmTVgiH2ntLx3VjLOS1LfoAAAAAElFTkSuQmCC');
+  //      }
+  //    }
+  //  }
+  //}
 </style>
