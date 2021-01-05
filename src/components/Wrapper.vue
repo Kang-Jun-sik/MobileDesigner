@@ -65,7 +65,7 @@ export default {
       const componentName = element.textContent.replace(/\s+/g, '');
       const component = CreateService.addComponent(componentName);
 
-      if (element.classList.contains('componentList-content-box') && target.classList.contains('form-field')) {
+      if (element.classList.contains('component-box') && target.classList.contains('form-field')) {
         const li = document.createElement('li');
         li.appendChild(component.$el);
         element.replaceWith(li);

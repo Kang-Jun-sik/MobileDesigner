@@ -1,16 +1,16 @@
 <template>
-  <div class="control-list-warpper dews-containerList-wrapper">
-    <div class="control-header containerList-header" v-b-toggle.containerList role="tab">
-      <div class="header-title containerList-header-title">Container</div>
-      <div class="header-arrow containerList-header-arrow"></div>
+  <div class="control-list-wrapper">
+    <div class="control-header" v-b-toggle.containerList role="tab">
+      <div class="header-title">Container</div>
+      <div class="header-arrow"></div>
     </div>
-    <b-collapse id="containerList" class="control-content containerList-content" accordion="dews-control" role="tabpanel">
+    <b-collapse id="containerList" class="control-content" accordion="dews-control" role="tabpanel">
       <div v-for="(name, key, idx) in mobileContainer" :key="idx"
            :class="'dews-mobile-' + key"
-           class="dews-control-list containerList-content-box"
+           class="dews-control-list"
       >
-        <div :class="'containerList-' + key" class="icon containerList-content-icon"></div>
-        <div class="title containerList-content-title">{{ name }}</div>
+        <div :class="'containerList-' + key" class="icon"></div>
+        <div class="title">{{ name }}</div>
       </div>
     </b-collapse>
   </div>

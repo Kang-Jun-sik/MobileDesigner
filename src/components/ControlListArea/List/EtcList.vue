@@ -1,5 +1,5 @@
 <template>
-  <div class="control-list-warpper dews-etcList-wrapper">
+  <div class="control-list-wrapper dews-etcList-wrapper">
     <div class="control-header etcList-header" v-b-toggle.etcList role="tab">
       <div class="header-title etcList-header-title">Etc</div>
       <div class="header-arrow etcList-header-arrow"></div>

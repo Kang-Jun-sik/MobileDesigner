@@ -108,6 +108,7 @@ input[type="text"] {
 // DFD용 scss 추가
 .form-field {
   min-height: 20px;
+  padding-bottom: 6px;
 }
 
 </style>
