@@ -69,12 +69,12 @@ export default {
             const selectedElement = document.querySelector('.user-selected');
             selectedElement.classList.remove('user-selected');
             // 이 전에 선택된 element resizable disabled 처리
-            $(`[uid=${selectedElement.getAttribute('uid')}]`).resizable({
-                disabled: true
-            })
+            // $(`[uid=${selectedElement.getAttribute('uid')}]`).resizable({
+            //     disabled: true
+            // })
         }
         SelectService.removeSelectHandler();
-        ResizeService.removeResizeHandler();
+        // ResizeService.removeResizeHandler();
 
         window.selectedItem = target;
         window.selectedItem.classList.add('user-selected');
@@ -98,6 +98,7 @@ export default {
     },
 
     showSelectHandler(element) {
+        console.log(element)
         const $element = element;
         const handles = ["n", "e", "s", "w", "ne", "se", "sw", "nw"];
 

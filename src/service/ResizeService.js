@@ -6,43 +6,44 @@ export default {
     /*
     * 컨트롤 리사이즈 (jQuery 라이브러리 사용)
     * */
-    canResize(element) {
-        //메인 디자이너의 경우 리사이즈 핸들러가 필요없음
-        if(element.classList.contains('main-designer')) return
-
-        const elementHandles = store.state.service.handles[element.classList[0]] ?
-            store.state.service.handles[element.classList[0]] : "";
-        const elementUid = element.getAttribute('uid');
-        const target = $(`[uid=${elementUid}]`);
-        $(target).resizable({
-            disabled: false,
-            alsoResize: ResizeService.alsoResizeTarget(target),
-            handles: elementHandles,
-            minWidth: parseInt(target.css('minWidth'), 10),
-            minHeight: parseInt(target.css('minHeight'), 10),
-            maxWidth: parseInt(target.css('maxWidth'), 10),
-            resize: function (e, ui) {
-                e.stopPropagation();
-                let dir = ui.element.data('ui-resizable').axis;
-                ResizeService.setPosition(element);
-            },
-            start: function (e, ui) {
-                e.stopPropagation();
-            },
-            stop: function (e, ui) {
-                e.stopPropagation();
-            },
-            create: function (e, ui) {
-                e.stopPropagation();
-            },
-        });
-        ResizeService.setPosition(element, element.offsetWidth, element.offsetHeight);
-    },
+    // canResize(element) {
+    //     //메인 디자이너의 경우 리사이즈 핸들러가 필요없음
+    //     if(element.classList.contains('main-designer')) return
+    //
+    //     const elementHandles = store.state.service.handles[element.classList[0]] ?
+    //         store.state.service.handles[element.classList[0]] : "";
+    //     const elementUid = element.getAttribute('uid');
+    //     const target = $(`[uid=${elementUid}]`);
+    //     $(target).resizable({
+    //         disabled: false,
+    //         alsoResize: ResizeService.alsoResizeTarget(target),
+    //         handles: elementHandles,
+    //         minWidth: parseInt(target.css('minWidth'), 10),
+    //         minHeight: parseInt(target.css('minHeight'), 10),
+    //         maxWidth: parseInt(target.css('maxWidth'), 10),
+    //         resize: function (e, ui) {
+    //             e.stopPropagation();
+    //             let dir = ui.element.data('ui-resizable').axis;
+    //             ResizeService.setPosition(element);
+    //         },
+    //         start: function (e, ui) {
+    //             e.stopPropagation();
+    //         },
+    //         stop: function (e, ui) {
+    //             e.stopPropagation();
+    //         },
+    //         create: function (e, ui) {
+    //             e.stopPropagation();
+    //         },
+    //     });
+    //     ResizeService.setPosition(element, element.offsetWidth, element.offsetHeight);
+    // },
 
     /*
     * Layout 변경 및 Box collapsed를 위한 resize handler 위치 css 수정
     * */
     setPosition(el) {
+        console.log('setPosition', el)
         let width = el.offsetWidth;
         let height = el.offsetHeight;
         $('.handle-n').css('left', (width / 2 - 4) + 'px');
