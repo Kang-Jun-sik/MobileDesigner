@@ -14,7 +14,7 @@ import ControlListWrapper from "@/components/ControlListArea/ControlListWrapper"
 import componentAcceptsCheck from "@/service/AcceptsCheckService";
 import CreateService from "@/service/CreateService";
 import ContextMenuService from "@/service/ContextMenuService";
-import ResizeService from "@/service/ResizeService";
+import SelectService from "@/service/SelectService";
 
 export default {
   name: 'mobile-wrapper',
@@ -42,7 +42,7 @@ export default {
     .on('drop', function (el, target) {
       _this.drop(el, target);
       if (window.selectedItem) {
-        ResizeService.setPosition(window.selectedItem);
+        SelectService.setPosition(window.selectedItem);
       }
     })
 

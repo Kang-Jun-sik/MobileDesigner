@@ -12,8 +12,8 @@
 </template>
 
 <script>
-import ResizeService from "@/service/ResizeService";
 import CreateService from "@/service/CreateService";
+import SelectService from "@/service/SelectService";
 import store from "@/store/index";
 
 export default {
@@ -55,7 +55,7 @@ export default {
         box.style.setProperty('height', box.style.height);
       }
 
-      setTimeout(ResizeService.setPosition, 10, box);
+      setTimeout(SelectService.setPosition, 10, box);
     },
   }
 }

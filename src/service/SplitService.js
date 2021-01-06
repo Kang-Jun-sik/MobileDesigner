@@ -1,6 +1,6 @@
 import store from "@/store/index"
 import SplitService from "@/service/SplitService";
-import ResizeService from "@/service/ResizeService";
+import SelectService from "@/service/SelectService";
 import CreateService from "@/service/CreateService";
 import DeleteService from "@/service/DeleteService";
 
@@ -46,7 +46,7 @@ export default {
         // 왼쪽 item에 target(box 혹은 tabs) appendChild (default)
         const areaItem = areaPanelElement.querySelectorAll(':scope > .dews-item')[0];
         areaItem.appendChild(target);
-        ResizeService.setPosition(target);
+        SelectService.setPosition(target);
 
         CreateService.sendCreateMessage(target);
         CreateService.reArrangeCreate(target);

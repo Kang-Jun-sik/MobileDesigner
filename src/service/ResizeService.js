@@ -24,7 +24,7 @@ export default {
     //         resize: function (e, ui) {
     //             e.stopPropagation();
     //             let dir = ui.element.data('ui-resizable').axis;
-    //             ResizeService.setPosition(element);
+    //             SelectService.setPosition(element);
     //         },
     //         start: function (e, ui) {
     //             e.stopPropagation();
@@ -36,21 +36,9 @@ export default {
     //             e.stopPropagation();
     //         },
     //     });
-    //     ResizeService.setPosition(element, element.offsetWidth, element.offsetHeight);
+    //     SelectService.setPosition(element, element.offsetWidth, element.offsetHeight);
     // },
 
-    /*
-    * Layout 변경 및 Box collapsed를 위한 resize handler 위치 css 수정
-    * */
-    setPosition(el) {
-        console.log('setPosition', el)
-        const width = el.offsetWidth;
-        const height = el.offsetHeight;
-        $('.handle-n').css('left', (width / 2 - 4) + 'px');
-        $('.handle-e').css('top', (height / 2 - 4) + 'px');
-        $('.handle-s').css('left', (width / 2 - 4) + 'px');
-        $('.handle-w').css('top', (height / 2 - 4) + 'px');
-    },
 
     /**
      * 하위 자식 컨트롤의 사이즈 조절을 위한 로직 ex) dews-mobile-areBox > dews-box-content-wrap

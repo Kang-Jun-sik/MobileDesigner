@@ -93,18 +93,29 @@ export default {
         }
     },
 
+    /*
+    * Select Control Handler 위치 css 수정
+    * */
+    setPosition(el) {
+        const width = el.offsetWidth;
+        const height = el.offsetHeight;
+
+        el.querySelector('.handle-n').style.left = (width / 2 - 4) + 'px';
+        el.querySelector('.handle-e').style.top = (height / 2 - 4) + 'px';
+        el.querySelector('.handle-s').style.left = (width / 2 - 4) + 'px';
+        el.querySelector('.handle-w').style.top = (height / 2 - 4) + 'px';
+    },
+
     showSelectHandler(element) {
-        console.log(element)
         const $element = element;
         const handles = ["n", "e", "s", "w", "ne", "se", "sw", "nw"];
-
         handles.forEach(handle => {
             let newHandle = document.createElement('div');
             newHandle.className = `dews-control-handle handle-${handle}`;
             $element.appendChild(newHandle);
-        })
+        });
 
-        ResizeService.setPosition($element);
+        SelectService.setPosition($element);
     },
 
     removeSelectHandler() {

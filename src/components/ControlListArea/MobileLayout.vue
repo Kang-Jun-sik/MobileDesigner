@@ -13,6 +13,7 @@
 </template>
 
 <script>
+import SelectService from "@/service/SelectService";
 import ResizeService from "@/service/ResizeService";
 
 export default {
@@ -55,7 +56,7 @@ export default {
         if (window.selectedItem.classList.contains('main-designer')) return;
         // ResizeService.destoryResizable(window.selectedItem);
         // ResizeService.canResize(window.selectedItem);
-        setTimeout(ResizeService.setPosition, 500, window.selectedItem);
+        setTimeout(SelectService.setPosition, 500, window.selectedItem);
       }
     }
   }
