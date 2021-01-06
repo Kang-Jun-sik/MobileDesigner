@@ -1,8 +1,4 @@
 import store from "@/store/index";
-
-import $ from "jquery";
-// import 'jquery-ui-bundle';
-// import 'jquery-ui-bundle/jquery-ui.css';
 import 'jquery-contextmenu';
 
 import mobileDesignerToIDE from "@/utils/mobileDesignerToIDE";
@@ -65,9 +61,9 @@ export default {
         // 같은 컨트롤을 선택했을 경우 재 선택하는 것을 방지 / target이 null인 경우 return (dews-mobile-component가 아님)
         if ((window.selectedItem && window.selectedItem === target) || target === null) return;
 
-        if (document.querySelector('.user-selected')) {
-            const selectedElement = document.querySelector('.user-selected');
-            selectedElement.classList.remove('user-selected');
+        if (document.querySelector('.selected-control')) {
+            const selectedElement = document.querySelector('.selected-control');
+            selectedElement.classList.remove('selected-control');
             // 이 전에 선택된 element resizable disabled 처리
             // $(`[uid=${selectedElement.getAttribute('uid')}]`).resizable({
             //     disabled: true
@@ -77,7 +73,7 @@ export default {
         // ResizeService.removeResizeHandler();
 
         window.selectedItem = target;
-        window.selectedItem.classList.add('user-selected');
+        window.selectedItem.classList.add('selected-control');
 
         // main-designer의 경우 resize 표시가 필요없으므로 canResize를 호출하지 않는다.
         if (!target.classList.contains('main-designer')) {

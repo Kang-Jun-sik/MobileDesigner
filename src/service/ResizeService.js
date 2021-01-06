@@ -44,8 +44,8 @@ export default {
     * */
     setPosition(el) {
         console.log('setPosition', el)
-        let width = el.offsetWidth;
-        let height = el.offsetHeight;
+        const width = el.offsetWidth;
+        const height = el.offsetHeight;
         $('.handle-n').css('left', (width / 2 - 4) + 'px');
         $('.handle-e').css('top', (height / 2 - 4) + 'px');
         $('.handle-s').css('left', (width / 2 - 4) + 'px');
