@@ -1,5 +1,5 @@
 <template>
-  <div :uid="uid" class="dews-mobile-buttonGroup dews-button-group">
+  <div :uid="uid" class="dews-mobile-buttonGroup dews-mobile-component dews-button-group">
     <ul class="button-group-wrap">
       <li>
         <dews-button :isGroup="true"></dews-button>

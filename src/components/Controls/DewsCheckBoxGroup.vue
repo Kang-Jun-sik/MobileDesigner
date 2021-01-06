@@ -1,5 +1,5 @@
 <template>
-  <div :uid="uid" class="dews-mobile-checkboxGroup dews-checkbox-group-wrap">
+  <div :uid="uid" class="dews-mobile-checkboxGroup dews-mobile-component dews-checkbox-group-wrap">
     <span class="checkbox-group-label">{{ title }}</span>
     <div class="checkbox-group" :class="align">
       <span class="group-item">
