@@ -30,6 +30,9 @@
             case 'PASTE' :
                 window.services.get("pasteFromIDE").call(this, args);
                 break;
+            case 'CHANGE' :
+                window.services.get("changeFromIDE").call(this, args);
+                break;
         }
     }
 
