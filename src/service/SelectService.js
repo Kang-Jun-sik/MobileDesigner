@@ -1,8 +1,8 @@
 import store from "@/store/index";
 
 import $ from "jquery";
-import 'jquery-ui-bundle';
-import 'jquery-ui-bundle/jquery-ui.css';
+// import 'jquery-ui-bundle';
+// import 'jquery-ui-bundle/jquery-ui.css';
 import 'jquery-contextmenu';
 
 import mobileDesignerToIDE from "@/utils/mobileDesignerToIDE";
