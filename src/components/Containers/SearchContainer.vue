@@ -33,6 +33,7 @@ export default {
       col: 1,
       customButton: [],
       inputList: [],
+      isContainer: true,
     }
   },
   created() {

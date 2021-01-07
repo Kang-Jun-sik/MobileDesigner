@@ -1,6 +1,36 @@
+import Vue from "vue";
 import store from "@/store/index";
 import PageOpenService from "@/service/PageOpenService";
-import CreateService from "@/service/CreateService";
+
+import {
+    AreaPanel,
+    AreaItem,
+    AreaBox,
+    AreaTabs,
+    AreaTab,
+    SearchContainer,
+    ListContainer,
+    FormContainer,
+    InfoBoxContainer,
+    Button,
+    TextBox,
+    CheckBox,
+    RadioButton,
+    NumericTextBox,
+    MaskTextBox,
+    DatePicker,
+    MonthPicker,
+    TimePicker,
+    PeriodPicker,
+    DropdownList,
+    DropdownButton,
+    ChildButton,
+    Complex,
+    ButtonGroup,
+    RadioButtonGroup,
+    CheckBoxGroup
+} from '@/utils/exports'
+import component from "@/store/modules/component";
 
 export default {
     /*
@@ -16,7 +46,7 @@ export default {
         const canvasDoc = xmlDoc.getElementsByTagName('mobile-page')[0];
         const type = canvasDoc.attributes.getNamedItem('type').nodeValue;
 
-        let mPage = store.state.component.items.find(item => item.uid.startsWith("main-designer"));
+        const mPage = store.state.component.items.find(item => item.uid.startsWith("main-designer"));
         mPage.uid = canvasDoc.getAttribute('uid'); // 임시로 canvas에 uid 적용
         mPage.$el.setAttribute('uid', canvasDoc.getAttribute('uid')) // 임시로 canvas에 적용
 
@@ -44,15 +74,23 @@ export default {
     * */
     pageParsing(node, parentUid) {
         let instance = node.cloneNode();
+        const parent = store.state.component.items.find(item => item.uid === parentUid);
         instance = PageOpenService.createControlFromData(instance);
 
-        const parent = store.state.component.items.find(item => item.uid === parentUid);
         const parentMUid = parent.muid ? parent.muid : '';
 
-        if (parentMUid) {
-            parent.$el.querySelector(`[muid=${parentMUid}]`).appendChild(instance.$el);
+        let addComponent;
+        if (parent.isContainer) {
+            addComponent = document.createElement('li');
+            addComponent.appendChild(instance.$el);
         } else {
-            parent.$el.appendChild(instance.$el);
+            addComponent = instance.$el;
+        }
+
+        if (parentMUid) {
+            parent.$el.querySelector(`[muid=${parentMUid}]`).appendChild(addComponent);
+        } else {
+            parent.$el.appendChild(addComponent);
         }
 
         if (node.childElementCount === 0) return;
@@ -71,23 +109,87 @@ export default {
 
         let instance;
         switch (type) {
-            case 'dews-search-container':
-                instance = CreateService.addComponent('SearchContainer');
-                break;
-            case 'mobile-button':
-                instance = CreateService.addComponent('Button');
-                break;
             case 'dews-area-panel':
-                instance = CreateService.addComponent('AreaPanel');
+                instance = Vue.extend(AreaPanel);
                 break;
             case 'area-item':
-                instance = CreateService.addComponent('AreaItem');
+                instance = Vue.extend(AreaItem);
                 break;
             case 'dews-box':
-                instance = CreateService.addComponent('AreaBox');
+                instance = Vue.extend(AreaBox);
+                break;
+            case 'dews-tabs':
+                instance = Vue.extend(AreaTabs);
+                break;
+            case 'dews-tab':
+                instance = Vue.extend(AreaTab);
+                break;
+            case 'dews-search-container':
+                instance = Vue.extend(SearchContainer);
+                break;
+            case 'dews-list-container':
+                instance = Vue.extend(ListContainer);
+                break;
+            case 'dews-form-container':
+                instance = Vue.extend(FormContainer);
+                break;
+            case 'dews-info-container':
+                instance = Vue.extend(InfoBoxContainer);
+                break;
+            case 'dews-button':
+                instance = Vue.extend(Button);
+                break;
+            case 'dews-button-group':
+                instance = Vue.extend(ButtonGroup);
+                break;
+            case 'dews-checkbox':
+                instance = Vue.extend(CheckBox);
+                break;
+            case 'dews-checkbox-group':
+                instance = Vue.extend(CheckBoxGroup);
+                break;
+            case 'dews-complex':
+                instance = Vue.extend(Complex);
+                break;
+            case 'dews-datepicker':
+                instance = Vue.extend(DatePicker);
+                break;
+            case 'dews-maskbox':
+                instance = Vue.extend(MaskTextBox);
+                break;
+            case 'dews-monthpicker':
+                instance = Vue.extend(MonthPicker);
+                break;
+            case 'dews-numerictextbox':
+                instance = Vue.extend(NumericTextBox);
+                break;
+            case 'dews-periodpicker':
+                instance = Vue.extend(PeriodPicker);
+                break;
+            case 'dews-radiobutton':
+                instance = Vue.extend(RadioButton);
+                break;
+            case 'dews-radiobutton-group':
+                instance = Vue.extend(RadioButtonGroup);
+                break;
+            case 'dews-textbox':
+                instance = Vue.extend(TextBox);
+                break;
+            case 'dews-timepicker':
+                instance = Vue.extend(TimePicker);
+                break;
+            case 'dews-dropdownlist':
+                instance = Vue.extend(DropdownList);
+                break;
+            case 'dews-dropdownbutton':
+                instance = Vue.extend(DropdownButton);
+                break;
+            case 'dropdownbutton-childbutton':
+                instance = Vue.extend(ChildButton);
                 break;
         }
 
+        instance = new instance().$mount();
         instance.uid = uid;
         instance.$el.setAttribute('uid', uid);
         store.commit('addItem', instance);

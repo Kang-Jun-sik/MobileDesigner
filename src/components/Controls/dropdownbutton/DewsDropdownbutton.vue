@@ -13,7 +13,7 @@
 
 <script>
 import CreateService from "@/service/CreateService";
-import DewsDropdownChildbutton from "@/components/Controls/dropdownbutton/Childbutton";
+import DewsDropdownChildbutton from "@/components/Controls/dropdownbutton/ChildButton";
 
 export default {
   name: 'dews-dropdownbutton',

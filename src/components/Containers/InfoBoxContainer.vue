@@ -17,6 +17,7 @@ export default {
       uid: '',
       value: 'TestValue',
       type: 'basic',
+      isContainer: true,
     }
   },
   created() {

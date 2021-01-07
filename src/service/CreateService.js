@@ -4,30 +4,34 @@ import mobileDesignerToIDE from "@/utils/mobileDesignerToIDE";
 import CreateService from "@/service/CreateService";
 import PageOpenService from "@/service/PageOpenService";
 
-import Button from "@/components/Controls/DewsButton";
-import AreaPanel from "@/components/Area/AreaPanel";
-import AreaItem from "@/components/Area/AreaItem";
-import AreaBox from "@/components/Area/AreaBox";
-import AreaTabs from "@/components/Area/tab/AreaTabs";
-import SearchContainer from "@/components/Containers/SearchContainer";
-import ListContainer from "@/components/Containers/ListContainer";
-import FormContainer from "@/components/Containers/FormContainer";
-import InfoBoxContainer from "@/components/Containers/InfoBoxContainer";
-import TextBox from "@/components/Controls/DewsTextBox";
-import CheckBox from "@/components/Controls/DewsCheckBox";
-import RadioButton from "@/components/Controls/DewsRadioButton";
-import NumericTextBox from "@/components/Controls/DewsNumericTextBox";
-import MaskTextBox from "@/components/Controls/DewsMaskTextBox";
-import DatePicker from "@/components/Controls/DewsDatePicker";
-import MonthPicker from "@/components/Controls/DewsMonthPicker";
-import TimePicker from "@/components/Controls/DewsTimePicker";
-import PeriodPicker from "@/components/Controls/DewsPeriodPicker";
-import DropdownButton from "@/components/Controls/dropdownbutton/DewsDropdownbutton";
-import DropdownList from "@/components/Controls/dropdownlist/DewsDropdownlist";
-import Complex from "@/components/Controls/DewsComplex";
-import ButtonGroup from "@/components/Controls/DewsButtonGroup";
-import RadioButtonGroup from "@/components/Controls/DewsRadioButtonGroup";
-import CheckBoxGroup from "@/components/Controls/DewsCheckBoxGroup";
+import {
+    AreaPanel,
+    AreaItem,
+    AreaBox,
+    AreaTabs,
+    AreaTab,
+    SearchContainer,
+    ListContainer,
+    FormContainer,
+    InfoBoxContainer,
+    Button,
+    TextBox,
+    CheckBox,
+    RadioButton,
+    NumericTextBox,
+    MaskTextBox,
+    DatePicker,
+    MonthPicker,
+    TimePicker,
+    PeriodPicker,
+    DropdownList,
+    DropdownButton,
+    ChildButton,
+    Complex,
+    ButtonGroup,
+    RadioButtonGroup,
+    CheckBoxGroup
+} from '@/utils/exports'
 
 export default {
     createFromIDE(args) {
@@ -91,6 +95,9 @@ export default {
             case 'AreaTabs':
                 component = Vue.extend(AreaTabs);
                 break;
+            case 'AreaTab':
+                component = Vue.extend(AreaTab);
+                break;
             case 'SearchContainer':
                 component = Vue.extend(SearchContainer);
                 break;
@@ -133,11 +140,14 @@ export default {
             case 'PeriodPicker':
                 component = Vue.extend(PeriodPicker);
                 break;
+            case 'DropdownList':
+                component = Vue.extend(DropdownList);
+                break;
             case 'DropdownButton':
                 component = Vue.extend(DropdownButton);
                 break;
-            case 'DropdownList':
-                component = Vue.extend(DropdownList);
+            case 'DropdownChildButton':
+                component = Vue.extend(ChildButton);
                 break;
             case 'ComplexControl':
                 component = Vue.extend(Complex);

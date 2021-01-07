@@ -30,6 +30,7 @@ export default {
       title: 'List Container',
       buttonList: [],
       summaryList: [],
+      isContainer: true,
     }
   },
   created() {

@@ -52,6 +52,7 @@ export default {
     return {
       uid: '',
       title: 'Form Container',
+      isContainer: true,
     }
   },
   created() {
