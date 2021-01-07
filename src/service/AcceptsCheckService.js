@@ -1,4 +1,8 @@
 const componentAcceptsCheck = (component, target) => {
+    if (component.tagName === 'LI') {
+        component = component.firstChild;
+    }
+
     const checkedComponent = component.classList.contains('dews-control-list') ?
         component.classList[component.classList.length - 1] : component.classList[0];
     const dropTarget = target.classList[0];
