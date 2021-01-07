@@ -1,6 +1,6 @@
 <template>
   <button :uid="uid" class="dews-mobile-button dews-mobile-component dews-button" :class="[ui, size, type,
-    disabled ? 'disabled' : '', group ? 'group' : '']" >
+    disabled ? 'disabled' : '', group ? 'group' : '']" :style="buttonStyle">
     <span class="button-icon"></span>
     <span class="button-text">{{ text }}</span>
   </button>
@@ -61,18 +61,18 @@ export default {
       link: '',
       disabled: false,
       group: false,
+      buttonStyle: {},
     }
   },
   created() {
     this.uid = CreateService.createUid('dews-button');
     this.group = this.isGroup ? this.isGroup : false;
   },
-  methods:
-      {
-        setText(param) {
-          this.text = param.toString();
-        }
-      }
+  methods: {
+    setText(data) {
+      this.text = data.toString();
+    }
+  }
 }
 </script>
 
