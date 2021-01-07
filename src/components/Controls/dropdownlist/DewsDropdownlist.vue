@@ -1,5 +1,5 @@
 <template>
-  <div :uid="uid" class="dews-mobile-dropdownList dropdown-list-wrap" ref="dropdownList">
+  <div :uid="uid" class="dews-mobile-dropdownList dews-mobile-component dropdown-list-wrap" ref="dropdownList">
     <label>{{ title }}</label>
     <span class="select-wrap">
       <span class="select-shape">

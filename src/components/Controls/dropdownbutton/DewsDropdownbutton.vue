@@ -1,5 +1,5 @@
 <template>
-  <span :uid="uid" class="dews-mobile-dropdownButton dews-mobile-component dews-dropdown-button" :class="group ? 'group' : ''">
+  <div :uid="uid" class="dews-mobile-dropdownButton dews-mobile-component dews-dropdown-button" :class="group ? 'group' : ''" ref="dropdownbutton" >
     <button @click="clickHandler($event)" class="dews-button dropdown"
             :class="[ui, size, disabled ? 'disabled' : '']">
       <span class="button-icon"></span>
@@ -8,7 +8,7 @@
     <span class="button-list" :class="selected ? 'selected' : ''">
       <dews-dropdown-childbutton></dews-dropdown-childbutton>
     </span>
-  </span>
+  </div>
 </template>
 
 <script>
