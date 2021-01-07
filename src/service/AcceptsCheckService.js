@@ -38,8 +38,14 @@ const componentAcceptsCheck = (component, target) => {
         "dews-mobile-dropdownList": ["search-container-field", "form-container-field"],
         "dews-mobile-complex": ["search-container-field", "form-container-field"],
     }
-
-    return componentInformation[checkedComponent].includes(dropTarget);
+    let acceptcheck = false;
+    try{
+        acceptcheck = componentInformation[checkedComponent].includes(dropTarget);
+    }
+    catch (error){
+        console.log(error);
+    }
+    return acceptcheck;
 }
 
 export default componentAcceptsCheck;

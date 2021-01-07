@@ -22,7 +22,7 @@ export default {
         iconText: 'iconText'
       },
       SIZE_LIST: {
-        small: 'small',
+        small: 'small',//IDE로부터 컨트롤 변경 메세지 처리
         medium: 'medium',
         large: 'large',
       },
@@ -67,7 +67,12 @@ export default {
     this.uid = CreateService.createUid('dews-button');
     this.group = this.isGroup ? this.isGroup : false;
   },
-  methods: {}
+  methods:
+      {
+        setText(param) {
+          this.text = param.toString();
+        }
+      }
 }
 </script>
 
