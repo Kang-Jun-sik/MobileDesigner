@@ -44,7 +44,7 @@ const componentAcceptsCheck = (component, target) => {
         acceptCheck = componentInformation[checkedComponent].includes(dropTarget);
     }
     catch (error) {
-        console.log(error);
+        console.error(error);
     }
     return acceptCheck;
 }

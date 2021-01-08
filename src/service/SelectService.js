@@ -99,11 +99,14 @@ export default {
     setPosition(el) {
         const width = el.offsetWidth;
         const height = el.offsetHeight;
-
-        el.querySelector('.handle-n').style.left = (width / 2 - 4) + 'px';
-        el.querySelector('.handle-e').style.top = (height / 2 - 4) + 'px';
-        el.querySelector('.handle-s').style.left = (width / 2 - 4) + 'px';
-        el.querySelector('.handle-w').style.top = (height / 2 - 4) + 'px';
+        try {
+            el.querySelector('.handle-n').style.left = (width / 2 - 4) + 'px';
+            el.querySelector('.handle-e').style.top = (height / 2 - 4) + 'px';
+            el.querySelector('.handle-s').style.left = (width / 2 - 4) + 'px';
+            el.querySelector('.handle-w').style.top = (height / 2 - 4) + 'px';
+        } catch (error) {
+            console.error(error);
+        }
     },
 
     showSelectHandler(element) {
