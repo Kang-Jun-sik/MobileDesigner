@@ -2,28 +2,27 @@
   <div :uid="uid" class="dews-mobile-searchContainer dews-mobile-component dews-container">
     <div class="dews-container-option-control">
       <h3 class="option-sub-title" v-if="title">{{ title }}</h3>
-      <div class="option-convenience-button">
-        <ul>
-          <li class="data-capture"><button class="capture"><span> Data Capture</span></button></li>
-          <li class="data-set"><button class="set"><span>Data Set</span></button></li>
-          <li class="data-reset"><button class="reset"><span>Data Reset</span></button></li>
-        </ul>
-      </div>
+      <container-button :containerType="containerType"></container-button>
     </div>
 
-    <div class="dews-search-field">
-      <ul :muid="muid" class="search-container-field form-field" ref="searchContainerField">
-      </ul>
-    </div>
+    <container-content>
+      <div class="dews-search-field">
+        <ul :muid="muid" class="search-container-field form-field" ref="searchContainerField">
+        </ul>
+      </div>
+    </container-content>
   </div>
 </template>
 
 <script>
 import store from "@/store/index";
 import CreateService from "@/service/CreateService";
+import ContainerContent from "@/components/Containers/container/ContainerContent";
+import ContainerButton from "@/components/Containers/container/ContainerButton";
 
 export default {
   name: 'dews-search-container',
+  components: {ContainerButton, ContainerContent},
   uid: '',
   data() {
     return {
@@ -34,6 +33,7 @@ export default {
       customButton: [],
       inputList: [],
       isContainer: true,
+      containerType: 'search'
     }
   },
   created() {
@@ -82,29 +82,29 @@ export default {
 }
 
 
-//임시 input component 모양 잡기
-label {
-  display: block;
-  width: 100%;
-  margin-bottom: 2px;
-  font-size: 12px;
-  line-height: 1.5;
-  text-align: left;
-  color: rgba(60, 60, 67, 0.6);
-}
-input[type="text"] {
-  position: relative;
-  width: 100%;
-  height: 36px;
-  padding: 7px 10px;
-  color: rgb(17, 17, 17);
-  border: 1px solid rgba(60, 60, 67, 0.08);
-  border-radius: 4px;
-  background-color: rgb(255, 255, 255);
-  font-size: 15px;
-  line-height: 1.47;
-  text-align: left;
-}
+////임시 input component 모양 잡기
+//label {
+//  display: block;
+//  width: 100%;
+//  margin-bottom: 2px;
+//  font-size: 12px;
+//  line-height: 1.5;
+//  text-align: left;
+//  color: rgba(60, 60, 67, 0.6);
+//}
+//input[type="text"] {
+//  position: relative;
+//  width: 100%;
+//  height: 36px;
+//  padding: 7px 10px;
+//  color: rgb(17, 17, 17);
+//  border: 1px solid rgba(60, 60, 67, 0.08);
+//  border-radius: 4px;
+//  background-color: rgb(255, 255, 255);
+//  font-size: 15px;
+//  line-height: 1.47;
+//  text-align: left;
+//}
 
 // DFD용 scss 추가
 .form-field {

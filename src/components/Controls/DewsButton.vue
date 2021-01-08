@@ -56,7 +56,7 @@ export default {
       },
       ui: 'solid',
       type: 'text',
-      size: 'small',
+      size: 'medium',
       icon: '',
       link: '',
       disabled: false,
