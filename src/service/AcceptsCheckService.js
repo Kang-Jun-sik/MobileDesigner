@@ -1,5 +1,4 @@
 const componentAcceptsCheck = (component, target) => {
-    console.log(component, target)
     if (component.tagName === 'LI') {
         component = component.firstChild;
     }

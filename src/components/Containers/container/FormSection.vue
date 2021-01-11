@@ -1,8 +1,8 @@
 <template>
-  <div class="form-section">
+  <div :uid="uid" class="dews-mobile-formSection dews-mobile-component form-section">
     <h3 class="dews-form-section-title">{{ title }}</h3>
     <div class="dews-form-field">
-      <ul class="form-container-field form-field" ref="formContainerField">
+      <ul :muid="muid" class="form-container-field form-field" ref="formContainerField">
       </ul>
     </div>
   </div>
@@ -17,11 +17,13 @@ export default {
     return {
       id: '',
       uid: '',
+      muid: '',
       title: 'form-section',
     }
   },
   created() {
-    CreateService.createUid('form-section');
+    this.uid = CreateService.createUid('form-section');
+    this.muid = CreateService.createUid('form-field');
   },
   mounted() {
     window.drake.containers.push(this.$refs.formContainerField);

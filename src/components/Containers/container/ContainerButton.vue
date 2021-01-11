@@ -1,11 +1,10 @@
 <template>
-  <div>
+  <div :uid="uid" :data-uid="'test'">
     <div v-if="containerType === 'form'" class="option-custom-button">
       <ul>
         <li><dews-button></dews-button></li>
       </ul>
     </div>
-
     <div class="option-convenience-button">
       <ul>
         <li class="data-capture"><button class="capture"><span> Data Capture</span></button></li>
@@ -31,7 +30,7 @@ export default {
     }
   },
   created() {
-    CreateService.createUid('container-button');
+    this.uid = CreateService.createUid('container-button');
   }
 }
 </script>

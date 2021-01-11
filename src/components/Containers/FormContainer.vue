@@ -7,6 +7,7 @@
 
     <container-content>
       <form-section></form-section>
+      <form-section></form-section>
     </container-content>
   </div>
 </template>
