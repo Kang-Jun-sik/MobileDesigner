@@ -76,10 +76,11 @@ export default {
     * */
     pageParsing(node, parentUid) {
         let instance = node.cloneNode();
-        const parent = store.state.component.items.find(item => item.uid === parentUid);
-        instance = PageOpenService.createControlFromData(instance);
+        if (instance.tagName === 'container-content' || instance.tagName === 'container-button') return;
 
-        const parentMUid = parent.muid ? parent.muid : '';
+        instance = PageOpenService.createControlFromData(instance);
+        const parent = store.state.component.items.find(item => item.uid === parentUid);
+        const parentDataUid = parent.dataUid ? parent.dataUid : '';
 
         let addComponent;
         if (parent.isContainer) {
@@ -89,8 +90,8 @@ export default {
             addComponent = instance.$el;
         }
 
-        if (parentMUid) {
-            parent.$el.querySelector(`[muid=${parentMUid}]`).appendChild(addComponent);
+        if (parentDataUid) {
+            parent.$el.querySelector(`[data-uid=${parentDataUid}]`).appendChild(addComponent);
         } else {
             parent.$el.appendChild(addComponent);
         }

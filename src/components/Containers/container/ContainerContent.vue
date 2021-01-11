@@ -1,5 +1,5 @@
 <template>
-  <div :uid="uid" class="dews-mobile-containerContent dews-mobile-component">
+  <div :uid="uid" class="dews-mobile-containerContent">
     <slot></slot>
   </div>
 </template>

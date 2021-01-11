@@ -6,6 +6,7 @@
 </template>
 
 <script>
+import store from "@/store/index";
 import dragula from "dragula";
 import axios from 'axios'
 
@@ -24,7 +25,7 @@ export default {
   },
   mounted() {
     const _this = this;
-    const _designer = this.$store.state.designer;
+    const _designer = store.state.designer;
 
     window.drake = dragula({
       revertOnSpill: true,
@@ -76,7 +77,7 @@ export default {
       } else {
         element.replaceWith(component.$el);
       }
-      this.$store.commit('addItem', component);
+      store.commit('addItem', component);
 
       ContextMenuService.getContextMenu(component.$el);
       CreateService.sendCreateMessage(component.$el);

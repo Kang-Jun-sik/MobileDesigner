@@ -39,7 +39,7 @@ export default {
         const obj = JSON.parse(args);
         const parser = new DOMParser();
         const parentUid = obj['controlUniqueId'];
-        let xmlDoc = parser.parseFromString(obj["controlAttributeValue"], "application/xml");
+        const xmlDoc = parser.parseFromString(obj["controlAttributeValue"], "application/xml");
 
         PageOpenService.pageParsing(xmlDoc.firstElementChild, parentUid);
     },

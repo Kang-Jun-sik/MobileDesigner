@@ -29,7 +29,7 @@ export default {
             state.redoItems.push(item);
         },
         matchUid(state, payload) {
-            state.dragulaUid[payload.uid] = payload.muid;
+            state.dragulaUid[payload.uid] = payload.dataUid;
         },
     }
 }

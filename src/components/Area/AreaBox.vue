@@ -4,7 +4,7 @@
       <h2><button class="dews-box-title-button" type="button">{{ title }}</button></h2>
     </div>
     <div class="dews-box-content-wrap" :style="contentStyle" part="content">
-      <div :muid="muid" class="dews-box-content addable-area" ref="boxContent">
+      <div class="dews-box-content addable-area" :data-uid="dataUid" ref="boxContent">
         <slot></slot>
       </div>
     </div>
@@ -21,7 +21,7 @@ export default {
   data() {
     return {
       uid: '',
-      muid: '',
+      dataUid: '',
       title: 'Box',
       collapsed: true,
       height: '',
@@ -32,9 +32,9 @@ export default {
   },
   created() {
     this.uid = CreateService.createUid('dews-box');
-    this.muid = CreateService.createUid('box-content');
+    this.dataUid = CreateService.createUid('box-content');
 
-    store.commit('matchUid', {'uid': this.uid, 'muid': this.muid});
+    store.commit('matchUid', {'uid': this.uid, 'dataUid': this.dataUid});
   },
   mounted() {
     window.drake.containers.push(this.$refs.boxContent);

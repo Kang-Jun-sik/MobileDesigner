@@ -8,11 +8,11 @@ import CreateService from "@/service/CreateService";
 export default {
     deleteFromIDE(args) {
         console.log('Delete Control from IDE');
-        let obj = JSON.parse(args);
+        const obj = JSON.parse(args);
         // 1) ID 추출
-        let delItemUid = obj['controlUniqueId'];
-        if (delItemUid) {
-            let control = store.state.component.items.find(item => item.uid === delItemUid);
+        const deleteItemUid = obj['controlUniqueId'];
+        if (deleteItemUid) {
+            let control = store.state.component.items.find(item => item.uid === deleteItemUid);
             DeleteService.deleteControl(control.$el);
         }
     },
@@ -128,11 +128,11 @@ export default {
     deleteDrakeContainer(target) {
         const targetUid = target.getAttribute('uid');
 
-        // target의 root element의 uid 정보가 root에 포함되어 있지 않은 경우 muid로 판단
+        // target의 root element의 uid 정보가 root에 포함되어 있지 않은 경우 data-uid로 판단
         if (store.state.component.dragulaUid[targetUid]) {
-            const mUid = store.state.component.dragulaUid[targetUid];
+            const targetDataUid = store.state.component.dragulaUid[targetUid];
             _.remove(window.drake.containers, function(container) {
-                return container.getAttribute('muid') === mUid;
+                return container.dataset.uid === targetDataUid;
             });
             delete store.state.component.dragulaUid[targetUid];
         } else {

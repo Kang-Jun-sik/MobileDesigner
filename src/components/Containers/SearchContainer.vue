@@ -2,12 +2,12 @@
   <div :uid="uid" class="dews-mobile-searchContainer dews-mobile-component dews-container">
     <div class="dews-container-option-control">
       <h3 class="option-sub-title" v-if="title">{{ title }}</h3>
-      <container-button :containerType="containerType"></container-button>
+      <container-button :containerType="containerType" ref="containerButton"></container-button>
     </div>
 
-    <container-content>
+    <container-content ref="containerContent">
       <div class="dews-search-field">
-        <ul :muid="muid" class="search-container-field form-field" ref="searchContainerField">
+        <ul class="search-container-field form-field" :data-uid="dataUid" ref="searchContainerField">
         </ul>
       </div>
     </container-content>
@@ -27,7 +27,7 @@ export default {
   data() {
     return {
       uid: '',
-      muid: '',
+      dataUid: '',
       title: 'Search Container',
       col: 1,
       customButton: [],
@@ -38,8 +38,13 @@ export default {
   },
   created() {
     this.uid = CreateService.createUid('dews-search-container');
-    this.muid = CreateService.createUid('search-field');
-    store.commit('matchUid', {'uid': this.uid, 'muid': this.muid});
+    this.dataUid = CreateService.createUid('search-field');
+    store.commit('matchUid', {'uid': this.uid, 'dataUid': this.dataUid});
+
+    this.$nextTick(() => {
+      CreateService.sendCreateMessage(this.$refs.containerButton.$el);
+      CreateService.sendCreateMessage(this.$refs.containerContent.$el);
+    });
   },
   mounted() {
     window.drake.containers.push(this.$refs.searchContainerField);
