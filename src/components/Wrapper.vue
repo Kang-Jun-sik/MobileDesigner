@@ -30,13 +30,13 @@ export default {
     window.drake = dragula({
       revertOnSpill: true,
       copy: function (el, source) {
-        return ['areaList', 'containerList', 'componentList', 'etcList'].includes(source.id);
+        return ['areaList', 'containerList',
+          'buttonList', 'componentList', 'pickerList', 'etcList'].includes(source.id);
       },
       accepts: function (el, target, source) {
         if (target.classList.contains('dews-box-content') && target.querySelector('.dews-container')) {
           return;
         }
-
         return componentAcceptsCheck(el, target);
       }
     })
@@ -48,7 +48,8 @@ export default {
     })
 
     window.drake.containers.push(_designer.mainDesigner.$el, _designer.areaList, _designer.containerList,
-        _designer.componentList, _designer.etcList);
+        _designer.buttonList, _designer.componentList, _designer.pickerList, _designer.etcList);
+
     // axios Sample code ==> 기타 API 서버의 연동을 위한 테스트 코드 (vue.config.js Proxy Table 참조할 것)
     /*
     axios.get("/api/getList")
@@ -65,11 +66,12 @@ export default {
     * 드롭할 때, 컴포넌트 호출 및 $el로 replace 처리
     * */
     drop(element, target) {
+      console.log(element, target)
       if (!element.classList.contains('dews-control-list')) return
 
       const componentName = element.textContent.replace(/\s+/g, '');
       const component = CreateService.addComponent(componentName);
-      if (element.classList.contains('component-box') && target.classList.contains('form-field')) {
+      if (element.classList.contains('component-list-box') && target.classList.contains('form-field')) {
         const li = document.createElement('li');
         li.appendChild(component.$el);
         element.replaceWith(li);
