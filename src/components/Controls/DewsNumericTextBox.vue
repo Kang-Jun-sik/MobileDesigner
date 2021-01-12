@@ -4,7 +4,7 @@
     <label v-else class="undefined" for="numeric-box"></label>
     <div class="numeric-wrap">
       <span v-if="prefix">{{ prefix }}</span>
-      <span class="numeric view" :class="disabled ? 'disabled' : ''" @click="focusIn()">
+      <span class="numeric view" :class="disabled ? 'disabled' : ''">
         <input id="numeric-box" class="numeric-box" type="text" :value="value"
          :disabled="disabled" :readonly="readonly" :placeholder="placeholder">
       </span>
@@ -50,7 +50,6 @@ export default {
     this.uid = CreateService.createUid('dews-numerictextbox');
   },
   methods: {
-    focusIn() {},
     stepperDecrement() {},
     stepperIncrement() {}
   }

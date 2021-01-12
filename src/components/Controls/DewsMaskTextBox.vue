@@ -1,13 +1,13 @@
 <template>
   <div :uid="uid" class="dews-mobile-maskbox dews-mobile-component mask-textbox-wrap">
     <label>{{ title }}</label>
-    <span @click="onClick()" class="view" :class="disabled ? 'disabled' : ''">
-      <input type="text" @focus="onClick()"
+    <span class="view" :class="disabled ? 'disabled' : ''">
+      <input type="text"
        :disabled="disabled" :readonly="readonly"
        :value="value" :placeholder="placeholder">
     </span>
     <span class="mask" style="display: none;">
-      <input type="text" @focus="onFocus()" @blur="onBlur()">
+      <input type="text">
     </span>
     <span class="input-state" :class="stateType">{{ stateMessage }}</span>
   </div>
@@ -41,16 +41,7 @@ export default {
     this.uid = CreateService.createUid('dews-maskbox');
   },
   methods: {
-    onClick() {
-
-    },
-    onFocus() {
-
-    },
-    onChange() {
-
-    }
-  }
+  },
 }
 </script>
 
