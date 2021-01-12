@@ -1,5 +1,5 @@
 <template>
-  <div :uid="uid" class="dews-mobile-listContainer">
+  <div :uid="uid" class="dews-mobile-listContainer dews-container">
     <div class="dews-container-option-control">
       <h3 class="option-sub-title" v-if="title">{{ title }}</h3>
 
