@@ -7,7 +7,7 @@
 
 <script>
 import MobileLayout from "@/components/ControlListArea/MobileLayout";
-import ControlList from "@/components/ControlListArea/ControlLilst";
+import ControlList from "@/components/ControlListArea/ControlList";
 
 export default {
   name: 'controlList-wrapper',

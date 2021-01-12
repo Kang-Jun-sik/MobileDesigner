@@ -521,4 +521,3 @@ export default {
         $.contextMenu('destroy');
     }
 }
-
