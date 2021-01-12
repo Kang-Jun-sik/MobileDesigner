@@ -14,8 +14,10 @@ export default {
                 $.contextMenu({
                     selector: ".selected-control",
                     items: {
-                        "edit": {name: "mainDesignerOption", icon: "ic-edit"},
-                        "sep1": "---------",
+                        "edit": {
+                            name: "mainDesignerOption",
+                            icon: "edit"
+                        },
                     },
                     callback: function(itemKey, opt) {
                         console.log(itemKey);
@@ -26,12 +28,18 @@ export default {
                 $.contextMenu({
                     selector: ".selected-control",
                     items: {
-                        "vertical": {name: "세로분할", icon: "ic-split"},
-                        "delete": {name: "Delete", icon: "ic-delete"}
+                        "split": {
+                            name: "분할",
+                            icon: "ic-split"
+                        },
+                        "delete": {
+                            name: "Delete",
+                            icon: "ic-delete"
+                        }
                     },
                     callback: function(itemKey, opt) {
-                        switch (itemKey){
-                            case "vertical":
+                        switch (itemKey) {
+                            case "split":
                                 SplitService.verticalSplit(opt.$trigger[0]);
                                 break;
                             case "delete" :
@@ -45,12 +53,18 @@ export default {
                 $.contextMenu({
                     selector: ".selected-control",
                     items: {
-                        "vertical": {name: "세로분할", icon: "ic-split"},
-                        "delete": {name: "Delete", icon: "ic-delete"}
+                        "split": {
+                            name: "분할",
+                            icon: "ic-split"
+                        },
+                        "delete": {
+                            name: "Delete",
+                            icon: "ic-delete"
+                        }
                     },
                     callback: function(itemKey, opt) {
                         switch (itemKey){
-                            case "vertical":
+                            case "split":
                                 SplitService.verticalSplit(opt.$trigger[0]);
                                 break;
                             case "delete" :
@@ -58,15 +72,24 @@ export default {
                                 break;
                         }
                     }
-                })
+                });
+                break;
+            case 'dews-mobile-tabs':
+                break;
+            case 'dews-mobile-tab':
                 break;
             case "dews-mobile-searchContainer" :
                 $.contextMenu({
                     selector: ".selected-control",
                     items: {
-                        "edit": {name: "Search-container-option", icon: "edit"},
-                        "delete": {name: "Delete", icon: "ic-delete"},
-                        "sep1": "---------",
+                        "option": {
+                            name: "Option",
+                            icon: "edit"
+                        },
+                        "delete": {
+                            name: "Delete",
+                            icon: "ic-delete"
+                        },
                     },
                     callback: function(itemKey, opt) {
                         switch (itemKey){
@@ -77,13 +100,24 @@ export default {
                     }
                 });
                 break;
-            case "dews-mobile-button" :
+            case 'dews-mobile-listContainer':
+                break;
+            case 'dews-mobile-formContainer':
                 $.contextMenu({
                     selector: ".selected-control",
                     items: {
-                        "b1": {name: "ButtonOption1", icon: "edit"},
-                        "delete": {name: "Delete", icon: "ic-delete"},
-                        "sep1": "---------",
+                        "option": {
+                            name: "Option",
+                            icon: "edit"
+                        },
+                        "delete": {
+                            name: "Delete",
+                            icon: "ic-delete"
+                        },
+                        "addFormSection": {
+                            name: 'Add FormSection',
+                            icon: 'edit'
+                        }
                     },
                     callback: function(itemKey, opt) {
                         switch (itemKey){
@@ -93,6 +127,392 @@ export default {
                         }
                     }
                 });
+                break;
+            case 'dews-mobile-infoContainer':
+                break;
+            case 'dews-mobile-formSection':
+                $.contextMenu({
+                    selector: ".selected-control",
+                    items: {
+                        "option": {
+                            name: "Option",
+                            icon: "edit"
+                        },
+                        "delete": {
+                            name: "Delete",
+                            icon: "ic-delete"
+                        },
+                    },
+                    callback: function(itemKey, opt) {
+                        switch (itemKey){
+                            case "delete" :
+                                DeleteService.deleteControl(opt.$trigger[0]);
+                                break;
+                        }
+                    }
+                });
+                break;
+            case 'dews-mobile-containerContent':
+                break;
+            case 'dews-mobile-containerButton':
+                break;
+            case "dews-mobile-button" :
+                $.contextMenu({
+                    selector: ".selected-control",
+                    items: {
+                        "option": {
+                            name: "Option",
+                            icon: "edit"
+                        },
+                        "delete": {
+                            name: "Delete",
+                            icon: "ic-delete"
+                        },
+                    },
+                    callback: function(itemKey, opt) {
+                        switch (itemKey){
+                            case "delete" :
+                                DeleteService.deleteControl(opt.$trigger[0]);
+                                break;
+                        }
+                    }
+                });
+                break;
+            case 'dews-mobile-buttonGroup':
+                $.contextMenu({
+                    selector: ".selected-control",
+                    items: {
+                        "option": {
+                            name: "Option",
+                            icon: "edit"
+                        },
+                        "delete": {
+                            name: "Delete",
+                            icon: "ic-delete"
+                        },
+                    },
+                    callback: function(itemKey, opt) {
+                        switch (itemKey){
+                            case "delete" :
+                                DeleteService.deleteControl(opt.$trigger[0]);
+                                break;
+                        }
+                    }
+                });
+                break;
+            case 'dews-mobile-checkbox':
+                $.contextMenu({
+                    selector: ".selected-control",
+                    items: {
+                        "option": {
+                            name: "Option",
+                            icon: "edit"
+                        },
+                        "delete": {
+                            name: "Delete",
+                            icon: "ic-delete"
+                        },
+                    },
+                    callback: function(itemKey, opt) {
+                        switch (itemKey){
+                            case "delete" :
+                                DeleteService.deleteControl(opt.$trigger[0]);
+                                break;
+                        }
+                    }
+                });
+                break;
+            case 'dews-checkbox-group':
+                $.contextMenu({
+                    selector: ".selected-control",
+                    items: {
+                        "option": {
+                            name: "Option",
+                            icon: "edit"
+                        },
+                        "delete": {
+                            name: "Delete",
+                            icon: "ic-delete"
+                        },
+                    },
+                    callback: function(itemKey, opt) {
+                        switch (itemKey){
+                            case "delete" :
+                                DeleteService.deleteControl(opt.$trigger[0]);
+                                break;
+                        }
+                    }
+                });
+                break;
+            case 'dews-mobile-complex':
+                $.contextMenu({
+                    selector: ".selected-control",
+                    items: {
+                        "option": {
+                            name: "Option",
+                            icon: "edit"
+                        },
+                        "delete": {
+                            name: "Delete",
+                            icon: "ic-delete"
+                        },
+                    },
+                    callback: function(itemKey, opt) {
+                        switch (itemKey){
+                            case "delete" :
+                                DeleteService.deleteControl(opt.$trigger[0]);
+                                break;
+                        }
+                    }
+                });
+                break;
+            case 'dews-mobile-datePicker':
+                $.contextMenu({
+                    selector: ".selected-control",
+                    items: {
+                        "option": {
+                            name: "Option",
+                            icon: "edit"
+                        },
+                        "delete": {
+                            name: "Delete",
+                            icon: "ic-delete"
+                        },
+                    },
+                    callback: function(itemKey, opt) {
+                        switch (itemKey){
+                            case "delete" :
+                                DeleteService.deleteControl(opt.$trigger[0]);
+                                break;
+                        }
+                    }
+                });
+                break;
+            case 'dews-mobile-maskbox':
+                $.contextMenu({
+                    selector: ".selected-control",
+                    items: {
+                        "option": {
+                            name: "Option",
+                            icon: "edit"
+                        },
+                        "delete": {
+                            name: "Delete",
+                            icon: "ic-delete"
+                        },
+                    },
+                    callback: function(itemKey, opt) {
+                        switch (itemKey){
+                            case "delete" :
+                                DeleteService.deleteControl(opt.$trigger[0]);
+                                break;
+                        }
+                    }
+                });
+                break;
+            case 'dews-mobile-monthPicker':
+                $.contextMenu({
+                    selector: ".selected-control",
+                    items: {
+                        "option": {
+                            name: "Option",
+                            icon: "edit"
+                        },
+                        "delete": {
+                            name: "Delete",
+                            icon: "ic-delete"
+                        },
+                    },
+                    callback: function(itemKey, opt) {
+                        switch (itemKey){
+                            case "delete" :
+                                DeleteService.deleteControl(opt.$trigger[0]);
+                                break;
+                        }
+                    }
+                });
+                break;
+            case 'dews-mobile-numeric':
+                $.contextMenu({
+                    selector: ".selected-control",
+                    items: {
+                        "option": {
+                            name: "Option",
+                            icon: "edit"
+                        },
+                        "delete": {
+                            name: "Delete",
+                            icon: "ic-delete"
+                        },
+                    },
+                    callback: function(itemKey, opt) {
+                        switch (itemKey){
+                            case "delete" :
+                                DeleteService.deleteControl(opt.$trigger[0]);
+                                break;
+                        }
+                    }
+                });
+                break;
+            case 'dews-mobile-periodPicker':
+                $.contextMenu({
+                    selector: ".selected-control",
+                    items: {
+                        "option": {
+                            name: "Option",
+                            icon: "edit"
+                        },
+                        "delete": {
+                            name: "Delete",
+                            icon: "ic-delete"
+                        },
+                    },
+                    callback: function(itemKey, opt) {
+                        switch (itemKey){
+                            case "delete" :
+                                DeleteService.deleteControl(opt.$trigger[0]);
+                                break;
+                        }
+                    }
+                });
+                break;
+            case 'dews-mobile-radiobutton':
+                $.contextMenu({
+                    selector: ".selected-control",
+                    items: {
+                        "option": {
+                            name: "Option",
+                            icon: "edit"
+                        },
+                        "delete": {
+                            name: "Delete",
+                            icon: "ic-delete"
+                        },
+                    },
+                    callback: function(itemKey, opt) {
+                        switch (itemKey){
+                            case "delete" :
+                                DeleteService.deleteControl(opt.$trigger[0]);
+                                break;
+                        }
+                    }
+                });
+                break;
+            case 'dews-mobile-radioGroup':
+                $.contextMenu({
+                    selector: ".selected-control",
+                    items: {
+                        "option": {
+                            name: "Option",
+                            icon: "edit"
+                        },
+                        "delete": {
+                            name: "Delete",
+                            icon: "ic-delete"
+                        },
+                    },
+                    callback: function(itemKey, opt) {
+                        switch (itemKey){
+                            case "delete" :
+                                DeleteService.deleteControl(opt.$trigger[0]);
+                                break;
+                        }
+                    }
+                });
+                break;
+            case 'dews-mobile-textbox':
+                $.contextMenu({
+                    selector: ".selected-control",
+                    items: {
+                        "option": {
+                            name: "Option",
+                            icon: "edit"
+                        },
+                        "delete": {
+                            name: "Delete",
+                            icon: "ic-delete"
+                        },
+                    },
+                    callback: function(itemKey, opt) {
+                        switch (itemKey){
+                            case "delete" :
+                                DeleteService.deleteControl(opt.$trigger[0]);
+                                break;
+                        }
+                    }
+                });
+                break;
+            case 'dews-mobile-timePicker':
+                $.contextMenu({
+                    selector: ".selected-control",
+                    items: {
+                        "option": {
+                            name: "Option",
+                            icon: "edit"
+                        },
+                        "delete": {
+                            name: "Delete",
+                            icon: "ic-delete"
+                        },
+                    },
+                    callback: function(itemKey, opt) {
+                        switch (itemKey){
+                            case "delete" :
+                                DeleteService.deleteControl(opt.$trigger[0]);
+                                break;
+                        }
+                    }
+                });
+                break;
+            case 'dews-mobile-dropdownList':
+                $.contextMenu({
+                    selector: ".selected-control",
+                    items: {
+                        "option": {
+                            name: "Option",
+                            icon: "edit"
+                        },
+                        "delete": {
+                            name: "Delete",
+                            icon: "ic-delete"
+                        },
+                    },
+                    callback: function(itemKey, opt) {
+                        switch (itemKey){
+                            case "delete" :
+                                DeleteService.deleteControl(opt.$trigger[0]);
+                                break;
+                        }
+                    }
+                });
+                break;
+            case 'dews-mobile-dropdownButton':
+                $.contextMenu({
+                    selector: ".selected-control",
+                    items: {
+                        "option": {
+                            name: "Option",
+                            icon: "edit"
+                        },
+                        "addChildButton": {
+                            name: "Add Child Button",
+                            icon: "edit"
+                        },
+                        "delete": {
+                            name: "Delete",
+                            icon: "ic-delete"
+                        },
+                    },
+                    callback: function(itemKey, opt) {
+                        switch (itemKey){
+                            case "delete" :
+                                DeleteService.deleteControl(opt.$trigger[0]);
+                                break;
+                        }
+                    }
+                });
+                break;
+            case 'button-list-child':
                 break;
         }
     },
@@ -101,4 +521,3 @@ export default {
         $.contextMenu('destroy');
     }
 }
-
