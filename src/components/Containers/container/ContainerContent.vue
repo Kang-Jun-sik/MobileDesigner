@@ -1,5 +1,5 @@
 <template>
-  <div :uid="uid" class="dews-mobile-containerContent">
+  <div :uid="uid" class="dews-mobile-containerContent dews-mobile-component">
     <slot></slot>
   </div>
 </template>
@@ -9,9 +9,12 @@ import CreateService from "@/service/CreateService";
 
 export default {
   name: 'container-content',
+  props: ['containerType', 'dataUid'],
   data() {
     return {
-      uid: ''
+      id: '',
+      uid: '',
+      containerChild: 'container-content',
     }
   },
   created() {

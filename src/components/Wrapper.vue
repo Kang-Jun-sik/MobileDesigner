@@ -69,7 +69,6 @@ export default {
 
       const componentName = element.textContent.replace(/\s+/g, '');
       const component = CreateService.addComponent(componentName);
-
       if (element.classList.contains('component-box') && target.classList.contains('form-field')) {
         const li = document.createElement('li');
         li.appendChild(component.$el);
@@ -79,8 +78,24 @@ export default {
       }
       store.commit('addItem', component);
 
-      ContextMenuService.getContextMenu(component.$el);
       CreateService.sendCreateMessage(component.$el);
+      if (component.isContainer) {
+        this.setContainerChild(component);
+      }
+
+      ContextMenuService.getContextMenu(component.$el);
+    },
+    /*
+    * Container Drop 후, container-button, container-content Create Message
+    * */
+    setContainerChild(component) {
+      Array.from(component.$children).forEach(child => {
+        CreateService.sendCreateMessage(child.$el);
+        store.commit('addItem', child);
+        if (child.$children) {
+          this.setContainerChild(child);
+        }
+      });
     },
   },
 }

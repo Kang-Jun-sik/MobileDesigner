@@ -1,13 +1,12 @@
 <template>
-  <div :uid="uid" class="dews-mobile-formContainer dews-mobile-component dews-container">
+  <div :uid="uid" class="dews-mobile-formContainer dews-mobile-component">
     <div class="dews-container-option-control">
       <h3 class="option-sub-title" v-if="title">{{ title }}</h3>
       <container-button :containerType="containerType"></container-button>
     </div>
 
-    <container-content>
-      <form-section></form-section>
-      <form-section></form-section>
+    <container-content :containerType="containerType">
+      <form-section :containerChild="childFormSection"></form-section>
     </container-content>
   </div>
 </template>
@@ -26,7 +25,8 @@ export default {
       uid: '',
       title: 'Form Container',
       isContainer: true,
-      containerType: 'form'
+      containerType: 'form',
+      childFormSection: 'form-section',
     }
   },
   created() {

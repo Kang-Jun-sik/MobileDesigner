@@ -1,11 +1,11 @@
 <template>
-  <div :uid="uid" class="dews-mobile-searchContainer dews-mobile-component dews-container">
+  <div :uid="uid" class="dews-mobile-searchContainer dews-mobile-component">
     <div class="dews-container-option-control">
       <h3 class="option-sub-title" v-if="title">{{ title }}</h3>
       <container-button :containerType="containerType" ref="containerButton"></container-button>
     </div>
 
-    <container-content ref="containerContent">
+    <container-content :containerType="containerType" :dataUid="dataUid" ref="containerContent">
       <div class="dews-search-field">
         <ul class="search-container-field form-field" :data-uid="dataUid" ref="searchContainerField">
         </ul>
@@ -40,11 +40,6 @@ export default {
     this.uid = CreateService.createUid('dews-search-container');
     this.dataUid = CreateService.createUid('search-field');
     store.commit('matchUid', {'uid': this.uid, 'dataUid': this.dataUid});
-
-    this.$nextTick(() => {
-      CreateService.sendCreateMessage(this.$refs.containerButton.$el);
-      CreateService.sendCreateMessage(this.$refs.containerContent.$el);
-    });
   },
   mounted() {
     window.drake.containers.push(this.$refs.searchContainerField);

@@ -13,12 +13,14 @@ import CreateService from "@/service/CreateService";
 
 export default {
   name: 'form-section',
+  props: ['containerChild'],
   data() {
     return {
       id: '',
       uid: '',
       dataUid: '',
       title: 'form-section',
+      containerType: 'form',
     }
   },
   created() {

@@ -68,26 +68,21 @@ export default {
             }
         }
     },
-
     /*
-    * Recursive Function For Control Rendering
-    * @param node
-    * @param parentUid
+    * control parsing
+    * container-button, container-content, form-section in form-container 제외
     * */
-    pageParsing(node, parentUid) {
-        let instance = node.cloneNode();
-        if (instance.tagName === 'container-content' || instance.tagName === 'container-button') return;
-
-        instance = PageOpenService.createControlFromData(instance);
-        const parent = store.state.component.items.find(item => item.uid === parentUid);
+    controlParsing(instance, parent) {
+        const control = PageOpenService.createControlFromData(instance);
+        const controlUid = control.uid;
         const parentDataUid = parent.dataUid ? parent.dataUid : '';
 
         let addComponent;
-        if (parent.isContainer) {
+        if (parent.containerType === 'search' || parent.containerType === 'form') {
             addComponent = document.createElement('li');
-            addComponent.appendChild(instance.$el);
+            addComponent.appendChild(control.$el);
         } else {
-            addComponent = instance.$el;
+            addComponent = control.$el;
         }
 
         if (parentDataUid) {
@@ -96,11 +91,43 @@ export default {
             parent.$el.appendChild(addComponent);
         }
 
+        return controlUid;
+    },
+
+    /*
+    * Recursive Function For Control Rendering
+    * @param node
+    * @param parentUid
+    * */
+    pageParsing(node, parentUid) {
+        let instance = node.cloneNode();
+        let instanceUid;
+        const parent = store.state.component.items.find(item => item.uid === parentUid);
+
+        const containerChildList = ['container-button', 'container-content', 'form-section'];
+        if (containerChildList.includes(node.tagName)) {
+            const containerChild = parent.$children.find(child => {
+                return child.containerChild === node.tagName;
+            });
+
+            if (containerChild) {
+                containerChild.uid = node.getAttribute('uid');
+                instanceUid = containerChild.uid;
+                store.commit('addItem', containerChild);
+            } else {
+                instanceUid = PageOpenService.controlParsing(instance, parent);
+            }
+        } else {
+            instanceUid = PageOpenService.controlParsing(instance, parent);
+        }
+
         if (node.childElementCount === 0) return;
-        for (let i = 0; i < node.childElementCount; i++) {
-            PageOpenService.pageParsing(node.children[i], instance.uid);
+        for (let child of node.children) {
+            PageOpenService.pageParsing(child, instanceUid);
         }
     },
+
+
 
     /*
     * Xml Data --> Create Control Logic

@@ -1,8 +1,7 @@
 <template>
-  <div :uid="uid" :data-uid="'test'">
+  <div :uid="uid" class="dews-mobile-containerButton dews-mobile-component" :data-uid="'test'">
     <div v-if="containerType === 'form'" class="option-custom-button">
       <ul>
-        <li><dews-button></dews-button></li>
       </ul>
     </div>
     <div class="option-convenience-button">
@@ -17,16 +16,15 @@
 
 <script>
 import CreateService from "@/service/CreateService";
-import DewsButton from "@/components/Controls/DewsButton";
 
 export default {
   name: 'container-button',
-  components: {DewsButton},
   props: ['containerType'],
   data() {
     return {
       id: '',
       uid: '',
+      containerChild: 'container-button'
     }
   },
   created() {
