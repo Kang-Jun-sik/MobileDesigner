@@ -81,31 +81,6 @@ export default {
   min-height: 40px;
 }
 
-
-////임시 input component 모양 잡기
-//label {
-//  display: block;
-//  width: 100%;
-//  margin-bottom: 2px;
-//  font-size: 12px;
-//  line-height: 1.5;
-//  text-align: left;
-//  color: rgba(60, 60, 67, 0.6);
-//}
-//input[type="text"] {
-//  position: relative;
-//  width: 100%;
-//  height: 36px;
-//  padding: 7px 10px;
-//  color: rgb(17, 17, 17);
-//  border: 1px solid rgba(60, 60, 67, 0.08);
-//  border-radius: 4px;
-//  background-color: rgb(255, 255, 255);
-//  font-size: 15px;
-//  line-height: 1.47;
-//  text-align: left;
-//}
-
 // DFD용 scss 추가
 .form-field {
   min-height: 20px;

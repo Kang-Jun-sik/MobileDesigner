@@ -10,6 +10,7 @@
 
 <script>
 import CreateService from "@/service/CreateService";
+import store from "@/store/index";
 
 export default {
   name: 'form-section',
@@ -26,6 +27,7 @@ export default {
   created() {
     this.uid = CreateService.createUid('form-section');
     this.dataUid = CreateService.createUid('form-field');
+    store.commit('matchUid', {'uid': this.uid, 'dataUid': this.dataUid});
   },
   mounted() {
     window.drake.containers.push(this.$refs.formContainerField);

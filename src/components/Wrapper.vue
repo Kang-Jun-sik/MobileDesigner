@@ -30,8 +30,8 @@ export default {
     window.drake = dragula({
       revertOnSpill: true,
       copy: function (el, source) {
-        return ['areaList', 'containerList',
-          'buttonList', 'componentList', 'pickerList', 'etcList'].includes(source.id);
+        return ['areaList', 'containerList', 'buttonList',
+          'componentList', 'pickerList', 'etcList'].includes(source.id);
       },
       accepts: function (el, target, source) {
         if (target.classList.contains('dews-box-content') && target.querySelector('.dews-container')) {
@@ -66,7 +66,6 @@ export default {
     * 드롭할 때, 컴포넌트 호출 및 $el로 replace 처리
     * */
     drop(element, target) {
-      console.log(element, target)
       if (!element.classList.contains('dews-control-list')) return
 
       const componentName = element.textContent.replace(/\s+/g, '');
