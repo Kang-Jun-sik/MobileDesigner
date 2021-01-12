@@ -5,6 +5,7 @@
 * {
   @include reset();
 }
+
 body {
   background-color: #d5dae2 !important;
 }
@@ -25,6 +26,7 @@ body {
   .ui-selectable-helper {
     display: none;
   }
+
   .ui-icon {
     background-image: none;
   }
@@ -46,30 +48,37 @@ body {
     top: -5px;
     left: 0;
   }
+
   .handle-e {
     top: 0;
     right: -5px;
   }
+
   .handle-s {
     bottom: -5px;
     left: 0;
   }
+
   .handle-w {
     top: 0;
     left: -5px;
   }
+
   .handle-ne {
     top: -5px;
     right: -5px;
   }
+
   .handle-se {
     bottom: -5px;
     right: -5px;
   }
+
   .handle-sw {
     bottom: -5px;
     left: -5px;
   }
+
   .handle-nw {
     top: -5px;
     left: -5px;
@@ -81,6 +90,7 @@ body {
       width: 5px;
       height: 5px;
     }
+
     .ui-resizable-handle {
       cursor: default;
     }
@@ -91,17 +101,20 @@ body {
 .gu-hide {
   display: none !important;
 }
+
 .gu-unselectable {
   -webkit-user-select: none !important;
   -moz-user-select: none !important;
   -ms-user-select: none !important;
   user-select: none !important;
 }
+
 .gu-transit {
   opacity: 0.5;
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
   filter: alpha(opacity=50);
 }
+
 .gu-mirror {
   display: inline-flex;
   opacity: 0;
@@ -112,16 +125,25 @@ body {
 //context menu
 .context-menu-list {
   z-index: 100 !important;
-}
-.context-menu-icon-view {
-  content: "👀"; /* Unicode for ".fa-share-square-o" icon*/
-}
-.context-menu-icon-ic-edit {
-  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABUAAAAVCAYAAACpF6WWAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMTM4IDc5LjE1OTgyNCwgMjAxNi8wOS8xNC0wMTowOTowMSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTcgKFdpbmRvd3MpIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjAyM0MxNjMxQjQ5MzExRTdCQ0U2Qzk3ODlBNDQ0ODcyIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOjAyM0MxNjMyQjQ5MzExRTdCQ0U2Qzk3ODlBNDQ0ODcyIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6MDIzQzE2MkZCNDkzMTFFN0JDRTZDOTc4OUE0NDQ4NzIiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6MDIzQzE2MzBCNDkzMTFFN0JDRTZDOTc4OUE0NDQ4NzIiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz4Kb7U+AAAA/ElEQVR42mL8//8/A7UBEwMNAE0MZUEX8PHxwWf5P3SJLVu2kOxSXiDOAeIbQHwNiNOAmINc7ysCcS8QPwbiWiBeD8TqQDwTiB8CcR0Qi5Bi6Dogvg3ExkCcCcRyQFyOJC8GxI1Qw2cQFaZAEAjEWkB8nYAvuYA4HYgziPX+9SGRTn+RoP8XsYa+AuL/WDAjGpYH4pfEGnqKSFd641KLzdDlRBjIBsTFQLyMlHRKyLXtQPwWiDcQaygof0cD8WscBlYCcSwQR2ErC/AlqTtA7ADN8zAAymHbgTgOiO2B+C456RRUgOgDcR4QXwDihUC8DSqGN3MwjuySHyDAANzTNwipsTmkAAAAAElFTkSuQmCC)
+
+  //context-menu 아이콘 (16 X 16)
+  .context-menu-icon {
+    background-position-x: 9px;
+    background-position-y: 7px;
+    //삭제 버튼
+    &.context-menu-icon-ic-delete {
+      background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAINJREFUOBFjYKAQMGLT3zjv5AUGRgZ9ZLn/DAwXGhLNDZHFcLIb558EqkcF2MRAKuAuANr6AcjjR9WGg/ef4WN9krkAhiwuW5AVoqthQpYkh43TAGSbkNnoluA0AF0hLv6oAWghgy+0YUrR1VAciCwwk0H0//8Mreg2IMvD1KCLUcQHAH8CK0Xb4NeCAAAAAElFTkSuQmCC);
+    }
+
+    //세로 분할
+    &.context-menu-icon-ic-split {
+      background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAKNJREFUOBFjYBhowAhyQMO8ky2MjAzVMMf8/8/Q2pBkXtMw8wxXQ7rJN1zyIPVgAxrnn/xfn2gOZoMEQfz/v5hFGZh+5/xk/j2Vg5H9Fbo8jM8C0oANsDAzcf9lZpZiZ2DgxiYPE2OCMcilRw1gYBjEYfDn77+v///8fcbw49M3fFEMTkigpAtKfTCF4KScbvKmYer+noZs9y/ApIwhD1M78DQADUpHWlFsiboAAAAASUVORK5CYII=);
+    }
+  }
 }
 
 //control list
-body  {
+body {
   background-color: #d5dae2;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
@@ -205,7 +227,8 @@ body  {
     }
   }
 }
-.control-list{
+
+.control-list {
   .control-list-wrapper {
     margin-bottom: 1px;
 
@@ -227,6 +250,7 @@ body  {
         letter-spacing: -0.33px;
         text-align: left;
       }
+
       .header-arrow {
         position: absolute;
         top: 7px;
@@ -244,9 +268,11 @@ body  {
           background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAEKADAAQAAAABAAAAEAAAAAAXnVPIAAAAW0lEQVQ4EWNgGAWDPAT8QlMn+IWk9ONzJjMuSaDGBYyMjOlAbKGhbaxw89q5jdjUYjUAqjkeSYMBLkMYkRSBmQGhqQb/GRjOo4uD+EDFhhtWz76ATW5UbCBDAAAP0hVgqGYaXgAAAABJRU5ErkJggg==);
         }
       }
+
       &:hover {
         background-color: #a4b7d1;
       }
+
       &:focus {
         outline: 0;
       }
@@ -255,12 +281,14 @@ body  {
     .control-content {
       padding: 6px;
       background-color: #f3f6fa;
+
       .dews-control-list {
         @include dews-control-list();
       }
     }
   }
 }
+
 .dews-control-list.gu-transit {
   @include dews-control-list();
 
@@ -272,22 +300,27 @@ body  {
   &:hover:not(:active) {
     border: 1px solid #acc0d8;
     background-color: #c7d6e8;
+
     .title {
-      color:  #000000;
+      color: #000000;
     }
   }
 
   @include dews-control-list-icon();
 }
+
 .fade {
   transition: opacity 0.15s linear;
+
   &:not(.show) {
     opacity: 0;
   }
 }
+
 .collapse:not(.show) {
   display: none;
 }
+
 .collapsing {
   position: relative;
   height: 0;
@@ -295,6 +328,7 @@ body  {
   transition: height 0.2s ease-in-out;
   transition-timing-function: linear;
 }
+
 @media (prefers-reduced-motion: reduce) {
   .fade {
     transition: none;
@@ -311,7 +345,7 @@ body  {
   display: flex;
   flex-wrap: wrap;
 
- > li {
+  > li {
     float: left;
     width: 100%;
     padding-top: 16px;

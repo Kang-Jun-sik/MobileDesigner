@@ -22,13 +22,12 @@ export default {
                     }
                 });
                 break;
-
             case "dews-mobile-item":
                 $.contextMenu({
                     selector: ".selected-control",
                     items: {
-                        "vertical": {name: "세로분할", icon: "edit"},
-                        "delete": {name: "Delete", icon: "delete"}
+                        "vertical": {name: "세로분할", icon: "ic-split"},
+                        "delete": {name: "Delete", icon: "ic-delete"}
                     },
                     callback: function(itemKey, opt) {
                         switch (itemKey){
@@ -42,13 +41,12 @@ export default {
                     }
                 })
                 break;
-
             case "dews-mobile-box":
                 $.contextMenu({
                     selector: ".selected-control",
                     items: {
-                        "vertical": {name: "세로분할", icon: "edit"},
-                        "delete": {name: "Delete", icon: "delete"}
+                        "vertical": {name: "세로분할", icon: "ic-split"},
+                        "delete": {name: "Delete", icon: "ic-delete"}
                     },
                     callback: function(itemKey, opt) {
                         switch (itemKey){
@@ -62,13 +60,12 @@ export default {
                     }
                 })
                 break;
-
             case "dews-mobile-searchContainer" :
                 $.contextMenu({
                     selector: ".selected-control",
                     items: {
                         "edit": {name: "Search-container-option", icon: "edit"},
-                        "delete": {name: "Delete", icon: "delete"},
+                        "delete": {name: "Delete", icon: "ic-delete"},
                         "sep1": "---------",
                     },
                     callback: function(itemKey, opt) {
@@ -80,13 +77,12 @@ export default {
                     }
                 });
                 break;
-
             case "dews-mobile-button" :
                 $.contextMenu({
                     selector: ".selected-control",
                     items: {
                         "b1": {name: "ButtonOption1", icon: "edit"},
-                        "delete": {name: "Delete", icon: "delete"},
+                        "delete": {name: "Delete", icon: "ic-delete"},
                         "sep1": "---------",
                     },
                     callback: function(itemKey, opt) {
