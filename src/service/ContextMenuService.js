@@ -22,13 +22,12 @@ export default {
                     }
                 });
                 break;
-
             case "dews-mobile-item":
                 $.contextMenu({
                     selector: ".selected-control",
                     items: {
-                        "vertical": {name: "세로분할", icon: "edit"},
-                        "delete": {name: "Delete", icon: "delete"}
+                        "vertical": {name: "세로분할", icon: "ic-split"},
+                        "delete": {name: "Delete", icon: "ic-delete"}
                     },
                     callback: function(itemKey, opt) {
                         switch (itemKey){
@@ -42,7 +41,6 @@ export default {
                     }
                 })
                 break;
-
             case "dews-mobile-box":
                 $.contextMenu({
                     selector: ".selected-control",
@@ -66,12 +64,12 @@ export default {
                 break;
             case 'dews-mobile-tab':
                 break;
-            case 'dews-mobile-searchContainer':
+            case "dews-mobile-searchContainer" :
                 $.contextMenu({
                     selector: ".selected-control",
                     items: {
-                        "edit": {name: "Option", icon: "edit"},
-                        "delete": {name: "Delete", icon: "delete"},
+                        "edit": {name: "Search-container-option", icon: "edit"},
+                        "delete": {name: "Delete", icon: "ic-delete"},
                     },
                     callback: function(itemKey, opt) {
                         switch (itemKey){
@@ -94,11 +92,12 @@ export default {
                 break;
             case 'dews-mobile-containerButton':
                 break;
-            case 'dews-mobile-button':
+            case "dews-mobile-button" :
                 $.contextMenu({
                     selector: ".selected-control",
                     items: {
-                        "delete": {name: "Delete", icon: "delete"},
+                        "b1": {name: "ButtonOption1", icon: "edit"},
+                        "delete": {name: "Delete", icon: "ic-delete"},
                     },
                     callback: function(itemKey, opt) {
                         switch (itemKey){
