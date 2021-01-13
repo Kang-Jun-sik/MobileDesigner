@@ -25,9 +25,12 @@ export default {
   data() {
     return {
       uid: '',
+      groupItemClass: 'group-item',
+
+      /* Properties */
+      id: '',
       title: 'CheckBoxGroup',
       align: 'horizontal',
-      groupItemClass: 'group-item',
     }
   },
   created() {

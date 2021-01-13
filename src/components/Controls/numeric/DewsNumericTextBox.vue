@@ -3,62 +3,66 @@
     <label v-if="title" for="numeric-box">{{ title }}</label>
     <label v-else class="undefined" for="numeric-box"></label>
     <div class="numeric-wrap">
-      <span v-if="prefix">{{ prefix }}</span>
+      <span class="prefix" v-if="prefix">{{ prefix }}</span>
       <span class="numeric view" :class="disabled ? 'disabled' : ''">
         <input id="numeric-box" class="numeric-box" type="text" :value="value"
          :disabled="disabled" :readonly="readonly" :placeholder="placeholder">
       </span>
       <span class="numeric mask" style="display: none;">
-        <input type="text" :value="value" :step="step" :min="min" :max="max">
+        <input type="text" :value="value">
       </span>
-      <span v-if="suffix">{{ suffix }}</span>
-      <span class="stepper">
-        <button class="button-stepper minus" @click="stepperDecrement()"></button>
-        <button class="button-stepper plus" @click="stepperIncrement()"></button>
-      </span>
+      <span class="suffix" v-if="suffix">{{ suffix }}</span>
+
+      <numerictextbox-button v-if="showNumericButton" :step="step" :min="min" :max="max"></numerictextbox-button>
     </div>
   </div>
 </template>
 
 <script>
 import CreateService from "@/service/CreateService";
+import NumerictextboxButton from "@/components/Controls/numeric/NumericTextBoxButton";
 
 export default {
   name: 'dews-numerictextbox',
+  components: {NumerictextboxButton},
   data() {
     return {
       uid: '',
+      value: '',
+      showNumericButton: true,
+
+      /* Properties */
+      id: '',
       title: 'NumericTextBox',
       placeholder: '',
       disabled: false,
       readonly: false,
       required: false,
-      value: '',
-      prefix: '',
-      suffix: '',
+      prefix: '$',
+      suffix: '백만',
       format: '#,##0.00',
-      decimals: null,
-      max: null,
-      min: null,
+      decimals: 0,
       restrict: false,
-      maxLength: null,
+      maxLength: '',
       round: 'round',
+
       step: 1,
+      min: 0,
+      max: 0,
     }
   },
   created() {
     this.uid = CreateService.createUid('dews-numerictextbox');
   },
   methods: {
-    stepperDecrement() {},
-    stepperIncrement() {}
+
   }
 }
 </script>
 
 <style lang="scss" scoped>
-@import 'node_modules/@dews/dews-mobile-style/scss/variables/variables';
-@import 'node_modules/@dews/dews-mobile-style/scss/mixins/_mixins';
+@import '../../../../node_modules/@dews/dews-mobile-style/scss/variables/variables';
+@import '../../../../node_modules/@dews/dews-mobile-style/scss/mixins/mixins';
 .undefined {
   opacity: 0;
 }

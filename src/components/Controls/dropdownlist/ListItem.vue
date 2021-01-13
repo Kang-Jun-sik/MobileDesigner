@@ -15,11 +15,14 @@
 import DewsCheckbox from "@/components/Controls/DewsCheckBox";
 
 export default {
-
   name: 'dropdownlist-item',
   components: {DewsCheckbox},
   data() {
     return {
+      uid: '',
+
+      /* Properties */
+      id: '',
       title: '',
       multi: false,
     }

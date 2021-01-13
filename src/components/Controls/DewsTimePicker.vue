@@ -3,7 +3,7 @@
     <label>{{ title }}</label>
     <span class="select-wrap">
       <span class="select-shape">
-        <span class="select-input">{{ inputValue }}</span>
+        <span class="select-input">{{ value }}</span>
       </span>
       <span class="select-icon time-picker-icon"></span>
     </span>
@@ -18,15 +18,16 @@ export default {
   data() {
     return {
       uid: '',
+      value: '',
+
+      /* Properties */
       title: 'TimePicker',
-      inputValue: '',
       disabled: false,
       readonly: false,
-      height: '',
-      value: '',
+      required: false,
       min: '',
       max: '',
-      step: 1,
+      spinner: false,
     }
   },
   created() {

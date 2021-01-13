@@ -14,12 +14,16 @@ export default {
   data() {
     return {
       uid: '',
-      title: 'Tab',
       onActive: this.active,
       style: {
         height: '',
         backgroundColor: '#ffffff'
-      }
+      },
+
+      /* Properties */
+      id: '',
+      title: 'Tab',
+      hide: false,
     }
   },
   created() {

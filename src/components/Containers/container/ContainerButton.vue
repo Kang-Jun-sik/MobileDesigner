@@ -24,7 +24,7 @@ export default {
     return {
       id: '',
       uid: '',
-      containerChild: 'container-button'
+      controlChild: 'container-button'
     }
   },
   created() {

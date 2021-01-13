@@ -4,7 +4,7 @@
     <span class="select-wrap">
       <span class="select-shape">
         <span class="select-input">
-          {{ inputValue }}
+          {{ value }}
         </span>
       </span>
       <span class="select-icon date-picker-icon"></span>
@@ -20,12 +20,14 @@ export default {
   data() {
     return {
       uid: '',
+      value: '',
+
+      /* Properties */
+      id: '',
       title: 'MonthPicker',
-      inputValue: '',
       disabled: false,
       readonly: false,
       required: false,
-      value: '',
       min: '',
       max: '',
       spinner: false,

@@ -14,7 +14,7 @@ import store from "@/store/index";
 
 export default {
   name: 'form-section',
-  props: ['containerChild'],
+  props: ['controlChild'],
   data() {
     return {
       id: '',

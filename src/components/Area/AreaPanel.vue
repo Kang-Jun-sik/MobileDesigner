@@ -10,6 +10,9 @@ export default {
   data() {
     return {
       uid: '',
+
+      /* Properties */
+      id: '',
     }
   },
   created() {

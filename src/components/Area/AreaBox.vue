@@ -22,12 +22,16 @@ export default {
     return {
       uid: '',
       dataUid: '',
-      title: 'Box',
-      collapsed: true,
       height: '',
       contentStyle: {
         display: 'block'
-      }
+      },
+
+      /* Properties */
+      id: '',
+      title: 'Box',
+      collapsed: true,
+      hide: false,
     }
   },
   created() {

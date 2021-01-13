@@ -1,9 +1,6 @@
 export default {
     state: {
-        handles: {
-            'dews-mobile-item': 'e',
-        },
-        splitCount: 1,
+        handles: {},
     },
     getters: {},
     actions: {},

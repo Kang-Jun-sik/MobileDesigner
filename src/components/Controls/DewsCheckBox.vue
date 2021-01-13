@@ -4,7 +4,7 @@
       <input type="checkbox" v-model="checked" :data-checked="checked" :disabled="disabled">
       <span class="checkbox-shape"></span>
     </span>
-    <label class="checkbox-label">{{ title }}</label>
+    <label class="checkbox-label">{{ label }}</label>
   </span>
 </template>
 
@@ -17,9 +17,13 @@ export default {
     return {
       uid: '',
       checkBoxClass: '',
-      title: '라벨',
-      checked: false,
+
+      /* Properties */
+      id: '',
+      label: '라벨',
       disabled: false,
+      checked: false,
+      bookmark: false,
     }
   },
   created() {

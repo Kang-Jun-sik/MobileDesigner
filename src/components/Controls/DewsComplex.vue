@@ -25,7 +25,6 @@ export default {
   data() {
     return {
       uid: '',
-      title: 'Complex',
       liClass: 'complex-line',
       componentClass: 'components',
       commonClass: 'item',
@@ -35,6 +34,10 @@ export default {
         autofix: 'autofix'
       },
       widthType: 'variable',
+
+      /* Properties */
+      id: '',
+      title: 'Complex',
     }
   },
   created() {

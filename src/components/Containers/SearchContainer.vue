@@ -28,12 +28,15 @@ export default {
     return {
       uid: '',
       dataUid: '',
-      title: 'Search Container',
       col: 1,
       customButton: [],
       inputList: [],
       isContainer: true,
-      containerType: 'search'
+      containerType: 'search',
+
+      /* Properties */
+      id: '',
+      title: 'Form Container',
     }
   },
   created() {

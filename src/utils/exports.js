@@ -11,7 +11,7 @@ export Button from "@/components/Controls/DewsButton";
 export TextBox from "@/components/Controls/DewsTextBox";
 export CheckBox from "@/components/Controls/DewsCheckBox";
 export RadioButton from "@/components/Controls/DewsRadioButton";
-export NumericTextBox from "@/components/Controls/DewsNumericTextBox";
+export NumericTextBox from "@/components/Controls/numeric/DewsNumericTextBox";
 export MaskTextBox from "@/components/Controls/DewsMaskTextBox";
 export DatePicker from "@/components/Controls/DewsDatePicker";
 export MonthPicker from "@/components/Controls/DewsMonthPicker";

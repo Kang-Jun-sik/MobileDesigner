@@ -27,10 +27,13 @@ export default {
   data() {
     return {
       uid: '',
-      title: 'List Container',
       buttonList: [],
       summaryList: [],
       isContainer: true,
+
+      /* Properties */
+      id: '',
+      title: 'Form Container',
     }
   },
   created() {

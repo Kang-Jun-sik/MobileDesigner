@@ -25,10 +25,13 @@ export default {
   data() {
     return {
       uid: '',
+      groupItemClass: 'group-item',
+
+      /* Properties */
+      id: '',
       title: 'RadioButtonGroup',
       disabled: false,
       align: 'horizontal',
-      groupItemClass: 'group-item',
     }
   },
   created() {

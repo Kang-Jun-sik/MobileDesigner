@@ -10,7 +10,9 @@ export default {
   data() {
     return {
       uid: '',
-      handle: 'e',
+
+      /* Properties */
+      id: '',
       col: 'col-fd-6',
     }
   },

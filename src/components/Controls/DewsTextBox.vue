@@ -20,20 +20,22 @@ export default {
   name: 'dews-textbox',
   data() {
     return {
-      id: '',
       uid: '',
+
+      /* Properties */
+      id: '',
       title: 'TextBox',
       value: '',
       placeholder: '',
-      required: false,
+      multi: false,
       disabled: false,
       readonly: false,
-      multi: false,
+      required: false,
       multiHeight: 50,
     }
   },
   created() {
-    this.uid = CreateService.createUid('dews-textbox')
+    this.uid = CreateService.createUid('dews-textbox');
   },
   mounted() {
   },

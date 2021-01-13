@@ -15,14 +15,13 @@ export default {
   data() {
     return {
       uid: '',
-      text: 'Button',
       TYPE_LIST: {
         text: 'text',
         icon: 'icon',
         iconText: 'iconText'
       },
       SIZE_LIST: {
-        small: 'small',//IDE로부터 컨트롤 변경 메세지 처리
+        small: 'small', //IDE로부터 컨트롤 변경 메세지 처리
         medium: 'medium',
         large: 'large',
       },
@@ -54,14 +53,18 @@ export default {
         solid: 'solid',
         emphasize: 'emphasize'
       },
-      ui: 'solid',
+      buttonStyle: {},
+
+      /* Properties */
+      id: '',
+      text: 'Button',
       type: 'text',
+      ui: 'solid',
       size: 'medium',
       icon: '',
       link: '',
-      disabled: false,
       group: false,
-      buttonStyle: {},
+      disabled: false,
     }
   },
   created() {

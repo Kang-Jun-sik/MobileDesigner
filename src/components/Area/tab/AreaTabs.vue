@@ -27,7 +27,13 @@ export default {
     return {
       uid: '',
       titleList: 'Tab',
-      active: 'active'
+      active: 'active',
+
+      /* Properties */
+      id: '',
+      title: '',
+      selected: false,
+      hide: false,
     }
   },
   created() {

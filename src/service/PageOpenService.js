@@ -104,16 +104,16 @@ export default {
         let instanceUid;
         const parent = store.state.component.items.find(item => item.uid === parentUid);
 
-        const containerChildList = ['container-button', 'container-content', 'form-section'];
-        if (containerChildList.includes(node.tagName)) {
-            const containerChild = parent.$children.find(child => {
-                return child.containerChild === node.tagName;
+        const controlChildList = ['container-button', 'container-content', 'form-section', 'numerictextbox-button'];
+        if (controlChildList.includes(node.tagName)) {
+            const controlChild = parent.$children.find(child => {
+                return child.controlChild === node.tagName;
             });
 
-            if (containerChild) {
-                containerChild.uid = node.getAttribute('uid');
-                instanceUid = containerChild.uid;
-                store.commit('addItem', containerChild);
+            if (controlChild) {
+                controlChild.uid = node.getAttribute('uid');
+                instanceUid = controlChild.uid;
+                store.commit('addItem', controlChild);
             } else {
                 instanceUid = PageOpenService.controlParsing(instance, parent);
             }

@@ -16,8 +16,11 @@ export default {
     return {
       uid: '',
       value: 'TestValue',
-      type: 'basic',
       isContainer: true,
+
+      /* Properties */
+      id: '',
+      type: 'basic',
     }
   },
   created() {

@@ -21,6 +21,11 @@ export default {
   data() {
     return {
       uid: '',
+      value: '',
+      raw: '',
+
+      /* Properties */
+      id: '',
       title: 'MaskTextBox',
       placeholder: '',
       format: '',
@@ -31,8 +36,6 @@ export default {
       mask: '',
       prompt: '_',
       unmaskOnPost: true,
-      value: '',
-      raw: '',
       stateType: '',
       stateMessage: '',
     }

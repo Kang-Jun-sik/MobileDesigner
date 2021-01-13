@@ -6,7 +6,7 @@
     </div>
 
     <container-content :containerType="containerType">
-      <form-section :containerChild="childFormSection"></form-section>
+      <form-section :controlChild="childFormSection"></form-section>
     </container-content>
   </div>
 </template>
@@ -23,10 +23,13 @@ export default {
   data() {
     return {
       uid: '',
-      title: 'Form Container',
       isContainer: true,
       containerType: 'form',
       childFormSection: 'form-section',
+
+      /* Properties */
+      id: '',
+      title: 'Form Container',
     }
   },
   created() {

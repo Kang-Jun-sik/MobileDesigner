@@ -16,11 +16,13 @@ export default {
   data() {
     return {
       uid: '',
+
+      /* Properties */
+      id: '',
       title: '라벨',
-      checked: false,
       disabled: false,
       readonly: false,
-      picked: false,
+      checked: false,
     }
   },
   created() {

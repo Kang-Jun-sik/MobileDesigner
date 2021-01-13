@@ -14,7 +14,7 @@ export default {
     return {
       id: '',
       uid: '',
-      containerChild: 'container-content',
+      controlChild: 'container-content',
     }
   },
   created() {
