@@ -13,7 +13,8 @@
       </span>
       <span class="suffix" v-if="suffix">{{ suffix }}</span>
 
-      <numerictextbox-button v-if="showNumericButton" :step="step" :min="min" :max="max"></numerictextbox-button>
+      <numerictextbox-button v-if="showNumericButton"
+        :step="step" :min="min" :max="max" ref="numericChildButton"></numerictextbox-button>
     </div>
   </div>
 </template>
@@ -29,6 +30,7 @@ export default {
     return {
       uid: '',
       value: '',
+      hasChildControl: true,
       showNumericButton: true,
 
       /* Properties */

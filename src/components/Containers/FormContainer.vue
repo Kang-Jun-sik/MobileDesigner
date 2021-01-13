@@ -23,7 +23,7 @@ export default {
   data() {
     return {
       uid: '',
-      isContainer: true,
+      hasChildControl: true,
       containerType: 'form',
       childFormSection: 'form-section',
 

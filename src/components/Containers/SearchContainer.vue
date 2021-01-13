@@ -31,7 +31,7 @@ export default {
       col: 1,
       customButton: [],
       inputList: [],
-      isContainer: true,
+      hasChildControl: true,
       containerType: 'search',
 
       /* Properties */

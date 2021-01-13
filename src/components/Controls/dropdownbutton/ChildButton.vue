@@ -9,9 +9,13 @@ import CreateService from "@/service/CreateService";
 
 export default {
   name: 'dews-dropdown-childbutton',
+  props: ['controlChild'],
   data() {
     return {
       uid: '',
+
+      /* Properties */
+      id: '',
       text: 'ChildButton',
       disabled: false
     }

@@ -63,7 +63,7 @@ export default {
   },
   methods: {
     /*
-    * 드롭할 때, 컴포넌트 호출 및 $el로 replace 처리
+    * Control Drop 실행시, Control 생성 및 $el(element)로 replace 처리
     * */
     drop(element, target) {
       if (!element.classList.contains('dews-control-list')) return
@@ -80,8 +80,8 @@ export default {
       store.commit('addItem', component);
 
       CreateService.sendCreateMessage(component.$el);
-      if (component.isContainer) {
-        this.setContainerChild(component);
+      if (component.hasChildControl) {
+        this.setControlChild(component);
       }
 
       ContextMenuService.getContextMenu(component.$el);
@@ -89,12 +89,12 @@ export default {
     /*
     * Container Drop 후, container-button, container-content Create Message
     * */
-    setContainerChild(component) {
+    setControlChild(component) {
       Array.from(component.$children).forEach(child => {
         CreateService.sendCreateMessage(child.$el);
         store.commit('addItem', child);
         if (child.$children) {
-          this.setContainerChild(child);
+          this.setControlChild(child);
         }
       });
     },

@@ -1,12 +1,12 @@
 <template>
-  <div :uid="uid" class="dews-mobile-dropdownButton dews-mobile-component dews-dropdown-button" :class="group ? 'group' : ''" ref="dropdownbutton" >
+  <div :uid="uid" class="dews-mobile-dropdownButton dews-mobile-component dews-dropdown-button" :class="group ? 'group' : ''" ref="dropdownButton" >
     <button @click="clickHandler($event)" class="dews-button dropdown"
             :class="[ui, size, disabled ? 'disabled' : '']">
       <span class="button-icon"></span>
-      <span class="button-text">{{ text }}</span>
+      <span class="button-text">{{ title }}</span>
     </button>
     <span class="button-list" :class="selected ? 'selected' : ''">
-      <dews-dropdown-childbutton></dews-dropdown-childbutton>
+      <dews-dropdown-childbutton :controlChild="childButton" ref="dropdownChildButton"></dews-dropdown-childbutton>
     </span>
   </div>
 </template>
@@ -21,21 +21,16 @@ export default {
   data() {
     return {
       uid: '',
-      text: 'DropdownButton',
-      SIZE_LIST: {
-        small: 'small',
-        medium: 'medium',
-        large: 'large',
-      },
-      UI_LIST: {
-        solid: 'solid',
-        emphasize: 'emphasize'
-      },
-      ui: 'solid',
-      size: 'medium',
+      hasChildControl: true,
+      childButton: 'dropdownbutton-childbutton',
+
+      /* Properties */
+      id: '',
+      title: 'DropdownButton',
       disabled: false,
       group: false,
-      selected: false,
+      ui: 'solid',
+      size: 'medium',
     }
   },
   created() {

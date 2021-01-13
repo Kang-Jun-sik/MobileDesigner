@@ -16,7 +16,7 @@ export default {
     return {
       uid: '',
       value: 'TestValue',
-      isContainer: true,
+      hasChildControl: true,
 
       /* Properties */
       id: '',
