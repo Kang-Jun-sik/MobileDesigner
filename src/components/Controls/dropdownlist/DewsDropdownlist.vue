@@ -7,7 +7,7 @@
           {{ selectItem[0] }}
         </span>
         <span v-if="multi && selectItem.length > 1" class="select-multi">
-          외 <strong>{{ selectItem[selectItem.length - 1] }}</strong>
+          외 <strong>{{ selectItem.length - 1 }}건</strong>
         </span>
       </span>
       <span class="select-icon dropdown-icon"></span>
@@ -24,14 +24,16 @@ export default {
   data() {
     return {
       uid: '',
+      selectItem: [],
+      active: false,
+
+      /* Properties */
+      id: '',
       title: 'DropdownList',
-      multi: false,
       disable: false,
       readonly: false,
-      active: false,
-      height: '',
-      selectItem: [],
-      itemList: [],
+      multi: false,
+
     }
   },
   created() {
