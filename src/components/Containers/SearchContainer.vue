@@ -1,5 +1,5 @@
 <template>
-  <div :uid="uid" class="dews-mobile-searchContainer dews-mobile-component dews-container">
+  <div :uid="uid" class="dews-mobile-searchContainer dews-mobile-component dews-container" :col="col">
     <div class="dews-container-option-control">
       <h3 class="option-sub-title" v-if="title">{{ title }}</h3>
       <container-button :containerType="containerType" ref="containerButton"></container-button>
@@ -28,15 +28,13 @@ export default {
     return {
       uid: '',
       dataUid: '',
-      col: 1,
-      customButton: [],
-      inputList: [],
-      hasChildControl: true,
       containerType: 'search',
+      hasChildControl: true,
 
       /* Properties */
       id: '',
-      title: 'Form Container',
+      col: 1,
+      title: 'Search Container',
     }
   },
   created() {
