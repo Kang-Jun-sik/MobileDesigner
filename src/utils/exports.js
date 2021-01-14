@@ -19,7 +19,7 @@ export TimePicker from "@/components/Controls/DewsTimePicker";
 export PeriodPicker from "@/components/Controls/DewsPeriodPicker";
 export DropdownList from "@/components/Controls/dropdownlist/DewsDropdownlist";
 export DropdownButton from "@/components/Controls/dropdownbutton/DewsDropdownbutton";
-export ChildButton from "@/components/Controls/dropdownbutton/ChildButton";
+export ChildButton from "@/components/Controls/dropdownbutton/ChildButton"
 export Complex from "@/components/Controls/DewsComplex";
 export ButtonGroup from "@/components/Controls/DewsButtonGroup";
 export RadioButtonGroup from "@/components/Controls/DewsRadioButtonGroup";
