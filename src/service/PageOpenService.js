@@ -105,7 +105,7 @@ export default {
         const parent = store.state.component.items.find(item => item.uid === parentUid);
 
         const controlChildList = ['container-button', 'container-content', 'form-section',
-            'numerictextbox-button', 'dropdownbutton-childbutton'];
+            'numerictextbox-button', 'dropdownbutton-childbutton', 'dews-button'];
         if (controlChildList.includes(node.tagName)) {
             const controlChild = parent.$children.find(child => {
                 return child.controlChild === node.tagName;

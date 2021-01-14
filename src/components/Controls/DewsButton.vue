@@ -11,7 +11,7 @@ import CreateService from "@/service/CreateService";
 
 export default {
   name: 'dews-button',
-  props: ['isGroup'],
+  props: ['isGroup', 'controlChild'],
   data() {
     return {
       uid: '',
