@@ -351,3 +351,13 @@ body {
     padding-top: 16px;
   }
 }
+
+//search container
+.dews-search-field{
+  padding: 0 17px 0;
+  @include form-field();
+
+  .dews-mobile-searchContainer[col='2'] & {
+    @include form-field(2);
+  }
+}

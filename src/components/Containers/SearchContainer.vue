@@ -65,15 +65,7 @@ export default {
   @include option-control();
 }
 
-
-.dews-search-field{
-  @include form-field();
-  padding: 0 17px 0;
-
-  :host([col='2']) & {
-    @include form-field(2);
-  }
-}
+//.dews-search-field(form field) 관련 main.scss에서 처리
 
 //--------------------------------------
 // FD 추가 영역
@@ -87,5 +79,4 @@ export default {
   min-height: 20px;
   padding-bottom: 6px;
 }
-
 </style>
