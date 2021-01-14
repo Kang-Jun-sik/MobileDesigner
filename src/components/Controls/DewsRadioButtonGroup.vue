@@ -3,13 +3,10 @@
     <span class="radio-group-label">{{ title }}</span>
     <div class="radio-group" :class="align">
       <span class="group-item">
-        <dews-radiobutton></dews-radiobutton>
+        <dews-radiobutton :controlChild="controlChild"></dews-radiobutton>
       </span>
       <span class="group-item">
-        <dews-radiobutton></dews-radiobutton>
-      </span>
-      <span class="group-item">
-        <dews-radiobutton></dews-radiobutton>
+        <dews-radiobutton :controlChild="controlChild"></dews-radiobutton>
       </span>
     </div>
   </div>
@@ -25,6 +22,8 @@ export default {
   data() {
     return {
       uid: '',
+      hasChildControl: true,
+      controlChild: 'dews-radiobutton',
       groupItemClass: 'group-item',
 
       /* Properties */

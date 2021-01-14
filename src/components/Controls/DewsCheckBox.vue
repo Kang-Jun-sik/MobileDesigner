@@ -13,6 +13,7 @@ import CreateService from "@/service/CreateService";
 
 export default {
   name: 'dews-checkbox',
+  props: ['controlChild'],
   data() {
     return {
       uid: '',

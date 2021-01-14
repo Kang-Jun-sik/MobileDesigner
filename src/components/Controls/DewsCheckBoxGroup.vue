@@ -3,13 +3,10 @@
     <span class="checkbox-group-label">{{ title }}</span>
     <div class="checkbox-group" :class="align">
       <span class="group-item">
-        <dews-checkbox></dews-checkbox>
+        <dews-checkbox :controlChild="controlChild"></dews-checkbox>
       </span>
       <span class="group-item">
-        <dews-checkbox></dews-checkbox>
-      </span>
-      <span class="group-item">
-        <dews-checkbox></dews-checkbox>
+        <dews-checkbox :controlChild="controlChild"></dews-checkbox>
       </span>
     </div>
   </div>
@@ -25,6 +22,8 @@ export default {
   data() {
     return {
       uid: '',
+      hasChildControl: true,
+      controlChild: 'dews-checkbox',
       groupItemClass: 'group-item',
 
       /* Properties */
