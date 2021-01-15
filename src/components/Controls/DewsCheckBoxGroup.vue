@@ -40,4 +40,10 @@ export default {
 .dews-checkbox-group-wrap {
   @include checkbox-group-wrap();
 }
+
+.dews-checkbox-group-wrap {
+  .checkbox-group {
+    border: 1px dotted #212121;
+  }
+}
 </style>

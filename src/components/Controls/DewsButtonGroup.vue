@@ -37,4 +37,9 @@ export default {
 //======================================
 
 @include dews-button-group();
+
+.dews-button-group {
+  min-height: 24px;
+  border: 1px dotted #212121;
+}
 </style>

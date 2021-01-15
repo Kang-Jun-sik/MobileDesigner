@@ -42,4 +42,10 @@ export default {
   @include radio-group-wrap();
 }
 
+
+.dews-radio-group-wrap {
+  .radio-group {
+    border: 1px dotted #212121;
+  }
+}
 </style>
