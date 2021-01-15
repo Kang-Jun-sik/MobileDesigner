@@ -45,11 +45,12 @@ export default {
 @include dews-button-group();
 
 .dews-button-group {
-  min-height: 38px;
+  height: 100%;
+  min-height: 24px;
   border: 1px dotted #212121;
 
   .button-group {
-    min-height: 38px;
+    min-height: 24px;
     padding: 0;
   }
 }
