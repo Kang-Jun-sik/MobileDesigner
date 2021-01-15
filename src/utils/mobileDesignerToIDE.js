@@ -4,34 +4,73 @@ const mobileDesignerToIDE = (commandType, elm, parentUID, key) => {
     const elementUid = elm.getAttribute('uid');
     const controlIndex = elementUid.lastIndexOf('-');
     const control = elementUid.substring(0, controlIndex);
-
     let obj = {};
+
+    if (commandType === 'create') {
+        const createControlInfo = document.createElement(control);
+        createControlInfo.setAttribute('uid', elementUid);
+        createDataMessage(createControlInfo, elm.children, elm);
+        xw.startDocument();
+        xw.output = createControlInfo.outerHTML;
+        xw.endDocument();
+
+    } else {
+        xw.startDocument();
+        xw.startElement(control);
+        xw.writeAttribute('uid', elementUid);
+        xw.endElement();
+        xw.endDocument();
+    }
+
     switch (commandType) {
         case "select" :
             obj = {
                 'commandType': commandType,
-                'data': `<?xml version="1.0"?><${control} uid="${elm.getAttribute('uid')}"/>`
+                'data': xw.output
             }
             break;
         case "create":
             obj = {
                 'commandType': commandType,
                 'parentId': parentUID,
-                'data': `<?xml version="1.0"?><${control} uid="${elm.getAttribute('uid')}"/>`
+                'data': xw.output
             }
             break;
         case "delete":
             obj = {
                 'commandType': commandType,
                 'parentId': parentUID,
-                'data': `<?xml version="1.0"?><${control} uid="${elm.getAttribute('uid')}"/>`
+                'data': xw.output
             }
             break;
     }
-
     console.log(obj);
+
     // eslint-disable-next-line no-undef
-    // chromiumObject.mobileDesignerToIDE(obj); //실제 IDE 데이터 전송 로직
+    chromiumObject.mobileDesignerToIDE(obj); //실제 IDE 데이터 전송 로직
 };
+
+function createDataMessage(createData, children, elm) {
+    if (children === undefined)
+        return;
+
+    for (let child of children) {
+        if (child.hasAttribute('uid')) {
+            const childUID = child.getAttribute('uid');
+            const childControlType = childUID.substring(0, childUID.lastIndexOf('-'));
+            const childData = document.createElement(childControlType);
+            childData.setAttribute('uid', childUID);
+
+            const childElement = elm.querySelector(`[uid=${childUID}]`);
+            const parentElement = childElement.parentElement.closest(`[uid]`);
+
+            if (createData.getAttribute('uid') == parentElement.getAttribute('uid'))
+                createData.appendChild(childData);
+            else
+                createData.querySelector(`[uid=${parentElement.getAttribute('uid')}]`).appendChild(childData);
+        }
+        createDataMessage(createData, child.children, elm);
+    }
+}
 
 export default mobileDesignerToIDE;
