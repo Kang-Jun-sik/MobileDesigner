@@ -2,23 +2,15 @@
   <div :uid="uid" class="dews-mobile-radioGroup dews-mobile-component dews-radio-group-wrap">
     <span class="radio-group-label">{{ title }}</span>
     <div class="radio-group" :class="align">
-      <span class="group-item">
-        <dews-radiobutton :controlChild="controlChild"></dews-radiobutton>
-      </span>
-      <span class="group-item">
-        <dews-radiobutton :controlChild="controlChild"></dews-radiobutton>
-      </span>
     </div>
   </div>
 </template>
 
 <script>
 import CreateService from "@/service/CreateService";
-import DewsRadiobutton from "@/components/Controls/DewsRadioButton";
 
 export default {
   name: 'dews-radiobutton-group',
-  components: {DewsRadiobutton},
   data() {
     return {
       uid: '',

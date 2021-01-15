@@ -2,8 +2,6 @@
   <div :uid="uid" class="dews-mobile-buttonGroup dews-mobile-component dews-button-group">
     <ul class="button-group-wrap">
       <li>
-        <dews-button :isGroup="true" :controlChild="controlChild"></dews-button>
-        <dews-button :isGroup="true" :controlChild="controlChild"></dews-button>
       </li>
     </ul>
   </div>
@@ -11,11 +9,9 @@
 
 <script>
 import CreateService from "@/service/CreateService";
-import DewsButton from "@/components/Controls/DewsButton";
 
 export default {
   name: 'dews-button-group',
-  components: {DewsButton},
   data() {
     return {
       uid: '',

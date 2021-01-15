@@ -2,23 +2,15 @@
   <div :uid="uid" class="dews-mobile-checkboxGroup dews-mobile-component dews-checkbox-group-wrap">
     <span class="checkbox-group-label">{{ title }}</span>
     <div class="checkbox-group" :class="align">
-      <span class="group-item">
-        <dews-checkbox :controlChild="controlChild"></dews-checkbox>
-      </span>
-      <span class="group-item">
-        <dews-checkbox :controlChild="controlChild"></dews-checkbox>
-      </span>
     </div>
   </div>
 </template>
 
 <script>
-import DewsCheckbox from "@/components/Controls/DewsCheckBox";
 import CreateService from "@/service/CreateService";
 
 export default {
   name: 'dews-checkbox-group',
-  components: {DewsCheckbox},
   data() {
     return {
       uid: '',
