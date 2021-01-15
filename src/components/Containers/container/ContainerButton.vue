@@ -1,6 +1,6 @@
 <template>
   <div :uid="uid" class="dews-mobile-containerButton dews-mobile-component" :data-uid="'test'">
-    <div v-if="containerType === 'form'" class="option-custom-button">
+    <div v-if="controlType === 'form'" class="option-custom-button">
       <ul>
       </ul>
     </div>
@@ -19,7 +19,7 @@ import CreateService from "@/service/CreateService";
 
 export default {
   name: 'container-button',
-  props: ['containerType'],
+  props: ['controlType'],
   data() {
     return {
       id: '',

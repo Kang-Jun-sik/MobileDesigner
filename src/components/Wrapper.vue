@@ -34,7 +34,7 @@ export default {
           'componentList', 'pickerList', 'etcList'].includes(source.id);
       },
       accepts: function (el, target, source) {
-        if (target.classList.contains('dews-box-content') && target.querySelector('.dews-container')) {
+        if (target.dataset.type === 'area' && target.querySelector(`[data-type='container']`)) {
           return;
         }
         return componentAcceptsCheck(el, target);
@@ -70,10 +70,29 @@ export default {
 
       const componentName = element.textContent.replace(/\s+/g, '');
       const component = CreateService.addComponent(componentName);
-      if (element.classList.contains('component-list-box') && target.classList.contains('form-field')) {
-        const li = document.createElement('li');
-        li.appendChild(component.$el);
-        element.replaceWith(li);
+      let createElement;
+
+      if (element.dataset.type === 'component-list') {
+        switch (target.dataset.type) {
+          case "container":
+            createElement = document.createElement('li');
+            createElement.appendChild(component.$el);
+            element.replaceWith(createElement);
+            break;
+          case 'group':
+            createElement = document.createElement('span');
+            createElement.className = 'group-item';
+            createElement.appendChild(component.$el);
+            element.replaceWith(createElement);
+            break;
+          case 'button-group':
+            component.group = true;
+            element.replaceWith(component.$el);
+            break;
+          default:
+            element.replaceWith(component.$el);
+            break;
+        }
       } else {
         element.replaceWith(component.$el);
       }
@@ -83,7 +102,6 @@ export default {
       if (component.hasChildControl) {
         this.setControlChild(component);
       }
-
       ContextMenuService.getContextMenu(component.$el);
     },
     /*

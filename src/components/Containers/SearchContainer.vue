@@ -1,13 +1,14 @@
 <template>
-  <div :uid="uid" class="dews-mobile-searchContainer dews-mobile-component dews-container" :col="col">
+  <div :uid="uid" class="dews-mobile-searchContainer dews-mobile-component" :col="col">
     <div class="dews-container-option-control">
       <h3 class="option-sub-title" v-if="title">{{ title }}</h3>
-      <container-button :containerType="containerType" ref="containerButton"></container-button>
+      <container-button :controlType="controlType" ref="containerButton"></container-button>
     </div>
 
-    <container-content :containerType="containerType" :dataUid="dataUid" ref="containerContent">
+    <container-content :controlType="controlType" :dataUid="dataUid" ref="containerContent">
       <div class="dews-search-field">
-        <ul class="search-container-field form-field" :data-uid="dataUid" ref="searchContainerField">
+        <ul class="search-container-field form-field" ref="searchContainerField"
+          :data-uid="dataUid" data-type="container">
         </ul>
       </div>
     </container-content>
@@ -28,7 +29,7 @@ export default {
     return {
       uid: '',
       dataUid: '',
-      containerType: 'search',
+      controlType: 'search',
       hasChildControl: true,
 
       /* Properties */
@@ -77,6 +78,5 @@ export default {
 // DFD용 scss 추가
 .form-field {
   min-height: 20px;
-  padding-bottom: 6px;
 }
 </style>

@@ -78,12 +78,38 @@ export default {
         const parentDataUid = parent.dataUid ? parent.dataUid : '';
 
         let addComponent;
-        if (parent.containerType === 'search' || parent.containerType === 'form') {
-            addComponent = document.createElement('li');
-            addComponent.appendChild(control.$el);
-        } else {
-            addComponent = control.$el;
+        switch (parent.controlType) {
+            case 'search':
+                addComponent = document.createElement('li');
+                addComponent.appendChild(control.$el);
+                break;
+            case 'form':
+                addComponent = document.createElement('li');
+                addComponent.appendChild(control.$el);
+                break;
+            case 'group':
+                addComponent = document.createElement('span');
+                addComponent.className = 'group-item';
+                addComponent.appendChild(control.$el);
+                break;
+            case 'button-group':
+                control.group = true;
+                addComponent = control.$el;
+                break;
+            default:
+                addComponent = control.$el;
+                break;
         }
+        // if (parent.controlType === 'search' || parent.controlType === 'form') {
+        //     addComponent = document.createElement('li');
+        //     addComponent.appendChild(control.$el);
+        // } else if (parent.controlType === 'group') {
+        //     addComponent = document.createElement('span');
+        //     addComponent.className = parent.groupItemClass;
+        //     addComponent.appendChild(control.$el);
+        // } else {
+        //     addComponent = control.$el;
+        // }
 
         if (parentDataUid) {
             parent.$el.querySelector(`[data-uid=${parentDataUid}]`).appendChild(addComponent);
@@ -105,13 +131,11 @@ export default {
         const parent = store.state.component.items.find(item => item.uid === parentUid);
 
         const controlChildList = ['container-button', 'container-content', 'form-section',
-            'numerictextbox-button', 'dropdownbutton-childbutton',
-            'dews-button', 'dews-checkbox', 'dews-radiobutton'];
+            'numerictextbox-button', 'dropdownbutton-childbutton'];
         if (controlChildList.includes(node.tagName)) {
             const controlChild = parent.$children.find(child => {
                 return child.controlChild === node.tagName;
             });
-
             if (controlChild) {
                 controlChild.uid = node.getAttribute('uid');
                 instanceUid = controlChild.uid;
@@ -128,8 +152,6 @@ export default {
             PageOpenService.pageParsing(child, instanceUid);
         }
     },
-
-
 
     /*
     * Xml Data --> Create Control Logic

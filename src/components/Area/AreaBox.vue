@@ -1,10 +1,10 @@
 <template>
-  <div :uid="uid" class="dews-mobile-box dews-mobile-component dews-box-wrap dews-area" ref="box">
+  <div :uid="uid" class="dews-mobile-box dews-mobile-component dews-box-wrap" ref="box">
     <div class="dews-box-title" @click="onToggleClick($event)" :collapsed="collapsed">
       <h2><button class="dews-box-title-button" type="button">{{ title }}</button></h2>
     </div>
     <div class="dews-box-content-wrap" :style="contentStyle" part="content">
-      <div class="dews-box-content addable-area" :data-uid="dataUid" ref="boxContent">
+      <div class="dews-box-content addable-area" :data-uid="dataUid" data-type="area" ref="boxContent">
         <slot></slot>
       </div>
     </div>

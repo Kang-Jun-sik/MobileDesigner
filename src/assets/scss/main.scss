@@ -354,10 +354,23 @@ body {
 
 //search container
 .dews-search-field{
-  padding: 0 17px 0;
   @include form-field();
+  padding: 0 17px 6px;
 
   .dews-mobile-searchContainer[col='2'] & {
     @include form-field(2);
   }
+}
+
+// button-group
+@include dews-button-group();
+
+// checkbox-group
+.dews-checkbox-group-wrap {
+  @include checkbox-group-wrap();
+}
+
+// radio-group
+.dews-radio-group-wrap {
+  @include radio-group-wrap();
 }

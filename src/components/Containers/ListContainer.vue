@@ -1,5 +1,5 @@
 <template>
-  <div :uid="uid" class="dews-mobile-listContainer dews-container">
+  <div :uid="uid" class="dews-mobile-listContainer dews-mobile-component dews-container">
     <div class="dews-container-option-control">
       <h3 class="option-sub-title" v-if="title">{{ title }}</h3>
 
@@ -14,7 +14,7 @@
     </div>
 
     <div class="dews-search-field">
-      <ul class="form-field"></ul>
+      <ul class="form-field" data-type="container"></ul>
     </div>
   </div>
 </template>

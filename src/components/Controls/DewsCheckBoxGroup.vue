@@ -1,12 +1,14 @@
 <template>
   <div :uid="uid" class="dews-mobile-checkboxGroup dews-mobile-component dews-checkbox-group-wrap">
     <span class="checkbox-group-label">{{ title }}</span>
-    <div class="checkbox-group" :class="align">
+    <div class="checkbox-group" :class="align"
+      data-type="group" :data-uid="dataUid" ref="checkboxGroup">
     </div>
   </div>
 </template>
 
 <script>
+import store from "@/store/index";
 import CreateService from "@/service/CreateService";
 
 export default {
@@ -14,9 +16,8 @@ export default {
   data() {
     return {
       uid: '',
-      hasChildControl: true,
-      controlChild: 'dews-checkbox',
-      groupItemClass: 'group-item',
+      dataUid: '',
+      controlType: 'group',
 
       /* Properties */
       id: '',
@@ -26,6 +27,11 @@ export default {
   },
   created() {
     this.uid = CreateService.createUid('dews-checkbox-group');
+    this.dataUid = CreateService.createUid('checkbox-group');
+    store.commit('matchUid', {'uid': this.uid, 'dataUid': this.dataUid});
+  },
+  mounted() {
+    window.drake.containers.push(this.$refs.checkboxGroup);
   }
 }
 </script>

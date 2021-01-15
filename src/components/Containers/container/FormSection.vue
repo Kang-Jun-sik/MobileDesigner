@@ -2,7 +2,8 @@
   <div :uid="uid" class="dews-mobile-formSection dews-mobile-component form-section">
     <h3 class="dews-form-section-title">{{ title }}</h3>
     <div class="dews-form-field">
-      <ul class="form-container-field form-field" :data-uid="dataUid" ref="formContainerField">
+      <ul class="form-container-field form-field" ref="formContainerField"
+        :data-uid="dataUid" data-type="container">
       </ul>
     </div>
   </div>
@@ -21,7 +22,7 @@ export default {
       uid: '',
       dataUid: '',
       title: 'form-section',
-      containerType: 'form',
+      controlType: 'form',
     }
   },
   created() {

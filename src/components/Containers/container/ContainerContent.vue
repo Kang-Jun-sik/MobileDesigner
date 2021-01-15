@@ -9,7 +9,7 @@ import CreateService from "@/service/CreateService";
 
 export default {
   name: 'container-content',
-  props: ['containerType', 'dataUid'],
+  props: ['controlType', 'dataUid'],
   data() {
     return {
       id: '',

@@ -13,7 +13,6 @@ import CreateService from "@/service/CreateService";
 
 export default {
   name: 'dews-radiobutton',
-  props: ['controlChild'],
   data() {
     return {
       uid: '',
