@@ -51,7 +51,7 @@ export default {
 
   .button-group {
     min-height: 24px;
-    padding: 0;
+    padding: 8px 0;
   }
 }
 </style>
