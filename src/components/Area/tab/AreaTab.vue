@@ -24,10 +24,23 @@ export default {
       id: '',
       title: 'Tab',
       hide: false,
+
+      mainButtons: {
+        save: false,
+        add: false,
+        delete: false,
+        search: false,
+      }
     }
   },
   created() {
     this.uid = CreateService.createUid('dews-tab');
+
+    this.mainButtonList = {
+      uid: this.uid,
+      mainButtons: this.mainButtons
+    }
+    store.commit('setMainButtonList', this.mainButtonList)
   },
   mounted() {
     const parentTabs = this.$el.closest('.dews-tabs-wrap');

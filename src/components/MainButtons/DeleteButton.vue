@@ -1,9 +1,10 @@
 <template>
-  <div :uid="uid" class="dews-mobile-delete dews-mobile-component"></div>
+  <div :uid="uid" v-if="mainButtons.delete" class="dews-mobile-delete dews-mobile-component"></div>
 </template>
 
 <script>
 import CreateService from "@/service/CreateService";
+import {mapGetters} from "vuex";
 
 export default {
   name: 'delete-button',
@@ -15,6 +16,11 @@ export default {
   },
   created() {
     this.uid = CreateService.createUid('mDeleteButton');
+  },
+  computed: {
+    ...mapGetters({
+      mainButtons: "getMainButtons"
+    }),
   }
 }
 </script>

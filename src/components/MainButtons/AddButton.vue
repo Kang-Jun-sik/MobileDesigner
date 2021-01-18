@@ -1,5 +1,5 @@
 <template>
-  <div :uid="uid" class="dews-mobile-add dews-mobile-component">{{ mainButtons }}</div>
+  <div :uid="uid" v-if="mainButtons.add" class="dews-mobile-add dews-mobile-component"></div>
 </template>
 
 <script>
