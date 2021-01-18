@@ -71,7 +71,7 @@ export default {
     * @param item - AreaItem, AreaPanel
     * */
     deleteSplitItems(item, hasChild) {
-        DeleteService.sendDeleteMessage(item);
+        // DeleteService.sendDeleteMessage(item);
         DeleteService.deleteDrakeContainer(item);
         DeleteService.deleteItems(item);
 
@@ -91,17 +91,18 @@ export default {
             DeleteService.deleteSplitItems(targetPanel, targetSibling.hasChildNodes());
 
             if (targetSibling.hasChildNodes()) {
-                const _childElement = [...targetSibling.children]
-                _childElement.forEach(element => {
-                    DeleteService.sendDeleteMessage(element);
-                    DeleteService.reArrangeDelete(element);
-                });
+                // const _childElement = [...targetSibling.children]
+                // _childElement.forEach(element => {
+                //     DeleteService.sendDeleteMessage(element);
+                //     DeleteService.reArrangeDelete(element);
+                // });
 
                 targetPanel.replaceWith(...targetSibling.childNodes);
-                _childElement.forEach(element => {
-                    CreateService.sendCreateMessage(element);
-                    CreateService.reArrangeCreate(element);
-                });
+                CreateService.sendCreateMessage(targetSibling)
+                // _childElement.forEach(element => {
+                //     CreateService.sendCreateMessage(element);
+                //     CreateService.reArrangeCreate(element);
+                // });
             }
         }
     },
@@ -113,7 +114,7 @@ export default {
     deleteTargetChild(target) {
         Array.from(target.children).forEach(child => {
             if (child.getAttribute('uid')) {
-                DeleteService.sendDeleteMessage(child);
+                // DeleteService.sendDeleteMessage(child);
                 DeleteService.deleteDrakeContainer(child);
                 DeleteService.deleteItems(child);
             }
