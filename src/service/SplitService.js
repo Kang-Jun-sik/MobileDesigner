@@ -27,20 +27,20 @@ export default {
     * */
     setSplit(target) {
         DeleteService.sendDeleteMessage(target);
-        //DeleteService.reArrangeDelete(target);
+        DeleteService.reArrangeDelete(target);
 
         // 분할을 위한 AreaPanel extend 후, target과 area.$el를 replaceWith 실행
         const areaPanel = CreateService.addComponent('AreaPanel');
         store.commit('addItem', areaPanel);
         const areaPanelElement = areaPanel.$el;
         target.replaceWith(areaPanelElement);
-        //CreateService.(areaPanelElement);
+        CreateService.sendCreateMessage(areaPanelElement);
 
         for (let i = 0; i < 2; i++) {
             let item = CreateService.addComponent('AreaItem');
             areaPanelElement.appendChild(item.$el);
             store.commit('addItem', item);
-            //CreateService.sendCreateMessage(item.$el);
+            CreateService.sendCreateMessage(item.$el);
         }
 
         // 왼쪽 item에 target(box 혹은 tabs) appendChild (default)
@@ -49,7 +49,7 @@ export default {
         SelectService.setPosition(target);
 
         CreateService.sendCreateMessage(areaPanelElement);
-        //CreateService.reArrangeCreate(target);
+        CreateService.reArrangeCreate(target);
     },
 
     /*
