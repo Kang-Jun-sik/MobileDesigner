@@ -39,13 +39,8 @@ export default {
 <style lang="scss" scoped>
 @import 'node_modules/@dews/dews-mobile-style/scss/variables/variables';
 @import 'node_modules/@dews/dews-mobile-style/scss/mixins/_mixins';
+@include dews-checkbox-group();
 
-//======================================
-// dews-checkbox-group
-//======================================
-.dews-checkbox-group-wrap {
-  @include checkbox-group-wrap();
-}
 
 .dews-checkbox-group-wrap {
   .checkbox-group {

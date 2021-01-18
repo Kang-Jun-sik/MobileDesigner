@@ -52,25 +52,11 @@ export default {
 <style lang="scss" scoped>
 @import 'node_modules/@dews/dews-mobile-style/scss/variables/variables';
 @import 'node_modules/@dews/dews-mobile-style/scss/mixins/_mixins';
-
-//======================================
-// dews-search-container
-//======================================
-//--------------------------------------
-// 레이아웃 영역
-//--------------------------------------
-//--------------------------------------
-// dews-container-option-bar
-//--------------------------------------
-.dews-container-option-control {
-  @include option-control();
-}
-
-//.dews-search-field(form field) 관련 main.scss에서 처리
-
+@include dews-container-search();
 //--------------------------------------
 // FD 추가 영역
 //--------------------------------------
+//.dews-search-field(form field) 관련 main.scss에서 처리
 .dews-box-content-wrap {
   min-height: 40px;
 }

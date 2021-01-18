@@ -43,19 +43,7 @@ export default {
 <style lang="scss" scoped>
 @import 'node_modules/@dews/dews-mobile-style/scss/variables/variables';
 @import 'node_modules/@dews/dews-mobile-style/scss/mixins/_mixins';
-
-//======================================
-// dews-form-container
-//======================================
-//--------------------------------------
-// 레이아웃 영역
-//--------------------------------------
-//--------------------------------------
-// dews-container-option-bar
-//--------------------------------------
-.dews-container-option-control {
-  @include option-control();
-}
+@include dews-container-form();
 
 //--------------------------------------
 // FD 추가 영역

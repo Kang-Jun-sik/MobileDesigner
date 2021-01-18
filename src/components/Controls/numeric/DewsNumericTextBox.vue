@@ -68,6 +68,5 @@ export default {
 .undefined {
   opacity: 0;
 }
-@include numeric-textbox-wrap();
-
+@include dews-numerictextbox();
 </style>

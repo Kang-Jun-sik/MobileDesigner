@@ -60,25 +60,5 @@ export default {
 <style lang="scss" scoped>
 @import 'node_modules/@dews/dews-mobile-style/scss/variables/variables';
 @import 'node_modules/@dews/dews-mobile-style/scss/mixins/_mixins';
-
-//======================================
-// dews-textbox
-//======================================
-//--------------------------------------
-// 레이아웃 영역
-//--------------------------------------
-.textbox-wrap {
-  label {
-    @include label-wrap();
-  }
-  input[type='text'] {
-    @include input-wrap();
-  }
-
-  textarea {
-    @include input-wrap();
-    resize: none;
-    height: 64px;
-  }
-}
+@include dews-textbox();
 </style>

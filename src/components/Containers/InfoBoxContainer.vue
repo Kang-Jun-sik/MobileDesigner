@@ -32,10 +32,5 @@ export default {
 <style lang="scss" scoped>
 @import 'node_modules/@dews/dews-mobile-style/scss/variables/variables';
 @import 'node_modules/@dews/dews-mobile-style/scss/mixins/_mixins';
-
-//======================================
-// dews-info
-//======================================
-@include dews-info();
-
+@include dews-container-infobox();
 </style>

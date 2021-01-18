@@ -25,17 +25,21 @@ export default {
 <style lang="scss" scoped>
 @import 'node_modules/@dews/dews-mobile-style/scss/variables/variables';
 @import 'node_modules/@dews/dews-mobile-style/scss/mixins/_mixins';
+@include dews-area-panel();
 
-//======================================
-// dews-area-panel
-//======================================
 
 //--------------------------------------
-// 레이아웃 영역
+// FD 추가 영역
 //--------------------------------------
 .dews-panel {
   position: relative;
   width: 100%;
+
+  .dews-panel-show {
+    padding: 12px 10px 0;
+    border: 1px dotted #193a75;
+    margin-bottom: 12px;
+  }
 }
 .designer-tabletL {
   .dews-panel {
@@ -43,14 +47,5 @@ export default {
     flex-flow: row nowrap;
     align-items: flex-start;
   }
-}
-
-//--------------------------------------
-// FD 추가 영역
-//--------------------------------------
-.dews-panel.dews-panel-show {
-  padding: 12px 10px 0;
-  border: 1px dotted #193a75;
-  margin-bottom: 12px;
 }
 </style>

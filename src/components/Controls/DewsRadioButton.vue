@@ -46,20 +46,5 @@ export default {
 <style lang="scss" scoped>
 @import 'node_modules/@dews/dews-mobile-style/scss/variables/variables';
 @import 'node_modules/@dews/dews-mobile-style/scss/mixins/_mixins';
-
-//======================================
-// dews-radio
-//======================================
-//--------------------------------------
-// 레이아웃 영역
-//--------------------------------------
-:host {
-  display: inline-block;
-  margin: 0;
-  padding: 0;
-  font-size: 0;
-}
-.dews-radio-wrap {
-  @include radio-wrap();
-}
+@include dews-radio();
 </style>

@@ -37,13 +37,11 @@ export default {
 <style lang="scss" scoped>
 @import 'node_modules/@dews/dews-mobile-style/scss/variables/variables';
 @import 'node_modules/@dews/dews-mobile-style/scss/mixins/_mixins';
-
-//======================================
-// dews-button-group
-//======================================
-
 @include dews-button-group();
 
+//--------------------------------------
+// FD 추가 영역
+//--------------------------------------
 .dews-button-group {
   height: 100%;
   min-height: 24px;
