@@ -48,7 +48,7 @@ export default {
         areaItem.appendChild(target);
         SelectService.setPosition(target);
 
-        CreateService.sendCreateMessage(areaPanelElement);
+        CreateService.sendCreateMessage(target);
         CreateService.reArrangeCreate(target);
     },
 
