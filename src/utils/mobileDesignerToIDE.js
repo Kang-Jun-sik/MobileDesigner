@@ -1,3 +1,5 @@
+import makeForIDEInfo from "@/utils/makeForIDEInfo";
+
 const mobileDesignerToIDE = (commandType, elm, parentUID, key) => {
     const XMLWriter = require('xml-writer');
     const xw = new XMLWriter;
@@ -9,7 +11,7 @@ const mobileDesignerToIDE = (commandType, elm, parentUID, key) => {
     if (commandType === 'create') {
         const createControlInfo = document.createElement(control);
         createControlInfo.setAttribute('uid', elementUid);
-        createDataMessage(createControlInfo, elm.children, elm);
+        makeForIDEInfo.createDataMessage(createControlInfo, elm.children, elm);
         xw.startDocument();
         xw.output = createControlInfo.outerHTML;
         xw.endDocument();
@@ -50,27 +52,5 @@ const mobileDesignerToIDE = (commandType, elm, parentUID, key) => {
     chromiumObject.mobileDesignerToIDE(obj); //실제 IDE 데이터 전송 로직
 };
 
-function createDataMessage(createData, children, elm) {
-    if (children === undefined)
-        return;
-
-    for (let child of children) {
-        if (child.hasAttribute('uid')) {
-            const childUID = child.getAttribute('uid');
-            const childControlType = childUID.substring(0, childUID.lastIndexOf('-'));
-            const childData = document.createElement(childControlType);
-            childData.setAttribute('uid', childUID);
-
-            const childElement = elm.querySelector(`[uid=${childUID}]`);
-            const parentElement = childElement.parentElement.closest(`[uid]`);
-
-            if (createData.getAttribute('uid') == parentElement.getAttribute('uid'))
-                createData.appendChild(childData);
-            else
-                createData.querySelector(`[uid=${parentElement.getAttribute('uid')}]`).appendChild(childData);
-        }
-        createDataMessage(createData, child.children, elm);
-    }
-}
 
 export default mobileDesignerToIDE;
