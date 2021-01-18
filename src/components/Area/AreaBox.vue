@@ -1,5 +1,5 @@
 <template>
-  <div :uid="uid" class="dews-mobile-box dews-mobile-component dews-box-wrap" ref="box">
+  <div :uid="uid" class="dews-mobile-box dews-mobile-component dews-layout-component dews-box-wrap" ref="box">
     <div class="dews-box-title" @click="onToggleClick($event)" :collapsed="collapsed">
       <h2><button class="dews-box-title-button" type="button">{{ title }}</button></h2>
     </div>
@@ -32,13 +32,25 @@ export default {
       title: 'Box',
       collapsed: true,
       hide: false,
+      mainButtons: {
+        save: true,
+        add: false,
+        delete: false,
+        search: false,
+      }
+
     }
   },
   created() {
     this.uid = CreateService.createUid('dews-box');
     this.dataUid = CreateService.createUid('box-content');
-
     store.commit('matchUid', {'uid': this.uid, 'dataUid': this.dataUid});
+
+    this.mainButtonList = {
+      uid: this.uid,
+      mainButtons: this.mainButtons
+    }
+    store.commit('setMainButtonList', this.mainButtonList)
   },
   mounted() {
     window.drake.containers.push(this.$refs.boxContent);

@@ -3,6 +3,13 @@ export default {
         designerWrapperLayout: 'designer-wrapper-tabletL',
         designerLayout: 'designer-tabletL',
         mobileLayout: 'tabletL',
+        mainButtonList: [],
+        mainButtons: {
+            save: false,
+            add: false,
+            delete: false,
+            search: false
+        },
     },
     getters: {
         wrapperSize(state) {
@@ -14,6 +21,9 @@ export default {
         mobileSize(state) {
             return state.mobileLayout;
         },
+        getMainButtons(state){
+            return state.mainButtons
+        }
     },
     actions: {},
     mutations: {
@@ -22,5 +32,12 @@ export default {
             state.designerLayout = 'designer-' + payload;
             state.mobileLayout = payload;
         },
+        setMainButtonList(state, payload) {
+            state.mainButtonList[payload.uid] = payload.mainButtons;
+        },
+        setMainButtons(state, payload) {
+            state.mainButtons = payload;
+
+        }
     }
 }

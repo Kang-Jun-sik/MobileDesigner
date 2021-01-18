@@ -57,6 +57,16 @@ export default {
     * */
     selectControl(eventTarget) {
         const target = eventTarget.classList.contains('dews-mobile-component') ? eventTarget : findTarget(eventTarget);
+        try {
+            const layoutTarget = eventTarget.classList.contains('dews-layout-component') ? eventTarget : findLayoutTarget(eventTarget);
+            const UID = layoutTarget.getAttribute('uid');
+            const MAINBUTTONS = store.state.layout.mainButtonList[UID];
+            store.commit('setMainButtons', MAINBUTTONS);
+        }catch (e){
+            // 메인버튼 클릭시 에러 발생 element 를 찾을수 없어서 발생..!
+        }
+
+
 
         // 같은 컨트롤을 선택했을 경우 재 선택하는 것을 방지 / target이 null인 경우 return (dews-mobile-component가 아님)
         if ((window.selectedItem && window.selectedItem === target) || target === null) return;
@@ -87,6 +97,10 @@ export default {
         ContextMenuService.destroyContextMenu();
         ContextMenuService.getContextMenu(window.selectedItem);
         mobileDesignerToIDE("select", window.selectedItem); // IDE로 선택되었다고 메세지 송신
+
+        function findLayoutTarget(target) {
+            return target.closest('.dews-layout-component');
+        }
 
         function findTarget(target) {
             return target.closest('.dews-mobile-component');
