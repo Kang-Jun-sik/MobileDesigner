@@ -1,5 +1,6 @@
 <template>
-  <div :uid="uid" class="content dews-mobile-component dews-layout-component" :class="onActive">
+  <div :uid="uid" class="dews-mobile-tab dews-mobile-component dews-layout-component content" :class="onActive"
+    :data-uid="dataUid" data-type="area">
     <div :style="style"></div>
   </div>
 </template>
@@ -14,6 +15,7 @@ export default {
   data() {
     return {
       uid: '',
+      dataUid: '',
       onActive: this.active,
       style: {
         height: '',
@@ -35,6 +37,7 @@ export default {
   },
   created() {
     this.uid = CreateService.createUid('dews-tab');
+    this.dataUid = CreateService.createUid('tab');
 
     this.mainButtonList = {
       uid: this.uid,
@@ -44,7 +47,6 @@ export default {
   },
   mounted() {
     const parentTabs = this.$el.closest('.dews-tabs-wrap');
-    store.commit('addTabTitle', [parentTabs.getAttribute('uid'), this.title]);
 
     if (this.onActive === 'active') {
       this.style.height = '300px';
