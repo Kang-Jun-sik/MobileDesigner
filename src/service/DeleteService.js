@@ -71,7 +71,7 @@ export default {
     * @param item - AreaItem, AreaPanel
     * */
     deleteSplitItems(item, hasChild) {
-        // DeleteService.sendDeleteMessage(item);
+        DeleteService.sendDeleteMessage(item);
         DeleteService.deleteDrakeContainer(item);
         DeleteService.deleteItems(item);
 
