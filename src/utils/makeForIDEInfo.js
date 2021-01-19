@@ -24,8 +24,32 @@ export default {
         }
     },
 
+    //컨트롤 위치 정보 생성 함수
+    createPositionInfo(elm, elementUid, parentUID) {
+        let obj;
+        let index;
+        //index 계산
+        const parent = elm.parentElement.closest('.dews-mobile-component');
+        const controlType = elm.classList[0];
+        const sameLevelControlList = parent.querySelectorAll(':scope > .dews-mobile-component');
+        for (let idx = 0; idx < sameLevelControlList.length; idx++) {
+            if (sameLevelControlList[idx].getAttribute('uid') === elementUid) {
+                index = idx;
+                break;
+            }
+        }
+        obj =
+            {
+                'commandType': 'change_control',
+                'uid': elementUid,
+                'parentId': parentUID,
+                'index': index,
+            }
+        return obj;
+    },
+
     //IDE Create Information for Splitting
-    createSplitInfo(obj){
+    createSplitInfo(obj) {
         console.log('createSplitInfo');
     }
 }

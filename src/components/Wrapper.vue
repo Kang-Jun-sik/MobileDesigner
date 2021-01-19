@@ -15,6 +15,7 @@ import ControlListWrapper from "@/components/ControlListArea/ControlListWrapper"
 import componentAcceptsCheck from "@/service/AcceptsCheckService";
 import CreateService from "@/service/CreateService";
 import ContextMenuService from "@/service/ContextMenuService";
+import ChangePositionService from "@/service/ChangePositionService";
 import SelectService from "@/service/SelectService";
 
 export default {
@@ -40,12 +41,12 @@ export default {
         return componentAcceptsCheck(el, target);
       }
     })
-    .on('drop', function (el, target) {
-      _this.drop(el, target);
-      if (window.selectedItem) {
-        SelectService.setPosition(window.selectedItem);
-      }
-    })
+        .on('drop', function (el, target) {
+          _this.drop(el, target);
+          if (window.selectedItem) {
+            SelectService.setPosition(window.selectedItem);
+          }
+        })
 
     window.drake.containers.push(_designer.mainDesigner.$el, _designer.areaList, _designer.containerList,
         _designer.buttonList, _designer.componentList, _designer.pickerList, _designer.etcList);
@@ -66,7 +67,17 @@ export default {
     * Control Drop 실행시, Control 생성 및 $el(element)로 replace 처리
     * */
     drop(element, target) {
-      if (!element.classList.contains('dews-control-list')) return
+      if (!element.classList.contains('dews-control-list')) {
+        if (element.classList.contains('dews-mobile-component')) {
+          ChangePositionService.sendChangePositionMessage(element, target);
+        }
+        else{
+          element = element.querySelector('.dews-mobile-component');
+          ChangePositionService.sendChangePositionMessage(element, target);
+        }
+        //컨트롤 이동시 처리 IDE
+        return;
+      }
 
       const componentName = element.textContent.replace(/\s+/g, '');
       const component = CreateService.addComponent(componentName);

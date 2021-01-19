@@ -45,6 +45,8 @@ const mobileDesignerToIDE = (commandType, elm, parentUID, key) => {
                 'data': xw.output
             }
             break;
+        case "change_control" :
+            obj = makeForIDEInfo.createPositionInfo(elm, elementUid, parentUID);
     }
     console.log(obj);
 

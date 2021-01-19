@@ -50,7 +50,8 @@ export default {
         DeleteService.sendDeleteMessage(target);
 
         // 1) AreaItem이 하나만 남을 경우를 생각하여 splitDelete 함수 호출 후, replaceWith
-        if (target.classList.contains('dews-item')) DeleteService.deleteSplit(target);
+        if (target.classList.contains('dews-item'))
+            DeleteService.deleteSplit(target);
 
         // 2) target의 자식 노드까지 drake.containers, Vuex items에서 삭제
         DeleteService.deleteTargetChild(target);
