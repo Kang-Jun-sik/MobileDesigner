@@ -42,9 +42,5 @@ export default {
 <style lang="scss" scoped>
 @import 'node_modules/@dews/dews-mobile-style/scss/variables/variables';
 @import 'node_modules/@dews/dews-mobile-style/scss/mixins/_mixins';
-
-//======================================
-// dews-datepicker
-//======================================
-@include dews-date-picker();
+@include dews-datepicker();
 </style>

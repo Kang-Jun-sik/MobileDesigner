@@ -56,18 +56,11 @@ export default {
 <style lang="scss" scoped>
 @import 'node_modules/@dews/dews-mobile-style/scss/variables/variables';
 @import 'node_modules/@dews/dews-mobile-style/scss/mixins/_mixins';
-
 //======================================
 // dews-area-tabs
 //======================================
-
-//--------------------------------------
-// 레이아웃 영역
-//--------------------------------------
 * {
   @include reset();
 }
-.dews-tabs-wrap {
-  @include area-tabs-title();
-}
+@include dews-area-tabs();
 </style>

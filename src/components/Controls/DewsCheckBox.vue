@@ -47,19 +47,5 @@ export default {
 <style lang="scss" scoped>
 @import 'node_modules/@dews/dews-mobile-style/scss/variables/variables';
 @import 'node_modules/@dews/dews-mobile-style/scss/mixins/_mixins';
-//======================================
-// dews-checkbox
-//======================================
-//--------------------------------------
-// 레이아웃 영역
-//--------------------------------------
-:host {
-  display: inline-block;
-  margin: 0;
-  padding: 0;
-  font-size: 0;
-}
-.dews-checkbox-wrap {
-  @include checkbox-wrap();
-}
+@include dews-checkbox();
 </style>

@@ -366,11 +366,7 @@ body {
 @include dews-button-group();
 
 // checkbox-group
-.dews-checkbox-group-wrap {
-  @include checkbox-group-wrap();
-}
+@include dews-checkbox-group();
 
 // radio-group
-.dews-radio-group-wrap {
-  @include radio-group-wrap();
-}
+@include dews-radio-group();

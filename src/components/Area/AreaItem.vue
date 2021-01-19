@@ -29,24 +29,26 @@ export default {
 <style lang="scss" scoped>
 @import 'node_modules/@dews/dews-mobile-style/scss/variables/variables';
 @import 'node_modules/@dews/dews-mobile-style/scss/mixins/_mixins';
+@include dews-area-item();
 
-//======================================
-// dews-area-item
-//======================================
+
 //--------------------------------------
-// 레이아웃 영역
+// FD 추가 영역
 //--------------------------------------
 .dews-item {
-  @include reset();
-
   position: relative;
   display: block;
   box-sizing: border-box;
   width: 100%;
   min-height: 1px;
   background-clip: content-box;
-}
 
+  //item fd design
+  padding: 12px 10px 0;
+  margin-bottom: 12px;
+  min-height: 40px;
+  border: 1px dotted #212121;
+}
 .designer-tabletL {
   .dews-item {
     margin: 0 $area-item-space 12px;
@@ -67,16 +69,5 @@ export default {
       @include item-col-size($i);
     }
   }
-}
-
-//--------------------------------------
-// FD 추가 영역
-//--------------------------------------
-.dews-item {
-  //item design
-  padding: 12px 10px 0;
-  margin-bottom: 12px;
-  min-height: 40px;
-  border: 1px dotted #212121;
 }
 </style>

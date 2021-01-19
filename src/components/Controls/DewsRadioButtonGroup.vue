@@ -40,14 +40,12 @@ export default {
 <style lang="scss" scoped>
 @import 'node_modules/@dews/dews-mobile-style/scss/variables/variables';
 @import 'node_modules/@dews/dews-mobile-style/scss/mixins/_mixins';
+@include dews-radio-group();
 
-//======================================
-// dews-radio-group
-//======================================
-.dews-radio-group-wrap {
-  @include radio-group-wrap();
-}
 
+//--------------------------------------
+// FD 추가 영역
+//--------------------------------------
 .dews-radio-group-wrap {
   .radio-group {
     border: 1px dotted #212121;

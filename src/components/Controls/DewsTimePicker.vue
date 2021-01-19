@@ -40,5 +40,5 @@ export default {
 <style lang="scss" scoped>
 @import 'node_modules/@dews/dews-mobile-style/scss/variables/variables';
 @import 'node_modules/@dews/dews-mobile-style/scss/mixins/_mixins';
-@include dews-time-picker();
+@include dews-timepicker();
 </style>

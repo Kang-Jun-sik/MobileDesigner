@@ -80,60 +80,16 @@ export default {
 <style lang="scss" scoped>
 @import 'node_modules/@dews/dews-mobile-style/scss/variables/variables';
 @import 'node_modules/@dews/dews-mobile-style/scss/mixins/_mixins';
+@include dews-area-box();
 
-//======================================
-// dews-area-box
-//======================================
-//--------------------------------------
-// 레이아웃 영역
-//--------------------------------------
-.dews-box-wrap {
-  @include area-box();
-
-  //box design
-  padding: 10px;
-}
-//--------------------------------------
-// 애니메이션 영역
-//--------------------------------------
-.dews-box-wrap {
-  .dews-box-title {
-    .dews-box-title-button {
-      &:after {
-        transform: rotate(180deg);
-        transition: transform 0.3s;
-        transition-timing-function: ease-in-out;
-      }
-    }
-
-    &[collapsed] {
-      .dews-box-title-button {
-        &:after {
-          transform: rotate(0deg);
-          transition: transform 0.3s;
-          transition-timing-function: ease-in-out;
-        }
-      }
-    }
-  }
-}
-
-//[collapsed] [part='content'] {
-//  height: 300px;
-//  transition: height 0.5s;
-//  transition-timing-function: ease-in-out;
-//}
-//[part='content'] {
-//  overflow: hidden;
-//  height: 40px;
-//  min-height: 40px;
-//  transition: height 0.5s;
-//  transition-timing-function: ease-in-out;
-//}
 
 //--------------------------------------
 // FD 추가 영역
 //--------------------------------------
+[part='content'] {
+  overflow: inherit;
+  height: auto;
+}
 .dews-box-wrap {
   //box design
   max-width: 1050px;
@@ -145,5 +101,4 @@ export default {
     padding-top: 10px;
   }
 }
-
 </style>
