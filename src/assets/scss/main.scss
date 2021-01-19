@@ -355,7 +355,6 @@ body {
 //search container
 .dews-search-field{
   @include form-field();
-  padding: 0 17px 6px;
 
   .dews-mobile-searchContainer[col='2'] & {
     @include form-field(2);

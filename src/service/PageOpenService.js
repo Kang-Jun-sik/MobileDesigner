@@ -68,6 +68,15 @@ export default {
             }
         }
     },
+
+    /*
+    * Set attribute from IDE
+    * */
+    setAttributeFromIDE(instance, control) {
+        const attr = instance.attributes;
+        console.log(attr, control)
+    },
+
     /*
     * control parsing
     * container-button, container-content, form-section in form-container 제외
@@ -76,6 +85,8 @@ export default {
         const control = PageOpenService.createControlFromData(instance);
         const controlUid = control.uid;
         const parentDataUid = parent.dataUid ? parent.dataUid : '';
+
+        PageOpenService.setAttributeFromIDE(instance, control);
 
         let addComponent;
         switch (parent.controlType) {
@@ -100,16 +111,6 @@ export default {
                 addComponent = control.$el;
                 break;
         }
-        // if (parent.controlType === 'search' || parent.controlType === 'form') {
-        //     addComponent = document.createElement('li');
-        //     addComponent.appendChild(control.$el);
-        // } else if (parent.controlType === 'group') {
-        //     addComponent = document.createElement('span');
-        //     addComponent.className = parent.groupItemClass;
-        //     addComponent.appendChild(control.$el);
-        // } else {
-        //     addComponent = control.$el;
-        // }
 
         if (parentDataUid) {
             parent.$el.querySelector(`[data-uid=${parentDataUid}]`).appendChild(addComponent);
@@ -140,6 +141,8 @@ export default {
                 controlChild.uid = node.getAttribute('uid');
                 instanceUid = controlChild.uid;
                 store.commit('addItem', controlChild);
+
+                PageOpenService.setAttributeFromIDE(instance, controlChild);
             } else {
                 instanceUid = PageOpenService.controlParsing(instance, parent);
             }
