@@ -29,8 +29,10 @@ export default {
         let obj;
         let index;
         //index 계산
+        //parent 잡아서 queryselectorall 하면 됌
+        //search container case
+        //form container case
         const parent = elm.parentElement.closest('.dews-mobile-component');
-        const controlType = elm.classList[0];
         const sameLevelControlList = parent.querySelectorAll(':scope > .dews-mobile-component');
         for (let idx = 0; idx < sameLevelControlList.length; idx++) {
             if (sameLevelControlList[idx].getAttribute('uid') === elementUid) {
