@@ -1,14 +1,13 @@
 <template>
-  <div :uid="uid" class="dews-mobile-tabs dews-mobile-component dews-tabs-wrap dews-area" :active="active">
+  <div :uid="uid" class="dews-mobile-tabs dews-mobile-component dews-tabs-wrap" :active="active">
     <div class="dews-tabs-title">
       <div class="title-list">
 <!--        <button class="title" v-for="(title, idx) in titleList" :key="idx" @click="selectTab($event, idx)">{{ title }}</button>-->
         <button class="title active"><span>Tab#1 Tab#1 Tab#1 Tab#1</span></button>
         <button class="title"><span>Tab#2</span></button>
-
       </div>
     </div>
-    <div class="dews-tabs-content">
+    <div class="dews-tabs-content" :data-uid="dataUid" data-type="tabs" ref="tabsContent">
       <dews-tab :active="active"></dews-tab>
       <dews-tab></dews-tab>
     </div>
@@ -26,8 +25,10 @@ export default {
   data() {
     return {
       uid: '',
+      dataUid: '',
       titleList: 'Tab',
       active: 'active',
+
 
       /* Properties */
       id: '',
@@ -38,6 +39,7 @@ export default {
   },
   created() {
     this.uid = CreateService.createUid('dews-tabs');
+    this.dataUid = CreateService.createUid('tabs');
     // this.titleList = store.state.tabTitles;
   },
   mounted() {
