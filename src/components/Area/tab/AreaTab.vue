@@ -8,6 +8,7 @@
 <script>
 import CreateService from "@/service/CreateService";
 import store from "@/store/index";
+import {mapGetters} from "vuex";
 
 export default {
   name: 'dews-tab',
@@ -26,7 +27,6 @@ export default {
       id: '',
       title: 'Tab',
       hide: false,
-
       mainButtons: {
         save: false,
         add: false,
@@ -47,12 +47,17 @@ export default {
   },
   mounted() {
     const parentTabs = this.$el.closest('.dews-tabs-wrap');
-
+    store.commit('setTab', {uid: parentTabs.getAttribute('uid'),title: this.title,active: this.onActive});
     if (this.onActive === 'active') {
       this.style.height = '300px';
     } else {
       this.style.height = '0px';
     }
+  },
+  computed: {
+    ...mapGetters({
+      getTabList: "getTabList"
+    }),
   }
 }
 </script>

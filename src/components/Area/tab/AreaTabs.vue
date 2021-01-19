@@ -2,14 +2,13 @@
   <div :uid="uid" class="dews-mobile-tabs dews-mobile-component dews-tabs-wrap" :active="active">
     <div class="dews-tabs-title">
       <div class="title-list">
-<!--        <button class="title" v-for="(title, idx) in titleList" :key="idx" @click="selectTab($event, idx)">{{ title }}</button>-->
-        <button class="title active"><span>Tab#1 Tab#1 Tab#1 Tab#1</span></button>
-        <button class="title"><span>Tab#2</span></button>
+        <button class="title" :class="activeList[idx]" v-for="(title, idx) in titleList" :key="idx" @click="selectTab($event, idx)">{{ title }}</button>
       </div>
     </div>
     <div class="dews-tabs-content" :data-uid="dataUid" data-type="tabs" ref="tabsContent">
-      <dews-tab :active="active"></dews-tab>
-      <dews-tab></dews-tab>
+      <dews-tab :active="activeTab" ></dews-tab>
+      <dews-tab ></dews-tab>
+      <dews-tab ></dews-tab>
     </div>
   </div>
 </template>
@@ -18,6 +17,7 @@
 import store from "@/store/index";
 import DewsTab from "@/components/Area/tab/AreaTab";
 import CreateService from "@/service/CreateService";
+import {mapGetters} from "vuex";
 
 export default {
   name: 'dews-tabs',
@@ -27,8 +27,8 @@ export default {
       uid: '',
       dataUid: '',
       titleList: 'Tab',
-      active: 'active',
-
+      activeTab: 'active',
+      activeList: [],
 
       /* Properties */
       id: '',
@@ -43,14 +43,24 @@ export default {
     // this.titleList = store.state.tabTitles;
   },
   mounted() {
-    // const titles = store.getters.tabTitleList;
-    // this.titleList = titles[this.uid];
+    // const titles = store.getters.getTabList;
+    // this.titleList = titles[this.uid].title.map((title,index)=>{
+    //   this.activeList.push(titles[this.uid].active[index]);
+    //   return title;
+    // });
   },
   methods: {
-    // selectTab: function (evt, idx){
-    //   console.log(document.querySelector(".dews-tabs-content :nth-child(1)"))
-    //   console.log(evt, idx);
-    // }
+    selectTab: function (evt, idx){
+      evt.target.classList.add('active');
+      const $el = document.querySelector(`.dews-tabs-content :nth-child(${idx+1})`);
+      $el.classList.add('active')
+      // console.log(evt, idx);
+    }
+  },
+  computed: {
+    ...mapGetters({
+      getTabList: "getTabList"
+    }),
   }
 }
 </script>

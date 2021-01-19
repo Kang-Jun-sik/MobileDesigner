@@ -10,6 +10,7 @@ export default {
             delete: false,
             search: false
         },
+        tabTitleList: [],
     },
     getters: {
         wrapperSize(state) {
@@ -23,10 +24,23 @@ export default {
         },
         getMainButtons(state){
             return state.mainButtons
+        },
+        getTabList(state){
+            return state.tabTitleList
         }
     },
     actions: {},
     mutations: {
+        setTab(state,payload){
+            let array = state.tabTitleList[payload.uid];
+            if(array !== undefined ){
+              array.title.push(payload.title);
+              array.active.push(payload.active)
+            }else{
+                array = {title: [payload.title],active: [payload.active]}
+            }
+            state.tabTitleList[payload.uid] = array;
+        },
         setLayout(state, payload) {
             state.designerWrapperLayout = 'designer-wrapper-' + payload;
             state.designerLayout = 'designer-' + payload;
