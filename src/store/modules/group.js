@@ -1,26 +1,21 @@
 export default {
     state: {
-        tabTitleList: [],
+        tabList: new Map(),
     },
-    getters: {
-        getTabList(state){
-            return state.tabTitleList
+    getters:
+        {getTabList(state){
+            return state.tabList
         },
     },
     actions: {},
     mutations: {
         setTab(state, payload) {
-            let titles = state.tabTitleList[payload.uid];
-            if (titles) {
-                titles.title.push(payload.title);
-                titles.active.push(payload.active)
-            } else {
-                titles = {
-                    title: [payload.title],
-                    active: [payload.active]
-                }
-            }
-            state.tabTitleList[payload.uid] = titles;
+            let tab = [];
+            tab = state.tabList.get(payload.tabsUid);
+            (tab === undefined) ? tab = []:null;
+            tab[payload.tabUid] = {active: payload.active, title: payload.title};
+            state.tabList.set(payload.tabsUid,tab);
+            console.log(state.tabList);
         },
     }
 }

@@ -21,6 +21,8 @@ export default {
         height: '',
         backgroundColor: '#ffffff'
       },
+      parentUid: '',
+      activeList: [],
 
       /* Properties */
       id: '',
@@ -32,6 +34,7 @@ export default {
         delete: false,
         search: false,
       }
+
     }
   },
   created() {
@@ -50,13 +53,13 @@ export default {
   },
   mounted() {
     if (this.active) {
-      const parentTabs = this.$el.closest('.dews-tabs-wrap');
+      this.parentUid = this.$el.closest('.dews-tabs-wrap').getAttribute('uid');
       store.commit('setTab', {
-        uid : parentTabs.getAttribute('uid'),
+        tabsUid : this.parentUid,
+        tabUid : this.uid,
         title : this.title,
         active : this.active
       });
-
       if (this.active === 'active') {
         this.style.height = '300px';
       } else {
@@ -64,11 +67,9 @@ export default {
       }
     }
   },
-  computed: {
-    ...mapGetters({
-      getTabList: "getTabList"
-    }),
-  }
+
+
+
 }
 </script>
 

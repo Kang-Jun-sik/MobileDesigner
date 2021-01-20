@@ -7,7 +7,8 @@ export default {
         const tab = CreateService.addComponent('AreaTab');
         $tabsContent.appendChild(tab.$el);
         store.commit('setTab', {
-            'uid': element.getAttribute('uid'),
+            'tabsUid':element.getAttribute('uid') ,
+            'tabUid': tab.uid,
             'title': tab.title,
             'active': false
         });
