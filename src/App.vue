@@ -1,13 +1,20 @@
 <template>
-  <div id="app" class="designer-style">
+  <div id="app" :class="mode">
     <mobile-wrapper></mobile-wrapper>
   </div>
 </template>
 
 <script>
-  export default {
-    name: 'app',
+import { mapGetters } from 'vuex';
+
+export default {
+  name: 'app',
+  computed: {
+    ...mapGetters({
+      mode: 'getWorkMode'
+    })
   }
+}
 </script>
 
 <style lang="scss">

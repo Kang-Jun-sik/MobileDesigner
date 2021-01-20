@@ -8,10 +8,10 @@ const componentAcceptsCheck = (component, target) => {
     const dropTarget = target.classList[0];
 
     const componentInformation = {
-        "dews-mobile-panel": ["main-designer"],
-        "dews-mobile-item": ["main-designer"],
-        "dews-mobile-box": ["main-designer", "dews-mobile-item"],
-        "dews-mobile-tabs": ["main-designer", "dews-mobile-item"],
+        "dews-mobile-panel": ["main-designer-bg"],
+        "dews-mobile-item": ["main-designer-bg"],
+        "dews-mobile-box": ["main-designer-bg", "dews-mobile-item"],
+        "dews-mobile-tabs": ["main-designer-bg", "dews-mobile-item"],
 
         "dews-mobile-searchContainer": ["dews-box-content"],
         "dews-mobile-listContainer": ["dews-box-content"],

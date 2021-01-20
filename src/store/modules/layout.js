@@ -1,10 +1,16 @@
 export default {
     state: {
+        workMode: '',
+
         designerWrapperLayout: 'designer-wrapper-tabletL',
         designerLayout: 'designer-tabletL',
         mobileLayout: 'tabletL',
     },
     getters: {
+        getWorkMode(state) {
+            return state.workMode;
+        },
+
         wrapperSize(state) {
             return state.designerWrapperLayout;
         },
@@ -17,6 +23,10 @@ export default {
     },
     actions: {},
     mutations: {
+        setWorkMode(state, payload) {
+            state.workMode = payload ? 'designer-style' : '';
+        },
+
         setLayout(state, payload) {
             state.designerWrapperLayout = 'designer-wrapper-' + payload;
             state.designerLayout = 'designer-' + payload;

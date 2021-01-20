@@ -1,6 +1,6 @@
 <template>
   <div :uid="uid" :class="designerLayout" class="main-designer dews-mobile-component">
-    <div class="main-designer-bg">
+    <div class="main-designer-bg" ref="mainDesigner">
       <slot></slot>
     </div>
   </div>
@@ -21,8 +21,11 @@ export default {
       uid: ''
     }
   },
-  mounted() {
+  created() {
     this.uid = CreateService.createUid('main-designer');
+  },
+  mounted() {
+    this.$store.commit('setDesigner', this.$refs.mainDesigner);
     GlobalService.keyBinding();
     SelectService.selectControlEvent(); //메인 디자이너에 컨트롤 선택 이벤트 추가
   },
