@@ -1,13 +1,13 @@
 <template>
-  <div :uid="uid" class="dews-mobile-tab dews-mobile-component dews-layout-component content" :class="onActive"
+  <div :uid="uid" class="dews-mobile-tab dews-mobile-component dews-layout-component content" :class="active"
     :data-uid="dataUid" data-type="area">
     <div :style="style"></div>
   </div>
 </template>
 
 <script>
-import CreateService from "@/service/CreateService";
 import store from "@/store/index";
+import CreateService from "@/service/CreateService";
 import {mapGetters} from "vuex";
 
 export default {
@@ -17,7 +17,6 @@ export default {
     return {
       uid: '',
       dataUid: '',
-      onActive: this.active,
       style: {
         height: '',
         backgroundColor: '#ffffff'
@@ -44,14 +43,25 @@ export default {
       mainButtons: this.mainButtons
     }
     store.commit('setMainButtonList', this.mainButtonList)
+
+    this.$nextTick(() => {
+      store.commit('addItem', this);
+    });
   },
   mounted() {
-    const parentTabs = this.$el.closest('.dews-tabs-wrap');
-    store.commit('setTab', {uid: parentTabs.getAttribute('uid'),title: this.title,active: this.onActive});
-    if (this.onActive === 'active') {
-      this.style.height = '300px';
-    } else {
-      this.style.height = '0px';
+    if (this.active) {
+      const parentTabs = this.$el.closest('.dews-tabs-wrap');
+      store.commit('setTab', {
+        uid : parentTabs.getAttribute('uid'),
+        title : this.title,
+        active : this.active
+      });
+
+      if (this.active === 'active') {
+        this.style.height = '300px';
+      } else {
+        this.style.height = '0px';
+      }
     }
   },
   computed: {
