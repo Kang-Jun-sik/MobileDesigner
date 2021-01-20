@@ -12,6 +12,8 @@ body {
 
 //app common
 #app {
+
+
   .dews-control-list {
     cursor: pointer;
   }
@@ -157,6 +159,8 @@ body {
   min-height: 852px;
   color: #000000;
   background-color: #f3f6fa;
+
+  @include  dews-designer-change-option();
 }
 
 .controlList-mobile-layout {
@@ -285,6 +289,19 @@ body {
       .dews-control-list {
         @include dews-control-list();
       }
+    }
+  }
+}
+
+
+#app.designer-style {
+  .controlList-wrapper {
+    width: 167px;
+    min-height: inherit;
+    overflow-y: scroll;
+
+    .controlList-wrapper-scroll {
+      height: auto;
     }
   }
 }

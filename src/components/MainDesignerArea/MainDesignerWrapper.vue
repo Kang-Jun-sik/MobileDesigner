@@ -2,7 +2,7 @@
   <div class="top-main-designer-wrapper">
     <div id="mainDesignerWrapper"
          :class="designerWrapperLayout"
-         class="main-designer-wrapper">
+         class="main-designer-wrapper ">
       <navigation-bar ref="navigationBar"></navigation-bar>
       <main-designer ref="mainDesigner"></main-designer>
       <button-tab-bar ref="buttonTabBar"></button-tab-bar>
@@ -71,5 +71,48 @@ export default {
     width: 1120px;
     height: 804px;
     margin: 20px auto;
+  }
+
+  .designer-style {
+    .designer-wrapper-smartPhone {
+      margin: 0 auto;
+      height: inherit;
+      background-image: inherit;
+      background-size: inherit;
+
+      //&::before {
+      //  content: '';
+      //  position: fixed;
+      //  top: 130px;
+      //  width: 23px;
+      //  height: 202px;
+      //  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABcAAADKCAMAAAB5VCtjAAAAAXNSR0IB2cksfwAAAAlwSFlzAAALEwAACxMBAJqcGAAAANVQTFRFAAAAAAAAOzs7FRUVExMTUlJSSUlJQkJCQUFBQkJCVVVVcXFxcnJyenp6oaGhoqKijo6OvLy8vLy8vLy8vLy8vLy8vLy8ioqKtra2t7e3XV1de3t7fX19Nzc3Pz8/RUVFQEBASEhIQUFBOTk5LCwsLi4uNTU1RkZGR0dHSEhIX19fYGBgWlpaeHh4eHh4bW1tkZGRkpKSgICAqqqqq6urvLy8vLy8vLy8vLy8d3d3np6en5+fYGBgf39/gYGBY2NjMTExR0dHIiIiISEhKioqR0dHQEBAHWsxtQAAAEd0Uk5TAAH///+ItsT//v7//f///P///fz59vT///P///Xz//ggpLnM//////7///3///7///3///z6+Pf1///0///09//4+P/7pbq+HksQAAAA4ElEQVR4nO3W1w6CMBQGYFBU3Hsv3HtvxT3e/5H01uQ/F40lhdhefjlpoYTzH0VRVNdnubXvpageL3Sf7oceCIaghyNR6LF4wmJPMjqv/UW9l9X1vO6Tqk8xeprwDPRsLg+9UCxBL1eq0I1aHTr1H0mX/otTfbjRbEFvd7rQe/0B9OFoDH0ynUGfL5Y2629OOdfqPBKVF6L8376XqLmF9XlWjE7l+5rwDeHUPLAlHM8Ju/0Bunk84b5qnqFf9Cv02/0B3Xi+oNstj5zuMk957y/7M996mafOOlfmqeacPH0DxAdjYt77UFEAAAAASUVORK5CYII=);
+      //}
+      //
+      //&::after {
+      //  content: '';
+      //  position: absolute;
+      //  top: 212px;
+      //  right: 0;
+      //  width: 25px;
+      //  height: 100px;
+      //  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABkAAABkCAMAAABEi2tOAAAAAXNSR0IB2cksfwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAMZQTFRFExMTFRUVOzs7REREPz8/VlZWAAAAPT09PT09RUVFJiYmISEhTk5OOjo6LCwsWFhYY2NjYmJiSkpKbm5udnZ2WVlZeHh4ioqKaGhogoKCnZ2dd3d3jo6OsbGxhoaGlZWVvLy8lpaWl5eXmJiYmZmZmpqam5ubnJycnp6et7e3kZGRp6enfn5+cnJyfHx8h4eHZmZmWlpaZ2dnXV1dV1dXQkJCUlJSR0dHNTU1SEhINzc3MzMzPj4+JycnLi4uRkZGSkpKWFhY2J9Y/wAAAEJ0Uk5T/////7tEAP+N///8///////////////////////////////////////////////////////////////w///7arIaHNrCFQAAAKpJREFUeJzty9sSgVAYhuFlF7JCRLSTEEkiEdnf/00Zh2a+Tv4ZZ+s9feZl7LdS+VulWpMYlDpjDSxNWW5h4YrSxtLhvIylq6o9LH1NG2AZ6voIy9gwTCyWbTtYJq5rYZkSxCPIjCDzQlkQxCfIkiAGQVZChAgRIkTI38QPAh3LOgw3WBzPi7Bs43iHJTLNPZYkSTiWQ5oesZyy7IzlkudXLLf741nwvN7SBx5iNyg/VZOWAAAAAElFTkSuQmCC);
+      //
+      //}
+    }
+
+    .designer-wrapper-tabletM {
+      margin: 0 auto;
+      height: inherit;
+      background-image: inherit;
+      background-size: inherit;
+    }
+
+    .designer-wrapper-tabletL {
+      margin: 0 auto;
+      height: inherit;
+      background-image: inherit;
+      background-size: inherit;
+    }
   }
 </style>

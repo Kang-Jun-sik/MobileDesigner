@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" class="designer-style">
     <mobile-wrapper></mobile-wrapper>
   </div>
 </template>
@@ -20,5 +20,9 @@
     min-height: 852px;
     //padding: 0;
     overflow: auto;
+
+    &.designer-style {
+      min-height: inherit;
+    }
   }
 </style>
