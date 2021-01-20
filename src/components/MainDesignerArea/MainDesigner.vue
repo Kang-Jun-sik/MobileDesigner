@@ -40,9 +40,13 @@ export default {
 <style lang="scss" scoped>
   .main-designer {
     position: relative;
-    padding: 12px 5px 5px 9px;
     background-color: #efeff4;
+  }
+  .main-designer-bg {
+    height: 100%;
+    width: 100%;
     overflow-y: scroll;
+    padding: 12px 5px 5px 9px;
   }
 
   .designer-smartPhone {
