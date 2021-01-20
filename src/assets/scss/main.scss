@@ -5,6 +5,9 @@
 * {
   @include reset();
 }
+html {
+  overflow-x: auto !important;
+}
 body {
   background-color: #d5dae2 !important;
 }

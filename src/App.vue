@@ -29,6 +29,7 @@ export default {
     overflow: auto;
 
     &.designer-style {
+      overflow: visible;
       min-height: inherit;
       min-width: inherit;
       max-width: inherit;
