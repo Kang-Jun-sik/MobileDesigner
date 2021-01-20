@@ -11,9 +11,9 @@ export default {
     mutations: {
         setTab(state, payload) {
             if (state.tabList[payload.tabsUid]) {
-                state.tabList[payload.tabsUid].push(payload.tab);
+                state.tabList[payload.tabsUid].push(payload.tabData);
             } else {
-                state.tabList[payload.tabsUid] = [payload.tab];
+                state.tabList[payload.tabsUid] = [payload.tabData];
             }
         },
     }

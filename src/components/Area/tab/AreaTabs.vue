@@ -2,7 +2,7 @@
   <div :uid="uid" class="dews-mobile-tabs dews-mobile-component dews-tabs-wrap">
     <div class="dews-tabs-title">
       <div class="title-list">
-        <button class="title" :class="tab" v-for="(tab, idx) in titlesList" :key="idx" :data-tab="tab.uid">{{ tab.title }}</button>
+        <button class="title" :class="tab.active" v-for="(tab, idx) in titlesList" :key="idx" :data-tab="tab.uid">{{ tab.title }}</button>
       </div>
     </div>
     <div class="dews-tabs-content" :data-uid="dataUid" data-type="tabs" ref="tabsContent">
@@ -39,6 +39,7 @@ export default {
 
     this.$nextTick(function () {
       this.titlesList = store.getters.getTabList[this.uid];
+      console.log(this.titlesList)
     });
   },
   mounted() {

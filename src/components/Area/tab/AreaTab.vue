@@ -49,18 +49,20 @@ export default {
 
     this.$nextTick(() => {
       store.commit('addItem', this);
-
-      if (this.active) {
-        this.parentUid = this.$el.closest('.dews-tabs-wrap').getAttribute('uid');
-        store.commit('setTab', {
-          tabsUid: this.parentUid,
-          tab: this,
-        });
-      }
     });
   },
   mounted() {
     if (this.active) {
+      this.parentUid = this.$el.closest('.dews-tabs-wrap').getAttribute('uid');
+      store.commit('setTab', {
+        tabsUid: this.parentUid,
+        tabData: {
+          uid: this.uid,
+          active: this.active,
+          title: this.title
+        },
+      });
+
       if (this.active === 'active') {
         this.style.height = '300px';
       } else {

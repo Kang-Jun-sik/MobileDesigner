@@ -8,7 +8,11 @@ export default {
         $tabsContent.appendChild(tab.$el);
         store.commit('setTab', {
             tabsUid: element.getAttribute('uid'),
-            tab: tab
+            tabData: {
+                uid: tab.uid,
+                active: tab.active,
+                title: tab.title
+            }
         });
     },
 
