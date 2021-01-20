@@ -38,6 +38,7 @@ export default {
   .top-main-designer-wrapper {
     padding-left: 160px !important;
   }
+
   .main-designer-wrapper {
     //display: inline-block;
     display: block;
@@ -74,6 +75,9 @@ export default {
   }
 
   .designer-style {
+    .top-main-designer-wrapper {
+      padding-left: 170px !important;
+    }
     .designer-wrapper-smartPhone {
       margin: 0 auto;
       height: inherit;

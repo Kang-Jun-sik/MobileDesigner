@@ -23,6 +23,8 @@
 
     &.designer-style {
       min-height: inherit;
+      min-width: inherit;
+      max-width: inherit;
     }
   }
 </style>

@@ -5,6 +5,9 @@
 * {
   @include reset();
 }
+htlm {
+  overflow-y: visible;
+}
 
 body {
   background-color: #d5dae2 !important;
@@ -296,6 +299,7 @@ body {
 
 #app.designer-style {
   .controlList-wrapper {
+    z-index: 10;
     width: 167px;
     min-height: inherit;
     overflow-y: scroll;

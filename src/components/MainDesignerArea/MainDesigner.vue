@@ -1,6 +1,6 @@
 <template>
   <div :uid="uid" :class="designerLayout" class="main-designer dews-mobile-component">
-    <div class="maina-designer-bg">
+    <div class="main-designer-bg">
       <slot></slot>
     </div>
   </div>
@@ -62,12 +62,17 @@ export default {
   .designer-style {
     .main-designer {
       overflow: visible;
+      padding: 0;
+    }
+    .main-designer-bg {
+      overflow-y: scroll;
+      height: 100%;
       padding: 12px 10px 5px 10px;
     }
+
     .designer-smartPhone {
       position: relative;
-      height: auto;
-      min-height: calc(100vh - 76px - 99px);
+      height: calc(100vh - 76px - 99px - 20px);
       margin: 0 26px 0 24px;
 
       &::before {
@@ -102,8 +107,7 @@ export default {
     }
     .designer-tabletM {
       position: relative;
-      height: auto;
-      min-height: calc(100vh - 76px - 99px);
+      height: calc(100vh - 76px - 99px - 20px);
       margin: 0 33px 0 20px;
 
       &::before {
@@ -138,8 +142,7 @@ export default {
     }
     .designer-tabletL {
       position: relative;
-      height: auto;
-      min-height: calc(100vh - 76px - 99px);
+      height: calc(100vh - 76px - 99px - 20px);
       margin: 0 22px 0 21px;
       &::before {
         content: '';

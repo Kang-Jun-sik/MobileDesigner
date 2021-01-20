@@ -88,7 +88,7 @@
 
   .designer-style {
     .button-tab-bar {
-      position: fixed;
+      position: absolute;
       z-index: 0;
     }
 

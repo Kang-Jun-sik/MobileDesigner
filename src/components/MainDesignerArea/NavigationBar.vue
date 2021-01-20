@@ -122,7 +122,7 @@
 
   .designer-style {
     .navigation-bar-wrapper {
-      position: fixed;
+      position: absolute;
       z-index: 1;
     }
 
