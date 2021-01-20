@@ -2,7 +2,7 @@
   <div :uid="uid" class="dews-mobile-tabs dews-mobile-component dews-tabs-wrap">
     <div class="dews-tabs-title">
       <div class="title-list">
-        <button class="title" :class="titleList[tab].active"  v-for="(tab, idx) in titleList" :key="idx">{{titleList[tab].title}}</button>
+        <button class="title" :class="tab" v-for="(tab, idx) in titlesList" :key="idx" :data-tab="tab.uid">{{ tab.title }}</button>
       </div>
     </div>
     <div class="dews-tabs-content" :data-uid="dataUid" data-type="tabs" ref="tabsContent">
@@ -23,9 +23,8 @@ export default {
     return {
       uid: '',
       dataUid: '',
-      titleList: new Map(),
+      titlesList: [],
       activeTab: 'active',
-      activeList: [],
 
       /* Properties */
       id: '',
@@ -39,7 +38,7 @@ export default {
     this.dataUid = CreateService.createUid('tabs');
 
     this.$nextTick(function () {
-      this.titleList = store.getters.getTabList.get(this.uid);
+      this.titlesList = store.getters.getTabList[this.uid];
     });
   },
   mounted() {
@@ -62,21 +61,14 @@ export default {
     // }
   },
   computed: {
-    updateTab: function (){
-      console.log(store.getters.getTabList.get(this.uid));
-      return store.getters.getTabList.get(this.uid);
+    updateTitles() {
+      return store.getters.getTabList[this.uid];
     }
-    // ,
-    // updateTitle() {
-    //   return store.getters.getTabList[this.uid];
-    // }
   },
   watch: {
-    // updateTitle(state) {
-    //   this.activeList = state;
-    // }
-    updateTab(state) {
-      this.activeList = state;
+    updateTitles(state) {
+      this.titlesList = state;
+      console.log('titleList', this.titlesList)
     }
   }
 }
