@@ -2,11 +2,12 @@
   <div :uid="uid" class="dews-mobile-tabs dews-mobile-component dews-tabs-wrap">
     <div class="dews-tabs-title">
       <div class="title-list">
-        <button class="title" :class="tab.active" v-for="(tab, idx) in titlesList" :key="idx" :data-tab="tab.uid" @click="selectTab($event)">{{ tab.title }}</button>
+        <button class="title" :class="titleList.tab.active" v-for="(titleList, idx) in titlesList" :key="idx"
+          :data-tab="titleList.tab.uid" @click="selectTab(titleList.tab)">{{ titleList.tab.title }}</button>
       </div>
     </div>
     <div class="dews-tabs-content" :data-uid="dataUid" data-type="tabs" ref="tabsContent">
-      <dews-tab :active="activeTab"></dews-tab>
+      <dews-tab controlChild="dews-tab"></dews-tab>
     </div>
   </div>
 </template>
@@ -24,7 +25,6 @@ export default {
       uid: '',
       dataUid: '',
       titlesList: [],
-      activeTab: 'active',
 
       /* Properties */
       id: '',
@@ -39,13 +39,16 @@ export default {
 
     this.$nextTick(function () {
       this.titlesList = store.getters.getTabList[this.uid];
-      console.log(this.titlesList)
     });
   },
   mounted() {},
   methods: {
-    selectTab(e) {
-      console.log(e.target);
+    selectTab(tab) {
+      const activeTab = this.titlesList.find(title => {
+        return title.tab.active === 'active';
+      })
+      activeTab.tab.active = false;
+      tab.active = 'active';
     },
   },
   computed: {
@@ -54,11 +57,10 @@ export default {
     }
   },
   watch: {
-    deep: true,
-    updateTitles(state) {
-      this.titlesList = state;
+    updateTitles(newValue, oldValue) {
+      this.titlesList = newValue;
     }
-  }
+  },
 }
 </script>
 

@@ -6,7 +6,7 @@
     </div>
 
     <container-content :controlType="controlType">
-      <form-section :controlChild="childFormSection"></form-section>
+      <form-section controlChild="form-section"></form-section>
     </container-content>
   </div>
 </template>
@@ -25,7 +25,6 @@ export default {
       uid: '',
       hasChildControl: true,
       controlType: 'form',
-      childFormSection: 'form-section',
 
       /* Properties */
       id: '',

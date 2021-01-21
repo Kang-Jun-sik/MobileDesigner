@@ -1,28 +1,25 @@
 <template>
-  <div :uid="uid" class="dews-mobile-tab dews-mobile-component dews-layout-component content" :class="active"
-    :data-uid="dataUid" data-type="area">
-    <div :style="style"></div>
+  <div :uid="uid" class="dews-mobile-tab dews-mobile-component dews-layout-component content"
+       :class="active" data-type="area" :style="style" ref="areaTab">
   </div>
 </template>
 
 <script>
 import store from "@/store/index";
 import CreateService from "@/service/CreateService";
-import {mapGetters} from "vuex";
 
 export default {
   name: 'dews-tab',
-  props: ['active'],
+  props: ['controlChild'],
   data() {
     return {
       uid: '',
       dataUid: '',
       style: {
         height: '',
-        backgroundColor: '#ffffff'
       },
       parentUid: '',
-      activeList: [],
+      active: false,
 
       /* Properties */
       id: '',
@@ -39,7 +36,6 @@ export default {
   },
   created() {
     this.uid = CreateService.createUid('dews-tab');
-    this.dataUid = CreateService.createUid('tab');
 
     this.mainButtonList = {
       uid: this.uid,
@@ -52,26 +48,24 @@ export default {
     });
   },
   mounted() {
-    if (this.active) {
+    window.drake.containers.push(this.$refs.areaTab);
+
+    if (this.controlChild) {
+      this.active = 'active';
       this.parentUid = this.$el.closest('.dews-tabs-wrap').getAttribute('uid');
       store.commit('setTab', {
         tabsUid: this.parentUid,
         tabData: {
-          uid: this.uid,
-          active: this.active,
-          title: this.title
+          tab: this
         },
       });
-
-      if (this.active === 'active') {
-        this.style.height = '300px';
-      } else {
-        this.style.height = '0px';
-      }
     }
   },
-
-
+  watch: {
+    active(state) {
+      this.style.height = state === 'active' ? 'auto' : '0px';
+    }
+  }
 
 }
 </script>
@@ -87,4 +81,8 @@ export default {
   @include reset();
 }
 @include dews-area-tabs-content();
+
+.dews-mobile-tab {
+  min-height: 40px;
+}
 </style>

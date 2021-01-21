@@ -9,9 +9,7 @@ export default {
         store.commit('setTab', {
             tabsUid: element.getAttribute('uid'),
             tabData: {
-                uid: tab.uid,
-                active: tab.active,
-                title: tab.title
+                tab: tab
             }
         });
     },

@@ -88,6 +88,10 @@ export default {
                             name: "Add Tab",
                             icon: "edit"
                         },
+                        "split": {
+                            name: "분할",
+                            icon: "ic-split"
+                        },
                         "delete": {
                             name: "Delete",
                             icon: "ic-delete"
@@ -95,11 +99,14 @@ export default {
                     },
                     callback: function(itemKey, opt) {
                         switch (itemKey){
-                            case "delete" :
-                                DeleteService.deleteControl(opt.$trigger[0]);
-                                break;
                             case "addTab":
                                 AddChildService.addTabsChild(opt.$trigger[0]);
+                                break;
+                            case "split":
+                                SplitService.verticalSplit(opt.$trigger[0]);
+                                break;
+                            case "delete" :
+                                DeleteService.deleteControl(opt.$trigger[0]);
                                 break;
                         }
                     }
