@@ -2,7 +2,7 @@
   <div :uid="uid" class="dews-mobile-tabs dews-mobile-component dews-tabs-wrap">
     <div class="dews-tabs-title">
       <div class="title-list">
-        <button class="title" :class="tab.active" v-for="(tab, idx) in titlesList" :key="idx" :data-tab="tab.uid">{{ tab.title }}</button>
+        <button class="title" :class="tab.active" v-for="(tab, idx) in titlesList" :key="idx" :data-tab="tab.uid" @click="selectTab($event)">{{ tab.title }}</button>
       </div>
     </div>
     <div class="dews-tabs-content" :data-uid="dataUid" data-type="tabs" ref="tabsContent">
@@ -42,24 +42,11 @@ export default {
       console.log(this.titlesList)
     });
   },
-  mounted() {
-    // this.titleList =  store.getters.getTabList[this.uid];
-  },
+  mounted() {},
   methods: {
-    // selectTab: function (evt, idx) {
-    //   const $TabTitleList = evt.currentTarget.parentElement.children;
-    //   store.commit('setTabActiveChange', {
-    //     uid : this.uid,
-    //     idx : idx
-    //   });
-    //   for (let i = 0; i < $TabTitleList.length; i++) {
-    //    if(i === idx){
-    //      $TabTitleList[i].classList.add('active');
-    //    }else{
-    //      $TabTitleList[i].classList.remove('active');
-    //    }
-    //   }
-    // }
+    selectTab(e) {
+      console.log(e.target);
+    },
   },
   computed: {
     updateTitles() {
@@ -67,9 +54,9 @@ export default {
     }
   },
   watch: {
+    deep: true,
     updateTitles(state) {
       this.titlesList = state;
-      console.log('titleList', this.titlesList)
     }
   }
 }
