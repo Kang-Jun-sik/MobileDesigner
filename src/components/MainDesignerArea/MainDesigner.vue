@@ -38,59 +38,56 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  .main-designer {
-    position: relative;
-    background-color: #efeff4;
-  }
+.main-designer {
+  position: relative;
+  background-color: #efeff4;
+
   .main-designer-bg {
-    height: 100%;
-    width: 100%;
     overflow-y: scroll;
+    width: 100%;
+    height: 100%;
     padding: 12px 5px 5px 9px;
   }
 
-  .designer-smartPhone {
+  &.designer-smartPhone {
     height: 626px;
     //margin: 0 24px 0 21px;
     margin: 0 26px 0 24px;
   }
-
-  .designer-tabletM {
+  &.designer-tabletM {
     height: 892px;
     //margin: 0 23px 0 20px;
     margin: 0 33px 0 20px;
   }
-
-  .designer-tabletL {
+  &.designer-tabletL {
     height: 629px;
     margin: 0 22px 0 21px;
   }
+}
 
-  .designer-style {
-    .main-designer {
-      overflow: visible;
-      padding: 0;
-    }
+//확장모드
+.designer-style {
+  .main-designer {
+    overflow: visible;
+    height: auto;
+    padding: 0;
+    border-left: 1px solid rgba(60, 60, 67, 0.18);
+    border-right: 1px solid rgba(60, 60, 67, 0.18);
+    box-shadow: 0px -10px 10px 0 rgba(0, 0, 0, 0.06);
+
     .main-designer-bg {
-      overflow-y: scroll;
-      height: 100%;
+      overflow-y: visible;
+      height: auto;
+      min-height: calc(100vh - 214px); // 214 = 20px - 76px - 96px - 20px - 2px
       padding: 12px 10px 5px 10px;
     }
 
-    .designer-smartPhone {
+    &.designer-smartPhone,
+    &.designer-tabletM,
+    &.designer-tabletL {
       position: relative;
-      height: calc(100vh - 20px - 76px - 56px - 20px - 2px - 20px);
-      margin: 0;
-    }
-    .designer-tabletM {
-      position: relative;
-      height: calc(100vh - 20px - 76px - 56px - 20px - 2px - 20px);
-      margin: 0;
-    }
-    .designer-tabletL {
-      position: relative;
-      height: calc(100vh - 20px - 76px - 56px - 20px - 2px - 20px);
       margin: 0;
     }
   }
+}
 </style>

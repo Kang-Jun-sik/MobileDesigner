@@ -122,10 +122,16 @@ export default {
 
 <style lang="scss" scoped>
 .mobile-wrapper {
-  //padding: 0;
-  //display: grid;
-  //grid-gap: 10px;
-  //grid-template-columns: 150px 1fr;
   color: #444;
+}
+
+// 확장모드
+.designer-style {
+  .mobile-wrapper {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: stretch;
+    height: 100vh;
+  }
 }
 </style>

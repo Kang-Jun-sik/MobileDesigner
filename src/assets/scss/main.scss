@@ -5,17 +5,12 @@
 * {
   @include reset();
 }
-html {
-  overflow-x: auto !important;
-}
 body {
   background-color: #d5dae2 !important;
 }
 
 //app common
 #app {
-
-
   .dews-control-list {
     cursor: pointer;
   }
@@ -295,10 +290,11 @@ body {
   }
 }
 
-
+// 확장모드
 #app.designer-style {
   .controlList-wrapper {
-    z-index: 10;
+    position: relative;
+    flex: 0 0 167px;
     width: 167px;
     min-height: inherit;
     overflow-y: scroll;

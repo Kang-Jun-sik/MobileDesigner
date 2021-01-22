@@ -32,6 +32,10 @@ export default {
   methods: {
     changeMode() {
       this.mode = !this.mode;
+
+      const html = document.querySelector('html');
+      html.style.overflow = this.mode ? 'hidden' : '';
+
       store.commit('setWorkMode', this.mode);
     }
   }

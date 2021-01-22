@@ -41,29 +41,16 @@
 </script>
 
 <style lang="scss" scoped>
-  .smartPhone {
-    width: 430px;
-    height: 79px;
-    margin: 20px 24px 0;
-  }
+.navigation-bar-wrapper {
+  position: absolute;
+  top: 0;
+  border-radius: 33px 33px 0 0;
+  background-color: #ffffff;
 
-  .tabletM {
-    width: 859px;
-    height: 76px;
-    margin: 23px 20px 0;
-  }
-
-  .tabletL {
-    width: 1077px;
-    height: 76px;
-    margin: 23px 21px 0;
-  }
-
-  .navigation-bar-wrapper {
-    position: absolute;
+  .navigation-bar-wrapper-bg {
+    padding-top: 5px;
     border-radius: 33px 33px 0 0;
     background-color: #ffffff;
-    top: 0;
 
     .status-bar {
       height: 24px;
@@ -72,7 +59,6 @@
 
       }
     }
-
     .navigation-bar {
       height: 52px;
 
@@ -112,40 +98,60 @@
         }
       }
     }
-
-    .navigation-bar-wrapper-bg {
-      padding-top: 5px;
-      border-radius: 33px 33px 0 0;
-      background-color: #ffffff;
-    }
   }
 
-  .designer-style {
-    .navigation-bar-wrapper {
+  &.smartPhone {
+    width: 430px;
+    height: 79px;
+    margin: 20px 24px 0;
+  }
+  &.tabletM {
+    width: 859px;
+    height: 76px;
+    margin: 23px 20px 0;
+  }
+  &.tabletL {
+    width: 1077px;
+    height: 76px;
+    margin: 23px 21px 0;
+  }
+}
+
+//확장모드
+.designer-style {
+  .navigation-bar-wrapper {
+    position: sticky;
+    z-index: 1;
+    top: 20px;
+    border-radius: 0;
+
+    &::before {
+      content: '';
       position: absolute;
-      z-index: 1;
-      border-radius: 0;
+      top: -22px;
+      left: -10px;
+      width: calc(100% + 20px);
+      height: 22px;
+      background-color: #d5dae2;
+      z-index: -1;
     }
     .navigation-bar-wrapper-bg {
       height: 100%;
       padding-top: 0;
       border-radius: 0;
+      border-top: 1px solid rgba(60, 60, 67, 0.18);
+      border-left: 1px solid rgba(60, 60, 67, 0.18);
+      border-right: 1px solid rgba(60, 60, 67, 0.18);
+      box-shadow: 0px -10px 10px 0 rgba(0, 0, 0, 0.06);
     }
-    .smartPhone {
-      width: 100%;
-      height: 76px;
-      margin: 0;
-    }
-    .tabletM {
-      width: 100%;
-      height: 76px;
-      margin: 0;
-    }
-    .tabletL {
+
+    &.smartPhone,
+    &.tabletM,
+    &.tabletL {
       width: 100%;
       height: 76px;
       margin: 0;
     }
   }
-
+}
 </style>
