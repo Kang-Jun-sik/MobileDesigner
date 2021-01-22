@@ -1,5 +1,5 @@
 <template>
-  <div :uid="uid" class="dews-mobile-timePicker dews-mobile-component time-picker-wrap">
+  <div :uid="uid" class="dews-mobile-timePicker dews-mobile-component time-picker-wrap outside">
     <label>{{ title }}</label>
     <span class="select-wrap">
       <span class="select-shape">

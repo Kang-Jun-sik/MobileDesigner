@@ -1,5 +1,5 @@
 <template>
-  <button :uid="uid" class="dews-mobile-button dews-mobile-component dews-button" :class="[ui, size, type,
+  <button :uid="uid" class="dews-mobile-button dews-mobile-component dews-button outside" :class="[ui, size, type,
     disabled ? 'disabled' : '', group ? 'group' : '']" :style="buttonStyle">
     <span class="button-icon"></span>
     <span class="button-text">{{ text }}</span>

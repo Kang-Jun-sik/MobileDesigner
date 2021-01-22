@@ -29,6 +29,7 @@ export default {
 <style lang="scss" scoped>
 @import 'node_modules/@dews/dews-mobile-style/scss/variables/variables';
 @import 'node_modules/@dews/dews-mobile-style/scss/mixins/_mixins';
+
 @include dews-area-item();
 
 
@@ -49,6 +50,7 @@ export default {
   min-height: 40px;
   border: 1px dotted #212121;
 }
+
 .designer-tabletL {
   .dews-item {
     margin: 0 $area-item-space 12px;

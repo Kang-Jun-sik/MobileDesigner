@@ -50,8 +50,7 @@ export default {
         let sameLevelControlList;
         const parent = component.parentElement.closest('.dews-mobile-component')
         const parentUid = parent.getAttribute('uid');
-        const parentTypeList = ['search-container-field', 'form-container-field', 'button-group', 'checkbox-group', 'radio-group'];
-        sameLevelControlList = parent.querySelectorAll('.dews-mobile-component');
+        sameLevelControlList = parent.querySelectorAll('.dews-mobile-component .outside');
         for (let idx = 0; idx < sameLevelControlList.length; idx++) {
             if (sameLevelControlList[idx].getAttribute('uid') === component.getAttribute('uid')) {
                 index = idx;

@@ -1,5 +1,5 @@
 <template>
-  <div :uid="uid" class="dews-mobile-tabs dews-mobile-component dews-tabs-wrap" :active="active">
+  <div :uid="uid" class="dews-mobile-tabs dews-mobile-component dews-tabs-wrap outside" :active="active">
     <div class="dews-tabs-title">
       <div class="title-list">
 <!--        <button class="title" v-for="(title, idx) in titleList" :key="idx" @click="selectTab($event, idx)">{{ title }}</button>-->

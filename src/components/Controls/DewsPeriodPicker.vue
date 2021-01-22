@@ -1,5 +1,5 @@
 <template>
-  <div :uid="uid" class="dews-mobile-periodPicker dews-mobile-component period-picker-wrap focus">
+  <div :uid="uid" class="dews-mobile-periodPicker dews-mobile-component period-picker-wrap focus outside">
     <label>{{ title }}</label>
     <span class="select-wrap">
       <span class="select-shape">

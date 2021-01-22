@@ -1,5 +1,5 @@
 <template>
-  <div :uid="uid" class="dews-mobile-radioGroup dews-mobile-component dews-radio-group-wrap">
+  <div :uid="uid" class="dews-mobile-radioGroup dews-mobile-component dews-radio-group-wrap outside">
     <span class="radio-group-label">{{ title }}</span>
     <div class="radio-group" :class="align"
       data-type="group" :data-uid="dataUid" ref="radioButtonGroup">

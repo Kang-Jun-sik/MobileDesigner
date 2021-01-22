@@ -29,13 +29,8 @@ export default {
         let obj;
         let index;
         let sameLevelControlList;
-        const parentTypeList = ['search-container-field', 'form-container-field', 'button-group', 'checkbox-group', 'radio-group'];
         const parent = elm.parentElement.closest('.dews-mobile-component');
-        if (parentTypeList.includes(parent.classList[0]))
-            sameLevelControlList = parent.querySelectorAll('.dews-mobile-component'); //Child Element들이 li,span 등 tag로 Wrapping되어 추가되는 경우
-        else
-            sameLevelControlList = parent.querySelectorAll(':scope > .dews-mobile-component'); //Direct Child로 추가되는 경우
-
+        sameLevelControlList = parent.querySelectorAll('.dews-mobile-component .outside');
         for (let idx = 0; idx < sameLevelControlList.length; idx++) {
             if (sameLevelControlList[idx].getAttribute('uid') === elementUid) {
                 index = idx;
@@ -50,10 +45,5 @@ export default {
                 'index': index,
             }
         return obj;
-    },
-    
-    //IDE Create Information for Splitting
-    createSplitInfo(obj) {
-        console.log('createSplitInfo');
     }
 }
