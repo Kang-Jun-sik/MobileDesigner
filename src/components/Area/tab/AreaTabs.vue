@@ -6,7 +6,7 @@
           :data-tab="titleList.tab.uid" @click="selectTab(titleList.tab)">{{ titleList.tab.title }}</button>
       </div>
     </div>
-    <div class="dews-tabs-content" :data-uid="dataUid" data-type="tabs" ref="tabsContent">
+    <div class="dews-tabs-content" data-uid="dataUid" data-type="tabs" ref="tabsContent">
       <dews-tab controlChild="dews-tab"></dews-tab>
     </div>
   </div>
@@ -24,6 +24,8 @@ export default {
     return {
       uid: '',
       dataUid: '',
+      hasChildControl: true,
+      controlType: 'tabs',
       titlesList: [],
 
       /* Properties */

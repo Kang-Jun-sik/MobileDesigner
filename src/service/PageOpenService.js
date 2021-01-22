@@ -34,6 +34,7 @@ import {
     ContainerContent
 } from '@/utils/exports'
 import component from "@/store/modules/component";
+import CreateService from "@/service/CreateService";
 
 export default {
     /*
@@ -79,6 +80,15 @@ export default {
 
         let addComponent;
         switch (parent.controlType) {
+            case 'tabs':
+                addComponent = control.$el;
+                store.commit('setTab', {
+                    tabsUid: controlUid,
+                    tabData: {
+                        tab: control
+                    }
+                });
+                break;
             case 'search':
                 addComponent = document.createElement('li');
                 addComponent.appendChild(control.$el);
@@ -100,16 +110,6 @@ export default {
                 addComponent = control.$el;
                 break;
         }
-        // if (parent.controlType === 'search' || parent.controlType === 'form') {
-        //     addComponent = document.createElement('li');
-        //     addComponent.appendChild(control.$el);
-        // } else if (parent.controlType === 'group') {
-        //     addComponent = document.createElement('span');
-        //     addComponent.className = parent.groupItemClass;
-        //     addComponent.appendChild(control.$el);
-        // } else {
-        //     addComponent = control.$el;
-        // }
 
         if (parentDataUid) {
             parent.$el.querySelector(`[data-uid=${parentDataUid}]`).appendChild(addComponent);
@@ -130,7 +130,7 @@ export default {
         let instanceUid;
         const parent = store.state.component.items.find(item => item.uid === parentUid);
 
-        const controlChildList = ['container-button', 'container-content', 'form-section',
+        const controlChildList = ['dews-tab', 'container-button', 'container-content', 'form-section',
             'numerictextbox-button', 'dropdownbutton-childbutton'];
         if (controlChildList.includes(node.tagName)) {
             const controlChild = parent.$children.find(child => {
