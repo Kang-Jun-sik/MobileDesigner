@@ -46,15 +46,19 @@ export default {
     },
 
     sendCreateMessage(component) {
+        let index;
+        let sameLevelControlList;
         const parent = component.parentElement.closest('.dews-mobile-component')
         const parentUid = parent.getAttribute('uid');
-        let idx;
-        //parent 기준으로 해당 Control의 순서를 세팅
-        Array.from(parent.children).forEach(function (item, index) {
-            if (item.getAttribute('uid') === component.getAttribute('uid'))
-                idx = index;
-        });
-        mobileDesignerToIDE("create", component, parentUid, idx);
+        const parentTypeList = ['search-container-field', 'form-container-field', 'button-group', 'checkbox-group', 'radio-group'];
+        sameLevelControlList = parent.querySelectorAll('.dews-mobile-component');
+        for (let idx = 0; idx < sameLevelControlList.length; idx++) {
+            if (sameLevelControlList[idx].getAttribute('uid') === component.getAttribute('uid')) {
+                index = idx;
+                break;
+            }
+        }
+        mobileDesignerToIDE("create", component, parentUid, index);
     },
 
     /*
