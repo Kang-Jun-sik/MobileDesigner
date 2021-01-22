@@ -1,42 +1,21 @@
 import store from "@/store/index";
 import DeleteService from "@/service/DeleteService";
-import UndoRedoService from "@/service/UndoRedoService";
 
 export default {
     addUndoItem(undoItem) {
         store.commit('addUndoItem', undoItem);
     },
-
     addRedoItem() {
 
     },
-
     /*
      * [undo action] 반대로 동작한다.
      *  case 1) addItem <==> deleteItem
      *  case 2) control property change before <==> control property change after
      */
     undoAction(item){
-        /*
-        let parent;
-        let parentUid;
-        switch (item.type){
-            case 'addItem' :
-                DeleteService.sendDeleteMessage(item.data.$el);
-                DeleteService.deleteControl(item.data.$el);
-                break;
-            case 'deleteItem' :
-                parentUid = item.parentUid;
-                parent = store.state.component.items.find(item => item.uid === parentUid);
-                if (parent){
-                    store.commit('addItem', item.data);
-                    parent.$el.appendChild(item.data.$el);
-                }
-                break;
-        }
-        */
+        console.log(item);
     },
-
     /*
      * [redo action]
      * redo stack에 쌓인 대로 동작한다.
@@ -61,7 +40,6 @@ export default {
                 break;
         }
     },
-
     //undo 수행
     undoExecute() {
         //가장 Top에 있는 undoItem을 얻어온다.
@@ -74,7 +52,6 @@ export default {
         console.log('undo Service execute');
          */
     },
-
     //redo 수행
     redoExecute() {
         /*
@@ -86,7 +63,6 @@ export default {
         console.log('redo Service execute');
          */
     },
-
     //undo or redo action from IDE
     undoredoService(item){
         console.log(item);

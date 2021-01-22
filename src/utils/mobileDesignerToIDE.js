@@ -1,6 +1,6 @@
 import makeForIDEInfo from "@/utils/makeForIDEInfo";
 
-const mobileDesignerToIDE = (commandType, elm, parentUID, key) => {
+const mobileDesignerToIDE = (commandType, elm, parentUID, idx) => {
     const XMLWriter = require('xml-writer');
     const xw = new XMLWriter;
     const elementUid = elm.getAttribute('uid');
@@ -35,7 +35,8 @@ const mobileDesignerToIDE = (commandType, elm, parentUID, key) => {
             obj = {
                 'commandType': commandType,
                 'parentId': parentUID,
-                'data': xw.output
+                'data': xw.output,
+                'index': idx
             }
             break;
         case "delete":

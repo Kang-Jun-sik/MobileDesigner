@@ -32,6 +32,7 @@ import {
     RadioButtonGroup,
     CheckBoxGroup
 } from '@/utils/exports'
+import DeleteService from "@/service/DeleteService";
 
 export default {
     createFromIDE(args) {
@@ -47,8 +48,13 @@ export default {
     sendCreateMessage(component) {
         const parent = component.parentElement.closest('.dews-mobile-component')
         const parentUid = parent.getAttribute('uid');
-
-        mobileDesignerToIDE("create", component, parentUid);
+        let idx;
+        //parent 기준으로 해당 Control의 순서를 세팅
+        Array.from(parent.children).forEach(function (item, index) {
+            if (item.getAttribute('uid') === component.getAttribute('uid'))
+                idx = index;
+        });
+        mobileDesignerToIDE("create", component, parentUid, idx);
     },
 
     /*

@@ -39,7 +39,6 @@ export default {
     //     SelectService.setPosition(element, element.offsetWidth, element.offsetHeight);
     // },
 
-
     /**
      * 하위 자식 컨트롤의 사이즈 조절을 위한 로직 ex) dews-mobile-areBox > dews-box-content-wrap
      * */
