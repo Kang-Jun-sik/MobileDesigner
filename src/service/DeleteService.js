@@ -61,7 +61,7 @@ export default {
         DeleteService.deleteItems(target);
 
         // 4) target 객체 제거
-        target.remove();
+        target.parentElement.tagName === 'LI' ? target.parentElement.remove() : target.remove();
 
         // selectItem이 없으므로 null 처리
         window.selectedItem = null;
