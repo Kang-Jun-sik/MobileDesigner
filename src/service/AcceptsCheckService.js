@@ -42,10 +42,10 @@ const componentAcceptsCheck = (component, target) => {
     let acceptCheck = false;
     try {
         acceptCheck = componentInformation[checkedComponent].includes(dropTarget);
-    }
-    catch (error) {
+    } catch (error) {
         console.error(error);
     }
+
     return acceptCheck;
 }
 

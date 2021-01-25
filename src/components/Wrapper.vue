@@ -34,10 +34,12 @@ export default {
         return ['areaList', 'containerList', 'buttonList',
           'componentList', 'pickerList', 'etcList'].includes(source.id);
       },
-      accepts: function (el, target, source) {
-        if (target.dataset.type === 'area' && target.querySelector(`[data-type='container']`)) {
-          return;
+      accepts: function (el, target) {
+        if (componentAcceptsCheck(el, target) && target.dataset.type === 'area') {
+          const containers = target.querySelectorAll(`[data-type='container']`);
+          if (containers.length > 1) return false;
         }
+
         return componentAcceptsCheck(el, target);
       }
     })
@@ -104,58 +106,9 @@ export default {
         }
         ContextMenuService.getContextMenu(component.$el);
       } else {
-        element = element.classList.contains('dews-mobile-component') ?
-            element : element.querySelector('.dews-mobile-component');
+        element = element.classList.contains('dews-mobile-component') ? element : element.querySelector('.dews-mobile-component');
         ChangePositionService.sendChangePositionMessage(element, target);
       }
-      //
-      //
-      // if (!element.classList.contains('dews-control-list')) {
-      //   if (element.classList.contains('dews-mobile-component')) {
-      //     ChangePositionService.sendChangePositionMessage(element, target);
-      //   } else {
-      //     element = element.querySelector('.dews-mobile-component');
-      //     ChangePositionService.sendChangePositionMessage(element, target);
-      //   }
-      //   //컨트롤 이동시 처리 IDE
-      //   return;
-      // }
-      //
-      // const componentName = element.textContent.replace(/\s+/g, '');
-      // const component = CreateService.addComponent(componentName);
-      // let createElement;
-      //
-      // if (element.dataset.type === 'component-list') {
-      //   switch (target.dataset.type) {
-      //     case "container":
-      //       createElement = document.createElement('li');
-      //       createElement.appendChild(component.$el);
-      //       element.replaceWith(createElement);
-      //       break;
-      //     case 'group':
-      //       createElement = document.createElement('span');
-      //       createElement.className = 'group-item';
-      //       createElement.appendChild(component.$el);
-      //       element.replaceWith(createElement);
-      //       break;
-      //     case 'button-group':
-      //       component.group = true;
-      //       element.replaceWith(component.$el);
-      //       break;
-      //     default:
-      //       element.replaceWith(component.$el);
-      //       break;
-      //   }
-      // } else {
-      //   element.replaceWith(component.$el);
-      // }
-      // store.commit('addItem', component);
-      //
-      // CreateService.sendCreateMessage(component.$el);
-      // if (component.hasChildControl) {
-      //   this.setControlChild(component);
-      // }
-      // ContextMenuService.getContextMenu(component.$el);
     },
     /*
     * Container Drop 후, container-button, container-content Create Message
