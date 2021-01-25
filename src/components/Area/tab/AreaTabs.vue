@@ -1,15 +1,13 @@
 <template>
-  <div :uid="uid" class="dews-mobile-tabs dews-mobile-component dews-tabs-wrap outside" :active="active">
+  <div :uid="uid" class="dews-mobile-tabs dews-mobile-component dews-tabs-wrap outside">
     <div class="dews-tabs-title">
       <div class="title-list">
-<!--        <button class="title" v-for="(title, idx) in titleList" :key="idx" @click="selectTab($event, idx)">{{ title }}</button>-->
-        <button class="title active"><span>Tab#1 Tab#1 Tab#1 Tab#1</span></button>
-        <button class="title"><span>Tab#2</span></button>
+        <button class="title" :class="titleList.tab.active" v-for="(titleList, idx) in titlesList" :key="idx"
+          :data-tab="titleList.tab.uid" @click="selectTab(titleList.tab)">{{ titleList.tab.title }}</button>
       </div>
     </div>
     <div class="dews-tabs-content" :data-uid="dataUid" data-type="tabs" ref="tabsContent">
-      <dews-tab :active="active"></dews-tab>
-      <dews-tab></dews-tab>
+      <dews-tab controlChild="dews-tab"></dews-tab>
     </div>
   </div>
 </template>
@@ -26,9 +24,12 @@ export default {
     return {
       uid: '',
       dataUid: '',
-      titleList: 'Tab',
-      active: 'active',
+      titlesList: [],
 
+      /* check child */
+      hasChildControl: true,
+      checkChild: true,
+      controlType: 'tabs',
 
       /* Properties */
       id: '',
@@ -40,18 +41,31 @@ export default {
   created() {
     this.uid = CreateService.createUid('dews-tabs');
     this.dataUid = CreateService.createUid('tabs');
-    // this.titleList = store.state.tabTitles;
+
+    this.$nextTick(function () {
+      this.titlesList = store.getters.getTabList[this.uid];
+    });
   },
-  mounted() {
-    // const titles = store.getters.tabTitleList;
-    // this.titleList = titles[this.uid];
-  },
+  mounted() {},
   methods: {
-    // selectTab: function (evt, idx){
-    //   console.log(document.querySelector(".dews-tabs-content :nth-child(1)"))
-    //   console.log(evt, idx);
-    // }
-  }
+    selectTab(tab) {
+      const activeTab = this.titlesList.find(title => {
+        return title.tab.active === 'active';
+      })
+      activeTab.tab.active = false;
+      tab.active = 'active';
+    },
+  },
+  computed: {
+    updateTitles() {
+      return store.getters.getTabList[this.uid];
+    }
+  },
+  watch: {
+    updateTitles(newValue, oldValue) {
+      this.titlesList = newValue;
+    }
+  },
 }
 </script>
 

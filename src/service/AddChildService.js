@@ -6,7 +6,13 @@ export default {
         const $tabsContent = element.querySelector(`[data-type='tabs']`);
         const tab = CreateService.addComponent('AreaTab');
         $tabsContent.appendChild(tab.$el);
-        store.commit('addItem', tab);
+        store.commit('setTab', {
+            tabsUid: element.getAttribute('uid'),
+            tabData: {
+                tab: tab
+            }
+        });
+        CreateService.sendCreateMessage(tab.$el);
     },
 
     addButtonChild() {

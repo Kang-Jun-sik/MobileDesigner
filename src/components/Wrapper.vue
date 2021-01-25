@@ -120,7 +120,6 @@ export default {
     * */
     setControlChild(component) {
       Array.from(component.$children).forEach(child => {
-        //CreateService.sendCreateMessage(child.$el);
         store.commit('addItem', child);
         if (child.$children) {
           this.setControlChild(child);

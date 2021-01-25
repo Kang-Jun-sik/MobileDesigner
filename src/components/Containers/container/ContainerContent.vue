@@ -12,13 +12,18 @@ export default {
   props: ['controlType', 'dataUid'],
   data() {
     return {
-      id: '',
       uid: '',
+
+      /* check child */
+      checkChild: true,
       controlChild: 'container-content',
+
+      /* Properties */
+      id: '',
     }
   },
   created() {
-    this.uid = CreateService.createUid('container-content')
+    this.uid = CreateService.createUid('container-content');
   }
 }
 </script>

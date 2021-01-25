@@ -23,7 +23,7 @@ export default {
         },
         getMainButtons(state){
             return state.mainButtons
-        }
+        },
     },
     actions: {},
     mutations: {
@@ -37,7 +37,6 @@ export default {
         },
         setMainButtons(state, payload) {
             state.mainButtons = payload;
-
-        }
+        },
     }
 }

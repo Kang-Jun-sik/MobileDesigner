@@ -30,6 +30,8 @@ export default {
     return {
       uid: '',
       value: '',
+
+      /* check child */
       hasChildControl: true,
       showNumericButton: true,
 
