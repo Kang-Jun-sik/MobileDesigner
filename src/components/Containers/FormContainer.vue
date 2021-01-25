@@ -23,6 +23,8 @@ export default {
   data() {
     return {
       uid: '',
+
+      /* check child */
       hasChildControl: true,
       controlType: 'form',
 

@@ -29,7 +29,10 @@ export default {
       uid: '',
       buttonList: [],
       summaryList: [],
+
+      /* check child */
       hasChildControl: true,
+      controlType: 'list',
 
       /* Properties */
       id: '',

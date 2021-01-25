@@ -12,6 +12,7 @@ export default {
                 tab: tab
             }
         });
+        CreateService.sendCreateMessage(tab.$el);
     },
 
     addButtonChild() {

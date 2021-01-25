@@ -16,7 +16,10 @@ export default {
     return {
       uid: '',
       value: 'TestValue',
+
+      /* check child */
       hasChildControl: true,
+      controlType: 'info',
 
       /* Properties */
       id: '',

@@ -29,8 +29,10 @@ export default {
     return {
       uid: '',
       dataUid: '',
-      controlType: 'search',
+
+      /* check child */
       hasChildControl: true,
+      controlType: 'search',
 
       /* Properties */
       id: '',

@@ -83,7 +83,7 @@ export default {
             case 'tabs':
                 addComponent = control.$el;
                 store.commit('setTab', {
-                    tabsUid: controlUid,
+                    tabsUid: parent.uid,
                     tabData: {
                         tab: control
                     }
@@ -129,20 +129,39 @@ export default {
         let instance = node.cloneNode();
         let instanceUid;
         const parent = store.state.component.items.find(item => item.uid === parentUid);
+        const oneChildList = ['container-button', 'container-content', 'numerictextbox-button'];
+        const multiChildList = ['dews-tab', 'form-section', 'dropdownbutton-childbutton'];
 
-        const controlChildList = ['dews-tab', 'container-button', 'container-content', 'form-section',
-            'numerictextbox-button', 'dropdownbutton-childbutton'];
-        if (controlChildList.includes(node.tagName)) {
-            const controlChild = parent.$children.find(child => {
-                return child.controlChild === node.tagName;
+        function findChild(tagName, children) {
+            return children.find(child => {
+                return child.controlChild === tagName;
             });
-            if (controlChild) {
+        }
+
+        let controlChild;
+        if (multiChildList.includes(node.tagName)) {
+            controlChild = findChild(node.tagName, parent.$children);
+            if (parent.checkChild) {
                 controlChild.uid = node.getAttribute('uid');
                 instanceUid = controlChild.uid;
+                if (node.tagName === 'dews-tab') {
+                    store.commit('setTab', {
+                        tabsUid: parent.uid,
+                        tabData: {
+                            tab: controlChild
+                        }
+                    });
+                }
+                parent.checkChild = false;
                 store.commit('addItem', controlChild);
             } else {
                 instanceUid = PageOpenService.controlParsing(instance, parent);
             }
+        } else if (oneChildList.includes(node.tagName)) {
+            controlChild = findChild(node.tagName, parent.$children);
+            controlChild.uid = node.getAttribute('uid');
+            instanceUid = controlChild.uid;
+            store.commit('addItem', controlChild);
         } else {
             instanceUid = PageOpenService.controlParsing(instance, parent);
         }
