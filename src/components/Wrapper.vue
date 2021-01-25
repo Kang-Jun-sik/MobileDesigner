@@ -41,12 +41,12 @@ export default {
         return componentAcceptsCheck(el, target);
       }
     })
-        .on('drop', function (el, target) {
-          _this.drop(el, target);
-          if (window.selectedItem) {
-            SelectService.setPosition(window.selectedItem);
-          }
-        })
+    .on('drop', function (el, target) {
+      _this.drop(el, target);
+      if (window.selectedItem) {
+        SelectService.setPosition(window.selectedItem);
+      }
+    })
 
     window.drake.containers.push(_designer.mainDesigner.$el, _designer.areaList, _designer.containerList,
         _designer.buttonList, _designer.componentList, _designer.pickerList, _designer.etcList);
@@ -67,53 +67,95 @@ export default {
     * Control Drop 실행시, Control 생성 및 $el(element)로 replace 처리
     * */
     drop(element, target) {
-      if (!element.classList.contains('dews-control-list')) {
-        if (element.classList.contains('dews-mobile-component')) {
-          ChangePositionService.sendChangePositionMessage(element, target);
-        }
-        else{
-          element = element.querySelector('.dews-mobile-component');
-          ChangePositionService.sendChangePositionMessage(element, target);
-        }
-        //컨트롤 이동시 처리 IDE
-        return;
-      }
+      if (element.classList.contains('dews-control-list')) {
+        const componentName = element.textContent.replace(/\s+/g, '');
+        const component = CreateService.addComponent(componentName);
+        let createElement;
 
-      const componentName = element.textContent.replace(/\s+/g, '');
-      const component = CreateService.addComponent(componentName);
-      let createElement;
-
-      if (element.dataset.type === 'component-list') {
-        switch (target.dataset.type) {
-          case "container":
-            createElement = document.createElement('li');
-            createElement.appendChild(component.$el);
-            element.replaceWith(createElement);
-            break;
-          case 'group':
-            createElement = document.createElement('span');
-            createElement.className = 'group-item';
-            createElement.appendChild(component.$el);
-            element.replaceWith(createElement);
-            break;
-          case 'button-group':
-            component.group = true;
-            element.replaceWith(component.$el);
-            break;
-          default:
-            element.replaceWith(component.$el);
-            break;
+        if (element.dataset.type === 'component-list') {
+          switch (target.dataset.type) {
+            case "container":
+              createElement = document.createElement('li');
+              createElement.appendChild(component.$el);
+              element.replaceWith(createElement);
+              break;
+            case 'group':
+              createElement = document.createElement('span');
+              createElement.className = 'group-item';
+              createElement.appendChild(component.$el);
+              element.replaceWith(createElement);
+              break;
+            case 'button-group':
+              component.group = true;
+              element.replaceWith(component.$el);
+              break;
+            default:
+              element.replaceWith(component.$el);
+              break;
+          }
+        } else {
+          element.replaceWith(component.$el);
         }
+        store.commit('addItem', component);
+
+        CreateService.sendCreateMessage(component.$el);
+        if (component.hasChildControl) {
+          this.setControlChild(component);
+        }
+        ContextMenuService.getContextMenu(component.$el);
       } else {
-        element.replaceWith(component.$el);
+        element = element.classList.contains('dews-mobile-component') ?
+            element : element.querySelector('.dews-mobile-component');
+        ChangePositionService.sendChangePositionMessage(element, target);
       }
-      store.commit('addItem', component);
-
-      CreateService.sendCreateMessage(component.$el);
-      if (component.hasChildControl) {
-        this.setControlChild(component);
-      }
-      ContextMenuService.getContextMenu(component.$el);
+      //
+      //
+      // if (!element.classList.contains('dews-control-list')) {
+      //   if (element.classList.contains('dews-mobile-component')) {
+      //     ChangePositionService.sendChangePositionMessage(element, target);
+      //   } else {
+      //     element = element.querySelector('.dews-mobile-component');
+      //     ChangePositionService.sendChangePositionMessage(element, target);
+      //   }
+      //   //컨트롤 이동시 처리 IDE
+      //   return;
+      // }
+      //
+      // const componentName = element.textContent.replace(/\s+/g, '');
+      // const component = CreateService.addComponent(componentName);
+      // let createElement;
+      //
+      // if (element.dataset.type === 'component-list') {
+      //   switch (target.dataset.type) {
+      //     case "container":
+      //       createElement = document.createElement('li');
+      //       createElement.appendChild(component.$el);
+      //       element.replaceWith(createElement);
+      //       break;
+      //     case 'group':
+      //       createElement = document.createElement('span');
+      //       createElement.className = 'group-item';
+      //       createElement.appendChild(component.$el);
+      //       element.replaceWith(createElement);
+      //       break;
+      //     case 'button-group':
+      //       component.group = true;
+      //       element.replaceWith(component.$el);
+      //       break;
+      //     default:
+      //       element.replaceWith(component.$el);
+      //       break;
+      //   }
+      // } else {
+      //   element.replaceWith(component.$el);
+      // }
+      // store.commit('addItem', component);
+      //
+      // CreateService.sendCreateMessage(component.$el);
+      // if (component.hasChildControl) {
+      //   this.setControlChild(component);
+      // }
+      // ContextMenuService.getContextMenu(component.$el);
     },
     /*
     * Container Drop 후, container-button, container-content Create Message
