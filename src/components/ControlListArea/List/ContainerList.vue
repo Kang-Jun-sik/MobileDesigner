@@ -8,6 +8,7 @@
       <div v-for="(name, key, idx) in mobileContainer" :key="idx"
            :class="'dews-mobile-' + key"
            class="dews-control-list"
+           data-type="container"
       >
         <div :class="'containerList-' + key" class="icon"></div>
         <div class="title">{{ name }}</div>
