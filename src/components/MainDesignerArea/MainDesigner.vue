@@ -71,14 +71,14 @@ export default {
     overflow: visible;
     height: auto;
     padding: 0;
-    border-left: 1px solid rgba(60, 60, 67, 0.18);
-    border-right: 1px solid rgba(60, 60, 67, 0.18);
+    //border-left: 1px solid rgba(60, 60, 67, 0.18);
+    //border-right: 1px solid rgba(60, 60, 67, 0.18);
     box-shadow: 0px -10px 10px 0 rgba(0, 0, 0, 0.06);
 
     .main-designer-bg {
       overflow-y: visible;
       height: auto;
-      min-height: calc(100vh - 214px); // 214 = 20px - 76px - 96px - 20px - 2px
+      //min-height: calc(100vh - 214px); // 214 = 20px - 76px - 96px - 20px - 2px
       padding: 12px 10px 5px 10px;
     }
 
@@ -87,6 +87,22 @@ export default {
     &.designer-tabletL {
       position: relative;
       margin: 0;
+    }
+
+    &.designer-smartPhone {
+      .main-designer-bg {
+        min-height: 508px;
+      }
+    }
+    &.designer-tabletM {
+      .main-designer-bg {
+        min-height: 892px;
+      }
+    }
+    &.designer-tabletL {
+      .main-designer-bg {
+        min-height: 636px;
+      }
     }
   }
 }

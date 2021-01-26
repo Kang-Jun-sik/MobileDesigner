@@ -120,28 +120,17 @@
 //확장모드
 .designer-style {
   .navigation-bar-wrapper {
-    position: sticky;
+    position: relative;
     z-index: 1;
-    top: 20px;
     border-radius: 0;
 
-    &::before {
-      content: '';
-      position: absolute;
-      top: -22px;
-      left: -10px;
-      width: calc(100% + 20px);
-      height: 22px;
-      background-color: #d5dae2;
-      z-index: -1;
-    }
     .navigation-bar-wrapper-bg {
       height: 100%;
       padding-top: 0;
       border-radius: 0;
-      border-top: 1px solid rgba(60, 60, 67, 0.18);
-      border-left: 1px solid rgba(60, 60, 67, 0.18);
-      border-right: 1px solid rgba(60, 60, 67, 0.18);
+      //border-top: 1px solid rgba(60, 60, 67, 0.18);
+      //border-left: 1px solid rgba(60, 60, 67, 0.18);
+      //border-right: 1px solid rgba(60, 60, 67, 0.18);
       box-shadow: 0px -10px 10px 0 rgba(0, 0, 0, 0.06);
     }
 

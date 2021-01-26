@@ -86,28 +86,15 @@
   //확장모드
   .designer-style {
     .button-tab-bar {
-      position: sticky;
-      bottom: 40px;
+      position: relative;
       z-index: 0;
-      -webkit-transform: translate3d(0, -3px, 0);
-      transform: translate3d(0, -3px, 0);
 
-      &::after {
-        content: '';
-        position: absolute;
-        bottom: -43px;
-        left: -10px;
-        width: calc(100% + 20px);
-        height: 43px;
-        background-color: #d5dae2;
-        z-index: -1;
-      }
 
       .button-tab-bar-bg {
         border-radius: 0;
-        border-bottom: 1px solid rgba(60, 60, 67, 0.18);
-        border-left: 1px solid rgba(60, 60, 67, 0.18);
-        border-right: 1px solid rgba(60, 60, 67, 0.18);
+        //border-bottom: 1px solid rgba(60, 60, 67, 0.18);
+        //border-left: 1px solid rgba(60, 60, 67, 0.18);
+        //border-right: 1px solid rgba(60, 60, 67, 0.18);
         box-shadow: 0px 10px 10px 0 rgba(0, 0, 0, 0.06);
       }
 

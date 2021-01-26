@@ -1,5 +1,10 @@
 <template>
   <div class="top-main-designer-wrapper">
+
+    <div>
+
+    </div>
+
     <div id="mainDesignerWrapper"
          :class="designerWrapperLayout"
          class="main-designer-wrapper ">
@@ -99,13 +104,13 @@ export default {
       }
 
       &.designer-wrapper-smartPhone {
-        width: 380px;
+        width: 450px;
       }
       &.designer-wrapper-tabletM {
-        width: 790px;
+        width: 858px;
       }
       &.designer-wrapper-tabletL {
-        width: 1104px;
+        width: 1114px;
       }
     }
   }
