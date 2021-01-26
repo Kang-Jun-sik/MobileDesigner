@@ -21,3 +21,15 @@ export default {
   }
 }
 </script>
+<style lang="scss" scoped>
+@import 'node_modules/@dews/dews-mobile-style/scss/variables/variables';
+@import 'node_modules/@dews/dews-mobile-style/scss/mixins/_mixins';
+// DFD용 scss 추가
+.summary-contents {
+  color: #0e4c9e;
+  border-radius: 6px;
+  background-color: #f4f9ff;
+  font-size: 13px;
+  line-height: 1.54;
+}
+</style>
