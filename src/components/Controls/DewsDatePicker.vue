@@ -1,5 +1,5 @@
 <template>
-  <div :uid="uid" class="dews-mobile-datePicker dews-mobile-component date-picker-wrap focus outside">
+  <div :uid="uid" class="dews-mobile-datePicker dews-mobile-component date-picker-wrap focus">
     <label>{{ title }}</label>
     <span class="select-wrap">
       <span class="select-shape">

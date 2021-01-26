@@ -1,5 +1,5 @@
 <template>
-  <div :uid="uid" class="dews-mobile-infoContainer dews-mobile-component dews-container-infobox outside">
+  <div :uid="uid" class="dews-mobile-infoContainer dews-mobile-component dews-container-infobox">
     <p class="info-text">
       <!-- Test를 위해 value값에 TestValue 바인딩 -->
       {{ value }}

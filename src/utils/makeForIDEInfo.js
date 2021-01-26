@@ -29,10 +29,15 @@ export default {
         let obj;
         let index;
         let sameLevelControlList;
+        let filterList = [];
         const parent = elm.parentElement.closest('.dews-mobile-component');
-        sameLevelControlList = parent.querySelectorAll('.dews-mobile-component .outside');
-        for (let idx = 0; idx < sameLevelControlList.length; idx++) {
-            if (sameLevelControlList[idx].getAttribute('uid') === elementUid) {
+        sameLevelControlList = parent.querySelectorAll('.dews-mobile-component');
+        Array.from(sameLevelControlList).forEach(child => {
+            if (child.parentElement === parent)
+                filterList.push(child);
+        })
+        for (let idx = 0; idx < filterList.length; idx++) {
+            if (filterList[idx].getAttribute('uid') === elementUid) {
                 index = idx;
                 break;
             }

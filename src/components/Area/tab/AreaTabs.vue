@@ -1,5 +1,5 @@
 <template>
-  <div :uid="uid" class="dews-mobile-tabs dews-mobile-component dews-tabs-wrap outside">
+  <div :uid="uid" class="dews-mobile-tabs dews-mobile-component dews-tabs-wrap">
     <div class="dews-tabs-title">
       <div class="title-list">
         <button class="title" :class="titleList.tab.active" v-for="(titleList, idx) in titlesList" :key="idx"

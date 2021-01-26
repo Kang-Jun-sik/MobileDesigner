@@ -1,5 +1,5 @@
 <template>
-  <div :uid="uid" class="dews-mobile-numeric dews-mobile-component numeric-textbox-wrap outside" :class="{disabled: disabled ? 'disabled' : '', readonly: readonly ? 'readonly': ''}">
+  <div :uid="uid" class="dews-mobile-numeric dews-mobile-component numeric-textbox-wrap" :class="{disabled: disabled ? 'disabled' : '', readonly: readonly ? 'readonly': ''}">
     <label v-if="title" for="numeric-box">{{ title }}</label>
     <label v-else class="undefined" for="numeric-box"></label>
     <div class="numeric-wrap">

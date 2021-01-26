@@ -1,5 +1,5 @@
 <template>
-  <span :uid="uid" class="dews-mobile-checkbox dews-mobile-component dews-checkbox-wrap outside" :class="checkBoxClass" @click="clickHandler($event)">
+  <span :uid="uid" class="dews-mobile-checkbox dews-mobile-component dews-checkbox-wrap" :class="checkBoxClass" @click="clickHandler($event)">
     <span class="checkbox-control">
       <input type="checkbox" v-model="checked" :data-checked="checked" :disabled="disabled">
       <span class="checkbox-shape"></span>
