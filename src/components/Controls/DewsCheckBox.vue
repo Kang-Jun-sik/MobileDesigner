@@ -13,6 +13,7 @@ import CreateService from "@/service/CreateService";
 
 export default {
   name: 'dews-checkbox',
+  props: ['val'],
   data() {
     return {
       uid: '',
@@ -28,6 +29,7 @@ export default {
   },
   created() {
     this.uid = CreateService.createUid('dews-checkbox');
+    this.label = this.val ? this.val : '라벨';
   },
   mounted() {
   },
