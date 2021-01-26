@@ -1,5 +1,5 @@
 <template>
-  <div :uid="uid" class="dews-mobile-maskbox dews-mobile-component mask-textbox-wrap outside">
+  <div :uid="uid" class="dews-mobile-maskbox dews-mobile-component mask-textbox-wrap">
     <label>{{ title }}</label>
     <span class="view" :class="disabled ? 'disabled' : ''">
       <input type="text"

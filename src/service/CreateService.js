@@ -50,7 +50,7 @@ export default {
         let filterList = [];
         const parent = component.parentElement.closest('.dews-mobile-component')
         const parentUid = parent.getAttribute('uid');
-        sameLevelControlList = parent.querySelectorAll('.dews-mobile-component .outside');
+        sameLevelControlList = parent.querySelectorAll('.dews-mobile-component');
         Array.from(sameLevelControlList).forEach(child => {
             if (child.parentElement === parent)
                 filterList.push(child);

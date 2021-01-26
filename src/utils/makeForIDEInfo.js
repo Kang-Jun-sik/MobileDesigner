@@ -31,7 +31,7 @@ export default {
         let sameLevelControlList;
         let filterList = [];
         const parent = elm.parentElement.closest('.dews-mobile-component');
-        sameLevelControlList = parent.querySelectorAll('.dews-mobile-component .outside');
+        sameLevelControlList = parent.querySelectorAll('.dews-mobile-component');
         Array.from(sameLevelControlList).forEach(child => {
             if (child.parentElement === parent)
                 filterList.push(child);
