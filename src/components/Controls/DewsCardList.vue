@@ -32,7 +32,7 @@
             <div class="card-control">
               <ul>
                 <li>
-                  <dews-checkbox></dews-checkbox>
+                  <dews-checkbox bookmark></dews-checkbox>
                 </li>
                 <li>
                   <button class="editing"><span>편집</span></button>
@@ -91,5 +91,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+@import 'node_modules/@dews/dews-mobile-style/scss/variables/variables';
+@import 'node_modules/@dews/dews-mobile-style/scss/mixins/_mixins';
+@include dews-cardlist();
 </style>
