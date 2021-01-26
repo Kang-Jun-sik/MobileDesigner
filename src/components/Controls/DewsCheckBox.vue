@@ -4,7 +4,7 @@
       <input type="checkbox" v-model="checked" :data-checked="checked" :disabled="disabled">
       <span class="checkbox-shape"></span>
     </span>
-    <label class="checkbox-label">{{ label }}</label>
+    <label v-if="showLabel" class="checkbox-label">{{ label }}</label>
   </span>
 </template>
 
@@ -18,6 +18,7 @@ export default {
     return {
       uid: '',
       checkBoxClass: '',
+      showLabel: true,
 
       /* Properties */
       id: '',
@@ -29,7 +30,9 @@ export default {
   },
   created() {
     this.uid = CreateService.createUid('dews-checkbox');
-    this.label = this.val ? this.val : '라벨';
+
+    this.showLabel = this.val !== "null";
+    this.label = this.val ? this.val : this.label;
   },
   mounted() {
   },
