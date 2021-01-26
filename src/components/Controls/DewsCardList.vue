@@ -32,13 +32,13 @@
             <div class="card-control">
               <ul>
                 <li>
-                  <dews-checkbox bookmark></dews-checkbox>
+                  <dews-checkbox class="bookmark" val=" "></dews-checkbox>
                 </li>
                 <li>
                   <button class="editing"><span>편집</span></button>
                 </li>
                 <li>
-                  <dews-checkbox class="card-select-checkbox"></dews-checkbox>
+                  <dews-checkbox class="card-select-checkbox" val=" "></dews-checkbox>
                 </li>
               </ul>
             </div>
