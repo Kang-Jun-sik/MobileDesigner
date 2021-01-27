@@ -1,8 +1,8 @@
 <template>
-  <span :uid="uid" class="dews-mobile-checkbox dews-mobile-component dews-checkbox-wrap" :class="checkBoxClass" @click="clickHandler($event)">
+  <span :uid="uid" class="dews-mobile-checkbox dews-mobile-component dews-checkbox-wrap" :class="checkBoxClass">
     <span class="checkbox-control">
       <input type="checkbox" v-model="checked" :data-checked="checked" :disabled="disabled">
-      <span class="checkbox-shape"></span>
+      <span class="checkbox-shape" @click="clickHandler($event)"></span>
     </span>
     <label class="checkbox-label">{{ label }}</label>
   </span>
