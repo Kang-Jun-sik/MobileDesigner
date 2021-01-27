@@ -1,6 +1,6 @@
 import makeForIDEInfo from "@/utils/makeForIDEInfo";
 
-const mobileDesignerToIDE = (commandType, elm, parentUID, idx) => {
+const mobileDesignerToIDE = (commandType, elm, parentUID, idx, data) => {
     const XMLWriter = require('xml-writer');
     const xw = new XMLWriter;
     const elementUid = elm.getAttribute('uid');
@@ -25,7 +25,7 @@ const mobileDesignerToIDE = (commandType, elm, parentUID, idx) => {
     }
 
     switch (commandType) {
-        case "select" :
+        case "select":
             obj = {
                 'commandType': commandType,
                 'data': xw.output
@@ -46,8 +46,14 @@ const mobileDesignerToIDE = (commandType, elm, parentUID, idx) => {
                 'data': xw.output
             }
             break;
+        //Control Position
         case "change_control" :
             obj = makeForIDEInfo.createPositionInfo(elm, elementUid, parentUID);
+            break;
+        //Change Control Attribute
+        case "change":
+            obj = makeForIDEInfo.changeControlInfo(elm, elementUid, parentUID, idx, data);
+            break;
     }
     console.log(obj);
 

@@ -50,5 +50,12 @@ export default {
                 'index': index,
             }
         return obj;
+    },
+
+    //컨트롤 속성 변경 정보 생성 함수
+    changeControlInfo(elm, elementUid, parentUID){
+        let obj = {
+            'commandType' : 'change',
+        }
     }
 }
