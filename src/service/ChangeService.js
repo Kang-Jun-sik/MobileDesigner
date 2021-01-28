@@ -12,9 +12,9 @@ export default {
         mobileDesignerToIDE({
             commandType: 'change',
             data: {
-                controlAttributeKey: attrKey,
-                controlAttributeValue: attrValue,
-                controlUniqueId: controlUid,
+                AttributeKey: attrKey,
+                AttributeValue: attrValue,
+                uniqueId: controlUid,
             }
         });
     },

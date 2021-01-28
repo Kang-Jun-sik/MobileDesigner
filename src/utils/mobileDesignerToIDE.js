@@ -5,7 +5,7 @@ const mobileDesignerToIDE = (...params) => {
 
     const XMLWriter = require('xml-writer');
     const xw = new XMLWriter;
-    const elementUID =  message.elm ? message.elm.getAttribute('uid') : message.data.controlUniqueId;
+    const elementUID =  message.elm ? message.elm.getAttribute('uid') : message.data.uniqueId;
     const controlIndex = elementUID.lastIndexOf('-');
     const control = elementUID.substring(0, controlIndex);
 
@@ -53,9 +53,9 @@ const mobileDesignerToIDE = (...params) => {
         case "change": // Change Control Attribute
             obj = {
                 commandType: "change",
-                controlAttributeKey: message.data.controlAttributeKey,
-                AttributeValue: message.data.controlAttributeValue,
-                controlUniqueId: message.data.controlUniqueId
+                AttributeKey: message.data.AttributeKey,
+                AttributeValue: message.data.AttributeValue,
+                uniqueId: message.data.uniqueId
             }
             break;
     }
