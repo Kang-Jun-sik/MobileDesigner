@@ -236,7 +236,7 @@ export default {
             case 'dews-datepicker':
                 instance = Vue.extend(DatePicker);
                 break;
-            case 'dews-maskbox':
+            case 'dews-masktextbox':
                 instance = Vue.extend(MaskTextBox);
                 break;
             case 'dews-monthpicker':
