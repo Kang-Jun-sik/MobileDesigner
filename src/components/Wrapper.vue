@@ -1,6 +1,7 @@
 <template>
   <div class="mobile-wrapper">
     <control-list-wrapper ref="controlListWrapper"></control-list-wrapper>
+    <datasource-area></datasource-area>
     <main-designer-wrapper ref="designerWrapper"></main-designer-wrapper>
   </div>
 </template>
@@ -17,10 +18,12 @@ import CreateService from "@/service/CreateService";
 import ContextMenuService from "@/service/ContextMenuService";
 import ChangePositionService from "@/service/ChangePositionService";
 import SelectService from "@/service/SelectService";
+import DatasourceArea from "@/components/Datasource/DatasourceArea";
 
 export default {
   name: 'mobile-wrapper',
   components: {
+    DatasourceArea,
     MainDesignerWrapper,
     ControlListWrapper,
   },
@@ -32,7 +35,7 @@ export default {
       revertOnSpill: true,
       copy: function (el, source) {
         return ['areaList', 'containerList', 'buttonList',
-          'componentList', 'pickerList', 'etcList'].includes(source.id);
+          'componentList', 'pickerList', 'etcList', 'datasourceArea'].includes(source.id);
       },
       accepts: function (el, target) {
         if (componentAcceptsCheck(el, target) && target.dataset.type === 'area') {
@@ -51,7 +54,7 @@ export default {
     })
 
     window.drake.containers.push(_designer.mainDesigner.$el, _designer.areaList, _designer.containerList,
-        _designer.buttonList, _designer.componentList, _designer.pickerList, _designer.etcList);
+        _designer.buttonList, _designer.componentList, _designer.pickerList, _designer.etcList, _designer.datasourceArea);
 
     // axios Sample code ==> 기타 API 서버의 연동을 위한 테스트 코드 (vue.config.js Proxy Table 참조할 것)
     /*

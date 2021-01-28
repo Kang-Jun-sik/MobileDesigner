@@ -5,6 +5,7 @@ export default {
         containerList: '',
         componentList: '',
         etcList: '',
+        datasourceArea: '',
     },
     getters: {},
     actions: {},

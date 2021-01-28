@@ -1,5 +1,5 @@
 import Vue from "vue";
-
+import store from "@/store/index";
 import mobileDesignerToIDE from "@/utils/mobileDesignerToIDE";
 import CreateService from "@/service/CreateService";
 import PageOpenService from "@/service/PageOpenService";
@@ -30,7 +30,8 @@ import {
     Complex,
     ButtonGroup,
     RadioButtonGroup,
-    CheckBoxGroup
+    CheckBoxGroup,
+    Datasource
 } from '@/utils/exports'
 
 export default {
@@ -45,22 +46,21 @@ export default {
     },
 
     sendCreateMessage(component) {
-        let index;
-        let sameLevelControlList;
-        let filterList = [];
-        const parent = component.parentElement.closest('.dews-mobile-component')
-        const parentUid = parent.getAttribute('uid');
-        sameLevelControlList = parent.querySelectorAll('.dews-mobile-component');
-        Array.from(sameLevelControlList).forEach(child => {
-            if (child.parentElement === parent)
-                filterList.push(child);
-        })
-        for (let idx = 0; idx < filterList.length; idx++) {
-            if (filterList[idx].getAttribute('uid') === component.getAttribute('uid')) {
-                index = idx;
-                break;
-            }
+        const parent  = component.parentElement.closest('.dews-mobile-component');
+        const parentUid = parent.getAttribute('uid') ? parent.getAttribute('uid') : '';
+        const parentDataUid = store.state.component.items.find(item => item.uid === parentUid)?.dataUid;
+
+        let sameLevelControlList, filterList;
+        if (parentDataUid) {
+            const parentElement = parent.querySelector(`[data-uid=${parentDataUid}]`);
+            sameLevelControlList = parentElement.querySelectorAll('.dews-mobile-component');
+            filterList = Array.from(sameLevelControlList).filter(control => control.closest(`[data-uid=${parentDataUid}]`) === parentElement);
+        } else {
+            sameLevelControlList = parent.querySelectorAll('.dews-mobile-component');
+            filterList = Array.from(sameLevelControlList).filter(control => control.parentElement === parent);
         }
+        const index = filterList.findIndex(control => control.getAttribute('uid') === component.getAttribute('uid'));
+
         mobileDesignerToIDE({
             commandType: 'create',
             elm: component,
@@ -178,6 +178,9 @@ export default {
                 break;
             case 'CheckBoxGroup':
                 component = Vue.extend(CheckBoxGroup);
+                break;
+            case 'Datasource':
+                component = Vue.extend(Datasource);
                 break;
         }
         component = new component();
