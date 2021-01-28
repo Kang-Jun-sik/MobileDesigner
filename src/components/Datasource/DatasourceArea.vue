@@ -31,7 +31,6 @@ export default {
 .datasource-area {
   height: 50px;
   margin-left: 150px;
-  padding-left: 10px !important;
   background-color: #b3bfd1;
 }
 </style>
