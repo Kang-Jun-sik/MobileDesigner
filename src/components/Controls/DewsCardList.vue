@@ -26,19 +26,19 @@
     </div>
 
     <div class="cardlist-wrap">
-      <div class="cardlist" style="height: 500px">
+      <div class="cardlist" style="height: auto">
         <div class="card">
           <div class="card-header">
             <div class="card-control">
               <ul>
                 <li>
-                  <dews-checkbox></dews-checkbox>
+                  <dews-checkbox class="bookmark" val="null"></dews-checkbox>
                 </li>
                 <li>
                   <button class="editing"><span>편집</span></button>
                 </li>
                 <li>
-                  <dews-checkbox class="card-select-checkbox"></dews-checkbox>
+                  <dews-checkbox class="card-select-checkbox" val="null"></dews-checkbox>
                 </li>
               </ul>
             </div>
@@ -52,19 +52,18 @@
           </div>
           <ul class="list-field">
             <li>
-              <p>이름</p>
-              <p>이철수</p>
+              <p class="name">이름</p>
+              <p class="item">이철수</p>
             </li>
             <li>
-              <p>나이</p>
-              <p>32</p>
+              <p class="name">나이</p>
+              <p class="item">32</p>
             </li>
             <li>
-              <p>주소</p>
-              <p>서울</p>
+              <p class="name">주소</p>
+              <p class="item">서울</p>
             </li>
           </ul>
-<!--          <button class="collapse-button"></button>-->
         </div>
       </div>
     </div>
@@ -91,5 +90,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+@import 'node_modules/@dews/dews-mobile-style/scss/variables/variables';
+@import 'node_modules/@dews/dews-mobile-style/scss/mixins/_mixins';
+@include dews-cardlist();
 </style>
