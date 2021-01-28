@@ -1,64 +1,68 @@
 import makeForIDEInfo from "@/utils/makeForIDEInfo";
 
-const mobileDesignerToIDE = (commandType, elm, parentUID, idx, data) => {
+const mobileDesignerToIDE = (...params) => {
+    const message = params[0];
+
     const XMLWriter = require('xml-writer');
     const xw = new XMLWriter;
-    const elementUid = elm.getAttribute('uid');
-    const controlIndex = elementUid.lastIndexOf('-');
-    const control = elementUid.substring(0, controlIndex);
-    let obj = {};
+    const elementUID =  message.elm ? message.elm.getAttribute('uid') : message.data.controlUniqueId;
+    const controlIndex = elementUID.lastIndexOf('-');
+    const control = elementUID.substring(0, controlIndex);
 
-    if (commandType === 'create') {
+    if (message.commandType === 'create') {
         const createControlInfo = document.createElement(control);
-        createControlInfo.setAttribute('uid', elementUid);
-        makeForIDEInfo.createDataMessage(createControlInfo, elm.children, elm);
+        createControlInfo.setAttribute('uid', elementUID);
+        makeForIDEInfo.createDataMessage(createControlInfo, message.elm.children, message.elm);
         xw.startDocument();
         xw.output = createControlInfo.outerHTML;
         xw.endDocument();
-
     } else {
         xw.startDocument();
         xw.startElement(control);
-        xw.writeAttribute('uid', elementUid);
+        xw.writeAttribute('uid', elementUID);
         xw.endElement();
         xw.endDocument();
     }
 
-    switch (commandType) {
-        case "select":
-            obj = {
-                'commandType': commandType,
-                'data': xw.output
-            }
-            break;
+    let obj = {};
+    switch (message.commandType) {
         case "create":
             obj = {
-                'commandType': commandType,
-                'parentId': parentUID,
+                'commandType': message.commandType,
+                'parentId': message.parentUID,
                 'data': xw.output,
-                'index': idx
+                'index': message.idx
             }
             break;
         case "delete":
             obj = {
-                'commandType': commandType,
-                'parentId': parentUID,
+                'commandType': message.commandType,
+                'parentId': message.parentUID,
                 'data': xw.output
             }
             break;
-        //Control Position
-        case "change_control" :
-            obj = makeForIDEInfo.createPositionInfo(elm, elementUid, parentUID);
+        case "select":
+            obj = {
+                'commandType': message.commandType,
+                'data': xw.output
+            }
             break;
-        //Change Control Attribute
-        case "change":
-            obj = makeForIDEInfo.changeControlInfo(elm, elementUid, parentUID, idx, data);
+        case "change_control" : // Control Position
+            obj = makeForIDEInfo.createPositionInfo(message.elm, elementUID, message.parentUID);
+            break;
+        case "change": // Change Control Attribute
+            obj = {
+                commandType: "change",
+                controlAttributeKey: message.data.controlAttributeKey,
+                AttributeValue: message.data.controlAttributeValue,
+                controlUniqueId: message.data.controlUniqueId
+            }
             break;
     }
     console.log(obj);
 
     // eslint-disable-next-line no-undef
-    // chromiumObject.mobileDesignerToIDE(obj); //실제 IDE 데이터 전송 로직
+    chromiumObject.mobileDesignerToIDE(obj); //실제 IDE 데이터 전송 로직
 };
 
 

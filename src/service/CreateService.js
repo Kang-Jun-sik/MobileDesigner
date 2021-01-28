@@ -61,7 +61,12 @@ export default {
                 break;
             }
         }
-        mobileDesignerToIDE("create", component, parentUid, index);
+        mobileDesignerToIDE({
+            commandType: 'create',
+            elm: component,
+            parentUID: parentUid,
+            idx: index
+        });
     },
 
     /*

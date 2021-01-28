@@ -61,8 +61,7 @@ export default {
             const layoutTarget = eventTarget.classList.contains('dews-layout-component') ? eventTarget : findLayoutTarget(eventTarget);
             const UID = layoutTarget.getAttribute('uid');
             const MAINBUTTONS = store.state.layout.mainButtonList[UID];
-            if (MAINBUTTONS)
-                store.commit('setMainButtons', MAINBUTTONS);
+            if (MAINBUTTONS) store.commit('setMainButtons', MAINBUTTONS);
         } catch (e) {
             // 메인버튼 클릭시 에러 발생 element 를 찾을수 없어서 발생..!
         }
@@ -73,29 +72,24 @@ export default {
         if (document.querySelector('.selected-control')) {
             const selectedElement = document.querySelector('.selected-control');
             selectedElement.classList.remove('selected-control');
-            // 이 전에 선택된 element resizable disabled 처리
-            // $(`[uid=${selectedElement.getAttribute('uid')}]`).resizable({
-            //     disabled: true
-            // })
         }
         SelectService.removeSelectHandler();
-        // ResizeService.removeResizeHandler();
 
         window.selectedItem = target;
         window.selectedItem.classList.add('selected-control');
 
-        // main-designer의 경우 resize 표시가 필요없으므로 canResize를 호출하지 않는다.
+        // main-designer의 경우 selectHandler 표시 X
         if (!target.classList.contains('main-designer')) {
-            // if (!target.classList.contains('dews-box-wrap')
-            //     && !target.classList.contains('dews-panel')) {
-            //     ResizeService.canResize(target);
-            // }
             SelectService.showSelectHandler(target);
         }
 
         ContextMenuService.destroyContextMenu();
         ContextMenuService.getContextMenu(window.selectedItem);
-        mobileDesignerToIDE("select", window.selectedItem); // IDE로 선택되었다고 메세지 송신
+        // IDE 메세지 송신
+        mobileDesignerToIDE({
+            commandType: 'select',
+            elm: window.selectedItem
+        });
 
         function findLayoutTarget(target) {
             return target.closest('.dews-layout-component');

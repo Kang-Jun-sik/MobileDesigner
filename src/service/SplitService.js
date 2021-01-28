@@ -3,6 +3,8 @@ import SplitService from "@/service/SplitService";
 import SelectService from "@/service/SelectService";
 import CreateService from "@/service/CreateService";
 import DeleteService from "@/service/DeleteService";
+import ChangeService from "@/service/ChangeService";
+import mobileDesignerToIDE from "@/utils/mobileDesignerToIDE";
 
 export default {
     verticalSplit(target) {
@@ -75,6 +77,7 @@ export default {
                 return item.uid === child.getAttribute('uid');
             })
             splitItem.col = 'col-fd-4';
+            ChangeService.sendChangeMessage('col', '4', splitItem.uid);
         });
     },
 
@@ -96,8 +99,10 @@ export default {
         store.state.component.items.forEach(item => {
             if (item.uid === targetParentItem.getAttribute('uid')) {
                 item.col = 'col-fd-8';
+                ChangeService.sendChangeMessage('col', '8', item.uid);
             } else if (item.uid === parentSiblingItem.getAttribute('uid')) {
                 item.col = 'col-fd-4';
+                ChangeService.sendChangeMessage('col', '4', item.uid);
             }
         });
 

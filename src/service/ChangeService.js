@@ -1,8 +1,24 @@
-import GlobalService from "@/service/GlobalService";
 import store from "@/store/index";
 import ChangeService from "@/service/ChangeService";
+import mobileDesignerToIDE from "@/utils/mobileDesignerToIDE";
 
 export default {
+    /*
+    * 컨트롤 속성 변경 메세지 (Mobile Designer --> IDE)
+    * */
+    sendChangeMessage(...changeData) {
+        const [attrKey, attrValue, controlUid] = changeData;
+
+        mobileDesignerToIDE({
+            commandType: 'change',
+            data: {
+                controlAttributeKey: attrKey,
+                controlAttributeValue: attrValue,
+                controlUniqueId: controlUid,
+            }
+        });
+    },
+
     /*
     * IDE로부터 컨트롤 변경 메세지 처리
     * */

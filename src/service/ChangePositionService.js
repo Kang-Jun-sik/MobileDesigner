@@ -8,7 +8,12 @@ export default {
     sendChangePositionMessage(component, target) {
         const parent = component.parentElement.closest('.dews-mobile-component')
         const parentUid = parent.getAttribute('uid');
-        mobileDesignerToIDE("change_control", component, parentUid);
+
+        mobileDesignerToIDE({
+            commandType: 'change_control',
+            elm: component,
+            parentUID: parentUid,
+        });
     },
 
     /**

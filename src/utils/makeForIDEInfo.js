@@ -1,5 +1,4 @@
 export default {
-
     //IDE Create Information for create Data Information
     createDataMessage(createData, children, elm) {
         if (children === undefined)
@@ -15,7 +14,7 @@ export default {
                 const childElement = elm.querySelector(`[uid=${childUID}]`);
                 const parentElement = childElement.parentElement.closest(`[uid]`);
 
-                if (createData.getAttribute('uid') == parentElement.getAttribute('uid'))
+                if (createData.getAttribute('uid') === parentElement.getAttribute('uid'))
                     createData.appendChild(childData);
                 else
                     createData.querySelector(`[uid=${parentElement.getAttribute('uid')}]`).appendChild(childData);
@@ -31,6 +30,7 @@ export default {
         let sameLevelControlList;
         let filterList = [];
         const parent = elm.parentElement.closest('.dews-mobile-component');
+
         sameLevelControlList = parent.querySelectorAll('.dews-mobile-component');
         Array.from(sameLevelControlList).forEach(child => {
             if (child.parentElement === parent)
@@ -42,20 +42,13 @@ export default {
                 break;
             }
         }
-        obj =
-            {
-                'commandType': 'change_control',
-                'uid': elementUid,
-                'parentId': parentUID,
-                'index': index,
-            }
+
+        obj = {
+            'commandType': 'change_control',
+            'uid': elementUid,
+            'parentId': parentUID,
+            'index': index,
+        }
         return obj;
     },
-
-    //컨트롤 속성 변경 정보 생성 함수
-    changeControlInfo(elm, elementUid, parentUID){
-        let obj = {
-            'commandType' : 'change',
-        }
-    }
 }

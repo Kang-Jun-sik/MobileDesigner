@@ -24,7 +24,11 @@ export default {
         const parent = component.parentElement.closest('.dews-mobile-component')
         const parentUid = parent.getAttribute('uid');
 
-        mobileDesignerToIDE("delete", component, parentUid);
+        mobileDesignerToIDE({
+            commandType: 'delete',
+            elm: component,
+            parentUID: parentUid
+        });
     },
 
     /*
