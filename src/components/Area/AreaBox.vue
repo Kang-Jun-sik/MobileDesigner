@@ -34,11 +34,10 @@ export default {
       hide: false,
       mainButtons: {
         save: true,
-        add: false,
-        delete: false,
-        search: false,
+        add: true,
+        delete: true,
+        search: true,
       }
-
     }
   },
   created() {

@@ -26,10 +26,10 @@ export default {
       title: 'Tab',
       hide: false,
       mainButtons: {
-        save: false,
-        add: false,
-        delete: false,
-        search: false,
+        save: true,
+        add: true,
+        delete: true,
+        search: true,
       }
 
     }
