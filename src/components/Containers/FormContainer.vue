@@ -36,8 +36,15 @@ export default {
   created() {
     this.uid = CreateService.createUid('dews-form-container');
   },
-  mounted() {
-  }
+  mounted() {},
+  methods: {
+    setID(value) {
+      this.id = value;
+    },
+    setTitle(value) {
+      this.title = value;
+    },
+  },
 }
 </script>
 

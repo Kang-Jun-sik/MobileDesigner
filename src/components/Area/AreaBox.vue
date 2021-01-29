@@ -55,19 +55,23 @@ export default {
     window.drake.containers.push(this.$refs.boxContent);
   },
   methods: {
-    setTitle(value) {
-      this.title = value ? value : this.title;
+    setID(value) {
+      this.id = value;
     },
-
+    setTitle(value) {
+      this.title = value;
+    },
     setHide(value) {
+      value = JSON.parse(value);
+
       const box = this.$refs.box;
       this.hide = value;
-      box.style.display = this.hide ? 'block' : 'none';
+      box.style.display = this.hide ? 'none' : 'block';
     },
-
     setCollapsed(value) {
-      const box = this.$refs.box;
+      value = JSON.parse(value);
 
+      const box = this.$refs.box;
       this.collapsed = value;
       if (!this.collapsed) {
         this.contentStyle.display = 'none';
@@ -79,7 +83,6 @@ export default {
 
       setTimeout(SelectService.setPosition, 10, box);
     },
-
     onToggleClick: function (e){
       e.stopPropagation();
       this.setCollapsed(!this.collapsed);

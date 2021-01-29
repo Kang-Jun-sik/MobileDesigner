@@ -62,14 +62,18 @@ export default {
     }
   },
   methods: {
-    setTitle(value) {
-      this.title = value ? value : this.title;
+    setID(value) {
+      this.id = value;
     },
-
+    setTitle(value) {
+      this.title = value;
+    },
     setHide(value) {
+      value = JSON.parse(value);
+
       const tab = this.$refs.tab;
       this.hide = value;
-      tab.style.display = this.hide ? 'block' : 'none';
+      tab.style.display = this.hide ? 'none' : 'block';
     },
   },
   watch: {

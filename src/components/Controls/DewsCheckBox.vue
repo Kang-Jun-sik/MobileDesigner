@@ -1,5 +1,5 @@
 <template>
-  <span :uid="uid" class="dews-mobile-checkbox dews-mobile-component dews-checkbox-wrap" :class="checkBoxClass">
+  <span :uid="uid" class="dews-mobile-checkbox dews-mobile-component dews-checkbox-wrap" :class="bookmark ? 'bookmark' : ''">
     <span class="checkbox-control">
       <input type="checkbox" v-model="checked" :data-checked="checked" :disabled="disabled">
       <span class="checkbox-shape" @click="clickHandler($event)"></span>
@@ -10,6 +10,7 @@
 
 <script>
 import CreateService from "@/service/CreateService";
+import ChangeService from "@/service/ChangeService";
 
 export default {
   name: 'dews-checkbox',
@@ -17,7 +18,6 @@ export default {
   data() {
     return {
       uid: '',
-      checkBoxClass: '',
       showLabel: true,
 
       /* Properties */
@@ -37,14 +37,32 @@ export default {
   mounted() {
   },
   methods: {
-    clickHandler(e) {
-      if (this.disabled) return
-
-      this.checked = !this.checked;
+    setID(value) {
+      this.id = value;
     },
-    setDisabled() {
-      this.disabled = !this.disabled;
-    }
+    setLabel(value) {
+      this.label = value;
+    },
+    setDisabled(value) {
+      value = JSON.parse(value);
+      this.disabled = value
+    },
+    setChecked(value) {
+      value = JSON.parse(value);
+      this.checked = value;
+    },
+    setBookmark(value) {
+      value = JSON.parse(value);
+      this.bookmark = value;
+      this.showLabel = !this.bookmark;
+    },
+    clickHandler(e) {
+      e.stopPropagation();
+
+      if (this.disabled) return;
+      this.checked = !this.checked
+      ChangeService.sendChangeMessage('checked', this.checked, this.uid);
+    },
   }
 }
 </script>

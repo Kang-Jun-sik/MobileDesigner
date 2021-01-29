@@ -28,6 +28,9 @@ export default {
     window.drake.containers.push(this.$refs.dewsItem);
   },
   methods: {
+    setID(value) {
+      this.id = value;
+    },
     setItem(val, itemVal, item) {
       this.col = val;
       this.colClass = `col-fd-${val}`;
@@ -37,7 +40,6 @@ export default {
       ChangeService.sendChangeMessage('col', itemVal, item.uid);
       setTimeout(SelectService.setPosition, 10, window.selectedItem);
     },
-
     setCol(value) {
       const siblingElement = this.$el.parentElement.children;
       const items = Array.from(siblingElement).filter(sibling =>
@@ -75,7 +77,7 @@ export default {
           ChangeService.sendChangeMessage('col', "4", this.uid);
         }
       }
-    }
+    },
   },
 }
 </script>

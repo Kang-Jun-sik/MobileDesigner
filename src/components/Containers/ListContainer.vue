@@ -52,6 +52,14 @@ export default {
   },
   mounted() {
     window.drake.containers.push(this.$refs.listContainerField);
+  },
+  methods: {
+    setID(value) {
+      this.id = value;
+    },
+    setTitle(value) {
+      this.title = value;
+    },
   }
 }
 </script>

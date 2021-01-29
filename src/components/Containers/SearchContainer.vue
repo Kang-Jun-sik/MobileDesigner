@@ -46,6 +46,14 @@ export default {
   },
   mounted() {
     window.drake.containers.push(this.$refs.searchContainerField);
+  },
+  methods: {
+    setID(value) {
+      this.id = value;
+    },
+    setTitle(value) {
+      this.title = value;
+    },
   }
 }
 </script>
@@ -63,6 +71,9 @@ export default {
 }
 
 // DFD용 scss 추가
+.dews-search-field {
+  padding: 0 17px 6px;
+}
 .form-field {
   min-height: 20px;
 }

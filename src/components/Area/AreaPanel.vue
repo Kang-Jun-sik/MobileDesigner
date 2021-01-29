@@ -19,6 +19,11 @@ export default {
     this.uid = CreateService.createUid('dews-area-panel');
   },
   mounted() {},
+  methods: {
+    setID(value) {
+      this.id = value;
+    },
+  },
 }
 </script>
 

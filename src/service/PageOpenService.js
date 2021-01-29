@@ -35,6 +35,7 @@ import {
 } from '@/utils/exports'
 import component from "@/store/modules/component";
 import CreateService from "@/service/CreateService";
+import ChangeService from "@/service/ChangeService";
 
 export default {
     /*
@@ -105,6 +106,7 @@ export default {
             case 'button-group':
                 control.group = true;
                 addComponent = control.$el;
+                ChangeService.sendChangeMessage('group', true, control.uid);
                 break;
             default:
                 addComponent = control.$el;

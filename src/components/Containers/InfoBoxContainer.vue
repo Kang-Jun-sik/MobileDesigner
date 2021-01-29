@@ -1,5 +1,5 @@
 <template>
-  <div :uid="uid" class="dews-mobile-infoContainer dews-mobile-component dews-container-infobox">
+  <div :uid="uid" class="dews-mobile-infoContainer dews-mobile-component dews-container-infobox" :class="type">
     <p class="info-text">
       <!-- Test를 위해 value값에 TestValue 바인딩 -->
       {{ value }}
@@ -28,7 +28,15 @@ export default {
   },
   created() {
     this.uid = CreateService.createUid('dews-info-container');
-  }
+  },
+  methods: {
+    setID(value) {
+      this.id = value;
+    },
+    setType(value) {
+      this.type = value;
+    },
+  },
 }
 </script>
 

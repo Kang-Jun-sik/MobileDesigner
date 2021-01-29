@@ -30,6 +30,11 @@ export default {
   },
   mounted() {
     window.drake.containers.push(this.$refs.buttonGroup);
+  },
+  methods: {
+    setID(value) {
+      this.id = value;
+    },
   }
 }
 </script>

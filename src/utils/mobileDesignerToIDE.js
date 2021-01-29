@@ -1,8 +1,6 @@
 import makeForIDEInfo from "@/utils/makeForIDEInfo";
 
-const mobileDesignerToIDE = (...params) => {
-    const message = params[0];
-
+const mobileDesignerToIDE = (message) => {
     const XMLWriter = require('xml-writer');
     const xw = new XMLWriter;
     const elementUID =  message.elm ? message.elm.getAttribute('uid') : message.data.uniqueId;
@@ -62,7 +60,7 @@ const mobileDesignerToIDE = (...params) => {
     console.log(obj);
 
     // eslint-disable-next-line no-undef
-    // chromiumObject.mobileDesignerToIDE(obj); //실제 IDE 데이터 전송 로직
+    chromiumObject.mobileDesignerToIDE(obj); //실제 IDE 데이터 전송 로직
 };
 
 

@@ -16,6 +16,8 @@
 import store from "@/store/index";
 import DewsTab from "@/components/Area/tab/AreaTab";
 import CreateService from "@/service/CreateService";
+import ChangeService from "@/service/ChangeService";
+import SelectService from "@/service/SelectService";
 
 export default {
   name: 'dews-tabs',
@@ -43,33 +45,48 @@ export default {
 
     this.$nextTick(function () {
       this.titlesList = store.getters.getTabList[this.uid];
-
+      this.setSelectedIndex();
+    });
+  },
+  mounted() {},
+  methods: {
+    setID(value) {
+      this.id = value;
+    },
+    setSelectedIndex() {
       this.titlesList.forEach((title, idx) => {
         if (idx === this.selected) {
           title.tab.active = 'active';
         } else {
           title.tab.active = false;
         }
-      })
-    });
-  },
-  mounted() {},
-  methods: {
-    setSelected(value) {
+      });
     },
+    setSelected(value) {
+      value = parseInt(value);
 
+      if (!this.titlesList[value]) {
+        ChangeService.sendChangeMessage('selected', 0, this.uid);
+      } else {
+        this.selected = value;
+        this.setSelectedIndex();
+      }
+    },
     setHide(value) {
+      value = JSON.parse(value);
+
       const tabs = this.$refs.tabs;
       this.hide = value;
-      tabs.style.display = this.hide ? 'block' : 'none';
+      tabs.style.display = this.hide ? 'none' : 'block';
     },
-
     selectTab(tab) {
       const activeTab = this.titlesList.find(title => {
         return title.tab.active === 'active';
-      })
+      });
       activeTab.tab.active = false;
       tab.active = 'active';
+
+      setTimeout(SelectService.setPosition, 10, this.$refs.tabs);
     },
   },
   computed: {

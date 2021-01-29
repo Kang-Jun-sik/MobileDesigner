@@ -131,13 +131,25 @@ export default {
     * 2) Component의 method 호출
     * */
 
-    changePanel(data) {},
+    changePanel(data) {
+        const { uid, prop, value } = data;
+        const component = store.state.component.items.find(item => item.uid === uid);
+
+        switch (prop) {
+            case 'id':
+                component.setID(value);
+                break;
+        }
+    },
 
     changeItem(data) {
         const { uid, prop, value } = data;
         const component = store.state.component.items.find(item => item.uid === uid);
 
         switch (prop) {
+            case 'id':
+                component.setID(value);
+                break;
             case 'col':
                 component.setCol(value);
                 break;
@@ -149,6 +161,9 @@ export default {
         const component = store.state.component.items.find(item => item.uid === uid);
 
         switch (prop) {
+            case 'id':
+                component.setID(value);
+                break;
             case 'title':
                 component.setTitle(value);
                 break;
@@ -166,6 +181,9 @@ export default {
         const component = store.state.component.items.find(item => item.uid === uid);
 
         switch (prop) {
+            case 'id':
+                component.setID(value);
+                break;
             case 'selected':
                 component.setSelected(value);
                 break;
@@ -180,6 +198,9 @@ export default {
         const component = store.state.component.items.find(item => item.uid === uid);
 
         switch (prop) {
+            case 'id':
+                component.setID(value);
+                break;
             case 'title':
                 component.setTitle(value);
                 break;
@@ -191,53 +212,162 @@ export default {
 
     changeSearchContainer(data) {
         const { uid, prop, value } = data;
+        const component = store.state.component.items.find(item => item.uid === uid);
+
+        switch (prop) {
+            case 'id':
+                component.setID(value);
+                break;
+            case 'title':
+                component.setTitle(value);
+                break;
+        }
     },
 
     changeListContainer(data) {
         const { uid, prop, value } = data;
+        const component = store.state.component.items.find(item => item.uid === uid);
+
+        switch (prop) {
+            case 'id':
+                component.setID(value);
+                break;
+            case 'title':
+                component.setTitle(value);
+                break;
+        }
     },
 
     changeFormContainer(data) {
         const { uid, prop, value } = data;
+        const component = store.state.component.items.find(item => item.uid === uid);
+
+        switch (prop) {
+            case 'id':
+                component.setID(value);
+                break;
+            case 'title':
+                component.setTitle(value);
+                break;
+        }
     },
 
     changeInfoContainer(data) {
         const { uid, prop, value } = data;
+        const component = store.state.component.items.find(item => item.uid === uid);
+
+        switch (prop) {
+            case 'id':
+                component.setID(value);
+                break;
+            case 'type':
+                component.setType(value);
+                break;
+        }
     },
 
     changeFormSection(data) {
         const { uid, prop, value } = data;
+        const component = store.state.component.items.find(item => item.uid === uid);
+
+        switch (prop) {
+            case 'id':
+                component.setID(value);
+                break;
+            case 'title':
+                component.setTitle(value);
+                break;
+        }
     },
 
-    changeContainerContent(data) {
-        const { uid, prop, value } = data;
-    },
+    changeContainerContent(data) {},
 
-    changeContainerButton(data) {
-        const { uid, prop, value } = data;
-    },
+    changeContainerButton(data) {},
 
     changeButton(data) {
         const { uid, prop, value } = data;
         const component = store.state.component.items.find(item => item.uid === uid);
 
         switch (prop) {
+            case 'id':
+                component.setID(value);
+                break;
             case 'text':
                 component.setText(value);
+                break;
+            case 'ui':
+                component.setUI(value);
+                break;
+            case 'size':
+                component.setSize(value);
+                break;
+            case 'icon':
+                component.setIcon(value);
+                break;
+            case 'link':
+                component.setLink(value);
+                break;
+            case 'type':
+                component.setType(value);
+                break;
+            case 'disabled':
+                component.setDisabled(value);
+                break;
+            case 'group':
+                component.setGroup(value);
                 break;
         }
     },
 
     changeButtonGroup(data) {
-        const { uid, prop, value } = data;
+        const {uid, prop, value} = data;
+        const component = store.state.component.items.find(item => item.uid === uid);
+
+        switch (prop) {
+            case 'id':
+                component.setID(value);
+                break;
+        }
     },
 
     changeCheckbox(data) {
         const { uid, prop, value } = data;
+        const component = store.state.component.items.find(item => item.uid === uid);
+
+        switch (prop) {
+            case 'id':
+                component.setID(value);
+                break;
+            case 'label':
+                component.setLabel(value);
+                break;
+            case 'disabled':
+                component.setDisabled(value);
+                break;
+            case 'checked':
+                component.setChecked(value);
+                break;
+            case 'bookmark':
+                component.setBookmark(value);
+                break;
+        }
     },
 
     changeCheckboxGroup(data) {
         const { uid, prop, value } = data;
+        const component = store.state.component.items.find(item => item.uid === uid);
+
+        switch (prop) {
+            case 'id':
+                component.setID(value);
+                break;
+            case 'title':
+                component.setTitle(value);
+                break;
+            case 'align':
+                component.setAlign(value);
+                break;
+        }
     },
 
     changeComplex(data) {
@@ -246,6 +376,19 @@ export default {
 
     changeDatePicker(data) {
         const { uid, prop, value } = data;
+        const component = store.state.component.items.find(item => item.uid === uid);
+
+        switch (prop) {
+            case 'id':
+                component.setID(value);
+                break;
+            case 'title':
+                component.setTitle(value);
+                break;
+            case 'value':
+                component.setValue(value);
+                break;
+        }
     },
 
     changeMaskTextbox(data) {
