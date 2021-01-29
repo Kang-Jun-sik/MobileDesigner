@@ -1,7 +1,9 @@
 <template>
   <div :uid="uid" class="dews-mobile-box dews-mobile-component dews-layout-component dews-box-wrap" ref="box">
     <div class="dews-box-title">
-      <h2>{{ title }}</h2><button class="dews-box-title-button" type="button" @click="onToggleClick($event)" :collapsed="collapsed"></button>
+      <h2>{{ title }}</h2>
+      <button class="dews-box-title-button" type="button" @click="onToggleClick($event)"
+              :collapsed="collapsed"></button>
     </div>
     <div class="dews-box-content-wrap" :style="contentStyle" part="content">
       <div class="dews-box-content addable-area" :data-uid="dataUid" data-type="area" ref="boxContent">
@@ -80,7 +82,27 @@ export default {
       setTimeout(SelectService.setPosition, 10, box);
     },
 
-    onToggleClick: function (e){
+    setUseAdd(value) {
+      value = JSON.parse(value);
+      value ? this.mainButtons.add = true : this.mainButtons.add = false;
+    },
+
+    setUseSearch(value) {
+      value = JSON.parse(value);
+      value ? this.mainButtons.search = true : this.mainButtons.search = false;
+    },
+
+    setUseDelete(value) {
+      value = JSON.parse(value);
+      value ? this.mainButtons.delete = true : this.mainButtons.delete = false;
+    },
+
+    setUseSave(value) {
+      value = JSON.parse(value);
+      value ? this.mainButtons.save = true : this.mainButtons.save = false;
+    },
+
+    onToggleClick: function (e) {
       e.stopPropagation();
       this.setCollapsed(!this.collapsed);
     },
@@ -91,6 +113,7 @@ export default {
 <style lang="scss" scoped>
 @import 'node_modules/@dews/dews-mobile-style/scss/variables/variables';
 @import 'node_modules/@dews/dews-mobile-style/scss/mixins/_mixins';
+
 @include dews-area-box();
 
 
@@ -101,6 +124,7 @@ export default {
   overflow: inherit;
   height: auto;
 }
+
 .dews-box-wrap {
   //box design
   max-width: 1050px;
@@ -112,6 +136,7 @@ export default {
     padding-top: 10px;
   }
 }
+
 //dfd 요청 box button 분리
 .dews-box-wrap {
   .dews-box-title {
@@ -130,6 +155,7 @@ export default {
       line-height: 24px;
       text-align: left;
     }
+
     .dews-box-title-button {
       position: relative;
       flex: 0 0 24px;

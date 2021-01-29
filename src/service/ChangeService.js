@@ -32,7 +32,7 @@ export default {
         const prop = obj["controlAttributeKey"];
         const value = obj["controlAttributeValue"];
         const type = uid.substring(0, uid.lastIndexOf('-'));
-        const data = { uid, prop, value }
+        const data = {uid, prop, value}
 
         switch (type) {
             case 'dews-area-panel':
@@ -131,10 +131,11 @@ export default {
     * 2) Component의 method 호출
     * */
 
-    changePanel(data) {},
+    changePanel(data) {
+    },
 
     changeItem(data) {
-        const { uid, prop, value } = data;
+        const {uid, prop, value} = data;
         const component = store.state.component.items.find(item => item.uid === uid);
 
         switch (prop) {
@@ -145,7 +146,7 @@ export default {
     },
 
     changeBox(data) {
-        const { uid, prop, value } = data;
+        const {uid, prop, value} = data;
         const component = store.state.component.items.find(item => item.uid === uid);
 
         switch (prop) {
@@ -158,11 +159,23 @@ export default {
             case 'hide':
                 component.setHide(value);
                 break;
+            case 'UseAdd':
+                component.setUseAdd(value);
+                break;
+            case 'UseSearch':
+                component.setUseSearch(value);
+                break;
+            case 'UseDelete':
+                component.setUseDelete(value);
+                break;
+            case 'UseSave':
+                component.setUseSave(value);
+                break;
         }
     },
 
     changeTabs(data) {
-        const { uid, prop, value } = data;
+        const {uid, prop, value} = data;
         const component = store.state.component.items.find(item => item.uid === uid);
 
         switch (prop) {
@@ -176,7 +189,7 @@ export default {
     },
 
     changeTab(data) {
-        const { uid, prop, value } = data;
+        const {uid, prop, value} = data;
         const component = store.state.component.items.find(item => item.uid === uid);
 
         switch (prop) {
@@ -186,39 +199,51 @@ export default {
             case 'hide':
                 component.setHide(value);
                 break;
+            case 'UseAdd':
+                component.setUseAdd(value);
+                break;
+            case 'UseSearch':
+                component.setUseSearch(value);
+                break;
+            case 'UseDelete':
+                component.setUseDelete(value);
+                break;
+            case 'UseSave':
+                component.setUseSave(value);
+                break;
         }
     },
 
     changeSearchContainer(data) {
-        const { uid, prop, value } = data;
+        const {uid, prop, value} = data;
     },
 
     changeListContainer(data) {
-        const { uid, prop, value } = data;
+        const {uid, prop, value} = data;
     },
 
     changeFormContainer(data) {
-        const { uid, prop, value } = data;
+        const {uid, prop, value} = data;
     },
 
     changeInfoContainer(data) {
-        const { uid, prop, value } = data;
+        const {uid, prop, value} = data;
     },
 
     changeFormSection(data) {
-        const { uid, prop, value } = data;
+        const {uid, prop, value} = data;
     },
 
     changeContainerContent(data) {
-        const { uid, prop, value } = data;
+        const {uid, prop, value} = data;
     },
 
     changeContainerButton(data) {
-        const { uid, prop, value } = data;
+        const {uid, prop, value} = data;
     },
 
     changeButton(data) {
-        const { uid, prop, value } = data;
+        const {uid, prop, value} = data;
         const component = store.state.component.items.find(item => item.uid === uid);
 
         switch (prop) {
@@ -229,67 +254,67 @@ export default {
     },
 
     changeButtonGroup(data) {
-        const { uid, prop, value } = data;
+        const {uid, prop, value} = data;
     },
 
     changeCheckbox(data) {
-        const { uid, prop, value } = data;
+        const {uid, prop, value} = data;
     },
 
     changeCheckboxGroup(data) {
-        const { uid, prop, value } = data;
+        const {uid, prop, value} = data;
     },
 
     changeComplex(data) {
-        const { uid, prop, value } = data;
+        const {uid, prop, value} = data;
     },
 
     changeDatePicker(data) {
-        const { uid, prop, value } = data;
+        const {uid, prop, value} = data;
     },
 
     changeMaskTextbox(data) {
-        const { uid, prop, value } = data;
+        const {uid, prop, value} = data;
     },
 
     changeMonthPicker(data) {
-        const { uid, prop, value } = data;
+        const {uid, prop, value} = data;
     },
 
     changeNumericTextbox(data) {
-        const { uid, prop, value } = data;
+        const {uid, prop, value} = data;
     },
 
     changePeriodPicker(data) {
-        const { uid, prop, value } = data;
+        const {uid, prop, value} = data;
     },
 
     changeRadioButton(data) {
-        const { uid, prop, value } = data;
+        const {uid, prop, value} = data;
     },
 
     changeRadioButtonGroup(data) {
-        const { uid, prop, value } = data;
+        const {uid, prop, value} = data;
     },
 
     changeTextbox(data) {
-        const { uid, prop, value } = data;
+        const {uid, prop, value} = data;
     },
 
     changeTimePicker(data) {
-        const { uid, prop, value } = data;
+        const {uid, prop, value} = data;
     },
 
     changeDropdownList(data) {
-        const { uid, prop, value } = data;
+        const {uid, prop, value} = data;
     },
 
     changeDropdownButton(data) {
-        const { uid, prop, value } = data;
+        const {uid, prop, value} = data;
     },
 
     changeDropdownChildButton(data) {
-        const { uid, prop, value } = data;
+        const {uid, prop, value} = data;
     },
 
 }
