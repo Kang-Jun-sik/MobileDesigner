@@ -55,22 +55,34 @@ export default {
     window.drake.containers.push(this.$refs.boxContent);
   },
   methods: {
-    // click 이벤트
-    onToggleClick: function (e){
-      e.stopPropagation();
+    setTitle(value) {
+      this.title = value ? value : this.title;
+    },
+
+    setHide(value) {
+      const box = this.$refs.box;
+      this.hide = value;
+      box.style.display = this.hide ? 'block' : 'none';
+    },
+
+    setCollapsed(value) {
       const box = this.$refs.box;
 
-      if (this.collapsed) {
-        this.collapsed = false;
+      this.collapsed = value;
+      if (!this.collapsed) {
         this.contentStyle.display = 'none';
         box.style.setProperty('height', '', 'important');
       } else {
-        this.collapsed = true;
         this.contentStyle.display = 'block';
         box.style.setProperty('height', box.style.height);
       }
 
       setTimeout(SelectService.setPosition, 10, box);
+    },
+
+    onToggleClick: function (e){
+      e.stopPropagation();
+      this.setCollapsed(!this.collapsed);
     },
   }
 }

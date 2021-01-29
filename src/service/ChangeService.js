@@ -22,20 +22,105 @@ export default {
     /*
     * IDE로부터 컨트롤 변경 메세지 처리
     * */
-    changeFromIDE(args) {
+    changeFromIDE(message) {
         console.log('Change from IDE');
-        if (args === undefined) return;
+        const obj = JSON.parse(message);
+        const uid = obj["controlUniqueId"];
 
-        const obj = JSON.parse(args);
-        const controlUid = obj["controlUniqueId"];
-        let controlType;
-        if (controlUid) {
-            controlType = controlUid.substring(0, controlUid.lastIndexOf('-'));
-        }
+        if (message === undefined || !uid) return;
 
-        switch (controlType) {
-            case 'dews-button' :
-                ChangeService.changeButton(args);
+        const prop = obj["controlAttributeKey"];
+        const value = obj["controlAttributeValue"];
+        const type = uid.substring(0, uid.lastIndexOf('-'));
+        const data = { uid, prop, value }
+
+        switch (type) {
+            case 'dews-area-panel':
+                ChangeService.changePanel(data);
+                break;
+            case 'area-item':
+                ChangeService.changeItem(data);
+                break;
+            case 'dews-box':
+                ChangeService.changeBox(data);
+                break;
+            case 'dews-tabs':
+                ChangeService.changeTabs(data);
+                break;
+            case 'dews-tab':
+                ChangeService.changeTab(data);
+                break;
+            case 'dews-search-container':
+                ChangeService.changeSearchContainer(data);
+                break;
+            case 'dews-list-container':
+                ChangeService.changeListContainer(data);
+                break;
+            case 'dews-form-container':
+                ChangeService.changeFormContainer(data);
+                break;
+            case 'dews-info-container':
+                ChangeService.changeInfoContainer(data);
+                break;
+            case 'form-section':
+                ChangeService.changeFormSection(data);
+                break;
+            case 'container-content':
+                ChangeService.changeContainerContent(data);
+                break;
+            case 'container-button':
+                ChangeService.changeContainerButton(data);
+                break;
+            case 'dews-button':
+                ChangeService.changeButton(data);
+                break;
+            case 'dews-button-group':
+                ChangeService.changeButtonGroup(data);
+                break;
+            case 'dews-checkbox':
+                ChangeService.changeCheckbox(data);
+                break;
+            case 'dews-checkbox-group':
+                ChangeService.changeCheckboxGroup(data);
+                break;
+            case 'dews-complex':
+                ChangeService.changeComplex(data);
+                break;
+            case 'dews-datepicker':
+                ChangeService.changeDatePicker(data);
+                break;
+            case 'dews-masktextbox':
+                ChangeService.changeMaskTextbox(data);
+                break;
+            case 'dews-monthpicker':
+                ChangeService.changeMonthPicker(data);
+                break;
+            case 'dews-numerictextbox':
+                ChangeService.changeNumericTextbox(data);
+                break;
+            case 'dews-periodpicker':
+                ChangeService.changePeriodPicker(data);
+                break;
+            case 'dews-radiobutton':
+                ChangeService.changeRadioButton(data);
+                break;
+            case 'dews-radiobutton-group':
+                ChangeService.changeRadioButtonGroup(data);
+                break;
+            case 'dews-textbox':
+                ChangeService.changeTextbox(data);
+                break;
+            case 'dews-timepicker':
+                ChangeService.changeTimePicker(data);
+                break;
+            case 'dews-dropdownlist':
+                ChangeService.changeDropdownList(data);
+                break;
+            case 'dews-dropdownbutton':
+                ChangeService.changeDropdownButton(data);
+                break;
+            case 'dropdownbutton-childbutton':
+                ChangeService.changeDropdownChildButton(data);
                 break;
         }
     },
@@ -46,21 +131,165 @@ export default {
     * 2) Component의 method 호출
     * */
 
-    /*
-    * Button Component 변경 로직
-    * */
-    changeButton(args) {
-        const obj = JSON.parse(args);
-        const uid = obj["controlUniqueId"];
-        const prop = obj["controlAttributeKey"];
-        const value = obj["controlAttributeValue"];
+    changePanel(data) {},
 
-        let component;
+    changeItem(data) {
+        const { uid, prop, value } = data;
+        const component = store.state.component.items.find(item => item.uid === uid);
+
+        switch (prop) {
+            case 'col':
+                component.setCol(value);
+                break;
+        }
+    },
+
+    changeBox(data) {
+        const { uid, prop, value } = data;
+        const component = store.state.component.items.find(item => item.uid === uid);
+
+        switch (prop) {
+            case 'title':
+                component.setTitle(value);
+                break;
+            case 'collapsed':
+                component.setCollapsed(value);
+                break;
+            case 'hide':
+                component.setHide(value);
+                break;
+        }
+    },
+
+    changeTabs(data) {
+        const { uid, prop, value } = data;
+        const component = store.state.component.items.find(item => item.uid === uid);
+
+        switch (prop) {
+            case 'selected':
+                component.setSelected(value);
+                break;
+            case 'hide':
+                component.setHide(value);
+                break;
+        }
+    },
+
+    changeTab(data) {
+        const { uid, prop, value } = data;
+        const component = store.state.component.items.find(item => item.uid === uid);
+
+        switch (prop) {
+            case 'title':
+                component.setTitle(value);
+                break;
+            case 'hide':
+                component.setHide(value);
+                break;
+        }
+    },
+
+    changeSearchContainer(data) {
+        const { uid, prop, value } = data;
+    },
+
+    changeListContainer(data) {
+        const { uid, prop, value } = data;
+    },
+
+    changeFormContainer(data) {
+        const { uid, prop, value } = data;
+    },
+
+    changeInfoContainer(data) {
+        const { uid, prop, value } = data;
+    },
+
+    changeFormSection(data) {
+        const { uid, prop, value } = data;
+    },
+
+    changeContainerContent(data) {
+        const { uid, prop, value } = data;
+    },
+
+    changeContainerButton(data) {
+        const { uid, prop, value } = data;
+    },
+
+    changeButton(data) {
+        const { uid, prop, value } = data;
+        const component = store.state.component.items.find(item => item.uid === uid);
+
         switch (prop) {
             case 'text':
-                component = store.state.component.items.find(item => item.uid === uid);
                 component.setText(value);
                 break;
         }
-    }
+    },
+
+    changeButtonGroup(data) {
+        const { uid, prop, value } = data;
+    },
+
+    changeCheckbox(data) {
+        const { uid, prop, value } = data;
+    },
+
+    changeCheckboxGroup(data) {
+        const { uid, prop, value } = data;
+    },
+
+    changeComplex(data) {
+        const { uid, prop, value } = data;
+    },
+
+    changeDatePicker(data) {
+        const { uid, prop, value } = data;
+    },
+
+    changeMaskTextbox(data) {
+        const { uid, prop, value } = data;
+    },
+
+    changeMonthPicker(data) {
+        const { uid, prop, value } = data;
+    },
+
+    changeNumericTextbox(data) {
+        const { uid, prop, value } = data;
+    },
+
+    changePeriodPicker(data) {
+        const { uid, prop, value } = data;
+    },
+
+    changeRadioButton(data) {
+        const { uid, prop, value } = data;
+    },
+
+    changeRadioButtonGroup(data) {
+        const { uid, prop, value } = data;
+    },
+
+    changeTextbox(data) {
+        const { uid, prop, value } = data;
+    },
+
+    changeTimePicker(data) {
+        const { uid, prop, value } = data;
+    },
+
+    changeDropdownList(data) {
+        const { uid, prop, value } = data;
+    },
+
+    changeDropdownButton(data) {
+        const { uid, prop, value } = data;
+    },
+
+    changeDropdownChildButton(data) {
+        const { uid, prop, value } = data;
+    },
+
 }

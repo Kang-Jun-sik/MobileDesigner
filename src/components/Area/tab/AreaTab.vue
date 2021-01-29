@@ -1,6 +1,6 @@
 <template>
   <div :uid="uid" class="dews-mobile-tab dews-mobile-component dews-layout-component content"
-       :class="active" data-type="area" :style="style" ref="areaTab">
+       :class="active" data-type="area" :style="style" ref="tab">
   </div>
 </template>
 
@@ -48,7 +48,7 @@ export default {
     });
   },
   mounted() {
-    window.drake.containers.push(this.$refs.areaTab);
+    window.drake.containers.push(this.$refs.tab);
 
     if (this.controlChild) {
       this.active = 'active';
@@ -60,6 +60,17 @@ export default {
         },
       });
     }
+  },
+  methods: {
+    setTitle(value) {
+      this.title = value ? value : this.title;
+    },
+
+    setHide(value) {
+      const tab = this.$refs.tab;
+      this.hide = value;
+      tab.style.display = this.hide ? 'block' : 'none';
+    },
   },
   watch: {
     active(state) {

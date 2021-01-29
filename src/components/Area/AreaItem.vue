@@ -1,19 +1,23 @@
 <template>
-  <div :uid="uid" class="dews-mobile-item dews-mobile-component dews-item" :class="col" ref="dewsItem"></div>
+  <div :uid="uid" class="dews-mobile-item dews-mobile-component dews-item" :class="colClass" ref="dewsItem"></div>
 </template>
 
 <script>
+import store from "@/store/index";
 import CreateService from "@/service/CreateService";
+import ChangeService from "@/service/ChangeService";
+import SelectService from "@/service/SelectService";
 
 export default {
   name: 'area-item',
   data() {
     return {
       uid: '',
+      colClass: 'col-fd-6',
 
       /* Properties */
       id: '',
-      col: 'col-fd-6',
+      col: '6',
     }
   },
   created() {
@@ -22,7 +26,57 @@ export default {
   },
   mounted() {
     window.drake.containers.push(this.$refs.dewsItem);
-  }
+  },
+  methods: {
+    setItem(val, itemVal, item) {
+      this.col = val;
+      this.colClass = `col-fd-${val}`;
+      item.col = itemVal;
+      item.colClass = `col-fd-${itemVal}`;
+
+      ChangeService.sendChangeMessage('col', itemVal, item.uid);
+      setTimeout(SelectService.setPosition, 10, window.selectedItem);
+    },
+
+    setCol(value) {
+      const siblingElement = this.$el.parentElement.children;
+      const items = Array.from(siblingElement).filter(sibling =>
+          sibling !== this.$el && sibling.classList.contains('dews-item')
+      )
+
+      if (items.length === 1) {
+        const item = store.state.component.items.find(item => item.uid === items[0].getAttribute('uid'));
+        switch (value) {
+          case "4":
+            this.setItem(value, '8', item);
+            break;
+          case "5":
+            this.setItem(value, '7', item);
+            break;
+          case "6":
+            this.setItem(value, '6', item);
+            break;
+          case "7":
+            this.setItem(value, '5', item);
+            break;
+          case "8":
+            this.setItem(value, '4', item);
+            break;
+          default:
+            ChangeService.sendChangeMessage('col', this.col, this.uid);
+            break;
+        }
+      } else if (items.length === 2) {
+        if (value === "4") {
+          const [ firstItem, secondItem ] = items;
+          this.setItem(value, '4', firstItem);
+          this.setItem(value, '4', secondItem);
+        } else {
+          ChangeService.sendChangeMessage('col', "4", this.uid);
+        }
+      }
+    }
+  },
 }
 </script>
 

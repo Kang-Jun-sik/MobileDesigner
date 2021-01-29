@@ -1,5 +1,5 @@
 <template>
-  <div :uid="uid" class="dews-mobile-tabs dews-mobile-component dews-tabs-wrap">
+  <div :uid="uid" class="dews-mobile-tabs dews-mobile-component dews-tabs-wrap" ref="tabs">
     <div class="dews-tabs-title">
       <div class="title-list">
         <button class="title" :class="titleList.tab.active" v-for="(titleList, idx) in titlesList" :key="idx"
@@ -33,8 +33,7 @@ export default {
 
       /* Properties */
       id: '',
-      title: '',
-      selected: false,
+      selected: 0,
       hide: false,
     }
   },
@@ -44,10 +43,27 @@ export default {
 
     this.$nextTick(function () {
       this.titlesList = store.getters.getTabList[this.uid];
+
+      this.titlesList.forEach((title, idx) => {
+        if (idx === this.selected) {
+          title.tab.active = 'active';
+        } else {
+          title.tab.active = false;
+        }
+      })
     });
   },
   mounted() {},
   methods: {
+    setSelected(value) {
+    },
+
+    setHide(value) {
+      const tabs = this.$refs.tabs;
+      this.hide = value;
+      tabs.style.display = this.hide ? 'block' : 'none';
+    },
+
     selectTab(tab) {
       const activeTab = this.titlesList.find(title => {
         return title.tab.active === 'active';
@@ -62,7 +78,7 @@ export default {
     }
   },
   watch: {
-    updateTitles(newValue, oldValue) {
+    updateTitles(newValue) {
       this.titlesList = newValue;
     }
   },
