@@ -32,6 +32,17 @@ export default {
   },
   mounted() {
     window.drake.containers.push(this.$refs.checkboxGroup);
+  },
+  methods: {
+    setID(value) {
+      this.id = value;
+    },
+    setTitle(value) {
+      this.title = value;
+    },
+    setAlign(value) {
+      this.align = value;
+    }
   }
 }
 </script>

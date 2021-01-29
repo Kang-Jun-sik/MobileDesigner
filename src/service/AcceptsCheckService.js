@@ -13,10 +13,10 @@ const componentAcceptsCheck = (component, target) => {
         "dews-mobile-box": ["main-designer", "dews-mobile-item"],
         "dews-mobile-tabs": ["main-designer", "dews-mobile-item"],
 
-        "dews-mobile-searchContainer": ["dews-box-content"],
-        "dews-mobile-listContainer": ["dews-box-content"],
-        "dews-mobile-formContainer": ["dews-box-content"],
-        "dews-mobile-infoContainer": ["dews-box-content"],
+        "dews-mobile-searchContainer": ["dews-box-content", "dews-mobile-tab"],
+        "dews-mobile-listContainer": ["dews-box-content", "dews-mobile-tab"],
+        "dews-mobile-formContainer": ["dews-box-content", "dews-mobile-tab"],
+        "dews-mobile-infoContainer": ["dews-box-content", "dews-mobile-tab"],
 
         "dews-mobile-button": ["search-container-field", "form-container-field", "button-group"],
         "dews-mobile-textbox": ["search-container-field", "form-container-field"],
@@ -37,15 +37,17 @@ const componentAcceptsCheck = (component, target) => {
         "dews-mobile-dropdownButton": ["search-container-field", "form-container-field"],
         "dews-mobile-dropdownList": ["search-container-field", "form-container-field"],
         "dews-mobile-complex": ["search-container-field", "form-container-field"],
+
+        "dews-mobile-datasource": ["datasource-area"],
     }
 
     let acceptCheck = false;
     try {
         acceptCheck = componentInformation[checkedComponent].includes(dropTarget);
-    }
-    catch (error) {
+    } catch (error) {
         console.error(error);
     }
+
     return acceptCheck;
 }
 

@@ -6,7 +6,7 @@
     </div>
 
     <container-content :controlType="controlType">
-      <form-section :controlChild="childFormSection"></form-section>
+      <form-section controlChild="form-section"></form-section>
     </container-content>
   </div>
 </template>
@@ -23,9 +23,10 @@ export default {
   data() {
     return {
       uid: '',
+
+      /* check child */
       hasChildControl: true,
       controlType: 'form',
-      childFormSection: 'form-section',
 
       /* Properties */
       id: '',
@@ -35,8 +36,15 @@ export default {
   created() {
     this.uid = CreateService.createUid('dews-form-container');
   },
-  mounted() {
-  }
+  mounted() {},
+  methods: {
+    setID(value) {
+      this.id = value;
+    },
+    setTitle(value) {
+      this.title = value;
+    },
+  },
 }
 </script>
 

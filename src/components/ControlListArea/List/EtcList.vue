@@ -1,7 +1,7 @@
 <template>
   <div class="control-list-wrapper dews-etcList-wrapper">
     <div class="control-header etcList-header" v-b-toggle.etcList role="tab">
-      <div class="header-title etcList-header-title">Etc</div>
+      <div class="header-title etcList-header-title">Datasource</div>
       <div class="header-arrow etcList-header-arrow"></div>
     </div>
     <b-collapse id="etcList" class="control-content etcList-content" accordion="dews-control" role="tabpanel">
@@ -22,6 +22,7 @@
     data() {
       return {
         etcControl: {
+          datasource: 'Datasource',
           messageBox: 'Message box',
           snackBar: 'Snack Bar',
           tooltipBox: 'Tooltip',

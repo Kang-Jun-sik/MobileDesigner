@@ -20,11 +20,11 @@ export default {
   data() {
     return {
       uid: '',
-      value: '',
 
       /* Properties */
       id: '',
       title: 'DatePicker',
+      value: '',
       disabled: false,
       readonly: false,
       required: false,
@@ -38,7 +38,17 @@ export default {
   created() {
     this.uid = CreateService.createUid('dews-datepicker');
   },
-  methods: {}
+  methods: {
+    setID(value) {
+      this.id = value;
+    },
+    setTitle(value) {
+      this.title = value;
+    },
+    setValue(value) {
+      this.value = value;
+    }
+  }
 }
 </script>
 

@@ -34,6 +34,8 @@ import {
     ContainerContent
 } from '@/utils/exports'
 import component from "@/store/modules/component";
+import CreateService from "@/service/CreateService";
+import ChangeService from "@/service/ChangeService";
 
 export default {
     /*
@@ -90,6 +92,15 @@ export default {
 
         let addComponent;
         switch (parent.controlType) {
+            case 'tabs':
+                addComponent = control.$el;
+                store.commit('setTab', {
+                    tabsUid: parent.uid,
+                    tabData: {
+                        tab: control
+                    }
+                });
+                break;
             case 'search':
                 addComponent = document.createElement('li');
                 addComponent.appendChild(control.$el);
@@ -106,6 +117,7 @@ export default {
             case 'button-group':
                 control.group = true;
                 addComponent = control.$el;
+                ChangeService.sendChangeMessage('group', true, control.uid);
                 break;
             default:
                 addComponent = control.$el;
@@ -130,22 +142,41 @@ export default {
         let instance = node.cloneNode();
         let instanceUid;
         const parent = store.state.component.items.find(item => item.uid === parentUid);
+        const oneChildList = ['container-button', 'container-content', 'numerictextbox-button'];
+        const multiChildList = ['dews-tab', 'form-section', 'dropdownbutton-childbutton'];
 
-        const controlChildList = ['container-button', 'container-content', 'form-section',
-            'numerictextbox-button', 'dropdownbutton-childbutton'];
-        if (controlChildList.includes(node.tagName)) {
-            const controlChild = parent.$children.find(child => {
-                return child.controlChild === node.tagName;
+        function findChild(tagName, children) {
+            return children.find(child => {
+                return child.controlChild === tagName;
             });
-            if (controlChild) {
+        }
+
+        let controlChild;
+        if (multiChildList.includes(node.tagName)) {
+            controlChild = findChild(node.tagName, parent.$children);
+            if (parent.checkChild) {
                 controlChild.uid = node.getAttribute('uid');
                 instanceUid = controlChild.uid;
+                if (node.tagName === 'dews-tab') {
+                    store.commit('setTab', {
+                        tabsUid: parent.uid,
+                        tabData: {
+                            tab: controlChild
+                        }
+                    });
+                }
+                parent.checkChild = false;
                 store.commit('addItem', controlChild);
 
                 PageOpenService.setAttributeFromIDE(instance, controlChild);
             } else {
                 instanceUid = PageOpenService.controlParsing(instance, parent);
             }
+        } else if (oneChildList.includes(node.tagName)) {
+            controlChild = findChild(node.tagName, parent.$children);
+            controlChild.uid = node.getAttribute('uid');
+            instanceUid = controlChild.uid;
+            store.commit('addItem', controlChild);
         } else {
             instanceUid = PageOpenService.controlParsing(instance, parent);
         }
@@ -220,7 +251,7 @@ export default {
             case 'dews-datepicker':
                 instance = Vue.extend(DatePicker);
                 break;
-            case 'dews-maskbox':
+            case 'dews-masktextbox':
                 instance = Vue.extend(MaskTextBox);
                 break;
             case 'dews-monthpicker':

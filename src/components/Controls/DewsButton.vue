@@ -62,19 +62,42 @@ export default {
       size: 'medium',
       icon: '',
       link: '',
-      group: false,
       disabled: false,
+      group: false,
     }
   },
   created() {
     this.uid = CreateService.createUid('dews-button');
   },
   methods: {
-    setText(data) {
-      this.text = data.toString();
+    setID(value) {
+      this.id = value;
     },
-    setGroup(isGroup) {
-      this.group = isGroup;
+    setText(value) {
+      this.text = value;
+    },
+    setUI(value) {
+      this.ui = value;
+    },
+    setSize(value) {
+      this.size = value;
+    },
+    setIcon(value) {
+      this.icon = value;
+    },
+    setLink(value) {
+      this.link = value;
+    },
+    setType(value) {
+      this.type = value;
+    },
+    setDisabled(value) {
+      value = JSON.parse(value);
+      this.disabled = value;
+    },
+    setGroup(value) {
+      value = JSON.parse(value);
+      this.group = value;
     }
   }
 }

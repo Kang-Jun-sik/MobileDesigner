@@ -21,7 +21,10 @@ export default {
   data() {
     return {
       uid: '',
+
+      /* check child */
       hasChildControl: true,
+      checkChild: true,
       childButton: 'dropdownbutton-childbutton',
 
       /* Properties */

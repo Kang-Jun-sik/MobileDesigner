@@ -1,8 +1,8 @@
 <template>
-  <span :uid="uid" class="dews-mobile-radiobutton dews-mobile-component dews-radio-wrap" @click="clickHandler($event)">
+  <span :uid="uid" class="dews-mobile-radiobutton dews-mobile-component dews-radio-wrap">
     <span class="radio-control">
       <input type="radio" :checked="checked" :data-checked="checked" :disabled="disabled">
-      <span class="radio-shape"></span>
+      <span class="radio-shape" @click="clickHandler($event)"></span>
     </span>
     <label class="radio-label">{{ title }}</label>
   </span>

@@ -33,6 +33,9 @@
             case 'CHANGE' :
                 window.services.get("changeFromIDE").call(this, args);
                 break;
+            case 'CHANGE_CONTROL' :
+                window.services.get("changePositionServiceFromIDE").call(this, args);
+                break;
         }
     }
 

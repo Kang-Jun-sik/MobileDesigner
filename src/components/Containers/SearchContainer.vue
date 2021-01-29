@@ -2,10 +2,10 @@
   <div :uid="uid" class="dews-mobile-searchContainer dews-mobile-component" :col="col">
     <div class="dews-container-option-control">
       <h3 class="option-sub-title" v-if="title">{{ title }}</h3>
-      <container-button :controlType="controlType" ref="containerButton"></container-button>
+      <container-button :controlType="controlType"></container-button>
     </div>
 
-    <container-content :controlType="controlType" :dataUid="dataUid" ref="containerContent">
+    <container-content :controlType="controlType" :dataUid="dataUid">
       <div class="dews-search-field">
         <ul class="search-container-field form-field" ref="searchContainerField"
           :data-uid="dataUid" data-type="container">
@@ -24,13 +24,14 @@ import ContainerButton from "@/components/Containers/container/ContainerButton";
 export default {
   name: 'dews-search-container',
   components: {ContainerButton, ContainerContent},
-  uid: '',
   data() {
     return {
       uid: '',
       dataUid: '',
-      controlType: 'search',
+
+      /* check child */
       hasChildControl: true,
+      controlType: 'search',
 
       /* Properties */
       id: '',
@@ -45,6 +46,14 @@ export default {
   },
   mounted() {
     window.drake.containers.push(this.$refs.searchContainerField);
+  },
+  methods: {
+    setID(value) {
+      this.id = value;
+    },
+    setTitle(value) {
+      this.title = value;
+    },
   }
 }
 </script>
@@ -65,6 +74,9 @@ export default {
 }
 
 // DFD용 scss 추가
+.dews-search-field {
+  padding: 0 17px 6px;
+}
 .form-field {
   min-height: 20px;
 }

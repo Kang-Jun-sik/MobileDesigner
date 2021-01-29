@@ -1,48 +1,59 @@
 import makeForIDEInfo from "@/utils/makeForIDEInfo";
 
-const mobileDesignerToIDE = (commandType, elm, parentUID, key) => {
+const mobileDesignerToIDE = (message) => {
     const XMLWriter = require('xml-writer');
     const xw = new XMLWriter;
-    const elementUid = elm.getAttribute('uid');
-    const controlIndex = elementUid.lastIndexOf('-');
-    const control = elementUid.substring(0, controlIndex);
-    let obj = {};
+    const elementUID =  message.elm ? message.elm.getAttribute('uid') : message.data.uniqueId;
+    const controlIndex = elementUID.lastIndexOf('-');
+    const control = elementUID.substring(0, controlIndex);
 
-    if (commandType === 'create') {
+    if (message.commandType === 'create') {
         const createControlInfo = document.createElement(control);
-        createControlInfo.setAttribute('uid', elementUid);
-        makeForIDEInfo.createDataMessage(createControlInfo, elm.children, elm);
+        createControlInfo.setAttribute('uid', elementUID);
+        makeForIDEInfo.createDataMessage(createControlInfo, message.elm.children, message.elm);
         xw.startDocument();
         xw.output = createControlInfo.outerHTML;
         xw.endDocument();
-
     } else {
         xw.startDocument();
         xw.startElement(control);
-        xw.writeAttribute('uid', elementUid);
+        xw.writeAttribute('uid', elementUID);
         xw.endElement();
         xw.endDocument();
     }
 
-    switch (commandType) {
-        case "select" :
-            obj = {
-                'commandType': commandType,
-                'data': xw.output
-            }
-            break;
+    let obj = {};
+    switch (message.commandType) {
         case "create":
             obj = {
-                'commandType': commandType,
-                'parentId': parentUID,
-                'data': xw.output
+                'commandType': message.commandType,
+                'parentId': message.parentUID,
+                'data': xw.output,
+                'index': message.idx
             }
             break;
         case "delete":
             obj = {
-                'commandType': commandType,
-                'parentId': parentUID,
+                'commandType': message.commandType,
+                'parentId': message.parentUID,
                 'data': xw.output
+            }
+            break;
+        case "select":
+            obj = {
+                'commandType': message.commandType,
+                'data': xw.output
+            }
+            break;
+        case "change_control" : // Control Position
+            obj = makeForIDEInfo.createPositionInfo(message.elm, elementUID, message.parentUID);
+            break;
+        case "change": // Change Control Attribute
+            obj = {
+                commandType: "change",
+                AttributeKey: message.data.AttributeKey,
+                AttributeValue: message.data.AttributeValue,
+                uniqueId: message.data.uniqueId
             }
             break;
     }

@@ -18,11 +18,15 @@ export default {
   props: ['controlChild'],
   data() {
     return {
-      id: '',
       uid: '',
       dataUid: '',
-      title: 'form-section',
+
+      /* check child */
       controlType: 'form',
+
+      /* Properties */
+      id: '',
+      title: 'form-section',
     }
   },
   created() {
@@ -32,6 +36,14 @@ export default {
   },
   mounted() {
     window.drake.containers.push(this.$refs.formContainerField);
+  },
+  methods: {
+    setID(value) {
+      this.id = value;
+    },
+    setTitle(value) {
+      this.title = value;
+    },
   }
 }
 </script>

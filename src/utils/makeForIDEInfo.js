@@ -1,5 +1,4 @@
 export default {
-
     //IDE Create Information for create Data Information
     createDataMessage(createData, children, elm) {
         if (children === undefined)
@@ -15,7 +14,7 @@ export default {
                 const childElement = elm.querySelector(`[uid=${childUID}]`);
                 const parentElement = childElement.parentElement.closest(`[uid]`);
 
-                if (createData.getAttribute('uid') == parentElement.getAttribute('uid'))
+                if (createData.getAttribute('uid') === parentElement.getAttribute('uid'))
                     createData.appendChild(childData);
                 else
                     createData.querySelector(`[uid=${parentElement.getAttribute('uid')}]`).appendChild(childData);
@@ -24,8 +23,32 @@ export default {
         }
     },
 
-    //IDE Create Information for Splitting
-    createSplitInfo(obj){
-        console.log('createSplitInfo');
-    }
+    //컨트롤 위치 정보 생성 함수
+    createPositionInfo(elm, elementUid, parentUID) {
+        let obj;
+        let index;
+        let sameLevelControlList;
+        let filterList = [];
+        const parent = elm.parentElement.closest('.dews-mobile-component');
+
+        sameLevelControlList = parent.querySelectorAll('.dews-mobile-component');
+        Array.from(sameLevelControlList).forEach(child => {
+            if (child.parentElement === parent)
+                filterList.push(child);
+        })
+        for (let idx = 0; idx < filterList.length; idx++) {
+            if (filterList[idx].getAttribute('uid') === elementUid) {
+                index = idx;
+                break;
+            }
+        }
+
+        obj = {
+            'commandType': 'change_control',
+            'uid': elementUid,
+            'parentId': parentUID,
+            'index': index,
+        }
+        return obj;
+    },
 }

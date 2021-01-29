@@ -1,7 +1,8 @@
 <template>
   <div :uid="uid" class="dews-mobile-containerButton dews-mobile-component" :data-uid="'test'">
-    <div v-if="controlType === 'form'" class="option-custom-button">
+    <div v-if="controlType === 'form' || controlType === 'list'" class="option-custom-button">
       <ul>
+        <slot></slot>
       </ul>
     </div>
     <div class="option-convenience-button">

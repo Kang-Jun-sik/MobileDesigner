@@ -1,6 +1,7 @@
 <template>
   <div class="mobile-wrapper">
     <control-list-wrapper ref="controlListWrapper"></control-list-wrapper>
+    <datasource-area></datasource-area>
     <main-designer-wrapper ref="designerWrapper"></main-designer-wrapper>
   </div>
 </template>
@@ -15,11 +16,14 @@ import ControlListWrapper from "@/components/ControlListArea/ControlListWrapper"
 import componentAcceptsCheck from "@/service/AcceptsCheckService";
 import CreateService from "@/service/CreateService";
 import ContextMenuService from "@/service/ContextMenuService";
+import ChangePositionService from "@/service/ChangePositionService";
 import SelectService from "@/service/SelectService";
+import DatasourceArea from "@/components/Datasource/DatasourceArea";
 
 export default {
   name: 'mobile-wrapper',
   components: {
+    DatasourceArea,
     MainDesignerWrapper,
     ControlListWrapper,
   },
@@ -31,12 +35,14 @@ export default {
       revertOnSpill: true,
       copy: function (el, source) {
         return ['areaList', 'containerList', 'buttonList',
-          'componentList', 'pickerList', 'etcList'].includes(source.id);
+          'componentList', 'pickerList', 'etcList', 'datasourceArea'].includes(source.id);
       },
-      accepts: function (el, target, source) {
-        if (target.dataset.type === 'area' && target.querySelector(`[data-type='container']`)) {
-          return;
+      accepts: function (el, target) {
+        if (componentAcceptsCheck(el, target) && target.dataset.type === 'area') {
+          const containers = target.querySelectorAll(`[data-type='container']`);
+          if (containers.length > 1) return false;
         }
+
         return componentAcceptsCheck(el, target);
       }
     })
@@ -48,7 +54,7 @@ export default {
     })
 
     window.drake.containers.push(_designer.mainDesigner.$el, _designer.areaList, _designer.containerList,
-        _designer.buttonList, _designer.componentList, _designer.pickerList, _designer.etcList);
+        _designer.buttonList, _designer.componentList, _designer.pickerList, _designer.etcList, _designer.datasourceArea);
 
     // axios Sample code ==> 기타 API 서버의 연동을 위한 테스트 코드 (vue.config.js Proxy Table 참조할 것)
     /*
@@ -66,50 +72,52 @@ export default {
     * Control Drop 실행시, Control 생성 및 $el(element)로 replace 처리
     * */
     drop(element, target) {
-      if (!element.classList.contains('dews-control-list')) return
+      if (element.classList.contains('dews-control-list')) {
+        const componentName = element.textContent.replace(/\s+/g, '');
+        const component = CreateService.addComponent(componentName);
+        let createElement;
 
-      const componentName = element.textContent.replace(/\s+/g, '');
-      const component = CreateService.addComponent(componentName);
-      let createElement;
-
-      if (element.dataset.type === 'component-list') {
-        switch (target.dataset.type) {
-          case "container":
-            createElement = document.createElement('li');
-            createElement.appendChild(component.$el);
-            element.replaceWith(createElement);
-            break;
-          case 'group':
-            createElement = document.createElement('span');
-            createElement.className = 'group-item';
-            createElement.appendChild(component.$el);
-            element.replaceWith(createElement);
-            break;
-          case 'button-group':
-            component.group = true;
-            element.replaceWith(component.$el);
-            break;
-          default:
-            element.replaceWith(component.$el);
-            break;
+        if (element.dataset.type === 'component-list') {
+          switch (target.dataset.type) {
+            case "container":
+              createElement = document.createElement('li');
+              createElement.appendChild(component.$el);
+              element.replaceWith(createElement);
+              break;
+            case 'group':
+              createElement = document.createElement('span');
+              createElement.className = 'group-item';
+              createElement.appendChild(component.$el);
+              element.replaceWith(createElement);
+              break;
+            case 'button-group':
+              component.group = true;
+              element.replaceWith(component.$el);
+              break;
+            default:
+              element.replaceWith(component.$el);
+              break;
+          }
+        } else {
+          element.replaceWith(component.$el);
         }
-      } else {
-        element.replaceWith(component.$el);
-      }
-      store.commit('addItem', component);
+        store.commit('addItem', component);
 
-      CreateService.sendCreateMessage(component.$el);
-      if (component.hasChildControl) {
-        this.setControlChild(component);
+        CreateService.sendCreateMessage(component.$el);
+        if (component.hasChildControl) {
+          this.setControlChild(component);
+        }
+        ContextMenuService.getContextMenu(component.$el);
+      } else {
+        element = element.classList.contains('dews-mobile-component') ? element : element.querySelector('.dews-mobile-component');
+        ChangePositionService.sendChangePositionMessage(element, target);
       }
-      ContextMenuService.getContextMenu(component.$el);
     },
     /*
     * Container Drop 후, container-button, container-content Create Message
     * */
     setControlChild(component) {
       Array.from(component.$children).forEach(child => {
-        //CreateService.sendCreateMessage(child.$el);
         store.commit('addItem', child);
         if (child.$children) {
           this.setControlChild(child);

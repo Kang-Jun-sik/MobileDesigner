@@ -1,7 +1,7 @@
 <template>
   <div :uid="uid" class="dews-mobile-box dews-mobile-component dews-layout-component dews-box-wrap" ref="box">
-    <div class="dews-box-title" @click="onToggleClick($event)" :collapsed="collapsed">
-      <h2><button class="dews-box-title-button" type="button">{{ title }}</button></h2>
+    <div class="dews-box-title">
+      <h2>{{ title }}</h2><button class="dews-box-title-button" type="button" @click="onToggleClick($event)" :collapsed="collapsed"></button>
     </div>
     <div class="dews-box-content-wrap" :style="contentStyle" part="content">
       <div class="dews-box-content addable-area" :data-uid="dataUid" data-type="area" ref="boxContent">
@@ -34,11 +34,10 @@ export default {
       hide: false,
       mainButtons: {
         save: true,
-        add: false,
-        delete: false,
-        search: false,
+        add: true,
+        delete: true,
+        search: true,
       }
-
     }
   },
   created() {
@@ -56,22 +55,37 @@ export default {
     window.drake.containers.push(this.$refs.boxContent);
   },
   methods: {
-    // click 이벤트
-    onToggleClick: function (e){
-      e.stopPropagation();
-      const box = this.$refs.box;
+    setID(value) {
+      this.id = value;
+    },
+    setTitle(value) {
+      this.title = value;
+    },
+    setHide(value) {
+      value = JSON.parse(value);
 
-      if (this.collapsed) {
-        this.collapsed = false;
+      const box = this.$refs.box;
+      this.hide = value;
+      box.style.display = this.hide ? 'none' : 'block';
+    },
+    setCollapsed(value) {
+      value = JSON.parse(value);
+
+      const box = this.$refs.box;
+      this.collapsed = value;
+      if (!this.collapsed) {
         this.contentStyle.display = 'none';
         box.style.setProperty('height', '', 'important');
       } else {
-        this.collapsed = true;
         this.contentStyle.display = 'block';
         box.style.setProperty('height', box.style.height);
       }
 
       setTimeout(SelectService.setPosition, 10, box);
+    },
+    onToggleClick: function (e){
+      e.stopPropagation();
+      this.setCollapsed(!this.collapsed);
     },
   }
 }
@@ -99,6 +113,45 @@ export default {
   .dews-box-content {
     min-height: 40px;
     padding-top: 10px;
+  }
+}
+//dfd 요청 box button 분리
+.dews-box-wrap {
+  .dews-box-title {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 17px;
+
+    h2 {
+      flex: 0 0 calc(100% - 40px);
+      height: 24px;
+      color: #111111;
+      font-size: 16px;
+      font-weight: bold;
+      line-height: 24px;
+      text-align: left;
+    }
+    .dews-box-title-button {
+      position: relative;
+      flex: 0 0 24px;
+      height: 24px;
+      padding: 0;
+
+      &::after {
+        top: 0;
+        right: 0;
+      }
+
+      &[collapsed] {
+        &::after {
+          transform: rotate(0deg);
+          transition: transform 0.3s;
+          transition-timing-function: ease-in-out;
+        }
+      }
+    }
   }
 }
 </style>

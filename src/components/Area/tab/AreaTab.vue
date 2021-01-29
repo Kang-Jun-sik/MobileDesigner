@@ -1,36 +1,37 @@
 <template>
-  <div :uid="uid" class="content dews-mobile-component dews-layout-component" :class="onActive">
-    <div :style="style"></div>
+  <div :uid="uid" class="dews-mobile-tab dews-mobile-component dews-layout-component content"
+       :class="active" data-type="area" :style="style" ref="tab">
   </div>
 </template>
 
 <script>
-import CreateService from "@/service/CreateService";
 import store from "@/store/index";
+import CreateService from "@/service/CreateService";
 
 export default {
   name: 'dews-tab',
-  props: ['active'],
+  props: ['controlChild'],
   data() {
     return {
       uid: '',
-      onActive: this.active,
+      dataUid: '',
       style: {
         height: '',
-        backgroundColor: '#ffffff'
       },
+      parentUid: '',
+      active: false,
 
       /* Properties */
       id: '',
       title: 'Tab',
       hide: false,
-
       mainButtons: {
-        save: false,
-        add: false,
-        delete: false,
-        search: false,
+        save: true,
+        add: true,
+        delete: true,
+        search: true,
       }
+
     }
   },
   created() {
@@ -41,17 +42,46 @@ export default {
       mainButtons: this.mainButtons
     }
     store.commit('setMainButtonList', this.mainButtonList)
+
+    this.$nextTick(() => {
+      store.commit('addItem', this);
+    });
   },
   mounted() {
-    const parentTabs = this.$el.closest('.dews-tabs-wrap');
-    store.commit('addTabTitle', [parentTabs.getAttribute('uid'), this.title]);
+    window.drake.containers.push(this.$refs.tab);
 
-    if (this.onActive === 'active') {
-      this.style.height = '300px';
-    } else {
-      this.style.height = '0px';
+    if (this.controlChild) {
+      this.active = 'active';
+      this.parentUid = this.$el.closest('.dews-tabs-wrap').getAttribute('uid');
+      store.commit('setTab', {
+        tabsUid: this.parentUid,
+        tabData: {
+          tab: this
+        },
+      });
+    }
+  },
+  methods: {
+    setID(value) {
+      this.id = value;
+    },
+    setTitle(value) {
+      this.title = value;
+    },
+    setHide(value) {
+      value = JSON.parse(value);
+
+      const tab = this.$refs.tab;
+      this.hide = value;
+      tab.style.display = this.hide ? 'none' : 'block';
+    },
+  },
+  watch: {
+    active(state) {
+      this.style.height = state === 'active' ? 'auto' : '0px';
     }
   }
+
 }
 </script>
 
@@ -66,4 +96,8 @@ export default {
   @include reset();
 }
 @include dews-area-tabs-content();
+
+.dews-mobile-tab {
+  min-height: 40px;
+}
 </style>

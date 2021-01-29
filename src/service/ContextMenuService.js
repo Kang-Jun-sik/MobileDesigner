@@ -2,6 +2,8 @@ import $ from "jquery";
 import 'jquery-contextmenu'
 import DeleteService from "@/service/DeleteService";
 import SplitService from "@/service/SplitService";
+import AddChildService from "./AddChildService";
+import SelectService from "./SelectService";
 
 export default {
     /*
@@ -75,8 +77,69 @@ export default {
                 });
                 break;
             case 'dews-mobile-tabs':
+                $.contextMenu({
+                    selector: ".selected-control",
+                    items: {
+                        "option": {
+                            name: "Option",
+                            icon: "edit"
+                        },
+                        "addTab": {
+                            name: "Add Tab",
+                            icon: "edit"
+                        },
+                        "split": {
+                            name: "분할",
+                            icon: "ic-split"
+                        },
+                        "delete": {
+                            name: "Delete",
+                            icon: "ic-delete"
+                        },
+                    },
+                    callback: function(itemKey, opt) {
+                        switch (itemKey){
+                            case "addTab":
+                                AddChildService.addTabsChild(opt.$trigger[0]);
+                                break;
+                            case "split":
+                                SplitService.verticalSplit(opt.$trigger[0]);
+                                break;
+                            case "delete" :
+                                DeleteService.deleteControl(opt.$trigger[0]);
+                                break;
+                        }
+                    }
+                });
                 break;
             case 'dews-mobile-tab':
+                $.contextMenu({
+                    selector: ".selected-control",
+                    items: {
+                        "option": {
+                            name: "Option",
+                            icon: "edit"
+                        },
+                        "selectTabs": {
+                            name: "Select Tabs",
+                            icon: "edit"
+                        },
+                        "delete": {
+                            name: "Delete",
+                            icon: "ic-delete"
+                        },
+                    },
+                    callback: function(itemKey, opt) {
+                        switch (itemKey){
+                            case "delete" :
+                                DeleteService.deleteControl(opt.$trigger[0]);
+                                break;
+                            case "selectTabs":
+                                SelectService.selectControl(opt.$trigger[0].closest('.dews-mobile-tabs'));
+                                break;
+                        }
+                    }
+                });
                 break;
             case "dews-mobile-searchContainer" :
                 $.contextMenu({

@@ -17,7 +17,7 @@
 import CreateService from "@/service/CreateService";
 
 export default {
-  name: 'dews-maskbox',
+  name: 'dews-masktextbox',
   data() {
     return {
       uid: '',
@@ -41,7 +41,7 @@ export default {
     }
   },
   created() {
-    this.uid = CreateService.createUid('dews-maskbox');
+    this.uid = CreateService.createUid('dews-masktextbox');
   },
   methods: {
   },

@@ -24,7 +24,11 @@ export default {
         const parent = component.parentElement.closest('.dews-mobile-component')
         const parentUid = parent.getAttribute('uid');
 
-        mobileDesignerToIDE("delete", component, parentUid);
+        mobileDesignerToIDE({
+            commandType: 'delete',
+            elm: component,
+            parentUID: parentUid
+        });
     },
 
     /*
@@ -50,7 +54,8 @@ export default {
         DeleteService.sendDeleteMessage(target);
 
         // 1) AreaItem이 하나만 남을 경우를 생각하여 splitDelete 함수 호출 후, replaceWith
-        if (target.classList.contains('dews-item')) DeleteService.deleteSplit(target);
+        if (target.classList.contains('dews-item'))
+            DeleteService.deleteSplit(target);
 
         // 2) target의 자식 노드까지 drake.containers, Vuex items에서 삭제
         DeleteService.deleteTargetChild(target);
@@ -60,7 +65,7 @@ export default {
         DeleteService.deleteItems(target);
 
         // 4) target 객체 제거
-        target.remove();
+        target.parentElement.tagName === 'LI' ? target.parentElement.remove() : target.remove();
 
         // selectItem이 없으므로 null 처리
         window.selectedItem = null;
