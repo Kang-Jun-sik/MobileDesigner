@@ -53,6 +53,13 @@ export default {
     setID(value) {
       this.id = value;
     },
+    setHide(value) {
+      value = JSON.parse(value);
+
+      const tabs = this.$refs.tabs;
+      this.hide = value;
+      tabs.style.display = this.hide ? 'none' : 'block';
+    },
     setSelectedIndex() {
       this.titlesList.forEach((title, idx) => {
         if (idx === this.selected) {
@@ -71,13 +78,6 @@ export default {
         this.selected = value;
         this.setSelectedIndex();
       }
-    },
-    setHide(value) {
-      value = JSON.parse(value);
-
-      const tabs = this.$refs.tabs;
-      this.hide = value;
-      tabs.style.display = this.hide ? 'none' : 'block';
     },
     selectTab(tab) {
       const activeTab = this.titlesList.find(title => {

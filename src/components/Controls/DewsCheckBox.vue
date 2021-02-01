@@ -44,16 +44,13 @@ export default {
       this.label = value;
     },
     setDisabled(value) {
-      value = JSON.parse(value);
-      this.disabled = value
+      this.disabled = JSON.parse(value);
     },
     setChecked(value) {
-      value = JSON.parse(value);
-      this.checked = value;
+      this.checked = JSON.parse(value);
     },
     setBookmark(value) {
-      value = JSON.parse(value);
-      this.bookmark = value;
+      this.bookmark = JSON.parse(value);
       this.showLabel = !this.bookmark;
     },
     clickHandler(e) {

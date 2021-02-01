@@ -40,19 +40,40 @@ export default {
   mounted() {
   },
   methods: {
+    setID(value) {
+      this.id = value;
+    },
+    setTitle(value) {
+      this.title = value;
+    },
+    setValue(value) {
+      this.value = value;
+    },
+    setType(value) {
+      this.type = value;
+    },
+    setPlaceholder(value) {
+      this.placeholder = value;
+    },
+    setMulti(value) {
+      this.multi = JSON.parse(value);
+    },
+    setMultiHeight(value) {
+      this.multiHeight = parseInt(value);
+    },
+    setRequired(value) {
+      this.required = JSON.parse(value);
+    },
+    setDisabled(value) {
+      this.disabled = JSON.parse(value);
+    },
+    setReadonly(value) {
+      this.readonly = JSON.parse(value);
+    },
     onChange(e) {
       e.stopPropagation();
       this.value = e.target.value;
     },
-    setRequired() {
-      this.required = !this.required;
-    },
-    setDisabled() {
-      this.disabled = !this.disabled;
-    },
-    setReadonly() {
-      this.readonly = !this.readonly;
-    }
   }
 }
 </script>

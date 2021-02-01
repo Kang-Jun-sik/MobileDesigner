@@ -30,16 +30,34 @@ export default {
       /* Properties */
       id: '',
       title: 'DropdownButton',
-      disabled: false,
-      group: false,
       ui: 'solid',
       size: 'medium',
+      disabled: false,
+      group: false,
     }
   },
   created() {
     this.uid = CreateService.createUid('dews-dropdownbutton');
   },
   methods: {
+    setID(value) {
+      this.id = value;
+    },
+    setTitle(value) {
+      this.title = value;
+    },
+    setUI(value) {
+      this.ui = value;
+    },
+    setSize(value) {
+      this.size = value;
+    },
+    setGroup(value) {
+      this.group = JSON.parse(value);
+    },
+    setDisabled(value) {
+      this.disabled = JSON.parse(value);
+    },
     clickHandler(e) {
       if (!this.disabled) {
         this.selected = false;

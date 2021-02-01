@@ -50,16 +50,67 @@ export default {
       maxLength: '',
       round: 'round',
 
-      step: 1,
+      /* Numeric Button Properties */
       min: 0,
       max: 0,
+      step: 1,
     }
   },
   created() {
     this.uid = CreateService.createUid('dews-numerictextbox');
   },
   methods: {
-
+    setID(value) {
+      this.id = value;
+    },
+    setTitle(value) {
+      this.title = value;
+    },
+    setValue(value) {
+      this.value = value;
+    },
+    setPlaceholder(value) {
+      this.placeholder = value;
+    },
+    setPrefix(value) {
+      this.prefix = value;
+    },
+    setSuffix(value) {
+      this.suffix = value;
+    },
+    setFormat(value) {
+      this.format = value;
+    },
+    setDecimals(value) {
+      this.decimals = parseInt(value);
+    },
+    setMax(value) {
+      this.max = parseInt(value);
+    },
+    setMin(value) {
+      this.min = parseInt(value);
+    },
+    setStep(value) {
+      this.step = parseInt(value);
+    },
+    setRestrict(value) {
+      this.restrict = JSON.parse(value);
+    },
+    setMaxLength(value) {
+      this.maxLength = value;
+    },
+    setRound(value) {
+      this.round = value;
+    },
+    setDisabled(value) {
+      this.disabled = JSON.parse(value);
+    },
+    setReadonly(value) {
+      this.readonly = JSON.parse(value);
+    },
+    setRequired(value) {
+      this.required = JSON.parse(value);
+    },
   }
 }
 </script>

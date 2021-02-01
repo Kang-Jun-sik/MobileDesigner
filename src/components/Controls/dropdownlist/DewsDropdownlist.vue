@@ -43,6 +43,21 @@ export default {
     this.title = GlobalService.checkComplex(this.$refs.dropdownList) ? '' : this.title;
   },
   methods: {
+    setID(value) {
+      this.id = value;
+    },
+    setTitle(value) {
+      this.title = value;
+    },
+    setMulti(value) {
+      this.multi = JSON.parse(value);
+    },
+    setDisabled(value) {
+      this.disabled = JSON.parse(value);
+    },
+    setReadonly(value) {
+      this.readonly = JSON.parse(value);
+    },
   }
 }
 </script>

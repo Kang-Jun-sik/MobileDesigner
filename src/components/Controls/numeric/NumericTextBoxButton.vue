@@ -1,5 +1,5 @@
 <template>
-  <span class="stepper">
+  <span :uid="uid" class="stepper">
     <button class="button-stepper minus" @click="stepperDecrement()"></button>
     <button class="button-stepper plus" @click="stepperIncrement()"></button>
   </span>
@@ -21,12 +21,8 @@ export default {
     this.uid = CreateService.createUid('numerictextbox-button');
   },
   methods: {
-    stepperDecrement() {
-
-    },
-    stepperIncrement() {
-
-    },
+    stepperDecrement() {},
+    stepperIncrement() {},
   },
 }
 </script>

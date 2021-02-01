@@ -47,7 +47,31 @@ export default {
     },
     setValue(value) {
       this.value = value;
-    }
+    },
+    setMin(value) {
+      this.min = value;
+    },
+    setMax(value) {
+      this.max = value;
+    },
+    setDisabled(value) {
+      this.disabled = JSON.parse(value);
+    },
+    setReadonly(value) {
+      this.readonly = JSON.parse(value);
+    },
+    setRequired(value) {
+      this.required = JSON.parse(value);
+    },
+    setSpinner(value) {
+      this.spinner = JSON.parse(value);
+    },
+    setHolidaysVisible(value) {
+      this.holidaysVisible = JSON.parse(value);
+    },
+    setHolidaysDisabled(value) {
+      this.holidaysDisabled = JSON.parse(value);
+    },
   }
 }
 </script>

@@ -92,12 +92,10 @@ export default {
       this.type = value;
     },
     setDisabled(value) {
-      value = JSON.parse(value);
-      this.disabled = value;
+      this.disabled = JSON.parse(value);
     },
     setGroup(value) {
-      value = JSON.parse(value);
-      this.group = value;
+      this.group = JSON.parse(value);
     }
   }
 }

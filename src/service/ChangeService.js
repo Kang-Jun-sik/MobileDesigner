@@ -388,51 +388,392 @@ export default {
             case 'value':
                 component.setValue(value);
                 break;
+            case 'min':
+                component.setMin(value);
+                break;
+            case 'max':
+                component.setMax(value);
+                break;
+            case 'disabled':
+                component.setDisabled(value);
+                break;
+            case 'readonly':
+                component.setReadonly(value);
+                break;
+            case 'required':
+                component.setRequired(value);
+                break;
+            case 'spinner':
+                component.setSpinner(value);
+                break;
+            case 'holidaysVisible':
+                component.setHolidaysVisible(value);
+                break;
+            case 'holidaysDisabled':
+                component.setHolidaysDisabled(value);
+                break;
         }
     },
 
     changeMaskTextbox(data) {
         const { uid, prop, value } = data;
+        const component = store.state.component.items.find(item => item.uid === uid);
+
+        switch (prop) {
+            case 'id':
+                component.setID(value);
+                break;
+            case 'title':
+                component.setTitle(value);
+                break;
+            case 'value':
+                component.setValue(value);
+                break;
+            case 'placeholder':
+                component.setPlaceholder(value);
+                break;
+            case 'format':
+                component.setFormat(value);
+                break;
+            case 'type':
+                component.setType(value);
+                break;
+            case 'mask':
+                component.setMask(value);
+                break;
+            case 'unmaskOnPost':
+                component.setUnmaskOnPost(value);
+                break;
+            case 'disabled':
+                component.setDisabled(value);
+                break;
+            case 'readonly':
+                component.setReadonly(value);
+                break;
+            case 'required':
+                component.setRequired(value);
+                break;
+        }
     },
 
     changeMonthPicker(data) {
         const { uid, prop, value } = data;
+        const component = store.state.component.items.find(item => item.uid === uid);
+
+        switch (prop) {
+            case 'id':
+                component.setID(value);
+                break;
+            case 'title':
+                component.setTitle(value);
+                break;
+            case 'value':
+                component.setValue(value);
+                break;
+            case 'min':
+                component.setMin(value);
+                break;
+            case 'max':
+                component.setMax(value);
+                break;
+            case 'disabled':
+                component.setDisabled(value);
+                break;
+            case 'readonly':
+                component.setReadonly(value);
+                break;
+            case 'required':
+                component.setRequired(value);
+                break;
+            case 'spinner':
+                component.setSpinner(value);
+                break;
+        }
     },
 
     changeNumericTextbox(data) {
         const { uid, prop, value } = data;
+        const component = store.state.component.items.find(item => item.uid === uid);
+
+        switch (prop) {
+            case 'id':
+                component.setID(value);
+                break;
+            case 'title':
+                component.setTitle(value);
+                break;
+            case 'value':
+                component.setValue(value);
+                break;
+            case 'placeholder':
+                component.setPlaceholder(value);
+                break;
+            case 'prefix':
+                component.setPrefix(value);
+                break;
+            case 'suffix':
+                component.setSuffix(value);
+                break;
+            case 'format':
+                component.setFormat(value);
+                break;
+            case 'decimals':
+                component.setDecimals(value);
+                break;
+            case 'max':
+                component.setMax(value);
+                break;
+            case 'min':
+                component.setMin(value);
+                break;
+            case 'step':
+                component.setStep(value);
+                break;
+            case 'restrict':
+                component.setRestrict(value);
+                break;
+            case 'maxLength':
+                component.setMaxLength(value);
+                break;
+            case 'round':
+                component.setRound(value);
+                break;
+            case 'disabled':
+                component.setDisabled(value);
+                break;
+            case 'readonly':
+                component.setReadonly(value);
+                break;
+            case 'required':
+                component.setRequired(value);
+                break;
+        }
     },
 
     changePeriodPicker(data) {
         const { uid, prop, value } = data;
+        const component = store.state.component.items.find(item => item.uid === uid);
+
+        switch (prop) {
+            case 'id':
+                component.setID(value);
+                break;
+            case 'title':
+                component.setTitle(value);
+                break;
+            case 'value':
+                component.setValue(value);
+                break;
+            case 'min':
+                component.setMin(value);
+                break;
+            case 'max':
+                component.setMax(value);
+                break;
+            case 'disabled':
+                component.setDisabled(value);
+                break;
+            case 'readonly':
+                component.setReadonly(value);
+                break;
+            case 'required':
+                component.setRequired(value);
+                break;
+            case 'holidaysVisible':
+                component.setHolidaysVisible(value);
+                break;
+            case 'holidaysDisabled':
+                component.setHolidaysDisabled(value);
+                break;
+            case 'start':
+                component.setStart(value);
+                break;
+            case 'end':
+                component.setEnd(value);
+                break;
+        }
     },
 
     changeRadioButton(data) {
         const { uid, prop, value } = data;
+        const component = store.state.component.items.find(item => item.uid === uid);
+
+        switch (prop) {
+            case 'id':
+                component.setID(value);
+                break;
+            case 'title':
+                component.setTitle(value);
+                break;
+            case 'disabled':
+                component.setDisabled(value);
+                break;
+            case 'readonly':
+                component.setReadonly(value);
+                break;
+            case 'checked':
+                component.setChecked(value);
+                break;
+        }
     },
 
     changeRadioButtonGroup(data) {
         const { uid, prop, value } = data;
+        const component = store.state.component.items.find(item => item.uid === uid);
+
+        switch (prop) {
+            case 'id':
+                component.setID(value);
+                break;
+            case 'title':
+                component.setTitle(value);
+                break;
+            case 'align':
+                component.setAlign(value);
+                break;
+            case 'disabled':
+                component.setDisabled(value);
+                break;
+        }
     },
 
     changeTextbox(data) {
         const { uid, prop, value } = data;
+        const component = store.state.component.items.find(item => item.uid === uid);
+
+        switch (prop) {
+            case 'id':
+                component.setID(value);
+                break;
+            case 'title':
+                component.setTitle(value);
+                break;
+            case 'value':
+                component.setValue(value);
+                break;
+            case 'type':
+                component.setType(value);
+                break;
+            case 'placeholder':
+                component.setPlaceholder(value);
+                break;
+            case 'multi':
+                component.setMulti(value);
+                break;
+            case 'multiHeight':
+                component.setMultiHeight(value);
+                break;
+            case 'required':
+                component.setRequired(value);
+                break;
+            case 'disabled':
+                component.setDisabled(value);
+                break;
+            case 'readonly':
+                component.setReadonly(value);
+                break;
+        }
     },
 
     changeTimePicker(data) {
         const { uid, prop, value } = data;
+        const component = store.state.component.items.find(item => item.uid === uid);
+
+        switch (prop) {
+            case 'id':
+                component.setID(value);
+                break;
+            case 'title':
+                component.setTitle(value);
+                break;
+            case 'value':
+                component.setValue(value);
+                break;
+            case 'min':
+                component.setMin(value);
+                break;
+            case 'max':
+                component.setMax(value);
+                break;
+            case 'disabled':
+                component.setDisabled(value);
+                break;
+            case 'readonly':
+                component.setReadonly(value);
+                break;
+            case 'required':
+                component.setRequired(value);
+                break;
+            case 'spinner':
+                component.setSpinner(value);
+                break;
+        }
     },
 
     changeDropdownList(data) {
         const { uid, prop, value } = data;
+        const component = store.state.component.items.find(item => item.uid === uid);
+
+        switch (prop) {
+            case 'id':
+                component.setID(value);
+                break;
+            case 'title':
+                component.setTitle(value);
+                break;
+            case 'multi':
+                component.setMulti(value);
+                break;
+            case 'disabled':
+                component.setDisabled(value);
+                break;
+            case 'readonly':
+                component.setReadonly(value);
+                break;
+        }
     },
 
     changeDropdownButton(data) {
         const { uid, prop, value } = data;
+        const component = store.state.component.items.find(item => item.uid === uid);
+
+        switch (prop) {
+            case 'id':
+                component.setID(value);
+                break;
+            case 'title':
+                component.setTitle(value);
+                break;
+            case 'ui':
+                component.setUI(value);
+                break;
+            case 'size':
+                component.setSize(value);
+                break;
+            case 'group':
+                component.setGroup(value);
+                break;
+            case 'disabled':
+                component.setDisabled(value);
+                break;
+        }
     },
 
     changeDropdownChildButton(data) {
         const { uid, prop, value } = data;
+        const component = store.state.component.items.find(item => item.uid === uid);
+
+        switch (prop) {
+            case 'id':
+                component.setID(value);
+                break;
+            case 'title':
+                component.setTitle(value);
+                break;
+            case 'disabled':
+                component.setDisabled(value);
+                break;
+        }
     },
 
 }

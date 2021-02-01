@@ -21,12 +21,12 @@ export default {
   data() {
     return {
       uid: '',
-      value: '',
       raw: '',
 
       /* Properties */
       id: '',
       title: 'MaskTextBox',
+      value: '',
       placeholder: '',
       format: '',
       type: 'text',
@@ -44,6 +44,39 @@ export default {
     this.uid = CreateService.createUid('dews-masktextbox');
   },
   methods: {
+    setID(value) {
+      this.id = value;
+    },
+    setTitle(value) {
+      this.title = value;
+    },
+    setValue(value) {
+      this.value = value;
+    },
+    setPlaceholder(value) {
+      this.placeholder = value;
+    },
+    setFormat(value) {
+      this.format = value;
+    },
+    setType(value) {
+      this.type = value;
+    },
+    setMask(value) {
+      this.mask = value;
+    },
+    setUnmaskOnPost(value) {
+      this.unmaskOnPost = JSON.parse(value);
+    },
+    setDisabled(value) {
+      this.disabled = JSON.parse(value);
+    },
+    setReadonly(value) {
+      this.readonly = JSON.parse(value);
+    },
+    setRequired(value) {
+      this.required = JSON.parse(value);
+    },
   },
 }
 </script>

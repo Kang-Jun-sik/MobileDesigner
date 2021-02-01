@@ -33,7 +33,35 @@ export default {
   created() {
     this.uid = CreateService.createUid('dews-timepicker');
   },
-  methods: {},
+  methods: {
+    setID(value) {
+      this.id = value;
+    },
+    setTitle(value) {
+      this.title = value;
+    },
+    setValue(value) {
+      this.value = value;
+    },
+    setMin(value) {
+      this.min = value;
+    },
+    setMax(value) {
+      this.max = value;
+    },
+    setDisabled(value) {
+      this.disabled = JSON.parse(value);
+    },
+    setReadonly(value) {
+      this.readonly = JSON.parse(value);
+    },
+    setRequired(value) {
+      this.required = JSON.parse(value);
+    },
+    setSpinner(value) {
+      this.spinner = JSON.parse(value);
+    },
+  },
 }
 </script>
 

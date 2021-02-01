@@ -22,7 +22,18 @@ export default {
   },
   created() {
     this.uid = CreateService.createUid('dropdownbutton-childbutton');
-  }
+  },
+  methods: {
+    setID(value) {
+      this.id = value;
+    },
+    setText(value) {
+      this.text = value;
+    },
+    setDisabled(value) {
+      this.disabled = JSON.parse(value);
+    }
+  },
 }
 </script>
 
