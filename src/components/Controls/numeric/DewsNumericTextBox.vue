@@ -132,4 +132,13 @@ export default {
   opacity: 0;
 }
 @include dews-numerictextbox();
+
+//--------------------------------------
+// FD 추가 영역
+//--------------------------------------
+.numeric-textbox-wrap .stepper {
+  flex: 0 0 76px;
+  margin-left: 8px;
+  padding-left: 0;
+}
 </style>
