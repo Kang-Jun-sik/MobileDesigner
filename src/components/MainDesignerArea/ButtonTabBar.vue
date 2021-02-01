@@ -107,7 +107,7 @@
         margin: 0;
       }
       &.tabletL {
-        width: 1064px;
+        width: 100%;
         margin: 0;
       }
     }
