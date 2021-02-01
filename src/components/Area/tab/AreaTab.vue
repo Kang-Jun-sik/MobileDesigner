@@ -75,6 +75,26 @@ export default {
       this.hide = value;
       tab.style.display = this.hide ? 'none' : 'block';
     },
+
+    setUseAdd(value) {
+      value = JSON.parse(value);
+      value ? this.mainButtons.add = true : this.mainButtons.add = false;
+    },
+
+    setUseSearch(value) {
+      value = JSON.parse(value);
+      value ? this.mainButtons.search = true : this.mainButtons.search = false;
+    },
+
+    setUseDelete(value) {
+      value = JSON.parse(value);
+      value ? this.mainButtons.delete = true : this.mainButtons.delete = false;
+    },
+
+    setUseSave(value) {
+      value = JSON.parse(value);
+      value ? this.mainButtons.save = true : this.mainButtons.save = false;
+    },
   },
   watch: {
     active(state) {
@@ -95,6 +115,7 @@ export default {
 * {
   @include reset();
 }
+
 @include dews-area-tabs-content();
 
 .dews-mobile-tab {

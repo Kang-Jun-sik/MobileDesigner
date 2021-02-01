@@ -176,6 +176,18 @@ export default {
             case 'hide':
                 component.setHide(value);
                 break;
+            case 'UseAdd':
+                component.setUseAdd(value);
+                break;
+            case 'UseSearch':
+                component.setUseSearch(value);
+                break;
+            case 'UseDelete':
+                component.setUseDelete(value);
+                break;
+            case 'UseSave':
+                component.setUseSave(value);
+                break;
         }
     },
 
@@ -209,6 +221,18 @@ export default {
                 break;
             case 'hide':
                 component.setHide(value);
+                break;
+            case 'UseAdd':
+                component.setUseAdd(value);
+                break;
+            case 'UseSearch':
+                component.setUseSearch(value);
+                break;
+            case 'UseDelete':
+                component.setUseDelete(value);
+                break;
+            case 'UseSave':
+                component.setUseSave(value);
                 break;
         }
     },
@@ -323,7 +347,7 @@ export default {
     },
 
     changeButtonGroup(data) {
-        const {uid, prop, value} = data;
+        const { uid, prop, value } = data;
         const component = store.state.component.items.find(item => item.uid === uid);
 
         switch (prop) {
