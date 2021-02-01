@@ -14,10 +14,11 @@ export default {
                 const childElement = elm.querySelector(`[uid=${childUID}]`);
                 const parentElement = childElement.parentElement.closest(`[uid]`);
 
-                if (createData.getAttribute('uid') === parentElement.getAttribute('uid'))
+                if (createData.getAttribute('uid') === parentElement.getAttribute('uid')) {
                     createData.appendChild(childData);
-                else
+                } else {
                     createData.querySelector(`[uid=${parentElement.getAttribute('uid')}]`).appendChild(childData);
+                }
             }
             this.createDataMessage(createData, child.children, elm);
         }

@@ -31,13 +31,25 @@ export default {
   mounted() {
   },
   methods: {
+    setID(value) {
+      this.id = value;
+    },
+    setTitle(value) {
+      this.title = value;
+    },
+    setDisabled(value) {
+      this.disabled = JSON.parse(value);
+    },
+    setReadonly(value) {
+      this.readonly = JSON.parse(value);
+    },
+    setChecked(value) {
+      this.checked = JSON.parse(value);
+    },
     clickHandler(e) {
-      if (this.disabled) return
+      if (this.disabled) return;
 
       this.checked = !this.checked;
-    },
-    setDisabled() {
-      this.disabled = !this.disabled;
     },
   }
 }

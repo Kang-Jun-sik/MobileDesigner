@@ -22,8 +22,8 @@ export default {
       /* Properties */
       id: '',
       title: 'RadioButtonGroup',
-      disabled: false,
       align: 'horizontal',
+      disabled: false,
     }
   },
   created() {
@@ -33,6 +33,20 @@ export default {
   },
   mounted() {
     window.drake.containers.push(this.$refs.radioButtonGroup);
+  },
+  methods: {
+    setID(value) {
+      this.id = value;
+    },
+    setTitle(value) {
+      this.title = value;
+    },
+    setAlign(value) {
+      this.align = value;
+    },
+    setDisabled(value) {
+      this.disabled = JSON.parse(value);
+    },
   }
 }
 </script>
