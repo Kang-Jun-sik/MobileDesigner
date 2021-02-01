@@ -98,6 +98,9 @@ export default {
             case 'dews-numerictextbox':
                 ChangeService.changeNumericTextbox(data);
                 break;
+            case 'numerictextbox-button':
+                ChangeService.changeNumericTextboxButton(data);
+                break;
             case 'dews-periodpicker':
                 ChangeService.changePeriodPicker(data);
                 break;
@@ -520,15 +523,6 @@ export default {
             case 'decimals':
                 component.setDecimals(value);
                 break;
-            case 'max':
-                component.setMax(value);
-                break;
-            case 'min':
-                component.setMin(value);
-                break;
-            case 'step':
-                component.setStep(value);
-                break;
             case 'restrict':
                 component.setRestrict(value);
                 break;
@@ -546,6 +540,26 @@ export default {
                 break;
             case 'required':
                 component.setRequired(value);
+                break;
+            case 'numericbutton':
+                component.setNumericButton(value);
+                break;
+        }
+    },
+
+    changeNumericTextboxButton(data) {
+        const { uid, prop, value } = data;
+        const component = store.state.component.items.find(item => item.uid === uid);
+
+        switch (prop) {
+            case 'max':
+                component.setMax(value);
+                break;
+            case 'min':
+                component.setMin(value);
+                break;
+            case 'step':
+                component.setStep(value);
                 break;
         }
     },

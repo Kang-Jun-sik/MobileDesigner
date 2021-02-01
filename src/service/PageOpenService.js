@@ -84,9 +84,7 @@ export default {
                 addComponent = control.$el;
                 store.commit('setTab', {
                     tabsUid: parent.uid,
-                    tabData: {
-                        tab: control
-                    }
+                    tabData: { tab: control }
                 });
                 break;
             case 'search':
@@ -140,7 +138,12 @@ export default {
         }
 
         let controlChild;
-        if (multiChildList.includes(node.tagName)) {
+        if (oneChildList.includes(node.tagName)) {
+            controlChild = findChild(node.tagName, parent.$children);
+            controlChild.uid = node.getAttribute('uid');
+            instanceUid = controlChild.uid;
+            store.commit('addItem', controlChild);
+        } else if (multiChildList.includes(node.tagName)) {
             controlChild = findChild(node.tagName, parent.$children);
             if (parent.checkChild) {
                 controlChild.uid = node.getAttribute('uid');
@@ -148,9 +151,7 @@ export default {
                 if (node.tagName === 'dews-tab') {
                     store.commit('setTab', {
                         tabsUid: parent.uid,
-                        tabData: {
-                            tab: controlChild
-                        }
+                        tabData: { tab: controlChild }
                     });
                 }
                 parent.checkChild = false;
@@ -158,11 +159,6 @@ export default {
             } else {
                 instanceUid = PageOpenService.controlParsing(instance, parent);
             }
-        } else if (oneChildList.includes(node.tagName)) {
-            controlChild = findChild(node.tagName, parent.$children);
-            controlChild.uid = node.getAttribute('uid');
-            instanceUid = controlChild.uid;
-            store.commit('addItem', controlChild);
         } else {
             instanceUid = PageOpenService.controlParsing(instance, parent);
         }

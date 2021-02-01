@@ -2,7 +2,7 @@
   <div :uid="uid" class="dews-mobile-numeric dews-mobile-component numeric-textbox-wrap" :class="{disabled: disabled ? 'disabled' : '', readonly: readonly ? 'readonly': ''}">
     <label v-if="title" for="numeric-box">{{ title }}</label>
     <label v-else class="undefined" for="numeric-box"></label>
-    <div class="numeric-wrap">
+    <div class="numeric-wrap" :data-uid="dataUid">
       <span class="prefix" v-if="prefix">{{ prefix }}</span>
       <span class="numeric view" :class="disabled ? 'disabled' : ''">
         <input id="numeric-box" class="numeric-box" type="text" :value="value"
@@ -13,14 +13,15 @@
       </span>
       <span class="suffix" v-if="suffix">{{ suffix }}</span>
 
-      <numerictextbox-button v-if="showNumericButton"
-        :step="step" :min="min" :max="max" ref="numericChildButton"></numerictextbox-button>
+      <numerictextbox-button v-show="showNumericButton" :isShow="showNumericButton"
+        @increase="increaseNumeric" @decrease="decreaseNumeric" ref="numericChildButton"></numerictextbox-button>
     </div>
   </div>
 </template>
 
 <script>
 import CreateService from "@/service/CreateService";
+import DeleteService from "@/service/DeleteService";
 import NumerictextboxButton from "@/components/Controls/numeric/NumericTextBoxButton";
 
 export default {
@@ -29,7 +30,7 @@ export default {
   data() {
     return {
       uid: '',
-      value: '',
+      dataUid: '',
 
       /* check child */
       hasChildControl: true,
@@ -38,6 +39,7 @@ export default {
       /* Properties */
       id: '',
       title: 'NumericTextBox',
+      value: 0,
       placeholder: '',
       disabled: false,
       readonly: false,
@@ -49,15 +51,11 @@ export default {
       restrict: false,
       maxLength: '',
       round: 'round',
-
-      /* Numeric Button Properties */
-      min: 0,
-      max: 0,
-      step: 1,
     }
   },
   created() {
     this.uid = CreateService.createUid('dews-numerictextbox');
+    this.dataUid = CreateService.createUid('numerictextbox-childbutton');
   },
   methods: {
     setID(value) {
@@ -110,6 +108,18 @@ export default {
     },
     setRequired(value) {
       this.required = JSON.parse(value);
+    },
+
+    setNumericButton(value) {
+      this.showNumericButton = JSON.parse(value);
+      this.showNumericButton ? CreateService.sendCreateMessage(this.$refs.numericChildButton.$el)
+          : DeleteService.sendDeleteMessage(this.$refs.numericChildButton.$el);
+    },
+    increaseNumeric() {
+      console.log('increase');
+    },
+    decreaseNumeric() {
+      console.log('decrease');
     },
   }
 }
