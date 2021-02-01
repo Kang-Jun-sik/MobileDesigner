@@ -137,6 +137,9 @@ export default {
 // FD 추가 영역
 //--------------------------------------
 .numeric-textbox-wrap .stepper {
+  @include clearfix();
+
+  overflow: visible;
   flex: 0 0 76px;
   margin-left: 8px;
   padding-left: 0;
