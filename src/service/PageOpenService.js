@@ -84,9 +84,6 @@ export default {
             const parseValue = attr.value === "true" || attr.value === "false";
             if (attr.name.includes('btn')) {
                 control.mainButtons[attr.name] = attr.value;
-            } else if (attr.name === 'col') {
-                control.col = attr.value;
-                control.colClass ? control.colClass = `col-fd-${attr.value}` : null;
             } else {
                 control[attr.name] = parseValue ? JSON.parse(attr.value) : attr.value;
             }

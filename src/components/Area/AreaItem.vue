@@ -1,5 +1,5 @@
 <template>
-  <div :uid="uid" class="dews-mobile-item dews-mobile-component dews-item" :class="colClass" ref="dewsItem"></div>
+  <div :uid="uid" class="dews-mobile-item dews-mobile-component dews-item" :class="`col-fd-${col}`" ref="dewsItem"></div>
 </template>
 
 <script>
@@ -13,7 +13,6 @@ export default {
   data() {
     return {
       uid: '',
-      colClass: 'col-fd-6',
 
       /* Properties */
       id: '',
@@ -33,11 +32,10 @@ export default {
     },
     setItem(val, itemVal, item) {
       this.col = val;
-      this.colClass = `col-fd-${val}`;
       item.col = itemVal;
-      item.colClass = `col-fd-${itemVal}`;
 
-      ChangeService.sendChangeMessage('col', itemVal, item.getAttribute('uid'));
+      const itemUid = item.uid ? item.uid : item.getAttribute('uid');
+      ChangeService.sendChangeMessage('col', itemVal, itemUid);
       setTimeout(SelectService.setPosition, 10, window.selectedItem);
     },
     setCol(value) {
