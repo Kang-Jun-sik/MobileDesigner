@@ -19,6 +19,7 @@ import ContextMenuService from "@/service/ContextMenuService";
 import ChangePositionService from "@/service/ChangePositionService";
 import SelectService from "@/service/SelectService";
 import DatasourceArea from "@/components/Datasource/DatasourceArea";
+import mobileDesignerToIDE from "@/utils/mobileDesignerToIDE";
 
 export default {
   name: 'mobile-wrapper',
@@ -102,11 +103,12 @@ export default {
           element.replaceWith(component.$el);
         }
         store.commit('ADD_ITEM', component);
-
-        CreateService.sendCreateMessage(component.$el);
         if (component.hasChildControl) {
           this.setControlChild(component);
         }
+
+        component.$el.classList.contains('dews-mobile-datasource') ? this.setDatasource(component)
+            : CreateService.sendCreateMessage(component.$el);
         ContextMenuService.getContextMenu(component.$el);
       } else {
         element = element.classList.contains('dews-mobile-component') ? element : element.querySelector('.dews-mobile-component');
@@ -122,6 +124,19 @@ export default {
         if (child.$children) {
           this.setControlChild(child);
         }
+      });
+    },
+    setDatasource(component) {
+      const mainDesignerArea = store.state.designer.mainDesigner.$el;
+      const dataSourceArea = store.state.designer.datasourceArea;
+      const datasourceList = dataSourceArea.querySelectorAll('.dews-mobile-datasource');
+      const index = Array.from(datasourceList).findIndex(control => control.getAttribute('uid') === component.uid);
+
+      mobileDesignerToIDE({
+        commandType: 'create',
+        elm: component.$el,
+        parentUID: mainDesignerArea.getAttribute('uid'),
+        idx: index
       });
     },
   },

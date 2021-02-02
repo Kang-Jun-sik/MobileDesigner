@@ -37,7 +37,7 @@ export default {
       item.col = itemVal;
       item.colClass = `col-fd-${itemVal}`;
 
-      ChangeService.sendChangeMessage('col', itemVal, item.uid);
+      ChangeService.sendChangeMessage('col', itemVal, item.getAttribute('uid'));
       setTimeout(SelectService.setPosition, 10, window.selectedItem);
     },
     setCol(value) {
