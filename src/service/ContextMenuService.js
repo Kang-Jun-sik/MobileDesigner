@@ -16,12 +16,14 @@ export default {
                 $.contextMenu({
                     selector: ".selected-control",
                     items: {
+                        /*
                         "edit": {
                             name: "mainDesignerOption",
                             icon: "edit"
                         },
+                         */
                     },
-                    callback: function(itemKey, opt) {
+                    callback: function (itemKey, opt) {
                         console.log(itemKey);
                     }
                 });
@@ -39,7 +41,7 @@ export default {
                             icon: "ic-delete"
                         }
                     },
-                    callback: function(itemKey, opt) {
+                    callback: function (itemKey, opt) {
                         switch (itemKey) {
                             case "split":
                                 SplitService.verticalSplit(opt.$trigger[0]);
@@ -64,8 +66,8 @@ export default {
                             icon: "ic-delete"
                         }
                     },
-                    callback: function(itemKey, opt) {
-                        switch (itemKey){
+                    callback: function (itemKey, opt) {
+                        switch (itemKey) {
                             case "split":
                                 SplitService.verticalSplit(opt.$trigger[0]);
                                 break;
@@ -80,10 +82,6 @@ export default {
                 $.contextMenu({
                     selector: ".selected-control",
                     items: {
-                        "option": {
-                            name: "Option",
-                            icon: "edit"
-                        },
                         "addTab": {
                             name: "Add Tab",
                             icon: "edit"
@@ -97,8 +95,8 @@ export default {
                             icon: "ic-delete"
                         },
                     },
-                    callback: function(itemKey, opt) {
-                        switch (itemKey){
+                    callback: function (itemKey, opt) {
+                        switch (itemKey) {
                             case "addTab":
                                 AddChildService.addTabsChild(opt.$trigger[0]);
                                 break;
@@ -116,10 +114,6 @@ export default {
                 $.contextMenu({
                     selector: ".selected-control",
                     items: {
-                        "option": {
-                            name: "Option",
-                            icon: "edit"
-                        },
                         "selectTabs": {
                             name: "Select Tabs",
                             icon: "edit"
@@ -129,8 +123,8 @@ export default {
                             icon: "ic-delete"
                         },
                     },
-                    callback: function(itemKey, opt) {
-                        switch (itemKey){
+                    callback: function (itemKey, opt) {
+                        switch (itemKey) {
                             case "delete" :
                                 DeleteService.deleteControl(opt.$trigger[0]);
                                 break;
@@ -145,17 +139,13 @@ export default {
                 $.contextMenu({
                     selector: ".selected-control",
                     items: {
-                        "option": {
-                            name: "Option",
-                            icon: "edit"
-                        },
                         "delete": {
                             name: "Delete",
                             icon: "ic-delete"
                         },
                     },
-                    callback: function(itemKey, opt) {
-                        switch (itemKey){
+                    callback: function (itemKey, opt) {
+                        switch (itemKey) {
                             case "delete" :
                                 DeleteService.deleteControl(opt.$trigger[0]);
                                 break;
@@ -169,10 +159,6 @@ export default {
                 $.contextMenu({
                     selector: ".selected-control",
                     items: {
-                        "option": {
-                            name: "Option",
-                            icon: "edit"
-                        },
                         "delete": {
                             name: "Delete",
                             icon: "ic-delete"
@@ -182,8 +168,8 @@ export default {
                             icon: 'edit'
                         }
                     },
-                    callback: function(itemKey, opt) {
-                        switch (itemKey){
+                    callback: function (itemKey, opt) {
+                        switch (itemKey) {
                             case "delete" :
                                 DeleteService.deleteControl(opt.$trigger[0]);
                                 break;
@@ -197,17 +183,13 @@ export default {
                 $.contextMenu({
                     selector: ".selected-control",
                     items: {
-                        "option": {
-                            name: "Option",
-                            icon: "edit"
-                        },
                         "delete": {
                             name: "Delete",
                             icon: "ic-delete"
                         },
                     },
-                    callback: function(itemKey, opt) {
-                        switch (itemKey){
+                    callback: function (itemKey, opt) {
+                        switch (itemKey) {
                             case "delete" :
                                 DeleteService.deleteControl(opt.$trigger[0]);
                                 break;
@@ -223,17 +205,13 @@ export default {
                 $.contextMenu({
                     selector: ".selected-control",
                     items: {
-                        "option": {
-                            name: "Option",
-                            icon: "edit"
-                        },
                         "delete": {
                             name: "Delete",
                             icon: "ic-delete"
                         },
                     },
-                    callback: function(itemKey, opt) {
-                        switch (itemKey){
+                    callback: function (itemKey, opt) {
+                        switch (itemKey) {
                             case "delete" :
                                 DeleteService.deleteControl(opt.$trigger[0]);
                                 break;
@@ -245,17 +223,13 @@ export default {
                 $.contextMenu({
                     selector: ".selected-control",
                     items: {
-                        "option": {
-                            name: "Option",
-                            icon: "edit"
-                        },
                         "delete": {
                             name: "Delete",
                             icon: "ic-delete"
                         },
                     },
-                    callback: function(itemKey, opt) {
-                        switch (itemKey){
+                    callback: function (itemKey, opt) {
+                        switch (itemKey) {
                             case "delete" :
                                 DeleteService.deleteControl(opt.$trigger[0]);
                                 break;
@@ -267,17 +241,13 @@ export default {
                 $.contextMenu({
                     selector: ".selected-control",
                     items: {
-                        "option": {
-                            name: "Option",
-                            icon: "edit"
-                        },
                         "delete": {
                             name: "Delete",
                             icon: "ic-delete"
                         },
                     },
-                    callback: function(itemKey, opt) {
-                        switch (itemKey){
+                    callback: function (itemKey, opt) {
+                        switch (itemKey) {
                             case "delete" :
                                 DeleteService.deleteControl(opt.$trigger[0]);
                                 break;
@@ -289,17 +259,13 @@ export default {
                 $.contextMenu({
                     selector: ".selected-control",
                     items: {
-                        "option": {
-                            name: "Option",
-                            icon: "edit"
-                        },
                         "delete": {
                             name: "Delete",
                             icon: "ic-delete"
                         },
                     },
-                    callback: function(itemKey, opt) {
-                        switch (itemKey){
+                    callback: function (itemKey, opt) {
+                        switch (itemKey) {
                             case "delete" :
                                 DeleteService.deleteControl(opt.$trigger[0]);
                                 break;
@@ -311,17 +277,13 @@ export default {
                 $.contextMenu({
                     selector: ".selected-control",
                     items: {
-                        "option": {
-                            name: "Option",
-                            icon: "edit"
-                        },
                         "delete": {
                             name: "Delete",
                             icon: "ic-delete"
                         },
                     },
-                    callback: function(itemKey, opt) {
-                        switch (itemKey){
+                    callback: function (itemKey, opt) {
+                        switch (itemKey) {
                             case "delete" :
                                 DeleteService.deleteControl(opt.$trigger[0]);
                                 break;
@@ -333,17 +295,13 @@ export default {
                 $.contextMenu({
                     selector: ".selected-control",
                     items: {
-                        "option": {
-                            name: "Option",
-                            icon: "edit"
-                        },
                         "delete": {
                             name: "Delete",
                             icon: "ic-delete"
                         },
                     },
-                    callback: function(itemKey, opt) {
-                        switch (itemKey){
+                    callback: function (itemKey, opt) {
+                        switch (itemKey) {
                             case "delete" :
                                 DeleteService.deleteControl(opt.$trigger[0]);
                                 break;
@@ -355,17 +313,13 @@ export default {
                 $.contextMenu({
                     selector: ".selected-control",
                     items: {
-                        "option": {
-                            name: "Option",
-                            icon: "edit"
-                        },
                         "delete": {
                             name: "Delete",
                             icon: "ic-delete"
                         },
                     },
-                    callback: function(itemKey, opt) {
-                        switch (itemKey){
+                    callback: function (itemKey, opt) {
+                        switch (itemKey) {
                             case "delete" :
                                 DeleteService.deleteControl(opt.$trigger[0]);
                                 break;
@@ -377,17 +331,13 @@ export default {
                 $.contextMenu({
                     selector: ".selected-control",
                     items: {
-                        "option": {
-                            name: "Option",
-                            icon: "edit"
-                        },
                         "delete": {
                             name: "Delete",
                             icon: "ic-delete"
                         },
                     },
-                    callback: function(itemKey, opt) {
-                        switch (itemKey){
+                    callback: function (itemKey, opt) {
+                        switch (itemKey) {
                             case "delete" :
                                 DeleteService.deleteControl(opt.$trigger[0]);
                                 break;
@@ -399,17 +349,13 @@ export default {
                 $.contextMenu({
                     selector: ".selected-control",
                     items: {
-                        "option": {
-                            name: "Option",
-                            icon: "edit"
-                        },
                         "delete": {
                             name: "Delete",
                             icon: "ic-delete"
                         },
                     },
-                    callback: function(itemKey, opt) {
-                        switch (itemKey){
+                    callback: function (itemKey, opt) {
+                        switch (itemKey) {
                             case "delete" :
                                 DeleteService.deleteControl(opt.$trigger[0]);
                                 break;
@@ -421,17 +367,13 @@ export default {
                 $.contextMenu({
                     selector: ".selected-control",
                     items: {
-                        "option": {
-                            name: "Option",
-                            icon: "edit"
-                        },
                         "delete": {
                             name: "Delete",
                             icon: "ic-delete"
                         },
                     },
-                    callback: function(itemKey, opt) {
-                        switch (itemKey){
+                    callback: function (itemKey, opt) {
+                        switch (itemKey) {
                             case "delete" :
                                 DeleteService.deleteControl(opt.$trigger[0]);
                                 break;
@@ -443,17 +385,13 @@ export default {
                 $.contextMenu({
                     selector: ".selected-control",
                     items: {
-                        "option": {
-                            name: "Option",
-                            icon: "edit"
-                        },
                         "delete": {
                             name: "Delete",
                             icon: "ic-delete"
                         },
                     },
-                    callback: function(itemKey, opt) {
-                        switch (itemKey){
+                    callback: function (itemKey, opt) {
+                        switch (itemKey) {
                             case "delete" :
                                 DeleteService.deleteControl(opt.$trigger[0]);
                                 break;
@@ -465,17 +403,13 @@ export default {
                 $.contextMenu({
                     selector: ".selected-control",
                     items: {
-                        "option": {
-                            name: "Option",
-                            icon: "edit"
-                        },
                         "delete": {
                             name: "Delete",
                             icon: "ic-delete"
                         },
                     },
-                    callback: function(itemKey, opt) {
-                        switch (itemKey){
+                    callback: function (itemKey, opt) {
+                        switch (itemKey) {
                             case "delete" :
                                 DeleteService.deleteControl(opt.$trigger[0]);
                                 break;
@@ -487,17 +421,13 @@ export default {
                 $.contextMenu({
                     selector: ".selected-control",
                     items: {
-                        "option": {
-                            name: "Option",
-                            icon: "edit"
-                        },
                         "delete": {
                             name: "Delete",
                             icon: "ic-delete"
                         },
                     },
-                    callback: function(itemKey, opt) {
-                        switch (itemKey){
+                    callback: function (itemKey, opt) {
+                        switch (itemKey) {
                             case "delete" :
                                 DeleteService.deleteControl(opt.$trigger[0]);
                                 break;
@@ -509,17 +439,13 @@ export default {
                 $.contextMenu({
                     selector: ".selected-control",
                     items: {
-                        "option": {
-                            name: "Option",
-                            icon: "edit"
-                        },
                         "delete": {
                             name: "Delete",
                             icon: "ic-delete"
                         },
                     },
-                    callback: function(itemKey, opt) {
-                        switch (itemKey){
+                    callback: function (itemKey, opt) {
+                        switch (itemKey) {
                             case "delete" :
                                 DeleteService.deleteControl(opt.$trigger[0]);
                                 break;
@@ -531,17 +457,13 @@ export default {
                 $.contextMenu({
                     selector: ".selected-control",
                     items: {
-                        "option": {
-                            name: "Option",
-                            icon: "edit"
-                        },
                         "delete": {
                             name: "Delete",
                             icon: "ic-delete"
                         },
                     },
-                    callback: function(itemKey, opt) {
-                        switch (itemKey){
+                    callback: function (itemKey, opt) {
+                        switch (itemKey) {
                             case "delete" :
                                 DeleteService.deleteControl(opt.$trigger[0]);
                                 break;
@@ -553,10 +475,6 @@ export default {
                 $.contextMenu({
                     selector: ".selected-control",
                     items: {
-                        "option": {
-                            name: "Option",
-                            icon: "edit"
-                        },
                         "addChildButton": {
                             name: "Add Child Button",
                             icon: "edit"
@@ -566,8 +484,8 @@ export default {
                             icon: "ic-delete"
                         },
                     },
-                    callback: function(itemKey, opt) {
-                        switch (itemKey){
+                    callback: function (itemKey, opt) {
+                        switch (itemKey) {
                             case "delete" :
                                 DeleteService.deleteControl(opt.$trigger[0]);
                                 break;
@@ -580,7 +498,7 @@ export default {
         }
     },
 
-    destroyContextMenu(){
+    destroyContextMenu() {
         $.contextMenu('destroy');
     }
 }
