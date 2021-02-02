@@ -56,9 +56,10 @@ const mobileDesignerToIDE = (message) => {
                 uniqueId: message.data.uniqueId
             }
             break;
+        case "multi_command" :
+            break;
     }
     console.log(obj);
-
     // eslint-disable-next-line no-undef
     chromiumObject.mobileDesignerToIDE(obj); //실제 IDE 데이터 전송 로직
 };

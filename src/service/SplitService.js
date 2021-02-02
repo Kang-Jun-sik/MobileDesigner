@@ -4,7 +4,6 @@ import SelectService from "@/service/SelectService";
 import CreateService from "@/service/CreateService";
 import DeleteService from "@/service/DeleteService";
 import ChangeService from "@/service/ChangeService";
-import mobileDesignerToIDE from "@/utils/mobileDesignerToIDE";
 
 export default {
     verticalSplit(target) {
@@ -30,19 +29,16 @@ export default {
     setSplit(target) {
         DeleteService.sendDeleteMessage(target);
         DeleteService.reArrangeDelete(target);
-
         // 분할을 위한 AreaPanel extend 후, target과 area.$el를 replaceWith 실행
         const areaPanel = CreateService.addComponent('AreaPanel');
         store.commit('ADD_ITEM', areaPanel);
         const areaPanelElement = areaPanel.$el;
         target.replaceWith(areaPanelElement);
-        //CreateService.sendCreateMessage(areaPanelElement);
 
         for (let i = 0; i < 2; i++) {
             let item = CreateService.addComponent('AreaItem');
             areaPanelElement.appendChild(item.$el);
             store.commit('ADD_ITEM', item);
-            //CreateService.sendCreateMessage(item.$el);
         }
 
         // 왼쪽 item에 target(box 혹은 tabs) appendChild (default)
