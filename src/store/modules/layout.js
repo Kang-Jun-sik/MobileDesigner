@@ -9,7 +9,7 @@ export default {
             'btn-save': false,
             'btn-add': false,
             'btn-delete': false,
-            'btn-search': false,
+            'btn-search': false
         },
     },
     getters: {

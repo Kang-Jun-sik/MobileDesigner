@@ -60,8 +60,8 @@ export default {
         try {
             const layoutTarget = eventTarget.classList.contains('dews-layout-component') ? eventTarget : findLayoutTarget(eventTarget);
             const UID = layoutTarget.getAttribute('uid');
-            const MAINBUTTONS = store.state.layout.mainButtonList[UID];
-            if (MAINBUTTONS) store.commit('setMainButtons', MAINBUTTONS);
+            const MAIN_BUTTONS = store.state.layout.mainButtonList[UID];
+            if (MAIN_BUTTONS) store.commit('setMainButtons', MAIN_BUTTONS);
         } catch (e) {
             // 메인버튼 클릭시 에러 발생 element 를 찾을수 없어서 발생..!
         }

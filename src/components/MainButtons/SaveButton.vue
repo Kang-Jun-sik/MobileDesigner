@@ -1,5 +1,5 @@
 <template>
-  <div :uid="uid" v-if="mainButtons.save" class="dews-mobile-save dews-mobile-component"></div>
+  <div :uid="uid" v-show="mainButtons['btn-save']" class="dews-mobile-save dews-mobile-component"></div>
 </template>
 
 <script>
