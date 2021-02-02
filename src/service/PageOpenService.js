@@ -35,6 +35,8 @@ import {
     ContainerContent
 } from '@/utils/exports'
 import ChangeService from "@/service/ChangeService";
+import DeleteService from "@/service/DeleteService";
+import mobileDesignerToIDE from "@/utils/mobileDesignerToIDE";
 
 export default {
     /*
@@ -74,8 +76,18 @@ export default {
     * Set attribute from IDE
     * */
     setAttributeFromIDE(instance, control) {
-        const attr = instance.attributes;
-        console.log(attr, control)
+        const attrs = instance.attributes;
+
+        for (let attr of attrs) {
+            if (!attr.name || attr.name === "uid") continue;
+
+            const parseValue = attr.value === "true" || attr.value === "false";
+            if (attr.name.includes('btn')) {
+                control.mainButtons[attr.name] = attr.value;
+            } else {
+                control[attr.name] = parseValue ? JSON.parse(attr.value) : attr.value;
+            }
+        }
     },
 
     /*
@@ -86,8 +98,6 @@ export default {
         const control = PageOpenService.createControlFromData(instance);
         const controlUid = control.uid;
         const parentDataUid = parent.dataUid ? parent.dataUid : '';
-
-        PageOpenService.setAttributeFromIDE(instance, control);
 
         let addComponent;
         switch (parent.controlType) {
@@ -126,6 +136,7 @@ export default {
         } else {
             parent.$el.appendChild(addComponent);
         }
+        PageOpenService.setAttributeFromIDE(instance, control);
 
         return controlUid;
     },
@@ -152,13 +163,23 @@ export default {
         if (oneChildList.includes(node.tagName)) {
             controlChild = findChild(node.tagName, parent.$children);
             controlChild.uid = node.getAttribute('uid');
-            instanceUid = controlChild.uid;
             store.commit('addItem', controlChild);
+
+            if (node.tagName === 'numerictextbox-button' && !parent.showNumericButton) {
+                mobileDesignerToIDE({
+                    commandType: 'delete',
+                    elm: controlChild.$el,
+                    parentUID: parent.uid
+                });
+            }
+            instanceUid = controlChild.uid;
+            PageOpenService.setAttributeFromIDE(instance, controlChild);
         } else if (multiChildList.includes(node.tagName)) {
             controlChild = findChild(node.tagName, parent.$children);
             if (parent.checkChild) {
                 controlChild.uid = node.getAttribute('uid');
                 instanceUid = controlChild.uid;
+
                 if (node.tagName === 'dews-tab') {
                     store.commit('setTab', {
                         tabsUid: parent.uid,
@@ -167,7 +188,6 @@ export default {
                 }
                 parent.checkChild = false;
                 store.commit('addItem', controlChild);
-
                 PageOpenService.setAttributeFromIDE(instance, controlChild);
             } else {
                 instanceUid = PageOpenService.controlParsing(instance, parent);
