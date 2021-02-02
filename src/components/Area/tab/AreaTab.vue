@@ -40,10 +40,10 @@ export default {
       uid: this.uid,
       mainButtons: this.mainButtons
     }
-    store.commit('setMainButtonList', this.mainButtonList)
+    store.commit('SET_MAIN_BUTTON_LIST', this.mainButtonList)
 
     this.$nextTick(() => {
-      store.commit('addItem', this);
+      store.commit('ADD_ITEM', this);
     });
   },
   mounted() {
@@ -52,7 +52,7 @@ export default {
     if (this.controlChild) {
       this.active = 'active';
       this.parentUid = this.$el.closest('.dews-tabs-wrap').getAttribute('uid');
-      store.commit('setTab', {
+      store.commit('SET_TAB', {
         tabsUid: this.parentUid,
         tabData: { tab: this },
       });

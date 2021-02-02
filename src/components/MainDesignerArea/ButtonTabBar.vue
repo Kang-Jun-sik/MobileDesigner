@@ -24,14 +24,14 @@
       return {}
     },
     mounted() {
-      this.$store.commit('addItem', this.$refs.addButton);
-      this.$store.commit('addItem', this.$refs.searchButton);
-      this.$store.commit('addItem', this.$refs.deleteButton);
-      this.$store.commit('addItem', this.$refs.saveButton);
+      this.$store.commit('ADD_ITEM', this.$refs.addButton);
+      this.$store.commit('ADD_ITEM', this.$refs.searchButton);
+      this.$store.commit('ADD_ITEM', this.$refs.deleteButton);
+      this.$store.commit('ADD_ITEM', this.$refs.saveButton);
     },
     computed: {
       ...mapGetters({
-        mobileLayout: "mobileSize"
+        mobileLayout: "getMobileSize"
       })
     },
   }

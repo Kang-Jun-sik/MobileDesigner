@@ -27,7 +27,7 @@ export default {
     this.uid = CreateService.createUid('numerictextbox-button');
 
     this.$nextTick(() => {
-      store.commit('addItem', this);
+      store.commit('ADD_ITEM', this);
     });
   },
   methods: {

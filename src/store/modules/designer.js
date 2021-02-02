@@ -10,10 +10,10 @@ export default {
     getters: {},
     actions: {},
     mutations: {
-        setDesigner(state, payload) {
+        SET_DESIGNER(state, payload) {
             state.mainDesigner = payload;
         },
-        setControlList(state, payload) {
+        SET_CONTROL_LIST(state, payload) {
             let name = payload.name;
             state[name] = payload.control;
         },

@@ -22,7 +22,7 @@ export default {
       name: 'datasourceArea',
       control: document.querySelector('#datasourceArea')
     }
-    this.$store.commit('setControlList', datasourceArea);
+    this.$store.commit('SET_CONTROL_LIST', datasourceArea);
   },
 }
 </script>

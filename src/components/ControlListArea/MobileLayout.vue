@@ -41,7 +41,7 @@ export default {
       }
 
       // Vuex에 Layout Style Commit
-      this.$store.commit('setLayout', layout);
+      this.$store.commit('SET_LAYOUT', layout);
 
       // click된 Layout class on 추가 및 나머지 Layout off class 추가
       for (let key in this.chkLayout) {

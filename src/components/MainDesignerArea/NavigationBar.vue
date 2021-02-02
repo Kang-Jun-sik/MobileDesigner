@@ -32,7 +32,7 @@
     },
     computed: {
       ...mapGetters({
-        mobileLayout: "mobileSize"
+        mobileLayout: "getMobileSize"
       })
     },
   }

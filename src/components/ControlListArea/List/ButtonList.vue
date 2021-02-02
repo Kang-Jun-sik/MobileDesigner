@@ -34,7 +34,7 @@ export default {
       name: 'buttonList',
       control: document.querySelector('#buttonList')
     }
-    this.$store.commit('setControlList', buttonList);
+    this.$store.commit('SET_CONTROL_LIST', buttonList);
   }
 }
 </script>

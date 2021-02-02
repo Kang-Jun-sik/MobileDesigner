@@ -84,6 +84,9 @@ export default {
             const parseValue = attr.value === "true" || attr.value === "false";
             if (attr.name.includes('btn')) {
                 control.mainButtons[attr.name] = attr.value;
+            } else if (attr.name === 'col') {
+                control.col = attr.value;
+                control.colClass ? control.colClass = `col-fd-${attr.value}` : null;
             } else {
                 control[attr.name] = parseValue ? JSON.parse(attr.value) : attr.value;
             }
@@ -103,7 +106,7 @@ export default {
         switch (parent.controlType) {
             case 'tabs':
                 addComponent = control.$el;
-                store.commit('setTab', {
+                store.commit('SET_TAB', {
                     tabsUid: parent.uid,
                     tabData: { tab: control }
                 });
@@ -163,7 +166,7 @@ export default {
         if (oneChildList.includes(node.tagName)) {
             controlChild = findChild(node.tagName, parent.$children);
             controlChild.uid = node.getAttribute('uid');
-            store.commit('addItem', controlChild);
+            store.commit('ADD_ITEM', controlChild);
 
             if (node.tagName === 'numerictextbox-button' && !parent.showNumericButton) {
                 mobileDesignerToIDE({
@@ -181,13 +184,13 @@ export default {
                 instanceUid = controlChild.uid;
 
                 if (node.tagName === 'dews-tab') {
-                    store.commit('setTab', {
+                    store.commit('SET_TAB', {
                         tabsUid: parent.uid,
                         tabData: { tab: controlChild }
                     });
                 }
                 parent.checkChild = false;
-                store.commit('addItem', controlChild);
+                store.commit('ADD_ITEM', controlChild);
                 PageOpenService.setAttributeFromIDE(instance, controlChild);
             } else {
                 instanceUid = PageOpenService.controlParsing(instance, parent);
@@ -304,7 +307,7 @@ export default {
         instance = new instance().$mount();
         instance.uid = uid;
         instance.$el.setAttribute('uid', uid);
-        store.commit('addItem', instance);
+        store.commit('ADD_ITEM', instance);
 
         return instance;
     },

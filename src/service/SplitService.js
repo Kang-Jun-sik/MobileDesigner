@@ -33,7 +33,7 @@ export default {
 
         // 분할을 위한 AreaPanel extend 후, target과 area.$el를 replaceWith 실행
         const areaPanel = CreateService.addComponent('AreaPanel');
-        store.commit('addItem', areaPanel);
+        store.commit('ADD_ITEM', areaPanel);
         const areaPanelElement = areaPanel.$el;
         target.replaceWith(areaPanelElement);
         CreateService.sendCreateMessage(areaPanelElement);
@@ -41,7 +41,7 @@ export default {
         for (let i = 0; i < 2; i++) {
             let item = CreateService.addComponent('AreaItem');
             areaPanelElement.appendChild(item.$el);
-            store.commit('addItem', item);
+            store.commit('ADD_ITEM', item);
             CreateService.sendCreateMessage(item.$el);
         }
 
@@ -68,7 +68,7 @@ export default {
         const parentElement = target.parentElement;
         const addItem = CreateService.addComponent('AreaItem');
         parentElement.appendChild(addItem.$el);
-        store.commit('addItem', addItem);
+        store.commit('ADD_ITEM', addItem);
         CreateService.sendCreateMessage(addItem.$el);
 
         const childElement = Array.from(parentElement.children);

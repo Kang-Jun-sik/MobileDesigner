@@ -26,7 +26,7 @@ export default {
   },
   computed: {
     ...mapGetters({
-      designerLayout: "designerSize"
+      designerLayout: "getDesignerSize"
     })
   },
 }

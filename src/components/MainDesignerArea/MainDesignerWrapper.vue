@@ -23,12 +23,12 @@ export default {
     return {}
   },
   mounted() {
-    this.$store.commit('setDesigner', this.$refs.mainDesigner);
-    this.$store.commit('addItem', this.$refs.mainDesigner);
+    this.$store.commit('SET_DESIGNER', this.$refs.mainDesigner);
+    this.$store.commit('ADD_ITEM', this.$refs.mainDesigner);
   },
   computed: {
     ...mapGetters({
-      designerWrapperLayout: "wrapperSize"
+      designerWrapperLayout: "getWrapperSize"
     })
   },
 }

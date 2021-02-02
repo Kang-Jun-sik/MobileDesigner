@@ -9,7 +9,7 @@ export default {
     },
     actions: {},
     mutations: {
-        setTab(state, payload) {
+        SET_TAB(state, payload) {
             if (state.tabList[payload.tabsUid]) {
                 state.tabList[payload.tabsUid].push(payload.tabData);
             } else {

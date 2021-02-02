@@ -48,7 +48,7 @@ export default {
   created() {
     this.uid = CreateService.createUid('dews-list-container');
     this.dataUid = CreateService.createUid('list-field');
-    store.commit('matchUid', {'uid': this.uid, 'dataUid': this.dataUid});
+    store.commit('MATCH_UID', {'uid': this.uid, 'dataUid': this.dataUid});
   },
   mounted() {
     window.drake.containers.push(this.$refs.listContainerField);

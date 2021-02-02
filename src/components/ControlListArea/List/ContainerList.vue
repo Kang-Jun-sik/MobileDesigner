@@ -35,7 +35,7 @@
         name: 'containerList',
         control: document.querySelector('#containerList')
       }
-      this.$store.commit('setControlList', containerList);
+      this.$store.commit('SET_CONTROL_LIST', containerList);
     }
   }
 </script>

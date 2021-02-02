@@ -37,7 +37,7 @@
         name: 'etcList',
         control: document.querySelector('#etcList')
       }
-      this.$store.commit('setControlList', etcList);
+      this.$store.commit('SET_CONTROL_LIST', etcList);
     }
   }
 </script>

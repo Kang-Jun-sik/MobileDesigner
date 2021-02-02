@@ -32,7 +32,7 @@
         name: 'areaList',
         control: document.querySelector('#areaList')
       }
-      this.$store.commit('setControlList', areaList);
+      this.$store.commit('SET_CONTROL_LIST', areaList);
     }
   }
 </script>

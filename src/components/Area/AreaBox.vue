@@ -45,13 +45,13 @@ export default {
   created() {
     this.uid = CreateService.createUid('dews-box');
     this.dataUid = CreateService.createUid('box-content');
-    store.commit('matchUid', {'uid': this.uid, 'dataUid': this.dataUid});
+    store.commit('MATCH_UID', {'uid': this.uid, 'dataUid': this.dataUid});
 
     this.mainButtonList = {
       uid: this.uid,
       mainButtons: this.mainButtons
     }
-    store.commit('setMainButtonList', this.mainButtonList)
+    store.commit('SET_MAIN_BUTTON_LIST', this.mainButtonList)
   },
   mounted() {
     window.drake.containers.push(this.$refs.boxContent);

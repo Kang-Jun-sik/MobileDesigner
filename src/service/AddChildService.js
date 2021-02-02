@@ -6,7 +6,7 @@ export default {
         const $tabsContent = element.querySelector(`[data-type='tabs']`);
         const tab = CreateService.addComponent('AreaTab');
         $tabsContent.appendChild(tab.$el);
-        store.commit('setTab', {
+        store.commit('SET_TAB', {
             tabsUid: element.getAttribute('uid'),
             tabData: {
                 tab: tab

@@ -7,28 +7,28 @@ export default {
         dragulaUid: {},
     },
     getters: {
-        items(state) {
+        getItems(state) {
             return state.items;
         },
-        undoItems(state){
+        getUndoItems(state){
             return state.undoItems;
         },
-        redoItems(state){
+        getRedoItems(state){
             return state.redoItems;
         },
     },
     actions: {},
     mutations: {
-        addItem(state, item) {
+        ADD_ITEM(state, item) {
             state.items.push(item);
         },
-        addUndoItem(state, item) {
+        ADD_UNDO_ITEM(state, item) {
             state.undoItems.push(item);
         },
-        addRedoItem(state,item){
+        ADD_REDO_ITEM(state,item){
             state.redoItems.push(item);
         },
-        matchUid(state, payload) {
+        MATCH_UID(state, payload) {
             state.dragulaUid[payload.uid] = payload.dataUid;
         },
     }

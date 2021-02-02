@@ -13,13 +13,13 @@ export default {
         },
     },
     getters: {
-        wrapperSize(state) {
+        getWrapperSize(state) {
             return state.designerWrapperLayout;
         },
-        designerSize(state) {
+        getDesignerSize(state) {
             return state.designerLayout;
         },
-        mobileSize(state) {
+        getMobileSize(state) {
             return state.mobileLayout;
         },
 
@@ -29,16 +29,16 @@ export default {
     },
     actions: {},
     mutations: {
-        setLayout(state, payload) {
+        SET_LAYOUT(state, payload) {
             state.designerWrapperLayout = 'designer-wrapper-' + payload;
             state.designerLayout = 'designer-' + payload;
             state.mobileLayout = payload;
         },
 
-        setMainButtonList(state, payload) {
+        SET_MAIN_BUTTON_LIST(state, payload) {
             state.mainButtonList[payload.uid] = payload.mainButtons;
         },
-        setMainButtons(state, payload) {
+        SET_MAIN_BUTTONS(state, payload) {
             state.mainButtons = payload;
         },
     }

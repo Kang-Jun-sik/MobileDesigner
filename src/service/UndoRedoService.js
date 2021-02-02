@@ -3,7 +3,7 @@ import DeleteService from "@/service/DeleteService";
 
 export default {
     addUndoItem(undoItem) {
-        store.commit('addUndoItem', undoItem);
+        store.commit('ADD_UNDO_ITEM', undoItem);
     },
     addRedoItem() {
 
@@ -29,7 +29,7 @@ export default {
                 parentUid = item.parentUid;
                 parent = store.state.component.items.find(item => item.uid === parentUid);
                 if (parent){
-                    store.commit('addItem', item.data);
+                    store.commit('ADD_ITEM', item.data);
                     parent.$el.appendChild(item.data.$el);
                 }
                 break;

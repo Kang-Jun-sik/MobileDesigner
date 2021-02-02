@@ -36,7 +36,7 @@ export default {
       name: 'pickerList',
       control: document.querySelector('#pickerList')
     }
-    this.$store.commit('setControlList', pickerList);
+    this.$store.commit('SET_CONTROL_LIST', pickerList);
   }
 }
 </script>

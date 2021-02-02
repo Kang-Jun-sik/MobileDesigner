@@ -101,7 +101,7 @@ export default {
         } else {
           element.replaceWith(component.$el);
         }
-        store.commit('addItem', component);
+        store.commit('ADD_ITEM', component);
 
         CreateService.sendCreateMessage(component.$el);
         if (component.hasChildControl) {
@@ -118,7 +118,7 @@ export default {
     * */
     setControlChild(component) {
       Array.from(component.$children).forEach(child => {
-        store.commit('addItem', child);
+        store.commit('ADD_ITEM', child);
         if (child.$children) {
           this.setControlChild(child);
         }
