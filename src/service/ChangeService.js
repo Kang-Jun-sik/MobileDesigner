@@ -177,16 +177,16 @@ export default {
                 component.setHide(value);
                 break;
             case 'UseAdd':
-                component.setUseAdd(value);
+                component.setBtnAdd(value);
                 break;
             case 'UseSearch':
-                component.setUseSearch(value);
+                component.setBtnSearch(value);
                 break;
             case 'UseDelete':
-                component.setUseDelete(value);
+                component.setBtnDelete(value);
                 break;
             case 'UseSave':
-                component.setUseSave(value);
+                component.setBtnSave(value);
                 break;
         }
     },
@@ -223,16 +223,16 @@ export default {
                 component.setHide(value);
                 break;
             case 'UseAdd':
-                component.setUseAdd(value);
+                component.setBtnAdd(value);
                 break;
             case 'UseSearch':
-                component.setUseSearch(value);
+                component.setBtnSearch(value);
                 break;
             case 'UseDelete':
-                component.setUseDelete(value);
+                component.setBtnDelete(value);
                 break;
             case 'UseSave':
-                component.setUseSave(value);
+                component.setBtnSave(value);
                 break;
         }
     },

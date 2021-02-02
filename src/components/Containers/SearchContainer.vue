@@ -69,6 +69,9 @@ export default {
 .dews-box-content-wrap {
   min-height: 40px;
 }
+.dews-search-field{
+  padding: 0 17px 6px;
+}
 
 // DFD용 scss 추가
 .dews-search-field {

@@ -35,10 +35,10 @@ export default {
       collapsed: true,
       hide: false,
       mainButtons: {
-        save: true,
-        add: true,
-        delete: true,
-        search: true,
+        'btn-save': true,
+        'btn-add': true,
+        'btn-delete': true,
+        'btn-search': true,
       }
     }
   },
@@ -85,27 +85,18 @@ export default {
 
       setTimeout(SelectService.setPosition, 10, box);
     },
-
-    setUseAdd(value) {
-      value = JSON.parse(value);
-      value ? this.mainButtons.add = true : this.mainButtons.add = false;
+    setBtnAdd(value) {
+      this.mainButtons['btn-add'] = JSON.parse(value);
     },
-
-    setUseSearch(value) {
-      value = JSON.parse(value);
-      value ? this.mainButtons.search = true : this.mainButtons.search = false;
+    setBtnSearch(value) {
+      this.mainButtons['btn-search'] = JSON.parse(value);
     },
-
-    setUseDelete(value) {
-      value = JSON.parse(value);
-      value ? this.mainButtons.delete = true : this.mainButtons.delete = false;
+    setBtnDelete(value) {
+      this.mainButtons['btn-delete'] = JSON.parse(value);
     },
-
-    setUseSave(value) {
-      value = JSON.parse(value);
-      value ? this.mainButtons.save = true : this.mainButtons.save = false;
+    setBtnSave(value) {
+      this.mainButtons['btn-save'] = JSON.parse(value);
     },
-
     onToggleClick: function (e) {
       e.stopPropagation();
       this.setCollapsed(!this.collapsed);
