@@ -13,20 +13,20 @@ export default {
     getContextMenu(instance) {
         switch (instance.classList[0]) {
             case "main-designer" :
+                /*
                 $.contextMenu({
                     selector: ".selected-control",
                     items: {
-                        /*
                         "edit": {
                             name: "mainDesignerOption",
                             icon: "edit"
                         },
-                         */
                     },
                     callback: function (itemKey, opt) {
                         console.log(itemKey);
                     }
                 });
+                 */
                 break;
             case "dews-mobile-item":
                 $.contextMenu({

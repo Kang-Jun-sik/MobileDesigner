@@ -36,13 +36,13 @@ export default {
         store.commit('ADD_ITEM', areaPanel);
         const areaPanelElement = areaPanel.$el;
         target.replaceWith(areaPanelElement);
-        CreateService.sendCreateMessage(areaPanelElement);
+        //CreateService.sendCreateMessage(areaPanelElement);
 
         for (let i = 0; i < 2; i++) {
             let item = CreateService.addComponent('AreaItem');
             areaPanelElement.appendChild(item.$el);
             store.commit('ADD_ITEM', item);
-            CreateService.sendCreateMessage(item.$el);
+            //CreateService.sendCreateMessage(item.$el);
         }
 
         // 왼쪽 item에 target(box 혹은 tabs) appendChild (default)
@@ -50,7 +50,7 @@ export default {
         areaItem.appendChild(target);
         SelectService.setPosition(target);
 
-        CreateService.sendCreateMessage(target);
+        CreateService.sendCreateMessage(areaPanelElement);
         CreateService.reArrangeCreate(target);
     },
 
