@@ -31,6 +31,8 @@ import {
     ButtonGroup,
     RadioButtonGroup,
     CheckBoxGroup,
+    CardList,
+    CardListField,
     Datasource
 } from '@/utils/exports'
 
@@ -178,6 +180,12 @@ export default {
                 break;
             case 'CheckBoxGroup':
                 component = Vue.extend(CheckBoxGroup);
+                break;
+            case 'CardList':
+                component = Vue.extend(CardList);
+                break;
+            case 'Card':
+                component = Vue.extend(CardListField);
                 break;
             case 'Datasource':
                 component = Vue.extend(Datasource);

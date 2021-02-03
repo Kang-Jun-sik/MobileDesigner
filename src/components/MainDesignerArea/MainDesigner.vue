@@ -35,7 +35,7 @@ export default {
 <style lang="scss" scoped>
   .main-designer {
     position: relative;
-    padding: 12px 5px 5px 9px;
+    padding: 12px 6px 5px 9px;
     background-color: #efeff4;
     overflow-y: scroll;
   }

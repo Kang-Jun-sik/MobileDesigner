@@ -57,10 +57,22 @@ export default {
     selectControl(eventTarget) {
         const target = eventTarget.classList.contains('dews-mobile-component') ? eventTarget : findTarget(eventTarget);
         try {
-            const layoutTarget = eventTarget.classList.contains('dews-layout-component') ? eventTarget : findLayoutTarget(eventTarget);
-            const UID = layoutTarget.getAttribute('uid');
-            const MAIN_BUTTONS = store.state.layout.mainButtonList[UID];
-            if (MAIN_BUTTONS) store.commit('SET_MAIN_BUTTONS', MAIN_BUTTONS);
+            if (eventTarget.classList.contains('main-designer')) {
+                store.state.designer.navigationBar.title = '';
+                store.commit('SET_MAIN_BUTTONS', {
+                    'btn-save': false,
+                    'btn-add': false,
+                    'btn-delete': false,
+                    'btn-search': false
+                });
+            } else {
+                const layoutTarget = eventTarget.classList.contains('dews-layout-component') ? eventTarget : findLayoutTarget(eventTarget);
+                const uid = layoutTarget.getAttribute('uid');
+                const mainButtons = store.state.layout.mainButtonList[uid];
+
+                store.state.designer.navigationBar.title = store.getters.getNavigationBarTitleList(uid);
+                store.commit('SET_MAIN_BUTTONS', mainButtons);
+            }
         } catch (e) {
             // 메인버튼 클릭시 에러 발생 element 를 찾을수 없어서 발생..!
         }

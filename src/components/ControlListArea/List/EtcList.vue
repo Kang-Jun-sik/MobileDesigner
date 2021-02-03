@@ -22,13 +22,15 @@
     data() {
       return {
         etcControl: {
+          cardlist: 'CardList',
+          card: 'Card',
           datasource: 'Datasource',
-          messageBox: 'Message box',
-          snackBar: 'Snack Bar',
-          tooltipBox: 'Tooltip',
-          loadingBox: 'Loading',
-          progressBar: 'Progress Bar',
-          slider: 'Slider'
+          // messageBox: 'Message box',
+          // snackBar: 'Snack Bar',
+          // tooltipBox: 'Tooltip',
+          // loadingBox: 'Loading',
+          // progressBar: 'Progress Bar',
+          // slider: 'Slider'
         }
       }
     },

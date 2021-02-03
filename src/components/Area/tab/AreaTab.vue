@@ -36,6 +36,11 @@ export default {
   created() {
     this.uid = CreateService.createUid('dews-tab');
 
+    store.commit('SET_NAVIGATION_BAR_TITLE_LIST', {
+      uid: this.uid,
+      title: this.title
+    });
+
     this.mainButtonList = {
       uid: this.uid,
       mainButtons: this.mainButtons
@@ -64,6 +69,11 @@ export default {
     },
     setTitle(value) {
       this.title = value;
+      store.commit('SET_NAVIGATION_BAR_TITLE_LIST', {
+        uid: this.uid,
+        title: value
+      });
+      store.state.designer.navigationBar.title = store.getters.getNavigationBarTitleList(this.uid);
     },
     setHide(value) {
       value = JSON.parse(value);

@@ -21,21 +21,25 @@
 </template>
 
 <script>
-  import { mapGetters } from "vuex";
+import store from "@/store/index";
+import { mapGetters } from "vuex";
 
-  export default {
-    name: 'navigation-bar',
-    data() {
-      return {
-        title: 'Navigation Bar',
-      }
-    },
-    computed: {
-      ...mapGetters({
-        mobileLayout: "getMobileSize"
-      })
-    },
-  }
+export default {
+  name: 'navigation-bar',
+  data() {
+    return {
+      title: '',
+    }
+  },
+  mounted() {
+    store.commit('SET_NAVIGATION_BAR', this);
+  },
+  computed: {
+    ...mapGetters({
+      mobileLayout: "getMobileSize",
+    })
+  },
+}
 </script>
 
 <style lang="scss" scoped>
@@ -80,7 +84,7 @@
           display: inline-block;
           width: 24px;
           height: 24px;
-          margin: 10px 10px 10px 25px;
+          margin: 11px 10px 10px 25px;
           object-fit: contain;
           background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAGKADAAQAAAABAAAAGAAAAADB/VeXAAAAwUlEQVRIDe2UbQ6DIAyGBXaA3WSME2wn3y5AUm+yCwBaM4gl2DRG/hj9Y6TlffrxxmG4ntNPQLU6tNbejTEfjHnvn60c6ZmuE1fiNqXULKC+w30TQCU+xhhf3GVJrFTYEgeAn0SEy1kAvcQRrHqKLwDnHCilHlybghhsuY0sWSDUTOHcdkOnaK2//y4ghPA+Yrm5krLkXhBi0x6QAsCW0FFHQ8iScfa4k3lpI/Ly/yjPc8+bAFBgDeHcsQd23TnpBCYMSHyrjZL2CAAAAABJRU5ErkJggg==');
         }

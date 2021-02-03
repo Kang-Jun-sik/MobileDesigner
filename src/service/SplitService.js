@@ -72,7 +72,7 @@ export default {
             let splitItem = store.state.component.items.find(item => {
                 return item.uid === child.getAttribute('uid');
             })
-            splitItem.col = 'col-fd-4';
+            splitItem.col = '4';
             ChangeService.sendChangeMessage('col', '4', splitItem.uid);
         });
     },
@@ -94,10 +94,10 @@ export default {
 
         store.state.component.items.forEach(item => {
             if (item.uid === targetParentItem.getAttribute('uid')) {
-                item.col = 'col-fd-8';
+                item.col = '8';
                 ChangeService.sendChangeMessage('col', '8', item.uid);
             } else if (item.uid === parentSiblingItem.getAttribute('uid')) {
-                item.col = 'col-fd-4';
+                item.col = '4';
                 ChangeService.sendChangeMessage('col', '4', item.uid);
             }
         });

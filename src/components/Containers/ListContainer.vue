@@ -12,7 +12,6 @@
       <div class="dews-list-field">
         <ul class="list-container-field list-field" ref="listContainerField"
           :data-uid="dataUid" data-type="container">
-          <dews-cardlist></dews-cardlist>
         </ul>
       </div>
     </container-content>
@@ -24,12 +23,11 @@ import store from "@/store/index";
 import ContainerButton from "@/components/Containers/container/ContainerButton";
 import ContainerSummary from "@/components/Containers/container/ContainerSummary";
 import ContainerContent from "@/components/Containers/container/ContainerContent";
-import DewsCardlist from "@/components/Controls/DewsCardList";
 import CreateService from "@/service/CreateService";
 
 export default {
   name: 'dews-list-container',
-  components: {DewsCardlist, ContainerButton, ContainerSummary, ContainerContent},
+  components: {ContainerButton, ContainerSummary, ContainerContent},
   data() {
     return {
       uid: '',
@@ -48,7 +46,7 @@ export default {
   created() {
     this.uid = CreateService.createUid('dews-list-container');
     this.dataUid = CreateService.createUid('list-field');
-    store.commit('MATCH_UID', {'uid': this.uid, 'dataUid': this.dataUid});
+    store.commit('MATCH_UID', { 'uid': this.uid, 'dataUid': this.dataUid });
   },
   mounted() {
     window.drake.containers.push(this.$refs.listContainerField);
@@ -68,4 +66,12 @@ export default {
 @import 'node_modules/@dews/dews-mobile-style/scss/variables/variables';
 @import 'node_modules/@dews/dews-mobile-style/scss/mixins/_mixins';
 @include dews-container-list();
+
+// DFD용 scss 추가
+.dews-list-field {
+  padding: 0 17px 6px;
+}
+.list-container-field {
+  min-height: 20px;
+}
 </style>

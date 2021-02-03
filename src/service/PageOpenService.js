@@ -19,7 +19,6 @@ import {
     CheckBox,
     RadioButton,
     NumericTextBox,
-    NumericTextBoxButton,
     MaskTextBox,
     DatePicker,
     MonthPicker,
@@ -35,6 +34,8 @@ import {
     FormSection,
     ContainerButton,
     ContainerContent,
+    CardList,
+    CardListField,
     Datasource
 } from '@/utils/exports'
 
@@ -303,6 +304,12 @@ export default {
                 break;
             case 'dropdownbutton-childbutton':
                 instance = Vue.extend(ChildButton);
+                break;
+            case 'dews-cardlist':
+                instance = Vue.extend(CardList);
+                break;
+            case 'cardlist-field':
+                instance = Vue.extend(CardListField);
                 break;
             case 'dews-datasource':
                 instance = Vue.extend(Datasource);

@@ -3,7 +3,7 @@
     <div class="dews-box-title">
       <h2>{{ title }}</h2>
       <button class="dews-box-title-button" type="button" @click="onToggleClick($event)"
-              :collapsed="collapsed"></button>
+        :collapsed="collapsed"></button>
     </div>
     <div class="dews-box-content-wrap" :style="contentStyle" part="content">
       <div class="dews-box-content addable-area" :data-uid="dataUid" data-type="area" ref="boxContent">
@@ -47,6 +47,11 @@ export default {
     this.dataUid = CreateService.createUid('box-content');
     store.commit('MATCH_UID', {'uid': this.uid, 'dataUid': this.dataUid});
 
+    store.commit('SET_NAVIGATION_BAR_TITLE_LIST', {
+      uid: this.uid,
+      title: this.title
+    });
+
     this.mainButtonList = {
       uid: this.uid,
       mainButtons: this.mainButtons
@@ -62,6 +67,11 @@ export default {
     },
     setTitle(value) {
       this.title = value;
+      store.commit('SET_NAVIGATION_BAR_TITLE_LIST', {
+        uid: this.uid,
+        title: this.title
+      });
+      store.state.designer.navigationBar.title = store.getters.getNavigationBarTitleList(this.uid);
     },
     setHide(value) {
       value = JSON.parse(value);
@@ -122,7 +132,7 @@ export default {
   //box design
   max-width: 1050px;
   min-height: 72px;
-  padding: 10px;
+  padding: 8px;
 
   .dews-box-content {
     min-height: 40px;
