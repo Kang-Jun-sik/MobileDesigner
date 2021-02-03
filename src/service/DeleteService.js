@@ -20,9 +20,18 @@ export default {
     /*
     * 컨트롤 삭제 메세지 전달 함수 (Mobile Designer --> IDE)
     * */
-    sendDeleteMessage(component) {
+    sendDeleteMessage(component, isMulti) {
         const parent = component.parentElement.closest('.dews-mobile-component')
         const parentUid = parent.getAttribute('uid');
+
+        if(isMulti){
+            const deleteData = {
+                commandType: 'delete',
+                elm: component,
+                parentUID: parentUid
+            };
+            return deleteData;
+        }
 
         mobileDesignerToIDE({
             commandType: 'delete',
@@ -54,9 +63,10 @@ export default {
         DeleteService.sendDeleteMessage(target);
 
         // 1) AreaItem이 하나만 남을 경우를 생각하여 splitDelete 함수 호출 후, replaceWith
-        if (target.classList.contains('dews-item'))
+        if (target.classList.contains('dews-item')) {
             DeleteService.deleteSplit(target);
-
+            //MultiCommand-kjs
+        }
         // 2) target의 자식 노드까지 drake.containers, Vuex items에서 삭제
         DeleteService.deleteTargetChild(target);
 

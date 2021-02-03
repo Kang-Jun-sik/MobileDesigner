@@ -45,8 +45,8 @@ export default {
         PageOpenService.pageParsing(xmlDoc.firstElementChild, parentUid);
     },
 
-    sendCreateMessage(component) {
-        const parent  = component.parentElement.closest('.dews-mobile-component');
+    sendCreateMessage(component, isMulti) {
+        const parent = component.parentElement.closest('.dews-mobile-component');
         const parentUid = parent.getAttribute('uid') ? parent.getAttribute('uid') : '';
         const parentDataUid = store.state.component.items.find(item => item.uid === parentUid)?.dataUid;
 
@@ -60,6 +60,11 @@ export default {
             filterList = Array.from(sameLevelControlList).filter(control => control.parentElement === parent);
         }
         const index = filterList.findIndex(control => control.getAttribute('uid') === component.getAttribute('uid'));
+
+        if (isMulti){
+            const multiData = {commandType: 'create', elm: component, parentUID: parentUid, idx: index};
+            return multiData;
+        }
 
         mobileDesignerToIDE({
             commandType: 'create',

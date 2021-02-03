@@ -1,3 +1,4 @@
+
 import Vue from "vue";
 import store from "@/store/index";
 import PageOpenService from "@/service/PageOpenService";
