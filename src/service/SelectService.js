@@ -3,7 +3,6 @@ import 'jquery-contextmenu';
 
 import mobileDesignerToIDE from "@/utils/mobileDesignerToIDE";
 import SelectService from "@/service/SelectService";
-import ResizeService from "@/service/ResizeService";
 import ContextMenuService from "@/service/ContextMenuService";
 
 export default {
@@ -104,8 +103,8 @@ export default {
     * Select Control Handler 위치 css 수정
     * */
     setPosition(el) {
-        if (!window.selectedItem)
-            return;
+        if (!window.selectedItem) return;
+
         const width = el.offsetWidth;
         const height = el.offsetHeight;
         try {

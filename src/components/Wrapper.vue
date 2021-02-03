@@ -70,6 +70,35 @@ export default {
   },
   methods: {
     /*
+    * Container Drop 후, container-button, container-content Create Message
+    * */
+    setControlChild(component) {
+      Array.from(component.$children).forEach(child => {
+        store.commit('ADD_ITEM', child);
+        if (child.$children) {
+          this.setControlChild(child);
+        }
+      });
+    },
+
+    /*
+    * Datasource Drop 후, Create Message 전송
+    * */
+    setDatasource(component) {
+      const mainDesignerArea = store.state.designer.mainDesigner.$el;
+      const dataSourceArea = store.state.designer.datasourceArea;
+      const datasourceList = dataSourceArea.querySelectorAll('.dews-mobile-datasource');
+      const index = Array.from(datasourceList).findIndex(control => control.getAttribute('uid') === component.uid);
+
+      mobileDesignerToIDE({
+        commandType: 'create',
+        elm: component.$el,
+        parentUID: mainDesignerArea.getAttribute('uid'),
+        idx: index
+      });
+    },
+
+    /*
     * Control Drop 실행시, Control 생성 및 $el(element)로 replace 처리
     * */
     drop(element, target) {
@@ -114,30 +143,6 @@ export default {
         element = element.classList.contains('dews-mobile-component') ? element : element.querySelector('.dews-mobile-component');
         ChangePositionService.sendChangePositionMessage(element, target);
       }
-    },
-    /*
-    * Container Drop 후, container-button, container-content Create Message
-    * */
-    setControlChild(component) {
-      Array.from(component.$children).forEach(child => {
-        store.commit('ADD_ITEM', child);
-        if (child.$children) {
-          this.setControlChild(child);
-        }
-      });
-    },
-    setDatasource(component) {
-      const mainDesignerArea = store.state.designer.mainDesigner.$el;
-      const dataSourceArea = store.state.designer.datasourceArea;
-      const datasourceList = dataSourceArea.querySelectorAll('.dews-mobile-datasource');
-      const index = Array.from(datasourceList).findIndex(control => control.getAttribute('uid') === component.uid);
-
-      mobileDesignerToIDE({
-        commandType: 'create',
-        elm: component.$el,
-        parentUID: mainDesignerArea.getAttribute('uid'),
-        idx: index
-      });
     },
   },
 }
