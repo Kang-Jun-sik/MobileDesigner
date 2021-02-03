@@ -3,7 +3,7 @@ import makeForIDEInfo from "@/utils/makeForIDEInfo";
 const mobileDesignerToIDE = (message) => {
     const XMLWriter = require('xml-writer');
     const xw = new XMLWriter;
-    const elementUID =  message.elm ? message.elm.getAttribute('uid') : message.data.uniqueId;
+    const elementUID = message.elm ? message.elm.getAttribute('uid') : message.data.uniqueId;
     const controlIndex = elementUID.lastIndexOf('-');
     const control = elementUID.substring(0, controlIndex);
 
@@ -45,10 +45,10 @@ const mobileDesignerToIDE = (message) => {
                 'data': xw.output
             }
             break;
-        case "change_control" : // Control Position
+        case "change_control" : //Control Position
             obj = makeForIDEInfo.createPositionInfo(message.elm, elementUID, message.parentUID);
             break;
-        case "change": // Change Control Attribute
+        case "change": //Change Control Attribute
             obj = {
                 commandType: "change",
                 AttributeKey: message.data.AttributeKey,
@@ -56,7 +56,11 @@ const mobileDesignerToIDE = (message) => {
                 uniqueId: message.data.uniqueId
             }
             break;
-        case "multi_command" :
+        case "multi_command":
+            obj = {
+                commandType: message.commandType,
+                data: message.data.commandList
+            }
             break;
     }
     console.log(obj);

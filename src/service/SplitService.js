@@ -4,6 +4,7 @@ import SelectService from "@/service/SelectService";
 import CreateService from "@/service/CreateService";
 import DeleteService from "@/service/DeleteService";
 import ChangeService from "@/service/ChangeService";
+import MultiCommandService from "@/service/MultiCommandService";
 
 export default {
     verticalSplit(target) {
@@ -27,14 +28,15 @@ export default {
     * AreaPanel 생성 후, 2개의 AreaItem을 생성하여 분할한다.
     * */
     setSplit(target) {
-        DeleteService.sendDeleteMessage(target);
+        let multicommand = []; //MultiCommandService (복수 메세지 호출을 위한 Array)
+        multicommand.push({commandType: 'delete', obj: target}); // <- DeleteService.sendDeleteMessage(target);
         DeleteService.reArrangeDelete(target);
+
         // 분할을 위한 AreaPanel extend 후, target과 area.$el를 replaceWith 실행
         const areaPanel = CreateService.addComponent('AreaPanel');
         store.commit('ADD_ITEM', areaPanel);
         const areaPanelElement = areaPanel.$el;
         target.replaceWith(areaPanelElement);
-
         for (let i = 0; i < 2; i++) {
             let item = CreateService.addComponent('AreaItem');
             areaPanelElement.appendChild(item.$el);
@@ -45,9 +47,10 @@ export default {
         const areaItem = areaPanelElement.querySelectorAll(':scope > .dews-item')[0];
         areaItem.appendChild(target);
         SelectService.setPosition(target);
-
-        CreateService.sendCreateMessage(areaPanelElement);
+        multicommand.push({commandType: 'create', obj: areaPanelElement}); // <- CreateService.sendCreateMessage(areaPanelElement);
         CreateService.reArrangeCreate(target);
+
+        MultiCommandService.sendMultiCommand(multicommand);
     },
 
     /*
@@ -101,7 +104,6 @@ export default {
                 ChangeService.sendChangeMessage('col', '4', item.uid);
             }
         });
-
         // 2) AreaPanel + AreaItem 2개 추가
         SplitService.setSplit(target);
     },
@@ -115,12 +117,11 @@ export default {
         let cnt = 0;
         while (!_element.classList.contains('main-designer')) {
             if (_element.parentElement.classList.contains('dews-panel')) {
-                cnt += 1
+                cnt += 1;
             }
             _element = _element.parentElement;
         }
-
-        return cnt
+        return cnt;
     },
 
     /*
@@ -131,11 +132,10 @@ export default {
         let cnt = 1;
         Array.from(element.children).forEach(el => {
             const elementInPanel = Array.from(el.children).filter(child => {
-                return child.classList.contains('dews-panel')
+                return child.classList.contains('dews-panel');
             })
             if (el.classList.contains('dews-panel') || elementInPanel.length > 0) cnt += 1;
         })
-
         return cnt;
     },
 }

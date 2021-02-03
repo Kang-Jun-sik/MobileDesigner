@@ -1,3 +1,4 @@
+
 import $ from "jquery";
 import 'jquery-contextmenu'
 import DeleteService from "@/service/DeleteService";

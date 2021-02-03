@@ -43,7 +43,6 @@ export default {
                 break;
             }
         }
-
         obj = {
             'commandType': 'change_control',
             'uid': elementUid,
