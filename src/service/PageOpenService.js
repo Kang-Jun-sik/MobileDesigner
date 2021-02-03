@@ -1,7 +1,9 @@
 import Vue from "vue";
 import store from "@/store/index";
-import PageOpenService from "@/service/PageOpenService";
 
+import PageOpenService from "@/service/PageOpenService";
+import ChangeService from "@/service/ChangeService";
+import mobileDesignerToIDE from "@/utils/mobileDesignerToIDE";
 import {
     AreaPanel,
     AreaItem,
@@ -32,11 +34,9 @@ import {
     CheckBoxGroup,
     FormSection,
     ContainerButton,
-    ContainerContent
+    ContainerContent,
+    Datasource
 } from '@/utils/exports'
-import ChangeService from "@/service/ChangeService";
-import DeleteService from "@/service/DeleteService";
-import mobileDesignerToIDE from "@/utils/mobileDesignerToIDE";
 
 export default {
     /*
@@ -55,21 +55,26 @@ export default {
         mPage.uid = canvasDoc.getAttribute('uid'); // 임시로 canvas에 uid 적용
         mPage.$el.setAttribute('uid', canvasDoc.getAttribute('uid')) // 임시로 canvas에 적용
 
-        // eslint-disable-next-line no-empty
         if (type === 'mpage') {
-            for (let i = 0; i < canvasDoc.childElementCount; i++) {
-                if (canvasDoc.children[i].tagName === "pageInformation")
-                    continue;
-                if (canvasDoc.children[i].tagName === "mainButtons")
-                    // eslint-disable-next-line no-empty
-                {
+            for (let canvasChild of canvasDoc.children) {
+                if (canvasChild.tagName === "pageInformation") continue;
 
+                if (canvasChild.tagName === "dews-datasource") {
+                    PageOpenService.setDatasourceFromIDE(canvasChild);
                 } else {
-                    PageOpenService.pageParsing(canvasDoc.children[i], mPage.uid);
-                    //pageParsing(canvasDoc.children[i], mPage.uid);
+                    PageOpenService.pageParsing(canvasChild, mPage.uid);
                 }
             }
         }
+    },
+
+    /*
+    * Set Datasource from IDE
+    * */
+    setDatasourceFromIDE(dataSource) {
+        const $dataSourceArea = document.querySelector('.datasource-area');
+        const dataSourceControl = PageOpenService.createControlFromData(dataSource);
+        $dataSourceArea.appendChild(dataSourceControl.$el);
     },
 
     /*
@@ -298,6 +303,9 @@ export default {
                 break;
             case 'dropdownbutton-childbutton':
                 instance = Vue.extend(ChildButton);
+                break;
+            case 'dews-datasource':
+                instance = Vue.extend(Datasource);
                 break;
         }
 

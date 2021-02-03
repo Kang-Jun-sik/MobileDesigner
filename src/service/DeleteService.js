@@ -9,10 +9,10 @@ export default {
     deleteFromIDE(args) {
         console.log('Delete Control from IDE');
         const obj = JSON.parse(args);
-        // 1) ID 추출
         const deleteItemUid = obj['controlUniqueId'];
+
         if (deleteItemUid) {
-            let control = store.state.component.items.find(item => item.uid === deleteItemUid);
+            const control = store.state.component.items.find(item => item.uid === deleteItemUid);
             DeleteService.deleteControl(control.$el);
         }
     },
