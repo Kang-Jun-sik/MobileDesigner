@@ -4,6 +4,8 @@ import _ from "lodash";
 import mobileDesignerToIDE from "@/utils/mobileDesignerToIDE";
 import DeleteService from "@/service/DeleteService";
 import CreateService from "@/service/CreateService";
+import makeForIDEInfo from "@/utils/makeForIDEInfo";
+import ChangePositionService from "@/service/ChangePositionService";
 
 export default {
     deleteFromIDE(args) {
@@ -24,19 +26,17 @@ export default {
         const parent = component.parentElement.closest('.dews-mobile-component')
         const parentUid = parent.getAttribute('uid');
 
-        if(isMulti){
-            const deleteData = {
+        if (isMulti) {
+            return {
                 commandType: 'delete',
                 elm: component,
-                parentUID: parentUid
+                parentId: parentUid
             };
-            return deleteData;
         }
-
         mobileDesignerToIDE({
             commandType: 'delete',
             elm: component,
-            parentUID: parentUid
+            parentId: parentUid
         });
     },
 
@@ -86,7 +86,7 @@ export default {
     * @param item - AreaItem, AreaPanel
     * */
     deleteSplitItems(item, hasChild) {
-        DeleteService.sendDeleteMessage(item);
+        // DeleteService.sendDeleteMessage(item);
         DeleteService.deleteDrakeContainer(item);
         DeleteService.deleteItems(item);
 
@@ -106,17 +106,16 @@ export default {
             DeleteService.deleteSplitItems(targetPanel, targetSibling.hasChildNodes());
 
             if (targetSibling.hasChildNodes()) {
-                const _childElement = [...targetSibling.children]
-                _childElement.forEach(element => {
-                    DeleteService.sendDeleteMessage(element);
-                    DeleteService.reArrangeDelete(element);
-                });
+                const targetSiblingArea = targetSibling.firstElementChild;
+                const targetPanelParent = targetPanel.parentElement.closest('.dews-mobile-component');
+                const targetPanelNode = targetPanel.cloneNode();
 
                 targetPanel.replaceWith(...targetSibling.childNodes);
-                CreateService.sendCreateMessage(targetSibling)
-                _childElement.forEach(element => {
-                    CreateService.sendCreateMessage(element);
-                    CreateService.reArrangeCreate(element);
+                ChangePositionService.sendChangePositionMessage(targetSiblingArea);
+                mobileDesignerToIDE({
+                    commandType: 'delete',
+                    elm: targetPanelNode,
+                    parentId: targetPanelParent.getAttribute('uid')
                 });
             }
         }
@@ -139,12 +138,12 @@ export default {
 
     /*
     * Dragula의 drake.containers에 저장된 Control 정보 삭제
+    * target의 root element의 uid 정보가 root에 포함되어 있지 않은 경우 data-uid로 판단
     * @param target
     * */
     deleteDrakeContainer(target) {
         const targetUid = target.getAttribute('uid');
 
-        // target의 root element의 uid 정보가 root에 포함되어 있지 않은 경우 data-uid로 판단
         if (store.state.component.dragulaUid[targetUid]) {
             const targetDataUid = store.state.component.dragulaUid[targetUid];
             _.remove(window.drake.containers, function(container) {

@@ -26,27 +26,27 @@ const mobileDesignerToIDE = (message) => {
     switch (message.commandType) {
         case "create":
             obj = {
-                'commandType': message.commandType,
-                'parentId': message.parentUID,
-                'data': xw.output,
-                'index': message.idx
+                commandType: message.commandType,
+                parentId: message.parentId,
+                data: xw.output,
+                index: message.index
             }
             break;
         case "delete":
             obj = {
-                'commandType': message.commandType,
-                'parentId': message.parentUID,
-                'data': xw.output
+                commandType: message.commandType,
+                parentId: message.parentId,
+                data: xw.output
             }
             break;
         case "select":
             obj = {
-                'commandType': message.commandType,
-                'data': xw.output
+                commandType: message.commandType,
+                data: xw.output
             }
             break;
         case "change_control" : //Control Position
-            obj = makeForIDEInfo.createPositionInfo(message.elm, elementUID, message.parentUID);
+            obj = makeForIDEInfo.createPositionInfo(message.elm);
             break;
         case "change": //Change Control Attribute
             obj = {

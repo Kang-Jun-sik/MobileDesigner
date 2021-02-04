@@ -1,8 +1,13 @@
+import store from "@/store";
+import makeForIDEInfo from "@/utils/makeForIDEInfo";
+import mobileDesignerToIDE from "@/utils/mobileDesignerToIDE";
+
 export default {
-    //IDE Create Information for create Data Information
+    /*
+    * IDE Create Information for create Data Information
+    * */
     createDataMessage(createData, children, elm) {
-        if (children === undefined)
-            return;
+        if (children === undefined) return;
 
         for (let child of children) {
             if (child.hasAttribute('uid')) {
@@ -24,31 +29,46 @@ export default {
         }
     },
 
-    //컨트롤 위치 정보 생성 함수
-    createPositionInfo(elm, elementUid, parentUID) {
-        let obj;
-        let index;
-        let sameLevelControlList;
-        let filterList = [];
-        const parent = elm.parentElement.closest('.dews-mobile-component');
+    /*
+    * CreateMessage, PositionInfo의 Index 찾기 공통 함수
+    * */
+    makeCreateMessage(control) {
+        const parent = control.parentElement.closest('.dews-mobile-component');
+        const parentUid = parent.getAttribute('uid') ? parent.getAttribute('uid') : '';
+        const parentDataUid = store.state.component.items.find(item => item.uid === parentUid)?.dataUid;
 
-        sameLevelControlList = parent.querySelectorAll('.dews-mobile-component');
-        Array.from(sameLevelControlList).forEach(child => {
-            if (child.parentElement === parent)
-                filterList.push(child);
-        })
-        for (let idx = 0; idx < filterList.length; idx++) {
-            if (filterList[idx].getAttribute('uid') === elementUid) {
-                index = idx;
-                break;
-            }
+        let sameLevelControlList, filterList;
+        if (parentDataUid) {
+            const parentElement = parent.querySelector(`[data-uid=${parentDataUid}]`);
+            sameLevelControlList = parentElement.querySelectorAll('.dews-mobile-component');
+            filterList = Array.from(sameLevelControlList).filter(control => control.closest(`[data-uid=${parentDataUid}]`) === parentElement);
+        } else {
+            sameLevelControlList = parent.querySelectorAll('.dews-mobile-component');
+            filterList = Array.from(sameLevelControlList).filter(control => control.parentElement === parent);
         }
-        obj = {
-            'commandType': 'change_control',
-            'uid': elementUid,
-            'parentId': parentUID,
-            'index': index,
+        const index = filterList.findIndex(filterControl => filterControl.getAttribute('uid') === control.getAttribute('uid'));
+
+        return {
+            elm: control,
+            parentId: parentUid,
+            index: index
         }
-        return obj;
+    },
+
+    /*
+    * 컨트롤 위치 정보 생성 함수
+    * */
+    createPositionInfo(element) {
+        const changePosition = {
+            commandType: 'change_control',
+            uid: element.getAttribute('uid')
+        };
+        const makeMessage = makeForIDEInfo.makeCreateMessage(element);
+        delete makeMessage.elm;
+
+        return {
+            ...changePosition,
+            ...makeMessage
+        }
     },
 }

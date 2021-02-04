@@ -49,9 +49,9 @@ export default {
         xw.endDocument();
         createData = {
             'commandType': createPreData.commandType,
-            'parentId': createPreData.parentUID,
+            'parentId': createPreData.parentId,
             'data': xw.output,
-            'index': createPreData.idx
+            'index': createPreData.index
         };
         return createData;
     },
@@ -72,7 +72,7 @@ export default {
         xw.endDocument();
         deleteData = {
             'commandType': deletePreData.commandType,
-            'parentId': deletePreData.parentUID,
+            'parentId': deletePreData.parentId,
             'data': xw.output
         };
         return deleteData;

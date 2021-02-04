@@ -5,36 +5,37 @@ import CreateService from "@/service/CreateService";
 import PageOpenService from "@/service/PageOpenService";
 
 import {
-    AreaPanel,
-    AreaItem,
     AreaBox,
-    AreaTabs,
+    AreaItem,
+    AreaPanel,
     AreaTab,
-    SearchContainer,
-    ListContainer,
-    FormContainer,
-    InfoBoxContainer,
+    AreaTabs,
     Button,
-    TextBox,
-    CheckBox,
-    RadioButton,
-    NumericTextBox,
-    MaskTextBox,
-    DatePicker,
-    MonthPicker,
-    TimePicker,
-    PeriodPicker,
-    DropdownList,
-    DropdownButton,
-    ChildButton,
-    Complex,
     ButtonGroup,
-    RadioButtonGroup,
-    CheckBoxGroup,
     CardList,
     CardListField,
-    Datasource
+    CheckBox,
+    CheckBoxGroup,
+    ChildButton,
+    Complex,
+    Datasource,
+    DatePicker,
+    DropdownButton,
+    DropdownList,
+    FormContainer,
+    InfoBoxContainer,
+    ListContainer,
+    MaskTextBox,
+    MonthPicker,
+    NumericTextBox,
+    PeriodPicker,
+    RadioButton,
+    RadioButtonGroup,
+    SearchContainer,
+    TextBox,
+    TimePicker
 } from '@/utils/exports'
+import makeForIDEInfo from "@/utils/makeForIDEInfo";
 
 export default {
     createFromIDE(args) {
@@ -47,33 +48,21 @@ export default {
         PageOpenService.pageParsing(xmlDoc.firstElementChild, parentUid);
     },
 
-    sendCreateMessage(component, isMulti) {
-        const parent = component.parentElement.closest('.dews-mobile-component');
-        const parentUid = parent.getAttribute('uid') ? parent.getAttribute('uid') : '';
-        const parentDataUid = store.state.component.items.find(item => item.uid === parentUid)?.dataUid;
+    sendCreateMessage(control, isMulti) {
+        const sendCreate = { commandType: 'create' };
+        const makeMessage = makeForIDEInfo.makeCreateMessage(control);
 
-        let sameLevelControlList, filterList;
-        if (parentDataUid) {
-            const parentElement = parent.querySelector(`[data-uid=${parentDataUid}]`);
-            sameLevelControlList = parentElement.querySelectorAll('.dews-mobile-component');
-            filterList = Array.from(sameLevelControlList).filter(control => control.closest(`[data-uid=${parentDataUid}]`) === parentElement);
+        if (isMulti) {
+            return {
+                ...sendCreate,
+                ...makeMessage
+            }
         } else {
-            sameLevelControlList = parent.querySelectorAll('.dews-mobile-component');
-            filterList = Array.from(sameLevelControlList).filter(control => control.parentElement === parent);
+            mobileDesignerToIDE({
+                ...sendCreate,
+                ...makeMessage
+            });
         }
-        const index = filterList.findIndex(control => control.getAttribute('uid') === component.getAttribute('uid'));
-
-        if (isMulti){
-            const multiData = {commandType: 'create', elm: component, parentUID: parentUid, idx: index};
-            return multiData;
-        }
-
-        mobileDesignerToIDE({
-            commandType: 'create',
-            elm: component,
-            parentUID: parentUid,
-            idx: index
-        });
     },
 
     /*
