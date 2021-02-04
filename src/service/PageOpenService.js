@@ -90,7 +90,7 @@ export default {
 
             const parseValue = attr.value === "true" || attr.value === "false";
             if (attr.name.includes('btn')) {
-                control.mainButtons[attr.name] = attr.value;
+                control.mainButtons[attr.name] = JSON.parse(attr.value);
             } else {
                 control[attr.name] = parseValue ? JSON.parse(attr.value) : attr.value;
             }
@@ -106,6 +106,8 @@ export default {
         const controlUid = control.uid;
         const parentDataUid = parent.dataUid ? parent.dataUid : '';
 
+        PageOpenService.setAttributeFromIDE(instance, control);
+
         let addComponent;
         switch (parent.controlType) {
             case 'tabs':
@@ -113,6 +115,14 @@ export default {
                 store.commit('SET_TAB', {
                     tabsUid: parent.uid,
                     tabData: { tab: control }
+                });
+                store.commit('SET_NAVIGATION_BAR_TITLE_LIST', {
+                    uid: control.uid,
+                    title: control.title
+                });
+                store.commit('SET_MAIN_BUTTON_LIST',  {
+                    uid: control.uid,
+                    mainButtons: control.mainButtons
                 });
                 break;
             case 'search':
@@ -138,12 +148,22 @@ export default {
                 break;
         }
 
+        if (instance.tagName === "dews-box") {
+            store.commit('SET_NAVIGATION_BAR_TITLE_LIST', {
+                uid: control.uid,
+                title: control.title
+            });
+            store.commit('SET_MAIN_BUTTON_LIST',  {
+                uid: control.uid,
+                mainButtons: control.mainButtons
+            });
+        }
+
         if (parentDataUid) {
             parent.$el.querySelector(`[data-uid=${parentDataUid}]`).appendChild(addComponent);
         } else {
             parent.$el.appendChild(addComponent);
         }
-        PageOpenService.setAttributeFromIDE(instance, control);
 
         return controlUid;
     },
@@ -183,6 +203,14 @@ export default {
                     store.commit('SET_TAB', {
                         tabsUid: parent.uid,
                         tabData: { tab: controlChild }
+                    });
+                    store.commit('SET_NAVIGATION_BAR_TITLE_LIST', {
+                        uid: controlChild.uid,
+                        title: controlChild.title
+                    });
+                    store.commit('SET_MAIN_BUTTON_LIST',  {
+                        uid: controlChild.uid,
+                        mainButtons: controlChild.mainButtons
                     });
                 }
                 parent.checkChild = false;

@@ -41,11 +41,10 @@ export default {
       title: this.title
     });
 
-    this.mainButtonList = {
+    store.commit('SET_MAIN_BUTTON_LIST', {
       uid: this.uid,
       mainButtons: this.mainButtons
-    }
-    store.commit('SET_MAIN_BUTTON_LIST', this.mainButtonList)
+    });
 
     this.$nextTick(() => {
       store.commit('ADD_ITEM', this);

@@ -52,11 +52,10 @@ export default {
       title: this.title
     });
 
-    this.mainButtonList = {
+    store.commit('SET_MAIN_BUTTON_LIST', {
       uid: this.uid,
       mainButtons: this.mainButtons
-    }
-    store.commit('SET_MAIN_BUTTON_LIST', this.mainButtonList)
+    });
   },
   mounted() {
     window.drake.containers.push(this.$refs.boxContent);
