@@ -3,9 +3,6 @@ import _ from "lodash";
 
 import mobileDesignerToIDE from "@/utils/mobileDesignerToIDE";
 import DeleteService from "@/service/DeleteService";
-import CreateService from "@/service/CreateService";
-import makeForIDEInfo from "@/utils/makeForIDEInfo";
-import ChangePositionService from "@/service/ChangePositionService";
 import MultiCommandService from "@/service/MultiCommandService";
 
 export default {
@@ -23,22 +20,30 @@ export default {
     /*
     * 컨트롤 삭제 메세지 전달 함수 (Mobile Designer --> IDE)
     * */
-    sendDeleteMessage(component, isMulti) {
-        const parent = component.parentElement.closest('.dews-mobile-component')
-        const parentUid = parent.getAttribute('uid');
+    sendDeleteMessage(control) {
+        const parent = control.parentElement?.closest('.dews-mobile-component');
+        const parentUid = parent?.getAttribute('uid');
 
-        if (isMulti) {
-            return {
-                commandType: 'delete',
-                elm: component,
-                parentId: parentUid
-            };
-        }
         mobileDesignerToIDE({
             commandType: 'delete',
-            elm: component,
+            elm: control,
             parentId: parentUid
         });
+    },
+
+    /*
+    * MultiCommand를 위한 삭제 메세지 전달 함수
+    * */
+    multiDeleteMessage(control) {
+        const parent = control.parentElement?.closest('.dews-mobile-component');
+        let parentUid = parent?.getAttribute('uid');
+
+        parentUid = parentUid ? parentUid : document.querySelector('.main-designer').getAttribute('uid');
+        return {
+            commandType: 'delete',
+            elm: control,
+            parentId: parentUid
+        };
     },
 
     /*
@@ -110,18 +115,10 @@ export default {
             if (targetSibling.hasChildNodes()) {
                 const multiCommand = [];
                 const targetSiblingArea = targetSibling.firstElementChild;
-                const targetPanelParent = targetPanel.parentElement.closest('.dews-mobile-component');
-
                 targetPanel.replaceWith(...targetSibling.childNodes);
+
                 multiCommand.push({ commandType: 'change_control', obj: targetSiblingArea });
                 multiCommand.push({ commandType: 'delete', obj: targetPanelNode });
-
-                // ChangePositionService.sendChangePositionMessage(targetSiblingArea);
-                // mobileDesignerToIDE({
-                //     commandType: 'delete',
-                //     elm: targetPanelNode,
-                //     parentId: targetPanelParent.getAttribute('uid')
-                // });
                 MultiCommandService.sendMultiCommand(multiCommand);
             }
         }

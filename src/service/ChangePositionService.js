@@ -38,4 +38,20 @@ export default {
             }
         });
     },
+
+    /*
+    * MultiCommand를 위한 위치 정보 메세지 전달 함수
+    * */
+    multiDeleteMessage(control) {
+        const makeMessage = makeForIDEInfo.makeCreateMessage(control);
+        delete makeMessage.elm;
+
+        return {
+            commandType: 'change_control',
+            data: {
+                uniqueId: control.getAttribute('uid'),
+                ...makeMessage
+            }
+        }
+    }
 }

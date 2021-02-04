@@ -2,6 +2,7 @@ import DeleteService from "@/service/DeleteService";
 import CreateService from "@/service/CreateService";
 import makeForIDEInfo from "@/utils/makeForIDEInfo";
 import MultiCommandService from "@/service/MultiCommandService";
+import ChangePositionService from "@/service/ChangePositionService";
 import mobileDesignerToIDE from "@/utils/mobileDesignerToIDE";
 
 export default {
@@ -14,17 +15,7 @@ export default {
         for (let data of param) {
             if (!data.commandType) return;
 
-            switch (data.commandType) {
-                case "create":
-                    multiCommand.messageList.push(MultiCommandService.makeCreateMessage(data.obj));
-                    break;
-                case "delete":
-                    multiCommand.messageList.push(MultiCommandService.makeDeleteMessage(data.obj));
-                    break;
-                case "change_control":
-                    multiCommand.messageList.push(MultiCommandService.makeChangeMessage(data.obj));
-                    break;
-            }
+            multiCommand.messageList.push(MultiCommandService.multiCommandMessage(data));
         }
 
         mobileDesignerToIDE({
@@ -36,61 +27,62 @@ export default {
         });
     },
 
-    /*
-    * Command 공통 함수
-    * */
-    makeControl(elementUID) {
-        const controlIndex = elementUID.lastIndexOf('-');
-        return elementUID.substring(0, controlIndex);
-    },
+    multiCommandMessage(data) {
+        let previousData, obj;
+        switch (data.commandType) {
+            case "create":
+                previousData = CreateService.multiCreateMessage(data.obj);
+                break;
+            case "delete":
+                previousData = DeleteService.multiDeleteMessage(data.obj);
+                break;
+            case "change_control":
+                previousData = ChangePositionService.multiDeleteMessage(data.obj);
+                break;
+        }
 
-    /*
-    * MultiCommand Creation Message For SplitService
-    * */
-    makeCreateMessage(param) {
-        const createPreData = CreateService.sendCreateMessage(param, true);
-        const elementUID = createPreData.elm ? createPreData.elm.getAttribute('uid') : createPreData.data.uniqueId;
-        const control = MultiCommandService.makeControl(elementUID);
-        const createControlInfo = document.createElement(control);
-        createControlInfo.setAttribute('uid', elementUID);
-        makeForIDEInfo.createDataMessage(createControlInfo, createPreData.elm.children, createPreData.elm);
-
+        const uid = previousData.elm ? previousData.elm.getAttribute('uid') : previousData.data.uniqueId;
+        const controlName = uid.substring(0, uid.lastIndexOf('-'));
         const XMLWriter = require('xml-writer');
         const xw = new XMLWriter;
-        xw.startDocument();
-        xw.output = createControlInfo.outerHTML;
-        xw.endDocument();
 
-        return {
-            'commandType': createPreData.commandType,
-            'parentId': createPreData.parentId,
-            'data': xw.output,
-            'index': createPreData.index
-        };
+        if (data.commandType === "create") {
+            const controlElement = document.createElement(controlName);
+            controlElement.setAttribute('uid', uid);
+            makeForIDEInfo.createDataMessage(controlElement, previousData.elm.children, previousData.elm);
+
+            xw.startDocument();
+            xw.output = controlElement.outerHTML;
+            xw.endDocument();
+            obj = {
+                commandType: previousData.commandType,
+                parentId: previousData.parentId,
+                data: xw.output,
+                index: previousData.index
+            }
+        } else {
+            xw.startDocument();
+            xw.startElement(controlName);
+            xw.writeAttribute('uid', uid);
+            xw.endElement();
+            xw.endDocument();
+
+            if (data.commandType === "delete") {
+                obj = {
+                    commandType: previousData.commandType,
+                    parentId: previousData.parentId,
+                    data: xw.output
+                }
+            } else if (data.commandType === "change_control") {
+                obj = {
+                    commandType: previousData.commandType,
+                    uid: previousData.data.uniqueId,
+                    parentId: previousData.data.parentId,
+                    index: previousData.data.index
+                }
+            }
+        }
+
+        return obj;
     },
-
-    /*
-    * MultiCommand Delete Message For SplitService
-    * */
-    makeDeleteMessage(param) {
-        const deletePreData = DeleteService.sendDeleteMessage(param, true);
-        const elementUID = deletePreData.elm ? deletePreData.elm.getAttribute('uid') : deletePreData.data.uniqueId;
-        const control = MultiCommandService.makeControl(elementUID);
-
-        const XMLWriter = require('xml-writer');
-        const xw = new XMLWriter;
-        xw.startDocument();
-        xw.startElement(control);
-        xw.writeAttribute('uid', elementUID);
-        xw.endElement();
-        xw.endDocument();
-
-        return {
-            'commandType': deletePreData.commandType,
-            'parentId': deletePreData.parentId,
-            'data': xw.output
-        };
-    },
-
-    makeChangeMessage(param) {},
 }

@@ -48,21 +48,27 @@ export default {
         PageOpenService.pageParsing(xmlDoc.firstElementChild, parentUid);
     },
 
-    sendCreateMessage(control, isMulti) {
+    /*
+    * 컨트롤 생성 메세지 전달 함수 (Mobile Designer --> IDE)
+    * */    
+    sendCreateMessage(control) {
         const sendCreate = { commandType: 'create' };
         const makeMessage = makeForIDEInfo.makeCreateMessage(control);
 
-        if (isMulti) {
-            return {
-                ...sendCreate,
-                ...makeMessage
-            }
-        } else {
-            mobileDesignerToIDE({
-                ...sendCreate,
-                ...makeMessage
-            });
-        }
+        mobileDesignerToIDE({
+            ...sendCreate,
+            ...makeMessage
+        });
+    },
+
+    /*
+    * MultiCommand를 위한 생성 메세지 전달 함수
+    * */
+    multiCreateMessage(control) {
+        const sendCreate = { commandType: 'create' };
+        const makeMessage = makeForIDEInfo.makeCreateMessage(control);
+
+        return { ...sendCreate, ...makeMessage };
     },
 
     /*
