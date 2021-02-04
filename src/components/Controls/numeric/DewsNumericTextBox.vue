@@ -13,7 +13,7 @@
       </span>
       <span class="suffix" v-if="suffix">{{ suffix }}</span>
 
-      <numerictextbox-button v-show="showNumericButton" :isShow="showNumericButton"
+      <numerictextbox-button v-show="numericButton" :isShow="numericButton"
         @increase="increaseNumeric" @decrease="decreaseNumeric" ref="numericChildButton"></numerictextbox-button>
     </div>
   </div>
@@ -34,7 +34,7 @@ export default {
 
       /* check child */
       hasChildControl: true,
-      showNumericButton: true,
+      numericButton: false,
 
       /* Properties */
       id: '',
@@ -111,8 +111,8 @@ export default {
     },
 
     setNumericButton(value) {
-      this.showNumericButton = JSON.parse(value);
-      this.showNumericButton ? CreateService.sendCreateMessage(this.$refs.numericChildButton.$el)
+      this.numericButton = JSON.parse(value);
+      this.numericButton ? CreateService.sendCreateMessage(this.$refs.numericChildButton.$el)
           : DeleteService.sendDeleteMessage(this.$refs.numericChildButton.$el);
     },
     increaseNumeric() {

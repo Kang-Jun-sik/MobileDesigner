@@ -157,7 +157,7 @@ export default {
         let instance = node.cloneNode();
         let instanceUid;
         const parent = store.state.component.items.find(item => item.uid === parentUid);
-        const oneChildList = ['container-button', 'container-content', 'numerictextbox-button'];
+        const oneChildList = ['container-button', 'container-summary', 'container-content', 'numerictextbox-button'];
         const multiChildList = ['dews-tab', 'form-section', 'dropdownbutton-childbutton'];
 
         function findChild(tagName, children) {
@@ -171,14 +171,6 @@ export default {
             controlChild = findChild(node.tagName, parent.$children);
             controlChild.uid = node.getAttribute('uid');
             store.commit('ADD_ITEM', controlChild);
-
-            if (node.tagName === 'numerictextbox-button' && !parent.showNumericButton) {
-                mobileDesignerToIDE({
-                    commandType: 'delete',
-                    elm: controlChild.$el,
-                    parentUID: parent.uid
-                });
-            }
             instanceUid = controlChild.uid;
             PageOpenService.setAttributeFromIDE(instance, controlChild);
         } else if (multiChildList.includes(node.tagName)) {

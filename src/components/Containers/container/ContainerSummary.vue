@@ -11,9 +11,13 @@ import CreateService from "@/service/CreateService";
 
 export default {
   name: 'container-summary',
+  props: ['controlType'],
   data() {
     return {
       uid: '',
+
+      /* check child */
+      controlChild: 'container-summary',
     }
   },
   created() {

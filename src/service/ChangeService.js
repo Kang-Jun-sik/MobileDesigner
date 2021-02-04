@@ -565,7 +565,7 @@ export default {
             case 'required':
                 component.setRequired(value);
                 break;
-            case 'numericbutton':
+            case 'numericButton':
                 component.setNumericButton(value);
                 break;
         }

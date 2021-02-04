@@ -3,7 +3,7 @@
     <div class="dews-container-option-control">
       <h3 class="option-sub-title" v-if="title">{{ title }}</h3>
       <container-button :controlType="controlType"></container-button>
-      <container-summary>
+      <container-summary :controlType="controlType">
         <span>{{ summary }}</span>
       </container-summary>
     </div>
