@@ -46,7 +46,12 @@ const mobileDesignerToIDE = (message) => {
             }
             break;
         case "change_control" : //Control Position
-            obj = makeForIDEInfo.createPositionInfo(message.elm);
+            obj = {
+                commandType: "change_control",
+                uid: message.data.uniqueId,
+                parentId: message.data.parentId,
+                index: message.data.index
+            }
             break;
         case "change": //Change Control Attribute
             obj = {

@@ -28,14 +28,14 @@ export default {
     * AreaPanel 생성 후, 2개의 AreaItem을 생성하여 분할한다.
     * */
     setSplit(target) {
-        let multicommand = []; //MultiCommandService (복수 메세지 호출을 위한 Array)
-        multicommand.push({commandType: 'delete', obj: target}); // <- DeleteService.sendDeleteMessage(target);
-        DeleteService.reArrangeDelete(target);
+        const multiCommand = []; //MultiCommandService (복수 메세지 호출을 위한 Array)
+        multiCommand.push({ commandType: 'delete', obj: target }); // <- DeleteService.sendDeleteMessage(target);
+        // DeleteService.reArrangeDelete(target);
 
         // 분할을 위한 AreaPanel extend 후, target과 area.$el를 replaceWith 실행
         const areaPanel = CreateService.addComponent('AreaPanel');
-        store.commit('ADD_ITEM', areaPanel);
         const areaPanelElement = areaPanel.$el;
+        store.commit('ADD_ITEM', areaPanel);
         target.replaceWith(areaPanelElement);
         for (let i = 0; i < 2; i++) {
             let item = CreateService.addComponent('AreaItem');
@@ -47,10 +47,10 @@ export default {
         const areaItem = areaPanelElement.querySelectorAll(':scope > .dews-item')[0];
         areaItem.appendChild(target);
         SelectService.setPosition(target);
-        multicommand.push({commandType: 'create', obj: areaPanelElement}); // <- CreateService.sendCreateMessage(areaPanelElement);
-        CreateService.reArrangeCreate(target);
+        multiCommand.push({ commandType: 'create', obj: areaPanelElement }); // <- CreateService.sendCreateMessage(areaPanelElement);
+        // CreateService.reArrangeCreate(target);
 
-        MultiCommandService.sendMultiCommand(multicommand);
+        MultiCommandService.sendMultiCommand(multiCommand);
     },
 
     /*

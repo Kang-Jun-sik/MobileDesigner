@@ -54,21 +54,4 @@ export default {
             index: index
         }
     },
-
-    /*
-    * 컨트롤 위치 정보 생성 함수
-    * */
-    createPositionInfo(element) {
-        const changePosition = {
-            commandType: 'change_control',
-            uid: element.getAttribute('uid')
-        };
-        const makeMessage = makeForIDEInfo.makeCreateMessage(element);
-        delete makeMessage.elm;
-
-        return {
-            ...changePosition,
-            ...makeMessage
-        }
-    },
 }

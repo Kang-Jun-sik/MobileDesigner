@@ -6,6 +6,7 @@ import DeleteService from "@/service/DeleteService";
 import CreateService from "@/service/CreateService";
 import makeForIDEInfo from "@/utils/makeForIDEInfo";
 import ChangePositionService from "@/service/ChangePositionService";
+import MultiCommandService from "@/service/MultiCommandService";
 
 export default {
     deleteFromIDE(args) {
@@ -98,25 +99,30 @@ export default {
     * */
     deleteSplit(target) {
         const targetPanel = target.parentElement;
+        const targetPanelNode = targetPanel.cloneNode();
+        // const targetPanelNode = targetPanel.cloneNode(true);
 
         if (targetPanel.childElementCount === 2) {
             const targetSibling = target.nextSibling ? target.nextSibling : target.previousSibling;
-
             DeleteService.deleteSplitItems(targetSibling, targetSibling.hasChildNodes());
             DeleteService.deleteSplitItems(targetPanel, targetSibling.hasChildNodes());
 
             if (targetSibling.hasChildNodes()) {
+                const multiCommand = [];
                 const targetSiblingArea = targetSibling.firstElementChild;
                 const targetPanelParent = targetPanel.parentElement.closest('.dews-mobile-component');
-                const targetPanelNode = targetPanel.cloneNode();
 
                 targetPanel.replaceWith(...targetSibling.childNodes);
-                ChangePositionService.sendChangePositionMessage(targetSiblingArea);
-                mobileDesignerToIDE({
-                    commandType: 'delete',
-                    elm: targetPanelNode,
-                    parentId: targetPanelParent.getAttribute('uid')
-                });
+                multiCommand.push({ commandType: 'change_control', obj: targetSiblingArea });
+                multiCommand.push({ commandType: 'delete', obj: targetPanelNode });
+
+                // ChangePositionService.sendChangePositionMessage(targetSiblingArea);
+                // mobileDesignerToIDE({
+                //     commandType: 'delete',
+                //     elm: targetPanelNode,
+                //     parentId: targetPanelParent.getAttribute('uid')
+                // });
+                MultiCommandService.sendMultiCommand(multiCommand);
             }
         }
     },
