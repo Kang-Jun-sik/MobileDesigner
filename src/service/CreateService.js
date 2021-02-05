@@ -44,15 +44,16 @@ export default {
         const parser = new DOMParser();
         const parentUid = obj['controlUniqueId'];
         const xmlDoc = parser.parseFromString(obj["data"], "application/xml");
-
+        if (obj.index)
+            xmlDoc.firstElementChild.setAttribute('index', obj.index);
         PageOpenService.pageParsing(xmlDoc.firstElementChild, parentUid);
     },
 
     /*
     * 컨트롤 생성 메세지 전달 함수 (Mobile Designer --> IDE)
-    * */    
+    * */
     sendCreateMessage(control) {
-        const sendCreate = { commandType: 'create' };
+        const sendCreate = {commandType: 'create'};
         const makeMessage = makeForIDEInfo.makeCreateMessage(control);
 
         mobileDesignerToIDE({
@@ -65,10 +66,10 @@ export default {
     * MultiCommand를 위한 생성 메세지 전달 함수
     * */
     multiCreateMessage(control) {
-        const sendCreate = { commandType: 'create' };
+        const sendCreate = {commandType: 'create'};
         const makeMessage = makeForIDEInfo.makeCreateMessage(control);
 
-        return { ...sendCreate, ...makeMessage };
+        return {...sendCreate, ...makeMessage};
     },
 
     /*

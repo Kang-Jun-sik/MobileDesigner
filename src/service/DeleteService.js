@@ -6,14 +6,14 @@ import DeleteService from "@/service/DeleteService";
 import MultiCommandService from "@/service/MultiCommandService";
 
 export default {
-    deleteFromIDE(args) {
+    deleteFromIDE(args, isUndoRedo) {
         console.log('Delete Control from IDE');
         const obj = JSON.parse(args);
         const deleteItemUid = obj['controlUniqueId'];
 
         if (deleteItemUid) {
             const control = store.state.component.items.find(item => item.uid === deleteItemUid);
-            DeleteService.deleteControl(control.$el);
+            DeleteService.deleteControl(control.$el, isUndoRedo);
         }
     },
 
@@ -50,28 +50,32 @@ export default {
     * 컨트롤 재정렬을 위한 컨트롤 삭제 로직
     * @param target
     * */
+
+    /*
     reArrangeDelete(target) {
         Array.from(target.children).forEach(child => {
-            if (child.getAttribute('uid')){
+            if (child.getAttribute('uid')) {
                 DeleteService.sendDeleteMessage(child);
             }
             DeleteService.reArrangeDelete(child);
         });
     },
+    */
 
     /*
     * 컨트롤 삭제를 위한 공통 로직
     * */
-    deleteControl(target) {
-        if (!target) return;
+    deleteControl(target, isUndoRedo) {
+        if (!target)
+            return;
 
         // IDE에서 삭제
-        DeleteService.sendDeleteMessage(target);
+        if (!isUndoRedo)
+            DeleteService.sendDeleteMessage(target);
 
         // 1) AreaItem이 하나만 남을 경우를 생각하여 splitDelete 함수 호출 후, replaceWith
         if (target.classList.contains('dews-item')) {
             DeleteService.deleteSplit(target);
-            //MultiCommand-kjs
         }
         // 2) target의 자식 노드까지 drake.containers, Vuex items에서 삭제
         DeleteService.deleteTargetChild(target);
@@ -117,8 +121,8 @@ export default {
                 const targetSiblingArea = targetSibling.firstElementChild;
                 targetPanel.replaceWith(...targetSibling.childNodes);
 
-                multiCommand.push({ commandType: 'change_control', obj: targetSiblingArea });
-                multiCommand.push({ commandType: 'delete', obj: targetPanelNode });
+                multiCommand.push({commandType: 'change_control', obj: targetSiblingArea});
+                multiCommand.push({commandType: 'delete', obj: targetPanelNode});
                 MultiCommandService.sendMultiCommand(multiCommand);
             }
         }
@@ -131,7 +135,7 @@ export default {
     deleteTargetChild(target) {
         Array.from(target.children).forEach(child => {
             if (child.getAttribute('uid')) {
-                DeleteService.sendDeleteMessage(child);
+                //DeleteService.sendDeleteMessage(child);
                 DeleteService.deleteDrakeContainer(child);
                 DeleteService.deleteItems(child);
             }
@@ -149,12 +153,12 @@ export default {
 
         if (store.state.component.dragulaUid[targetUid]) {
             const targetDataUid = store.state.component.dragulaUid[targetUid];
-            _.remove(window.drake.containers, function(container) {
+            _.remove(window.drake.containers, function (container) {
                 return container.dataset.uid === targetDataUid;
             });
             delete store.state.component.dragulaUid[targetUid];
         } else {
-            _.remove(window.drake.containers, function(container) {
+            _.remove(window.drake.containers, function (container) {
                 return container.getAttribute('uid') === targetUid;
             });
         }
@@ -165,7 +169,7 @@ export default {
     * @param target
     * */
     deleteItems(target) {
-        _.remove(store.state.component.items, function(item) {
+        _.remove(store.state.component.items, function (item) {
             return item.uid === target.getAttribute('uid');
         });
     },

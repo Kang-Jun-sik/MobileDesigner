@@ -8,6 +8,7 @@
 
     function MessageFromIDE(args) {
         let obj = JSON.parse(args);
+        let isUndoRedo = true;
         console.log(args);
         //IDE와 Message를 맞춰줘야 한다.
         switch (obj.commandType.toUpperCase()) {
@@ -22,7 +23,7 @@
                 window.services.get("createFromIDE").call(this, args);
                 break;
             case 'DELETE' :
-                window.services.get("deleteFromIDE").call(this, args);
+                window.services.get("deleteFromIDE").call(this, args, isUndoRedo);
                 break;
             case 'UNDO_REDO' :
                 window.services.get("undoredoService").call(this, args);

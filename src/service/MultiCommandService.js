@@ -4,6 +4,7 @@ import makeForIDEInfo from "@/utils/makeForIDEInfo";
 import MultiCommandService from "@/service/MultiCommandService";
 import ChangePositionService from "@/service/ChangePositionService";
 import mobileDesignerToIDE from "@/utils/mobileDesignerToIDE";
+import ChangeService from "@/service/ChangeService";
 
 export default {
     sendMultiCommand(param) {
@@ -35,6 +36,9 @@ export default {
                 break;
             case "delete":
                 previousData = DeleteService.multiDeleteMessage(data.obj);
+                break;
+            case "change":
+                previousData = ChangeService.multiChangeMessage(data.obj);
                 break;
             case "change_control":
                 previousData = ChangePositionService.multiDeleteMessage(data.obj);
@@ -79,6 +83,13 @@ export default {
                     uid: previousData.data.uniqueId,
                     parentId: previousData.data.parentId,
                     index: previousData.data.index
+                }
+            } else if (data.commandType === "change") {
+                obj = {
+                    commandType: previousData.commandType,
+                    AttributeKey: previousData.data.AttributeKey,
+                    AttributeValue: previousData.data.AttributeValue,
+                    uniqueId: previousData.data.uniqueId
                 }
             }
         }

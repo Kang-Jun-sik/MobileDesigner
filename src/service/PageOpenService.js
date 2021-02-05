@@ -1,10 +1,8 @@
 
 import Vue from "vue";
 import store from "@/store/index";
-
 import PageOpenService from "@/service/PageOpenService";
 import ChangeService from "@/service/ChangeService";
-import mobileDesignerToIDE from "@/utils/mobileDesignerToIDE";
 import {
     AreaPanel,
     AreaItem,
@@ -100,7 +98,7 @@ export default {
     /*
     * control parsing
     * container-button, container-content, form-section in form-container 제외
-    * */
+    **/
     controlParsing(instance, parent) {
         const control = PageOpenService.createControlFromData(instance);
         const controlUid = control.uid;
@@ -172,7 +170,7 @@ export default {
     * Recursive Function For Control Rendering
     * @param node
     * @param parentUid
-    * */
+    **/
     pageParsing(node, parentUid) {
         let instance = node.cloneNode();
         let instanceUid;
@@ -232,7 +230,7 @@ export default {
     /*
     * Xml Data --> Create Control Logic
     * @param control
-    * */
+    **/
     createControlFromData(control) {
         const uid = control.getAttribute('uid');
         const type = control.tagName;

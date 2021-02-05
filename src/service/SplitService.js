@@ -2,11 +2,11 @@ import store from "@/store/index"
 import SplitService from "@/service/SplitService";
 import SelectService from "@/service/SelectService";
 import CreateService from "@/service/CreateService";
-import DeleteService from "@/service/DeleteService";
 import ChangeService from "@/service/ChangeService";
 import MultiCommandService from "@/service/MultiCommandService";
 
 export default {
+
     verticalSplit(target) {
         // TabletL 사이즈가 아니라면 분할이 불가능하므로 리턴
         if (store.state.layout.designerLayout !== 'designer-tabletL') return;
@@ -18,7 +18,7 @@ export default {
             if (target.classList.contains('dews-item')) {
                 SplitService.itemSplit(target);
             } else {
-                SplitService.areaSplit(target)
+                SplitService.areaSplit(target);
             }
         }
     },
@@ -29,7 +29,7 @@ export default {
     * */
     setSplit(target) {
         const multiCommand = []; //MultiCommandService (복수 메세지 호출을 위한 Array)
-        multiCommand.push({ commandType: 'delete', obj: target }); // <- DeleteService.sendDeleteMessage(target);
+        multiCommand.push({commandType: 'delete', obj: target}); // <- DeleteService.sendDeleteMessage(target);
         // DeleteService.reArrangeDelete(target);
 
         // 분할을 위한 AreaPanel extend 후, target과 area.$el를 replaceWith 실행
@@ -42,14 +42,12 @@ export default {
             areaPanelElement.appendChild(item.$el);
             store.commit('ADD_ITEM', item);
         }
-
         // 왼쪽 item에 target(box 혹은 tabs) appendChild (default)
         const areaItem = areaPanelElement.querySelectorAll(':scope > .dews-item')[0];
         areaItem.appendChild(target);
         SelectService.setPosition(target);
-        multiCommand.push({ commandType: 'create', obj: areaPanelElement }); // <- CreateService.sendCreateMessage(areaPanelElement);
+        multiCommand.push({commandType: 'create', obj: areaPanelElement}); // <- CreateService.sendCreateMessage(areaPanelElement);
         // CreateService.reArrangeCreate(target);
-
         MultiCommandService.sendMultiCommand(multiCommand);
     },
 
@@ -62,13 +60,14 @@ export default {
     itemSplit(target) {
         if (SplitService.parentPanelCount(target) >= 2
             || SplitService.childPanelCount(target.parentElement) >= 2
-            || target.parentElement.childElementCount !== 2) return
+            || target.parentElement.childElementCount !== 2) return;
 
+        const multiCommand = [];
         const parentElement = target.parentElement;
         const addItem = CreateService.addComponent('AreaItem');
         parentElement.appendChild(addItem.$el);
         store.commit('ADD_ITEM', addItem);
-        CreateService.sendCreateMessage(addItem.$el);
+        multiCommand.push({commandType: 'create', obj: addItem.$el}); // <- CreateService.sendCreateMessage(addItem.$el);
 
         const childElement = Array.from(parentElement.children);
         childElement.forEach(child => {
@@ -76,8 +75,13 @@ export default {
                 return item.uid === child.getAttribute('uid');
             })
             splitItem.col = '4';
-            ChangeService.sendChangeMessage('col', '4', splitItem.uid);
+            //ChangeService.sendChangeMessage('col', '4', splitItem.uid);
+            multiCommand.push({
+                commandType: 'change',
+                obj: {AttributeKey: 'col', AttributeValue: '4', uniqueId: splitItem.uid}
+            }); // <- ChangeService.sendChangeMessage('col', '4', splitItem.uid);
         });
+        MultiCommandService.sendMultiCommand(multiCommand);
     },
 
     /*
@@ -88,6 +92,7 @@ export default {
     * 3) target(box, tabs)이 존재하는 AreaPanel에 이미 item이 3개(4:4:4)가 존재한다면 return
     * */
     areaSplit(target) {
+        const multiCommand = [];
         const targetParentItem = target.parentElement;
         const parentSiblingItem = targetParentItem.nextSibling ? targetParentItem.nextSibling : targetParentItem.previousSibling;
 
@@ -98,12 +103,21 @@ export default {
         store.state.component.items.forEach(item => {
             if (item.uid === targetParentItem.getAttribute('uid')) {
                 item.col = '8';
-                ChangeService.sendChangeMessage('col', '8', item.uid);
+                //ChangeService.sendChangeMessage('col', '8', item.uid);
+                multiCommand.push({
+                    commandType: 'change',
+                    obj: {AttributeKey: 'col', AttributeValue: '8', uniqueId: item.uid}
+                });
             } else if (item.uid === parentSiblingItem.getAttribute('uid')) {
                 item.col = '4';
-                ChangeService.sendChangeMessage('col', '4', item.uid);
+                //ChangeService.sendChangeMessage('col', '4', item.uid);
+                multiCommand.push({
+                    commandType: 'change',
+                    obj: {AttributeKey: 'col', AttributeValue: '4', uniqueId: item.uid}
+                });
             }
         });
+        MultiCommandService.sendMultiCommand(multiCommand);
         // 2) AreaPanel + AreaItem 2개 추가
         SplitService.setSplit(target);
     },
