@@ -1,4 +1,3 @@
-
 import Vue from "vue";
 import store from "@/store/index";
 import PageOpenService from "@/service/PageOpenService";
@@ -37,6 +36,7 @@ import {
     CardListField,
     Datasource
 } from '@/utils/exports'
+import DeleteService from "@/service/DeleteService";
 
 export default {
     /*
@@ -112,13 +112,13 @@ export default {
                 addComponent = control.$el;
                 store.commit('SET_TAB', {
                     tabsUid: parent.uid,
-                    tabData: { tab: control }
+                    tabData: {tab: control}
                 });
                 store.commit('SET_NAVIGATION_BAR_TITLE_LIST', {
                     uid: control.uid,
                     title: control.title
                 });
-                store.commit('SET_MAIN_BUTTON_LIST',  {
+                store.commit('SET_MAIN_BUTTON_LIST', {
                     uid: control.uid,
                     mainButtons: control.mainButtons
                 });
@@ -151,16 +151,25 @@ export default {
                 uid: control.uid,
                 title: control.title
             });
-            store.commit('SET_MAIN_BUTTON_LIST',  {
+            store.commit('SET_MAIN_BUTTON_LIST', {
                 uid: control.uid,
                 mainButtons: control.mainButtons
             });
         }
 
         if (parentDataUid) {
-            parent.$el.querySelector(`[data-uid=${parentDataUid}]`).appendChild(addComponent);
+            let dataParent = parent.$el.querySelector(`[data-uid=${parentDataUid}]`);
+            if (instance.hasAttribute('index')) {
+                let idx = instance.getAttribute('index');
+                dataParent.insertBefore(addComponent, dataParent.children[idx]);
+            } else
+                dataParent.appendChild(addComponent);
         } else {
-            parent.$el.appendChild(addComponent);
+            if (instance.hasAttribute('index')) {
+                let idx = instance.getAttribute('index');
+                parent.$el.insertBefore(addComponent, parent.$el.children[idx]);
+            } else
+                parent.$el.appendChild(addComponent);
         }
 
         return controlUid;
@@ -200,13 +209,13 @@ export default {
                 if (node.tagName === 'dews-tab') {
                     store.commit('SET_TAB', {
                         tabsUid: parent.uid,
-                        tabData: { tab: controlChild }
+                        tabData: {tab: controlChild}
                     });
                     store.commit('SET_NAVIGATION_BAR_TITLE_LIST', {
                         uid: controlChild.uid,
                         title: controlChild.title
                     });
-                    store.commit('SET_MAIN_BUTTON_LIST',  {
+                    store.commit('SET_MAIN_BUTTON_LIST', {
                         uid: controlChild.uid,
                         mainButtons: controlChild.mainButtons
                     });
