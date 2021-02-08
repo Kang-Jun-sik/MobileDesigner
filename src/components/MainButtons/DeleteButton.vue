@@ -1,5 +1,5 @@
 <template>
-  <div :uid="uid" v-show="mainButtons['btn-delete']" class="dews-mobile-delete dews-mobile-component"></div>
+  <div :uid="uid" v-show="mainButtons['btn-delete']" class="dews-mobile-delete"></div>
 </template>
 
 <script>
@@ -10,12 +10,11 @@ export default {
   name: 'delete-button',
   data() {
     return {
-      buttonAttr: false,
       uid: '',
     }
   },
   created() {
-    this.uid = CreateService.createUid('mDeleteButton');
+    this.uid = CreateService.createUid('btn-delete');
   },
   computed: {
     ...mapGetters({

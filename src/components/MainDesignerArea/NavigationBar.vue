@@ -1,12 +1,7 @@
 <template>
   <div :class="mobileLayout" class="navigation-bar-wrapper">
     <div class="status-bar">
-      status bar
-      <div class="status-bar-icon">
-        <div class="square"></div>
-        <div class="circle"></div>
-        <div class="triangle"></div>
-      </div>
+      <div class="status-bar-icon"></div>
     </div>
     <div class="navigation-bar">
       <div class="navigation-section-left">
@@ -68,23 +63,27 @@ export default {
     top: 0;
 
     .status-bar {
+      position: relative;
       height: 24px;
       margin: 0 15px;
       .status-bar-icon {
-
+        width: 46px;
+        height: 10px;
+        float: right;
+        background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC4AAAAKCAYAAADLhGwXAAAAAXNSR0IArs4c6QAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAALqADAAQAAAABAAAACgAAAABFG4/6AAABJElEQVQ4Ea2UgQ2CMBBFqRPAROoGjsAGsoGwQZ3AEZQJxE10AnACfIcpORuwJLQJ9Hr/9/7noJgsy/pkwWjb1iygJWmaHuAdjTE74fd93zBVXdfJPDvY17BnO0tQADXrjVqvDhG/IH51pqWgxFx3sDIgkAdwB78JimjGpdMYnBUHO8HZOXV/5o086WTl5/01HCvcaMYRKHyRiXU5kdMpi7GXTuhYMEyXkotmnI4Gv88QB1Mdnv41IBfTMqIZ/5Zbf8f7jc4+/ErkarDG5aMZnxJzIm4WcRcH5tzDhwOpc9GMU9TqwjPxEk5CZ38OKg9sJadrRjNOYXnFZ11cx2DBf7nmEw8HlX3jgdR4NONSFPMFQnuu8RuVWHJgpRYOxfDdQc2nuB/gmpMSn+23fwAAAABJRU5ErkJggg==');
       }
     }
 
     .navigation-bar {
+      position: relative;
       height: 52px;
-
       .navigation-section-left {
         .navigation-arrow {
           float: left;
           display: inline-block;
           width: 24px;
           height: 24px;
-          margin: 11px 10px 10px 25px;
+          margin: 13px 10px 10px 25px;
           object-fit: contain;
           background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAGKADAAQAAAABAAAAGAAAAADB/VeXAAAAwUlEQVRIDe2UbQ6DIAyGBXaA3WSME2wn3y5AUm+yCwBaM4gl2DRG/hj9Y6TlffrxxmG4ntNPQLU6tNbejTEfjHnvn60c6ZmuE1fiNqXULKC+w30TQCU+xhhf3GVJrFTYEgeAn0SEy1kAvcQRrHqKLwDnHCilHlybghhsuY0sWSDUTOHcdkOnaK2//y4ghPA+Yrm5krLkXhBi0x6QAsCW0FFHQ8iScfa4k3lpI/Ly/yjPc8+bAFBgDeHcsQd23TnpBCYMSHyrjZL2CAAAAABJRU5ErkJggg==');
         }
@@ -93,7 +92,7 @@ export default {
           float: left;
           display: inline-block;
           height: 28px;
-          margin: 8px 0;
+          margin: 10px 0;
           font-size: 18px;
           font-weight: bold;
           line-height: 1.56;

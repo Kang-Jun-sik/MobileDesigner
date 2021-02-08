@@ -1,5 +1,5 @@
 <template>
-  <div :uid="uid" v-show="mainButtons['btn-add']" class="dews-mobile-add dews-mobile-component"></div>
+  <div :uid="uid" v-show="mainButtons['btn-add']" class="dews-mobile-add"></div>
 </template>
 
 <script>
@@ -10,12 +10,11 @@ export default {
   name: 'add-button',
   data() {
     return {
-      buttonAttr: false,
       uid: '',
     }
   },
   created() {
-    this.uid = CreateService.createUid('mAddButton');
+    this.uid = CreateService.createUid('btn-add');
   },
   computed: {
     ...mapGetters({
