@@ -3,7 +3,7 @@
     <div class="controlList-wrapper-scroll">
       <div class="designer-change-option">
       <span class="toggle-control">
-        <span class="toggle-text">확장모드로보기</span>
+        <span class="toggle-text" :class="onText">확장모드로보기</span>
           <label for="toggleButton" @change="changeMode">
               <input type="checkbox" id="toggleButton">
               <span class="toggle-shape"></span>
@@ -27,6 +27,7 @@ export default {
   data() {
     return {
       mode: false,
+      onText: '',
     }
   },
   methods: {
@@ -35,8 +36,9 @@ export default {
 
       const html = document.querySelector('html');
       html.style.overflow = this.mode ? 'hidden' : '';
-
       store.commit('setWorkMode', this.mode);
+
+      this.onText = this.mode ? 'on': '';
     }
   }
 }
