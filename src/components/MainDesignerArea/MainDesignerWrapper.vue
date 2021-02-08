@@ -32,7 +32,6 @@ export default {
   },
   created() {
     window.addEventListener('scroll', this.handleScroll);
-    console.log('created', this.$refs.designerWrapper)
   },
   mounted() {
     this.wrapper = this.$refs.designerWrapper;
@@ -40,7 +39,7 @@ export default {
   },
   methods: {
     handleScroll() {
-      if (this.wrapper.scrollTop === 0 || this.wrapper.clientHeight + this.wrapper.scrollTop >= this.wrapper.scrollHeight) {
+      if (this.wrapper.clientHeight + this.wrapper.scrollTop >= this.wrapper.scrollHeight) {
         this.showScroll = '';
       } else if (this.wrapper.clientHeight + this.wrapper.scrollTop < this.wrapper.scrollHeight){
         this.showScroll = 'scroll';
