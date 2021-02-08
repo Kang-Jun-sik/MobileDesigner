@@ -30,7 +30,6 @@ export default {
     setSplit(target) {
         const multiCommand = []; //MultiCommandService (복수 메세지 호출을 위한 Array)
         multiCommand.push({commandType: 'delete', obj: target}); // <- DeleteService.sendDeleteMessage(target);
-        // DeleteService.reArrangeDelete(target);
 
         // 분할을 위한 AreaPanel extend 후, target과 area.$el를 replaceWith 실행
         const areaPanel = CreateService.addComponent('AreaPanel');
@@ -42,12 +41,12 @@ export default {
             areaPanelElement.appendChild(item.$el);
             store.commit('ADD_ITEM', item);
         }
+
         // 왼쪽 item에 target(box 혹은 tabs) appendChild (default)
         const areaItem = areaPanelElement.querySelectorAll(':scope > .dews-item')[0];
         areaItem.appendChild(target);
         SelectService.setPosition(target);
-        multiCommand.push({commandType: 'create', obj: areaPanelElement}); // <- CreateService.sendCreateMessage(areaPanelElement);
-        // CreateService.reArrangeCreate(target);
+        multiCommand.push({ commandType: 'create', obj: areaPanelElement });
         MultiCommandService.sendMultiCommand(multiCommand);
     },
 
@@ -75,11 +74,10 @@ export default {
                 return item.uid === child.getAttribute('uid');
             })
             splitItem.col = '4';
-            //ChangeService.sendChangeMessage('col', '4', splitItem.uid);
             multiCommand.push({
                 commandType: 'change',
-                obj: {AttributeKey: 'col', AttributeValue: '4', uniqueId: splitItem.uid}
-            }); // <- ChangeService.sendChangeMessage('col', '4', splitItem.uid);
+                obj: { AttributeKey: 'col', AttributeValue: '4', uniqueId: splitItem.uid }
+            });
         });
         MultiCommandService.sendMultiCommand(multiCommand);
     },
@@ -103,17 +101,15 @@ export default {
         store.state.component.items.forEach(item => {
             if (item.uid === targetParentItem.getAttribute('uid')) {
                 item.col = '8';
-                //ChangeService.sendChangeMessage('col', '8', item.uid);
                 multiCommand.push({
                     commandType: 'change',
                     obj: {AttributeKey: 'col', AttributeValue: '8', uniqueId: item.uid}
                 });
             } else if (item.uid === parentSiblingItem.getAttribute('uid')) {
                 item.col = '4';
-                //ChangeService.sendChangeMessage('col', '4', item.uid);
                 multiCommand.push({
                     commandType: 'change',
-                    obj: {AttributeKey: 'col', AttributeValue: '4', uniqueId: item.uid}
+                    obj: { AttributeKey: 'col', AttributeValue: '4', uniqueId: item.uid }
                 });
             }
         });

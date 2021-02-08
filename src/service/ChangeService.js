@@ -19,13 +19,13 @@ export default {
         });
     },
 
-    multiChangeMessage(...changeData) {
+    multiChangeMessage(changeData) {
         return {
             commandType : 'change',
             data:{
-                AttributeKey: changeData[0].AttributeKey,
-                AttributeValue: changeData[0].AttributeValue,
-                uniqueId: changeData[0].uniqueId,
+                AttributeKey: changeData.AttributeKey,
+                AttributeValue: changeData.AttributeValue,
+                uniqueId: changeData.uniqueId,
             }
         }
     },

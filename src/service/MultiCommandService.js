@@ -37,11 +37,11 @@ export default {
             case "delete":
                 previousData = DeleteService.multiDeleteMessage(data.obj);
                 break;
+            case "change_control":
+                previousData = ChangePositionService.multiChangePositionMessage(data.obj);
+                break;
             case "change":
                 previousData = ChangeService.multiChangeMessage(data.obj);
-                break;
-            case "change_control":
-                previousData = ChangePositionService.multiDeleteMessage(data.obj);
                 break;
         }
 
