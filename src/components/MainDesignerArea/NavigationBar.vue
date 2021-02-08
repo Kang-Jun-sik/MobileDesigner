@@ -2,7 +2,6 @@
   <div :class="mobileLayout" class="navigation-bar-wrapper">
     <div class="navigation-bar-wrapper-bg">
       <div class="status-bar">
-        status bar
         <div class="status-bar-icon">
           <div class="square"></div>
           <div class="circle"></div>
@@ -44,23 +43,30 @@
 .navigation-bar-wrapper {
   position: absolute;
   top: 0;
-  border-radius: 33px 33px 0 0;
-  background-color: #ffffff;
+  //border-radius: 33px 33px 0 0;
+  //background-color: #ffffff;
 
   .navigation-bar-wrapper-bg {
-    padding-top: 5px;
-    border-radius: 33px 33px 0 0;
-    background-color: #ffffff;
+    //border-radius: 33px 33px 0 0;
+    //background-color: #ffffff;
 
     .status-bar {
       height: 24px;
-      margin: 0 15px;
-      .status-bar-icon {
+      margin: 0;
+      background-color: #f2f2f2;
+      border-radius: 33px 33px 0 0;
 
+      .status-bar-icon {
+        width: 100%;
+        height: 24px;
+        background-position: calc(100% - 23px) 7px;
+        background-size: 46px 10px;
+        background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0NiIgaGVpZ2h0PSIxMCIgdmlld0JveD0iMCAwIDQ2IDEwIj4KICAgIDxwYXRoIGZpbGw9IiMxMTEiIGZpbGwtcnVsZT0iZXZlbm9kZCIgZD0iTTIzLTEwYTUgNSAwIDAgMSA1IDUgNSA1IDAgMCAxLTUgNSA1IDUgMCAwIDEtNS01IDUgNSAwIDAgMSA1LTV6TTQwIDBsLTYtMTBoMTJ6TTAtMTBoMTBWMEgweiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMCAxMCkiLz4KPC9zdmc+Cg==);
       }
     }
     .navigation-bar {
       height: 52px;
+      background-color: #ffffff;
 
       .navigation-section-left {
         .navigation-arrow {
@@ -102,7 +108,7 @@
 
   &.smartPhone {
     width: 430px;
-    height: 79px;
+    height: 76px;
     margin: 20px 24px 0;
   }
   &.tabletM {
@@ -132,6 +138,10 @@
       //border-left: 1px solid rgba(60, 60, 67, 0.18);
       //border-right: 1px solid rgba(60, 60, 67, 0.18);
       box-shadow: 0px -10px 10px 0 rgba(0, 0, 0, 0.06);
+
+      .status-bar {
+        border-radius: 0;
+      }
     }
 
     &.smartPhone,

@@ -86,8 +86,13 @@
   //확장모드
   .designer-style {
     .button-tab-bar {
-      position: relative;
+      position: sticky;
       z-index: 0;
+      bottom: 0;
+
+      &.scroll {
+        opacity: 0.2;
+      }
 
 
       .button-tab-bar-bg {

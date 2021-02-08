@@ -46,7 +46,7 @@ export default {
     //display: inline-block;
     display: block;
     position: relative;
-    padding-top: 99px !important;
+    padding-top: 96px !important;
     padding-bottom: 76px !important;
     overflow: hidden;
 
@@ -98,7 +98,7 @@ export default {
       &.designer-wrapper-tabletM,
       &.designer-wrapper-tabletL {
         height: inherit;
-        margin: 20px auto 20px;
+        margin: 20px auto 0;
         background-image: inherit;
         background-size: inherit;
       }
