@@ -95,7 +95,6 @@ export default {
     * @param item - AreaItem, AreaPanel
     * */
     deleteSplitItems(item, hasChild) {
-        // DeleteService.sendDeleteMessage(item);
         DeleteService.deleteDrakeContainer(item);
         DeleteService.deleteItems(item);
 
@@ -139,6 +138,8 @@ export default {
                 });
             }
             MultiCommandService.sendMultiCommand(multiCommand);
+        } else if (targetPanel.childElementCount === 3) {
+            DeleteService.sendDeleteMessage(target);
         }
     },
 
