@@ -1,5 +1,5 @@
 <template>
-  <div class="top-main-designer-wrapper">
+  <div class="top-main-designer-wrapper" @scroll="handleScroll" ref="designerWrapper">
 
     <div>
 
@@ -10,7 +10,7 @@
          class="main-designer-wrapper ">
       <navigation-bar ref="navigationBar"></navigation-bar>
       <main-designer ref="mainDesigner"></main-designer>
-      <button-tab-bar ref="buttonTabBar"></button-tab-bar>
+      <button-tab-bar :showScroll="showScroll" ref="buttonTabBar"></button-tab-bar>
     </div>
   </div>
 </template>
@@ -25,16 +25,36 @@ export default {
   name: 'main-designer-wrapper',
   components: {NavigationBar, MainDesigner, ButtonTabBar},
   data() {
-    return {}
+    return {
+      wrapper: '',
+      showScroll: '',
+    }
+  },
+  created() {
+    window.addEventListener('scroll', this.handleScroll);
+    console.log('created', this.$refs.designerWrapper)
   },
   mounted() {
+    this.wrapper = this.$refs.designerWrapper;
     this.$store.commit('addItem', this.$refs.mainDesigner);
+  },
+  methods: {
+    handleScroll() {
+      if (this.wrapper.scrollTop === 0 || this.wrapper.clientHeight + this.wrapper.scrollTop >= this.wrapper.scrollHeight) {
+        this.showScroll = '';
+      } else if (this.wrapper.clientHeight + this.wrapper.scrollTop < this.wrapper.scrollHeight){
+        this.showScroll = 'scroll';
+      }
+    },
   },
   computed: {
     ...mapGetters({
       designerWrapperLayout: "wrapperSize"
     })
   },
+  destroyed() {
+    window.removeEventListener('scroll', this.handleScroll);
+  }
 }
 </script>
 

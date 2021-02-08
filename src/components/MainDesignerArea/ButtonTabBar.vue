@@ -1,5 +1,5 @@
 <template>
-  <div :class="mobileLayout" class="button-tab-bar">
+  <div :class="[mobileLayout, showScroll]" class="button-tab-bar">
     <div class="button-tab-bar-bg">
       <div class="dews-mobile-buttonMenu"></div>
       <div class="dews-main-buttons">
@@ -22,6 +22,7 @@
   export default {
     name: 'button-tab-bar',
     components: {SaveButton, DeleteButton, SearchButton, AddButton},
+    props: ['showScroll'],
     data() {
       return {}
     },
