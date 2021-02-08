@@ -21,10 +21,8 @@ export default {
 
         mobileDesignerToIDE({
             commandType: multiCommand.commandType,
-            data: {
-                commandList: multiCommand.messageList,
-                uniqueId: 'multi_command-service'
-            }
+            commandList: multiCommand.messageList,
+            uniqueId: 'multi_command-service'
         });
     },
 
@@ -45,7 +43,7 @@ export default {
                 break;
         }
 
-        const uid = previousData.elm ? previousData.elm.getAttribute('uid') : previousData.data.uniqueId;
+        const uid = previousData.elm ? previousData.elm.getAttribute('uid') : previousData.uniqueId;
         const controlName = uid.substring(0, uid.lastIndexOf('-'));
         const XMLWriter = require('xml-writer');
         const xw = new XMLWriter;
@@ -80,16 +78,16 @@ export default {
             } else if (data.commandType === "change_control") {
                 obj = {
                     commandType: previousData.commandType,
-                    uid: previousData.data.uniqueId,
-                    parentId: previousData.data.parentId,
-                    index: previousData.data.index
+                    uid: previousData.uniqueId,
+                    parentId: previousData.parentId,
+                    index: previousData.index
                 }
             } else if (data.commandType === "change") {
                 obj = {
                     commandType: previousData.commandType,
-                    AttributeKey: previousData.data.AttributeKey,
-                    AttributeValue: previousData.data.AttributeValue,
-                    uniqueId: previousData.data.uniqueId
+                    AttributeKey: previousData.AttributeKey,
+                    AttributeValue: previousData.AttributeValue,
+                    uniqueId: previousData.uniqueId
                 }
             }
         }

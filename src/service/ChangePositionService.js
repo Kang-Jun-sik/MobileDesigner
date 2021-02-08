@@ -32,10 +32,8 @@ export default {
 
         mobileDesignerToIDE({
             commandType: 'change_control',
-            data: {
-                uniqueId: control.getAttribute('uid'),
-                ...makeMessage
-            }
+            uniqueId: control.getAttribute('uid'),
+            ...makeMessage
         });
     },
 
@@ -48,10 +46,8 @@ export default {
 
         return {
             commandType: 'change_control',
-            data: {
-                uniqueId: control.getAttribute('uid'),
-                ...makeMessage
-            }
+            uniqueId: control.getAttribute('uid'),
+            ...makeMessage
         }
     }
 }

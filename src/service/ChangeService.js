@@ -11,22 +11,18 @@ export default {
 
         mobileDesignerToIDE({
             commandType: 'change',
-            data: {
-                AttributeKey: attrKey,
-                AttributeValue: attrValue,
-                uniqueId: controlUid,
-            }
+            AttributeKey: attrKey,
+            AttributeValue: attrValue,
+            uniqueId: controlUid,
         });
     },
 
     multiChangeMessage(changeData) {
         return {
             commandType : 'change',
-            data:{
-                AttributeKey: changeData.AttributeKey,
-                AttributeValue: changeData.AttributeValue,
-                uniqueId: changeData.uniqueId,
-            }
+            AttributeKey: changeData.AttributeKey,
+            AttributeValue: changeData.AttributeValue,
+            uniqueId: changeData.uniqueId,
         }
     },
 

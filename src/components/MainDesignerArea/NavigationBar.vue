@@ -65,6 +65,7 @@ export default {
     .status-bar {
       position: relative;
       height: 24px;
+      padding: 10px;
       margin: 0 15px;
       .status-bar-icon {
         width: 46px;

@@ -10,7 +10,6 @@ export default {
             if (key === "Delete") {
                 if (window.selectedItem.classList.contains('main-designer')) return;
                 if (window.selectedItem) {
-                    DeleteService.sendDeleteMessage(window.selectedItem);
                     DeleteService.deleteControl(window.selectedItem);
                 }
             }

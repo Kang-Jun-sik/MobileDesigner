@@ -6,7 +6,6 @@ import ChangeService from "@/service/ChangeService";
 import MultiCommandService from "@/service/MultiCommandService";
 
 export default {
-
     verticalSplit(target) {
         // TabletL 사이즈가 아니라면 분할이 불가능하므로 리턴
         if (store.state.layout.designerLayout !== 'designer-tabletL') return;
@@ -27,9 +26,9 @@ export default {
     * AreaBox/ AreaTabs 분할 할 경우
     * AreaPanel 생성 후, 2개의 AreaItem을 생성하여 분할한다.
     * */
-    setSplit(target) {
-        const multiCommand = []; //MultiCommandService (복수 메세지 호출을 위한 Array)
-        multiCommand.push({commandType: 'delete', obj: target}); // <- DeleteService.sendDeleteMessage(target);
+    setSplit(target, areaMultiCommand) {
+        const multiCommand = areaMultiCommand ? areaMultiCommand : []; //MultiCommandService (복수 메세지 호출을 위한 Array)
+        multiCommand.push({ commandType: 'delete', obj: { target: target, parentUid: target.parentElement.getAttribute('uid') } });
 
         // 분할을 위한 AreaPanel extend 후, target과 area.$el를 replaceWith 실행
         const areaPanel = CreateService.addComponent('AreaPanel');
@@ -103,7 +102,7 @@ export default {
                 item.col = '8';
                 multiCommand.push({
                     commandType: 'change',
-                    obj: {AttributeKey: 'col', AttributeValue: '8', uniqueId: item.uid}
+                    obj: { AttributeKey: 'col', AttributeValue: '8', uniqueId: item.uid }
                 });
             } else if (item.uid === parentSiblingItem.getAttribute('uid')) {
                 item.col = '4';
@@ -113,9 +112,9 @@ export default {
                 });
             }
         });
-        MultiCommandService.sendMultiCommand(multiCommand);
-        // 2) AreaPanel + AreaItem 2개 추가
-        SplitService.setSplit(target);
+        // MultiCommandService.sendMultiCommand(multiCommand);
+        // AreaPanel + AreaItem 생성
+        SplitService.setSplit(target, multiCommand);
     },
 
     /*

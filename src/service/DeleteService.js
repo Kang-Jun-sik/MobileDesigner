@@ -36,12 +36,11 @@ export default {
     * */
     multiDeleteMessage(control) {
         const parent = control.parentElement?.closest('.dews-mobile-component');
-        let parentUid = parent?.getAttribute('uid');
+        const parentUid = control.parentUid ? control.parentUid : parent.getAttribute('uid');
 
-        parentUid = parentUid ? parentUid : document.querySelector('.main-designer').getAttribute('uid');
         return {
             commandType: 'delete',
-            elm: control,
+            elm: control.target,
             parentId: parentUid
         };
     },
@@ -66,16 +65,16 @@ export default {
     * 컨트롤 삭제를 위한 공통 로직
     * */
     deleteControl(target, isUndoRedo) {
-        if (!target)
-            return;
+        if (!target) return;
 
         // IDE에서 삭제
-        if (!isUndoRedo)
-            DeleteService.sendDeleteMessage(target);
+        // if (!isUndoRedo) DeleteService.sendDeleteMessage(target);
 
         // 1) AreaItem이 하나만 남을 경우를 생각하여 splitDelete 함수 호출 후, replaceWith
         if (target.classList.contains('dews-item')) {
             DeleteService.deleteSplit(target);
+        } else if (!target.classList.contains('dews-item') && !isUndoRedo) {
+            DeleteService.sendDeleteMessage(target);
         }
         // 2) target의 자식 노드까지 drake.containers, Vuex items에서 삭제
         DeleteService.deleteTargetChild(target);
@@ -109,22 +108,37 @@ export default {
     deleteSplit(target) {
         const targetPanel = target.parentElement;
         const targetPanelNode = targetPanel.cloneNode();
-        // const targetPanelNode = targetPanel.cloneNode(true);
 
         if (targetPanel.childElementCount === 2) {
+            const multiCommand = [];
             const targetSibling = target.nextSibling ? target.nextSibling : target.previousSibling;
             DeleteService.deleteSplitItems(targetSibling, targetSibling.hasChildNodes());
             DeleteService.deleteSplitItems(targetPanel, targetSibling.hasChildNodes());
 
             if (targetSibling.hasChildNodes()) {
-                const multiCommand = [];
                 const targetSiblingArea = targetSibling.firstElementChild;
                 targetPanel.replaceWith(...targetSibling.childNodes);
 
-                multiCommand.push({commandType: 'change_control', obj: targetSiblingArea});
-                multiCommand.push({commandType: 'delete', obj: targetPanelNode});
-                MultiCommandService.sendMultiCommand(multiCommand);
+                multiCommand.push({ commandType: 'change_control', obj: targetSiblingArea });
+                multiCommand.push({
+                    commandType: 'delete',
+                    obj: { target: targetPanelNode, parentUid: document.querySelector('.main-designer').getAttribute('uid') }
+                });
+            } else {
+                multiCommand.push({
+                    commandType: 'delete',
+                    obj: { target: target, parentUid: targetPanelNode.getAttribute('uid') }
+                });
+                multiCommand.push({
+                    commandType: 'delete',
+                    obj: { target: targetSibling, parentUid: targetPanelNode.getAttribute('uid') }
+                });
+                multiCommand.push({
+                    commandType: 'delete',
+                    obj: { target: targetPanelNode, parentUid: document.querySelector('.main-designer').getAttribute('uid') }
+                });
             }
+            MultiCommandService.sendMultiCommand(multiCommand);
         }
     },
 
@@ -135,7 +149,6 @@ export default {
     deleteTargetChild(target) {
         Array.from(target.children).forEach(child => {
             if (child.getAttribute('uid')) {
-                //DeleteService.sendDeleteMessage(child);
                 DeleteService.deleteDrakeContainer(child);
                 DeleteService.deleteItems(child);
             }
