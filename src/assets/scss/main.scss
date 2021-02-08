@@ -5,7 +5,6 @@
 * {
   @include reset();
 }
-
 body {
   background-color: #d5dae2 !important;
 }
@@ -157,6 +156,8 @@ body {
   min-height: 852px;
   color: #000000;
   background-color: #f3f6fa;
+
+  @include  dews-designer-change-option();
 }
 
 .controlList-mobile-layout {
@@ -164,7 +165,7 @@ body {
   flex-wrap: nowrap;
 
   .mobile-layout {
-    flex: 0 0 50px;
+    flex: 1 0 50px;
     height: 36px;
 
     button {
@@ -285,6 +286,21 @@ body {
       .dews-control-list {
         @include dews-control-list();
       }
+    }
+  }
+}
+
+// 확장모드
+#app.designer-style {
+  .controlList-wrapper {
+    position: relative;
+    flex: 0 0 167px;
+    width: 167px;
+    min-height: inherit;
+    overflow-y: scroll;
+
+    .controlList-wrapper-scroll {
+      height: auto;
     }
   }
 }

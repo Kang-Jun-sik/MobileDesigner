@@ -1,13 +1,20 @@
 <template>
-  <div id="app">
+  <div id="app" :class="mode">
     <mobile-wrapper></mobile-wrapper>
   </div>
 </template>
 
 <script>
-  export default {
-    name: 'app',
+import { mapGetters } from 'vuex';
+
+export default {
+  name: 'app',
+  computed: {
+    ...mapGetters({
+      mode: 'getWorkMode'
+    })
   }
+}
 </script>
 
 <style lang="scss">
@@ -20,5 +27,12 @@
     min-height: 852px;
     //padding: 0;
     overflow: auto;
+
+    &.designer-style {
+      overflow: visible;
+      min-height: inherit;
+      min-width: inherit;
+      max-width: inherit;
+    }
   }
 </style>

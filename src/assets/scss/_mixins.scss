@@ -43,9 +43,6 @@
 
   @include dews-control-list-icon();
 }
-
-
-
 @mixin dews-control-list-icon() {
   .icon.areaList-box {
     background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAFBJREFUOBFj9AtJbmNkZKpkIBH8B6n//6+dwS80FcwmUT9YuT9QLxMjOTqR9DAhsclijhrAwDAaBoMiDMjOScCED9LLAsqSoBxJTqb6D9QLALloE8jgmIRGAAAAAElFTkSuQmCC);
@@ -260,6 +257,82 @@
   }
   .icon.pickerList-zipcodePicker {
     background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAIxJREFUOBHVUssNgCAMpYT58KITGIdwAR3CETy5oOjTtEFECPFEE2nzfkhAqeqLbNtPRHosPYmDwe2zst1wzaUB0DenV1PGCVFKYpiMCbd1IXzQhDzjLyIUs5G7zwOTPwCBAijpNySrH8LgIyBlhiEWLAGczv3LwDtL/3ON8Bo8Bgy565QdvcHhIdVfBxI8QAiqgBKIAAAAAElFTkSuQmCC');
+  }
+}
+
+@mixin dews-designer-change-option() {
+  .designer-change-option {
+    background-color: #4e5c7b;
+    border-bottom: 2px solid #35425f;
+
+    .toggle-control {
+      display: flex;
+      flex-wrap: nowrap;
+      align-items: center;
+      width: 100%;
+      padding: 8px 10px;
+
+      .toggle-text {
+        display: block;
+        flex: 0 0 calc(100% - 20px);
+        padding-right: 10px;
+        color: rgba(#ffffff, 0.8);
+        font-size: 13px;
+        line-height: 1.47;
+        text-align: left;
+        word-break: keep-all;
+
+        &.on {
+          color: rgba(#ffffff, 1);
+        }
+      }
+      label {
+        flex: 0 0 20px;
+        display: block;
+        width: 20px;
+        height: 12px;
+      }
+      input[type='checkbox'] {
+        display: inline;
+        width: 0;
+        margin: 0;
+        overflow: hidden;
+        opacity: 0;
+        -webkit-appearance: none;
+
+        &:checked + .toggle-shape {
+          background-color: #50c3fd;
+          transition: background-color 0.4s;
+
+          &::after {
+            transform: translate3d(10px, -1px, 0px);
+            transition: transform 0.4s;
+          }
+
+        }
+      }
+      .toggle-shape {
+        position: relative;
+        display: block;
+        width: 20px;
+        height: 10px;
+        border-radius: 8px;
+        background-color: #35425f;
+        transition: background-color 0.4s;
+
+        &::after {
+          content: '';
+          display: block;
+          width: 12px;
+          height: 12px;
+          background-color: #ffffff;
+          border-radius: 100%;
+          box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.2);
+          transform: translate3d(0px, -1px, 0px);
+          transition: transform 0.4s;
+        }
+      }
+    }
   }
 }
 
