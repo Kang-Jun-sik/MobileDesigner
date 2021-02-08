@@ -57,7 +57,7 @@ export default {
     selectControl(eventTarget) {
         const target = eventTarget.classList.contains('dews-mobile-component') ? eventTarget : findTarget(eventTarget);
         try {
-            if (eventTarget.classList.contains('main-designer')) {
+            if (eventTarget.classList.contains('main-designer-bg')) {
                 store.state.designer.navigationBar.title = '';
                 store.commit('SET_MAIN_BUTTONS', {
                     'btn-save': false,

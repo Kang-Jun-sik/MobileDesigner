@@ -54,7 +54,7 @@ export default {
       }
     })
 
-    window.drake.containers.push(_designer.mainDesigner.$el, _designer.areaList, _designer.containerList,
+    window.drake.containers.push(_designer.mainDesigner, _designer.areaList, _designer.containerList,
         _designer.buttonList, _designer.componentList, _designer.pickerList, _designer.etcList, _designer.datasourceArea);
 
     // axios Sample code ==> 기타 API 서버의 연동을 위한 테스트 코드 (vue.config.js Proxy Table 참조할 것)

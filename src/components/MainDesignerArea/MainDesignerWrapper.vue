@@ -1,10 +1,5 @@
 <template>
   <div class="top-main-designer-wrapper" @scroll="handleScroll" ref="designerWrapper">
-
-    <div>
-
-    </div>
-
     <div id="mainDesignerWrapper"
          :class="designerWrapperLayout"
          class="main-designer-wrapper ">
@@ -35,7 +30,6 @@ export default {
   },
   mounted() {
     this.wrapper = this.$refs.designerWrapper;
-    this.$store.commit('SET_DESIGNER', this.$refs.mainDesigner);
     this.$store.commit('ADD_ITEM', this.$refs.mainDesigner);
   },
   methods: {

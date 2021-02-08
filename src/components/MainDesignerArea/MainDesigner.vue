@@ -25,7 +25,7 @@ export default {
     this.uid = CreateService.createUid('main-designer');
   },
   mounted() {
-    this.$store.commit('setDesigner', this.$refs.mainDesigner);
+    this.$store.commit('SET_DESIGNER', this.$refs.mainDesigner);
     GlobalService.keyBinding();
     SelectService.selectControlEvent(); //메인 디자이너에 컨트롤 선택 이벤트 추가
   },
@@ -40,7 +40,6 @@ export default {
 <style lang="scss" scoped>
 .main-designer {
   position: relative;
-  padding: 12px 6px 5px 9px;
   background-color: #efeff4;
 
   .main-designer-bg {

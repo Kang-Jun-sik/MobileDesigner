@@ -57,7 +57,7 @@ export default {
     .status-bar {
       height: 24px;
       margin: 0;
-      background-color: #f2f2f2;
+      background-color: #ffffff;
       border-radius: 33px 33px 0 0;
 
       .status-bar-icon {
