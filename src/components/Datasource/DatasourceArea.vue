@@ -33,4 +33,16 @@ export default {
   margin-left: 150px;
   background-color: #b3bfd1;
 }
+.designer-style {
+  .datasource-area {
+    position: absolute !important;
+    z-index: 10;
+    top: 0;
+    left: 167px;
+    width: 100%;
+    max-width: 1210px;
+    margin-left: 0;
+  }
+}
+
 </style>

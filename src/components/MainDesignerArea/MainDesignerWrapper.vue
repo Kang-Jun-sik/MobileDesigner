@@ -96,6 +96,7 @@ export default {
 .designer-style {
   .top-main-designer-wrapper {
     flex: 0 0 calc(100% - 170px);
+    padding-top: 50px;
     padding-left: 0 !important;
     overflow: auto;
 
