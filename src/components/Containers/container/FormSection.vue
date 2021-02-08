@@ -52,15 +52,14 @@ export default {
 @import 'node_modules/@dews/dews-mobile-style/scss/variables/variables';
 @import 'node_modules/@dews/dews-mobile-style/scss/mixins/_mixins';
 
-.dews-form-section-title {
-  @include container-title-bar($base-color-bar); //디자인 수정 이슈 , 색상 코드 정의 필요
-}
+@include dews-form-section();
+
+//--------------------------------------
+// FD 추가 영역
+//--------------------------------------
 .dews-form-field {
-  @include form-field();
   padding: 0 17px 6px;
 }
-
-// DFD용 scss 추가
 .form-container-field {
   min-height: 40px;
 }

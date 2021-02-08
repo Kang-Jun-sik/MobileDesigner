@@ -38,8 +38,6 @@ export default {
 @import 'node_modules/@dews/dews-mobile-style/scss/variables/variables';
 @import 'node_modules/@dews/dews-mobile-style/scss/mixins/_mixins';
 
-.dews-container-option-control {
-  @include option-control();
-}
-
+@include dews-container-option-custom-button();
+@include dews-container-option-convenience-button();
 </style>
