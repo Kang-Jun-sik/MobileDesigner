@@ -41,10 +41,12 @@ export default {
         if (parentDataUid) {
             const parentElement = parent.querySelector(`[data-uid=${parentDataUid}]`);
             sameLevelControlList = parentElement.querySelectorAll('.dews-mobile-component');
-            filterList = Array.from(sameLevelControlList).filter(control => control.closest(`[data-uid=${parentDataUid}]`) === parentElement);
+            filterList = Array.from(sameLevelControlList).filter(control =>
+                control.closest(`[data-uid=${parentDataUid}]`) === parentElement);
         } else {
             sameLevelControlList = parent.querySelectorAll('.dews-mobile-component');
-            filterList = Array.from(sameLevelControlList).filter(control => control.parentElement === parent);
+            filterList = Array.from(sameLevelControlList).filter(control =>
+                control.parentElement.closest('.dews-mobile-component') === parent);
         }
         const index = filterList.findIndex(filterControl => filterControl.getAttribute('uid') === control.getAttribute('uid'));
 

@@ -28,7 +28,13 @@ export default {
     * */
     setSplit(target, areaMultiCommand) {
         const multiCommand = areaMultiCommand ? areaMultiCommand : []; //MultiCommandService (복수 메세지 호출을 위한 Array)
-        multiCommand.push({ commandType: 'delete', obj: { target: target, parentUid: target.parentElement.getAttribute('uid') } });
+        multiCommand.push({
+            commandType: 'delete',
+            obj: {
+                target: target,
+                parentUid: target.parentElement.closest('.dews-mobile-component').getAttribute('uid')
+            }
+        });
 
         // 분할을 위한 AreaPanel extend 후, target과 area.$el를 replaceWith 실행
         const areaPanel = CreateService.addComponent('AreaPanel');
