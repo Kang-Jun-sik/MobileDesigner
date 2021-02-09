@@ -85,7 +85,7 @@ export default {
     * Datasource Drop 후, Create Message 전송
     * */
     setDatasource(component) {
-      const mainDesignerArea = store.state.designer.mainDesigner.$el;
+      const mainDesignerArea = store.state.designer.mainDesigner;
       const dataSourceArea = store.state.designer.datasourceArea;
       const datasourceList = dataSourceArea.querySelectorAll('.dews-mobile-datasource');
       const index = Array.from(datasourceList).findIndex(control => control.getAttribute('uid') === component.uid);
@@ -94,7 +94,7 @@ export default {
         commandType: 'create',
         elm: component.$el,
         parentUID: mainDesignerArea.getAttribute('uid'),
-        idx: index
+        index: index
       });
     },
 

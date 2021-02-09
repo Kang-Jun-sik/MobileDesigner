@@ -1,11 +1,3 @@
-<!--<template>-->
-<!--  <div :uid="uid" :class="designerLayout" class="main-designer dews-mobile-component">-->
-<!--    <div class="main-designer-bg" ref="mainDesigner">-->
-<!--      <slot></slot>-->
-<!--    </div>-->
-<!--  </div>-->
-<!--</template>-->
-
 <template>
   <div :uid="uid" :class="designerLayout" class="main-designer dews-mobile-component" ref="mainDesigner">
     <slot></slot>
@@ -50,21 +42,12 @@ export default {
   padding: 12px 6px 5px 9px;
   background-color: #efeff4;
 
-  //.main-designer-bg {
-  //  overflow-y: scroll;
-  //  width: 100%;
-  //  height: 100%;
-  //  padding: 12px 5px 5px 9px;
-  //}
-
   &.designer-smartPhone {
     height: 628px;
-    //margin: 0 24px 0 21px;
     margin: 0 26px 0 24px;
   }
   &.designer-tabletM {
     height: 895px;
-    //margin: 0 23px 0 20px;
     margin: 0 33px 0 20px;
   }
   &.designer-tabletL {

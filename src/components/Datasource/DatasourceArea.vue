@@ -32,6 +32,7 @@ export default {
   height: 50px;
   margin-left: 150px;
   background-color: #b3bfd1;
+  max-width: 1180px;
 }
 .designer-style {
   .datasource-area {
@@ -40,7 +41,8 @@ export default {
     top: 0;
     left: 167px;
     width: 100%;
-    max-width: 1190px;
+    //max-width: 1190px;
+    max-width: 1180px;
     margin-left: 0;
   }
 }
