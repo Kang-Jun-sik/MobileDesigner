@@ -107,6 +107,7 @@ export default {
     deleteSplit(target) {
         const targetPanel = target.parentElement;
         const targetPanelNode = targetPanel.cloneNode();
+        const targetPanelParentNode = targetPanel.parentElement.cloneNode();
 
         if (targetPanel.childElementCount === 2) {
             const multiCommand = [];
@@ -115,13 +116,15 @@ export default {
             DeleteService.deleteSplitItems(targetPanel, targetSibling.hasChildNodes());
 
             if (targetSibling.hasChildNodes()) {
-                const targetSiblingArea = targetSibling.firstElementChild;
+                const targetSiblingNode = targetSibling.cloneNode(true);
                 targetPanel.replaceWith(...targetSibling.childNodes);
 
-                multiCommand.push({ commandType: 'change_control', obj: targetSiblingArea });
+                Array.from(targetSiblingNode.children).forEach(child => {
+                    multiCommand.push({ commandType: 'change_control', obj: child, parentUid: targetPanelParentNode.getAttribute('uid') });
+                })
                 multiCommand.push({
                     commandType: 'delete',
-                    obj: { target: targetPanelNode, parentUid: document.querySelector('.main-designer').getAttribute('uid') }
+                    obj: { target: targetPanelNode, parentUid: targetPanelParentNode.getAttribute('uid') }
                 });
             } else {
                 multiCommand.push({
@@ -134,7 +137,7 @@ export default {
                 });
                 multiCommand.push({
                     commandType: 'delete',
-                    obj: { target: targetPanelNode, parentUid: document.querySelector('.main-designer').getAttribute('uid') }
+                    obj: { target: targetPanelNode, parentUid: targetPanelParentNode.getAttribute('uid') }
                 });
             }
             MultiCommandService.sendMultiCommand(multiCommand);

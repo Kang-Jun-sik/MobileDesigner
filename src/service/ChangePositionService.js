@@ -40,8 +40,9 @@ export default {
     /*
     * MultiCommand를 위한 위치 정보 메세지 전달 함수
     * */
-    multiChangePositionMessage(control) {
+    multiChangePositionMessage(control, parentUid) {
         const makeMessage = makeForIDEInfo.makeCreateMessage(control);
+        makeMessage.parentId = parentUid ? parentUid : makeMessage.parentId;
         delete makeMessage.elm;
 
         return {

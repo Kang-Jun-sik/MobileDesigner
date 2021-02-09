@@ -93,7 +93,7 @@ export default {
       mobileDesignerToIDE({
         commandType: 'create',
         elm: component.$el,
-        parentUID: mainDesignerArea.getAttribute('uid'),
+        parentId: mainDesignerArea.getAttribute('uid'),
         index: index
       });
     },
