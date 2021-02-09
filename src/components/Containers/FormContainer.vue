@@ -2,10 +2,10 @@
   <div :uid="uid" class="dews-mobile-formContainer dews-mobile-component">
     <div class="dews-container-option-control">
       <h3 class="option-sub-title" v-if="title">{{ title }}</h3>
-      <container-button :controlType="controlType"></container-button>
+      <container-button containerType="form"></container-button>
     </div>
 
-    <container-content :controlType="controlType">
+    <container-content containerType="form">
       <form-section controlChild="form-section"></form-section>
     </container-content>
   </div>
@@ -31,6 +31,11 @@ export default {
       /* Properties */
       id: '',
       title: 'Form Container',
+      convenienceButton: {
+        'data-set': true,
+        'data-reset': true,
+        'data-capture': true
+      },
     }
   },
   created() {
@@ -44,6 +49,9 @@ export default {
     setTitle(value) {
       this.title = value;
     },
+    setConvenienceButton(name, value) {
+      this.convenienceButton[name] = JSON.parse(value);
+    }
   },
 }
 </script>

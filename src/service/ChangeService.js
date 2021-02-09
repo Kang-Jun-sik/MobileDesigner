@@ -255,6 +255,15 @@ export default {
             case 'title':
                 component.setTitle(value);
                 break;
+            case 'data-set':
+                component.setConvenienceButton('data-set', value);
+                break;
+            case 'data-reset':
+                component.setConvenienceButton('data-reset', value);
+                break;
+            case 'data-capture':
+                component.setConvenienceButton('data-capture', value);
+                break;
         }
     },
 
@@ -282,6 +291,15 @@ export default {
                 break;
             case 'title':
                 component.setTitle(value);
+                break;
+            case 'data-set':
+                component.setConvenienceButton('data-set', value);
+                break;
+            case 'data-reset':
+                component.setConvenienceButton('data-reset', value);
+                break;
+            case 'data-capture':
+                component.setConvenienceButton('data-capture', value);
                 break;
         }
     },

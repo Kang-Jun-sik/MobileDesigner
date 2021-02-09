@@ -1,7 +1,7 @@
 <template>
-  <div :uid="uid" class="dews-mobile-containerButton dews-mobile-component" :data-uid="'test'">
-    <div v-if="controlType === 'form' || controlType === 'list'" class="option-custom-button">
-      <ul>
+  <div :uid="uid" class="dews-mobile-containerButton dews-mobile-component">
+    <div v-show="containerType === 'form' || containerType === 'list'" class="option-custom-button">
+      <ul class="custom-button-field" :data-uid="dataUid" ref="customButton">
         <slot></slot>
       </ul>
     </div>
@@ -17,19 +17,31 @@
 
 <script>
 import CreateService from "@/service/CreateService";
+import store from "@/store";
 
 export default {
   name: 'container-button',
-  props: ['controlType'],
+  props: ['containerType'],
   data() {
     return {
-      id: '',
       uid: '',
-      controlChild: 'container-button'
+      dataUid: '',
+
+      /* check child */
+      controlChild: 'container-button',
+      controlType: 'container-button',
+
+      /* Properties */
+      id: '',
     }
   },
   created() {
     this.uid = CreateService.createUid('container-button');
+    this.dataUid = CreateService.createUid('custom-button');
+    store.commit('MATCH_UID', { 'uid': this.uid, 'dataUid': this.dataUid });
+  },
+  mounted() {
+    window.drake.containers.push(this.$refs.customButton);
   }
 }
 </script>
@@ -40,4 +52,11 @@ export default {
 
 @include dews-container-option-custom-button();
 @include dews-container-option-convenience-button();
+
+.option-custom-button {
+  padding: 14px 14px;
+}
+.custom-button-field {
+  min-height: 20px;
+}
 </style>

@@ -2,13 +2,13 @@
   <div :uid="uid" class="dews-mobile-listContainer dews-mobile-component dews-container">
     <div class="dews-container-option-control">
       <h3 class="option-sub-title" v-if="title">{{ title }}</h3>
-      <container-button :controlType="controlType"></container-button>
-      <container-summary :controlType="controlType">
+      <container-button containerType="list"></container-button>
+      <container-summary containerType="list">
         <span>{{ summary }}</span>
       </container-summary>
     </div>
 
-    <container-content :controlType="controlType" :dataUid="dataUid">
+    <container-content containerType="list" :dataUid="dataUid">
       <div class="dews-list-field">
         <ul class="list-container-field list-field" ref="listContainerField"
           :data-uid="dataUid" data-type="container">

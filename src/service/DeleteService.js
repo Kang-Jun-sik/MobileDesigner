@@ -166,7 +166,7 @@ export default {
     * @param target
     * */
     deleteDrakeContainer(target) {
-        const targetUid = target.getAttribute('uid');
+        const targetUid = target.closest('.dews-mobile-component').getAttribute('uid');
 
         if (store.state.component.dragulaUid[targetUid]) {
             const targetDataUid = store.state.component.dragulaUid[targetUid];

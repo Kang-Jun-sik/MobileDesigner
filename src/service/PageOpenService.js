@@ -108,6 +108,10 @@ export default {
 
         let addComponent;
         switch (parent.controlType) {
+            case 'container-button':
+                addComponent = document.createElement('li');
+                addComponent.appendChild(control.$el);
+                break;
             case 'tabs':
                 addComponent = control.$el;
                 store.commit('SET_TAB', {
