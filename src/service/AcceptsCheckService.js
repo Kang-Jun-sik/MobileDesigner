@@ -40,7 +40,7 @@ const componentAcceptsCheck = (component, target) => {
 
         "dews-mobile-cardlist": ["list-container-field"],
         "dews-mobile-card": ["cardlist"],
-        "dews-mobile-datasource": ["datasource-area"],
+        "dews-mobile-datasource": ["datasource-area", "cardlist"],
     }
 
     let acceptCheck = false;

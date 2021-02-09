@@ -140,8 +140,13 @@ export default {
             : CreateService.sendCreateMessage(component.$el);
         ContextMenuService.getContextMenu(component.$el);
       } else {
-        element = element.classList.contains('dews-mobile-component') ? element : element.querySelector('.dews-mobile-component');
-        ChangePositionService.sendChangePositionMessage(element, target);
+        if (element.classList.contains('dews-mobile-datasource') && target.classList.contains('cardlist')) {
+          const card = CreateService.addComponent('Card');
+          element.replaceWith(card.$el);
+        } else {
+          element = element.classList.contains('dews-mobile-component') ? element : element.querySelector('.dews-mobile-component');
+          ChangePositionService.sendChangePositionMessage(element, target);
+        }
       }
     },
   },

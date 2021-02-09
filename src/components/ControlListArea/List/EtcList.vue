@@ -23,7 +23,6 @@
       return {
         etcControl: {
           cardlist: 'CardList',
-          card: 'Card',
           datasource: 'Datasource',
           // messageBox: 'Message box',
           // snackBar: 'Snack Bar',
