@@ -1,8 +1,14 @@
+<!--<template>-->
+<!--  <div :uid="uid" :class="designerLayout" class="main-designer dews-mobile-component">-->
+<!--    <div class="main-designer-bg" ref="mainDesigner">-->
+<!--      <slot></slot>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</template>-->
+
 <template>
-  <div :uid="uid" :class="designerLayout" class="main-designer dews-mobile-component">
-    <div class="main-designer-bg" ref="mainDesigner">
-      <slot></slot>
-    </div>
+  <div :uid="uid" :class="designerLayout" class="main-designer dews-mobile-component" ref="mainDesigner">
+    <slot></slot>
   </div>
 </template>
 
@@ -40,14 +46,16 @@ export default {
 <style lang="scss" scoped>
 .main-designer {
   position: relative;
+  overflow-y: scroll;
+  padding: 12px 6px 5px 9px;
   background-color: #efeff4;
 
-  .main-designer-bg {
-    overflow-y: scroll;
-    width: 100%;
-    height: 100%;
-    padding: 12px 5px 5px 9px;
-  }
+  //.main-designer-bg {
+  //  overflow-y: scroll;
+  //  width: 100%;
+  //  height: 100%;
+  //  padding: 12px 5px 5px 9px;
+  //}
 
   &.designer-smartPhone {
     height: 628px;
@@ -70,17 +78,8 @@ export default {
   .main-designer {
     overflow: visible;
     height: auto;
-    padding: 0;
-    //border-left: 1px solid rgba(60, 60, 67, 0.18);
-    //border-right: 1px solid rgba(60, 60, 67, 0.18);
+    padding: 12px 10px 5px 10px;
     box-shadow: 0px -10px 10px 0 rgba(0, 0, 0, 0.06);
-
-    .main-designer-bg {
-      overflow-y: visible;
-      height: auto;
-      //min-height: calc(100vh - 214px); // 214 = 20px - 76px - 96px - 20px - 2px
-      padding: 12px 10px 5px 10px;
-    }
 
     &.designer-smartPhone,
     &.designer-tabletM,
@@ -90,19 +89,13 @@ export default {
     }
 
     &.designer-smartPhone {
-      .main-designer-bg {
-        min-height: 508px;
-      }
+      min-height: 508px;
     }
     &.designer-tabletM {
-      .main-designer-bg {
-        min-height: 892px;
-      }
+      min-height: 892px;
     }
     &.designer-tabletL {
-      .main-designer-bg {
-        min-height: 636px;
-      }
+      min-height: 636px;
     }
   }
 }
