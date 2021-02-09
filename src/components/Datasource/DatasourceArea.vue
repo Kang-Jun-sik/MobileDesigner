@@ -40,7 +40,7 @@ export default {
     top: 0;
     left: 167px;
     width: 100%;
-    max-width: 1210px;
+    max-width: 1173px;
     margin-left: 0;
   }
 }
