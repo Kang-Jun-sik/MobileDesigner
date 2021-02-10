@@ -47,12 +47,12 @@ export default {
         return componentAcceptsCheck(el, target);
       }
     })
-    .on('drop', function (el, target) {
-      _this.drop(el, target);
-      if (window.selectedItem) {
-        SelectService.setPosition(window.selectedItem);
-      }
-    })
+        .on('drop', function (el, target) {
+          _this.drop(el, target);
+          if (window.selectedItem) {
+            SelectService.setPosition(window.selectedItem);
+          }
+        })
 
     window.drake.containers.push(_designer.mainDesigner, _designer.areaList, _designer.containerList,
         _designer.buttonList, _designer.componentList, _designer.pickerList, _designer.etcList, _designer.datasourceArea);
@@ -141,8 +141,24 @@ export default {
         ContextMenuService.getContextMenu(component.$el);
       } else {
         if (element.classList.contains('dews-mobile-datasource') && target.classList.contains('cardlist')) {
+          //SET DataSource to IDE
+          const cardList = target.parentElement?.closest('.dews-mobile-component');
+          const cardListUid = cardList.getAttribute('uid');
+          const dataSourceUid = element.getAttribute('uid');
+
+          mobileDesignerToIDE({
+            commandType: 'set_dataSource',
+            uniqueId: 'set_dataSource-service',
+            matchingInfo: {
+              targetUid: cardListUid,
+              datasourceUid: dataSourceUid
+            }
+          });
+
           const card = CreateService.addComponent('Card');
           element.replaceWith(card.$el);
+
+
         } else {
           element = element.classList.contains('dews-mobile-component') ? element : element.querySelector('.dews-mobile-component');
           ChangePositionService.sendChangePositionMessage(element, target);
