@@ -15,25 +15,17 @@
         </ul>
       </div>
       <div class="title">
-        <h3>32</h3>
+        <h3></h3>
         <div class="sub">
-          <span>이철수</span>
-          <span>서울</span>
+          <span></span>
+          <span></span>
         </div>
       </div>
     </div>
     <ul class="list-field">
-      <li>
-        <p class="name">이름</p>
-        <p class="item">이철수</p>
-      </li>
-      <li>
-        <p class="name">나이</p>
-        <p class="item">32</p>
-      </li>
-      <li>
-        <p class="name">주소</p>
-        <p class="item">서울</p>
+      <li v-for="(field, idx) in fields" :key="idx">
+        <p class="name">{{ field }}</p>
+        <p class="item"></p>
       </li>
     </ul>
   </div>
@@ -49,10 +41,20 @@ export default {
   data() {
     return {
       uid: '',
+      fields: [],
     }
   },
   created() {
     this.uid = CreateService.createUid('cardlist-field');
+  },
+  methods: {
+    setField(data) {
+      const parser = new DOMParser();
+      const xmlDoc = parser.parseFromString(data, "application/xml");
+      const columns = xmlDoc.querySelector('columns');
+
+      Array.from(columns.children).forEach(col => this.fields.push(col.getAttribute('title')));
+    },
   }
 }
 </script>

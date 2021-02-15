@@ -39,7 +39,7 @@ export default {
         const prop = obj["controlAttributeKey"];
         const value = obj["controlAttributeValue"];
         const type = uid.substring(0, uid.lastIndexOf('-'));
-        const data = {uid, prop, value}
+        const data = { uid, prop, value }
 
         switch (type) {
             case 'dews-area-panel':
@@ -132,6 +132,9 @@ export default {
             case 'dropdownbutton-childbutton':
                 ChangeService.changeDropdownChildButton(data);
                 break;
+            case 'dews-cardlist':
+                ChangeService.changeCardList(data);
+                break;
         }
     },
 
@@ -142,7 +145,7 @@ export default {
     * */
 
     changePanel(data) {
-        const {uid, prop, value} = data;
+        const { uid, prop, value } = data;
         const component = store.state.component.items.find(item => item.uid === uid);
 
         switch (prop) {
@@ -153,7 +156,7 @@ export default {
     },
 
     changeItem(data) {
-        const {uid, prop, value} = data;
+        const { uid, prop, value } = data;
         const component = store.state.component.items.find(item => item.uid === uid);
 
         switch (prop) {
@@ -167,7 +170,7 @@ export default {
     },
 
     changeBox(data) {
-        const {uid, prop, value} = data;
+        const { uid, prop, value } = data;
         const component = store.state.component.items.find(item => item.uid === uid);
 
         switch (prop) {
@@ -199,7 +202,7 @@ export default {
     },
 
     changeTabs(data) {
-        const {uid, prop, value} = data;
+        const { uid, prop, value } = data;
         const component = store.state.component.items.find(item => item.uid === uid);
 
         switch (prop) {
@@ -216,7 +219,7 @@ export default {
     },
 
     changeTab(data) {
-        const {uid, prop, value} = data;
+        const { uid, prop, value } = data;
         const component = store.state.component.items.find(item => item.uid === uid);
 
         switch (prop) {
@@ -245,7 +248,7 @@ export default {
     },
 
     changeSearchContainer(data) {
-        const {uid, prop, value} = data;
+        const { uid, prop, value } = data;
         const component = store.state.component.items.find(item => item.uid === uid);
 
         switch (prop) {
@@ -268,7 +271,7 @@ export default {
     },
 
     changeListContainer(data) {
-        const {uid, prop, value} = data;
+        const { uid, prop, value } = data;
         const component = store.state.component.items.find(item => item.uid === uid);
 
         switch (prop) {
@@ -282,7 +285,7 @@ export default {
     },
 
     changeFormContainer(data) {
-        const {uid, prop, value} = data;
+        const { uid, prop, value } = data;
         const component = store.state.component.items.find(item => item.uid === uid);
 
         switch (prop) {
@@ -305,7 +308,7 @@ export default {
     },
 
     changeInfoContainer(data) {
-        const {uid, prop, value} = data;
+        const { uid, prop, value } = data;
         const component = store.state.component.items.find(item => item.uid === uid);
 
         switch (prop) {
@@ -319,7 +322,7 @@ export default {
     },
 
     changeFormSection(data) {
-        const {uid, prop, value} = data;
+        const { uid, prop, value } = data;
         const component = store.state.component.items.find(item => item.uid === uid);
 
         switch (prop) {
@@ -339,7 +342,7 @@ export default {
     },
 
     changeButton(data) {
-        const {uid, prop, value} = data;
+        const { uid, prop, value } = data;
         const component = store.state.component.items.find(item => item.uid === uid);
 
         switch (prop) {
@@ -374,7 +377,7 @@ export default {
     },
 
     changeButtonGroup(data) {
-        const {uid, prop, value} = data;
+        const { uid, prop, value } = data;
         const component = store.state.component.items.find(item => item.uid === uid);
 
         switch (prop) {
@@ -385,7 +388,7 @@ export default {
     },
 
     changeCheckbox(data) {
-        const {uid, prop, value} = data;
+        const { uid, prop, value } = data;
         const component = store.state.component.items.find(item => item.uid === uid);
 
         switch (prop) {
@@ -408,7 +411,7 @@ export default {
     },
 
     changeCheckboxGroup(data) {
-        const {uid, prop, value} = data;
+        const { uid, prop, value } = data;
         const component = store.state.component.items.find(item => item.uid === uid);
 
         switch (prop) {
@@ -425,11 +428,11 @@ export default {
     },
 
     changeComplex(data) {
-        const {uid, prop, value} = data;
+        const { uid, prop, value } = data;
     },
 
     changeDatePicker(data) {
-        const {uid, prop, value} = data;
+        const { uid, prop, value } = data;
         const component = store.state.component.items.find(item => item.uid === uid);
 
         switch (prop) {
@@ -470,7 +473,7 @@ export default {
     },
 
     changeMaskTextbox(data) {
-        const {uid, prop, value} = data;
+        const { uid, prop, value } = data;
         const component = store.state.component.items.find(item => item.uid === uid);
 
         switch (prop) {
@@ -511,7 +514,7 @@ export default {
     },
 
     changeMonthPicker(data) {
-        const {uid, prop, value} = data;
+        const { uid, prop, value } = data;
         const component = store.state.component.items.find(item => item.uid === uid);
 
         switch (prop) {
@@ -546,7 +549,7 @@ export default {
     },
 
     changeNumericTextbox(data) {
-        const {uid, prop, value} = data;
+        const { uid, prop, value } = data;
         const component = store.state.component.items.find(item => item.uid === uid);
 
         switch (prop) {
@@ -599,7 +602,7 @@ export default {
     },
 
     changeNumericTextboxButton(data) {
-        const {uid, prop, value} = data;
+        const { uid, prop, value } = data;
         const component = store.state.component.items.find(item => item.uid === uid);
 
         switch (prop) {
@@ -616,7 +619,7 @@ export default {
     },
 
     changePeriodPicker(data) {
-        const {uid, prop, value} = data;
+        const { uid, prop, value } = data;
         const component = store.state.component.items.find(item => item.uid === uid);
 
         switch (prop) {
@@ -660,7 +663,7 @@ export default {
     },
 
     changeRadioButton(data) {
-        const {uid, prop, value} = data;
+        const { uid, prop, value } = data;
         const component = store.state.component.items.find(item => item.uid === uid);
 
         switch (prop) {
@@ -683,7 +686,7 @@ export default {
     },
 
     changeRadioButtonGroup(data) {
-        const {uid, prop, value} = data;
+        const { uid, prop, value } = data;
         const component = store.state.component.items.find(item => item.uid === uid);
 
         switch (prop) {
@@ -703,7 +706,7 @@ export default {
     },
 
     changeTextbox(data) {
-        const {uid, prop, value} = data;
+        const { uid, prop, value } = data;
         const component = store.state.component.items.find(item => item.uid === uid);
 
         switch (prop) {
@@ -741,7 +744,7 @@ export default {
     },
 
     changeTimePicker(data) {
-        const {uid, prop, value} = data;
+        const { uid, prop, value } = data;
         const component = store.state.component.items.find(item => item.uid === uid);
 
         switch (prop) {
@@ -776,7 +779,7 @@ export default {
     },
 
     changeDropdownList(data) {
-        const {uid, prop, value} = data;
+        const { uid, prop, value } = data;
         const component = store.state.component.items.find(item => item.uid === uid);
 
         switch (prop) {
@@ -799,7 +802,7 @@ export default {
     },
 
     changeDropdownButton(data) {
-        const {uid, prop, value} = data;
+        const { uid, prop, value } = data;
         const component = store.state.component.items.find(item => item.uid === uid);
 
         switch (prop) {
@@ -825,7 +828,7 @@ export default {
     },
 
     changeDropdownChildButton(data) {
-        const {uid, prop, value} = data;
+        const { uid, prop, value } = data;
         const component = store.state.component.items.find(item => item.uid === uid);
 
         switch (prop) {
@@ -840,5 +843,20 @@ export default {
                 break;
         }
     },
+
+    changeCardList(data) {
+        const { uid, prop, value } = data;
+        const component = store.state.component.items.find(item => item.uid === uid);
+
+        let cardListField;
+        switch (prop) {
+            case 'columns':
+                cardListField = component.$refs.cardListField.lastElementChild;
+                cardListField = store.state.component.items.find(item => item.uid === cardListField.getAttribute('uid'));
+                store.commit('ADD_CARD_LIST', { uid, cardListField })
+                cardListField.setField(value);
+                break;
+        }
+    }
 
 }

@@ -5,6 +5,8 @@ export default {
         redoItems:[],
 
         dragulaUid: {},
+
+        dewsCardList: {}
     },
     getters: {
         getItems(state) {
@@ -31,5 +33,8 @@ export default {
         MATCH_UID(state, payload) {
             state.dragulaUid[payload.uid] = payload.dataUid;
         },
+        ADD_CARD_LIST(state, payload) {
+            state.dewsCardList[payload.uid] = payload.cardListField;
+        }
     }
 }

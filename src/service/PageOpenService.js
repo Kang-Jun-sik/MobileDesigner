@@ -230,6 +230,18 @@ export default {
             } else {
                 instanceUid = PageOpenService.controlParsing(instance, parent);
             }
+        } else if (node.tagName === 'cardlist-field') {
+            let cardListField;
+            if (!store.state.component.dewsCardList[parentUid]) {
+               const field = Vue.extend(CardListField);
+               cardListField = new field().$mount();
+               store.commit('ADD_CARD_LIST', { uid: parentUid, cardListField: cardListField });
+            } else {
+                cardListField = store.state.component.dewsCardList[parentUid];
+            }
+
+            parent.$refs.cardListField.hasChildNodes() ? null : parent.$refs.cardListField.appendChild(cardListField.$el);
+            node.parentElement.childElementCount > cardListField.fields.length ? cardListField.fields.push(instance.getAttribute('title')) : null;
         } else {
             instanceUid = PageOpenService.controlParsing(instance, parent);
         }

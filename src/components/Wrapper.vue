@@ -162,8 +162,7 @@ export default {
 
           const card = CreateService.addComponent('Card');
           element.replaceWith(card.$el);
-
-
+          store.commit('ADD_ITEM', card);
         } else {
           element = element.classList.contains('dews-mobile-component') ? element : element.querySelector('.dews-mobile-component');
           ChangePositionService.sendChangePositionMessage(element, target);

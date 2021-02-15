@@ -111,7 +111,7 @@ export default {
 
         if (targetPanel.childElementCount === 2) {
             const multiCommand = [];
-            const targetSibling = target.nextSibling ? target.nextSibling : target.previousSibling;
+            const targetSibling = target.nextElementSibling ? target.nextElementSibling : target.previousElementSibling;
             DeleteService.deleteSplitItems(targetSibling, targetSibling.hasChildNodes());
             DeleteService.deleteSplitItems(targetPanel, targetSibling.hasChildNodes());
 

@@ -24,7 +24,7 @@
       </div>
     </div>
     <div class="cardlist-wrap">
-      <div class="cardlist" :data-uid="dataUid" style="height: auto" ref="cardlist">
+      <div class="cardlist" :data-uid="dataUid" style="height: auto" ref="cardListField">
         <slot></slot>
       </div>
     </div>
@@ -50,7 +50,7 @@ export default {
     store.commit('MATCH_UID', { 'uid': this.uid, 'dataUid': this.dataUid });
   },
   mounted() {
-    window.drake.containers.push(this.$refs.cardlist);
+    window.drake.containers.push(this.$refs.cardListField);
   }
 }
 </script>
