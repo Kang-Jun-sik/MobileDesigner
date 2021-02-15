@@ -379,8 +379,8 @@ body {
 
 .option-custom-button {
   ul {
-    padding: 5px;
     align-items: center;
+    overflow-x: initial;
     li {
       flex: 0 0 auto;
       margin-right: 8px;

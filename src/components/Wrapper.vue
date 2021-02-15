@@ -114,6 +114,11 @@ export default {
               createElement.appendChild(component.$el);
               element.replaceWith(createElement);
               break;
+            case "container-button":
+              createElement = document.createElement('li');
+              createElement.appendChild(component.$el);
+              element.replaceWith(createElement);
+              break;
             case 'group':
               createElement = document.createElement('span');
               createElement.className = 'group-item';
