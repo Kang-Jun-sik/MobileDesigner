@@ -377,6 +377,17 @@ body {
   }
 }
 
+.option-custom-button {
+  ul {
+    padding: 5px;
+    align-items: center;
+    li {
+      flex: 0 0 auto;
+      margin-right: 8px;
+    }
+  }
+}
+
 // button-group
 @include dews-button-group();
 
