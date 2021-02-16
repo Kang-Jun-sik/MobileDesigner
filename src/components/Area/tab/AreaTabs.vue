@@ -62,7 +62,7 @@ export default {
     },
     setSelectedIndex() {
       this.titlesList.forEach((title, idx) => {
-        if (idx === this.selected) {
+        if (idx === parseInt(this.selected)) {
           title.tab.active = 'active';
         } else {
           title.tab.active = false;
