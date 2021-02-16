@@ -213,7 +213,7 @@ export default {
                 if (node.tagName === 'dews-tab') {
                     store.commit('SET_TAB', {
                         tabsUid: parent.uid,
-                        tabData: {tab: controlChild}
+                        tabData: { tab: controlChild }
                     });
                     store.commit('SET_NAVIGATION_BAR_TITLE_LIST', {
                         uid: controlChild.uid,
@@ -235,6 +235,7 @@ export default {
             if (!store.state.component.dewsCardList[parentUid]) {
                const field = Vue.extend(CardListField);
                cardListField = new field().$mount();
+               store.commit('ADD_ITEM', cardListField);
                store.commit('ADD_CARD_LIST', { uid: parentUid, cardListField: cardListField });
             } else {
                 cardListField = store.state.component.dewsCardList[parentUid];

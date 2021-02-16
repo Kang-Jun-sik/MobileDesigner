@@ -33,6 +33,7 @@
 
 <script>
 import CreateService from "@/service/CreateService";
+import SelectService from "@/service/SelectService";
 import DewsCheckbox from "@/components/Controls/DewsCheckBox";
 
 export default {
@@ -53,7 +54,10 @@ export default {
       const xmlDoc = parser.parseFromString(data, "application/xml");
       const columns = xmlDoc.querySelector('columns');
 
+      this.fields.splice(0, this.fields.length);
       Array.from(columns.children).forEach(col => this.fields.push(col.getAttribute('title')));
+
+      setTimeout(SelectService.setPosition, 10, this.$el);
     },
   }
 }

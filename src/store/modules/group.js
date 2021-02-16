@@ -3,8 +3,8 @@ export default {
         tabList: {},
     },
     getters: {
-        getTabList(state) {
-            return state.tabList;
+        getTabList: (state) => (uid) => {
+            return state.tabList[uid];
         },
     },
     actions: {},

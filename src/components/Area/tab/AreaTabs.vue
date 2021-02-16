@@ -44,7 +44,7 @@ export default {
     this.dataUid = CreateService.createUid('tabs');
 
     this.$nextTick(function () {
-      this.titlesList = store.getters.getTabList[this.uid];
+      this.titlesList = store.getters.getTabList(this.uid);
       this.setSelectedIndex();
     });
   },
@@ -91,7 +91,7 @@ export default {
   },
   computed: {
     updateTitles() {
-      return store.getters.getTabList[this.uid];
+      return store.getters.getTabList(this.uid);
     }
   },
   watch: {
