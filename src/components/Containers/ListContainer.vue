@@ -8,7 +8,7 @@
       </container-summary>
     </div>
 
-    <container-content containerType="list" :dataUid="dataUid">
+    <container-content controlType="list" :dataUid="dataUid">
       <div class="dews-list-field">
         <ul class="list-container-field list-field" ref="listContainerField"
           :data-uid="dataUid" data-type="container">

@@ -5,7 +5,7 @@
       <container-button containerType="search"></container-button>
     </div>
 
-    <container-content containerType="search" :dataUid="dataUid">
+    <container-content controlType="search" :dataUid="dataUid">
       <div class="dews-search-field">
         <ul class="search-container-field form-field" ref="searchContainerField"
           :data-uid="dataUid" data-type="container">

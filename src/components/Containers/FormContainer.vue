@@ -5,7 +5,7 @@
       <container-button containerType="form"></container-button>
     </div>
 
-    <container-content containerType="form">
+    <container-content controlType="form">
       <form-section controlChild="form-section"></form-section>
     </container-content>
   </div>
