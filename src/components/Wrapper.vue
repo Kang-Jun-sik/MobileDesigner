@@ -39,9 +39,14 @@ export default {
           'componentList', 'pickerList', 'etcList', 'datasourceArea'].includes(source.id);
       },
       accepts: function (el, target) {
-        if (componentAcceptsCheck(el, target) && target.dataset.type === 'area') {
-          const containers = target.querySelectorAll(`[data-type='container']`);
-          if (containers.length > 1) return false;
+        if (componentAcceptsCheck(el, target)) {
+          if (target.dataset.type === 'area') {
+            const containers = target.querySelectorAll(`[data-type='container']`);
+            if (containers.length > 1) return false;
+          } else if (target.dataset.type === 'cardlist') {
+            const cardListField = target.querySelectorAll(`[data-type='field']`);
+            if (cardListField.length >= 1) return false;
+          }
         }
 
         return componentAcceptsCheck(el, target);

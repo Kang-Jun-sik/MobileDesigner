@@ -132,6 +132,9 @@ export default {
             case 'dropdownbutton-childbutton':
                 ChangeService.changeDropdownChildButton(data);
                 break;
+            case 'dews-datasource':
+                ChangeService.changeDatasource(data);
+                break;
             case 'dews-cardlist':
                 ChangeService.changeCardList(data);
                 break;
@@ -840,6 +843,17 @@ export default {
                 break;
             case 'disabled':
                 component.setDisabled(value);
+                break;
+        }
+    },
+
+    changeDatasource(data) {
+        const { uid, prop, value } = data;
+        const component = store.state.component.items.find(item => item.uid === uid);
+
+        switch (prop) {
+            case 'id':
+                component.setID(value);
                 break;
         }
     },

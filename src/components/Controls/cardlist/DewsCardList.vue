@@ -24,7 +24,7 @@
       </div>
     </div>
     <div class="cardlist-wrap">
-      <div class="cardlist" :data-uid="dataUid" style="height: auto" ref="cardListField">
+      <div class="cardlist" :data-uid="dataUid" style="height: auto" data-type="cardlist" ref="cardListField">
         <slot></slot>
       </div>
     </div>

@@ -1,5 +1,5 @@
 <template>
-  <button :uid="uid" class="dews-mobile-datasource dews-mobile-component" @mousedown="onClick">datasource</button>
+  <button :uid="uid" class="dews-mobile-datasource dews-mobile-component" @mousedown="onClick">{{ id }}</button>
 </template>
 
 <script>
@@ -10,6 +10,7 @@ export default {
   name: 'dews-datasource',
   data() {
     return {
+      id: 'datasource',
       uid: '',
     }
   },
@@ -17,9 +18,12 @@ export default {
     this.uid = CreateService.createUid('dews-datasource');
   },
   methods: {
+    setID(value) {
+      this.id = value;
+    },
     onClick(e) {
       SelectService.selectControl(e.target);
-    }
+    },
   }
 }
 </script>

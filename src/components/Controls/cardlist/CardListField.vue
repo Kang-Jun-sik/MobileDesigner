@@ -1,5 +1,5 @@
 <template>
-  <div :uid="uid" class="dews-mobile-card dews-mobile-component card">
+  <div :uid="uid" class="dews-mobile-card dews-mobile-component card" data-type="field">
     <div class="card-header">
       <div class="card-control">
         <ul>

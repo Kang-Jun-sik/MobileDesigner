@@ -75,6 +75,8 @@ export default {
         const $dataSourceArea = document.querySelector('.datasource-area');
         const dataSourceControl = PageOpenService.createControlFromData(dataSource);
         $dataSourceArea.appendChild(dataSourceControl.$el);
+
+        PageOpenService.setAttributeFromIDE(dataSource, dataSourceControl);
     },
 
     /*
