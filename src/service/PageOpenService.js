@@ -69,17 +69,6 @@ export default {
     },
 
     /*
-    * Set Datasource from IDE
-    * */
-    setDatasourceFromIDE(dataSource) {
-        const $dataSourceArea = document.querySelector('.datasource-area');
-        const dataSourceControl = PageOpenService.createControlFromData(dataSource);
-        $dataSourceArea.appendChild(dataSourceControl.$el);
-
-        PageOpenService.setAttributeFromIDE(dataSource, dataSourceControl);
-    },
-
-    /*
     * Set attribute from IDE
     * */
     setAttributeFromIDE(instance, control) {
@@ -95,6 +84,24 @@ export default {
                 control[attr.name] = parseValue ? JSON.parse(attr.value) : attr.value;
             }
         }
+    },
+
+    /*
+    * Set Datasource from IDE
+    * */
+    setDatasourceFromIDE(dataSource) {
+        const $dataSourceArea = document.querySelector('.datasource-area');
+        const dataSourceControl = PageOpenService.createControlFromData(dataSource);
+        $dataSourceArea.appendChild(dataSourceControl.$el);
+
+        dataSourceControl.uid = dataSource.getAttribute('uid');
+        PageOpenService.setAttributeFromIDE(dataSource, dataSourceControl);
+    },
+
+    setComponentStoreData(control, parent=undefined, type=undefined) {
+        (type === 'tabs') ? store.commit('SET_TAB', { tabsUid: parent.uid, tabData: { tab: control } }) : null;
+        store.commit('SET_NAVIGATION_BAR_TITLE_LIST', { uid: control.uid, title: control.title });
+        store.commit('SET_MAIN_BUTTON_LIST', { uid: control.uid, mainButtons: control.mainButtons });
     },
 
     /*
@@ -116,18 +123,7 @@ export default {
                 break;
             case 'tabs':
                 addComponent = control.$el;
-                store.commit('SET_TAB', {
-                    tabsUid: parent.uid,
-                    tabData: {tab: control}
-                });
-                store.commit('SET_NAVIGATION_BAR_TITLE_LIST', {
-                    uid: control.uid,
-                    title: control.title
-                });
-                store.commit('SET_MAIN_BUTTON_LIST', {
-                    uid: control.uid,
-                    mainButtons: control.mainButtons
-                });
+                PageOpenService.setComponentStoreData(control, parent, 'tabs');
                 break;
             case 'search':
                 addComponent = document.createElement('li');
@@ -151,28 +147,19 @@ export default {
                 addComponent = control.$el;
                 break;
         }
-
-        if (instance.tagName === "dews-box") {
-            store.commit('SET_NAVIGATION_BAR_TITLE_LIST', {
-                uid: control.uid,
-                title: control.title
-            });
-            store.commit('SET_MAIN_BUTTON_LIST', {
-                uid: control.uid,
-                mainButtons: control.mainButtons
-            });
-        }
+        (instance.tagName === 'dews-box') ? PageOpenService.setComponentStoreData(control) : null;
 
         if (parentDataUid) {
-            let dataParent = parent.$el.querySelector(`[data-uid=${parentDataUid}]`);
+            const $dataUidElement = parent.$el.querySelector(`[data-uid=${parentDataUid}]`);
             if (instance.hasAttribute('index')) {
-                let idx = instance.getAttribute('index');
-                dataParent.insertBefore(addComponent, dataParent.children[idx]);
-            } else
-                dataParent.appendChild(addComponent);
+                const idx = instance.getAttribute('index');
+                $dataUidElement.insertBefore(addComponent, $dataUidElement.children[idx]);
+            } else {
+                $dataUidElement.appendChild(addComponent);
+            }
         } else {
             if (instance.hasAttribute('index')) {
-                let idx = instance.getAttribute('index');
+                const idx = instance.getAttribute('index');
                 parent.$el.insertBefore(addComponent, parent.$el.children[idx]);
             } else
                 parent.$el.appendChild(addComponent);
@@ -203,31 +190,19 @@ export default {
         if (oneChildList.includes(node.tagName)) {
             controlChild = findChild(node.tagName, parent.$children);
             controlChild.uid = node.getAttribute('uid');
-            store.commit('ADD_ITEM', controlChild);
             instanceUid = controlChild.uid;
+            store.commit('ADD_ITEM', controlChild);
+
             PageOpenService.setAttributeFromIDE(instance, controlChild);
         } else if (multiChildList.includes(node.tagName)) {
             controlChild = findChild(node.tagName, parent.$children);
             if (parent.checkChild) {
+                parent.checkChild = false;
                 controlChild.uid = node.getAttribute('uid');
                 instanceUid = controlChild.uid;
-
-                if (node.tagName === 'dews-tab') {
-                    store.commit('SET_TAB', {
-                        tabsUid: parent.uid,
-                        tabData: { tab: controlChild }
-                    });
-                    store.commit('SET_NAVIGATION_BAR_TITLE_LIST', {
-                        uid: controlChild.uid,
-                        title: controlChild.title
-                    });
-                    store.commit('SET_MAIN_BUTTON_LIST', {
-                        uid: controlChild.uid,
-                        mainButtons: controlChild.mainButtons
-                    });
-                }
-                parent.checkChild = false;
                 store.commit('ADD_ITEM', controlChild);
+
+                (node.tagName === 'dews-tab') ? PageOpenService.setComponentStoreData(controlChild, parent, 'tabs') : null;
                 PageOpenService.setAttributeFromIDE(instance, controlChild);
             } else {
                 instanceUid = PageOpenService.controlParsing(instance, parent);
@@ -243,8 +218,10 @@ export default {
                 cardListField = store.state.component.dewsCardList[parentUid];
             }
 
-            parent.$refs.cardListField.hasChildNodes() ? null : parent.$refs.cardListField.appendChild(cardListField.$el);
-            node.parentElement.childElementCount > cardListField.fields.length ? cardListField.fields.push(instance.getAttribute('title')) : null;
+            if (parent.$refs.cardListField.hasChildNodes()) parent.$refs.cardListField.appendChild(cardListField.$el);
+            if (node.parentElement.childElementCount > cardListField.fields.length) cardListField.fields.push(instance.getAttribute('title'));
+        } else if (node.tagName === 'dews-datasource') {
+            PageOpenService.setDatasourceFromIDE(node);
         } else {
             instanceUid = PageOpenService.controlParsing(instance, parent);
         }
