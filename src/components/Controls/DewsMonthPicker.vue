@@ -1,10 +1,10 @@
 <template>
-  <div :uid="uid" class="dews-mobile-monthPicker dews-mobile-component date-picker-wrap focus">
-    <label>{{ title }}</label>
-    <span class="select-wrap"
-          :class="{disabled: disabled ? 'disabled' : '',
+  <div :uid="uid" class="dews-mobile-monthPicker dews-mobile-component date-picker-wrap focus"
+       :class="{disabled: disabled ? 'disabled' : '',
           readonly: readonly ? 'readonly' : '',
           required: required ? 'required' : ''}">
+    <label>{{ title }}</label>
+    <span class="select-wrap">
       <span class="select-shape">
         <span class="select-input">
           {{ value }}
