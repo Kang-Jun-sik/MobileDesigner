@@ -14,6 +14,7 @@ import {
     ButtonGroup,
     CardList,
     CardListField,
+    CodePicker,
     CheckBox,
     CheckBoxGroup,
     ChildButton,
@@ -160,6 +161,9 @@ export default {
                 break;
             case 'TimePicker':
                 component = Vue.extend(TimePicker);
+                break;
+            case 'CodePicker':
+                component = Vue.extend(CodePicker);
                 break;
             case 'PeriodPicker':
                 component = Vue.extend(PeriodPicker);

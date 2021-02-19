@@ -28,20 +28,8 @@ export default {
       },
     }
   },
-  created() {
-
-  },
-  methods: {
-    touchMove() {
-
-    },
-    touchStart() {
-
-    },
-    touchEnd() {
-
-    }
-  }
+  created() {},
+  methods: {}
 }
 </script>
 

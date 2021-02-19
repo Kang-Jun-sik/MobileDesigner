@@ -18,6 +18,7 @@ export DatePicker from "@/components/Controls/DewsDatePicker";
 export MonthPicker from "@/components/Controls/DewsMonthPicker";
 export TimePicker from "@/components/Controls/DewsTimePicker";
 export PeriodPicker from "@/components/Controls/DewsPeriodPicker";
+export CodePicker from "@/components/Controls/codepicker/DewsCodePicker";
 export DropdownList from "@/components/Controls/dropdownlist/DewsDropdownlist";
 export DropdownButton from "@/components/Controls/dropdownbutton/DewsDropdownbutton";
 export ChildButton from "@/components/Controls/dropdownbutton/ChildButton"
