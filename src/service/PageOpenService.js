@@ -218,7 +218,7 @@ export default {
                 cardListField = store.state.component.dewsCardList[parentUid];
             }
 
-            if (parent.$refs.cardListField.hasChildNodes()) parent.$refs.cardListField.appendChild(cardListField.$el);
+            if (!parent.$refs.cardListField.hasChildNodes()) parent.$refs.cardListField.appendChild(cardListField.$el);
             if (node.parentElement.childElementCount > cardListField.fields.length) cardListField.fields.push(instance.getAttribute('title'));
         } else if (node.tagName === 'dews-datasource') {
             PageOpenService.setDatasourceFromIDE(node);
