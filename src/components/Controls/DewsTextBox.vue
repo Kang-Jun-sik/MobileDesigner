@@ -2,12 +2,13 @@
   <div :uid="uid" class="dews-mobile-textbox dews-mobile-component textbox-wrap">
     <label :for="id">{{ title }}</label>
     <input v-if="!multi" :id="id" @change="onChange($event)"
-     type="text" :value="value" :placeholder="placeholder"
-     :required="required" :disabled="disabled" :readonly="readonly" ref="textBox">
+           type="text" :value="value" :placeholder="placeholder"
+           :required="required" :disabled="disabled" :readonly="readonly" ref="textBox"
+           v-on:keyup.enter="setValueToIDE($event)">
 
     <textarea v-else :id="id" @change="onChange($event)"
-      type="text" :value="value" :placeholder="placeholder"
-      :required="required" :disabled="disabled" :readonly="readonly" ref="textArea">
+              type="text" :value="value" :placeholder="placeholder"
+              :required="required" :disabled="disabled" :readonly="readonly" ref="textArea">
     </textarea>
 
   </div>
@@ -15,6 +16,7 @@
 
 <script>
 import CreateService from "@/service/CreateService";
+import ChangeService from "@/service/ChangeService";
 
 export default {
   name: 'dews-textbox',
@@ -49,6 +51,10 @@ export default {
     setValue(value) {
       this.value = value;
     },
+    setValueToIDE(evt) {
+      ChangeService.sendChangeMessage('value', evt.target.value, this.uid);
+      evt.target.blur();
+    },
     setType(value) {
       this.type = value;
     },
@@ -81,5 +87,6 @@ export default {
 <style lang="scss" scoped>
 @import 'node_modules/@dews/dews-mobile-style/scss/variables/variables';
 @import 'node_modules/@dews/dews-mobile-style/scss/mixins/_mixins';
+
 @include dews-textbox();
 </style>
