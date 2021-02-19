@@ -1,7 +1,10 @@
 <template>
   <div :uid="uid" class="dews-mobile-datePicker dews-mobile-component date-picker-wrap focus">
     <label>{{ title }}</label>
-    <span class="select-wrap">
+    <span class="select-wrap"
+          :class="{disabled: disabled ? 'disabled' : '',
+          readonly: readonly ? 'readonly' : '',
+          required: required ? 'required' : ''}">
       <span class="select-shape">
         <span class="select-input">
           {{ value }}
@@ -26,7 +29,7 @@ export default {
       title: 'DatePicker',
       value: '',
       disabled: false,
-      readonly: false,
+      readonly: true,
       required: false,
       min: '',
       max: '',

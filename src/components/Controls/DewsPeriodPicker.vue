@@ -1,7 +1,10 @@
 <template>
   <div :uid="uid" class="dews-mobile-periodPicker dews-mobile-component period-picker-wrap focus">
     <label>{{ title }}</label>
-    <span class="select-wrap">
+    <span class="select-wrap"
+          :class="{disabled: disabled ? 'disabled' : '',
+          readonly: readonly ? 'readonly' : '',
+          required: required ? 'required' : ''}">
       <span class="select-shape">
         <span class="select-input">
           {{ value }}
