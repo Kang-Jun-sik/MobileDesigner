@@ -1,5 +1,5 @@
 <template>
-  <div :uid="uid" class="dews-mobile-timePicker dews-mobile-component time-picker-wrap"
+  <div :uid="uid" class="dews-mobile-timePicker dews-mobile-component timepicker-wrap"
        :class="{disabled: disabled ? 'disabled' : '',
           readonly: readonly ? 'readonly' : '',
           required: required ? 'required' : ''}">
@@ -8,7 +8,7 @@
       <span class="select-shape">
         <span class="select-input">{{ value }}</span>
       </span>
-      <span class="select-icon time-picker-icon"></span>
+      <span class="select-icon timepicker-icon"></span>
     </span>
   </div>
 </template>
