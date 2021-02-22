@@ -1,5 +1,5 @@
 <template>
-  <div class="layer-drawer">
+  <div class="layer-drawer" :class="drawerSize">
     <div class="overlay"></div>
     <div class="layer layer-bottom" :style="style">
       <div class="layer-moving-button">
@@ -14,6 +14,8 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
+
 export default {
   name: 'drawer-layout',
   data() {
@@ -29,7 +31,12 @@ export default {
     }
   },
   created() {},
-  methods: {}
+  methods: {},
+  computed: {
+    ...mapGetters({
+      drawerSize: "getDrawerSize",
+    })
+  }
 }
 </script>
 
