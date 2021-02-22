@@ -20,7 +20,7 @@ import DrawerLayout from "@/components/Controls/DewsDrawerlayout";
 
 export default {
   name: 'main-designer-wrapper',
-  components: {DrawerLayout, NavigationBar, MainDesigner, ButtonTabBar},
+  components: {NavigationBar, MainDesigner, ButtonTabBar, DrawerLayout },
   data() {
     return {
       wrapper: '',
