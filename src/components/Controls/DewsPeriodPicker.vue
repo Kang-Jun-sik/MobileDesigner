@@ -1,5 +1,5 @@
 <template>
-  <div :uid="uid" class="dews-mobile-periodPicker dews-mobile-component period-picker-wrap focus">
+  <div :uid="uid" class="dews-mobile-periodPicker dews-mobile-component periodpicker-wrap focus">
     <label>{{ title }}</label>
     <span class="select-wrap"
           :class="{disabled: disabled ? 'disabled' : '',
@@ -10,7 +10,7 @@
           {{ value }}
         </span>
       </span>
-      <span class="select-icon period-picker-icon"></span>
+      <span class="select-icon periodpicker-icon"></span>
     </span>
   </div>
 </template>
@@ -86,5 +86,13 @@ export default {
 <style lang="scss" scoped>
 @import 'node_modules/@dews/dews-mobile-style/scss/variables/variables';
 @import 'node_modules/@dews/dews-mobile-style/scss/mixins/_mixins';
+@import 'src/assets/scss/_mixins';
 @include dews-periodpicker();
+
+//--------------------------------------
+// FD 추가 영역
+//--------------------------------------
+.periodpicker-wrap {
+  @include dews-designer-picker-style();
+}
 </style>

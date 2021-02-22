@@ -103,5 +103,16 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import 'node_modules/@dews/dews-mobile-style/scss/variables/variables';
+@import 'node_modules/@dews/dews-mobile-style/scss/mixins/_mixins';
+@import 'src/assets/scss/_mixins';
+@include dews-codepicker();
+@include dews-drawer-codepicker();
 
+//--------------------------------------
+// FD 추가 영역
+//--------------------------------------
+.codepicker-wrap {
+  @include dews-designer-picker-style();
+}
 </style>

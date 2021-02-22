@@ -337,8 +337,28 @@
 }
 
 
-
-
-
-
-
+@mixin dews-designer-picker-style {
+  &.readonly,
+  &.disabled {
+    .select-wrap {
+      border-color: rgba(60, 60, 67, 0.08);
+      background-color: rgba(60, 60, 67, 0.02);
+    }
+  }
+  &.disabled {
+    .select-wrap {
+      color: rgba(60, 60, 67, 0.6);
+    }
+  }
+  &.required {
+    label {
+      &::after {
+        content: '*';
+        display: inline;
+        color: #fc4c60;
+        font-size: 12px;
+        line-height: 18px;
+      }
+    }
+  }
+}
