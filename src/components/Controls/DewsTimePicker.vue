@@ -1,14 +1,14 @@
 <template>
-  <div :uid="uid" class="dews-mobile-timePicker dews-mobile-component timepicker-wrap">
-    <label>{{ title }}</label>
-    <span class="select-wrap"
-          :class="{disabled: disabled ? 'disabled' : '',
+  <div :uid="uid" class="dews-mobile-timePicker dews-mobile-component time-picker-wrap"
+       :class="{disabled: disabled ? 'disabled' : '',
           readonly: readonly ? 'readonly' : '',
           required: required ? 'required' : ''}">
+    <label>{{ title }}</label>
+    <span class="select-wrap">
       <span class="select-shape">
         <span class="select-input">{{ value }}</span>
       </span>
-      <span class="select-icon timepicker-icon"></span>
+      <span class="select-icon time-picker-icon"></span>
     </span>
   </div>
 </template>
@@ -71,14 +71,5 @@ export default {
 <style lang="scss" scoped>
 @import 'node_modules/@dews/dews-mobile-style/scss/variables/variables';
 @import 'node_modules/@dews/dews-mobile-style/scss/mixins/_mixins';
-@import 'src/assets/scss/_mixins';
 @include dews-timepicker();
-
-
-//--------------------------------------
-// FD 추가 영역
-//--------------------------------------
-.timepicker-wrap {
-  @include dews-designer-picker-style();
-}
 </style>

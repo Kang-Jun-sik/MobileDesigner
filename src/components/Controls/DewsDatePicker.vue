@@ -1,16 +1,16 @@
 <template>
-  <div :uid="uid" class="dews-mobile-datePicker dews-mobile-component datepicker-wrap focus">
-    <label>{{ title }}</label>
-    <span class="select-wrap"
-          :class="{disabled: disabled ? 'disabled' : '',
+  <div :uid="uid" class="dews-mobile-datePicker dews-mobile-component date-picker-wrap focus"
+       :class="{disabled: disabled ? 'disabled' : '',
           readonly: readonly ? 'readonly' : '',
           required: required ? 'required' : ''}">
+    <label>{{ title }}</label>
+    <span class="select-wrap">
       <span class="select-shape">
         <span class="select-input">
           {{ value }}
         </span>
       </span>
-      <span class="select-icon datepicker-icon"></span>
+      <span class="select-icon date-picker-icon"></span>
     </span>
   </div>
 </template>
@@ -82,14 +82,5 @@ export default {
 <style lang="scss" scoped>
 @import 'node_modules/@dews/dews-mobile-style/scss/variables/variables';
 @import 'node_modules/@dews/dews-mobile-style/scss/mixins/_mixins';
-@import 'src/assets/scss/_mixins';
 @include dews-datepicker();
-
-//--------------------------------------
-// FD 추가 영역
-//--------------------------------------
-.datepicker-wrap {
-  @include dews-designer-picker-style();
-}
 </style>
-
