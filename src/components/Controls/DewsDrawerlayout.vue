@@ -108,6 +108,7 @@ export default {
 //--------------------------------------
 .layer-drawer  {
   display: none;
+
   &.open {
     display: block;
   }
@@ -139,34 +140,34 @@ export default {
   }
 }
 
-//.designer-style {
-//  .layer-drawer  {
-//    .layer-bottom {
-//      position: sticky;
-//      transform: translate3d(0px, -56px, 0px);
-//
-//    }
-//
-//    &.drawer-tabletL {
-//      .layer-bottom {
-//        height: 600px;
-//      }
-//    }
-//
-//    &.drawer-tabletM {
-//      .layer-bottom {
-//        height: 800px;
-//      }
-//    }
-//
-//    &.drawer-smartPhone {
-//      .layer-bottom {
-//        left: 24px;
-//        width: 430px;
-//        height: 560px;
-//        margin-left: 0;
-//      }
-//    }
-//  }
-//}
+.designer-style {
+  .layer-drawer  {
+    position: sticky;
+    bottom: 0;
+    .layer-bottom {
+      transform: translate3d(0px, -56px, 0px);
+
+    }
+
+    &.drawer-tabletL {
+      .layer-bottom {
+        height: 600px;
+      }
+    }
+
+    &.drawer-tabletM {
+      .layer-bottom {
+        height: 690px;
+      }
+    }
+
+    &.drawer-smartPhone {
+      .layer-bottom {
+        left: 0;
+        width: 410px;
+        height: 500px;
+      }
+    }
+  }
+}
 </style>
