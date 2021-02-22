@@ -1,5 +1,5 @@
 <template>
-  <div class="layer-drawer" :class="drawerSize">
+  <div class="layer-drawer open" :class="drawerSize">
     <div class="overlay"></div>
     <div class="layer layer-bottom" :style="style">
       <div class="layer-moving-button">
@@ -106,9 +106,67 @@ export default {
 //--------------------------------------
 // FD 추가 영역
 //--------------------------------------
-.layer-drawer .layer-bottom {
-  position: absolute;
-  height: 600px;
-  transform: translate3d(0px, -76px, 0px);
+.layer-drawer  {
+  display: none;
+  &.open {
+    display: block;
+  }
+  .layer-bottom {
+    position: absolute;
+    transform: translate3d(0px, -76px, 0px);
+
+  }
+
+  &.drawer-tabletL {
+    .layer-bottom {
+      height: 600px;
+    }
+  }
+
+  &.drawer-tabletM {
+    .layer-bottom {
+      height: 800px;
+    }
+  }
+
+  &.drawer-smartPhone {
+    .layer-bottom {
+      left: 24px;
+      width: 430px;
+      height: 560px;
+      margin-left: 0;
+    }
+  }
 }
+
+//.designer-style {
+//  .layer-drawer  {
+//    .layer-bottom {
+//      position: sticky;
+//      transform: translate3d(0px, -56px, 0px);
+//
+//    }
+//
+//    &.drawer-tabletL {
+//      .layer-bottom {
+//        height: 600px;
+//      }
+//    }
+//
+//    &.drawer-tabletM {
+//      .layer-bottom {
+//        height: 800px;
+//      }
+//    }
+//
+//    &.drawer-smartPhone {
+//      .layer-bottom {
+//        left: 24px;
+//        width: 430px;
+//        height: 560px;
+//        margin-left: 0;
+//      }
+//    }
+//  }
+//}
 </style>
