@@ -396,3 +396,9 @@ body {
 
 // radio-group
 @include dews-radio-group();
+
+//codepicker
+@include dews-designer-drawer-codepicker();
+.codepicker-search {
+  width: 100%;
+}

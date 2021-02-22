@@ -6,6 +6,7 @@
       <navigation-bar ref="navigationBar"></navigation-bar>
       <main-designer ref="mainDesigner"></main-designer>
       <button-tab-bar :showScroll="showScroll" ref="buttonTabBar"></button-tab-bar>
+      <drawer-layout ref="drawerLayout"></drawer-layout>
     </div>
   </div>
 </template>
@@ -15,10 +16,11 @@ import { mapGetters } from "vuex";
 import ButtonTabBar from "@/components/MainDesignerArea/ButtonTabBar";
 import NavigationBar from "@/components/MainDesignerArea/NavigationBar";
 import MainDesigner from "@/components/MainDesignerArea/MainDesigner";
+import DrawerLayout from "@/components/Controls/DewsDrawerlayout";
 
 export default {
   name: 'main-designer-wrapper',
-  components: {NavigationBar, MainDesigner, ButtonTabBar},
+  components: {NavigationBar, MainDesigner, ButtonTabBar, DrawerLayout },
   data() {
     return {
       wrapper: '',

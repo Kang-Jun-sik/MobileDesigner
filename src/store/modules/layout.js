@@ -5,6 +5,7 @@ export default {
         designerWrapperLayout: 'designer-wrapper-tabletL',
         designerLayout: 'designer-tabletL',
         mobileLayout: 'tabletL',
+        drawerLayout: 'drawer-tabletL',
 
         navigationBarTitle: '',
         navigationBarTitleList: [],
@@ -30,6 +31,9 @@ export default {
         getMobileSize(state) {
             return state.mobileLayout;
         },
+        getDrawerSize(state) {
+            return state.drawerLayout;
+        },
         getNavigationBarTitleList: (state) => (uid) => {
             return state.navigationBarTitleList[uid];
         },
@@ -47,6 +51,7 @@ export default {
             state.designerWrapperLayout = 'designer-wrapper-' + payload;
             state.designerLayout = 'designer-' + payload;
             state.mobileLayout = payload;
+            state.drawerLayout = 'drawer-' + payload;
         },
         SET_NAVIGATION_BAR_TITLE_LIST(state, payload) {
             state.navigationBarTitleList[payload.uid] = payload.title;
@@ -59,3 +64,4 @@ export default {
         },
     }
 }
+
