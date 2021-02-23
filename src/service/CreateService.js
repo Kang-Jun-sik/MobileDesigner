@@ -46,12 +46,11 @@ export default {
         const parser = new DOMParser();
         const parentUid = obj['controlUniqueId'];
         const xmlDoc = parser.parseFromString(obj["data"], "application/xml");
+        const parsingNode = xmlDoc.firstElementChild.tagName === 'dews-datasource' ? xmlDoc.firstElementChild.cloneNode() : xmlDoc.firstElementChild;
 
-        if (obj.index) {
-            xmlDoc.firstElementChild.setAttribute('index', obj.index);
-        }
+        if (obj.index) xmlDoc.firstElementChild.setAttribute('index', obj.index);
 
-        PageOpenService.pageParsing(xmlDoc.firstElementChild, parentUid);
+        PageOpenService.pageParsing(parsingNode, parentUid);
     },
 
     /*

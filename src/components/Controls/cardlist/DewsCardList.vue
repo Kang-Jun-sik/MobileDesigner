@@ -1,5 +1,5 @@
 <template>
-  <div :uid="uid" class="dews-mobile-cardlist dews-mobile-component cardlist">
+  <div :uid="uid" class="dews-mobile-cardlist dews-mobile-component">
     <div class="dews-container-option-control">
       <h3 class="option-sub-title"></h3>
     </div>
@@ -35,6 +35,7 @@
 import store from "@/store/index";
 import CreateService from "@/service/CreateService";
 import DewsCheckbox from "@/components/Controls/DewsCheckBox";
+
 export default {
   name: 'dews-cardlist',
   components: {DewsCheckbox},

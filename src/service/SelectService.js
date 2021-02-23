@@ -51,13 +51,32 @@ export default {
     },
 
     /*
+    * Find Layout (box, Tab)
+    * */
+    findLayoutTarget(target) {
+        return target.closest('.dews-layout-component');
+    },
+
+    /*
+    * Find Component
+    * */
+    findTarget(target) {
+        return target.closest('.dews-mobile-component');
+    },
+
+    /*
     * 컨트롤 선택 이벤트 실행
     * @param eventTarget - 선택한 컨트롤
     * */
     selectControl(eventTarget) {
-        const target = eventTarget.classList.contains('dews-mobile-component') ? eventTarget : findTarget(eventTarget);
+        const target = eventTarget.classList.contains('dews-mobile-component') ? eventTarget : this.findTarget(eventTarget);
+        const layoutTarget = eventTarget.classList.contains('dews-layout-component') ? eventTarget : this.findLayoutTarget(eventTarget);
+
+        // 같은 컨트롤을 선택했을 경우 재 선택하는 것을 방지 / target이 null인 경우 return (dews-mobile-component가 아님)
+        if ((window.selectedItem && window.selectedItem === target) || target === null) return;
+
         try {
-            if (eventTarget.classList.contains('main-designer-bg')) {
+            if (eventTarget.classList.contains('main-designer')) {
                 store.state.designer.navigationBar.title = '';
                 store.commit('SET_MAIN_BUTTONS', {
                     'btn-save': false,
@@ -66,7 +85,6 @@ export default {
                     'btn-search': false
                 });
             } else {
-                const layoutTarget = eventTarget.classList.contains('dews-layout-component') ? eventTarget : findLayoutTarget(eventTarget);
                 const uid = layoutTarget.getAttribute('uid');
                 const mainButtons = store.state.layout.mainButtonList[uid];
 
@@ -74,41 +92,40 @@ export default {
                 store.commit('SET_MAIN_BUTTONS', mainButtons);
             }
         } catch (e) {
-            // 메인버튼 클릭시 에러 발생 element 를 찾을수 없어서 발생..!
+            console.log('Not Find Main Buttons')
         }
-
-        // 같은 컨트롤을 선택했을 경우 재 선택하는 것을 방지 / target이 null인 경우 return (dews-mobile-component가 아님)
-        if ((window.selectedItem && window.selectedItem === target) || target === null) return;
 
         if (document.querySelector('.selected-control')) {
             const selectedElement = document.querySelector('.selected-control');
             selectedElement.classList.remove('selected-control');
         }
-        SelectService.removeSelectHandler();
-
         window.selectedItem = target;
         window.selectedItem.classList.add('selected-control');
 
-        // main-designer의 경우 selectHandler 표시 X
-        if (!target.classList.contains('main-designer')) {
-            SelectService.showSelectHandler(target);
+        SelectService.removeSelectHandler();
+        if (!target.classList.contains('main-designer')) SelectService.showSelectHandler(target);
+
+        const $drawerArea = document.querySelector('.designer-drawer');
+        if (target.classList.contains('dews-mobile-codePicker')) {
+            if ($drawerArea.hasChildNodes()) {
+                $drawerArea.firstElementChild.classList.remove('open');
+                $drawerArea.firstElementChild.remove();
+            }
+            const codePicker = store.state.component.items.find(item => item.uid === target.getAttribute('uid'));
+            const drawer = codePicker.$refs.drawerLayout;
+            const $drawer = drawer.$el;
+            $drawerArea.appendChild($drawer);
+            $drawer.classList.add('open');
+        } else if ($drawerArea.hasChildNodes()) {
+            if (target.classList.contains('main-designer') || (layoutTarget && !layoutTarget.classList.contains('dews-mobile-layer'))) {
+                $drawerArea.firstElementChild.classList.remove('open');
+                $drawerArea.firstElementChild.remove();
+            }
         }
 
         ContextMenuService.destroyContextMenu();
         ContextMenuService.getContextMenu(window.selectedItem);
-        // IDE 메세지 송신
-        mobileDesignerToIDE({
-            commandType: 'select',
-            elm: window.selectedItem
-        });
-
-        function findLayoutTarget(target) {
-            return target.closest('.dews-layout-component');
-        }
-
-        function findTarget(target) {
-            return target.closest('.dews-mobile-component');
-        }
+        mobileDesignerToIDE({ commandType: 'select', elm: window.selectedItem });
     },
 
     /*
