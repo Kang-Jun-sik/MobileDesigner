@@ -34,7 +34,8 @@ import {
     RadioButtonGroup,
     SearchContainer,
     TextBox,
-    TimePicker
+    TimePicker,
+    ZipCodePicker
 } from '@/utils/exports'
 import makeForIDEInfo from "@/utils/makeForIDEInfo";
 
@@ -167,6 +168,9 @@ export default {
                 break;
             case 'PeriodPicker':
                 component = Vue.extend(PeriodPicker);
+                break;
+            case 'ZipcodePicker':
+                component = Vue.extend(ZipCodePicker);
                 break;
             case 'DropdownList':
                 component = Vue.extend(DropdownList);

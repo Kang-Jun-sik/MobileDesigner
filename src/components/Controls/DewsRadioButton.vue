@@ -19,7 +19,7 @@ export default {
 
       /* Properties */
       id: '',
-      title: '라벨',
+      title: 'label',
       disabled: false,
       readonly: false,
       checked: false,
