@@ -29,6 +29,7 @@ export default {
         periodPicker: 'Period Picker',
         zipcodePicker: 'Zip code Picker',
         codePicker: 'Code Picker',
+        yearPicker: 'Year Picker'
       }
     }
   },

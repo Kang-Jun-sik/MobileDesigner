@@ -32,6 +32,7 @@ const componentAcceptsCheck = (component, target) => {
         "dews-mobile-datePicker": ["search-container-field", "form-container-field"],
         "dews-mobile-periodPicker": ["search-container-field", "form-container-field"],
         "dews-mobile-monthPicker": ["search-container-field", "form-container-field"],
+        "dews-mobile-yearPicker" : ["search-container-field", "form-container-field"],
         "dews-mobile-timePicker": ["search-container-field", "form-container-field"],
         "dews-mobile-codePicker": ["search-container-field", "form-container-field"],
         "dews-mobile-zipcodePicker" : ["search-container-field", "form-container-field"],

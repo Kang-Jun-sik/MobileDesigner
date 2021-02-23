@@ -33,3 +33,4 @@ export CardList from "@/components/Controls/cardlist/DewsCardList";
 export CardListField from "@/components/Controls/cardlist/CardListField";
 export Datasource from "@/components/Datasource/DewsDatasource";
 export ZipCodePicker from "@/components/Controls/DewsZipCodePicker";
+export YearPicker from "@/components/Controls/DewsYearPicker";

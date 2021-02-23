@@ -35,7 +35,8 @@ import {
     SearchContainer,
     TextBox,
     TimePicker,
-    ZipCodePicker
+    ZipCodePicker,
+    YearPicker
 } from '@/utils/exports'
 import makeForIDEInfo from "@/utils/makeForIDEInfo";
 
@@ -167,6 +168,9 @@ export default {
                 break;
             case 'PeriodPicker':
                 component = Vue.extend(PeriodPicker);
+                break;
+            case 'YearPicker':
+                component = Vue.extend(YearPicker);
                 break;
             case 'ZipcodePicker':
                 component = Vue.extend(ZipCodePicker);
