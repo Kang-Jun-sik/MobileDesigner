@@ -10,6 +10,14 @@
       </span>
       <span class="select-icon time-picker-icon"></span>
     </span>
+    <span class="select-wrap"
+          :class="{disabled: disabled ? 'disabled' : '',
+          readonly: readonly ? 'readonly' : '',
+          required: required ? 'required' : ''}">
+      <span class="select-shape">
+        <span class="select-input">{{ value }}</span>
+      </span>
+    </span>
   </div>
 </template>
 
