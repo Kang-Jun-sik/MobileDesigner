@@ -25,7 +25,6 @@
     </div>
     <div class="cardlist-wrap">
       <div class="cardlist" :data-uid="dataUid" style="height: auto" data-type="cardlist" ref="cardListField">
-        <cardlist-field></cardlist-field>
         <slot></slot>
       </div>
     </div>
@@ -36,10 +35,10 @@
 import store from "@/store/index";
 import CreateService from "@/service/CreateService";
 import DewsCheckbox from "@/components/Controls/DewsCheckBox";
-import CardlistField from "@/components/Controls/cardlist/CardListField";
+
 export default {
   name: 'dews-cardlist',
-  components: {CardlistField, DewsCheckbox},
+  components: {DewsCheckbox},
   data() {
     return {
       uid: '',

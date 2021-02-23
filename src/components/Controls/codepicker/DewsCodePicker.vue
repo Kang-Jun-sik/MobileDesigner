@@ -3,28 +3,31 @@
     <div class="codepicker codepicker-wrap" @click="clickHandler">
       <label>{{ title }}</label>
       <span class="select-wrap">
-      <span class="select-shape">
-        <span class="select-input">
-          {{ text }}
+        <span class="select-shape">
+          <span class="select-input">
+            {{ text }}
+          </span>
         </span>
+        <span class="select-icon code-picker-icon"></span>
       </span>
-      <span class="select-icon code-picker-icon"></span>
-    </span>
     </div>
+
+    <drawer-layout ref="drawerLayout"></drawer-layout>
   </div>
 </template>
 
 <script>
 import CreateService from "@/service/CreateService";
+import DrawerLayout from "@/components/Controls/DewsDrawerlayout";
 
 export default {
   name: 'dews-codepicker',
+  components: {DrawerLayout},
   data() {
     return {
       uid: '',
       title: 'codepicker',
-      text: 'text',
-
+      text: '',
     }
   },
   created() {
@@ -32,6 +35,9 @@ export default {
   },
   mounted() {
   },
+  methods: {
+    clickHandler() {}
+  }
 }
 </script>
 

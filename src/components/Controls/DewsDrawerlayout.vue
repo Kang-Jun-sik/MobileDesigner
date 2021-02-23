@@ -1,7 +1,7 @@
 <template>
-  <div class="layer-drawer open" :class="drawerSize">
+  <div :uid="uid" class="dews-mobile-layer layer-drawer dews-mobile-layout" :class="drawerSize">
     <div class="overlay"></div>
-    <div class="layer layer-bottom" :style="style">
+    <div class="layer layer-bottom">
       <div class="layer-moving-button">
         <span v-if="scrollEnabled" class="moving-button"></span>
         <span v-else class="fixed-button"></span>
@@ -28,26 +28,14 @@
               </span>
                 </div>
                 <div class="code-filter-field">
-                  <ul class="form-field">
-                    <codepicker-search>
-                      <li>
-                        <dews-dropdownlist title="이름"></dews-dropdownlist>
-                      </li>
-                      <li>
-                        <dews-dropdownlist title="나이"></dews-dropdownlist>
-                      </li>
-                      <li>
-                        <dews-dropdownlist title="주소"></dews-dropdownlist>
-                      </li>
-                    </codepicker-search>
-                  </ul>
+                  <codepicker-search ref="codepickerSearch"></codepicker-search>
                 </div>
               </div>
             </div>
 
             <div class="dews-cardlist codepicker">
               <div class="cardlist-wrap">
-                <dews-cardlist></dews-cardlist>
+                <dews-cardlist ref="cardlist"></dews-cardlist>
               </div>
             </div>
           </div>
@@ -59,36 +47,33 @@
 
 <script>
 import store from "@/store/index";
-import CodepickerSearch from "@/components/Controls/codepicker/CodePickerSearch";
+import CreateService from "@/service/CreateService";
 import DewsCardlist from "@/components/Controls/cardlist/DewsCardList";
-import DewsDropdownlist from "@/components/Controls/dropdownlist/DewsDropdownlist";
+import CodepickerSearch from "@/components/Controls/codepicker/CodePickerSearch";
 
 export default {
   name: 'drawer-layout',
-  components: {CodepickerSearch, DewsCardlist, DewsDropdownlist},
+  components: {CodepickerSearch, DewsCardlist},
   data() {
     return {
+      uid: '',
       title: '',
       active: false,
       height: '',
       scrollEnabled: false,
       drawer: 'bottom',
-      style: {
-        // height: '0px'
-      },
       helpTitle: 'helpTitle',
       filterActive: false,
       filterDisabled: false,
     }
   },
-  created() {},
+  created() {
+    this.uid = CreateService.createUid('drawer-layout');
+  },
+  mounted() {},
   methods: {
-    clickHandler() {
-
-    },
-    clickFilter() {
-
-    }
+    clickHandler() {},
+    clickFilter() {}
   },
   computed: {
     drawerSize() {
@@ -103,9 +88,6 @@ export default {
 @import 'node_modules/@dews/dews-mobile-style/scss/mixins/_mixins';
 @include layer-drawer();
 
-//--------------------------------------
-// FD 추가 영역
-//--------------------------------------
 .layer-drawer  {
   display: none;
 
