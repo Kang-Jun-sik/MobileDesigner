@@ -7,6 +7,12 @@
       <input type="number" readonly>
       <button><span>검색</span></button>
     </span>
+    <span class="zipcode-reset">
+        <button class="dews-mobile-button dews-mobile-component dews-button icon solid large ico-reset">
+          <span class="button-icon"></span>
+          <span class="button-text">{{ text }}</span>
+        </button>
+    </span>
     <span class="zipcode-address">
       <input type="text" readonly>
     </span>
@@ -93,6 +99,7 @@ export default {
 @import 'node_modules/@dews/dews-mobile-style/scss/variables/variables';
 @import 'node_modules/@dews/dews-mobile-style/scss/mixins/_mixins';
 @include dews-zipcodepicker();
+@include dews-button();
 
 //--------------------------------------
 // FD 추가 영역
