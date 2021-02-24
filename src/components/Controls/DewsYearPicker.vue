@@ -10,7 +10,7 @@
           {{ value }}
         </span>
       </span>
-      <span class="select-icon datepicker-icon"></span>
+      <span class="select-icon yearpicker-icon"></span>
     </span>
   </div>
 </template>
