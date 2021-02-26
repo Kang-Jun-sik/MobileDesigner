@@ -80,5 +80,4 @@ const mobileDesignerToIDE = (message) => {
     // chromiumObject.mobileDesignerToIDE(obj); //실제 IDE 데이터 전송 로직
 };
 
-
 export default mobileDesignerToIDE;

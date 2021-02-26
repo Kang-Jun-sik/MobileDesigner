@@ -1,6 +1,6 @@
 <template>
   <ul :uid="uid" class="codepicker-search-field form-field dews-mobile-component"
-      ref="codepickerSearch" data-type="container">
+      ref="codepickerSearchField" data-type="container">
   </ul>
 </template>
 
@@ -18,7 +18,7 @@ export default {
     this.uid = CreateService.createUid('codepicker-search');
   },
   mounted() {
-    window.drake.containers.push(this.$refs.codepickerSearch);
+    window.drake.containers.push(this.$refs.codepickerSearchField);
   }
 }
 </script>

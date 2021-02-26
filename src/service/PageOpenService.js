@@ -161,8 +161,9 @@ export default {
             if (instance.hasAttribute('index')) {
                 const idx = instance.getAttribute('index');
                 parent.$el.insertBefore(addComponent, parent.$el.children[idx]);
-            } else
+            } else {
                 parent.$el.appendChild(addComponent);
+            }
         }
 
         return controlUid;
@@ -177,7 +178,7 @@ export default {
         let instance = node.cloneNode();
         let instanceUid;
         const parent = store.state.component.items.find(item => item.uid === parentUid);
-        const oneChildList = ['container-button', 'container-summary', 'container-content', 'numerictextbox-button'];
+        const oneChildList = ['container-button', 'container-summary', 'container-content', 'numerictextbox-button', 'codepicker-search'];
         const multiChildList = ['dews-tab', 'form-section', 'dropdownbutton-childbutton'];
 
         function findChild(tagName, children) {
@@ -216,10 +217,12 @@ export default {
             } else
                 cardListField = store.state.component.dewsCardList[parentUid];
 
-            if (!parent.$refs.cardListField.hasChildNodes())
+            if (!parent.$refs.cardListField.hasChildNodes()) {
                 parent.$refs.cardListField.appendChild(cardListField.$el);
-            if (node.parentElement.childElementCount > cardListField.fields.length)
+            }
+            if (node.parentElement.childElementCount > cardListField.fields.length) {
                 cardListField.fields.push(instance.getAttribute('title'));
+            }
 
         } else if (node.tagName === 'dews-datasource') {
             PageOpenService.setDatasourceFromIDE(node);
@@ -227,8 +230,7 @@ export default {
             instanceUid = PageOpenService.controlParsing(instance, parent);
         }
 
-        if (node.childElementCount === 0)
-            return;
+        if (node.childElementCount === 0) return;
 
         for (let child of node.children) {
             PageOpenService.pageParsing(child, instanceUid);
