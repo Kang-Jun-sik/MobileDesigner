@@ -1,5 +1,5 @@
 <template>
-  <div :uid="uid" class="dews-mobile-layer layer-drawer dews-mobile-layout" :class="drawerSize">
+  <div class="dews-mobile-layer layer-drawer dews-mobile-layout" :class="drawerSize">
     <div class="overlay"></div>
     <div class="layer layer-bottom">
       <div class="layer-moving-button">
