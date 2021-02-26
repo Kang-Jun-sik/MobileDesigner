@@ -4,12 +4,13 @@
       <input type="radio" :checked="checked" :data-checked="checked" :disabled="disabled">
       <span class="radio-shape" @click="clickHandler($event)"></span>
     </span>
-    <label class="radio-label">{{ title }}</label>
+    <label class="radio-label">{{ label }}</label>
   </span>
 </template>
 
 <script>
 import CreateService from "@/service/CreateService";
+import SelectService from "@/service/SelectService";
 
 export default {
   name: 'dews-radiobutton',
@@ -19,7 +20,7 @@ export default {
 
       /* Properties */
       id: '',
-      title: 'label',
+      label: 'label',
       disabled: false,
       readonly: false,
       checked: false,
@@ -34,8 +35,11 @@ export default {
     setID(value) {
       this.id = value;
     },
-    setTitle(value) {
-      this.title = value;
+    setLabel(value) {
+      this.label = value;
+      setTimeout(() => {
+        SelectService.setPosition(this.$el)
+      }, 500);
     },
     setDisabled(value) {
       this.disabled = JSON.parse(value);
@@ -48,7 +52,6 @@ export default {
     },
     clickHandler(e) {
       if (this.disabled) return;
-
       this.checked = !this.checked;
     },
   }
@@ -58,5 +61,6 @@ export default {
 <style lang="scss" scoped>
 @import 'node_modules/@dews/dews-mobile-style/scss/variables/variables';
 @import 'node_modules/@dews/dews-mobile-style/scss/mixins/_mixins';
+
 @include dews-radio();
 </style>
