@@ -9,8 +9,6 @@
 <script>
 import store from "@/store/index";
 import dragula from "dragula";
-import axios from 'axios'
-
 import MainDesignerWrapper from "@/components/MainDesignerArea/MainDesignerWrapper";
 import ControlListWrapper from "@/components/ControlListArea/ControlListWrapper";
 import componentAcceptsCheck from "@/service/AcceptsCheckService";

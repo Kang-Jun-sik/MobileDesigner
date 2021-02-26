@@ -52,8 +52,8 @@ export default {
         const type = canvasDoc.attributes.getNamedItem('type').nodeValue;
 
         const mPage = store.state.component.items.find(item => item.uid.startsWith("main-designer"));
-        mPage.uid = canvasDoc.getAttribute('uid'); // 임시로 canvas에 uid 적용
-        mPage.$el.setAttribute('uid', canvasDoc.getAttribute('uid')) // 임시로 canvas에 적용
+        mPage.uid = canvasDoc.getAttribute('uid');
+        mPage.$el.setAttribute('uid', canvasDoc.getAttribute('uid'));
 
         if (type === 'mpage') {
             for (let canvasChild of canvasDoc.children) {
@@ -192,7 +192,6 @@ export default {
             controlChild.uid = node.getAttribute('uid');
             instanceUid = controlChild.uid;
             store.commit('ADD_ITEM', controlChild);
-
             PageOpenService.setAttributeFromIDE(instance, controlChild);
         } else if (multiChildList.includes(node.tagName)) {
             controlChild = findChild(node.tagName, parent.$children);
@@ -214,19 +213,23 @@ export default {
                cardListField = new field().$mount();
                store.commit('ADD_ITEM', cardListField);
                store.commit('ADD_CARD_LIST', { uid: parentUid, cardListField: cardListField });
-            } else {
+            } else
                 cardListField = store.state.component.dewsCardList[parentUid];
-            }
 
-            if (!parent.$refs.cardListField.hasChildNodes()) parent.$refs.cardListField.appendChild(cardListField.$el);
-            if (node.parentElement.childElementCount > cardListField.fields.length) cardListField.fields.push(instance.getAttribute('title'));
+            if (!parent.$refs.cardListField.hasChildNodes())
+                parent.$refs.cardListField.appendChild(cardListField.$el);
+            if (node.parentElement.childElementCount > cardListField.fields.length)
+                cardListField.fields.push(instance.getAttribute('title'));
+
         } else if (node.tagName === 'dews-datasource') {
             PageOpenService.setDatasourceFromIDE(node);
         } else {
             instanceUid = PageOpenService.controlParsing(instance, parent);
         }
 
-        if (node.childElementCount === 0) return;
+        if (node.childElementCount === 0)
+            return;
+
         for (let child of node.children) {
             PageOpenService.pageParsing(child, instanceUid);
         }

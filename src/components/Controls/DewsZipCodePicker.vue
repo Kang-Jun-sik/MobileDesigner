@@ -8,7 +8,7 @@
       <button><span>검색</span></button>
     </span>
     <span class="zipcode-reset">
-        <button class="dews-mobile-button dews-mobile-component dews-button icon solid large ico-reset">
+        <button class="dews-mobile-button dews-button icon solid large ico-reset">
           <span class="button-icon"></span>
           <span class="button-text">{{ text }}</span>
         </button>
@@ -17,26 +17,8 @@
       <input type="text" readonly>
     </span>
     <span class="zipcode-detail">
-      <input type="text" placeholder="상세주소">
+      <input type="text" readonly placeholder="상세주소">
     </span>
-
-<!--    <span class="select-wrap"-->
-<!--          :class="{disabled: disabled ? 'disabled' : '',-->
-<!--          readonly: readonly ? 'readonly' : '',-->
-<!--          required: required ? 'required' : ''}">-->
-<!--      <span class="select-shape">-->
-<!--        <span class="select-input">{{ value }}</span>-->
-<!--      </span>-->
-<!--      <span class="select-icon time-picker-icon"></span>-->
-<!--    </span>-->
-<!--    <span class="select-wrap"-->
-<!--          :class="{disabled: disabled ? 'disabled' : '',-->
-<!--          readonly: readonly ? 'readonly' : '',-->
-<!--          required: required ? 'required' : ''}">-->
-<!--      <span class="select-shape">-->
-<!--        <span class="select-input">{{ value }}</span>-->
-<!--      </span>-->
-<!--    </span>-->
   </div>
 </template>
 
