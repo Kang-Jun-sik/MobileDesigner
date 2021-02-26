@@ -10,6 +10,7 @@
 
 <script>
 import CreateService from "@/service/CreateService";
+import SelectService from "@/service/SelectService";
 
 export default {
   name: 'dews-radiobutton',
@@ -36,6 +37,9 @@ export default {
     },
     setLabel(value) {
       this.label = value;
+      setTimeout(() => {
+        SelectService.setPosition(this.$el)
+      }, 500);
     },
     setDisabled(value) {
       this.disabled = JSON.parse(value);
@@ -57,5 +61,6 @@ export default {
 <style lang="scss" scoped>
 @import 'node_modules/@dews/dews-mobile-style/scss/variables/variables';
 @import 'node_modules/@dews/dews-mobile-style/scss/mixins/_mixins';
+
 @include dews-radio();
 </style>
