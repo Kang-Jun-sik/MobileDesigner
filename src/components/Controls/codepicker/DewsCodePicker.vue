@@ -12,7 +12,7 @@
       </span>
     </div>
 
-    <drawer-layout ref="drawerLayout"></drawer-layout>
+    <drawer-layout ref="drawerLayout" :data-uid="dataUid"></drawer-layout>
   </div>
 </template>
 
@@ -26,12 +26,20 @@ export default {
   data() {
     return {
       uid: '',
+      dataUid: '',
+
+      /* check child */
+      controlType: 'codepicker',
+
+      /* Properties */
+      id: '',
       title: 'codepicker',
       text: '',
     }
   },
   created() {
     this.uid = CreateService.createUid('dews-codepicker');
+    this.dataUid = CreateService.createUid('codepicker-datasource');
   },
   mounted() {
   },

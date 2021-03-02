@@ -29,7 +29,7 @@ export default {
 
       /* check child */
       controlChild: 'container-button',
-      controlType: 'container-button',
+      controlType: 'common-control',
 
       /* Properties */
       id: '',

@@ -5,7 +5,7 @@
       <container-button containerType="search"></container-button>
     </div>
 
-    <container-content controlType="search" :dataUid="dataUid">
+    <container-content :control-type="controlType" :dataUid="dataUid">
       <div class="dews-search-field">
         <ul class="search-container-field form-field" ref="searchContainerField"
           :data-uid="dataUid" data-type="container">
@@ -31,7 +31,7 @@ export default {
 
       /* check child */
       hasChildControl: true,
-      controlType: 'search',
+      controlType: 'common-control',
 
       /* Properties */
       id: '',

@@ -34,7 +34,8 @@ import {
     ContainerContent,
     CardList,
     CardListField,
-    Datasource
+    Datasource,
+    CodePicker
 } from '@/utils/exports'
 import DeleteService from "@/service/DeleteService";
 
@@ -117,21 +118,13 @@ export default {
 
         let addComponent;
         switch (parent.controlType) {
-            case 'container-button':
+            case 'common-control':
                 addComponent = document.createElement('li');
                 addComponent.appendChild(control.$el);
                 break;
             case 'tabs':
                 addComponent = control.$el;
                 PageOpenService.setComponentStoreData(control, parent, 'tabs');
-                break;
-            case 'search':
-                addComponent = document.createElement('li');
-                addComponent.appendChild(control.$el);
-                break;
-            case 'form':
-                addComponent = document.createElement('li');
-                addComponent.appendChild(control.$el);
                 break;
             case 'group':
                 addComponent = document.createElement('span');
@@ -189,7 +182,8 @@ export default {
 
         let controlChild;
         if (oneChildList.includes(node.tagName)) {
-            controlChild = findChild(node.tagName, parent.$children);
+            controlChild = node.tagName === 'codepicker-search' ?
+                parent.$refs.drawerLayout.$refs.codepickerSearch : findChild(node.tagName, parent.$children);
             controlChild.uid = node.getAttribute('uid');
             instanceUid = controlChild.uid;
             store.commit('ADD_ITEM', controlChild);
@@ -214,18 +208,24 @@ export default {
                cardListField = new field().$mount();
                store.commit('ADD_ITEM', cardListField);
                store.commit('ADD_CARD_LIST', { uid: parentUid, cardListField: cardListField });
-            } else
+            } else {
                 cardListField = store.state.component.dewsCardList[parentUid];
-
-            if (!parent.$refs.cardListField.hasChildNodes()) {
-                parent.$refs.cardListField.appendChild(cardListField.$el);
-            }
-            if (node.parentElement.childElementCount > cardListField.fields.length) {
-                cardListField.fields.push(instance.getAttribute('title'));
             }
 
+            (!parent.$refs.cardListField.hasChildNodes()) ? parent.$refs.cardListField.appendChild(cardListField.$el) : null;
+            (node.parentElement.childElementCount > cardListField.fields.length) ? cardListField.fields.push(instance.getAttribute('title')) : null;
         } else if (node.tagName === 'dews-datasource') {
             PageOpenService.setDatasourceFromIDE(node);
+        } else if (node.tagName === 'dews-cardlist') {
+            if (parent.controlType === 'codepicker') {
+                const cardList = parent.$refs.drawerLayout.$refs.cardlist;
+                cardList.uid = node.getAttribute('uid');
+                instanceUid = cardList.uid;
+                store.commit('ADD_ITEM', cardList);
+                PageOpenService.setAttributeFromIDE(instance, cardList);
+            } else {
+                instanceUid = PageOpenService.controlParsing(instance, parent);
+            }
         } else {
             instanceUid = PageOpenService.controlParsing(instance, parent);
         }
@@ -342,6 +342,9 @@ export default {
                 break;
             case 'dews-datasource':
                 instance = Vue.extend(Datasource);
+                break;
+            case 'dews-codepicker':
+                instance = Vue.extend(CodePicker);
                 break;
         }
 

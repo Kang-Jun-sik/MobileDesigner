@@ -42,7 +42,7 @@ export default {
   data() {
     return {
       uid: '',
-      fields: ['test1', 'test2', 'test3'],
+      fields: [],
     }
   },
   created() {

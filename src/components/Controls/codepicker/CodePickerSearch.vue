@@ -11,7 +11,10 @@ export default {
   name: 'codepicker-search',
   data() {
     return {
-      uid: ''
+      uid: '',
+
+      /* check child */
+      controlType: 'common-control'
     }
   },
   created() {

@@ -34,7 +34,7 @@
             </div>
 
             <div class="dews-cardlist codepicker">
-              <div class="cardlist-wrap">
+              <div class="cardlist-wrap" :dataUid="dataUid">
                 <dews-cardlist ref="cardlist"></dews-cardlist>
               </div>
             </div>
@@ -54,6 +54,7 @@ import CodepickerSearch from "@/components/Controls/codepicker/CodePickerSearch"
 export default {
   name: 'drawer-layout',
   components: {CodepickerSearch, DewsCardlist},
+  props: ['dataUid'],
   data() {
     return {
       uid: '',
