@@ -1,16 +1,12 @@
 export default {
     state: {
         items: [],
-        undoItems:[],
-        redoItems:[],
-
+        undoItems: [],
+        redoItems: [],
         dragulaUid: {},
-
         dewsCardList: {}
     },
-    getters: {
-
-    },
+    getters: {},
     actions: {},
     mutations: {
         ADD_ITEM(state, item) {
