@@ -117,6 +117,7 @@ export default {
 @include dews-area-tabs-content();
 
 .dews-mobile-tab {
+  padding: 8px;
   min-height: 40px;
 }
 </style>

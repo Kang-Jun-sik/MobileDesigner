@@ -40,7 +40,7 @@ export default {
   position: relative;
   width: 100%;
 
-  .dews-panel-show {
+  &.dews-panel-show {
     padding: 12px 10px 0;
     border: 1px dotted #193a75;
     margin-bottom: 12px;
