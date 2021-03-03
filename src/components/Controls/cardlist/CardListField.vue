@@ -67,4 +67,7 @@ export default {
 @import '../../../../node_modules/@dews/dews-mobile-style/scss/variables/variables';
 @import '../../../../node_modules/@dews/dews-mobile-style/scss/mixins/mixins';
 @include dews-cardlist();
+.cardlist-wrap .cardlist .list-field .item {
+  min-height: 22px;
+}
 </style>

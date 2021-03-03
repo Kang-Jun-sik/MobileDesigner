@@ -30,7 +30,17 @@ export default {
 
 <style lang="scss" scoped>
 .dews-mobile-datasource {
+  display: inline-flex;
+  align-items: center;
+  height: 30px;
   margin: 10px;
-  padding: 0 5px;
+  padding: 6px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  background-color: #ffffff;
+  font-size: 14px;
+  font-weight: 500;
+  color: #000000;
+
 }
 </style>

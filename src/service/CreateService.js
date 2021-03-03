@@ -74,20 +74,7 @@ export default {
         const sendCreate = {commandType: 'create'};
         const makeMessage = makeForIDEInfo.makeCreateMessage(control);
 
-        return {...sendCreate, ...makeMessage};
-    },
-
-    /*
-    * 컨트롤 재정렬을 위한 컨트롤 생성 로직
-    * @param target
-    * */
-    reArrangeCreate(target) {
-        Array.from(target.children).forEach(child => {
-            if (child.getAttribute('uid')) {
-                CreateService.sendCreateMessage(child);
-            }
-            CreateService.reArrangeCreate(child);
-        });
+        return { ...sendCreate, ...makeMessage };
     },
 
     /*
