@@ -22,7 +22,7 @@ export default {
       dataUid: '',
 
       /* check child */
-      controlType: 'form',
+      controlType: 'common-control',
 
       /* Properties */
       id: '',
