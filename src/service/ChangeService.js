@@ -138,6 +138,8 @@ export default {
             case 'dews-cardlist':
                 ChangeService.changeCardList(data);
                 break;
+            case 'dews-zipcodepicker':
+                ChangeService.changeZipCodePicker(data);
         }
     },
 
@@ -871,6 +873,44 @@ export default {
                 cardListField.setField(value);
                 break;
         }
-    }
+    },
+
+    changeZipCodePicker(data) {
+        const { uid, prop, value } = data;
+        const component = store.state.component.items.find(item => item.uid === uid);
+
+        switch (prop) {
+            case 'id':
+                component.setID(value);
+                break;
+            case 'title':
+                component.setTitle(value);
+                break;
+            case 'disabled':
+                component.setDisabled(value);
+                break;
+            case 'readonly':
+                component.setReadonly(value);
+                break;
+            case 'required':
+                component.setRequired(value);
+                break;
+            case 'type':
+                component.setType(value);
+                break;
+            case 'detailAddress':
+                component.setDetailAddress(value);
+                break;
+            case 'zipCode':
+                component.setZipCode(value);
+                break;
+            case 'address':
+                component.setAddress(value);
+                break;
+            case 'detail':
+                component.setDetail(value);
+                break;
+        }
+    },
 
 }

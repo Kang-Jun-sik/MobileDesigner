@@ -33,13 +33,16 @@ export default {
       value: '',
 
       /* Properties */
+      id: '',
       title: 'ZipCodePicker',
       disabled: false,
       readonly: false,
       required: false,
-      min: '',
-      max: '',
-      spinner: false,
+      type: 'street',
+      detailAddress: '',
+      zipCode: '',
+      address: '',
+      detail: false
     }
   },
   created() {
@@ -52,14 +55,20 @@ export default {
     setTitle(value) {
       this.title = value;
     },
-    setValue(value) {
-      this.value = value;
+    setType(value) {
+      this.type = value;
     },
-    setMin(value) {
-      this.min = value;
+    setDetailAddress(value) {
+      this.detailAddress = value;
     },
-    setMax(value) {
-      this.max = value;
+    setZipCode(value) {
+      this.zipCode = value;
+    },
+    setAddress(value) {
+      this.address = value;
+    },
+    setDetail(value) {
+      this.detail = JSON.parse(value);
     },
     setDisabled(value) {
       this.disabled = JSON.parse(value);
@@ -69,10 +78,7 @@ export default {
     },
     setRequired(value) {
       this.required = JSON.parse(value);
-    },
-    setSpinner(value) {
-      this.spinner = JSON.parse(value);
-    },
+    }
   },
 }
 </script>
