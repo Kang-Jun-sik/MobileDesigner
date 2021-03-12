@@ -39,6 +39,10 @@ import {
 } from '@/utils/exports'
 import DeleteService from "@/service/DeleteService";
 
+/*
+    Todo : Summarycontent pageOpen시 안그려지도록 수정
+ */
+
 export default {
     /*
     * 페이지 오픈 서비스 (EWP -> MOBILE DESIGNER PAGE Rendering)
