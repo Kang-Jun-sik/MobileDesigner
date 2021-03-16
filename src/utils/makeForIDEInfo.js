@@ -5,7 +5,7 @@ import mobileDesignerToIDE from "@/utils/mobileDesignerToIDE";
 export default {
     /*
     * IDE Create Information for create Data Information
-    * */
+    **/
     createDataMessage(createData, children, elm) {
         if (children === undefined) return;
 
@@ -31,18 +31,28 @@ export default {
 
     /*
     * CreateMessage, PositionInfo의 Index 찾기 공통 함수
-    * */
+    **/
     makeCreateMessage(control) {
         const parent = control.parentElement.closest('.dews-mobile-component');
         const parentUid = parent.getAttribute('uid') ? parent.getAttribute('uid') : '';
         const parentDataUid = store.state.component.items.find(item => item.uid === parentUid)?.dataUid;
+        let sameLevelControlList = [];
+        let filterList;
 
-        let sameLevelControlList, filterList;
+        //Dragula Area가 존재하는 Case
         if (parentDataUid) {
             const parentElement = parent.querySelector(`[data-uid=${parentDataUid}]`);
-            sameLevelControlList = parentElement.querySelectorAll('.dews-mobile-component');
-            filterList = Array.from(sameLevelControlList).filter(control =>
-                control.closest(`[data-uid=${parentDataUid}]`) === parentElement);
+            if (this.parentTypeGroupCheck(parentElement)) {
+                sameLevelControlList = parentElement.querySelectorAll('.dews-mobile-component');
+                filterList = Array.from(sameLevelControlList).filter(control =>
+                    control.closest(`[data-uid=${parentDataUid}]`) === parentElement);
+            } else {
+                //아이템이 >li 형태로 추가되는 case
+                let scopeList = parentElement.querySelectorAll(':scope > li');
+                scopeList.forEach(litem => sameLevelControlList.push(litem.querySelector('.dews-mobile-component')));
+                filterList = Array.from(sameLevelControlList).filter(control =>
+                    control.closest(`[data-uid=${parentDataUid}]`) === parentElement);
+            }
         } else {
             sameLevelControlList = parent.querySelectorAll('.dews-mobile-component');
             filterList = Array.from(sameLevelControlList).filter(control =>
@@ -56,4 +66,14 @@ export default {
             index: index
         }
     },
+
+    //그룹 Control 포함된 경우 index type 체크하기 위해 호출
+    parentTypeGroupCheck(element) {
+        let isGroupType = false;
+        const classNames = ['checkbox-group', 'radio-group', 'dews-box-content', 'list-container-field'];
+        if (classNames.some(cls => element.classList.contains(cls))) {
+            isGroupType = true;
+        }
+        return isGroupType;
+    }
 }
