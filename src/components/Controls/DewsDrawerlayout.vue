@@ -8,17 +8,18 @@
       </div>
       <div class="layer-content">
         <div class="drawer-codepicker">
+          <button class="confirm-button1" @click="clickClose($event)">닫기</button>
           <div class="titlebar">
             <div class="title">{{ helpTitle }}</div>
             <button class="confirm-button">적용</button>
             <button class="next-icon-button"><span>다음</span></button>
           </div>
-
           <div class="control">
             <div class="layer-code-filter active" :class="{filterActive: filterActive ? 'active' : ''}">
               <div class="code-filter">
                 <div class="code-filter-search">
-                  <button class="filter-button" :class="{filterDisabled: filterDisabled ? 'filterDisabled' : ''}" @click="clickFilter">
+                  <button class="filter-button" :class="{filterDisabled: filterDisabled ? 'filterDisabled' : ''}"
+                          @click="clickFilter">
                     <span>filter</span>
                   </button>
                   <span class="code-filter-input">
@@ -71,10 +72,17 @@ export default {
   created() {
     this.uid = CreateService.createUid('drawer-layout');
   },
-  mounted() {},
+  mounted() {
+  },
   methods: {
-    clickHandler() {},
-    clickFilter() {}
+    clickHandler() {
+    },
+    clickFilter() {
+    },
+    clickClose() {
+      const $drawerArea = document.querySelector('.designer-drawer');
+      $drawerArea.firstElementChild.classList.remove('open');
+    }
   },
   computed: {
     drawerSize() {
@@ -87,14 +95,16 @@ export default {
 <style lang="scss" scoped>
 @import 'node_modules/@dews/dews-mobile-style/scss/variables/variables';
 @import 'node_modules/@dews/dews-mobile-style/scss/mixins/_mixins';
+
 @include layer-drawer();
 
-.layer-drawer  {
+.layer-drawer {
   display: none;
 
   &.open {
     display: block;
   }
+
   .layer-bottom {
     position: absolute;
     transform: translate3d(0px, -76px, 0px);
@@ -124,9 +134,10 @@ export default {
 }
 
 .designer-style {
-  .layer-drawer  {
+  .layer-drawer {
     position: sticky;
     bottom: 0;
+
     .layer-bottom {
       transform: translate3d(0px, -56px, 0px);
 

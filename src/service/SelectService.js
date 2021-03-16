@@ -105,6 +105,7 @@ export default {
         SelectService.removeSelectHandler();
         if (!target.classList.contains('main-designer')) SelectService.showSelectHandler(target);
 
+        /*
         const $drawerArea = document.querySelector('.designer-drawer');
         if (target.classList.contains('dews-mobile-codePicker')) {
             if ($drawerArea.hasChildNodes()) {
@@ -122,6 +123,7 @@ export default {
                 $drawerArea.firstElementChild.remove();
             }
         }
+        */
 
         ContextMenuService.destroyContextMenu();
         ContextMenuService.getContextMenu(window.selectedItem);
