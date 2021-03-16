@@ -4,7 +4,7 @@
     <div class="layer layer-bottom">
       <div class="layer-moving-button">
         <span v-if="scrollEnabled" class="moving-button"></span>
-        <span v-else class="fixed-button"></span>
+        <button v-else class="fixed-button">닫기</button>
       </div>
       <div class="layer-content">
         <div class="drawer-codepicker">
@@ -163,5 +163,10 @@ export default {
       }
     }
   }
+}
+
+.layer-drawer .layer-bottom .layer-moving-button .fixed-button {
+  background: none;
+  font-size: 15px;
 }
 </style>
