@@ -4,11 +4,11 @@
     <div class="layer layer-bottom">
       <div class="layer-moving-button">
         <span v-if="scrollEnabled" class="moving-button"></span>
-        <button v-else class="fixed-button">닫기</button>
+        <button v-else class="fixed-button" @click="clickClose($event)">닫기</button>
       </div>
       <div class="layer-content">
         <div class="drawer-codepicker">
-          <button class="confirm-button1" @click="clickClose($event)">닫기</button>
+          <!--<button class="confirm-button1" @click="clickClose($event)">닫기</button>-->
           <div class="titlebar">
             <div class="title">{{ helpTitle }}</div>
             <button class="confirm-button">적용</button>
@@ -81,7 +81,8 @@ export default {
     },
     clickClose() {
       const $drawerArea = document.querySelector('.designer-drawer');
-      $drawerArea.firstElementChild.classList.remove('open');
+      if ($drawerArea)
+        $drawerArea.firstElementChild.classList.remove('open');
     }
   },
   computed: {

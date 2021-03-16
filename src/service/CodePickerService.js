@@ -1,4 +1,3 @@
-import CodePickerService from "@/service/CodePickerService";
 import store from "@/store/index";
 
 export default {
@@ -22,7 +21,6 @@ export default {
                 $drawerArea.firstElementChild.remove();
             }
         }
-        console.log(target);
     },
 
     findLayoutTarget(target) {
