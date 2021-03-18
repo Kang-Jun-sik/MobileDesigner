@@ -42,6 +42,7 @@ export default {
     this.dataUid = CreateService.createUid('codepicker-datasource');
   },
   mounted() {
+
   },
   methods: {
     clickHandler() {}

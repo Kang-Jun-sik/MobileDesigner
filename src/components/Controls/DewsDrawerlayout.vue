@@ -73,6 +73,8 @@ export default {
     this.uid = CreateService.createUid('drawer-layout');
   },
   mounted() {
+    store.commit('ADD_ITEM', this.$refs.codepickerSearch);
+    store.commit('ADD_ITEM', this.$refs.cardlist);
   },
   methods: {
     clickHandler() {
