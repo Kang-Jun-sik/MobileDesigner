@@ -31,12 +31,12 @@ export default {
         numeric: 'Numeric Text Box',
         maskbox: 'Mask Text Box',
         dropdownList: 'Dropdown List',
-        //complex: 'Complex Control',
-        calendar: 'Calendar',
-        editor: 'Editor',
-        file: 'File/Multi File',
-        chart: 'Chart',
-        map: 'Map'
+        // complex: 'Complex Control',
+        // calendar: 'Calendar',
+        // editor: 'Editor',
+        // file: 'File/Multi File',
+        // chart: 'Chart',
+        // map: 'Map'
       },
     }
   },
