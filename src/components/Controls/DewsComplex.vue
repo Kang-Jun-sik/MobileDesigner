@@ -53,6 +53,7 @@ export default {
 
 .dews-mobile-complex {
   .complex-line {
+    min-height: 36px;
     border: 1px dotted #212121;
   }
 }
