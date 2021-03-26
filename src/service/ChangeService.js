@@ -111,6 +111,9 @@ export default {
             case 'dews-periodpicker':
                 ChangeService.changePeriodPicker(data);
                 break;
+            case 'dews-codepicker':
+                ChangeService.changeCodePicker(data);
+                break;
             case 'dews-radiobutton':
                 ChangeService.changeRadioButton(data);
                 break;
@@ -619,6 +622,16 @@ export default {
                 break;
             case 'step':
                 component.setStep(value);
+                break;
+        }
+    },
+
+    changeCodePicker(data){
+        const { uid, prop, value } = data;
+        const component = store.state.component.items.find(item => item.uid === uid);
+        switch (prop) {
+            case 'title':
+                component.setTitle(value);
                 break;
         }
     },

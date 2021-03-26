@@ -45,7 +45,10 @@ export default {
 
   },
   methods: {
-    clickHandler() {}
+    clickHandler() {},
+    setTitle(value) {
+      this.title = value;
+    }
   }
 }
 </script>
