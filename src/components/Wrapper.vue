@@ -112,26 +112,37 @@ export default {
 
         if (element.dataset.type === 'component-list') {
           switch (target.dataset.type) {
+            case "complex" :
+              createElement = document.createElement('div');
+              createElement.className = 'components item variable';
+              createElement.appendChild(component.$el);
+              element.replaceWith(createElement);
+              break;
+
             case "container":
               createElement = document.createElement('li');
               createElement.appendChild(component.$el);
               element.replaceWith(createElement);
               break;
+
             case "container-button":
               createElement = document.createElement('li');
               createElement.appendChild(component.$el);
               element.replaceWith(createElement);
               break;
+
             case 'group':
               createElement = document.createElement('span');
               createElement.className = 'group-item';
               createElement.appendChild(component.$el);
               element.replaceWith(createElement);
               break;
+
             case 'button-group':
               component.group = true;
               element.replaceWith(component.$el);
               break;
+
             default:
               element.replaceWith(component.$el);
               break;
