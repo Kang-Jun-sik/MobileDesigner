@@ -1,14 +1,14 @@
 <template>
-  <div :uid="uid" class="dews-mobile-complex dews-complex">
+  <div :uid="uid" class="dews-mobile-complex dews-mobile-component dews-complex">
     <label>{{ title }}</label>
     <ul class="complex-wrap">
       <li class="complex-line">
-        <div :class="[componentClass, commonClass, widthType]">
-          <dews-dropdownlist></dews-dropdownlist>
-        </div>
-        <div :class="[componentClass, commonClass, widthType]">
-          <dews-button></dews-button>
-        </div>
+<!--        <div :class="[componentClass, commonClass, widthType]">-->
+<!--          <dews-dropdownlist></dews-dropdownlist>-->
+<!--        </div>-->
+<!--        <div :class="[componentClass, commonClass, widthType]">-->
+<!--          <dews-button></dews-button>-->
+<!--        </div>-->
       </li>
     </ul>
   </div>
@@ -21,7 +21,7 @@ import DewsButton from "@/components/Controls/DewsButton";
 
 export default {
   name: 'dews-complex',
-  components: {DewsButton, DewsDropdownlist},
+  //components: {DewsButton, DewsDropdownlist},
   data() {
     return {
       uid: '',
@@ -50,4 +50,10 @@ export default {
 @import 'node_modules/@dews/dews-mobile-style/scss/variables/variables';
 @import 'node_modules/@dews/dews-mobile-style/scss/mixins/_mixins';
 @include dews-complex();
+
+.dews-mobile-complex {
+  .complex-line {
+    border: 1px dotted #212121;
+  }
+}
 </style>
