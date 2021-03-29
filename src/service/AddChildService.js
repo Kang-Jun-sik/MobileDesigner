@@ -15,6 +15,17 @@ export default {
         CreateService.sendCreateMessage(tab.$el);
     },
 
+    addDropdownChildButton(element){
+        const uid = element.getAttribute('uid');
+        const dropDownBtn = store.state.component.items.find(item => item.uid === uid);
+        const $dropdownButtonList = element.querySelector('.dropdown-button-list');
+        const dropdownChildButton = CreateService.addComponent('DropdownChildButton');
+        $dropdownButtonList.appendChild(dropdownChildButton.$el);
+        store.commit('ADD_ITEM', dropdownChildButton);
+        CreateService.sendCreateMessage(dropdownChildButton.$el);
+        dropDownBtn.setShowDropdownBtnList();
+    },
+
     addButtonChild() {
 
     },

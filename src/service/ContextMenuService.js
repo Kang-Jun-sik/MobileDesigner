@@ -514,6 +514,11 @@ export default {
                     },
                     callback: function (itemKey, opt) {
                         switch (itemKey) {
+                            case "addChildButton":
+                                AddChildService.addDropdownChildButton(opt.$trigger[0]);
+                                SelectService.setPosition(window.selectedItem);
+                                break;
+
                             case "delete" :
                                 DeleteService.deleteControl(opt.$trigger[0]);
                                 break;

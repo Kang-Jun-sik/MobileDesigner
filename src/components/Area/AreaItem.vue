@@ -101,7 +101,7 @@ export default {
   //item fd design
   padding: 12px 10px 0;
   margin-bottom: 12px;
-  min-height: 40px;
+  min-height: 140px;
   border: 1px dotted #212121;
 }
 
