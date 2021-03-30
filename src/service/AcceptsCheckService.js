@@ -18,12 +18,11 @@ const componentAcceptsCheck = (component, target) => {
         "dews-mobile-formContainer": ["dews-box-content", "dews-mobile-tab"],
         "dews-mobile-infoContainer": ["dews-box-content", "dews-mobile-tab"],
 
-        "dews-mobile-button": ["custom-button-field", "search-container-field", "form-container-field", "button-group","complex-line"],
-        "dews-mobile-textbox": ["search-container-field", "form-container-field","complex-line"],
-        "dews-mobile-checkbox": ["search-container-field", "form-container-field", "checkbox-group","complex-line"],
-        "dews-mobile-radiobutton": ["search-container-field", "form-container-field", "radio-group","complex-line"],
-        "dews-mobile-maskbox": ["search-container-field", "form-container-field","complex-line"],
-        "dews-mobile-numeric": ["search-container-field", "form-container-field","complex-line"],
+        "dews-mobile-button": ["custom-button-field", "search-container-field", "form-container-field", "button-group", "complex-line"],        "dews-mobile-textbox": ["search-container-field", "form-container-field", "complex-line"],
+        "dews-mobile-checkbox": ["search-container-field", "form-container-field", "checkbox-group", "complex-line"],
+        "dews-mobile-radiobutton": ["search-container-field", "form-container-field", "radio-group", "complex-line"],
+        "dews-mobile-maskbox": ["search-container-field", "form-container-field", "complex-line"],
+        "dews-mobile-numeric": ["search-container-field", "form-container-field", "complex-line"],
 
         "dews-mobile-buttonGroup": ["search-container-field", "form-container-field"],
         "dews-mobile-radioGroup": ["search-container-field", "form-container-field"],
@@ -37,8 +36,8 @@ const componentAcceptsCheck = (component, target) => {
         "dews-mobile-codePicker": ["search-container-field", "form-container-field","complex-line"],
         "dews-mobile-zipcodePicker" : ["search-container-field", "form-container-field","complex-line"],
 
-        "dews-mobile-dropdownButton": ["search-container-field", "form-container-field","complex-line"],
-        "dews-mobile-dropdownList": ["search-container-field", "form-container-field", "codepicker-search-field","complex-line"],
+        "dews-mobile-dropdownButton": ["search-container-field", "form-container-field", "complex-line"],
+        "dews-mobile-dropdownList": ["search-container-field", "form-container-field", "codepicker-search-field", "complex-line"],
         "dews-mobile-complex": ["search-container-field", "form-container-field"],
 
         "dews-mobile-cardlist": ["list-container-field"],

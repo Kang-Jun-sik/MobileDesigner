@@ -68,10 +68,19 @@ export default {
         DeleteService.deleteItems(target);
 
         // 4) target 객체 제거
-        target.parentElement.tagName === 'LI' ? target.parentElement.remove() : target.remove();
+        DeleteService.parentTargetDelete(target);
 
         // selectItem이 없으므로 null 처리
         window.selectedItem = null;
+    },
+
+    parentTargetDelete(target){
+        if(target.parentElement.tagName === 'LI')
+            target.parentElement.remove();
+        else if(target.parentElement.className == 'components item variable')
+            target.parentElement.remove();
+        else
+            target.remove();
     },
 
     /*
