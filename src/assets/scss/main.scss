@@ -428,6 +428,17 @@ body {
       }
     }
 
-    //label display: none 처리 필요한데 , 개발 or style로 풀지 결정 필요
+    //label display: none 처리
+    .textbox-wrap label,
+    .numeric-textbox-wrap label,
+    .mask-textbox-wrap label,
+    .toggle-wrap .toggle-label,
+    .dropdownlist-wrap label,
+    .codepicker-wrap label,
+    .datepicker-wrap label,
+    .timepicker-wrap label,
+    .periodpicker-wrap label {
+      display: none;
+    }
   }
 }
