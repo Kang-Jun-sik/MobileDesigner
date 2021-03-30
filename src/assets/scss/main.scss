@@ -402,3 +402,32 @@ body {
 .codepicker-search {
   width: 100%;
 }
+
+//complex component
+.dews-complex {
+  .complex-line {
+
+    .variable {
+      flex-grow: 1;
+      flex-shrink: 1;
+    }
+    .autofix {
+      flex: 0 0 auto;
+      span {
+        font-size: 15px;
+      }
+    }
+    .fix {
+      flex-grow: 0;
+      flex-shrink: 0;
+    }
+    .item {
+      margin-right: 8px;
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+
+    //label display: none 처리 필요한데 , 개발 or style로 풀지 결정 필요
+  }
+}

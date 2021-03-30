@@ -66,7 +66,9 @@ export default {
 
 .dews-mobile-complex {
   .complex-line {
+    float: inherit;
     min-height: 36px;
+    padding-top: 0;
     border: 1px dotted #212121;
   }
 }
