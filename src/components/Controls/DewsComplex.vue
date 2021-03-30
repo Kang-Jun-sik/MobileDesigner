@@ -2,14 +2,14 @@
   <div :uid="uid" class="dews-mobile-complex dews-mobile-component dews-complex">
     <label>{{ title }}</label>
     <ul class="complex-wrap">
-      <div class="complex-line" :data-type="type" :data-uid="dataUid" ref="complex">
+      <li class="complex-line" :data-type="type" :data-uid="dataUid" ref="complex">
 <!--        <div :class="[componentClass, commonClass, widthType]">-->
 <!--          <dews-dropdownlist></dews-dropdownlist>-->
 <!--        </div>-->
 <!--        <div :class="[componentClass, commonClass, widthType]">-->
 <!--          <dews-button></dews-button>-->
 <!--        </div>-->
-      </div>
+      </li>
     </ul>
   </div>
 </template>
