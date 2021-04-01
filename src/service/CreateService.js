@@ -14,6 +14,7 @@ import {
     ButtonGroup,
     CardList,
     CardListField,
+    CodePicker,
     CheckBox,
     CheckBoxGroup,
     ChildButton,
@@ -33,7 +34,9 @@ import {
     RadioButtonGroup,
     SearchContainer,
     TextBox,
-    TimePicker
+    TimePicker,
+    ZipCodePicker,
+    YearPicker
 } from '@/utils/exports'
 import makeForIDEInfo from "@/utils/makeForIDEInfo";
 
@@ -44,9 +47,11 @@ export default {
         const parser = new DOMParser();
         const parentUid = obj['controlUniqueId'];
         const xmlDoc = parser.parseFromString(obj["data"], "application/xml");
-        if (obj.index)
-            xmlDoc.firstElementChild.setAttribute('index', obj.index);
-        PageOpenService.pageParsing(xmlDoc.firstElementChild, parentUid);
+        const parsingNode = xmlDoc.firstElementChild.tagName === 'dews-datasource' ? xmlDoc.firstElementChild.cloneNode() : xmlDoc.firstElementChild;
+
+        if (obj.index) xmlDoc.firstElementChild.setAttribute('index', obj.index);
+
+        PageOpenService.pageParsing(parsingNode, parentUid);
     },
 
     /*
@@ -69,20 +74,7 @@ export default {
         const sendCreate = {commandType: 'create'};
         const makeMessage = makeForIDEInfo.makeCreateMessage(control);
 
-        return {...sendCreate, ...makeMessage};
-    },
-
-    /*
-    * 컨트롤 재정렬을 위한 컨트롤 생성 로직
-    * @param target
-    * */
-    reArrangeCreate(target) {
-        Array.from(target.children).forEach(child => {
-            if (child.getAttribute('uid')) {
-                CreateService.sendCreateMessage(child);
-            }
-            CreateService.reArrangeCreate(child);
-        });
+        return { ...sendCreate, ...makeMessage };
     },
 
     /*
@@ -158,8 +150,17 @@ export default {
             case 'TimePicker':
                 component = Vue.extend(TimePicker);
                 break;
+            case 'CodePicker':
+                component = Vue.extend(CodePicker);
+                break;
             case 'PeriodPicker':
                 component = Vue.extend(PeriodPicker);
+                break;
+            case 'YearPicker':
+                component = Vue.extend(YearPicker);
+                break;
+            case 'ZipcodePicker':
+                component = Vue.extend(ZipCodePicker);
                 break;
             case 'DropdownList':
                 component = Vue.extend(DropdownList);

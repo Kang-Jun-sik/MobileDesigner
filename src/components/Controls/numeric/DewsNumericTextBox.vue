@@ -1,12 +1,13 @@
 <template>
-  <div :uid="uid" class="dews-mobile-numeric dews-mobile-component numeric-textbox-wrap" :class="{disabled: disabled ? 'disabled' : '', readonly: readonly ? 'readonly': ''}">
+  <div :uid="uid" class="dews-mobile-numeric dews-mobile-component numeric-textbox-wrap"
+       :class="{disabled: disabled ? 'disabled' : '', readonly: readonly ? 'readonly': ''}">
     <label v-if="title" for="numeric-box">{{ title }}</label>
     <label v-else class="undefined" for="numeric-box"></label>
     <div class="numeric-wrap" :data-uid="dataUid">
       <span class="prefix" v-if="prefix">{{ prefix }}</span>
       <span class="numeric view" :class="disabled ? 'disabled' : ''">
-        <input id="numeric-box" class="numeric-box" type="text" :value="value"
-         :disabled="disabled" :readonly="readonly" :placeholder="placeholder">
+        <input id="numeric-box" class="numeric-box" type="text" :value="value" v-on:keyup.enter="setValueToIDE($event)"
+               :disabled="disabled" :readonly="readonly" :placeholder="placeholder">
       </span>
       <span class="numeric mask" style="display: none;">
         <input type="text" :value="value">
@@ -14,7 +15,8 @@
       <span class="suffix" v-if="suffix">{{ suffix }}</span>
 
       <numerictextbox-button v-show="numericButton" :isShow="numericButton"
-        @increase="increaseNumeric" @decrease="decreaseNumeric" ref="numericChildButton"></numerictextbox-button>
+                             @increase="increaseNumeric" @decrease="decreaseNumeric"
+                             ref="numericChildButton"></numerictextbox-button>
     </div>
   </div>
 </template>
@@ -23,6 +25,7 @@
 import CreateService from "@/service/CreateService";
 import DeleteService from "@/service/DeleteService";
 import NumerictextboxButton from "@/components/Controls/numeric/NumericTextBoxButton";
+import ChangeService from "@/service/ChangeService";
 
 export default {
   name: 'dews-numerictextbox',
@@ -58,6 +61,7 @@ export default {
     this.dataUid = CreateService.createUid('numerictextbox-childbutton');
   },
   methods: {
+
     setID(value) {
       this.id = value;
     },
@@ -66,6 +70,10 @@ export default {
     },
     setValue(value) {
       this.value = value;
+    },
+    setValueToIDE(evt) {
+      ChangeService.sendChangeMessage('value', evt.target.value, this.uid);
+      evt.target.blur();
     },
     setPlaceholder(value) {
       this.placeholder = value;
@@ -128,9 +136,11 @@ export default {
 <style lang="scss" scoped>
 @import '../../../../node_modules/@dews/dews-mobile-style/scss/variables/variables';
 @import '../../../../node_modules/@dews/dews-mobile-style/scss/mixins/mixins';
+
 .undefined {
   opacity: 0;
 }
+
 @include dews-numerictextbox();
 
 //--------------------------------------

@@ -1,5 +1,5 @@
 <template>
-  <div :uid="uid" class="dews-mobile-cardlist dews-mobile-component cardlist">
+  <div :uid="uid" class="dews-mobile-cardlist dews-mobile-component">
     <div class="dews-container-option-control">
       <h3 class="option-sub-title"></h3>
     </div>
@@ -24,7 +24,7 @@
       </div>
     </div>
     <div class="cardlist-wrap">
-      <div class="cardlist" :data-uid="dataUid" style="height: auto" ref="cardlist">
+      <div class="cardlist" :data-uid="dataUid" style="height: auto" data-type="cardlist" ref="cardListField">
         <slot></slot>
       </div>
     </div>
@@ -35,6 +35,7 @@
 import store from "@/store/index";
 import CreateService from "@/service/CreateService";
 import DewsCheckbox from "@/components/Controls/DewsCheckBox";
+
 export default {
   name: 'dews-cardlist',
   components: {DewsCheckbox},
@@ -50,7 +51,7 @@ export default {
     store.commit('MATCH_UID', { 'uid': this.uid, 'dataUid': this.dataUid });
   },
   mounted() {
-    window.drake.containers.push(this.$refs.cardlist);
+    window.drake.containers.push(this.$refs.cardListField);
   }
 }
 </script>

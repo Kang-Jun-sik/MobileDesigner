@@ -46,22 +46,6 @@ export default {
     },
 
     /*
-    * 컨트롤 재정렬을 위한 컨트롤 삭제 로직
-    * @param target
-    * */
-
-    /*
-    reArrangeDelete(target) {
-        Array.from(target.children).forEach(child => {
-            if (child.getAttribute('uid')) {
-                DeleteService.sendDeleteMessage(child);
-            }
-            DeleteService.reArrangeDelete(child);
-        });
-    },
-    */
-
-    /*
     * 컨트롤 삭제를 위한 공통 로직
     * */
     deleteControl(target, isUndoRedo) {
@@ -84,10 +68,19 @@ export default {
         DeleteService.deleteItems(target);
 
         // 4) target 객체 제거
-        target.parentElement.tagName === 'LI' ? target.parentElement.remove() : target.remove();
+        DeleteService.parentTargetDelete(target);
 
         // selectItem이 없으므로 null 처리
         window.selectedItem = null;
+    },
+
+    parentTargetDelete(target){
+        if(target.parentElement.tagName === 'LI')
+            target.parentElement.remove();
+        else if(target.parentElement.className == 'components item variable')
+            target.parentElement.remove();
+        else
+            target.remove();
     },
 
     /*
@@ -111,7 +104,7 @@ export default {
 
         if (targetPanel.childElementCount === 2) {
             const multiCommand = [];
-            const targetSibling = target.nextSibling ? target.nextSibling : target.previousSibling;
+            const targetSibling = target.nextElementSibling ? target.nextElementSibling : target.previousElementSibling;
             DeleteService.deleteSplitItems(targetSibling, targetSibling.hasChildNodes());
             DeleteService.deleteSplitItems(targetPanel, targetSibling.hasChildNodes());
 

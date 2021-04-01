@@ -6,6 +6,7 @@
       <navigation-bar ref="navigationBar"></navigation-bar>
       <main-designer ref="mainDesigner"></main-designer>
       <button-tab-bar :showScroll="showScroll" ref="buttonTabBar"></button-tab-bar>
+      <div class="designer-drawer"></div>
     </div>
   </div>
 </template>

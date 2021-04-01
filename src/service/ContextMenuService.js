@@ -5,6 +5,7 @@ import DeleteService from "@/service/DeleteService";
 import SplitService from "@/service/SplitService";
 import AddChildService from "./AddChildService";
 import SelectService from "./SelectService";
+import CodePickerService from "@/service/CodePickerService";
 
 export default {
     /*
@@ -199,6 +200,32 @@ export default {
                 });
                 break;
             case 'dews-mobile-containerContent':
+                break;
+            case 'dews-mobile-codePicker':
+                $.contextMenu({
+                    selector: ".selected-control",
+                    items: {
+                        "openCodePicker": {
+                            name: 'Open CodePicker',
+                            icon: 'edit'
+                        },
+                        "delete": {
+                            name: "Delete",
+                            icon: "ic-delete"
+                        },
+                    },
+                    callback: function (itemKey, opt) {
+                        switch (itemKey) {
+                            case "openCodePicker" :
+                                CodePickerService.openCodePicker(opt.$trigger[0]);
+                                break;
+
+                            case "delete" :
+                                DeleteService.deleteControl(opt.$trigger[0]);
+                                break;
+                        }
+                    }
+                });
                 break;
             case 'dews-mobile-containerButton':
                 break;
@@ -487,6 +514,11 @@ export default {
                     },
                     callback: function (itemKey, opt) {
                         switch (itemKey) {
+                            case "addChildButton":
+                                AddChildService.addDropdownChildButton(opt.$trigger[0]);
+                                SelectService.setPosition(window.selectedItem);
+                                break;
+
                             case "delete" :
                                 DeleteService.deleteControl(opt.$trigger[0]);
                                 break;

@@ -5,7 +5,7 @@
       <container-button containerType="form"></container-button>
     </div>
 
-    <container-content containerType="form">
+    <container-content :control-type="controlType">
       <form-section controlChild="form-section"></form-section>
     </container-content>
   </div>
@@ -26,7 +26,7 @@ export default {
 
       /* check child */
       hasChildControl: true,
-      controlType: 'form',
+      controlType: 'common-control',
 
       /* Properties */
       id: '',

@@ -1,5 +1,5 @@
 <template>
-  <div :uid="uid" class="dews-mobile-monthPicker dews-mobile-component datepicker-wrap focus"
+  <div :uid="uid" class="dews-mobile-yearPicker dews-mobile-component datepicker-wrap focus"
        :class="{disabled: disabled ? 'disabled' : '',
           readonly: readonly ? 'readonly' : '',
           required: required ? 'required' : ''}">
@@ -10,7 +10,7 @@
           {{ value }}
         </span>
       </span>
-      <span class="select-icon datepicker-icon"></span>
+      <span class="select-icon yearpicker-icon"></span>
     </span>
   </div>
 </template>
@@ -19,7 +19,7 @@
 import CreateService from "@/service/CreateService";
 
 export default {
-  name: 'dews-monthpicker',
+  name: 'dews-yearpicker',
   data() {
     return {
       uid: '',
@@ -27,7 +27,7 @@ export default {
 
       /* Properties */
       id: '',
-      title: 'MonthPicker',
+      title: 'YearPicker',
       disabled: false,
       readonly: false,
       required: false,
@@ -37,7 +37,7 @@ export default {
     }
   },
   created() {
-    this.uid = CreateService.createUid('dews-monthpicker');
+    this.uid = CreateService.createUid('dews-yearpicker');
   },
   methods: {
     setID(value) {

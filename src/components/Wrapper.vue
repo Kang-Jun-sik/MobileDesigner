@@ -9,8 +9,6 @@
 <script>
 import store from "@/store/index";
 import dragula from "dragula";
-import axios from 'axios'
-
 import MainDesignerWrapper from "@/components/MainDesignerArea/MainDesignerWrapper";
 import ControlListWrapper from "@/components/ControlListArea/ControlListWrapper";
 import componentAcceptsCheck from "@/service/AcceptsCheckService";
@@ -39,9 +37,14 @@ export default {
           'componentList', 'pickerList', 'etcList', 'datasourceArea'].includes(source.id);
       },
       accepts: function (el, target) {
-        if (componentAcceptsCheck(el, target) && target.dataset.type === 'area') {
-          const containers = target.querySelectorAll(`[data-type='container']`);
-          if (containers.length > 1) return false;
+        if (componentAcceptsCheck(el, target)) {
+          if (target.dataset.type === 'area') {
+            const containers = target.querySelectorAll(`[data-type='container']`);
+            if (containers.length > 1) return false;
+          } else if (target.dataset.type === 'cardlist') {
+            const cardListField = target.querySelectorAll(`[data-type='field']`);
+            if (cardListField.length >= 1) return false;
+          }
         }
 
         return componentAcceptsCheck(el, target);
@@ -109,21 +112,37 @@ export default {
 
         if (element.dataset.type === 'component-list') {
           switch (target.dataset.type) {
+            case "complex" :
+              createElement = document.createElement('div');
+              createElement.className = 'components item variable';
+              createElement.appendChild(component.$el);
+              element.replaceWith(createElement);
+              break;
+
             case "container":
               createElement = document.createElement('li');
               createElement.appendChild(component.$el);
               element.replaceWith(createElement);
               break;
+
+            case "container-button":
+              createElement = document.createElement('li');
+              createElement.appendChild(component.$el);
+              element.replaceWith(createElement);
+              break;
+
             case 'group':
               createElement = document.createElement('span');
               createElement.className = 'group-item';
               createElement.appendChild(component.$el);
               element.replaceWith(createElement);
               break;
+
             case 'button-group':
               component.group = true;
               element.replaceWith(component.$el);
               break;
+
             default:
               element.replaceWith(component.$el);
               break;
@@ -157,8 +176,7 @@ export default {
 
           const card = CreateService.addComponent('Card');
           element.replaceWith(card.$el);
-
-
+          store.commit('ADD_ITEM', card);
         } else {
           element = element.classList.contains('dews-mobile-component') ? element : element.querySelector('.dews-mobile-component');
           ChangePositionService.sendChangePositionMessage(element, target);

@@ -26,7 +26,7 @@
           searchContainer: 'Search Container',
           listContainer: 'List Container',
           formContainer: 'Form Container',
-          infoContainer: 'InfoBox Container'
+          //infoContainer: 'InfoBox Container'
         },
       }
     },

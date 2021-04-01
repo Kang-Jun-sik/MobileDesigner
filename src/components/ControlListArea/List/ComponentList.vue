@@ -32,11 +32,11 @@ export default {
         maskbox: 'Mask Text Box',
         dropdownList: 'Dropdown List',
         complex: 'Complex Control',
-        calendar: 'Calendar',
-        editor: 'Editor',
-        file: 'File/Multi File',
-        chart: 'Chart',
-        map: 'Map'
+        // calendar: 'Calendar',
+        // editor: 'Editor',
+        // file: 'File/Multi File',
+        // chart: 'Chart',
+        // map: 'Map'
       },
     }
   },

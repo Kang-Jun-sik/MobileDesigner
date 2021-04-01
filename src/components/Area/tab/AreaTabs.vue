@@ -44,7 +44,7 @@ export default {
     this.dataUid = CreateService.createUid('tabs');
 
     this.$nextTick(function () {
-      this.titlesList = store.getters.getTabList[this.uid];
+      this.titlesList = store.getters.getTabList(this.uid);
       this.setSelectedIndex();
     });
   },
@@ -62,7 +62,7 @@ export default {
     },
     setSelectedIndex() {
       this.titlesList.forEach((title, idx) => {
-        if (idx === this.selected) {
+        if (idx === parseInt(this.selected)) {
           title.tab.active = 'active';
         } else {
           title.tab.active = false;
@@ -91,7 +91,7 @@ export default {
   },
   computed: {
     updateTitles() {
-      return store.getters.getTabList[this.uid];
+      return store.getters.getTabList(this.uid);
     }
   },
   watch: {

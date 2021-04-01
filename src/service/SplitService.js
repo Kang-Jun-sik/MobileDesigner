@@ -97,7 +97,7 @@ export default {
     areaSplit(target) {
         const multiCommand = [];
         const targetParentItem = target.parentElement;
-        const parentSiblingItem = targetParentItem.nextSibling ? targetParentItem.nextSibling : targetParentItem.previousSibling;
+        const parentSiblingItem = targetParentItem.nextElementSibling ? targetParentItem.nextElementSibling : targetParentItem.previousElementSibling;
 
         if (SplitService.parentPanelCount(target) >= 2
             || SplitService.childPanelCount(parentSiblingItem) >= 2

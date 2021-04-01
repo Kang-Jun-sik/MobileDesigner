@@ -22,7 +22,7 @@ export default {
 
       /* Properties */
       id: '',
-      label: '라벨',
+      label: 'label',
       disabled: false,
       checked: false,
       bookmark: false,

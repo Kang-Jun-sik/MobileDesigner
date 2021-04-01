@@ -1,5 +1,5 @@
 <template>
-  <button :uid="uid" class="button-list-child" :disabled="disabled">
+  <button :uid="uid" class="dews-mobile-component button-list-child" :disabled="disabled">
     <span>{{ text }}</span>
   </button>
 </template>

@@ -151,7 +151,7 @@ body {
   position: fixed;
   top: 0;
   left: 0;
-  width: 150px;
+  width: 151px;
   height: 100%;
   min-height: 852px;
   color: #000000;
@@ -377,6 +377,17 @@ body {
   }
 }
 
+.option-custom-button {
+  ul {
+    align-items: center;
+    overflow-x: initial;
+    li {
+      flex: 0 0 auto;
+      margin-right: 8px;
+    }
+  }
+}
+
 // button-group
 @include dews-button-group();
 
@@ -385,3 +396,49 @@ body {
 
 // radio-group
 @include dews-radio-group();
+
+//codepicker
+@include dews-designer-drawer-codepicker();
+.codepicker-search {
+  width: 100%;
+}
+
+//complex component
+.dews-complex {
+  .complex-line {
+
+    .variable {
+      flex-grow: 1;
+      flex-shrink: 1;
+    }
+    .autofix {
+      flex: 0 0 auto;
+      span {
+        font-size: 15px;
+      }
+    }
+    .fix {
+      flex-grow: 0;
+      flex-shrink: 0;
+    }
+    .item {
+      margin-right: 8px;
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+
+    //label display: none 처리
+    .textbox-wrap label,
+    .numeric-textbox-wrap label,
+    .mask-textbox-wrap label,
+    .toggle-wrap .toggle-label,
+    .dropdownlist-wrap label,
+    .codepicker-wrap label,
+    .datepicker-wrap label,
+    .timepicker-wrap label,
+    .periodpicker-wrap label {
+      display: none;
+    }
+  }
+}

@@ -30,9 +30,9 @@ export default {
 <style lang="scss" scoped>
 .datasource-area {
   height: 50px;
-  margin-left: 150px;
+  margin-left: 151px;
   background-color: #b3bfd1;
-  max-width: 1180px;
+  width: 100%;
 }
 .designer-style {
   .datasource-area {

@@ -5,7 +5,7 @@
       <container-button containerType="search"></container-button>
     </div>
 
-    <container-content containerType="search" :dataUid="dataUid">
+    <container-content :control-type="controlType" :dataUid="dataUid">
       <div class="dews-search-field">
         <ul class="search-container-field form-field" ref="searchContainerField"
           :data-uid="dataUid" data-type="container">
@@ -31,7 +31,7 @@ export default {
 
       /* check child */
       hasChildControl: true,
-      controlType: 'search',
+      controlType: 'common-control',
 
       /* Properties */
       id: '',
@@ -77,13 +77,10 @@ export default {
 .dews-box-content-wrap {
   min-height: 40px;
 }
-.dews-search-field{
-  padding: 0 17px 6px;
-}
 
 // DFD용 scss 추가
 .dews-search-field {
-  padding: 0 17px 6px;
+  padding: 0 17px 8px;
 }
 .form-field {
   min-height: 20px;

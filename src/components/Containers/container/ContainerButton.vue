@@ -1,7 +1,7 @@
 <template>
   <div :uid="uid" class="dews-mobile-containerButton dews-mobile-component">
     <div v-show="containerType === 'form' || containerType === 'list'" class="option-custom-button">
-      <ul class="custom-button-field" :data-uid="dataUid" ref="customButton">
+      <ul class="custom-button-field" :data-uid="dataUid" ref="customButton" data-type="container-button">
         <slot></slot>
       </ul>
     </div>
@@ -29,7 +29,7 @@ export default {
 
       /* check child */
       controlChild: 'container-button',
-      controlType: 'container-button',
+      controlType: 'common-control',
 
       /* Properties */
       id: '',

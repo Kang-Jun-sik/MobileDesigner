@@ -28,6 +28,8 @@ export default {
         timePicker: 'Time Picker',
         periodPicker: 'Period Picker',
         zipcodePicker: 'Zip code Picker',
+        codePicker: 'Code Picker',
+        yearPicker: 'Year Picker'
       }
     }
   },

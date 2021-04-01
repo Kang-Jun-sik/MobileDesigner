@@ -1,5 +1,8 @@
 <template>
-  <div :uid="uid" class="dews-mobile-periodPicker dews-mobile-component period-picker-wrap focus">
+  <div :uid="uid" class="dews-mobile-periodPicker dews-mobile-component periodpicker-wrap focus"
+       :class="{disabled: disabled ? 'disabled' : '',
+          readonly: readonly ? 'readonly' : '',
+          required: required ? 'required' : ''}">
     <label>{{ title }}</label>
     <span class="select-wrap">
       <span class="select-shape">
@@ -7,7 +10,7 @@
           {{ value }}
         </span>
       </span>
-      <span class="select-icon period-picker-icon"></span>
+      <span class="select-icon periodpicker-icon"></span>
     </span>
   </div>
 </template>

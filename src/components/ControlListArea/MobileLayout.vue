@@ -39,26 +39,23 @@ export default {
       } else if (e.target.classList.contains('tabletL')) {
         layout = 'tabletL';
       }
-
-      // Vuex에 Layout Style Commit
       this.$store.commit('SET_LAYOUT', layout);
 
-      // click된 Layout class on 추가 및 나머지 Layout off class 추가
       for (let key in this.chkLayout) {
         this.chkLayout[key] = key === layout ? 'on' : 'off';
       }
 
-      // 리사이즈 핸들러 (UI) div 삭제
-      ResizeService.removeResizeHandler();
-
-      // 선택된 아이템에 대해 리사이즈 핸들러 객체 삭제후 재등록
       if (window.selectedItem) {
         if (window.selectedItem.classList.contains('main-designer')) return;
-        // ResizeService.destoryResizable(window.selectedItem);
-        // ResizeService.canResize(window.selectedItem);
-        setTimeout(SelectService.setPosition, 500, window.selectedItem);
+        setTimeout(() => {
+          SelectService.setPosition(window.selectedItem);
+
+          if (!window.selectedItem.classList.contains('dews-mobile-codePicker')) return;
+          const $drawer = document.querySelector('.designer-drawer').firstElementChild;
+          $drawer.classList.add('open');
+        }, 500)
       }
-    }
+    },
   }
 }
 </script>
