@@ -853,8 +853,8 @@ export default {
             case 'id':
                 component.setID(value);
                 break;
-            case 'title':
-                component.setTitle(value);
+            case 'text':
+                component.setText(value);
                 break;
             case 'disabled':
                 component.setDisabled(value);
