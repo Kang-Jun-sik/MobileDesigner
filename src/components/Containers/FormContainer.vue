@@ -8,6 +8,9 @@
     <container-content :control-type="controlType">
       <form-section controlChild="form-section"></form-section>
     </container-content>
+
+
+
   </div>
 </template>
 
@@ -41,7 +44,8 @@ export default {
   created() {
     this.uid = CreateService.createUid('dews-form-container');
   },
-  mounted() {},
+  mounted() {
+  },
   methods: {
     setID(value) {
       this.id = value;
@@ -59,6 +63,7 @@ export default {
 <style lang="scss" scoped>
 @import 'node_modules/@dews/dews-mobile-style/scss/variables/variables';
 @import 'node_modules/@dews/dews-mobile-style/scss/mixins/_mixins';
+
 @include dews-container-form();
 
 //--------------------------------------

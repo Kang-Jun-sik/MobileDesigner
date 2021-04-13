@@ -39,6 +39,7 @@ import {
     YearPicker
 } from '@/utils/exports'
 import makeForIDEInfo from "@/utils/makeForIDEInfo";
+import CustomContainer from "../components/Containers/CustomContainer";
 
 export default {
     createFromIDE(args) {
@@ -110,6 +111,9 @@ export default {
                 break;
             case 'AreaTab':
                 component = Vue.extend(AreaTab);
+                break;
+            case 'CustomContainer':
+                component = Vue.extend(CustomContainer);
                 break;
             case 'SearchContainer':
                 component = Vue.extend(SearchContainer);

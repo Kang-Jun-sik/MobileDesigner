@@ -7,6 +7,7 @@ export SearchContainer from "@/components/Containers/SearchContainer";
 export ListContainer from "@/components/Containers/ListContainer";
 export FormContainer from "@/components/Containers/FormContainer";
 export InfoBoxContainer from "@/components/Containers/InfoBoxContainer";
+export CustomContainer from "@/components/Containers/CustomContainer";
 export Button from "@/components/Controls/DewsButton";
 export TextBox from "@/components/Controls/DewsTextBox";
 export CheckBox from "@/components/Controls/DewsCheckBox";
