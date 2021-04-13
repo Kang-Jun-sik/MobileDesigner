@@ -42,7 +42,7 @@ export default {
     left: 167px;
     width: 100%;
     //max-width: 1190px;
-    max-width: 1180px;
+    //max-width: 1180px;
     margin-left: 0;
   }
 }

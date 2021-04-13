@@ -24,7 +24,7 @@ export default {
     min-width: 1002px;
     //max-width: 1658px;
     min-height: 852px;
-    overflow: auto;
+    //overflow: auto;
 
     &.designer-style {
       overflow: visible;
