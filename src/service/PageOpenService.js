@@ -104,10 +104,10 @@ export default {
         PageOpenService.setAttributeFromIDE(dataSource, dataSourceControl);
     },
 
-    setComponentStoreData(control, parent=undefined, type=undefined) {
-        (type === 'tabs') ? store.commit('SET_TAB', { tabsUid: parent.uid, tabData: { tab: control } }) : null;
-        store.commit('SET_NAVIGATION_BAR_TITLE_LIST', { uid: control.uid, title: control.title });
-        store.commit('SET_MAIN_BUTTON_LIST', { uid: control.uid, mainButtons: control.mainButtons });
+    setComponentStoreData(control, parent = undefined, type = undefined) {
+        (type === 'tabs') ? store.commit('SET_TAB', {tabsUid: parent.uid, tabData: {tab: control}}) : null;
+        store.commit('SET_NAVIGATION_BAR_TITLE_LIST', {uid: control.uid, title: control.title});
+        store.commit('SET_MAIN_BUTTON_LIST', {uid: control.uid, mainButtons: control.mainButtons});
     },
 
     /*
@@ -134,6 +134,10 @@ export default {
             case 'group':
                 addComponent = document.createElement('span');
                 addComponent.className = 'group-item';
+                addComponent.appendChild(control.$el);
+                break;
+            case 'dropdownbutton':
+                addComponent = parent.$el.querySelector('.dropdown-button-list');
                 addComponent.appendChild(control.$el);
                 break;
             case 'button-group':
@@ -177,7 +181,7 @@ export default {
         let instanceUid;
         const parent = store.state.component.items.find(item => item.uid === parentUid);
         const oneChildList = ['container-button', 'container-summary', 'container-content', 'numerictextbox-button', 'codepicker-search'];
-        const multiChildList = ['dews-tab', 'form-section', 'dropdownbutton-childbutton'];
+        const multiChildList = ['dews-tab', 'form-section'];
 
         function findChild(tagName, children) {
             return children.find(child => {
@@ -209,10 +213,10 @@ export default {
         } else if (node.tagName === 'cardlist-field') {
             let cardListField;
             if (!store.state.component.dewsCardList[parentUid]) {
-               const field = Vue.extend(CardListField);
-               cardListField = new field().$mount();
-               store.commit('ADD_ITEM', cardListField);
-               store.commit('ADD_CARD_LIST', { uid: parentUid, cardListField: cardListField });
+                const field = Vue.extend(CardListField);
+                cardListField = new field().$mount();
+                store.commit('ADD_ITEM', cardListField);
+                store.commit('ADD_CARD_LIST', {uid: parentUid, cardListField: cardListField});
             } else {
                 cardListField = store.state.component.dewsCardList[parentUid];
             }

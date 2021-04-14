@@ -25,7 +25,7 @@ export default {
       mobileButton: {
         button: 'Button',
         buttonGroup: 'Button Group',
-        //dropdownButton: 'Dropdown Button',
+        dropdownButton: 'Dropdown Button',
       }
     }
   },

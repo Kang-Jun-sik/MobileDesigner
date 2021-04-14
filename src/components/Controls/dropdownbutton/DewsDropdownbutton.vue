@@ -8,7 +8,7 @@
     </button>
     <span class="button-list dropdown-button-list" display="block" ref="dropdownButtonList">
 <!--    <span class="button-list dropdown-button-list" :class="selected ? 'selected' : ''" display="block" ref="dropdownButtonList">-->
-        <dews-dropdown-childbutton :controlChild="childButton" ref="dropdownChildButton"></dews-dropdown-childbutton>
+      <!--        <dews-dropdown-childbutton :controlChild="childButton" ref="dropdownChildButton"></dews-dropdown-childbutton>-->
     </span>
   </div>
 </template>
@@ -20,11 +20,11 @@ import SelectService from "@/service/SelectService";
 
 export default {
   name: 'dews-dropdownbutton',
-  components: {DewsDropdownChildbutton},
+  // components: {DewsDropdownChildbutton},
   data() {
     return {
       uid: '',
-
+      controlType: 'dropdownbutton',
       /* check child */
       hasChildControl: true,
       checkChild: true,
@@ -61,17 +61,17 @@ export default {
     setDisabled(value) {
       this.disabled = JSON.parse(value);
     },
-    setShowDropdownBtnList(){
+    setShowDropdownBtnList() {
       const $dropdownButtonList = this.$refs.dropdownButtonList;
       $dropdownButtonList.style.display = 'block';
     },
-    setHideDropdownBtnList(){
+    setHideDropdownBtnList() {
       const $dropdownButtonList = this.$refs.dropdownButtonList;
       $dropdownButtonList.style.display = 'none';
     },
     clickHandler(e) {
       const $dropdownButtonList = this.$refs.dropdownButtonList;
-      if($dropdownButtonList.style.display === 'none')
+      if ($dropdownButtonList.style.display === 'none')
         $dropdownButtonList.style.display = 'block'
       else
         $dropdownButtonList.style.display = 'none';
