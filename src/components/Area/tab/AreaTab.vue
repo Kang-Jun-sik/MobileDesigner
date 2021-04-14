@@ -99,7 +99,6 @@ export default {
       this.style.height = state === 'active' ? 'auto' : '0px';
     }
   }
-
 }
 </script>
 

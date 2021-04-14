@@ -8,19 +8,19 @@
     </button>
     <span class="button-list dropdown-button-list" display="block" ref="dropdownButtonList">
 <!--    <span class="button-list dropdown-button-list" :class="selected ? 'selected' : ''" display="block" ref="dropdownButtonList">-->
-<!--        <dews-dropdown-childbutton :controlChild="childButton" ref="dropdownChildButton"></dews-dropdown-childbutton>-->
+        <dews-dropdown-childbutton :controlChild="childButton" ref="dropdownChildButton"></dews-dropdown-childbutton>
     </span>
   </div>
 </template>
 
 <script>
 import CreateService from "@/service/CreateService";
-// import DewsDropdownChildbutton from "@/components/Controls/dropdownbutton/ChildButton";
+import DewsDropdownChildbutton from "@/components/Controls/dropdownbutton/ChildButton";
 import SelectService from "@/service/SelectService";
 
 export default {
   name: 'dews-dropdownbutton',
-  // components: {DewsDropdownChildbutton},
+  components: {DewsDropdownChildbutton},
   data() {
     return {
       uid: '',
