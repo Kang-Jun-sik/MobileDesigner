@@ -99,7 +99,7 @@ export default {
     flex: 0 0 calc(100% - 170px);
     margin-top: 50px;
     padding-left: 0 !important;
-    //overflow: auto;
+    overflow: auto;
 
     .main-designer-wrapper {
       position: relative;

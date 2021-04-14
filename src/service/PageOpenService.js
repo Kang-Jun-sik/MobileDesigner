@@ -23,6 +23,7 @@ import {
     TimePicker,
     PeriodPicker,
     DropdownList,
+    DropdownListItem,
     DropdownButton,
     ChildButton,
     Complex,
@@ -331,6 +332,9 @@ export default {
                 break;
             case 'dews-dropdownlist':
                 instance = Vue.extend(DropdownList);
+                break;
+            case 'dropdownlist-item':
+                instance = Vue.extend(DropdownListItem);
                 break;
             case 'dews-dropdownbutton':
                 instance = Vue.extend(DropdownButton);
