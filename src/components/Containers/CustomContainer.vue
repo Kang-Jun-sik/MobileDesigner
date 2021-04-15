@@ -1,8 +1,12 @@
 <template>
   <div :uid="uid" class="dews-mobile-customContainer dews-mobile-component">
-    <container-content :control-type="controlType">
-
-    </container-content>
+    <div class="dews-container-custom">
+      <container-content :control-type="controlType">
+        <div class="form-field">
+          <div class="container-item"></div>
+        </div>
+      </container-content>
+    </div>
   </div>
 </template>
 
@@ -32,10 +36,12 @@ export default {
 <style lang="scss" scoped>
 @import 'node_modules/@dews/dews-mobile-style/scss/variables/variables';
 @import 'node_modules/@dews/dews-mobile-style/scss/mixins/_mixins';
+@include dews-container-custom();
 
-.dews-mobile-customContainer{
-  min-height: 100px;
-  background: red;
+.dews-container-custom {
+  .form-field {
+    min-height: 20px;
+    border: 1px dotted #193a75;
+  }
 }
-
 </style>
