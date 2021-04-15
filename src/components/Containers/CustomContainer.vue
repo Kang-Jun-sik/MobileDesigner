@@ -2,7 +2,11 @@
   <div :uid="uid" class="dews-mobile-customContainer dews-mobile-component">
     <div class="dews-container-custom">
       <container-content :control-type="controlType">
-        <div class="form-field"></div>
+        <div class="dews-custom-field">
+          <ul class="custom-container-field custom-field" ref="customContainerField"
+              :data-uid="dataUid" data-type="container">
+          </ul>
+        </div>
       </container-content>
     </div>
   </div>
@@ -10,6 +14,7 @@
 
 <script>
 
+import store from "@/store/index";
 import CreateService from "@/service/CreateService";
 import ContainerContent from "@/components/Containers/container/ContainerContent";
 
@@ -20,13 +25,33 @@ export default {
     return {
       uid: '',
       parentUid: '',
-      title: 'Custom Container',
-      controlType: 'common-control'
+      dataUid: '',
+
+      /* check child */
+      hasChildControl: true,
+      controlType: 'common-control',
+
+      /* Properties */
+      id: '',
+      col: 1,
+      title: 'Search Container',
+      convenienceButton: {
+        'data-set': true,
+        'data-reset': true,
+        'data-capture': true
+      },
     }
   },
   created() {
     this.uid = CreateService.createUid('dews-custom-container');
+    this.dataUid = CreateService.createUid('custom-field');
+    store.commit('MATCH_UID', {'uid': this.uid, 'dataUid': this.dataUid});
   },
+  methods: {
+    setID(value) {
+      this.id = value;
+    },
+  }
 }
 </script>
 
@@ -34,6 +59,7 @@ export default {
 <style lang="scss" scoped>
 @import 'node_modules/@dews/dews-mobile-style/scss/variables/variables';
 @import 'node_modules/@dews/dews-mobile-style/scss/mixins/_mixins';
+
 @include dews-container-custom();
 
 .dews-container-custom {
