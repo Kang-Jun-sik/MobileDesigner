@@ -12,7 +12,7 @@ export default {
   data() {
     return {
       uid: '',
-
+      parentUid: '',
       /* check child */
       controlType: 'common-control'
     }

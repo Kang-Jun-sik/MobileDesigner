@@ -22,6 +22,7 @@
     name: 'container-list',
     data() {
       return {
+        parentUid: '',
         mobileContainer: {
           searchContainer: 'Search Container',
           listContainer: 'List Container',

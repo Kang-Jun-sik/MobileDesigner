@@ -11,6 +11,7 @@ export default {
   name: 'datasource-area',
   data() {
     return {
+      parentUid: '',
       uid: '',
     }
   },

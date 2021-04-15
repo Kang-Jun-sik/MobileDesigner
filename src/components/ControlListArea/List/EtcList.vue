@@ -21,6 +21,7 @@
     name: 'etc-list',
     data() {
       return {
+        parentUid: '',
         etcControl: {
           cardlist: 'CardList',
           datasource: 'Datasource',

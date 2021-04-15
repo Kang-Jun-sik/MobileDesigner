@@ -26,6 +26,7 @@ export default {
   components: {ControlList, MobileLayout},
   data() {
     return {
+      parentUid: '',
       mode: false,
       onText: '',
     }

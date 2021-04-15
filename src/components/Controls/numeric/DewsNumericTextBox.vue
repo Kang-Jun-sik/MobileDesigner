@@ -33,6 +33,7 @@ export default {
   data() {
     return {
       uid: '',
+      parentUid: '',
       dataUid: '',
 
       /* check child */

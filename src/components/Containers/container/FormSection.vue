@@ -23,7 +23,7 @@ export default {
 
       /* check child */
       controlType: 'common-control',
-
+      parentUid: '',
       /* Properties */
       id: '',
       title: 'form-section',

@@ -18,6 +18,7 @@ export default {
   data() {
     return {
       uid: '',
+      parentUid: '',
       showLabel: true,
 
       /* Properties */

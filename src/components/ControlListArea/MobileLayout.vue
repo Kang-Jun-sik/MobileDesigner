@@ -20,6 +20,7 @@ export default {
   name: 'mobile-layout',
   data() {
     return {
+      parentUid: '',
       chkLayout: {
         smartPhone: 'off',
         tabletM: 'off',

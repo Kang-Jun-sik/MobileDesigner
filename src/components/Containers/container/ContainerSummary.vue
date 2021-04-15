@@ -15,7 +15,7 @@ export default {
   data() {
     return {
       uid: '',
-
+      parentUid: '',
       /* check child */
       controlChild: 'container-summary',
     }

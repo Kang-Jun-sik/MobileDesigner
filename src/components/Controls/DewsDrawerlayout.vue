@@ -59,6 +59,7 @@ export default {
   data() {
     return {
       uid: '',
+      parentUid: '',
       title: '',
       active: false,
       height: '',

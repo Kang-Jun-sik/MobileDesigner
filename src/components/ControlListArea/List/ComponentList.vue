@@ -22,6 +22,7 @@ export default {
   name: 'component-list',
   data() {
     return {
+      parentUid: '',
       mobileComponent: {
         checkbox: "Check Box",
         checkboxGroup: "Check Box Group",

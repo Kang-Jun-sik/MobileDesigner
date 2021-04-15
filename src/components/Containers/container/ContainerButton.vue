@@ -26,7 +26,7 @@ export default {
     return {
       uid: '',
       dataUid: '',
-
+      parentUid: '',
       /* check child */
       controlChild: 'container-button',
       controlType: 'common-control',

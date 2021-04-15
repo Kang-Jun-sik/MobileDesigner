@@ -26,6 +26,7 @@ export default {
   data() {
     return {
       uid: '',
+      parentUid: '',
       dataUid:'',
       type : 'complex',
       liClass: 'complex-line',

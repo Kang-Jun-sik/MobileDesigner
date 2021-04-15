@@ -13,7 +13,7 @@ export default {
   data() {
     return {
       uid: '',
-
+      parentUid: '',
       /* check child */
       checkChild: true,
       controlChild: 'container-content',

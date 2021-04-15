@@ -15,6 +15,7 @@ export default {
   data() {
     return {
       uid: '',
+      parentUid: '',
       value: 'TestValue',
 
       /* check child */

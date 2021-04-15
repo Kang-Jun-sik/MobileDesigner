@@ -16,6 +16,7 @@ export default {
   data() {
     return {
       uid: '',
+      parentUid: '',
       dataUid: '',
       controlType: 'group',
 

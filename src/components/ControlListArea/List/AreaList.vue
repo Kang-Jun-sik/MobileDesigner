@@ -21,6 +21,7 @@
     name: 'area-list',
     data() {
       return {
+        parentUid: '',
         mobileArea: {
           box: 'Area Box',
           tabs: 'Area Tabs',

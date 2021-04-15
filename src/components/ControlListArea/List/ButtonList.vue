@@ -22,6 +22,7 @@ export default {
   name: 'button-list',
   data() {
     return {
+      parentUid: '',
       mobileButton: {
         button: 'Button',
         buttonGroup: 'Button Group',

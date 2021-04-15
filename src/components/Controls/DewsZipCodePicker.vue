@@ -30,6 +30,7 @@ export default {
   data() {
     return {
       uid: '',
+      parentUid: '',
       value: '',
 
       /* Properties */

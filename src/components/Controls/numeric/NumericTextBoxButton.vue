@@ -15,6 +15,7 @@ export default {
   data() {
     return {
       uid: '',
+      parentUid: '',
       controlChild: 'numerictextbox-button',
 
       /* Numeric Button Properties */

@@ -14,6 +14,7 @@ export default {
   data() {
     return {
       uid: '',
+      parentUid: '',
       TYPE_LIST: {
         text: 'text',
         icon: 'icon',

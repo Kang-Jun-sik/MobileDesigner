@@ -17,6 +17,7 @@ export default {
   data() {
     return {
       uid: '',
+      parentUid: '',
       title: 'Custom Container',
       controlType: 'common-control'
     }

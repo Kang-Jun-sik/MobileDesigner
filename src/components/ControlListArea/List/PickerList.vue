@@ -22,6 +22,7 @@ export default {
   name: 'picker-list',
   data() {
     return {
+      parentUid: '',
       mobilePicker: {
         datePicker: 'Date Picker',
         monthPicker: 'Month Picker',

@@ -27,7 +27,7 @@ export default {
       uid: '',
       dataUid: '',
       titlesList: [],
-
+      parentUid: '',
       /* check child */
       hasChildControl: true,
       checkChild: true,

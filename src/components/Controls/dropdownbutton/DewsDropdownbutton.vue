@@ -24,6 +24,7 @@ export default {
   data() {
     return {
       uid: '',
+      parentUid: '',
       controlType: 'dropdownbutton',
       /* check child */
       hasChildControl: true,

@@ -24,6 +24,7 @@ export default {
     return {
       uid: '',
       dataUid: '',
+      parentUid: '',
       height: '',
       contentStyle: {
         display: 'block'

@@ -27,7 +27,7 @@ export default {
     return {
       uid: '',
       dataUid: '',
-
+      parentUid: '',
       /* check child */
       controlType: 'codepicker',
 
