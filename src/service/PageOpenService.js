@@ -12,6 +12,7 @@ import {
     ListContainer,
     FormContainer,
     InfoBoxContainer,
+    CustomContainer,
     Button,
     TextBox,
     CheckBox,
@@ -39,11 +40,9 @@ import {
     CodePicker
 } from '@/utils/exports'
 import DeleteService from "@/service/DeleteService";
-
 /*
-    Todo : Summarycontent pageOpen시 안그려지도록 수정
+    Todo : Summary content pageOpen시 안그려지도록 수정
  */
-
 export default {
     /*
     * 페이지 오픈 서비스 (EWP -> MOBILE DESIGNER PAGE Rendering)
@@ -273,6 +272,9 @@ export default {
                 break;
             case 'dews-search-container':
                 instance = Vue.extend(SearchContainer);
+                break;
+            case 'dews-custom-container':
+                instance = Vue.extend(CustomContainer);
                 break;
             case 'dews-list-container':
                 instance = Vue.extend(ListContainer);

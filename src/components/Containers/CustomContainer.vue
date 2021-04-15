@@ -1,7 +1,7 @@
 <template>
   <div :uid="uid" class="dews-mobile-customContainer dews-mobile-component">
     <div class="dews-container-custom">
-      <container-content :control-type="controlType">
+      <container-content class="container-content" :control-type="controlType">
         <div class="dews-custom-field">
           <ul class="custom-container-field custom-field" ref="customContainerField"
               :data-uid="dataUid" data-type="container">
@@ -66,13 +66,15 @@ export default {
 @include dews-container-custom();
 
 .dews-container-custom {
-  .custom-field {
-    min-height: 60px;
+  .container-content{
     border: 1px dotted #193a75;
-
-    li {
-      width: 100%;
-      padding: 16px 0px 0px;
+    .custom-field {
+      min-height: 60px;
+      //border: 1px dotted #193a75;
+      li {
+        width: 100%;
+        padding: 16px 0px 0px;
+      }
     }
   }
 }
