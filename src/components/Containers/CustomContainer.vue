@@ -3,9 +3,9 @@
     <div class="dews-container-custom">
       <container-content :control-type="controlType">
         <div class="dews-custom-field">
-          <ul class="custom-container-field custom-field" ref="customContainerField"
+          <div class="custom-container-field custom-field" ref="customContainerField"
               :data-uid="dataUid" data-type="container">
-          </ul>
+          </div>
         </div>
       </container-content>
     </div>
@@ -63,7 +63,7 @@ export default {
 @include dews-container-custom();
 
 .dews-container-custom {
-  .form-field {
+  .custom-field {
     min-height: 20px;
     border: 1px dotted #193a75;
   }
