@@ -126,6 +126,10 @@ export default {
                 addComponent = document.createElement('li');
                 addComponent.appendChild(control.$el);
                 break;
+            case 'custom-container-control':
+                addComponent = parent.$el.querySelector('.custom-container-field');
+                addComponent.appendChild(control.$el);
+                break;
             case 'tabs':
                 addComponent = control.$el;
                 PageOpenService.setComponentStoreData(control, parent, 'tabs');

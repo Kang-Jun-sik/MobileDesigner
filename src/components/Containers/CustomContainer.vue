@@ -34,7 +34,7 @@ export default {
 
       /* check child */
       hasChildControl: true,
-      controlType: 'common-control',
+      controlType: 'custom-container-control',
 
       /* Properties */
       id: '',
