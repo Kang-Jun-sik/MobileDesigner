@@ -2,9 +2,7 @@
   <div :uid="uid" class="dews-mobile-customContainer dews-mobile-component">
     <div class="dews-container-custom">
       <container-content :control-type="controlType">
-        <div class="form-field">
-          <div class="container-item"></div>
-        </div>
+        <div class="form-field"></div>
       </container-content>
     </div>
   </div>
