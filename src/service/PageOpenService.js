@@ -345,7 +345,7 @@ export default {
             case 'dews-dropdownbutton':
                 instance = Vue.extend(DropdownButton);
                 break;
-            case 'dropdownbutton-childbutton':
+            case 'dropdown-childbutton':
                 instance = Vue.extend(ChildButton);
                 break;
             case 'dews-cardlist':

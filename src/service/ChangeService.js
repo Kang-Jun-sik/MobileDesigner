@@ -60,6 +60,9 @@ export default {
             case 'dews-search-container':
                 ChangeService.changeSearchContainer(data);
                 break;
+            case 'dews-custom-container' :
+                ChangeService.changeCustomContainer(data);
+                break;
             case 'dews-list-container':
                 ChangeService.changeListContainer(data);
                 break;
@@ -132,7 +135,7 @@ export default {
             case 'dews-dropdownbutton':
                 ChangeService.changeDropdownButton(data);
                 break;
-            case 'dropdownbutton-childbutton':
+            case 'dropdown-childbutton':
                 ChangeService.changeDropdownChildButton(data);
                 break;
             case 'dews-datasource':
@@ -254,6 +257,21 @@ export default {
                 break;
         }
     },
+
+    changeCustomContainer(data) {
+        const { uid, prop, value } = data;
+        const component = store.state.component.items.find(item => item.uid === uid);
+
+        switch (prop) {
+            case 'id':
+                component.setID(value);
+                break;
+            // case 'title':
+            //     component.setTitle(value);
+            //     break;
+        }
+    },
+
 
     changeSearchContainer(data) {
         const { uid, prop, value } = data;

@@ -29,7 +29,7 @@ export default {
       /* check child */
       hasChildControl: true,
       checkChild: true,
-      childButton: 'dropdownbutton-childbutton',
+      childButton: 'dropdown-childbutton',
       collapsed: true,
       /* Properties */
       id: '',
