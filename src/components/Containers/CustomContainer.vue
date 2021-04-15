@@ -42,6 +42,9 @@ export default {
       },
     }
   },
+  mounted() {
+    window.drake.containers.push(this.$refs.customContainerField);
+  },
   created() {
     this.uid = CreateService.createUid('dews-custom-container');
     this.dataUid = CreateService.createUid('custom-field');
@@ -64,7 +67,7 @@ export default {
 
 .dews-container-custom {
   .custom-field {
-    min-height: 20px;
+    min-height: 60px;
     border: 1px dotted #193a75;
   }
 }
