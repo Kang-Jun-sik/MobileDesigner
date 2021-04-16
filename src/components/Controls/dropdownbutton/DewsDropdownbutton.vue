@@ -4,7 +4,7 @@
     <button @click="clickHandler($event)" class="dews-button dropdown"
             :class="[ui, size, disabled ? 'disabled' : '']">
       <span class="button-icon"></span>
-      <span class="button-text">{{ title }}</span>
+      <span class="button-text">{{ text }}</span>
     </button>
     <span class="button-list dropdown-button-list" display="block" ref="dropdownButtonList">
 <!--    <span class="button-list dropdown-button-list" :class="selected ? 'selected' : ''" display="block" ref="dropdownButtonList">-->
@@ -33,7 +33,7 @@ export default {
       collapsed: true,
       /* Properties */
       id: '',
-      title: 'DropdownButton',
+      text: 'DropdownButton',
       ui: 'solid',
       size: 'medium',
       disabled: false,
@@ -47,8 +47,8 @@ export default {
     setID(value) {
       this.id = value;
     },
-    setTitle(value) {
-      this.title = value;
+    setText(value) {
+      this.text = value;
     },
     setUI(value) {
       this.ui = value;
