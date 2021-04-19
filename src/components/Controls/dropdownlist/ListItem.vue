@@ -6,9 +6,10 @@
    </span>
  </li>
 
-  <li v-else :data-value="title" @click="singleItemSelect($event)">
+  <li v-else :data-value="title" @click="singleItemSelect($event)" >
     <span>{{ title }}</span>
   </li>
+
 </template>
 
 <script>
