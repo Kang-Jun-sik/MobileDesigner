@@ -7,6 +7,7 @@ import AddChildService from "./AddChildService";
 import SelectService from "./SelectService";
 import CodePickerService from "@/service/CodePickerService";
 
+
 export default {
     /*
     * 마우스 오른쪽 클릭
@@ -174,6 +175,10 @@ export default {
                         switch (itemKey) {
                             case "delete" :
                                 DeleteService.deleteControl(opt.$trigger[0]);
+                                break;
+                            case "addFormSection":
+                                console.log(opt);
+                                AddChildService.addFormSection(opt.$trigger[0])
                                 break;
                         }
                     }

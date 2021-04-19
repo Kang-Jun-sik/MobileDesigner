@@ -14,7 +14,13 @@ export default {
         });
         CreateService.sendCreateMessage(tab.$el);
     },
-
+    addFormSection(element){
+        const $containerContent = element.children[1]
+        const formSection = CreateService.addComponent('FormSection');
+        $containerContent.appendChild(formSection.$el);
+        store.commit('ADD_ITEM',formSection);
+        CreateService.sendCreateMessage(formSection.$el);
+    },
     addDropdownChildButton(element){
         const uid = element.getAttribute('uid');
         const dropDownBtn = store.state.component.items.find(item => item.uid === uid);

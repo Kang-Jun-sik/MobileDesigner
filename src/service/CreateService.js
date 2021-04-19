@@ -36,7 +36,8 @@ import {
     TextBox,
     TimePicker,
     ZipCodePicker,
-    YearPicker
+    YearPicker,
+    FormSection
 } from '@/utils/exports'
 import makeForIDEInfo from "@/utils/makeForIDEInfo";
 import CustomContainer from "../components/Containers/CustomContainer";
@@ -123,6 +124,9 @@ export default {
                 break;
             case 'FormContainer':
                 component = Vue.extend(FormContainer);
+                break;
+            case 'FormSection':
+                component = Vue.extend(FormSection);
                 break;
             case 'InfoBoxContainer':
                 component = Vue.extend(InfoBoxContainer);
