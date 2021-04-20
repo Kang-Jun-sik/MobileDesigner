@@ -28,6 +28,7 @@ export default {
       dataUid: '',
       titlesList: [],
       parentUid: '',
+
       /* check child */
       hasChildControl: true,
       checkChild: true,
@@ -39,16 +40,18 @@ export default {
       hide: false,
     }
   },
+
   created() {
     this.uid = CreateService.createUid('dews-tabs');
     this.dataUid = CreateService.createUid('tabs');
-
     this.$nextTick(function () {
       this.titlesList = store.getters.getTabList(this.uid);
       this.setSelectedIndex();
     });
   },
+
   mounted() {},
+
   methods: {
     setID(value) {
       this.id = value;

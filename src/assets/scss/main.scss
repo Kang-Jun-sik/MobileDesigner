@@ -306,6 +306,7 @@ body {
 }
 
 .dews-control-list.gu-transit {
+  display: inline-block;
   @include dews-control-list();
 
   width: 160px;

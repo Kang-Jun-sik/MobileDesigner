@@ -1,6 +1,5 @@
 /**
  * IDE --> MOBILE DESIGNER 데이터 수신 처리부
- *
  */
 
 (function () {
@@ -39,7 +38,6 @@
                 break;
         }
     }
-
     messageHandler.MessageFromIDE = MessageFromIDE;
     window.messageHandler = messageHandler;
 }());
