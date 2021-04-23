@@ -37,9 +37,10 @@ import {
     CardList,
     CardListField,
     Datasource,
-    CodePicker
+    CodePicker,
+    YearPicker
 } from '@/utils/exports'
-import DeleteService from "@/service/DeleteService";
+
 /*
     Todo : Summary content pageOpen시 안그려지도록 수정
  */
@@ -363,6 +364,9 @@ export default {
                 break;
             case 'dews-codepicker':
                 instance = Vue.extend(CodePicker);
+                break;
+            case 'dews-yearpicker':
+                instance = Vue.extend(YearPicker);
                 break;
         }
 
