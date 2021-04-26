@@ -32,7 +32,7 @@ export default {
         numeric: 'Numeric Text Box',
         maskbox: 'Mask Text Box',
         dropdownList: 'Dropdown List',
-        // complex: 'Complex Control',
+        complex: 'Complex Control',
         // calendar: 'Calendar',
         // editor: 'Editor',
         // file: 'File/Multi File',

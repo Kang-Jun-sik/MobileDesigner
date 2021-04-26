@@ -31,6 +31,7 @@ export default {
       type : 'complex',
       liClass: 'complex-line',
       componentClass: 'components',
+      controlType : 'complex-control',
       commonClass: 'item',
       WIDTH_TYPE: {
         variable: 'variable',
@@ -68,7 +69,7 @@ export default {
 .dews-mobile-complex {
   .complex-line {
     float: inherit;
-    min-height: 36px;
+    min-height: 45px;
     padding-top: 0;
     border: 1px dotted #212121;
   }

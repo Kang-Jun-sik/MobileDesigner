@@ -38,7 +38,8 @@ import {
     CardListField,
     Datasource,
     CodePicker,
-    YearPicker
+    YearPicker,
+    ZipCodePicker
 } from '@/utils/exports'
 
 /*
@@ -129,6 +130,11 @@ export default {
                 break;
             case 'custom-container-control':
                 addComponent = parent.$el.querySelector('.custom-container-field');
+                addComponent.appendChild(control.$el);
+                break;
+            case 'complex-control':
+                addComponent = document.createElement('div');
+                addComponent.className = 'dews-complexitem components item variable';
                 addComponent.appendChild(control.$el);
                 break;
             case 'tabs':
@@ -367,6 +373,9 @@ export default {
                 break;
             case 'dews-yearpicker':
                 instance = Vue.extend(YearPicker);
+                break;
+            case 'dews-zipcodepicker':
+                instance = Vue.extend(ZipCodePicker);
                 break;
         }
 

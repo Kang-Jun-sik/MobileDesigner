@@ -54,7 +54,7 @@ export default {
   border: 1px dotted #212121;
 
   .button-group {
-    min-height: 24px;
+    min-height: 45px;
     padding: 8px 0;
   }
 }

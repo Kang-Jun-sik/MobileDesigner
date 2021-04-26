@@ -105,7 +105,7 @@ export default {
           switch (target.dataset.type) {
             case "complex" :
               createElement = document.createElement('div');
-              createElement.className = 'components item variable';
+              createElement.className = 'dews-complexitem components item variable';
               createElement.appendChild(component.$el);
               element.replaceWith(createElement);
               break;

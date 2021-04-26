@@ -13,10 +13,10 @@
           <span class="button-text">{{ text }}</span>
         </button>
     </span>
-    <span class="zipcode-address">
+    <span class="zipcode-address" v-if="hasAddress">
       <input type="text" readonly>
     </span>
-    <span class="zipcode-detail">
+    <span class="zipcode-detail" v-if="hasDetailAddress">
       <input type="text" readonly placeholder="상세주소">
     </span>
   </div>
@@ -24,6 +24,7 @@
 
 <script>
 import CreateService from "@/service/CreateService";
+import {mapGetters} from "vuex";
 
 export default {
   name: 'dews-zipcodepicker',
@@ -48,6 +49,17 @@ export default {
   },
   created() {
     this.uid = CreateService.createUid('dews-zipcodepicker');
+    this.zipCode = '';
+    this.address = '';
+    this.detailAddress = '';
+  },
+  computed: {
+    hasAddress() {
+      return this.address ? true : false;
+    },
+    hasDetailAddress() {
+      return this.detailAddress ? true : false;
+    },
   },
   methods: {
     setID(value) {
