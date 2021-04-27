@@ -112,11 +112,14 @@ export default {
         store.commit('SET_MAIN_BUTTON_LIST', {uid: control.uid, mainButtons: control.mainButtons});
     },
 
+
+
     /*
     * control parsing
     * container-button, container-content, form-section in form-container 제외
     **/
     controlParsing(instance, parent) {
+
         const control = PageOpenService.createControlFromData(instance);
         const controlUid = control.uid;
         const parentDataUid = parent.dataUid ? parent.dataUid : '';

@@ -33,6 +33,13 @@ export default {
   mounted() {
     //store.commit('ADD_ITEM',this.$refs.complex);
     window.drake.containers.push(this.$refs.complex);
+  },
+  methods: {
+    destroyComponent() {
+      console.log('destory component');
+      this.$destroy();
+      this.$el.parentNode.removeChild(this.$el);
+    },
   }
 }
 </script>

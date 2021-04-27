@@ -43,7 +43,7 @@ export default {
   methods: {
     setTitle(value) {
       this.title = value;
-    }
+    },
   }
 }
 </script>
