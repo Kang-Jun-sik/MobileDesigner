@@ -38,7 +38,7 @@ export default {
       id: '',
       title: 'ZipCodePicker',
       disabled: false,
-      readonly: false,
+      readonly: true,
       required: false,
       type: 'street',
       detailAddress: '',

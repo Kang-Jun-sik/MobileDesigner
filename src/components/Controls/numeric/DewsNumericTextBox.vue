@@ -46,7 +46,7 @@ export default {
       value: 0,
       placeholder: '',
       disabled: false,
-      readonly: false,
+      readonly: true,
       required: false,
       prefix: '$',
       suffix: '백만',

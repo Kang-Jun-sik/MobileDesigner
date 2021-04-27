@@ -19,6 +19,7 @@ import {
     CheckBoxGroup,
     ChildButton,
     Complex,
+    ComplexLine,
     Datasource,
     DatePicker,
     DropdownButton,
@@ -181,6 +182,9 @@ export default {
                 break;
             case 'ComplexControl':
                 component = Vue.extend(Complex);
+                break;
+            case 'ComplexLine' :
+                component = Vue.extend(ComplexLine);
                 break;
             case 'ButtonGroup':
                 component = Vue.extend(ButtonGroup);

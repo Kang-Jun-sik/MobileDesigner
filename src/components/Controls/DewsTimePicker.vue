@@ -27,7 +27,7 @@ export default {
       /* Properties */
       title: 'TimePicker',
       disabled: false,
-      readonly: false,
+      readonly: true,
       required: false,
       min: '',
       max: '',

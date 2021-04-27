@@ -30,7 +30,7 @@ export default {
       id: '',
       title: 'PeriodPicker',
       disabled: false,
-      readonly: false,
+      readonly: true,
       required: false,
       min: '',
       max: '',

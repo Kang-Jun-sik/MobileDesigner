@@ -56,6 +56,7 @@ export default {
                     }
                 })
                 break;
+
             case "dews-mobile-box":
                 $.contextMenu({
                     selector: ".selected-control",
@@ -178,7 +179,8 @@ export default {
                                 break;
                             case "addFormSection":
                                 console.log(opt);
-                                AddChildService.addFormSection(opt.$trigger[0])
+                                AddChildService.addFormSection(opt.$trigger[0]);
+                                SelectService.setPosition(window.selectedItem);
                                 break;
                         }
                     }
@@ -310,6 +312,11 @@ export default {
                 $.contextMenu({
                     selector: ".selected-control",
                     items: {
+                        "addComplexLine": {
+                            name: "Add Complex Line",
+                            icon: "edit"
+                        },
+
                         "delete": {
                             name: "Delete",
                             icon: "ic-delete"
@@ -317,6 +324,10 @@ export default {
                     },
                     callback: function (itemKey, opt) {
                         switch (itemKey) {
+                            case "addComplexLine":
+                                AddChildService.addComplexLine(opt.$trigger[0]);
+                                SelectService.setPosition(window.selectedItem);
+                                break;
                             case "delete" :
                                 DeleteService.deleteControl(opt.$trigger[0]);
                                 break;

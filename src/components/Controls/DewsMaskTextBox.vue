@@ -32,7 +32,7 @@ export default {
       format: '',
       type: 'text',
       disabled: false,
-      readonly: false,
+      readonly: true,
       required: false,
       mask: '',
       prompt: '_',

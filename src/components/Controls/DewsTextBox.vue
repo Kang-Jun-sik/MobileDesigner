@@ -31,7 +31,7 @@ export default {
       placeholder: '',
       multi: false,
       disabled: false,
-      readonly: false,
+      readonly: true,
       required: false,
       multiHeight: 50,
     }

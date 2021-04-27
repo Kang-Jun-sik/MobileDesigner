@@ -22,7 +22,7 @@ export default {
       id: '',
       label: 'label',
       disabled: false,
-      readonly: false,
+      readonly: true,
       checked: false,
     }
   },

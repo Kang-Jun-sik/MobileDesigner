@@ -2,43 +2,29 @@
   <div :uid="uid" class="dews-mobile-complex dews-mobile-component dews-complex">
     <label>{{ title }}</label>
     <ul class="complex-wrap">
-      <li class="complex-line" :data-type="type" :data-uid="dataUid" ref="complex">
-<!--        <div :class="[componentClass, commonClass, widthType]">-->
-<!--          <dews-dropdownlist></dews-dropdownlist>-->
-<!--        </div>-->
-<!--        <div :class="[componentClass, commonClass, widthType]">-->
-<!--          <dews-button></dews-button>-->
-<!--        </div>-->
-      </li>
+          <complex-line ref="complexLine"></complex-line>
     </ul>
   </div>
 </template>
 
 <script>
 import CreateService from "@/service/CreateService";
-import DewsDropdownlist from "@/components/Controls/dropdownlist/DewsDropdownlist";
-import DewsButton from "@/components/Controls/DewsButton";
+import ComplexLine from "@/components/Controls/complex/ComplexLine";
 import store from "@/store";
 
 export default {
   name: 'dews-complex',
-  //components: {DewsButton, DewsDropdownlist},
+  components: {ComplexLine},
   data() {
     return {
       uid: '',
       parentUid: '',
-      dataUid:'',
-      type : 'complex',
+      dataUid: '',
+      type: 'complex',
       liClass: 'complex-line',
       componentClass: 'components',
-      controlType : 'complex-control',
+      controlType: 'complex-control',
       commonClass: 'item',
-      WIDTH_TYPE: {
-        variable: 'variable',
-        fix: 'fix',
-        autofix: 'autofix'
-      },
-      widthType: 'variable',
 
       /* Properties */
       id: '',
@@ -47,13 +33,14 @@ export default {
   },
   created() {
     this.uid = CreateService.createUid('dews-complex');
-    this.dataUid = CreateService.createUid('complex');
-    store.commit('MATCH_UID', { 'uid': this.uid, 'dataUid': this.dataUid });
+    this.$nextTick(() => {
+      store.commit('ADD_ITEM', this.$refs.complexLine);
+    });
   },
   mounted() {
-    window.drake.containers.push(this.$refs.complex);
+    // store.commit('ADD_ITEM', this.$refs.complexLine);
   },
-  methods:{
+  methods: {
     setTitle(value) {
       this.title = value;
     }
@@ -64,8 +51,9 @@ export default {
 <style lang="scss" scoped>
 @import 'node_modules/@dews/dews-mobile-style/scss/variables/variables';
 @import 'node_modules/@dews/dews-mobile-style/scss/mixins/_mixins';
-@include dews-complex();
 
+@include dews-complex();
+/*
 .dews-mobile-complex {
   .complex-line {
     float: inherit;
@@ -74,4 +62,5 @@ export default {
     border: 1px dotted #212121;
   }
 }
+ */
 </style>

@@ -28,6 +28,7 @@ import {
     DropdownButton,
     ChildButton,
     Complex,
+    ComplexLine,
     ButtonGroup,
     RadioButtonGroup,
     CheckBoxGroup,
@@ -319,6 +320,9 @@ export default {
                 break;
             case 'dews-complex':
                 instance = Vue.extend(Complex);
+                break;
+            case 'complex-line' :
+                instance = Vue.extend(ComplexLine);
                 break;
             case 'dews-datepicker':
                 instance = Vue.extend(DatePicker);
