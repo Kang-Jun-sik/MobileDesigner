@@ -75,6 +75,10 @@ export default {
     setHolidaysDisabled(value) {
       this.holidaysDisabled = JSON.parse(value);
     },
+    destroyComponent() {
+      this.$destroy();
+      this.$el.parentNode.removeChild(this.$el);
+    }
   }
 }
 </script>

@@ -68,6 +68,10 @@ export default {
     setSpinner(value) {
       this.spinner = JSON.parse(value);
     },
+    destroyComponent() {
+      this.$destroy();
+      this.$el.parentNode.removeChild(this.$el);
+    }
   }
 }
 </script>

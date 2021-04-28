@@ -25,6 +25,10 @@ export default {
     onClick(e) {
       SelectService.selectControl(e.target);
     },
+    destroyComponent() {
+      this.$destroy();
+      this.$el.parentNode.removeChild(this.$el);
+    }
   }
 }
 </script>

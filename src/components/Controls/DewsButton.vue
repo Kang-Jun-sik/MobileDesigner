@@ -97,6 +97,10 @@ export default {
     },
     setGroup(value) {
       this.group = JSON.parse(value);
+    },
+    destroyComponent() {
+      this.$destroy();
+      this.$el.parentNode.removeChild(this.$el);
     }
   }
 }

@@ -54,6 +54,10 @@ export default {
     },
     setConvenienceButton(name, value) {
       this.convenienceButton[name] = JSON.parse(value);
+    },
+    destroyComponent() {
+      this.$destroy();
+      this.$el.parentNode.removeChild(this.$el);
     }
   },
 }

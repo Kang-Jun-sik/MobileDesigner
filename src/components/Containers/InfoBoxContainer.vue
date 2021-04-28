@@ -37,6 +37,10 @@ export default {
     setType(value) {
       this.type = value;
     },
+    destroyComponent() {
+      this.$destroy();
+      this.$el.parentNode.removeChild(this.$el);
+    }
   },
 }
 </script>

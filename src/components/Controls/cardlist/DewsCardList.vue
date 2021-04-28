@@ -53,6 +53,12 @@ export default {
   },
   mounted() {
     window.drake.containers.push(this.$refs.cardListField);
+  },
+  methods:{
+    destroyComponent() {
+      this.$destroy();
+      this.$el.parentNode.removeChild(this.$el);
+    }
   }
 }
 </script>

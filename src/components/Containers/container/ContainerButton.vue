@@ -42,6 +42,12 @@ export default {
   },
   mounted() {
     window.drake.containers.push(this.$refs.customButton);
+  },
+  methods:{
+    destroyComponent() {
+      this.$destroy();
+      this.$el.parentNode.removeChild(this.$el);
+    }
   }
 }
 </script>

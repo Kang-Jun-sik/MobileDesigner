@@ -60,6 +60,10 @@ export default {
 
       setTimeout(SelectService.setPosition, 10, this.$el);
     },
+    destroyComponent() {
+      this.$destroy();
+      this.$el.parentNode.removeChild(this.$el);
+    }
   }
 }
 </script>

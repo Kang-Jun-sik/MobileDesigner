@@ -86,6 +86,10 @@ export default {
       const $drawerArea = document.querySelector('.designer-drawer');
       if ($drawerArea)
         $drawerArea.firstElementChild.classList.remove('open');
+    },
+    destroyComponent() {
+      this.$destroy();
+      this.$el.parentNode.removeChild(this.$el);
     }
   },
   computed: {

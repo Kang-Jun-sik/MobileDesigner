@@ -77,6 +77,10 @@ export default {
       else
         $dropdownButtonList.style.display = 'none';
       setTimeout(SelectService.setPosition, 10, this.$refs.dropdownButton);
+    },
+    destroyComponent() {
+      this.$destroy();
+      this.$el.parentNode.removeChild(this.$el);
     }
   }
 }

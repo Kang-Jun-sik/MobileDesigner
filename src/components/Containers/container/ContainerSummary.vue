@@ -22,6 +22,12 @@ export default {
   },
   created() {
     this.uid = CreateService.createUid('container-summary')
+  },
+  methods:{
+    destroyComponent() {
+      this.$destroy();
+      this.$el.parentNode.removeChild(this.$el);
+    }
   }
 }
 </script>

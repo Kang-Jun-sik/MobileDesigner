@@ -91,6 +91,10 @@ export default {
 
       setTimeout(SelectService.setPosition, 10, this.$refs.tabs);
     },
+    destroyComponent() {
+      this.$destroy();
+      this.$el.parentNode.removeChild(this.$el);
+    }
   },
   computed: {
     updateTitles() {

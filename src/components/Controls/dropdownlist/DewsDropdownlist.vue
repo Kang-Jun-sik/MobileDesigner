@@ -59,6 +59,10 @@ export default {
     setReadonly(value) {
       this.readonly = JSON.parse(value);
     },
+    destroyComponent() {
+      this.$destroy();
+      this.$el.parentNode.removeChild(this.$el);
+    }
   }
 }
 </script>

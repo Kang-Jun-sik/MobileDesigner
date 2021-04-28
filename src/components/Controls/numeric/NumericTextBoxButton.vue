@@ -47,6 +47,10 @@ export default {
     stepperDecrement() {
       this.$emit('decrease');
     },
+    destroyComponent() {
+      this.$destroy();
+      this.$el.parentNode.removeChild(this.$el);
+    }
   },
 }
 </script>

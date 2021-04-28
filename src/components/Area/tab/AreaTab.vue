@@ -93,6 +93,10 @@ export default {
     setBtnSave(value) {
       this.mainButtons['btn-save'] = JSON.parse(value);
     },
+    destroyComponent() {
+      this.$destroy();
+      this.$el.parentNode.removeChild(this.$el);
+    }
   },
   watch: {
     active(state) {

@@ -111,6 +111,10 @@ export default {
       e.stopPropagation();
       this.setCollapsed(!this.collapsed);
     },
+    destroyComponent() {
+      this.$destroy();
+      this.$el.parentNode.removeChild(this.$el);
+    }
   }
 }
 </script>

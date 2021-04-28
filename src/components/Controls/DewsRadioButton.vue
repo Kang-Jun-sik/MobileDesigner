@@ -54,6 +54,10 @@ export default {
       if (this.disabled) return;
       this.checked = !this.checked;
     },
+    destroyComponent() {
+      this.$destroy();
+      this.$el.parentNode.removeChild(this.$el);
+    }
   }
 }
 </script>

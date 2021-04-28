@@ -25,6 +25,12 @@ export default {
     }
     this.$store.commit('SET_CONTROL_LIST', datasourceArea);
   },
+  methods:{
+    destroyComponent() {
+      this.$destroy();
+      this.$el.parentNode.removeChild(this.$el);
+    }
+  }
 }
 </script>
 

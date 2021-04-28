@@ -80,6 +80,10 @@ export default {
       e.stopPropagation();
       this.value = e.target.value;
     },
+    destroyComponent() {
+      this.$destroy();
+      this.$el.parentNode.removeChild(this.$el);
+    }
   }
 }
 </script>

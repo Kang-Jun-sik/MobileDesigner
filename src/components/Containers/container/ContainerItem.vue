@@ -18,6 +18,12 @@ export default {
   created() {
     this.uid = CreateService.createUid('dews-custom-container');
   },
+  methods:{
+    destroyComponent() {
+      this.$destroy();
+      this.$el.parentNode.removeChild(this.$el);
+    }
+  }
 }
 </script>
 

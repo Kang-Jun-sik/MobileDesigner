@@ -48,6 +48,10 @@ export default {
     setDisabled(value) {
       this.disabled = JSON.parse(value);
     },
+    destroyComponent() {
+      this.$destroy();
+      this.$el.parentNode.removeChild(this.$el);
+    }
   }
 }
 </script>

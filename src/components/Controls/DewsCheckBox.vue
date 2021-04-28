@@ -61,6 +61,10 @@ export default {
       this.checked = !this.checked
       ChangeService.sendChangeMessage('checked', this.checked, this.uid);
     },
+    destroyComponent() {
+      this.$destroy();
+      this.$el.parentNode.removeChild(this.$el);
+    }
   }
 }
 </script>
