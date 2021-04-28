@@ -45,10 +45,21 @@ export default {
         };
     },
 
+    preventDeleteControl(target){
+        const preventDeleteList = ['dews-mobile-containerButton','dews-mobile-containerContent','dews-mobile-containerSummry'];
+        if(preventDeleteList.includes(target.classList[0]))
+            return true;
+        return false;
+    },
+
     /*
     * 컨트롤 삭제를 위한 공통 로직
     * */
     deleteControl(target, isUndoRedo) {
+
+        if(DeleteService.preventDeleteControl(target))
+            return;
+
         if (!target) return;
 
         // IDE에서 삭제

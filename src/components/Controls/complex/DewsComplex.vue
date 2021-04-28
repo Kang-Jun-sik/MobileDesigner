@@ -2,7 +2,7 @@
   <div :uid="uid" class="dews-mobile-complex dews-mobile-component dews-complex">
     <label>{{ title }}</label>
     <ul class="complex-wrap">
-          <complex-line ref="complexLine"></complex-line>
+<!--          <complex-line ref="complexLine"></complex-line>-->
     </ul>
   </div>
 </template>
@@ -14,7 +14,7 @@ import store from "@/store";
 
 export default {
   name: 'dews-complex',
-  components: {ComplexLine},
+  // components: {ComplexLine},
   data() {
     return {
       uid: '',
@@ -30,19 +30,21 @@ export default {
       id: '',
       title: 'Complex',
 
-
     }
   },
   created() {
     this.uid = CreateService.createUid('dews-complex');
-    this.$nextTick(() => {
-      store.commit('ADD_ITEM', this.$refs.complexLine);
-    });
+    // this.$nextTick(() => {
+    //   store.commit('ADD_ITEM', this.$refs.complexLine);
+    // });
   },
   mounted() {
     // store.commit('ADD_ITEM', this.$refs.complexLine);
   },
   methods: {
+    setID(value) {
+      this.id = value;
+    },
     setTitle(value) {
       this.title = value;
     },

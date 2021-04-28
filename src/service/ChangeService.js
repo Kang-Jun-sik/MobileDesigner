@@ -48,6 +48,9 @@ export default {
             case 'area-item':
                 ChangeService.changeItem(data);
                 break;
+            case 'dews-complex':
+                ChangeService.changeComplex(data);
+                break;
             case 'dews-box':
                 ChangeService.changeBox(data);
                 break;
@@ -92,9 +95,6 @@ export default {
                 break;
             case 'dews-checkbox-group':
                 ChangeService.changeCheckboxGroup(data);
-                break;
-            case 'dews-complex':
-                ChangeService.changeComplex(data);
                 break;
             case 'dews-datepicker':
                 ChangeService.changeDatePicker(data);
@@ -455,6 +455,16 @@ export default {
 
     changeComplex(data) {
         const { uid, prop, value } = data;
+        const component = store.state.component.items.find(item => item.uid === uid);
+
+        switch (prop) {
+            case 'id':
+                component.setID(value);
+                break;
+            case 'title':
+                component.setTitle(value);
+                break;
+        }
     },
 
     changeDatePicker(data) {
