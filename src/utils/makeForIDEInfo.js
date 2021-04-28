@@ -19,11 +19,10 @@ export default {
                 const childElement = elm.querySelector(`[uid=${childUID}]`);
                 const parentElement = childElement.parentElement.closest(`[uid]`);
 
-                if (createData.getAttribute('uid') === parentElement.getAttribute('uid')) {
+                if (createData.getAttribute('uid') === parentElement.getAttribute('uid'))
                     createData.appendChild(childData);
-                } else {
+                else
                     createData.querySelector(`[uid=${parentElement.getAttribute('uid')}]`).appendChild(childData);
-                }
             }
             this.createDataMessage(createData, child.children, elm);
         }
@@ -47,15 +46,13 @@ export default {
                 filterList = Array.from(sameLevelControlList).filter(control =>
                     control.closest(`[data-uid=${parentDataUid}]`) === parentElement);
             } else {
-                if(parentElement.classList.contains("complex-line")){
+                if (parentElement.classList.contains("complex-line")) {
                     //Complex control indexing 계산 로직 처리
                     let scopeList = parentElement.querySelectorAll(':scope > div');
                     scopeList.forEach(litem => sameLevelControlList.push(litem.querySelector('.dews-mobile-component')));
                     filterList = Array.from(sameLevelControlList).filter(control =>
                         control.closest(`[data-uid=${parentDataUid}]`) === parentElement);
-                }
-                else
-                {
+                } else {
                     //아이템이 >li 형태로 추가되는 case
                     let scopeList = parentElement.querySelectorAll(':scope > li');
                     scopeList.forEach(litem => sameLevelControlList.push(litem.querySelector('.dews-mobile-component')));

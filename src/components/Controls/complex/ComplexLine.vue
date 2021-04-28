@@ -36,7 +36,6 @@ export default {
   },
   methods: {
     destroyComponent() {
-      console.log('destory component');
       this.$destroy();
       this.$el.parentNode.removeChild(this.$el);
     },

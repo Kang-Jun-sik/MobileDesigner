@@ -50,7 +50,7 @@ export default {
     /*
     * 페이지 오픈 서비스 (EWP -> MOBILE DESIGNER PAGE Rendering)
     * @param args
-    * */
+    **/
     openService(args) {
         // 1) IDE로부터 받은 데이터 전처리
         const obj = JSON.parse(args);
@@ -78,7 +78,7 @@ export default {
 
     /*
     * Set attribute from IDE
-    * */
+    **/
     setAttributeFromIDE(instance, control) {
         const attrs = instance.attributes;
 
@@ -96,7 +96,7 @@ export default {
 
     /*
     * Set Datasource from IDE
-    * */
+    **/
     setDatasourceFromIDE(dataSource) {
         const $dataSourceArea = document.querySelector('.datasource-area');
         const dataSourceControl = PageOpenService.createControlFromData(dataSource);
@@ -112,14 +112,11 @@ export default {
         store.commit('SET_MAIN_BUTTON_LIST', {uid: control.uid, mainButtons: control.mainButtons});
     },
 
-
-
     /*
     * control parsing
     * container-button, container-content, form-section in form-container 제외
     **/
     controlParsing(instance, parent) {
-
         const control = PageOpenService.createControlFromData(instance);
         const controlUid = control.uid;
         const parentDataUid = parent.dataUid ? parent.dataUid : '';
@@ -163,6 +160,7 @@ export default {
                 addComponent = control.$el;
                 break;
         }
+
         (instance.tagName === 'dews-box') ? PageOpenService.setComponentStoreData(control) : null;
 
         if (parentDataUid) {
@@ -385,7 +383,6 @@ export default {
                 instance = Vue.extend(ZipCodePicker);
                 break;
         }
-
         instance = new instance().$mount();
         instance.uid = uid;
         instance.$el.setAttribute('uid', uid);

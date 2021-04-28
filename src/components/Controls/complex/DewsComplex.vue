@@ -29,6 +29,8 @@ export default {
       /* Properties */
       id: '',
       title: 'Complex',
+
+
     }
   },
   created() {

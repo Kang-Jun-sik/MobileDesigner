@@ -2,6 +2,7 @@ import store from "@/store/index";
 import CreateService from "./CreateService";
 
 export default {
+
     addTabsChild(element) {
         const $tabsContent = element.querySelector(`[data-type='tabs']`);
         const tab = CreateService.addComponent('AreaTab');
@@ -14,6 +15,7 @@ export default {
         });
         CreateService.sendCreateMessage(tab.$el);
     },
+
     addFormSection(element) {
         const $containerContent = element.children[1]
         const formSection = CreateService.addComponent('FormSection');
@@ -21,6 +23,7 @@ export default {
         store.commit('ADD_ITEM', formSection);
         CreateService.sendCreateMessage(formSection.$el);
     },
+
     addDropdownChildButton(element) {
         const uid = element.getAttribute('uid');
         const dropDownBtn = store.state.component.items.find(item => item.uid === uid);

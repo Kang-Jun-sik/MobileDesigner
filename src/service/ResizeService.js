@@ -1,6 +1,5 @@
 import $ from "jquery";
 import store from "@/store/index";
-import ResizeService from "@/service/ResizeService";
 
 export default {
     /*
@@ -41,7 +40,7 @@ export default {
 
     /**
      * 하위 자식 컨트롤의 사이즈 조절을 위한 로직 ex) dews-mobile-areBox > dews-box-content-wrap
-     * */
+     **/
     alsoResizeTarget(target) {
         if (target === null) return;
 
@@ -52,7 +51,7 @@ export default {
 
     /*
     * Select된 Control의 ResizeHandler 제거
-    * */
+    **/
     removeResizeHandler(){
         const resizeHandler = document.querySelectorAll('.ui-resizable-handle');
         Array.from(resizeHandler).forEach(handler => handler.remove());
@@ -60,7 +59,7 @@ export default {
 
     /*
     * Resizable Event 제거
-    * */
+    **/
     destoryResizable(item){
         const elementUid = item.getAttribute('uid');
         const target = $(`[uid=${elementUid}]`);

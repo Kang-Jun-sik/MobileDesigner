@@ -46,7 +46,6 @@ export default {
             if (cardListField.length >= 1) return false;
           }
         }
-
         return componentAcceptsCheck(el, target);
       }
     })

@@ -24,12 +24,11 @@ export default {
 
     /*
     * 컨트롤 선택 이벤트 등록
-    * */
+    **/
     selectControlEvent() {
         const $mainDesigner = document.querySelector('.main-designer-wrapper');
         $mainDesigner.addEventListener('mousedown', function (e) {
             const target = e.target;
-
             // 이벤트 위임 방법을 사용하여 선택한 AreaPanel만 보일수 있도록 로직 추가
             const panels = $mainDesigner.querySelectorAll('.dews-panel');
             Array.from(panels).forEach(panel => {
@@ -44,7 +43,6 @@ export default {
                     target.classList.remove('dews-panel-hide');
                 }
             }
-
             SelectService.selectControl(target);
             e.preventDefault();
         })
@@ -52,14 +50,14 @@ export default {
 
     /*
     * Find Layout (box, Tab)
-    * */
+    **/
     findLayoutTarget(target) {
         return target.closest('.dews-layout-component');
     },
 
     /*
     * Find Component
-    * */
+    **/
     findTarget(target) {
         return target.closest('.dews-mobile-component');
     },
@@ -67,7 +65,7 @@ export default {
     /*
     * 컨트롤 선택 이벤트 실행
     * @param eventTarget - 선택한 컨트롤
-    * */
+    **/
     selectControl(eventTarget) {
         const target = eventTarget.classList.contains('dews-mobile-component') ? eventTarget : this.findTarget(eventTarget);
         const layoutTarget = eventTarget.classList.contains('dews-layout-component') ? eventTarget : this.findLayoutTarget(eventTarget);
@@ -104,27 +102,6 @@ export default {
 
         SelectService.removeSelectHandler();
         if (!target.classList.contains('main-designer')) SelectService.showSelectHandler(target);
-
-        /*
-        const $drawerArea = document.querySelector('.designer-drawer');
-        if (target.classList.contains('dews-mobile-codePicker')) {
-            if ($drawerArea.hasChildNodes()) {
-                $drawerArea.firstElementChild.classList.remove('open');
-                $drawerArea.firstElementChild.remove();
-            }
-            const codePicker = store.state.component.items.find(item => item.uid === target.getAttribute('uid'));
-            const drawer = codePicker.$refs.drawerLayout;
-            const $drawer = drawer.$el;
-            $drawerArea.appendChild($drawer);
-            $drawer.classList.add('open');
-        } else if ($drawerArea.hasChildNodes()) {
-            if (target.classList.contains('main-designer') || (layoutTarget && !layoutTarget.classList.contains('dews-mobile-layer'))) {
-                $drawerArea.firstElementChild.classList.remove('open');
-                $drawerArea.firstElementChild.remove();
-            }
-        }
-        */
-
         ContextMenuService.destroyContextMenu();
         ContextMenuService.getContextMenu(window.selectedItem);
         mobileDesignerToIDE({ commandType: 'select', elm: window.selectedItem });
@@ -132,7 +109,7 @@ export default {
 
     /*
     * Select Control Handler 위치 css 수정
-    * */
+    **/
     setPosition(el) {
         if (!window.selectedItem) return;
 

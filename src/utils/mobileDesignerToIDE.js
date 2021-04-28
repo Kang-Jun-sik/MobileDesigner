@@ -70,14 +70,14 @@ const mobileDesignerToIDE = (message) => {
         case "set_dataSource":
             obj = {
                 commandType: "set_dataSource",
-                datasourceUid : message.matchingInfo.datasourceUid,
-                targetUid : message.matchingInfo.targetUid
+                datasourceUid: message.matchingInfo.datasourceUid,
+                targetUid: message.matchingInfo.targetUid
             }
             break;
     }
     console.log(obj);
 
-    if(window.chromiumObject){
+    if (window.chromiumObject) {
         // eslint-disable-next-line no-undef
         chromiumObject.mobileDesignerToIDE(obj); //실제 IDE 데이터 전송 로직
     }
