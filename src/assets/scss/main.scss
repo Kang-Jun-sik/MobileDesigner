@@ -394,10 +394,54 @@ body {
 
 // checkbox-group
 @include dews-checkbox-group();
+.dews-checkbox-group-wrap {
+  .checkbox-group {
+    .group-item {
+      padding: 7px 0;
+    }
+    &.horizontal {
+      .group-item {
+        display: inline-block;
+        margin-right: 10px;
 
+        &:last-child {
+          margin-right: 0;
+        }
+      }
+    }
+    &.vertical {
+      .group-item {
+        display: block;
+        width: 100%;
+      }
+    }
+  }
+}
 // radio-group
 @include dews-radio-group();
+.dews-radio-group-wrap {
+  .radio-group {
+    .group-item {
+      padding: 7px 0;
+    }
+    &.horizontal {
+      .group-item {
+        display: inline-block;
+        margin-right: 10px;
 
+        &:last-child {
+          margin-right: 0;
+        }
+      }
+    }
+    &.vertical {
+      .group-item {
+        display: block;
+        width: 100%;
+      }
+    }
+  }
+}
 //codepicker
 @include dews-designer-drawer-codepicker();
 .codepicker-search {
@@ -416,6 +460,7 @@ body {
       flex: 0 0 auto;
       span {
         font-size: 15px;
+        line-height: 22px;
       }
     }
     .fix {

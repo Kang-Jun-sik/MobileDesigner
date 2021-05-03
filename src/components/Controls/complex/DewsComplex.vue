@@ -60,15 +60,11 @@ export default {
 @import 'node_modules/@dews/dews-mobile-style/scss/variables/variables';
 @import 'node_modules/@dews/dews-mobile-style/scss/mixins/_mixins';
 
-@include dews-complex();
-/*
-.dews-mobile-complex {
-  .complex-line {
-    float: inherit;
-    min-height: 45px;
-    padding-top: 0;
-    border: 1px dotted #212121;
+.dews-complex {
+  position: relative;
+
+  & > label {
+    @include label-wrap();
   }
 }
- */
 </style>
