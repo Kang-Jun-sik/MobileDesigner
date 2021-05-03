@@ -1,5 +1,6 @@
 import store from "@/store/index";
 import CreateService from "./CreateService";
+import SelectService from "./SelectService";
 
 export default {
 
@@ -17,7 +18,7 @@ export default {
     },
 
     addFormSection(element) {
-        const $containerContent = element.children[1]
+        const $containerContent = element.querySelector('.dews-mobile-containerContent');
         const formSection = CreateService.addComponent('FormSection');
         $containerContent.appendChild(formSection.$el);
         store.commit('ADD_ITEM', formSection);

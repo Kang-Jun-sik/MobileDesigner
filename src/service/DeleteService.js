@@ -45,9 +45,9 @@ export default {
         };
     },
 
-    preventDeleteControl(target){
-        const preventDeleteList = ['dews-mobile-containerButton','dews-mobile-containerContent','dews-mobile-containerSummry'];
-        if(preventDeleteList.includes(target.classList[0]))
+    preventDeleteControl(target) {
+        const preventDeleteList = ['dews-mobile-containerButton', 'dews-mobile-containerContent', 'dews-mobile-containerSummry'];
+        if (preventDeleteList.includes(target.classList[0]))
             return true;
         return false;
     },
@@ -57,7 +57,7 @@ export default {
     * */
     deleteControl(target, isUndoRedo) {
 
-        if(DeleteService.preventDeleteControl(target))
+        if (DeleteService.preventDeleteControl(target))
             return;
 
         if (!target) return;
@@ -85,10 +85,25 @@ export default {
         window.selectedItem = null;
     },
 
-    parentTargetDelete(target){
-        if(target.parentElement.tagName === 'LI')
+    deleteTab(target) {
+        let targetUid = target.getAttribute('uid');
+        let dewsTabs = target.parentElement.closest('.dews-mobile-tabs');
+        let titleList = dewsTabs.querySelector('.title-list');
+        if (titleList) {
+            let tabTitle = Array.from(titleList.children).find(x => x.getAttribute('data-tab') === targetUid);
+            if (tabTitle) {
+                tabTitle.remove();
+                target.remove();
+            }
+        }
+    },
+
+    parentTargetDelete(target) {
+        if (target.parentElement.tagName === 'LI')
             target.parentElement.remove();
-        else if(target.parentElement.className == 'components item variable')
+        else if (target.classList.contains('dews-mobile-tab'))
+            DeleteService.deleteTab(target);
+        else if (target.parentElement.className == 'components item variable') //complex-type
             target.parentElement.remove();
         else
             target.remove();
@@ -124,24 +139,28 @@ export default {
                 targetPanel.replaceWith(...targetSibling.childNodes);
 
                 Array.from(targetSiblingNode.children).forEach(child => {
-                    multiCommand.push({ commandType: 'change_control', obj: child, parentUid: targetPanelParentNode.getAttribute('uid') });
+                    multiCommand.push({
+                        commandType: 'change_control',
+                        obj: child,
+                        parentUid: targetPanelParentNode.getAttribute('uid')
+                    });
                 })
                 multiCommand.push({
                     commandType: 'delete',
-                    obj: { target: targetPanelNode, parentUid: targetPanelParentNode.getAttribute('uid') }
+                    obj: {target: targetPanelNode, parentUid: targetPanelParentNode.getAttribute('uid')}
                 });
             } else {
                 multiCommand.push({
                     commandType: 'delete',
-                    obj: { target: target, parentUid: targetPanelNode.getAttribute('uid') }
+                    obj: {target: target, parentUid: targetPanelNode.getAttribute('uid')}
                 });
                 multiCommand.push({
                     commandType: 'delete',
-                    obj: { target: targetSibling, parentUid: targetPanelNode.getAttribute('uid') }
+                    obj: {target: targetSibling, parentUid: targetPanelNode.getAttribute('uid')}
                 });
                 multiCommand.push({
                     commandType: 'delete',
-                    obj: { target: targetPanelNode, parentUid: targetPanelParentNode.getAttribute('uid') }
+                    obj: {target: targetPanelNode, parentUid: targetPanelParentNode.getAttribute('uid')}
                 });
             }
             MultiCommandService.sendMultiCommand(multiCommand);

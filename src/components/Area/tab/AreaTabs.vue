@@ -119,4 +119,9 @@ export default {
   @include reset();
 }
 @include dews-area-tabs();
+
+.dews-mobile-tabs{
+  min-height: 40px;
+}
+
 </style>

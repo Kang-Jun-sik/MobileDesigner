@@ -6,7 +6,7 @@
     </div>
 
     <container-content :control-type="controlType">
-      <form-section controlChild="form-section"></form-section>
+<!--      <form-section controlChild="form-section"></form-section>-->
     </container-content>
 
   </div>
@@ -20,7 +20,8 @@ import ContainerButton from "@/components/Containers/container/ContainerButton";
 
 export default {
   name: 'dews-form-container',
-  components: {ContainerButton, ContainerContent, FormSection},
+  // components: {ContainerButton, ContainerContent, FormSection},
+  components: {ContainerButton, ContainerContent},
   data() {
     return {
       uid: '',

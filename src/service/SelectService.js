@@ -61,7 +61,6 @@ export default {
     findTarget(target) {
         return target.closest('.dews-mobile-component');
     },
-
     /*
     * 컨트롤 선택 이벤트 실행
     * @param eventTarget - 선택한 컨트롤
@@ -69,7 +68,6 @@ export default {
     selectControl(eventTarget) {
         const target = eventTarget.classList.contains('dews-mobile-component') ? eventTarget : this.findTarget(eventTarget);
         const layoutTarget = eventTarget.classList.contains('dews-layout-component') ? eventTarget : this.findLayoutTarget(eventTarget);
-
         // 같은 컨트롤을 선택했을 경우 재 선택하는 것을 방지 / target이 null인 경우 return (dews-mobile-component가 아님)
         if ((window.selectedItem && window.selectedItem === target) || target === null) return;
 
@@ -104,7 +102,7 @@ export default {
         if (!target.classList.contains('main-designer')) SelectService.showSelectHandler(target);
         ContextMenuService.destroyContextMenu();
         ContextMenuService.getContextMenu(window.selectedItem);
-        mobileDesignerToIDE({ commandType: 'select', elm: window.selectedItem });
+        mobileDesignerToIDE({commandType: 'select', elm: window.selectedItem});
     },
 
     /*

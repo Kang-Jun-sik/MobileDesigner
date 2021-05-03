@@ -13,7 +13,7 @@
           <span class="button-text">{{ text }}</span>
         </button>
     </span>
-    <span class="zipcode-address" v-if="hasAddress">
+    <span class="zipcode-address">
       <input type="text" readonly>
     </span>
     <span class="zipcode-detail" v-if="hasDetailAddress">
@@ -54,9 +54,6 @@ export default {
     this.detailAddress = '';
   },
   computed: {
-    hasAddress() {
-      return this.address ? true : false;
-    },
     hasDetailAddress() {
       return this.detailAddress ? true : false;
     },
