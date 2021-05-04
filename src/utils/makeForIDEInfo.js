@@ -1,6 +1,7 @@
 import store from "@/store";
 import makeForIDEInfo from "@/utils/makeForIDEInfo";
 import mobileDesignerToIDE from "@/utils/mobileDesignerToIDE";
+import DeleteService from "../service/DeleteService";
 
 export default {
     /*
@@ -32,15 +33,21 @@ export default {
     * CreateMessage, PositionInfo의 Index 찾기 공통 함수
     **/
     makeCreateMessage(control) {
-        const parent = control.parentElement.closest('.dews-mobile-component');
-        const parentUid = parent.getAttribute('uid') ? parent.getAttribute('uid') : '';
+        const parent = control.parentElement.closest('.dews-mobile-component') ?
+            control.parentElement.closest('.dews-mobile-component') :
+            control.parentElement;
+        const parentUid = parent.getAttribute('uid') ?
+            parent.getAttribute('uid') :
+            parent.getAttribute('parentuid');
         const parentDataUid = store.state.component.items.find(item => item.uid === parentUid)?.dataUid;
         let sameLevelControlList = [];
         let filterList;
 
         //Dragula Area가 존재하는 Case
         if (parentDataUid) {
-            const parentElement = parent.querySelector(`[data-uid=${parentDataUid}]`);
+            const parentElement = parent.querySelector(`[data-uid=${parentDataUid}]`) ?
+                parent.querySelector(`[data-uid=${parentDataUid}]`) :
+                parent;
             if (this.parentTypeGroupCheck(parentElement)) {
                 sameLevelControlList = parentElement.querySelectorAll('.dews-mobile-component');
                 filterList = Array.from(sameLevelControlList).filter(control =>
@@ -53,11 +60,18 @@ export default {
                     filterList = Array.from(sameLevelControlList).filter(control =>
                         control.closest(`[data-uid=${parentDataUid}]`) === parentElement);
                 } else {
-                    //아이템이 >li 형태로 추가되는 case
-                    let scopeList = parentElement.querySelectorAll(':scope > li');
-                    scopeList.forEach(litem => sameLevelControlList.push(litem.querySelector('.dews-mobile-component')));
-                    filterList = Array.from(sameLevelControlList).filter(control =>
-                        control.closest(`[data-uid=${parentDataUid}]`) === parentElement);
+                    //codepicker data 영역에 올라가는 경우 처리
+                    if (parentElement.classList.contains('codepicker-data')) {
+                        let scopeList = parentElement.querySelectorAll(':scope > div');
+                        filterList = Array.from(scopeList).filter(control =>
+                            control.classList.contains('dews-mobile-component'));
+                    } else {
+                        //아이템이 >li 형태로 추가되는 case
+                        let scopeList = parentElement.querySelectorAll(':scope > li');
+                        scopeList.forEach(litem => sameLevelControlList.push(litem.querySelector('.dews-mobile-component')));
+                        filterList = Array.from(sameLevelControlList).filter(control =>
+                            control.closest(`[data-uid=${parentDataUid}]`) === parentElement);
+                    }
                 }
             }
         } else {

@@ -39,7 +39,7 @@ export default {
   },
   created() {
     this.uid = CreateService.createUid('dews-codepicker');
-    this.dataUid = CreateService.createUid('codepicker-datasource');
+    this.dataUid = this.uid;
   },
   mounted() {
 

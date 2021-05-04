@@ -34,9 +34,9 @@
               </div>
             </div>
 
-            <div class="dews-cardlist codepicker">
-              <div class="cardlist-wrap" :dataUid="dataUid">
-                <dews-cardlist ref="cardlist"></dews-cardlist>
+            <div class="codepicker dataArea">
+              <div class="codepicker-data" :parentuid="dataUid" :data-Uid="dataUid" ref="codepickerData">
+<!--                <dews-cardlist ref="cardlist"></dews-cardlist>-->
               </div>
             </div>
           </div>
@@ -54,7 +54,8 @@ import CodepickerSearch from "@/components/Controls/codepicker/CodePickerSearch"
 
 export default {
   name: 'drawer-layout',
-  components: {CodepickerSearch, DewsCardlist},
+  // components: {CodepickerSearch, DewsCardlist},
+  components: {CodepickerSearch},
   props: ['dataUid'],
   data() {
     return {
@@ -75,7 +76,8 @@ export default {
   },
   mounted() {
     store.commit('ADD_ITEM', this.$refs.codepickerSearch);
-    store.commit('ADD_ITEM', this.$refs.cardlist);
+    window.drake.containers.push(this.$refs.codepickerData);
+    // store.commit('ADD_ITEM', this.$refs.cardlist);
   },
   methods: {
     clickHandler() {
@@ -109,6 +111,9 @@ export default {
 .layer-drawer {
   display: none;
 
+  .codepicker-data{
+    min-height: 40px;
+  }
   &.open {
     display: block;
   }

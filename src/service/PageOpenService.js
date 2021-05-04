@@ -237,16 +237,16 @@ export default {
             (node.parentElement.childElementCount > cardListField.fields.length) ? cardListField.fields.push(instance.getAttribute('title')) : null;
         } else if (node.tagName === 'dews-datasource') {
             PageOpenService.setDatasourceFromIDE(node);
-        } else if (node.tagName === 'dews-cardlist') {
-            if (parent.controlType === 'codepicker') {
-                const cardList = parent.$refs.drawerLayout.$refs.cardlist;
-                cardList.uid = node.getAttribute('uid');
-                instanceUid = cardList.uid;
-                store.commit('ADD_ITEM', cardList);
-                PageOpenService.setAttributeFromIDE(instance, cardList);
-            } else {
+        // } else if (node.tagName === 'dews-cardlist') {
+        //     if (parent.controlType === 'codepicker') {
+        //         const cardList = parent.$refs.drawerLayout.$refs.cardlist;
+        //         cardList.uid = node.getAttribute('uid');
+        //         instanceUid = cardList.uid;
+        //         store.commit('ADD_ITEM', cardList);
+        //         PageOpenService.setAttributeFromIDE(instance, cardList);
+        //     } else {
                 instanceUid = PageOpenService.controlParsing(instance, parent);
-            }
+            // }
         } else {
             instanceUid = PageOpenService.controlParsing(instance, parent);
         }

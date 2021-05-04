@@ -42,7 +42,7 @@ const componentAcceptsCheck = (component, target) => {
         "dews-mobile-dropdownList": ["search-container-field", "form-container-field", "codepicker-search-field", "complex-line", "custom-container-field"],
         "dews-mobile-complex": ["search-container-field", "form-container-field", "codepicker-search-field", "custom-container-field"],
 
-        "dews-mobile-cardlist": ["list-container-field", "custom-container-field"],
+        "dews-mobile-cardlist": ["list-container-field", "custom-container-field","codepicker-data"],
         "dews-mobile-card": ["cardlist"],
         "dews-mobile-datasource": ["datasource-area", "cardlist"],
         "dews-complexitem":["complex-line"]

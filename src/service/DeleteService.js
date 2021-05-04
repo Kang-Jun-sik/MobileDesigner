@@ -21,9 +21,12 @@ export default {
     * 컨트롤 삭제 메세지 전달 함수 (Mobile Designer --> IDE)
     * */
     sendDeleteMessage(control) {
-        const parent = control.parentElement?.closest('.dews-mobile-component');
-        const parentUid = parent?.getAttribute('uid');
-
+        const parent = control.parentElement?.closest('.dews-mobile-component') ?
+                        control.parentElement?.closest('.dews-mobile-component') :
+                        control.parentElement;
+        const parentUid = parent?.getAttribute('uid') ?
+                            parent?.getAttribute('uid'):
+                            parent?.getAttribute('parentuid');
         mobileDesignerToIDE({
             commandType: 'delete',
             elm: control,
