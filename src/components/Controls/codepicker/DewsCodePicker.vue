@@ -12,7 +12,7 @@
       </span>
     </div>
 
-    <drawer-layout ref="drawerLayout" :data-uid="dataUid"></drawer-layout>
+    <drawer-layout ref="drawerLayout" :data-uid="uid"></drawer-layout>
   </div>
 </template>
 
@@ -38,8 +38,8 @@ export default {
     }
   },
   created() {
-    this.uid = CreateService.createUid('dews-codepicker');
-    this.dataUid = this.uid;
+    this.uid = this.dataUid = CreateService.createUid('dews-codepicker');
+    // this.dataUid = this.uid;
   },
   mounted() {
 

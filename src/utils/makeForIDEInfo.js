@@ -39,7 +39,9 @@ export default {
         const parentUid = parent.getAttribute('uid') ?
             parent.getAttribute('uid') :
             parent.getAttribute('parentuid');
-        const parentDataUid = store.state.component.items.find(item => item.uid === parentUid)?.dataUid;
+        const parentDataUid = store.state.component.items.find(item => item.uid === parentUid)?.dataUid ?
+                                store.state.component.items.find(item => item.uid === parentUid)?.dataUid :
+                                parentUid;
         let sameLevelControlList = [];
         let filterList;
 
