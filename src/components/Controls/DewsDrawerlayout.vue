@@ -35,7 +35,7 @@
             </div>
 
             <div class="codepicker dataArea">
-              <div class="codepicker-data" :parentuid="dataUid" :data-Uid="dataUid" ref="codepickerData">
+              <div class="codepicker-data" :drawlayoutuid="dataUid" :data-Uid="dataUid" ref="codepickerData">
 <!--                <dews-cardlist ref="cardlist"></dews-cardlist>-->
               </div>
             </div>

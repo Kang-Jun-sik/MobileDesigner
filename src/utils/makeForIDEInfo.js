@@ -36,12 +36,11 @@ export default {
         const parent = control.parentElement.closest('.dews-mobile-component') ?
             control.parentElement.closest('.dews-mobile-component') :
             control.parentElement;
-        const parentUid = parent.getAttribute('uid') ?
-            parent.getAttribute('uid') :
-            parent.getAttribute('parentuid');
+        const parentUid = parent.getAttribute('uid');
+        const drawerUid = parent.getAttribute('drawlayoutuid');
         const parentDataUid = store.state.component.items.find(item => item.uid === parentUid)?.dataUid ?
                                 store.state.component.items.find(item => item.uid === parentUid)?.dataUid :
-                                parentUid;
+                                drawerUid;
         let sameLevelControlList = [];
         let filterList;
 
@@ -85,7 +84,7 @@ export default {
 
         return {
             elm: control,
-            parentId: parentUid,
+            parentId: parentUid ? parentUid : parentDataUid,
             index: index
         }
     },
