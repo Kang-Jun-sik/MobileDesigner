@@ -13,9 +13,11 @@ export default {
         for (let child of children) {
             if (child.hasAttribute('uid')) {
                 const childUID = child.getAttribute('uid');
+                const childID = child.getAttribute('id');
                 const childControlType = childUID.substring(0, childUID.lastIndexOf('-'));
                 const childData = document.createElement(childControlType);
                 childData.setAttribute('uid', childUID);
+                childData.setAttribute('id', childID);
 
                 const childElement = elm.querySelector(`[uid=${childUID}]`);
                 const parentElement = childElement.parentElement.closest(`[uid]`);

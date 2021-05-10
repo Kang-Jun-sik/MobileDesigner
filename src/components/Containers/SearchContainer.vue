@@ -1,5 +1,5 @@
 <template>
-  <div :uid="uid" class="dews-mobile-searchContainer dews-mobile-component" :col="col">
+  <div :uid="uid" :id="id" class="dews-mobile-searchContainer dews-mobile-component" :col="col">
     <div class="dews-container-option-control">
       <h3 class="option-sub-title" v-if="title">{{ title }}</h3>
       <container-button containerType="search"></container-button>

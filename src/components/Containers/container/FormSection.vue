@@ -1,5 +1,5 @@
 <template>
-  <div :uid="uid" class="dews-mobile-formSection dews-mobile-component form-section">
+  <div :uid="uid" :id="id" class="dews-mobile-formSection dews-mobile-component form-section">
     <h3 class="dews-form-section-title">{{ title }}</h3>
     <div class="dews-form-field">
       <ul class="form-container-field form-field" ref="formContainerField"

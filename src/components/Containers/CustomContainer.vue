@@ -1,10 +1,5 @@
 <template>
-  <div :uid="uid" class="dews-mobile-customContainer dews-mobile-component">
-<!--    <div class="dews-container-option-control">-->
-<!--      <h3 class="option-sub-title" v-if="title">{{ title }}</h3>-->
-<!--&lt;!&ndash;      <container-button containerType="search"></container-button>&ndash;&gt;-->
-<!--    </div>-->
-
+  <div :uid="uid" :id="id" class="dews-mobile-customContainer dews-mobile-component">
     <div class="dews-container-custom">
       <container-content class="container-content" :control-type="controlType">
         <div class="dews-custom-field">

@@ -658,6 +658,9 @@ export default {
         const { uid, prop, value } = data;
         const component = store.state.component.items.find(item => item.uid === uid);
         switch (prop) {
+            case 'id':
+                component.setID(value);
+                break;
             case 'title':
                 component.setTitle(value);
                 break;
@@ -907,6 +910,10 @@ export default {
 
         let cardListField;
         switch (prop) {
+            case 'id':
+                component.setID(value);
+                break;
+
             case 'columns':
                 cardListField = component.$refs.cardListField.lastElementChild;
                 cardListField = store.state.component.items.find(item => item.uid === cardListField.getAttribute('uid'));

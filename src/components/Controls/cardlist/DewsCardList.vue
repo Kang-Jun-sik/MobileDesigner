@@ -1,5 +1,5 @@
 <template>
-  <div :uid="uid" class="dews-mobile-cardlist dews-mobile-component">
+  <div :uid="uid" :id="id" class="dews-mobile-cardlist dews-mobile-component">
     <div class="dews-container-option-control">
       <h3 class="option-sub-title"></h3>
     </div>
@@ -44,6 +44,9 @@ export default {
       uid: '',
       parentUid: '',
       dataUid: '',
+
+      /* Properties */
+      id: '',
     }
   },
   created() {
@@ -55,6 +58,9 @@ export default {
     window.drake.containers.push(this.$refs.cardListField);
   },
   methods:{
+    setID(value) {
+      this.id = value;
+    },
     destroyComponent() {
       this.$destroy();
       this.$el.parentNode.removeChild(this.$el);

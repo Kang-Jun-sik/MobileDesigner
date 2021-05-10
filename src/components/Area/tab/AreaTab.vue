@@ -1,5 +1,5 @@
 <template>
-  <div :uid="uid" class="dews-mobile-tab dews-mobile-component dews-layout-component content"
+  <div :uid="uid" :id="id" class="dews-mobile-tab dews-mobile-component dews-layout-component content"
        :class="active" data-type="area" :style="style" ref="tab">
   </div>
 </template>
@@ -58,7 +58,7 @@ export default {
       this.parentUid = this.$el.closest('.dews-tabs-wrap').getAttribute('uid');
       store.commit('SET_TAB', {
         tabsUid: this.parentUid,
-        tabData: { tab: this },
+        tabData: {tab: this},
       });
     }
   },

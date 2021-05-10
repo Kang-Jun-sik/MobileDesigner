@@ -13,6 +13,12 @@ export default {
     ...mapGetters({
       mode: 'getWorkMode'
     })
+  },
+  created() {
+    console.log('App Created...');
+  },
+  mounted() {
+    console.log('APP Starting...');
   }
 }
 </script>

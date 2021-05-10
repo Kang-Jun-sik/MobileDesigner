@@ -1,5 +1,5 @@
 <template>
-  <div :uid="uid" class="dews-mobile-zipcodePicker dews-mobile-component zipcodepicker-wrap" :class="{disabled: disabled ? 'disabled' : '',
+  <div :uid="uid" :id="id" class="dews-mobile-zipcodePicker dews-mobile-component zipcodepicker-wrap" :class="{disabled: disabled ? 'disabled' : '',
           readonly: readonly ? 'readonly' : '',
           required: required ? 'required' : ''}">
     <label>{{ title }}</label>

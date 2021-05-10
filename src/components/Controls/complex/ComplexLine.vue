@@ -1,5 +1,5 @@
 <template>
-  <li :uid="uid" class="complex-line dews-mobile-component" :data-type="type" ref="complex">
+  <li :uid="uid" :id="id" class="complex-line dews-mobile-component" :data-type="type" ref="complex">
     <slot></slot>
   </li>
 </template>

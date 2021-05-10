@@ -1,5 +1,5 @@
 <template>
-  <div :uid="uid" class="dews-mobile-timePicker dews-mobile-component timepicker-wrap"
+  <div :uid="uid" :id="id" class="dews-mobile-timePicker dews-mobile-component timepicker-wrap"
        :class="{disabled: disabled ? 'disabled' : '',
           readonly: readonly ? 'readonly' : '',
           required: required ? 'required' : ''}">

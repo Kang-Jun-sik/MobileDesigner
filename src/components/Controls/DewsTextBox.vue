@@ -1,5 +1,5 @@
 <template>
-  <div :uid="uid" class="dews-mobile-textbox dews-mobile-component textbox-wrap">
+  <div :uid="uid" :id="id" class="dews-mobile-textbox dews-mobile-component textbox-wrap">
     <label :for="id">{{ title }}</label>
     <input v-if="!multi" :id="id" @change="onChange($event)"
            type="text" :value="value" :placeholder="placeholder"

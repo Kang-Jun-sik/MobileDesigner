@@ -1,26 +1,23 @@
 <template>
-  <div :uid="uid" class="dews-mobile-formContainer dews-mobile-component">
+  <div :uid="uid" :id="id" class="dews-mobile-formContainer dews-mobile-component">
     <div class="dews-container-option-control">
       <h3 class="option-sub-title" v-if="title">{{ title }}</h3>
       <container-button containerType="form"></container-button>
     </div>
 
     <container-content :control-type="controlType">
-<!--      <form-section controlChild="form-section"></form-section>-->
-    </container-content>
 
+    </container-content>
   </div>
 </template>
 
 <script>
 import CreateService from "@/service/CreateService";
-import FormSection from "@/components/Containers/container/FormSection";
 import ContainerContent from "@/components/Containers/container/ContainerContent";
 import ContainerButton from "@/components/Containers/container/ContainerButton";
 
 export default {
   name: 'dews-form-container',
-  // components: {ContainerButton, ContainerContent, FormSection},
   components: {ContainerButton, ContainerContent},
   data() {
     return {

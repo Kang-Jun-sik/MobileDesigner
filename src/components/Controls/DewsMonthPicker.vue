@@ -1,5 +1,5 @@
 <template>
-  <div :uid="uid" class="dews-mobile-monthPicker dews-mobile-component datepicker-wrap focus"
+  <div :uid="uid" :id="id" class="dews-mobile-monthPicker dews-mobile-component datepicker-wrap focus"
        :class="{disabled: disabled ? 'disabled' : '',
           readonly: readonly ? 'readonly' : '',
           required: required ? 'required' : ''}">

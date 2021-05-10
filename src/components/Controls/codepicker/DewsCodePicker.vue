@@ -1,5 +1,5 @@
 <template>
-  <div :uid="uid" class="dews-mobile-codePicker dews-mobile-component">
+  <div :uid="uid" :id="id" class="dews-mobile-codePicker dews-mobile-component">
     <div class="codepicker codepicker-wrap" @click="clickHandler">
       <label>{{ title }}</label>
       <span class="select-wrap">
@@ -46,6 +46,9 @@ export default {
   },
   methods: {
     clickHandler() {},
+    setID(value) {
+      this.id = value;
+    },
     setTitle(value) {
       this.title = value;
     },

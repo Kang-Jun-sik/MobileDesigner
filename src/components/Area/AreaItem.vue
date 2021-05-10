@@ -1,5 +1,5 @@
 <template>
-  <div :uid="uid" class="dews-mobile-item dews-mobile-component dews-item" :class="`col-fd-${col}`" ref="dewsItem"></div>
+  <div :uid="uid" :id="id" class="dews-mobile-item dews-mobile-component dews-item" :class="`col-fd-${col}`" ref="dewsItem"></div>
 </template>
 
 <script>
