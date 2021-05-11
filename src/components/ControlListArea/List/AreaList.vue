@@ -25,6 +25,7 @@
         mobileArea: {
           box: 'Area Box',
           tabs: 'Area Tabs',
+          popup : 'Area Popup'
         }
       }
     },

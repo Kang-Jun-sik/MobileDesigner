@@ -10,6 +10,7 @@ import {
     AreaPanel,
     AreaTab,
     AreaTabs,
+    AreaPopup,
     Button,
     ButtonGroup,
     CardList,
@@ -101,6 +102,9 @@ export default {
         switch (removeSpaceBetweenWord(type)) {
             case 'AreaPanel':
                 component = Vue.extend(AreaPanel);
+                break;
+            case 'AreaPopup':
+                component = Vue.extend(AreaPopup);
                 break;
             case 'AreaItem':
                 component = Vue.extend(AreaItem);

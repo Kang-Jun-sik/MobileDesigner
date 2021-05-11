@@ -1,12 +1,12 @@
 <template>
-  <div :uid="uid" :id="id" class="layer-drawer popup">
+  <div :uid="uid" :id="id" class="dews-mobile-popup dews-mobile-component popup">
     <div class="overlay"></div>
     <!-- size: full/large/medium/small-->
     <div class="layer layer-popup">
 
       <div class="layer-header">
         <div class="titlebar">
-          <div class="title">${this.title}</div>
+          <div class="title">{{this.title}}</div>
         </div>
         <button class="close-button" @click="clickClose($event)"></button>
       </div>
@@ -34,7 +34,7 @@ export default {
       /* Properties */
       size: '',
       page_id: '',
-      title: 'Sample Layout Popup',
+      title: 'Sample Layout popup',
       active: '',
     }
   },
@@ -55,6 +55,9 @@ export default {
 }
 </script>
 
-<style scoped>
-
+<style lang="scss" scoped>
+.dews-mobile-popup {
+  min-height: 300px;
+  background: red;
+}
 </style>
