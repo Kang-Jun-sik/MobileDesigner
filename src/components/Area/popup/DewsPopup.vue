@@ -11,14 +11,17 @@
         <button class="close-button" @click="clickClose($event)"></button>
       </div>
 
-      <div class="layer-content">
+      <div class="popup-content">
         <!-- 클래스명 -->
-        <div class="">
           <div class="control">
-            <slot></slot>
+
           </div>
-        </div>
       </div>
+
+      <div class="popup-buttons">
+
+      </div>
+
     </div>
   </div>
 
@@ -56,8 +59,99 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import 'node_modules/@dews/dews-mobile-style/scss/mixins/_mixins';
+@include layer-popup();
 .dews-mobile-popup {
-  min-height: 300px;
-  background: red;
+  position: absolute !important;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  width: calc(100% - 4px);
+  height: calc(100% - 4px);
+  border: 1px dotted rgba(23, 122, 255,0.75);
+
+  .overlay {
+    display: none;
+  }
+  .layer-popup {
+    position: relative;
+    width: 100%;
+    height: 100%;
+
+    .layer-header {
+      background-color: rgba(23, 122, 255,0.11);
+    }
+    .popup-content {
+      width: 100%;
+      height: calc(100% - 53px);
+      overflow-y: auto;
+      background-color: #ffffff;
+    }
+  }
+}
+
+
+.dews-mobile-popup.custom {
+
+  .layer-header {
+    margin-bottom: 4px;
+  }
+  .popup-content {
+    height: calc(100% - 57px);
+    padding: 0 20px;
+  }
+
+  &.large {
+    top: 24px;
+    left: 53%;
+    width: 320px;
+    height: calc(100% - 24px - 16px);
+    margin-left: calc(-320px / 2);
+
+
+  }
+  &.medium {
+    top: 50%;
+    left: 53%;
+    width: 320px;
+    height: 480px;
+    margin-top: calc(-480px / 2);
+    margin-left: calc(-320px / 2);
+  }
+  &.small {
+    top: 50%;
+    left: 53%;
+    width: 320px;
+    height: 320px;
+    margin-top: calc(-320px / 2);
+    margin-left: calc(-320px / 2);
+  }
+  &.use-button {
+    .popup-content {
+      height: calc(100% - 57px - 36px - 40px);
+    }
+    .popup-buttons {
+      position: absolute;
+      left: 0;
+      bottom: 20px;
+      box-sizing: border-box;
+      display: block;
+      width: 100%;
+      height: 36px;
+      margin: 0;
+      padding: 0 20px;
+      border: 1px dotted #212121;
+    }
+  }
+}
+
+.designer-style {
+  .dews-mobile-popup.custom {
+    &.large,
+    &.medium,
+    &.small {
+      left: 50%;
+    }
+  }
 }
 </style>
