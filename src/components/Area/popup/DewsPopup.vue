@@ -85,6 +85,7 @@ export default {
       width: 100%;
       height: calc(100% - 53px);
       overflow-y: auto;
+      padding: 10px;
       background-color: #ffffff;
     }
   }
@@ -98,7 +99,7 @@ export default {
   }
   .popup-content {
     height: calc(100% - 57px);
-    padding: 0 20px;
+    padding: 10px 20px 0;
   }
 
   &.large {
