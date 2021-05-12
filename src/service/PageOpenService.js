@@ -81,7 +81,8 @@ export default {
             //Dialog Page 생성 및 recursive의 Root로 Insertion
             const dialog = Vue.extend(DewsPopup);
             const dialogComponent = new dialog().$mount();
-            store.commit('ADD_ITEM',dialogComponent);
+            dialogComponent.uid = mPage.uid;
+            store.commit('ADD_ITEM', dialogComponent);
             mPage.$el.appendChild(dialogComponent.$el);
 
             for (let canvasChild of canvasDoc.children) {

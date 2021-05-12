@@ -5,16 +5,16 @@
     <div class="layer layer-popup">
       <div class="layer-header">
         <div class="titlebar">
-          <div class="title">{{this.title}}</div>
+          <div class="title">{{ this.title }}</div>
         </div>
         <button class="close-button" @click="clickClose($event)"></button>
       </div>
 
-      <div class="popup-content" ref="popupContent">
+      <div class="popup-content" :data-uid="dataUid" ref="popupContent">
 
       </div>
 
-      <div class="popup-buttons" ref="popupButton">
+      <div class="popup-buttons" ref="popupButton" v-show="false">
 
       </div>
     </div>
@@ -30,6 +30,8 @@ export default {
   data() {
     return {
       /* Properties */
+      uid: '',
+      type: 'dialog',
       dataUid: '',
       size: '',
       page_id: '',
@@ -49,7 +51,8 @@ export default {
     }
   },
   created() {
-    this.uid = CreateService.createUid('dews-popup');
+    //this.uid = CreateService.createUid('dews-popup');
+    this.dataUid = CreateService.createUid('popup-content');
   },
   mounted() {
     window.drake.containers.push(this.$refs.popupContent);
@@ -60,6 +63,7 @@ export default {
 
 <style lang="scss" scoped>
 @import 'node_modules/@dews/dews-mobile-style/scss/mixins/_mixins';
+
 @include layer-popup();
 .dews-mobile-popup {
   position: absolute !important;
@@ -68,19 +72,21 @@ export default {
   left: 0;
   width: calc(100% - 4px);
   height: calc(100% - 4px);
-  border: 1px dotted rgba(23, 122, 255,0.75);
+  border: 1px dotted rgba(23, 122, 255, 0.75);
 
   .overlay {
     display: none;
   }
+
   .layer-popup {
     position: relative;
     width: 100%;
     height: 100%;
 
     .layer-header {
-      background-color: rgba(23, 122, 255,0.11);
+      background-color: rgba(23, 122, 255, 0.11);
     }
+
     .popup-content {
       width: 100%;
       height: calc(100% - 53px);
@@ -97,6 +103,7 @@ export default {
   .layer-header {
     margin-bottom: 4px;
   }
+
   .popup-content {
     height: calc(100% - 57px);
     padding: 10px 20px 0;
@@ -108,9 +115,8 @@ export default {
     width: 320px;
     height: calc(100% - 24px - 16px);
     margin-left: calc(-320px / 2);
-
-
   }
+
   &.medium {
     top: 50%;
     left: 53%;
@@ -119,6 +125,7 @@ export default {
     margin-top: calc(-480px / 2);
     margin-left: calc(-320px / 2);
   }
+
   &.small {
     top: 50%;
     left: 53%;
@@ -127,10 +134,12 @@ export default {
     margin-top: calc(-320px / 2);
     margin-left: calc(-320px / 2);
   }
+
   &.use-button {
     .popup-content {
       height: calc(100% - 57px - 36px - 40px);
     }
+
     .popup-buttons {
       position: absolute;
       left: 0;
