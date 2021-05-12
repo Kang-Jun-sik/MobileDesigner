@@ -391,11 +391,26 @@ body {
 }
 
 // button-group
-//@include dews-button-group();
-//:host {
-//  display: block;
-//  margin-bottom: 16px;
-//}
+.dews-button-group {
+  .button-group-wrap {
+    .button-group {
+      flex: 1 1 auto;
+      min-height: 45px;
+      margin-right: 8px;
+      padding: 8px 0;
+
+      &.icon {
+        flex: 0 0 0;
+      }
+      &:not(.icon) {
+        height: 100%;
+      }
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+}
 
 // checkbox-group
 @include dews-checkbox-group();
