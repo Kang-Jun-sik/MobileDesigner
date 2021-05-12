@@ -84,7 +84,7 @@ export default {
     height: 100%;
 
     .layer-header {
-      background-color: rgba(23, 122, 255, 0.11);
+      background-color: #e7f0fe;
     }
 
     .popup-content {
