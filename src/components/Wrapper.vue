@@ -129,8 +129,10 @@ export default {
               break;
 
             case 'button-group':
-              component.group = true;
-              element.replaceWith(component.$el);
+              createElement = document.createElement('li');
+              createElement.className = 'button-group'
+              createElement.appendChild(component.$el);
+              element.replaceWith(createElement);
               break;
 
             default:

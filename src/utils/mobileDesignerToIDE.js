@@ -7,6 +7,9 @@ const mobileDesignerToIDE = (message) => {
     const controlIndex = elementUID.lastIndexOf('-');
     const control = elementUID.substring(0, controlIndex);
 
+    if(!control)
+        return;
+
     if (message.commandType === 'create') {
         const createControlInfo = document.createElement(control);
         createControlInfo.setAttribute('uid', elementUID);

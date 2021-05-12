@@ -20,7 +20,7 @@ const componentAcceptsCheck = (component, target) => {
         "dews-mobile-infoContainer": ["dews-box-content", "dews-mobile-tab", "popup-content"],
         "dews-mobile-customContainer": ["dews-box-content", "dews-mobile-tab", "popup-content"],
 
-        "dews-mobile-button": ["custom-button-field", "search-container-field", "form-container-field", "button-group", "complex-line", "codepicker-search-field", "custom-container-field"],
+        "dews-mobile-button": ["custom-button-field", "search-container-field", "form-container-field", "button-group-field", "complex-line", "codepicker-search-field", "custom-container-field"],
         "dews-mobile-textbox": ["search-container-field", "form-container-field", "complex-line", "codepicker-search-field", "custom-container-field"],
         "dews-mobile-checkbox": ["search-container-field", "form-container-field", "checkbox-group", "complex-line", "codepicker-search-field", "custom-container-field"],
         "dews-mobile-radiobutton": ["search-container-field", "form-container-field", "radio-group", "complex-line", "codepicker-search-field", "custom-container-field"],
