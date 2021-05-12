@@ -70,22 +70,7 @@ export default {
     flex-flow: nowrap;
     font-size: 0;
 
-    .button-group {
-      flex: 1 1 auto;
-      min-height: 45px;
-      margin-right: 8px;
-      padding: 8px 0;
 
-      &.icon {
-        flex: 0 0 0;
-      }
-      &:not(.icon) {
-        height: 100%;
-      }
-      &:last-child {
-        margin-right: 0;
-      }
-    }
   }
 
 }
