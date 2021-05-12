@@ -47,7 +47,7 @@ export default {
 <style lang="scss" scoped>
 @import 'node_modules/@dews/dews-mobile-style/scss/variables/variables';
 @import 'node_modules/@dews/dews-mobile-style/scss/mixins/_mixins';
-@include dews-button-group();
+//@include dews-button-group();
 
 //--------------------------------------
 // FD 추가 영역
@@ -55,11 +55,40 @@ export default {
 .dews-button-group {
   height: 100%;
   min-height: 24px;
+  margin-bottom: 16px;
   border: 1px dotted #212121;
 
-  .button-group {
-    min-height: 45px;
-    padding: 8px 0;
+  &:only-child,
+  &:last-child {
+    margin-bottom: 0;
   }
+
+  .button-group-wrap {
+    position: relative;
+    width: 100%;
+    min-height: 45px;
+    display: flex;
+    align-items: stretch;
+    flex-flow: nowrap;
+    font-size: 0;
+
+    .button-group {
+      flex: 1 1 auto;
+      min-height: 45px;
+      margin-right: 8px;
+      padding: 8px 0;
+
+      &.icon {
+        flex: 0 0 0;
+      }
+      &:not(.icon) {
+        height: 100%;
+      }
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+
 }
 </style>
