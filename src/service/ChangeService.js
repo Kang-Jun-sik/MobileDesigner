@@ -42,6 +42,9 @@ export default {
         const data = { uid, prop, value }
 
         switch (type) {
+            case 'mobile-dialog' :
+                ChangeService.changeDialog(data);
+                break;
             case 'dews-area-panel':
                 ChangeService.changePanel(data);
                 break;
@@ -149,6 +152,10 @@ export default {
         }
     },
 
+
+
+
+
     /*
     * 현재 선택된 컨트롤을 얻어와 변경 로직 수행
     * 1) Vuex에서 아이템 찾기(uid를 사용하여 찾음)
@@ -162,6 +169,21 @@ export default {
         switch (prop) {
             case 'id':
                 component.setID(value);
+                break;
+        }
+    },
+
+    changeDialog(data){
+        console.log('change dialog Phase');
+        const { uid, prop, value } = data;
+        const component = store.state.component.items.find(item => item.type === 'dialog');
+
+        switch (prop) {
+            case 'custom':
+                component.setCustom(value);
+                break;
+            case 'dialogSize':
+                component.setDialogSize(value);
                 break;
         }
     },

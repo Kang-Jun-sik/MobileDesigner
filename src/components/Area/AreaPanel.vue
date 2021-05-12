@@ -1,3 +1,4 @@
+
 <template>
   <div :uid="uid" :id="id" class="dews-mobile-panel dews-mobile-component dews-panel dews-panel-hide"></div>
 </template>

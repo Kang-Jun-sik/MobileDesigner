@@ -1,5 +1,5 @@
 <template>
-  <div :uid="uid" class="dews-mobile-popup popup">
+  <div :uid="uid" class="dews-mobile-popup popup" ref="popup">
     <div class="overlay"></div>
     <!-- size: full/large/medium/small-->
     <div class="layer layer-popup">
@@ -14,7 +14,7 @@
 
       </div>
 
-      <div class="popup-buttons" ref="popupButton" v-show="false">
+      <div class="popup-buttons" ref="popupButton" v-show="true">
 
       </div>
     </div>
@@ -40,6 +40,20 @@ export default {
     }
   },
   methods: {
+    setUseButton(value) {
+
+    },
+    setCustom(value) {
+      JSON.parse(value) ? this.$refs.popup.classList.add('custom') : this.$refs.popup.classList.remove('custom');
+    },
+    setDialogSize(value) {
+      if (!value)
+        return;
+      if (this.$refs.popup.classList.contains('custom')) {
+        this.$refs.popup.classList.remove('large', 'medium', 'small');
+        this.$refs.popup.classList.add(value);
+      }
+    },
     setID(value) {
       this.id = value;
     },
@@ -48,11 +62,14 @@ export default {
     },
     clickClose() {
       console.log('close');
-    }
+    },
   },
   created() {
     //this.uid = CreateService.createUid('dews-popup');
     this.dataUid = CreateService.createUid('popup-content');
+  },
+  computed:{
+    // showPopupButtons
   },
   mounted() {
     window.drake.containers.push(this.$refs.popupContent);

@@ -1,6 +1,7 @@
 import Vue from "vue";
 import store from "@/store/index";
 import PageOpenService from "@/service/PageOpenService";
+import CreateService from "@/service/CreateService";
 import ChangeService from "@/service/ChangeService";
 import {
     AreaPanel,
@@ -81,7 +82,8 @@ export default {
             //Dialog Page 생성 및 recursive의 Root로 Insertion
             const dialog = Vue.extend(DewsPopup);
             const dialogComponent = new dialog().$mount();
-            dialogComponent.uid = mPage.uid;
+            const dlgUid = CreateService.createUid('dews-popup');
+            dialogComponent.uid = dlgUid;
             store.commit('ADD_ITEM', dialogComponent);
             mPage.$el.appendChild(dialogComponent.$el);
 
