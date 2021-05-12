@@ -1,9 +1,8 @@
 <template>
-  <div :uid="uid" :id="id" class="dews-mobile-popup dews-mobile-component popup">
+  <div :uid="uid" class="dews-mobile-popup popup">
     <div class="overlay"></div>
     <!-- size: full/large/medium/small-->
     <div class="layer layer-popup">
-
       <div class="layer-header">
         <div class="titlebar">
           <div class="title">{{this.title}}</div>
@@ -11,17 +10,13 @@
         <button class="close-button" @click="clickClose($event)"></button>
       </div>
 
-      <div class="popup-content">
-        <!-- 클래스명 -->
-          <div class="control">
-
-          </div>
-      </div>
-
-      <div class="popup-buttons">
+      <div class="popup-content" ref="popupContent">
 
       </div>
 
+      <div class="popup-buttons" ref="popupButton">
+
+      </div>
     </div>
   </div>
 
@@ -35,6 +30,7 @@ export default {
   data() {
     return {
       /* Properties */
+      dataUid: '',
       size: '',
       page_id: '',
       title: 'Sample Layout popup',
@@ -45,15 +41,19 @@ export default {
     setID(value) {
       this.id = value;
     },
+    setTitle(value) {
+      this.title = value;
+    },
     clickClose() {
       console.log('close');
     }
   },
   created() {
-    this.uid = CreateService.createUid('drawer-layout');
+    this.uid = CreateService.createUid('dews-popup');
   },
   mounted() {
-
+    window.drake.containers.push(this.$refs.popupContent);
+    window.drake.containers.push(this.$refs.popupButton);
   }
 }
 </script>

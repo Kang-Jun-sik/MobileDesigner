@@ -10,15 +10,15 @@ const componentAcceptsCheck = (component, target) => {
     const componentInformation = {
         "dews-mobile-panel": ["main-designer"],
         "dews-mobile-item": ["main-designer"],
+        "dews-mobile-popup": ["main-designer"],
         "dews-mobile-box": ["main-designer", "dews-mobile-item"],
         "dews-mobile-tabs": ["main-designer", "dews-mobile-item"],
-        "dews-mobile-popup" : ["main-designer", "dews-mobile-item"],
 
-        "dews-mobile-searchContainer": ["dews-box-content", "dews-mobile-tab"],
-        "dews-mobile-listContainer": ["dews-box-content", "dews-mobile-tab"],
-        "dews-mobile-formContainer": ["dews-box-content", "dews-mobile-tab"],
-        "dews-mobile-infoContainer": ["dews-box-content", "dews-mobile-tab"],
-        "dews-mobile-customContainer": ["dews-box-content", "dews-mobile-tab"],
+        "dews-mobile-searchContainer": ["dews-box-content", "dews-mobile-tab", "popup-content"],
+        "dews-mobile-listContainer": ["dews-box-content", "dews-mobile-tab", "popup-content"],
+        "dews-mobile-formContainer": ["dews-box-content", "dews-mobile-tab", "popup-content"],
+        "dews-mobile-infoContainer": ["dews-box-content", "dews-mobile-tab", "popup-content"],
+        "dews-mobile-customContainer": ["dews-box-content", "dews-mobile-tab", "popup-content"],
 
         "dews-mobile-button": ["custom-button-field", "search-container-field", "form-container-field", "button-group", "complex-line", "codepicker-search-field", "custom-container-field"],
         "dews-mobile-textbox": ["search-container-field", "form-container-field", "complex-line", "codepicker-search-field", "custom-container-field"],
@@ -43,10 +43,10 @@ const componentAcceptsCheck = (component, target) => {
         "dews-mobile-dropdownList": ["search-container-field", "form-container-field", "codepicker-search-field", "complex-line", "custom-container-field"],
         "dews-mobile-complex": ["search-container-field", "form-container-field", "codepicker-search-field", "custom-container-field"],
 
-        "dews-mobile-cardlist": ["list-container-field", "custom-container-field","codepicker-data"],
+        "dews-mobile-cardlist": ["list-container-field", "custom-container-field", "codepicker-data"],
         "dews-mobile-card": ["cardlist"],
         "dews-mobile-datasource": ["datasource-area", "cardlist"],
-        "dews-complexitem":["complex-line"]
+        "dews-complexitem": ["complex-line"]
 
     }
 

@@ -10,7 +10,7 @@ import {
     AreaPanel,
     AreaTab,
     AreaTabs,
-    AreaPopup,
+    DewsPopup,
     Button,
     ButtonGroup,
     CardList,
@@ -103,8 +103,8 @@ export default {
             case 'AreaPanel':
                 component = Vue.extend(AreaPanel);
                 break;
-            case 'AreaPopup':
-                component = Vue.extend(AreaPopup);
+            case 'DewsPopup':
+                component = Vue.extend(DewsPopup);
                 break;
             case 'AreaItem':
                 component = Vue.extend(AreaItem);

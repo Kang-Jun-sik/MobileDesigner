@@ -26,6 +26,7 @@ import {
     DropdownList,
     DropdownListItem,
     DropdownButton,
+    DewsPopup,
     ChildButton,
     Complex,
     ComplexLine,
@@ -63,6 +64,7 @@ export default {
         mPage.uid = canvasDoc.getAttribute('uid');
         mPage.$el.setAttribute('uid', canvasDoc.getAttribute('uid'));
 
+        //PAGE
         if (type === 'mpage') {
             for (let canvasChild of canvasDoc.children) {
                 if (canvasChild.tagName === "pageInformation") continue;
@@ -71,6 +73,24 @@ export default {
                     PageOpenService.setDatasourceFromIDE(canvasChild);
                 } else {
                     PageOpenService.pageParsing(canvasChild, mPage.uid);
+                }
+            }
+        }
+        //DIALOG
+        else if (type === 'mdialog') {
+            //Dialog Page 생성 및 recursive의 Root로 Insertion
+            const dialog = Vue.extend(DewsPopup);
+            const dialogComponent = new dialog().$mount();
+            store.commit('ADD_ITEM',dialogComponent);
+            mPage.$el.appendChild(dialogComponent.$el);
+
+            for (let canvasChild of canvasDoc.children) {
+                if (canvasChild.tagName === "pageInformation") continue;
+
+                if (canvasChild.tagName === "dews-datasource") {
+                    PageOpenService.setDatasourceFromIDE(canvasChild);
+                } else {
+                    PageOpenService.pageParsing(canvasChild, dialogComponent.uid);
                 }
             }
         }
@@ -237,15 +257,15 @@ export default {
             (node.parentElement.childElementCount > cardListField.fields.length) ? cardListField.fields.push(instance.getAttribute('title')) : null;
         } else if (node.tagName === 'dews-datasource') {
             PageOpenService.setDatasourceFromIDE(node);
-        // } else if (node.tagName === 'dews-cardlist') {
-        //     if (parent.controlType === 'codepicker') {
-        //         const cardList = parent.$refs.drawerLayout.$refs.cardlist;
-        //         cardList.uid = node.getAttribute('uid');
-        //         instanceUid = cardList.uid;
-        //         store.commit('ADD_ITEM', cardList);
-        //         PageOpenService.setAttributeFromIDE(instance, cardList);
-        //     } else {
-                instanceUid = PageOpenService.controlParsing(instance, parent);
+            // } else if (node.tagName === 'dews-cardlist') {
+            //     if (parent.controlType === 'codepicker') {
+            //         const cardList = parent.$refs.drawerLayout.$refs.cardlist;
+            //         cardList.uid = node.getAttribute('uid');
+            //         instanceUid = cardList.uid;
+            //         store.commit('ADD_ITEM', cardList);
+            //         PageOpenService.setAttributeFromIDE(instance, cardList);
+            //     } else {
+            instanceUid = PageOpenService.controlParsing(instance, parent);
             // }
         } else {
             instanceUid = PageOpenService.controlParsing(instance, parent);
