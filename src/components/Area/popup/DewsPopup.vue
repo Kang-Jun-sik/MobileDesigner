@@ -1,5 +1,5 @@
 <template>
-  <div :uid="uid" class="dews-mobile-popup popup" :class="`${dialogType} ${use_button}`" ref="popup">
+  <div :uid="uid" class="dews-mobile-popup popup" :class="`${dialogType} ${dialogSize} ${use_button}`" ref="popup">
     <div class="overlay"></div>
     <!-- size: full/large/medium/small-->
     <div class="layer layer-popup">
@@ -13,11 +13,7 @@
       <div :class="`${dialogClass} ${dialogContent}`" :data-uid="dataUid" ref="popupContent">
       </div>
 
-      <dews-popup-buttons v-show="isShowPopupButtons"></dews-popup-buttons>
-      <!--
-      <div class="popup-buttons" ref="popupButton" v-show="false">
-      </div>
-      -->
+      <dews-popup-buttons v-show="isShowPopupButtons" ref="popupButtons"></dews-popup-buttons>
 
     </div>
   </div>
@@ -25,6 +21,7 @@
 </template>
 
 <script>
+import store from "@/store/index";
 import CreateService from "@/service/CreateService";
 import DewsPopupButtons from "./DewsPopupButtons";
 
@@ -39,6 +36,7 @@ export default {
       dialogType: '',
       dialogContent: 'popup-content',
       dialogClass: '',
+      dialogSize: '',
       use_button: '',
       dataUid: '',
       size: '',
@@ -61,10 +59,8 @@ export default {
     setDialogSize(value) {
       if (!value)
         return;
-      if (this.$refs.popup.classList.contains('custom')) {
-        this.$refs.popup.classList.remove('large', 'medium', 'small');
-        this.$refs.popup.classList.add(value);
-      }
+      if (this.dialogType == 'custom')
+        this.dialogSize = value;
     },
     setID(value) {
       this.id = value;
@@ -90,6 +86,9 @@ export default {
     }
   },
   mounted() {
+    this.$nextTick(() => {
+      store.commit('ADD_ITEM', this.$refs.popupButtons);
+    });
     window.drake.containers.push(this.$refs.popupContent);
     window.drake.containers.push(this.$refs.popupButton);
   }

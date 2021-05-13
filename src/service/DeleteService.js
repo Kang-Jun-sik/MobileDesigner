@@ -49,7 +49,7 @@ export default {
     },
 
     preventDeleteControl(target) {
-        const preventDeleteList = ['dews-mobile-containerButton', 'dews-mobile-containerContent', 'dews-mobile-containerSummry'];
+        const preventDeleteList = ['dews-mobile-containerButton', 'dews-mobile-containerContent', 'dews-mobile-containerSummry', 'dews-popup-buttons'];
         if (preventDeleteList.includes(target.classList[0]))
             return true;
         return false;

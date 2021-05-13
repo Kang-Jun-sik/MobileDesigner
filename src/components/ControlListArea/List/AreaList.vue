@@ -17,26 +17,26 @@
 </template>
 
 <script>
-  export default {
-    name: 'area-list',
-    data() {
-      return {
-        parentUid: '',
-        mobileArea: {
-          box: 'Area Box',
-          tabs: 'Area Tabs',
-          popup : 'Dews Popup'
-        }
+export default {
+  name: 'area-list',
+  data() {
+    return {
+      parentUid: '',
+      mobileArea: {
+        box: 'Area Box',
+        tabs: 'Area Tabs',
+        //popup : 'Dews Popup'
       }
-    },
-    mounted() {
-      const areaList = {
-        name: 'areaList',
-        control: document.querySelector('#areaList')
-      }
-      this.$store.commit('SET_CONTROL_LIST', areaList);
     }
+  },
+  mounted() {
+    const areaList = {
+      name: 'areaList',
+      control: document.querySelector('#areaList')
+    }
+    this.$store.commit('SET_CONTROL_LIST', areaList);
   }
+}
 </script>
 
 <style lang="scss" scoped>

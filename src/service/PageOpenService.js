@@ -43,7 +43,8 @@ import {
     Datasource,
     CodePicker,
     YearPicker,
-    ZipCodePicker
+    ZipCodePicker,
+    PopupButtons
 } from '@/utils/exports'
 
 /*
@@ -61,6 +62,7 @@ export default {
         const xmlDoc = parser.parseFromString(obj.data, "application/xml");
         const canvasDoc = xmlDoc.getElementsByTagName('mobile-page')[0];
         const type = canvasDoc.attributes.getNamedItem('type').nodeValue;
+
 
         const mPage = store.state.component.items.find(item => item.uid.startsWith("main-designer"));
         mPage.uid = canvasDoc.getAttribute('uid');
@@ -86,6 +88,7 @@ export default {
             const dlgUid = CreateService.createUid('dews-popup');
             const isCustom = canvasDoc.getAttribute('custom');
             const dlgSize = canvasDoc.getAttribute('dialogSize');
+            const useButton = JSON.parse(canvasDoc.getAttribute('use-button'));
 
             dialogComponent.uid = dlgUid;
             if (isCustom) {
@@ -93,13 +96,14 @@ export default {
                 dialogComponent.dialogClass = 'dews-custom-Popup';
                 if (dlgSize)
                     dialogComponent.$nextTick(() => {
-                        dialogComponent.setDialogSize(dlgSize);
+                        dialogComponent.dialogSize = dlgSize;
                     });
+                useButton ? dialogComponent.use_button = 'use-button' : dialogComponent.use_button = '';
             } else
                 dialogComponent.dialogClass = 'dews-area-popup';
 
             window.drake.containers.shift(); //designer dragula 해제
-            
+
             store.commit('ADD_ITEM', dialogComponent);
             mPage.$el.appendChild(dialogComponent.$el);
 
@@ -421,7 +425,11 @@ export default {
             case 'dews-zipcodepicker':
                 instance = Vue.extend(ZipCodePicker);
                 break;
+            // case 'popup-buttons':
+            //     instance = Vue.extend(PopupButtons);
+            //     break;
         }
+
         instance = new instance().$mount();
         instance.uid = uid;
         instance.$el.setAttribute('uid', uid);
