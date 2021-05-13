@@ -185,6 +185,9 @@ export default {
             case 'dialogSize':
                 component.setDialogSize(value);
                 break;
+            case 'usebutton':
+                component.setUseButton(value);
+                break;
         }
     },
 

@@ -1,4 +1,5 @@
 import Vue from "vue";
+import _ from "lodash";
 import store from "@/store/index";
 import PageOpenService from "@/service/PageOpenService";
 import CreateService from "@/service/CreateService";
@@ -97,6 +98,8 @@ export default {
             } else
                 dialogComponent.dialogClass = 'dews-area-popup';
 
+            window.drake.containers.shift(); //designer dragula 해제
+            
             store.commit('ADD_ITEM', dialogComponent);
             mPage.$el.appendChild(dialogComponent.$el);
 

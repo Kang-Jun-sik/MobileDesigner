@@ -1,5 +1,5 @@
 <template>
-  <div :uid="uid" class="dews-mobile-popup popup" :class="`${dialogType}`" ref="popup">
+  <div :uid="uid" class="dews-mobile-popup popup" :class="`${dialogType} ${use_button}`" ref="popup">
     <div class="overlay"></div>
     <!-- size: full/large/medium/small-->
     <div class="layer layer-popup">
@@ -10,11 +10,14 @@
         <button class="close-button" @click="clickClose($event)"></button>
       </div>
 
-      <div :class="`${dialogClass}`" :data-uid="dataUid" ref="popupContent">
+      <div :class="`${dialogClass} ${dialogContent}`" :data-uid="dataUid" ref="popupContent">
       </div>
 
-      <div class="popup-buttons" ref="popupButton" v-show="true">
+      <dews-popup-buttons v-show="isShowPopupButtons"></dews-popup-buttons>
+      <!--
+      <div class="popup-buttons" ref="popupButton" v-show="false">
       </div>
+      -->
 
     </div>
   </div>
@@ -23,16 +26,20 @@
 
 <script>
 import CreateService from "@/service/CreateService";
+import DewsPopupButtons from "./DewsPopupButtons";
 
 export default {
   name: "dews-popup",
+  components: {DewsPopupButtons},
   data() {
     return {
       /* Properties */
       uid: '',
       type: 'dialog',
-      dialogType : '',
-      dialogClass : '',
+      dialogType: '',
+      dialogContent: 'popup-content',
+      dialogClass: '',
+      use_button: '',
       dataUid: '',
       size: '',
       page_id: '',
@@ -42,7 +49,11 @@ export default {
   },
   methods: {
     setUseButton(value) {
-
+      if (JSON.parse(value) == true) {
+        if (this.dialogType == 'custom')
+          this.use_button = 'use-button';
+      } else
+        this.use_button = '';
     },
     setCustom(value) {
       JSON.parse(value) ? this.$refs.popup.classList.add('custom') : this.$refs.popup.classList.remove('custom');
@@ -69,8 +80,14 @@ export default {
     //this.uid = CreateService.createUid('dews-popup');
     this.dataUid = CreateService.createUid('popup-content');
   },
-  computed:{
-
+  computed: {
+    isShowPopupButtons() {
+      if (this.dialogType == 'custom') {
+        if (this.use_button == 'use-button')
+          return true;
+      }
+      return false;
+    }
   },
   mounted() {
     window.drake.containers.push(this.$refs.popupContent);
