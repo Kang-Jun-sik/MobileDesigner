@@ -117,6 +117,7 @@ export default {
     position: relative;
     width: 100%;
     height: 100%;
+    background-color: #ffffff;
 
     .layer-header {
       background-color: #e7f0fe;
@@ -176,7 +177,7 @@ export default {
     }
 
     .popup-buttons {
-      position: absolute;
+      position: absolute !important;
       left: 0;
       bottom: 20px;
       box-sizing: border-box;
