@@ -159,7 +159,7 @@ export default {
     }
 
     .popup-buttons {
-      position: absolute;
+      position: absolute !important;
       left: 0;
       bottom: 20px;
       box-sizing: border-box;
