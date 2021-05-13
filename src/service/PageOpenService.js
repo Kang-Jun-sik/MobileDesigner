@@ -83,7 +83,20 @@ export default {
             const dialog = Vue.extend(DewsPopup);
             const dialogComponent = new dialog().$mount();
             const dlgUid = CreateService.createUid('dews-popup');
+            const isCustom = canvasDoc.getAttribute('custom');
+            const dlgSize = canvasDoc.getAttribute('dialogSize');
+
             dialogComponent.uid = dlgUid;
+            if (isCustom) {
+                dialogComponent.dialogType = 'custom';
+                dialogComponent.dialogClass = 'dews-custom-Popup';
+                if (dlgSize)
+                    dialogComponent.$nextTick(() => {
+                        dialogComponent.setDialogSize(dlgSize);
+                    });
+            } else
+                dialogComponent.dialogClass = 'dews-area-popup';
+
             store.commit('ADD_ITEM', dialogComponent);
             mPage.$el.appendChild(dialogComponent.$el);
 

@@ -1,5 +1,5 @@
 <template>
-  <div :uid="uid" class="dews-mobile-popup popup" ref="popup">
+  <div :uid="uid" class="dews-mobile-popup popup" :class="`${dialogType}`" ref="popup">
     <div class="overlay"></div>
     <!-- size: full/large/medium/small-->
     <div class="layer layer-popup">
@@ -10,13 +10,12 @@
         <button class="close-button" @click="clickClose($event)"></button>
       </div>
 
-      <div class="popup-content" :data-uid="dataUid" ref="popupContent">
-
+      <div :class="`${dialogClass}`" :data-uid="dataUid" ref="popupContent">
       </div>
 
       <div class="popup-buttons" ref="popupButton" v-show="true">
-
       </div>
+
     </div>
   </div>
 
@@ -32,6 +31,8 @@ export default {
       /* Properties */
       uid: '',
       type: 'dialog',
+      dialogType : '',
+      dialogClass : '',
       dataUid: '',
       size: '',
       page_id: '',
@@ -69,7 +70,7 @@ export default {
     this.dataUid = CreateService.createUid('popup-content');
   },
   computed:{
-    // showPopupButtons
+
   },
   mounted() {
     window.drake.containers.push(this.$refs.popupContent);
