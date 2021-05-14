@@ -152,10 +152,6 @@ export default {
         }
     },
 
-
-
-
-
     /*
     * 현재 선택된 컨트롤을 얻어와 변경 로직 수행
     * 1) Vuex에서 아이템 찾기(uid를 사용하여 찾음)
@@ -179,6 +175,9 @@ export default {
         const component = store.state.component.items.find(item => item.type === 'dialog');
 
         switch (prop) {
+            case 'Title':
+                component.setTitle(value);
+                break;
             case 'custom':
                 component.setCustom(value);
                 break;

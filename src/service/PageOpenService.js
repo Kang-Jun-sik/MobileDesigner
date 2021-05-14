@@ -89,8 +89,11 @@ export default {
             const isCustom = canvasDoc.getAttribute('custom');
             const dlgSize = canvasDoc.getAttribute('dialogSize');
             const useButton = JSON.parse(canvasDoc.getAttribute('use-button'));
+            const dialogTitle = canvasDoc.getAttribute('title');
 
             dialogComponent.uid = dlgUid;
+            dialogComponent.title = dialogTitle;
+
             if (isCustom) {
                 dialogComponent.dialogType = 'custom';
                 dialogComponent.dialogClass = 'dews-custom-Popup';

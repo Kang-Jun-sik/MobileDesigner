@@ -9,14 +9,8 @@
         </div>
         <button class="close-button" @click="clickClose($event)"></button>
       </div>
-
-      <!--      <div :class="`${dialogClass} ${dialogContent}`" :data-uid="dataUid" ref="popupContent">-->
-      <!--      </div>-->
-
-      <dews-popup-content :class="`${dialogClass} ${dialogContent} dews-mobile-component`" :data-uid="dataUid"
-                          ref="popupContent"></dews-popup-content>
+      <dews-popup-content :class="`${dialogClass} ${dialogContent} dews-mobile-component`" :data-uid="dataUid" ref="popupContent"></dews-popup-content>
       <dews-popup-buttons v-show="isShowPopupButtons" ref="popupButtons"></dews-popup-buttons>
-
     </div>
   </div>
 
