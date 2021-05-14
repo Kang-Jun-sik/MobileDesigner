@@ -99,7 +99,9 @@ export default {
         window.selectedItem.classList.add('selected-control');
 
         SelectService.removeSelectHandler();
-        if (!target.classList.contains('main-designer')) SelectService.showSelectHandler(target);
+        const preventSelectHandlerList = ['main-designer',]
+        if (!target.classList.contains('main-designer'))
+            SelectService.showSelectHandler(target);
         ContextMenuService.destroyContextMenu();
         ContextMenuService.getContextMenu(window.selectedItem);
         mobileDesignerToIDE({commandType: 'select', elm: window.selectedItem});

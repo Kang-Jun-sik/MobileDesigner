@@ -10,9 +10,11 @@
         <button class="close-button" @click="clickClose($event)"></button>
       </div>
 
-      <div :class="`${dialogClass} ${dialogContent}`" :data-uid="dataUid" ref="popupContent">
-      </div>
+      <!--      <div :class="`${dialogClass} ${dialogContent}`" :data-uid="dataUid" ref="popupContent">-->
+      <!--      </div>-->
 
+      <dews-popup-content :class="`${dialogClass} ${dialogContent} dews-mobile-component`" :data-uid="dataUid"
+                          ref="popupContent"></dews-popup-content>
       <dews-popup-buttons v-show="isShowPopupButtons" ref="popupButtons"></dews-popup-buttons>
 
     </div>
@@ -24,10 +26,11 @@
 import store from "@/store/index";
 import CreateService from "@/service/CreateService";
 import DewsPopupButtons from "./DewsPopupButtons";
+import DewsPopupContent from "./DewsPopupContent";
 
 export default {
   name: "dews-popup",
-  components: {DewsPopupButtons},
+  components: {DewsPopupContent, DewsPopupButtons},
   data() {
     return {
       /* Properties */
@@ -86,11 +89,11 @@ export default {
     }
   },
   mounted() {
-    this.$nextTick(() => {
-      store.commit('ADD_ITEM', this.$refs.popupButtons);
-    });
-    window.drake.containers.push(this.$refs.popupContent);
-    window.drake.containers.push(this.$refs.popupButton);
+    // this.$nextTick(() => {
+    //   store.commit('ADD_ITEM', this.$refs.popupButtons);
+    // });
+    // window.drake.containers.push(this.$refs.popupContent);
+    // window.drake.containers.push(this.$refs.popupButton);
   }
 }
 </script>
@@ -182,7 +185,7 @@ export default {
       box-sizing: border-box;
       display: block;
       width: 100%;
-      height: 36px;
+      height: 56px;
       margin: 0;
       padding: 0 20px;
       border: 1px dotted #212121;

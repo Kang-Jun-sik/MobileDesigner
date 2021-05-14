@@ -51,7 +51,7 @@ export default {
 // FD 추가 영역
 //--------------------------------------
 .dews-button-group {
-  height: 100%;
+  //height: 100%;
   min-height: 24px;
   margin-bottom: 16px;
   border: 1px dotted #212121;

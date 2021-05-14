@@ -124,7 +124,6 @@ export default {
     **/
     setAttributeFromIDE(instance, control) {
         const attrs = instance.attributes;
-
         for (let attr of attrs) {
             if (!attr.name || attr.name === "uid") continue;
 
@@ -196,7 +195,9 @@ export default {
                 break;
             case 'button-group':
                 control.group = true;
-                addComponent = control.$el;
+                addComponent = document.createElement('li');
+                addComponent.className = 'button-group';
+                addComponent.appendChild(control.$el);
                 ChangeService.sendChangeMessage('group', true, control.uid);
                 break;
             default:
@@ -290,6 +291,20 @@ export default {
             //     } else {
             instanceUid = PageOpenService.controlParsing(instance, parent);
             // }
+        } else if (node.tagName === 'popup-buttons') {
+            if (parent.type == 'dialog') {
+                const popupButtons = parent.$refs.popupButtons;
+                //POPUP Buttons 영역 처리
+                popupButtons.uid = node.getAttribute('uid');
+                instanceUid = popupButtons.uid;
+                store.commit('ADD_ITEM', popupButtons);
+            }
+        } else if (node.tagName === 'popup-content') {
+            const popupContent = parent.$refs.popupContent;
+            //POPUP Buttons 영역 처리
+            popupContent.uid = node.getAttribute('uid');
+            instanceUid = popupContent.uid;
+            store.commit('ADD_ITEM', popupContent);
         } else {
             instanceUid = PageOpenService.controlParsing(instance, parent);
         }

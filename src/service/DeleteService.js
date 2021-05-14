@@ -22,11 +22,11 @@ export default {
     * */
     sendDeleteMessage(control) {
         const parent = control.parentElement?.closest('.dews-mobile-component') ?
-                        control.parentElement?.closest('.dews-mobile-component') :
-                        control.parentElement;
+            control.parentElement?.closest('.dews-mobile-component') :
+            control.parentElement;
         const parentUid = parent?.getAttribute('uid') ?
-                            parent?.getAttribute('uid'):
-                            parent?.getAttribute('parentuid');
+            parent?.getAttribute('uid') :
+            parent?.getAttribute('parentuid');
         mobileDesignerToIDE({
             commandType: 'delete',
             elm: control,
@@ -49,7 +49,7 @@ export default {
     },
 
     preventDeleteControl(target) {
-        const preventDeleteList = ['dews-mobile-containerButton', 'dews-mobile-containerContent', 'dews-mobile-containerSummry', 'dews-popup-buttons'];
+        const preventDeleteList = ['dews-mobile-containerButton', 'dews-mobile-containerContent', 'dews-mobile-containerSummry', 'dews-popup-buttons', 'dews-custom-Popup'];
         if (preventDeleteList.includes(target.classList[0]))
             return true;
         return false;
@@ -192,6 +192,7 @@ export default {
     * @param target
     * */
     deleteDrakeContainer(target) {
+        /*
         const targetUid = target.closest('.dews-mobile-component').getAttribute('uid');
 
         if (store.state.component.dragulaUid[targetUid]) {
@@ -205,6 +206,7 @@ export default {
                 return container.getAttribute('uid') === targetUid;
             });
         }
+         */
     },
 
     /*
