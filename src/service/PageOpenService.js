@@ -258,7 +258,7 @@ export default {
             PageOpenService.setAttributeFromIDE(instance, controlChild);
         } else if (multiChildList.includes(node.tagName)) {
             controlChild = findChild(node.tagName, parent.$children);
-            if (parent.checkChild) {
+            if (parent.checkChild && controlChild) {
                 parent.checkChild = false;
                 controlChild.uid = node.getAttribute('uid');
                 instanceUid = controlChild.uid;
