@@ -1,5 +1,4 @@
 import Vue from "vue";
-import _ from "lodash";
 import store from "@/store/index";
 import PageOpenService from "@/service/PageOpenService";
 import CreateService from "@/service/CreateService";
@@ -62,27 +61,24 @@ export default {
         const xmlDoc = parser.parseFromString(obj.data, "application/xml");
         const canvasDoc = xmlDoc.getElementsByTagName('mobile-page')[0];
         const type = canvasDoc.attributes.getNamedItem('type').nodeValue;
-
-
         const mPage = store.state.component.items.find(item => item.uid.startsWith("main-designer"));
         mPage.uid = canvasDoc.getAttribute('uid');
         mPage.$el.setAttribute('uid', canvasDoc.getAttribute('uid'));
 
-        //PAGE
+        //ROOT PAGE Type OPEN시 로직
         if (type === 'mpage') {
             for (let canvasChild of canvasDoc.children) {
-                if (canvasChild.tagName === "pageInformation") continue;
-
-                if (canvasChild.tagName === "dews-datasource") {
+                if (canvasChild.tagName === "pageInformation")
+                    continue;
+                if (canvasChild.tagName === "dews-datasource")
                     PageOpenService.setDatasourceFromIDE(canvasChild);
-                } else {
+                else
                     PageOpenService.pageParsing(canvasChild, mPage.uid);
-                }
             }
         }
-        //DIALOG
+
+        //ROOT DIALOG Type OPEN시 로직
         else if (type === 'mdialog') {
-            //Dialog Page 생성 및 recursive의 Root로 Insertion
             const dialog = Vue.extend(DewsPopup);
             const dialogComponent = new dialog().$mount();
             const dlgUid = CreateService.createUid('dews-popup');
@@ -111,13 +107,12 @@ export default {
             mPage.$el.appendChild(dialogComponent.$el);
 
             for (let canvasChild of canvasDoc.children) {
-                if (canvasChild.tagName === "pageInformation") continue;
-
-                if (canvasChild.tagName === "dews-datasource") {
+                if (canvasChild.tagName === "pageInformation")
+                    continue;
+                if (canvasChild.tagName === "dews-datasource")
                     PageOpenService.setDatasourceFromIDE(canvasChild);
-                } else {
+                else
                     PageOpenService.pageParsing(canvasChild, dialogComponent.uid);
-                }
             }
         }
     },
@@ -131,11 +126,10 @@ export default {
             if (!attr.name || attr.name === "uid") continue;
 
             const parseValue = attr.value === "true" || attr.value === "false";
-            if (attr.name.includes('btn')) {
+            if (attr.name.includes('btn'))
                 control.mainButtons[attr.name] = JSON.parse(attr.value);
-            } else {
+            else
                 control[attr.name] = parseValue ? JSON.parse(attr.value) : attr.value;
-            }
         }
     },
 
@@ -146,7 +140,6 @@ export default {
         const $dataSourceArea = document.querySelector('.datasource-area');
         const dataSourceControl = PageOpenService.createControlFromData(dataSource);
         $dataSourceArea.appendChild(dataSourceControl.$el);
-
         dataSourceControl.uid = dataSource.getAttribute('uid');
         PageOpenService.setAttributeFromIDE(dataSource, dataSourceControl);
     },
@@ -215,18 +208,15 @@ export default {
             if (instance.hasAttribute('index')) {
                 const idx = instance.getAttribute('index');
                 $dataUidElement.insertBefore(addComponent, $dataUidElement.children[idx]);
-            } else {
+            } else
                 $dataUidElement.appendChild(addComponent);
-            }
         } else {
             if (instance.hasAttribute('index')) {
                 const idx = instance.getAttribute('index');
                 parent.$el.insertBefore(addComponent, parent.$el.children[idx]);
-            } else {
+            } else
                 parent.$el.appendChild(addComponent);
-            }
         }
-
         return controlUid;
     },
 
@@ -237,64 +227,48 @@ export default {
     **/
     pageParsing(node, parentUid) {
         let instance = node.cloneNode();
-        let instanceUid;
+        let instanceUid, controlChild;
         const parent = store.state.component.items.find(item => item.uid === parentUid);
         const oneChildList = ['container-button', 'container-summary', 'container-content', 'numerictextbox-button', 'codepicker-search'];
         const multiChildList = ['dews-tab', 'form-section'];
 
-        function findChild(tagName, children) {
-            return children.find(child => {
-                return child.controlChild === tagName;
-            });
-        }
-
-        let controlChild;
         if (oneChildList.includes(node.tagName)) {
-            controlChild = node.tagName === 'codepicker-search' ?
-                parent.$refs.drawerLayout.$refs.codepickerSearch : findChild(node.tagName, parent.$children);
+            controlChild = node.tagName === 'codepicker-search' ? parent.$refs.drawerLayout.$refs.codepickerSearch : findChild(node.tagName, parent.$children);
             controlChild.uid = node.getAttribute('uid');
             instanceUid = controlChild.uid;
             store.commit('ADD_ITEM', controlChild);
             PageOpenService.setAttributeFromIDE(instance, controlChild);
-        } else if (multiChildList.includes(node.tagName)) {
+        }
+        else if (multiChildList.includes(node.tagName)) {
             controlChild = findChild(node.tagName, parent.$children);
             if (parent.checkChild && controlChild) {
                 parent.checkChild = false;
                 controlChild.uid = node.getAttribute('uid');
                 instanceUid = controlChild.uid;
                 store.commit('ADD_ITEM', controlChild);
-
                 (node.tagName === 'dews-tab') ? PageOpenService.setComponentStoreData(controlChild, parent, 'tabs') : null;
                 PageOpenService.setAttributeFromIDE(instance, controlChild);
-            } else {
+            } else
                 instanceUid = PageOpenService.controlParsing(instance, parent);
-            }
-        } else if (node.tagName === 'cardlist-field') {
+        }
+        else if (node.tagName === 'cardlist-field') {
             let cardListField;
             if (!store.state.component.dewsCardList[parentUid]) {
                 const field = Vue.extend(CardListField);
                 cardListField = new field().$mount();
                 store.commit('ADD_ITEM', cardListField);
                 store.commit('ADD_CARD_LIST', {uid: parentUid, cardListField: cardListField});
-            } else {
-                cardListField = store.state.component.dewsCardList[parentUid];
             }
-
+            else
+                cardListField = store.state.component.dewsCardList[parentUid];
             (!parent.$refs.cardListField.hasChildNodes()) ? parent.$refs.cardListField.appendChild(cardListField.$el) : null;
             (node.parentElement.childElementCount > cardListField.fields.length) ? cardListField.fields.push(instance.getAttribute('title')) : null;
-        } else if (node.tagName === 'dews-datasource') {
+        }
+        else if (node.tagName === 'dews-datasource') {
             PageOpenService.setDatasourceFromIDE(node);
-            // } else if (node.tagName === 'dews-cardlist') {
-            //     if (parent.controlType === 'codepicker') {
-            //         const cardList = parent.$refs.drawerLayout.$refs.cardlist;
-            //         cardList.uid = node.getAttribute('uid');
-            //         instanceUid = cardList.uid;
-            //         store.commit('ADD_ITEM', cardList);
-            //         PageOpenService.setAttributeFromIDE(instance, cardList);
-            //     } else {
             instanceUid = PageOpenService.controlParsing(instance, parent);
-            // }
-        } else if (node.tagName === 'popup-buttons') {
+        }
+        else if (node.tagName === 'popup-buttons') {
             if (parent.type == 'dialog') {
                 const popupButtons = parent.$refs.popupButtons;
                 //POPUP Buttons 영역 처리
@@ -302,20 +276,27 @@ export default {
                 instanceUid = popupButtons.uid;
                 store.commit('ADD_ITEM', popupButtons);
             }
-        } else if (node.tagName === 'popup-content') {
+        }
+        else if (node.tagName === 'popup-content') {
             const popupContent = parent.$refs.popupContent;
             //POPUP Buttons 영역 처리
             popupContent.uid = node.getAttribute('uid');
             instanceUid = popupContent.uid;
             store.commit('ADD_ITEM', popupContent);
-        } else {
-            instanceUid = PageOpenService.controlParsing(instance, parent);
         }
+        else
+            instanceUid = PageOpenService.controlParsing(instance, parent);
 
-        if (node.childElementCount === 0) return;
+        if (node.childElementCount === 0)
+            return;
 
-        for (let child of node.children) {
+        for (let child of node.children)
             PageOpenService.pageParsing(child, instanceUid);
+
+        function findChild(tagName, children) {
+            return children.find(child => {
+                return child.controlChild === tagName;
+            });
         }
     },
 
@@ -443,9 +424,6 @@ export default {
             case 'dews-zipcodepicker':
                 instance = Vue.extend(ZipCodePicker);
                 break;
-            // case 'popup-buttons':
-            //     instance = Vue.extend(PopupButtons);
-            //     break;
         }
 
         instance = new instance().$mount();

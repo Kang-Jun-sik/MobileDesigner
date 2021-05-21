@@ -26,6 +26,7 @@ export default {
     MainDesignerWrapper,
     ControlListWrapper,
   },
+
   mounted() {
     const _this = this;
     const _designer = store.state.designer;
@@ -33,17 +34,18 @@ export default {
     window.drake = dragula({
       revertOnSpill: true,
       copy: function (el, source) {
-        return ['areaList', 'containerList', 'buttonList',
-          'componentList', 'pickerList', 'etcList', 'datasourceArea'].includes(source.id);
+        return ['areaList', 'containerList', 'buttonList', 'componentList', 'pickerList', 'etcList', 'datasourceArea'].includes(source.id);
       },
       accepts: function (el, target) {
         if (componentAcceptsCheck(el, target)) {
           if (target.dataset.type === 'area') {
             const containers = target.querySelectorAll(`[data-type='container']`);
-            if (containers.length > 1) return false;
+            if (containers.length > 1)
+              return false;
           } else if (target.dataset.type === 'cardlist') {
             const cardListField = target.querySelectorAll(`[data-type='field']`);
-            if (cardListField.length >= 1) return false;
+            if (cardListField.length >= 1)
+              return false;
           }
         }
         return componentAcceptsCheck(el, target);
@@ -56,27 +58,31 @@ export default {
           }
         })
 
-    window.drake.containers.push(_designer.mainDesigner, _designer.areaList, _designer.containerList,
-        _designer.buttonList, _designer.componentList, _designer.pickerList, _designer.etcList, _designer.datasourceArea);
-
+    window.drake.containers.push(
+        _designer.mainDesigner,
+        _designer.areaList,
+        _designer.containerList,
+        _designer.buttonList,
+        _designer.componentList,
+        _designer.pickerList,
+        _designer.etcList,
+        _designer.datasourceArea);
   },
   methods: {
-
     /*
     * Container Drop 후, container-button, container-content Create Message
-    * */
+    **/
     setControlChild(component) {
       Array.from(component.$children).forEach(child => {
         store.commit('ADD_ITEM', child);
-        if (child.$children) {
+        if (child.$children)
           this.setControlChild(child);
-        }
       });
     },
 
     /*
     * Datasource Drop 후, Create Message 전송
-    * */
+    **/
     setDatasource(component) {
       const mainDesignerArea = store.state.designer.mainDesigner;
       const dataSourceArea = store.state.designer.datasourceArea;
@@ -93,7 +99,7 @@ export default {
 
     /*
     * Control Drop 실행시, Control 생성 및 $el(element)로 replace 처리
-    * */
+    **/
     drop(element, target) {
       if (element.classList.contains('dews-control-list')) {
         const componentName = element.textContent.replace(/\s+/g, '');
@@ -139,16 +145,15 @@ export default {
               element.replaceWith(component.$el);
               break;
           }
-        } else {
+        }
+        else
           element.replaceWith(component.$el);
-        }
-        store.commit('ADD_ITEM', component);
-        if (component.hasChildControl) {
-          this.setControlChild(component);
-        }
 
-        component.$el.classList.contains('dews-mobile-datasource') ? this.setDatasource(component)
-            : CreateService.sendCreateMessage(component.$el);
+        store.commit('ADD_ITEM', component);
+        if (component.hasChildControl)
+          this.setControlChild(component);
+
+        component.$el.classList.contains('dews-mobile-datasource') ? this.setDatasource(component) : CreateService.sendCreateMessage(component.$el);
         ContextMenuService.getContextMenu(component.$el);
       } else {
         if (element.classList.contains('dews-mobile-datasource') && target.classList.contains('cardlist')) {

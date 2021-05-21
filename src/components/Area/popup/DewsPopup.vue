@@ -83,11 +83,7 @@ export default {
     }
   },
   mounted() {
-    // this.$nextTick(() => {
-    //   store.commit('ADD_ITEM', this.$refs.popupButtons);
-    // });
-    // window.drake.containers.push(this.$refs.popupContent);
-    // window.drake.containers.push(this.$refs.popupButton);
+
   }
 }
 </script>

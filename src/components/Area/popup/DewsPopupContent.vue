@@ -7,7 +7,6 @@ import CreateService from "@/service/CreateService";
 
 export default {
   name: "dews-popup-content",
-  // components: {DewsButtonGroup},
   data() {
     return {
       uid: '',

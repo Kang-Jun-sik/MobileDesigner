@@ -33,13 +33,12 @@ export default {
       e.stopPropagation();
 
       let layout;
-      if (e.target.classList.contains('smartPhone')) {
+      if (e.target.classList.contains('smartPhone'))
         layout = 'smartPhone';
-      } else if (e.target.classList.contains('tabletM')) {
+      else if (e.target.classList.contains('tabletM'))
         layout = 'tabletM';
-      } else if (e.target.classList.contains('tabletL')) {
+      else if (e.target.classList.contains('tabletL'))
         layout = 'tabletL';
-      }
       this.$store.commit('SET_LAYOUT', layout);
 
       for (let key in this.chkLayout) {

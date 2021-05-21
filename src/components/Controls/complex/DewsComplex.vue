@@ -2,7 +2,7 @@
   <div :uid="uid" :id="id" class="dews-mobile-complex dews-mobile-component dews-complex">
     <label>{{ title }}</label>
     <ul class="complex-wrap">
-<!--          <complex-line ref="complexLine"></complex-line>-->
+
     </ul>
   </div>
 </template>
@@ -34,12 +34,9 @@ export default {
   },
   created() {
     this.uid = CreateService.createUid('dews-complex');
-    // this.$nextTick(() => {
-    //   store.commit('ADD_ITEM', this.$refs.complexLine);
-    // });
   },
   mounted() {
-    // store.commit('ADD_ITEM', this.$refs.complexLine);
+
   },
   methods: {
     setID(value) {

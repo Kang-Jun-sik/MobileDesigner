@@ -7,7 +7,6 @@ import AddChildService from "./AddChildService";
 import SelectService from "./SelectService";
 import CodePickerService from "@/service/CodePickerService";
 
-
 export default {
     /*
     * 마우스 오른쪽 클릭
@@ -16,20 +15,6 @@ export default {
     getContextMenu(instance) {
         switch (instance.classList[0]) {
             case "main-designer" :
-                /*
-                $.contextMenu({
-                    selector: ".selected-control",
-                    items: {
-                        "edit": {
-                            name: "mainDesignerOption",
-                            icon: "edit"
-                        },
-                    },
-                    callback: function (itemKey, opt) {
-                        console.log(itemKey);
-                    }
-                });
-                 */
                 break;
             case "dews-mobile-item":
                 $.contextMenu({

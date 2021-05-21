@@ -8,7 +8,6 @@
       </div>
       <div class="layer-content">
         <div class="drawer-codepicker">
-          <!--<button class="confirm-button1" @click="clickClose($event)">닫기</button>-->
           <div class="titlebar">
             <div class="title">{{ helpTitle }}</div>
             <button class="confirm-button">적용</button>
@@ -36,7 +35,6 @@
 
             <div class="codepicker dataArea">
               <div class="codepicker-data" :drawlayoutuid="dataUid" :data-Uid="dataUid" ref="codepickerData">
-<!--                <dews-cardlist ref="cardlist"></dews-cardlist>-->
               </div>
             </div>
           </div>
@@ -49,12 +47,10 @@
 <script>
 import store from "@/store/index";
 import CreateService from "@/service/CreateService";
-import DewsCardlist from "@/components/Controls/cardlist/DewsCardList";
 import CodepickerSearch from "@/components/Controls/codepicker/CodePickerSearch";
 
 export default {
   name: 'drawer-layout',
-  // components: {CodepickerSearch, DewsCardlist},
   components: {CodepickerSearch},
   props: ['dataUid'],
   data() {
@@ -77,7 +73,6 @@ export default {
   mounted() {
     store.commit('ADD_ITEM', this.$refs.codepickerSearch);
     window.drake.containers.push(this.$refs.codepickerData);
-    // store.commit('ADD_ITEM', this.$refs.cardlist);
   },
   methods: {
     clickHandler() {
@@ -111,9 +106,10 @@ export default {
 .layer-drawer {
   display: none;
 
-  .codepicker-data{
+  .codepicker-data {
     min-height: 40px;
   }
+
   &.open {
     display: block;
   }
@@ -121,7 +117,6 @@ export default {
   .layer-bottom {
     position: absolute;
     transform: translate3d(0px, -76px, 0px);
-
   }
 
   &.drawer-tabletL {

@@ -39,7 +39,6 @@ export default {
   },
   created() {
     this.uid = this.dataUid = CreateService.createUid('dews-codepicker');
-    // this.dataUid = this.uid;
   },
   mounted() {
 

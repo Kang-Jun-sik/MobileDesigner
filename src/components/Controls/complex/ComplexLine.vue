@@ -28,10 +28,8 @@ export default {
   },
   created() {
     this.uid = CreateService.createUid('complex-line');
-    //this.dataUid = CreateService.createUid('complex');
   },
   mounted() {
-    //store.commit('ADD_ITEM',this.$refs.complex);
     window.drake.containers.push(this.$refs.complex);
   },
   methods: {

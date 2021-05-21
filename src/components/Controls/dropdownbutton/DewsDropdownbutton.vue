@@ -7,8 +7,7 @@
       <span class="button-text">{{ text }}</span>
     </button>
     <span class="button-list dropdown-button-list" display="block" ref="dropdownButtonList">
-<!--    <span class="button-list dropdown-button-list" :class="selected ? 'selected' : ''" display="block" ref="dropdownButtonList">-->
-      <!--        <dews-dropdown-childbutton :controlChild="childButton" ref="dropdownChildButton"></dews-dropdown-childbutton>-->
+
     </span>
   </div>
 </template>
@@ -20,17 +19,18 @@ import SelectService from "@/service/SelectService";
 
 export default {
   name: 'dews-dropdownbutton',
-  // components: {DewsDropdownChildbutton},
   data() {
     return {
       uid: '',
       parentUid: '',
       controlType: 'dropdownbutton',
+
       /* check child */
       hasChildControl: true,
       checkChild: true,
       childButton: 'dropdown-childbutton',
       collapsed: true,
+
       /* Properties */
       id: '',
       text: 'DropdownButton',

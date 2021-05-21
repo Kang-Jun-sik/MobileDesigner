@@ -2,42 +2,6 @@ import $ from "jquery";
 import store from "@/store/index";
 
 export default {
-    /*
-    * 컨트롤 리사이즈 (jQuery 라이브러리 사용)
-    * */
-    // canResize(element) {
-    //     //메인 디자이너의 경우 리사이즈 핸들러가 필요없음
-    //     if(element.classList.contains('main-designer')) return
-    //
-    //     const elementHandles = store.state.service.handles[element.classList[0]] ?
-    //         store.state.service.handles[element.classList[0]] : "";
-    //     const elementUid = element.getAttribute('uid');
-    //     const target = $(`[uid=${elementUid}]`);
-    //     $(target).resizable({
-    //         disabled: false,
-    //         alsoResize: ResizeService.alsoResizeTarget(target),
-    //         handles: elementHandles,
-    //         minWidth: parseInt(target.css('minWidth'), 10),
-    //         minHeight: parseInt(target.css('minHeight'), 10),
-    //         maxWidth: parseInt(target.css('maxWidth'), 10),
-    //         resize: function (e, ui) {
-    //             e.stopPropagation();
-    //             let dir = ui.element.data('ui-resizable').axis;
-    //             SelectService.setPosition(element);
-    //         },
-    //         start: function (e, ui) {
-    //             e.stopPropagation();
-    //         },
-    //         stop: function (e, ui) {
-    //             e.stopPropagation();
-    //         },
-    //         create: function (e, ui) {
-    //             e.stopPropagation();
-    //         },
-    //     });
-    //     SelectService.setPosition(element, element.offsetWidth, element.offsetHeight);
-    // },
-
     /**
      * 하위 자식 컨트롤의 사이즈 조절을 위한 로직 ex) dews-mobile-areBox > dews-box-content-wrap
      **/
@@ -70,3 +34,40 @@ export default {
         }
     },
 }
+
+/**
+ *  /*
+ * 컨트롤 리사이즈 (jQuery 라이브러리 사용)
+ * */
+// canResize(element) {
+//     //메인 디자이너의 경우 리사이즈 핸들러가 필요없음
+//     if(element.classList.contains('main-designer')) return
+//
+//     const elementHandles = store.state.service.handles[element.classList[0]] ?
+//         store.state.service.handles[element.classList[0]] : "";
+//     const elementUid = element.getAttribute('uid');
+//     const target = $(`[uid=${elementUid}]`);
+//     $(target).resizable({
+//         disabled: false,
+//         alsoResize: ResizeService.alsoResizeTarget(target),
+//         handles: elementHandles,
+//         minWidth: parseInt(target.css('minWidth'), 10),
+//         minHeight: parseInt(target.css('minHeight'), 10),
+//         maxWidth: parseInt(target.css('maxWidth'), 10),
+//         resize: function (e, ui) {
+//             e.stopPropagation();
+//             let dir = ui.element.data('ui-resizable').axis;
+//             SelectService.setPosition(element);
+//         },
+//         start: function (e, ui) {
+//             e.stopPropagation();
+//         },
+//         stop: function (e, ui) {
+//             e.stopPropagation();
+//         },
+//         create: function (e, ui) {
+//             e.stopPropagation();
+//         },
+//     });
+//     SelectService.setPosition(element, element.offsetWidth, element.offsetHeight);
+// },
