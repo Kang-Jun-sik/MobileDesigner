@@ -158,6 +158,7 @@ export default {
         const control = PageOpenService.createControlFromData(instance);
         const controlUid = control.uid;
         const parentDataUid = parent.dataUid ? parent.dataUid : '';
+        const noRenderingList = ['dropdownlist-item'];
 
         PageOpenService.setAttributeFromIDE(instance, control);
 
@@ -214,8 +215,10 @@ export default {
             if (instance.hasAttribute('index')) {
                 const idx = instance.getAttribute('index');
                 parent.$el.insertBefore(addComponent, parent.$el.children[idx]);
-            } else
-                parent.$el.appendChild(addComponent);
+            } else {
+                if (!noRenderingList.includes(instance.tagName))
+                    parent.$el.appendChild(addComponent);
+            }
         }
         return controlUid;
     },
@@ -238,8 +241,7 @@ export default {
             instanceUid = controlChild.uid;
             store.commit('ADD_ITEM', controlChild);
             PageOpenService.setAttributeFromIDE(instance, controlChild);
-        }
-        else if (multiChildList.includes(node.tagName)) {
+        } else if (multiChildList.includes(node.tagName)) {
             controlChild = findChild(node.tagName, parent.$children);
             if (parent.checkChild && controlChild) {
                 parent.checkChild = false;
@@ -250,25 +252,21 @@ export default {
                 PageOpenService.setAttributeFromIDE(instance, controlChild);
             } else
                 instanceUid = PageOpenService.controlParsing(instance, parent);
-        }
-        else if (node.tagName === 'cardlist-field') {
+        } else if (node.tagName === 'cardlist-field') {
             let cardListField;
             if (!store.state.component.dewsCardList[parentUid]) {
                 const field = Vue.extend(CardListField);
                 cardListField = new field().$mount();
                 store.commit('ADD_ITEM', cardListField);
                 store.commit('ADD_CARD_LIST', {uid: parentUid, cardListField: cardListField});
-            }
-            else
+            } else
                 cardListField = store.state.component.dewsCardList[parentUid];
             (!parent.$refs.cardListField.hasChildNodes()) ? parent.$refs.cardListField.appendChild(cardListField.$el) : null;
             (node.parentElement.childElementCount > cardListField.fields.length) ? cardListField.fields.push(instance.getAttribute('title')) : null;
-        }
-        else if (node.tagName === 'dews-datasource') {
+        } else if (node.tagName === 'dews-datasource') {
             PageOpenService.setDatasourceFromIDE(node);
             instanceUid = PageOpenService.controlParsing(instance, parent);
-        }
-        else if (node.tagName === 'popup-buttons') {
+        } else if (node.tagName === 'popup-buttons') {
             if (parent.type == 'dialog') {
                 const popupButtons = parent.$refs.popupButtons;
                 //POPUP Buttons 영역 처리
@@ -276,15 +274,13 @@ export default {
                 instanceUid = popupButtons.uid;
                 store.commit('ADD_ITEM', popupButtons);
             }
-        }
-        else if (node.tagName === 'popup-content') {
+        } else if (node.tagName === 'popup-content') {
             const popupContent = parent.$refs.popupContent;
             //POPUP Buttons 영역 처리
             popupContent.uid = node.getAttribute('uid');
             instanceUid = popupContent.uid;
             store.commit('ADD_ITEM', popupContent);
-        }
-        else
+        } else
             instanceUid = PageOpenService.controlParsing(instance, parent);
 
         if (node.childElementCount === 0)
