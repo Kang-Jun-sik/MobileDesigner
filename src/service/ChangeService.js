@@ -233,6 +233,9 @@ export default {
             case 'UseSave':
                 component.setBtnSave(value);
                 break;
+            case 'UseScan':
+                component.setBtnScan(value);
+                break;
         }
     },
 

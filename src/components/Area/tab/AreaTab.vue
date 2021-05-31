@@ -30,6 +30,7 @@ export default {
         'btn-add': true,
         'btn-delete': true,
         'btn-search': true,
+        'btn-scan':true
       },
     }
   },
@@ -92,6 +93,9 @@ export default {
     },
     setBtnSave(value) {
       this.mainButtons['btn-save'] = JSON.parse(value);
+    },
+    setBtnScan(value) {
+      this.mainButtons['btn-scan'] = JSON.parse(value);
     },
     destroyComponent() {
       this.$destroy();

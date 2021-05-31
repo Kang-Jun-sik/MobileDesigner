@@ -3,7 +3,7 @@
     <div class="dews-box-title">
       <h2>{{ title }}</h2>
       <button class="dews-box-title-button" type="button" @click="onToggleClick($event)"
-        :collapsed="collapsed"></button>
+              :collapsed="collapsed"></button>
     </div>
     <div class="dews-box-content-wrap" :style="contentStyle" part="content">
       <div class="dews-box-content addable-area" :data-uid="dataUid" data-type="area" ref="boxContent">
@@ -40,6 +40,7 @@ export default {
         'btn-add': true,
         'btn-delete': true,
         'btn-search': true,
+        'btn-scan' : true,
       }
     }
   },
@@ -107,6 +108,9 @@ export default {
     setBtnSave(value) {
       this.mainButtons['btn-save'] = JSON.parse(value);
     },
+    setBtnScan(value) {
+      this.mainButtons['btn-scan'] = JSON.parse(value);
+    },
     onToggleClick: function (e) {
       e.stopPropagation();
       this.setCollapsed(!this.collapsed);
@@ -122,6 +126,7 @@ export default {
 <style lang="scss" scoped>
 @import 'node_modules/@dews/dews-mobile-style/scss/variables/variables';
 @import 'node_modules/@dews/dews-mobile-style/scss/mixins/_mixins';
+
 @include dews-area-box();
 
 
@@ -132,6 +137,7 @@ export default {
   overflow: inherit;
   height: auto;
 }
+
 .dews-box-wrap {
   //box design
   //max-width: 1050px;
@@ -143,6 +149,7 @@ export default {
     padding-top: 10px;
   }
 }
+
 //dfd 요청 box button 분리
 .dews-box-wrap {
   .dews-box-title {
@@ -161,6 +168,7 @@ export default {
       line-height: 24px;
       text-align: left;
     }
+
     .dews-box-title-button {
       position: relative;
       flex: 0 0 24px;
