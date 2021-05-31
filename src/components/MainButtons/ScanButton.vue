@@ -1,5 +1,5 @@
 <template>
-  <div :uid="uid" v-show="mainButtons['scan-save']" class="dews-mobile-scan"></div>
+  <div :uid="uid" v-show="mainButtons['btn-scan']" class="dews-mobile-scan"></div>
 </template>
 
 <script>
