@@ -120,9 +120,10 @@ export default {
     },
 
     setNumericButton(value) {
-      this.numericButton = JSON.parse(value);
-      this.numericButton ? CreateService.sendCreateMessage(this.$refs.numericChildButton.$el)
-          : DeleteService.sendDeleteMessage(this.$refs.numericChildButton.$el);
+      // this.numericButton = JSON.parse(value);
+      // this.numericButton ? CreateService.sendCreateMessage(this.$refs.numericChildButton.$el)
+      //     : DeleteService.sendDeleteMessage(this.$refs.numericChildButton.$el);
+      JSON.parse(value) ? this.numericButton = true : this.numericButton = false;
     },
     increaseNumeric() {
       console.log('increase');
