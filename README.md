@@ -1,4 +1,4 @@
-# DEWS 개발도구 Mobile Designer Web APP
+# Mobile Designer Web APP
 
 ## Project setup
 ```
