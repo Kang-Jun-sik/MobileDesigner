@@ -1,0 +1,30 @@
+image: "node:14"
+
+stages:
+  - install
+  - build
+
+cache:
+  paths:
+    - node_modules/
+
+install:
+  stage: install
+  script:
+    - npm install
+  only:
+    - /^TR_/
+    - dev
+    - master
+
+build:
+  stage: build
+  script:
+    - npm build
+  cache:
+    paths:
+      - dist/
+  only:
+    - /^TR_/
+    - dev
+    - master
